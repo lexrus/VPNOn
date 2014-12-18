@@ -687,7 +687,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_MODULE_NAME = VPNOn;
 				PRODUCT_NAME = "VPN On";
-				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -704,7 +703,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_MODULE_NAME = VPNOn;
 				PRODUCT_NAME = "VPN On";
-				PROVISIONING_PROFILE = "495677fe-a0f4-42cd-8f3d-34c11bcafff0";
 			};
 			name = Release;
 		};
@@ -723,7 +721,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -739,7 +736,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3aa3bb36-cf5d-4baf-b447-31289ca3916a";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;

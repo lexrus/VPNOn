@@ -46,6 +46,13 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             object: nil)
     }
     
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(
+            self,
+            name: NEVPNStatusDidChangeNotification,
+            object: nil)
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -60,18 +67,6 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         // If there's an update, use NCUpdateResult.NewData
         
         completionHandler(NCUpdateResult.NewData)
-    }
-    
-    func leftInset() -> CGFloat {
-        var inset: CGFloat = 48.0;
-        if UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad {
-            inset = 57.0
-        } else if UIScreen.mainScreen().bounds.size.width > 735.0 {
-            inset = 81.0
-        } else if UIScreen.mainScreen().bounds.size.width > 413.0 {
-            inset = 52.0
-        }
-        return inset;
     }
     
     func widgetMarginInsetsForProposedMarginInsets(defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets

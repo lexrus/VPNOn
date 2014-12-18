@@ -31,10 +31,6 @@ class LTVPNCreateViewController: UITableViewController, UITextFieldDelegate {
         if success {
             dismissViewControllerAnimated(true) {}
         }
-        else
-        {
-            // TODO: Display error alert.
-        }
     }
     
     override func viewDidLoad() {
