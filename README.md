@@ -7,9 +7,19 @@ Turning on a VPN is always a painful experience on an iOS device due to the deep
 ## Requirements
 
 - An iPhone running iOS 8.1
-- An IPSec IKEv1 VPN account
+- An IPSec IKEv1 VPN(create your with [my Ansible Playbook](https://github.com/lexrus/vpn-deploy-playbook) or [join my test team to get one](https://rink.hockeyapp.net/recruit/a53d3cc32fba4ce1af4fb679b9a602bb))
 - Xcode 6.1.1
 - An Apple iOS developer account
+
+## Build with Xcode
+
+To compile the project, you may temporarily modify the bundle_id after adding yours into the Apple Developer Center. And then activate the following capabilities of both the container App and the widget:
+
+1. Personal VPN
+2. Keychain Sharing
+3. App Groups
+
+Meanwhile, provisioning profiles are required for testing on iPhone.
 
 ## Usage
 
@@ -38,6 +48,8 @@ I'm a coffee addict, buy me a coffee via PayPal or Alipay: `lexrus@gmail.com`
 ## Credits
 
 [KeychainWrapper](https://github.com/jrendel/KeychainWrapper)
+
+Note: I set the optimization level of VPNOnKit to `None` in order to read Keychain properly due to [an issue of Swift](http://stackoverflow.com/questions/26355630/swift-keychain-and-provisioning-profiles).
 
 ## Contact
 
