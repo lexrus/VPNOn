@@ -7,7 +7,7 @@ Turning on a VPN is always a painful experience on an iOS device due to the deep
 ## Requirements
 
 - An iPhone running iOS 8.1
-- An IPSec IKEv1 VPN(create your with [my Ansible Playbook](https://github.com/lexrus/vpn-deploy-playbook) or [join my test team to get one](https://rink.hockeyapp.net/recruit/a53d3cc32fba4ce1af4fb679b9a602bb))
+- An IPSec IKEv1 VPN(create your with [my Ansible Playbook](https://github.com/lexrus/vpn-deploy-playbook))
 - Xcode 6.1.1
 - An Apple iOS developer account
 
