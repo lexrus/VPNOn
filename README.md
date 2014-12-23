@@ -25,15 +25,9 @@ Meanwhile, provisioning profiles are required for testing on iPhone.
 
 After creating a VPN configuration you can activate the Today Widget in Notification Center, then turn on the VPN by tapping the switch. You may be asked to allow the installation of a VPN profile for the first time.
 
-## TODOs
-
-- [ ] IKEv2 VPN
-- [ ] Display connection speed of activated VPN in widget
-- [ ] Ping latency in the list
-- [ ] App URL scheme for adding a VPN
-- [ ] iCloud sync
-
 ## Contribution
+
+TODOs and issues are [listed here](https://github.com/lexrus/VPNOn/issues).
 
 This project follows the gitflow workflow. You'd better create a branch called `feature/sth_improved` before any major improvements. Meanwhile minor bug fixes are welcomed in the develop branch.
 
