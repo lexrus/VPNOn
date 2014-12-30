@@ -1,5 +1,7 @@
 # VPN On
 
+[<img src="https://cloud.githubusercontent.com/assets/219689/5575342/963e0ee8-9013-11e4-8091-7ece67d64729.png" width="135" height="40" alt="AppStore"/>](https://itunes.apple.com/app/vpn-on/id951344279)
+
 <img src="https://cloud.githubusercontent.com/assets/219689/5451787/6a57f7c8-854e-11e4-8da9-fec82b73cdb2.gif" width="480" height="270" alt="Screencast"/>
 
 Turning on a VPN is always a painful experience on an iOS device due to the deep nested menus. This App installs a Today Widget into Notification Center which make it possible to turn on a VPN in about 3 seconds(depends on the connection speed).
@@ -7,7 +9,7 @@ Turning on a VPN is always a painful experience on an iOS device due to the deep
 ## Requirements
 
 - An iPhone running iOS 8.1
-- An IPSec IKEv1 VPN(create your with [my Ansible Playbook](https://github.com/lexrus/vpn-deploy-playbook))
+- An IPSec IKEv1 VPN(create yours with [my Ansible Playbook](https://github.com/lexrus/vpn-deploy-playbook))
 - Xcode 6.1.1
 - An Apple iOS developer account
 
@@ -34,6 +36,10 @@ This project follows the gitflow workflow. You'd better create a branch called `
 ## App Store Submission
 
 Most likely, Apple allows "Today" related widgets and rejects the others. Although it's impossible to pass the submission, I've just submit the tag 0.1 to App Store and pray for a miracle.
+
+...
+
+At last, [VPN On is now available on App Store](https://itunes.apple.com/app/vpn-on/id951344279)!
 
 ## Donate
 
