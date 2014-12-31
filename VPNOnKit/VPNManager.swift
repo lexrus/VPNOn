@@ -108,6 +108,7 @@ class VPNManager
                 p.sharedSecretReference = secretRef
             }
             
+            _manager.enabled = true
             _manager.`protocol` = p
             _manager.saveToPreferencesWithCompletionHandler {
                 (error: NSError!) -> Void in
