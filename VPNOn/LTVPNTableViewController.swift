@@ -22,6 +22,17 @@ class LTVPNTableViewController: UITableViewController
     var selectedRow = -1
     var activatedVPNID = ""
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("VPNDidCreate:"), name: kLTVPNDidCreate, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("VPNDidUpdate:"), name: kLTVPNDidUpdate, object: nil)
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: kLTVPNDidCreate, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: kLTVPNDidUpdate, object: nil)
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         vpns = VPNDataManager.sharedManager.allVPN()
@@ -103,15 +114,29 @@ class LTVPNTableViewController: UITableViewController
         return .None
     }
     
+    // MARK: - Notifications
+    
+    func VPNDidCreate(notification: NSNotification) {
+        tableView.reloadData()
+    }
+    
+    func VPNDidUpdate(notification: NSNotification) {
+        tableView.reloadData()
+    }
+    
     // MARK: - Navigation
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let destinationVC: AnyObject = segue.destinationViewController
-        if destinationVC.isKindOfClass(LTVPNEditViewController)
-        {
-            if selectedRow != -1 {
+        if selectedRow == -1 {
+            return
+        }
+        
+        let destinationNC: UINavigationController = segue.destinationViewController as UINavigationController
+        if destinationNC.isKindOfClass(UINavigationController) {
+            let editViewController = destinationNC.topViewController!
+            if (editViewController.isKindOfClass(LTVPNEditViewController)) {
                 let VPNID = vpns[selectedRow].objectID
-                let editVC = destinationVC as LTVPNEditViewController
+                let editVC = editViewController as LTVPNEditViewController
                 editVC.VPNObjectID = VPNID
                 selectedRow = -1
             }

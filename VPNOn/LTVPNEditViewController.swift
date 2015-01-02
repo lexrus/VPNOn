@@ -10,19 +10,21 @@ import UIKit
 import CoreData
 import VPNOnKit
 
+let kLTVPNDidUpdate = "kLTVPNDidUpdate"
 let kSaveButtonEnabledColor = UIColor(red:0, green:0.48, blue:1, alpha:1)
 let kImpossibleHash = "~!@#$%^+_)(*&"
 
 class LTVPNEditViewController: LTVPNCreateViewController {
     
-    var VPNObjectID = NSManagedObjectID()
+    var VPNObjectID: NSManagedObjectID?
     lazy var vpn: VPN? = {
-        if let result = VPNDataManager.sharedManager.VPNByID(self.VPNObjectID) {
-            let vpn = result
-            return vpn
-        } else {
-            return Optional.None
+        if let ID = self.VPNObjectID {
+            if let result = VPNDataManager.sharedManager.VPNByID(ID) {
+                let vpn = result
+                return vpn
+            }
         }
+        return Optional.None
     }()
     
     @IBOutlet weak var saveCell: UITableViewCell!
@@ -69,6 +71,8 @@ class LTVPNEditViewController: LTVPNCreateViewController {
                 
                 saveCell.userInteractionEnabled = false
                 saveCell.textLabel?.textColor = UIColor.lightGrayColor()
+                
+                NSNotificationCenter.defaultCenter().postNotificationName(kLTVPNDidUpdate, object: nil)
             }
         } else if selectedCell == deleteCell {
             if let currentVPN = vpn {
