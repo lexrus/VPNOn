@@ -523,29 +523,28 @@
                             </tableViewSection>
                             <tableViewSection id="R8W-xO-EAm">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="YfC-Yu-VCg">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="44" id="YfC-Yu-VCg">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YfC-Yu-VCg" id="8DI-s8-hxi">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Required" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="bk9-Se-csX">
-                                                    <rect key="frame" x="124" y="0.0" width="468" height="43.5"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
-                                                    <connections>
-                                                        <outlet property="delegate" destination="LCE-D1-33a" id="JVD-ZU-V6d"/>
-                                                    </connections>
-                                                </textField>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fU7-gG-VrP">
                                                     <rect key="frame" x="16" y="0.0" width="100" height="44"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="44" id="7KO-Ge-P8C"/>
                                                         <constraint firstAttribute="width" constant="100" id="s2y-iS-aHq"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Required" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="bk9-Se-csX">
+                                                    <rect key="frame" x="124" y="0.5" width="468" height="43.5"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="LCE-D1-33a" id="JVD-ZU-V6d"/>
+                                                    </connections>
+                                                </textField>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="bk9-Se-csX" secondAttribute="bottom" id="Epy-u4-1T6"/>
@@ -554,13 +553,14 @@
                                                 <constraint firstAttribute="bottom" secondItem="fU7-gG-VrP" secondAttribute="bottom" id="PcT-tz-oA3"/>
                                                 <constraint firstItem="fU7-gG-VrP" firstAttribute="top" secondItem="8DI-s8-hxi" secondAttribute="top" id="dYi-L4-TPh"/>
                                                 <constraint firstItem="fU7-gG-VrP" firstAttribute="leading" secondItem="8DI-s8-hxi" secondAttribute="leadingMargin" constant="8" id="ecW-xL-8bb">
-                                                    <variation key="heightClass=regular-widthClass=regular" constant="8"/>
+                                                    <variation key="widthClass=compact" constant="12"/>
+                                                    <variation key="heightClass=regular-widthClass=regular" constant="12"/>
                                                 </constraint>
                                                 <constraint firstItem="bk9-Se-csX" firstAttribute="leading" secondItem="fU7-gG-VrP" secondAttribute="trailing" constant="8" id="wDX-Rx-IOt"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="8DR-I8-2aP">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="44" id="8DR-I8-2aP">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8DR-I8-2aP" id="1Jw-aa-TUD">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -568,7 +568,6 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Server" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7GR-sB-ZOz">
                                                     <rect key="frame" x="16" y="-0.5" width="100" height="44"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="44" id="Nrl-VV-e9f"/>
                                                         <constraint firstAttribute="width" constant="100" id="twZ-cw-e1u"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
@@ -587,7 +586,8 @@
                                             <constraints>
                                                 <constraint firstItem="vnc-DJ-z33" firstAttribute="top" secondItem="1Jw-aa-TUD" secondAttribute="top" id="0xh-Rq-PBA"/>
                                                 <constraint firstItem="7GR-sB-ZOz" firstAttribute="leading" secondItem="1Jw-aa-TUD" secondAttribute="leadingMargin" constant="8" id="1Vm-kP-XZK">
-                                                    <variation key="heightClass=regular-widthClass=regular" constant="8"/>
+                                                    <variation key="widthClass=compact" constant="12"/>
+                                                    <variation key="heightClass=regular-widthClass=regular" constant="12"/>
                                                 </constraint>
                                                 <constraint firstItem="7GR-sB-ZOz" firstAttribute="top" secondItem="1Jw-aa-TUD" secondAttribute="top" id="8zS-Xa-83L"/>
                                                 <constraint firstItem="vnc-DJ-z33" firstAttribute="leading" secondItem="7GR-sB-ZOz" secondAttribute="trailing" constant="8" id="AwC-d3-sdQ"/>
@@ -597,7 +597,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="fXW-gr-uSI">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="44" id="fXW-gr-uSI">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fXW-gr-uSI" id="hNl-vO-cuM">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -606,7 +606,6 @@
                                                     <rect key="frame" x="16" y="0.0" width="100" height="44"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="A2n-9R-gv2"/>
-                                                        <constraint firstAttribute="height" constant="44" id="DQh-KD-Axy"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -626,7 +625,8 @@
                                                 <constraint firstAttribute="trailing" secondItem="OfB-NW-32F" secondAttribute="trailing" constant="8" id="AV3-hP-44i"/>
                                                 <constraint firstItem="OfB-NW-32F" firstAttribute="top" secondItem="hNl-vO-cuM" secondAttribute="top" id="C60-xP-2Av"/>
                                                 <constraint firstItem="XbN-rS-hoE" firstAttribute="leading" secondItem="hNl-vO-cuM" secondAttribute="leadingMargin" constant="8" id="SH9-f1-r5q">
-                                                    <variation key="heightClass=regular-widthClass=regular" constant="8"/>
+                                                    <variation key="widthClass=compact" constant="12"/>
+                                                    <variation key="heightClass=regular-widthClass=regular" constant="12"/>
                                                 </constraint>
                                                 <constraint firstItem="XbN-rS-hoE" firstAttribute="top" secondItem="hNl-vO-cuM" secondAttribute="top" id="cRz-gi-xTm"/>
                                                 <constraint firstAttribute="bottom" secondItem="XbN-rS-hoE" secondAttribute="bottom" id="h6H-Yd-fdg"/>
@@ -634,7 +634,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="JVK-PL-qIE">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="44" id="JVK-PL-qIE">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JVK-PL-qIE" id="fRt-dl-LQP">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -642,7 +642,6 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cMx-BN-fpG">
                                                     <rect key="frame" x="16" y="0.0" width="100" height="44"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="44" id="7Un-1F-leN"/>
                                                         <constraint firstAttribute="width" constant="100" id="jTE-Hu-hFS"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
@@ -661,18 +660,18 @@
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="cMx-BN-fpG" secondAttribute="bottom" id="1ms-Ym-y1J"/>
                                                 <constraint firstItem="hgc-bN-IGn" firstAttribute="leading" secondItem="cMx-BN-fpG" secondAttribute="trailing" constant="8" id="2Fd-iE-eLq"/>
-                                                <constraint firstAttribute="trailing" secondItem="cMx-BN-fpG" secondAttribute="trailing" constant="8" id="M0c-hH-2z8"/>
                                                 <constraint firstItem="cMx-BN-fpG" firstAttribute="top" secondItem="fRt-dl-LQP" secondAttribute="top" id="Mow-4K-QJj"/>
                                                 <constraint firstAttribute="bottom" secondItem="hgc-bN-IGn" secondAttribute="bottom" id="OOd-dr-ael"/>
                                                 <constraint firstItem="hgc-bN-IGn" firstAttribute="top" secondItem="fRt-dl-LQP" secondAttribute="top" id="Yfn-nF-Drw"/>
                                                 <constraint firstAttribute="trailing" secondItem="hgc-bN-IGn" secondAttribute="trailing" constant="8" id="kwd-b3-mbQ"/>
                                                 <constraint firstItem="cMx-BN-fpG" firstAttribute="leading" secondItem="fRt-dl-LQP" secondAttribute="leadingMargin" constant="8" id="l1k-Me-9p5">
-                                                    <variation key="heightClass=regular-widthClass=regular" constant="8"/>
+                                                    <variation key="widthClass=compact" constant="12"/>
+                                                    <variation key="heightClass=regular-widthClass=regular" constant="12"/>
                                                 </constraint>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="W28-iV-oc6">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="44" id="W28-iV-oc6">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="W28-iV-oc6" id="iUb-k4-zrC">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -681,7 +680,6 @@
                                                     <rect key="frame" x="16" y="0.0" width="100" height="44"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="C2d-mz-eds"/>
-                                                        <constraint firstAttribute="height" constant="44" id="fzZ-hq-pn9"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -699,10 +697,10 @@
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="SHq-lM-bVK" secondAttribute="trailing" constant="8" id="2NV-Od-11y"/>
                                                 <constraint firstItem="CJa-0I-aFo" firstAttribute="leading" secondItem="iUb-k4-zrC" secondAttribute="leadingMargin" constant="8" id="CfO-rZ-08d">
-                                                    <variation key="heightClass=regular-widthClass=regular" constant="8"/>
+                                                    <variation key="widthClass=compact" constant="12"/>
+                                                    <variation key="heightClass=regular-widthClass=regular" constant="12"/>
                                                 </constraint>
                                                 <constraint firstItem="SHq-lM-bVK" firstAttribute="top" secondItem="iUb-k4-zrC" secondAttribute="top" id="Fvd-Iz-SNC"/>
-                                                <constraint firstAttribute="trailing" secondItem="CJa-0I-aFo" secondAttribute="trailing" constant="8" id="JgH-BT-jKH"/>
                                                 <constraint firstItem="CJa-0I-aFo" firstAttribute="top" secondItem="iUb-k4-zrC" secondAttribute="top" id="RN1-2J-JbN"/>
                                                 <constraint firstAttribute="bottom" secondItem="SHq-lM-bVK" secondAttribute="bottom" id="RxG-NR-wma"/>
                                                 <constraint firstItem="SHq-lM-bVK" firstAttribute="leading" secondItem="CJa-0I-aFo" secondAttribute="trailing" constant="8" id="Unp-ib-M9h"/>
@@ -710,7 +708,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="rXN-2A-ycp">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="44" id="rXN-2A-ycp">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rXN-2A-ycp" id="I7P-xn-ZBe">
                                             <autoresizingMask key="autoresizingMask"/>
@@ -719,7 +717,6 @@
                                                     <rect key="frame" x="16" y="0.0" width="100" height="44"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="i1N-9H-rui"/>
-                                                        <constraint firstAttribute="height" constant="44" id="jig-YH-L8g"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -735,15 +732,15 @@
                                                 </textField>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="X26-7M-zDJ" firstAttribute="leading" secondItem="I7P-xn-ZBe" secondAttribute="leadingMargin" constant="8" id="03w-H4-x5v">
+                                                    <variation key="widthClass=compact" constant="12"/>
+                                                    <variation key="heightClass=regular-widthClass=regular" constant="12"/>
+                                                </constraint>
+                                                <constraint firstItem="eu7-j7-lUB" firstAttribute="leading" secondItem="X26-7M-zDJ" secondAttribute="trailing" constant="8" id="Ep9-mm-WD4"/>
                                                 <constraint firstItem="eu7-j7-lUB" firstAttribute="top" secondItem="I7P-xn-ZBe" secondAttribute="top" id="EtB-Vg-jC1"/>
                                                 <constraint firstItem="X26-7M-zDJ" firstAttribute="top" secondItem="I7P-xn-ZBe" secondAttribute="top" id="Gvh-wA-bul"/>
-                                                <constraint firstItem="X26-7M-zDJ" firstAttribute="leading" secondItem="I7P-xn-ZBe" secondAttribute="leadingMargin" constant="8" id="IxP-MB-xcf">
-                                                    <variation key="heightClass=regular-widthClass=regular" constant="8"/>
-                                                </constraint>
                                                 <constraint firstAttribute="bottom" secondItem="X26-7M-zDJ" secondAttribute="bottom" id="MPM-uc-KP7"/>
                                                 <constraint firstAttribute="bottom" secondItem="eu7-j7-lUB" secondAttribute="bottom" id="etJ-w5-LZo"/>
-                                                <constraint firstAttribute="trailing" secondItem="X26-7M-zDJ" secondAttribute="trailing" constant="8" id="kED-6i-wqj"/>
-                                                <constraint firstItem="eu7-j7-lUB" firstAttribute="leading" secondItem="X26-7M-zDJ" secondAttribute="trailing" constant="8" id="lhR-3i-gbj"/>
                                                 <constraint firstAttribute="trailing" secondItem="eu7-j7-lUB" secondAttribute="trailing" constant="8" id="mAb-Gs-puI"/>
                                             </constraints>
                                         </tableViewCellContentView>
