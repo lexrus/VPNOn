@@ -117,10 +117,12 @@ class LTVPNTableViewController: UITableViewController
     // MARK: - Notifications
     
     func VPNDidCreate(notification: NSNotification) {
+        vpns = VPNDataManager.sharedManager.allVPN()
         tableView.reloadData()
     }
     
     func VPNDidUpdate(notification: NSNotification) {
+        vpns = VPNDataManager.sharedManager.allVPN()
         tableView.reloadData()
     }
     
