@@ -59,9 +59,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="Fte-V8-cOh" kind="showDetail" id="SMW-gl-Zpb"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -70,9 +67,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="VPN On" id="96C-Eg-mId"/>
-                    <connections>
-                        <segue destination="BQD-ML-s1N" kind="showDetail" identifier="edit" id="9XC-0w-bgF"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FYX-qL-Rhy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -88,11 +82,12 @@
                     </navigationBar>
                     <connections>
                         <segue destination="LCE-D1-33a" kind="relationship" relationship="rootViewController" id="Th4-xH-b3q"/>
+                        <segue destination="ViW-99-x1O" kind="show" identifier="edit" id="sUH-hi-KUf"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0iS-av-d83" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1118.25" y="902.25"/>
+            <point key="canvasLocation" x="1213" y="902"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="RW4-On-3s5">
@@ -445,11 +440,12 @@
                         <outlet property="secretTextField" destination="Fr3-j6-w5L" id="pHe-pu-qTj"/>
                         <outlet property="serverTextField" destination="X4y-Sl-ikd" id="v0D-Xu-jU4"/>
                         <outlet property="titleTextField" destination="qCH-dT-nTt" id="CG6-oW-VcX"/>
+                        <segue destination="hvy-Bu-GX1" kind="show" identifier="add" id="GVG-D0-UeM"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NXS-OW-yAu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2749" y="182"/>
+            <point key="canvasLocation" x="1937" y="183"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2dQ-gU-dhf">
@@ -812,27 +808,9 @@
             <point key="canvasLocation" x="1937" y="902"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="wnL-y9-Rxc">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Fte-V8-cOh" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZYI-2c-nYN">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="z7c-q3-RcX" kind="relationship" relationship="rootViewController" id="DZW-7r-nMO"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cBf-0E-7jf" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1937" y="182.25"/>
-        </scene>
-        <!--Navigation Controller-->
         <scene sceneID="Wn8-7Z-RWe">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hvy-Bu-GX1" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="front" automaticallyAdjustsScrollViewInsets="NO" id="hvy-Bu-GX1" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="TDU-pb-GJr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -851,4 +829,7 @@
     <resources>
         <image name="CheckMark" width="12" height="9"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="KW3-Q4-rfJ"/>
+    </inferredMetricsTieBreakers>
 </document>

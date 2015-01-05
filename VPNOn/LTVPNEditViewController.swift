@@ -11,6 +11,7 @@ import CoreData
 import VPNOnKit
 
 let kLTVPNDidUpdate = "kLTVPNDidUpdate"
+let kLTVPNDidRemove = "kLTVPNDidRemove"
 let kSaveButtonEnabledColor = UIColor(red:0, green:0.48, blue:1, alpha:1)
 let kImpossibleHash = "~!@#$%^+_)(*&"
 
@@ -94,7 +95,7 @@ class LTVPNEditViewController: LTVPNCreateViewController {
                     }
                     VPNKeychainWrapper.destoryKeyForVPNID(currentVPN.ID)
                     
-                    self.navigationController!.popViewControllerAnimated(true)
+                    NSNotificationCenter.defaultCenter().postNotificationName(kLTVPNDidRemove, object: nil)
                 })
                 var cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
                 alert.addAction(deleteAction)

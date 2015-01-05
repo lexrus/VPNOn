@@ -26,11 +26,13 @@ class LTVPNTableViewController: UITableViewController
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("VPNDidCreate:"), name: kLTVPNDidCreate, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("VPNDidUpdate:"), name: kLTVPNDidUpdate, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("VPNDidRemove:"), name: kLTVPNDidRemove, object: nil)
     }
     
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self, name: kLTVPNDidCreate, object: nil)
         NSNotificationCenter.defaultCenter().removeObserver(self, name: kLTVPNDidUpdate, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: kLTVPNDidRemove, object: nil)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -87,6 +89,8 @@ class LTVPNTableViewController: UITableViewController
             activatedVPNID = vpns[indexPath.row].ID
             VPNManager.sharedManager().activatedVPNDict = vpns[indexPath.row].toDictionary()
             tableView.reloadData()
+        } else {
+            splitViewController!.viewControllers[1].performSegueWithIdentifier("add", sender: nil)
         }
     }
     
@@ -119,6 +123,7 @@ class LTVPNTableViewController: UITableViewController
     func VPNDidCreate(notification: NSNotification) {
         vpns = VPNDataManager.sharedManager.allVPN()
         tableView.reloadData()
+        popDetailViewController()
     }
     
     func VPNDidUpdate(notification: NSNotification) {
@@ -126,7 +131,18 @@ class LTVPNTableViewController: UITableViewController
         tableView.reloadData()
     }
     
+    func VPNDidRemove(notification: NSNotification) {
+        vpns = VPNDataManager.sharedManager.allVPN()
+        tableView.reloadData()
+        popDetailViewController()
+    }
+    
     // MARK: - Navigation
+    
+    func popDetailViewController() {
+        let detailNavigationController = navigationController!.splitViewController!.viewControllers[1] as UINavigationController
+        detailNavigationController.popViewControllerAnimated(true)
+    }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if selectedRow == -1 {
@@ -148,7 +164,7 @@ class LTVPNTableViewController: UITableViewController
     override func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
         if indexPath.section == kVPNListSectionIndex {
             selectedRow = indexPath.row
-            performSegueWithIdentifier("edit", sender: self)
+            splitViewController!.performSegueWithIdentifier("edit", sender: self)
         }
     }
     
