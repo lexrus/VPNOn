@@ -107,7 +107,7 @@ class LTVPNTableViewController: UITableViewController
     
     override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         if section == kVPNListSectionIndex {
-            return 30
+            return 20
         }
         return 0
     }
