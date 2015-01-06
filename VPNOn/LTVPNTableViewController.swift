@@ -131,6 +131,14 @@ class LTVPNTableViewController: UITableViewController
     func VPNDidUpdate(notification: NSNotification) {
         vpns = VPNDataManager.sharedManager.allVPN()
         tableView.reloadData()
+        
+        // NOTE: Update activated VPN dict for widget
+        for vpn in vpns {
+            if vpn.ID == activatedVPNID {
+                VPNManager.sharedManager().activatedVPNDict = vpn.toDictionary()
+                break
+            }
+        }
     }
     
     func VPNDidRemove(notification: NSNotification) {
