@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 
+let kLTVPNDidCreate = "kLTVPNDidCreate"
+
 class LTVPNCreateViewController: UITableViewController, UITextFieldDelegate {
     
     @IBOutlet weak var titleTextField: UITextField!
@@ -29,7 +31,9 @@ class LTVPNCreateViewController: UITableViewController, UITextFieldDelegate {
             secret: secretTextField.text)
         
         if success {
-            dismissViewControllerAnimated(true) {}
+            NSNotificationCenter.defaultCenter().postNotificationName(kLTVPNDidCreate, object: self)
+            
+//            dismissViewControllerAnimated(true) {}
         }
     }
     
