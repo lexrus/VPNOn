@@ -41,6 +41,7 @@
 		D757AFAA1A3B374200AEF3CB /* VPNManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D757AFA61A3B374200AEF3CB /* VPNManager.swift */; };
 		D757AFB31A3B392600AEF3CB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D757AFB21A3B392600AEF3CB /* Foundation.framework */; };
 		D757AFB41A3B392D00AEF3CB /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7453FAE1A31A69100F7E32D /* NetworkExtension.framework */; };
+		D758FE0D1A5BE35000929494 /* LTVPNAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D758FE0C1A5BE35000929494 /* LTVPNAboutViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,6 +141,7 @@
 		D757AFA51A3B374200AEF3CB /* VPNKeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNKeychainWrapper.swift; sourceTree = "<group>"; };
 		D757AFA61A3B374200AEF3CB /* VPNManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNManager.swift; sourceTree = "<group>"; };
 		D757AFB21A3B392600AEF3CB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D758FE0C1A5BE35000929494 /* LTVPNAboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTVPNAboutViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +216,7 @@
 				D7453FA71A31975D00F7E32D /* LTVPNTableViewController.swift */,
 				D7453FA51A31975D00F7E32D /* LTVPNCreateViewController.swift */,
 				D7453FA61A31975D00F7E32D /* LTVPNEditViewController.swift */,
+				D758FE0C1A5BE35000929494 /* LTVPNAboutViewController.swift */,
 				D7453F381A31966F00F7E32D /* Images.xcassets */,
 				D7453FAB1A3197BA00F7E32D /* Main.storyboard */,
 				D7453F3A1A31966F00F7E32D /* LaunchScreen.xib */,
@@ -518,6 +521,7 @@
 				D7453FA41A3196E200F7E32D /* VPNOn.xcdatamodeld in Sources */,
 				D7453F2F1A31966F00F7E32D /* AppDelegate.swift in Sources */,
 				D7453FAA1A31975D00F7E32D /* LTVPNTableViewController.swift in Sources */,
+				D758FE0D1A5BE35000929494 /* LTVPNAboutViewController.swift in Sources */,
 				D7453FA81A31975D00F7E32D /* LTVPNCreateViewController.swift in Sources */,
 				D7453FA91A31975D00F7E32D /* LTVPNEditViewController.swift in Sources */,
 				D7453FA31A3196E200F7E32D /* VPNDataManager.swift in Sources */,
