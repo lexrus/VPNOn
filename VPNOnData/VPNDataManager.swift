@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 
+let kLastVPNIDKey = "lastVPNID"
+
 class VPNDataManager
 {
     class var sharedManager : VPNDataManager
@@ -25,6 +27,26 @@ class VPNDataManager
         }
         
         return Static.instance!
+    }
+    
+    var lastVPNID: NSManagedObjectID? {
+        get {
+            if let URLData = NSUserDefaults.standardUserDefaults().objectForKey(kLastVPNIDKey) as NSData? {
+                let url = NSKeyedUnarchiver.unarchiveObjectWithData(URLData) as NSURL
+                if let ID = self.persistentStoreCoordinator!.managedObjectIDForURIRepresentation(url) {
+                    return ID
+                }
+            }
+            
+            return .None
+        }
+        set {
+            if let value = newValue {
+                let IDURL = value.URIRepresentation()
+                let URLData = NSKeyedArchiver.archivedDataWithRootObject(IDURL)
+                NSUserDefaults.standardUserDefaults().setObject(URLData, forKey: kLastVPNIDKey)
+            }
+        }
     }
     
     // MARK: - Core Data stack

@@ -11,6 +11,7 @@ import CoreData
 import NetworkExtension
 import VPNOnKit
 
+let kLTVPNIDKey = "VPNID"
 let kVPNListSectionIndex = 0
 let kVPNAddSection = 1
 let kAddCellID = "AddCell"
@@ -19,7 +20,6 @@ let kVPNCellID = "VPNCell"
 class LTVPNTableViewController: UITableViewController
 {
     var vpns = [VPN]()
-    var selectedRow = -1
     var activatedVPNID = ""
     
     override func viewDidLoad() {
@@ -90,7 +90,9 @@ class LTVPNTableViewController: UITableViewController
             VPNManager.sharedManager().activatedVPNDict = vpns[indexPath.row].toDictionary()
             tableView.reloadData()
         } else {
-            splitViewController!.viewControllers[1].performSegueWithIdentifier("add", sender: nil)
+            let detailNavigationController = splitViewController!.viewControllers.last! as UINavigationController
+            detailNavigationController.popToRootViewControllerAnimated(false)
+            splitViewController!.viewControllers.last!.performSegueWithIdentifier("add", sender: nil)
         }
     }
     
@@ -140,31 +142,18 @@ class LTVPNTableViewController: UITableViewController
     // MARK: - Navigation
     
     func popDetailViewController() {
-        let detailNavigationController = navigationController!.splitViewController!.viewControllers[1] as UINavigationController
-        detailNavigationController.popViewControllerAnimated(true)
-    }
-
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if selectedRow == -1 {
-            return
-        }
-        
-        let destinationNC: UINavigationController = segue.destinationViewController as UINavigationController
-        if destinationNC.isKindOfClass(UINavigationController) {
-            let editViewController = destinationNC.topViewController!
-            if (editViewController.isKindOfClass(LTVPNEditViewController)) {
-                let VPNID = vpns[selectedRow].objectID
-                let editVC = editViewController as LTVPNEditViewController
-                editVC.VPNObjectID = VPNID
-                selectedRow = -1
-            }
-        }
+        let topNavigationController = splitViewController!.viewControllers.last! as UINavigationController
+        topNavigationController.popViewControllerAnimated(true)
     }
     
     override func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
         if indexPath.section == kVPNListSectionIndex {
-            selectedRow = indexPath.row
-            splitViewController!.performSegueWithIdentifier("edit", sender: self)
+            let VPNID = vpns[indexPath.row].objectID
+            VPNDataManager.sharedManager.lastVPNID = VPNID
+            
+            let detailNavigationController = splitViewController!.viewControllers.last! as UINavigationController
+            detailNavigationController.popToRootViewControllerAnimated(false)
+            detailNavigationController.performSegueWithIdentifier("edit", sender: self)
         }
     }
     

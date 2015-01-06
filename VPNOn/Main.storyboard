@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ViW-99-x1O">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C81f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ViW-99-x1O">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -70,24 +70,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FYX-qL-Rhy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1118" y="183.75"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="NoL-fD-vif">
-            <objects>
-                <navigationController id="BQD-ML-s1N" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="OyU-nt-SZl">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="LCE-D1-33a" kind="relationship" relationship="rootViewController" id="Th4-xH-b3q"/>
-                        <segue destination="ViW-99-x1O" kind="show" identifier="edit" id="sUH-hi-KUf"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0iS-av-d83" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1213" y="902"/>
+            <point key="canvasLocation" x="1937" y="-557"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="RW4-On-3s5">
@@ -130,12 +113,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PKL-B8-CXl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1930" y="1646"/>
+            <point key="canvasLocation" x="1937" y="1650"/>
         </scene>
         <!--Add Configuration-->
         <scene sceneID="rNb-dC-oga">
             <objects>
-                <tableViewController id="z7c-q3-RcX" customClass="LTVPNCreateViewController" customModule="VPNOn" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="add" id="z7c-q3-RcX" customClass="LTVPNCreateViewController" customModule="VPNOn" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="z01-o8-60b">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -440,7 +423,6 @@
                         <outlet property="secretTextField" destination="Fr3-j6-w5L" id="pHe-pu-qTj"/>
                         <outlet property="serverTextField" destination="X4y-Sl-ikd" id="v0D-Xu-jU4"/>
                         <outlet property="titleTextField" destination="qCH-dT-nTt" id="CG6-oW-VcX"/>
-                        <segue destination="hvy-Bu-GX1" kind="show" identifier="add" id="GVG-D0-UeM"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NXS-OW-yAu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -459,11 +441,13 @@
                     <nil name="viewControllers"/>
                     <connections>
                         <segue destination="Pga-4R-p1I" kind="relationship" relationship="rootViewController" id="vDb-gh-fm7"/>
+                        <segue destination="z7c-q3-RcX" kind="show" identifier="add" id="g71-fB-Wil"/>
+                        <segue destination="LCE-D1-33a" kind="show" identifier="edit" id="0iK-Ui-fEN"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6DB-pG-GXV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="296" y="183.75"/>
+            <point key="canvasLocation" x="1118" y="79"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="Ju7-u4-1JV">
@@ -476,12 +460,12 @@
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sY8-0n-dc9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="296" y="902.25"/>
+            <point key="canvasLocation" x="300" y="478"/>
         </scene>
         <!--Configuration-->
         <scene sceneID="jdj-eq-bpt">
             <objects>
-                <tableViewController id="LCE-D1-33a" customClass="LTVPNEditViewController" customModule="VPNOn" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="edit" id="LCE-D1-33a" customClass="LTVPNEditViewController" customModule="VPNOn" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="xEL-RW-mUN">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -819,17 +803,20 @@
                     <nil name="viewControllers"/>
                     <connections>
                         <segue destination="ooj-GN-5Ar" kind="relationship" relationship="rootViewController" id="YUL-cA-iZO"/>
+                        <segue destination="z7c-q3-RcX" kind="show" identifier="add" id="XEb-Ca-Dh2"/>
+                        <segue destination="LCE-D1-33a" kind="show" identifier="edit" id="lVk-cL-VAt"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GYC-Dz-OKH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1118" y="1646"/>
+            <point key="canvasLocation" x="1118" y="902"/>
         </scene>
     </scenes>
     <resources>
         <image name="CheckMark" width="12" height="9"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="KW3-Q4-rfJ"/>
+        <segue reference="g71-fB-Wil"/>
+        <segue reference="0iK-Ui-fEN"/>
     </inferredMetricsTieBreakers>
 </document>

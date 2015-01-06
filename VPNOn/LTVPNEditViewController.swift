@@ -17,9 +17,8 @@ let kImpossibleHash = "~!@#$%^+_)(*&"
 
 class LTVPNEditViewController: LTVPNCreateViewController {
     
-    var VPNObjectID: NSManagedObjectID?
     lazy var vpn: VPN? = {
-        if let ID = self.VPNObjectID {
+        if let ID = VPNDataManager.sharedManager.lastVPNID {
             if let result = VPNDataManager.sharedManager.VPNByID(ID) {
                 let vpn = result
                 return vpn
