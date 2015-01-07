@@ -9,6 +9,8 @@ class VPN : NSManagedObject{
 	@NSManaged var group : String!
 	@NSManaged var server : String!
     @NSManaged var title : String!
+    var latency: Int?
+    var ping: SimplePing?
     
     var ID : String {
         return objectID.URIRepresentation().lastPathComponent!
