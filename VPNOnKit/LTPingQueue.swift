@@ -107,7 +107,7 @@ class LTPingOperation: NSObject, SimplePingDelegate {
         if let startTime = startTimeInterval {
             let latency = NSDate.timeIntervalSinceReferenceDate() - startTime
             hostLatency.latency = Int(latency * 1000)
-            println("\(hostLatency.hostname) = \(hostLatency.latency)ms")
+//            println("\(hostLatency.hostname) = \(hostLatency.latency)ms")
         }
         stop()
     }

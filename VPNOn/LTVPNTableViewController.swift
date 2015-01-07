@@ -79,7 +79,7 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier(kVPNCellID, forIndexPath: indexPath) as UITableViewCell
             
-            cell.textLabel?.text = cellTitleForIndexPath(indexPath)
+            cell.textLabel?.attributedText = cellTitleForIndexPath(indexPath)
             cell.detailTextLabel?.text = vpns[indexPath.row].server
             
             if activatedVPNID == vpns[indexPath.row].ID {
@@ -176,13 +176,32 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate
     
     // MARK: - Cell title
     
-    func cellTitleForIndexPath(indexPath: NSIndexPath) -> String {
+    func cellTitleForIndexPath(indexPath: NSIndexPath) -> NSAttributedString {
         let vpn = vpns[indexPath.row]
         let latency = LTPingQueue.sharedQueue().latencyForHostname(vpn.server)
+        
+        let titleAttributes = [NSFontAttributeName:UIFont.preferredFontForTextStyle(UIFontTextStyleBody)]
+
+        var attributedTitle = NSMutableAttributedString(string: vpn.title, attributes: titleAttributes)
+        
+        
         if latency != -1 {
-            return "\(vpn.title) \(latency)"
+            var latencyColor = UIColor(red:0.49, green:0.78, blue:0.29, alpha:1)
+            if latency > 200 {
+                latencyColor = UIColor(red:0.83, green:0.64, blue:0.31, alpha:1)
+            } else if latency > 500 {
+                latencyColor = UIColor(red:1, green:0.21, blue:0.44, alpha:1)
+            }
+            
+            let latencyAttributes = [
+                NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleFootnote),
+                NSForegroundColorAttributeName: latencyColor
+            ]
+            var attributedLatency = NSMutableAttributedString(string: " \(latency)ms", attributes: latencyAttributes)
+            attributedTitle.appendAttributedString(attributedLatency)
         }
-        return vpn.title
+        
+        return attributedTitle
     }
     
     // MARK: - Ping
