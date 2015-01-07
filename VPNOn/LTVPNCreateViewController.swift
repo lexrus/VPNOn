@@ -32,8 +32,6 @@ class LTVPNCreateViewController: UITableViewController, UITextFieldDelegate {
         
         if success {
             NSNotificationCenter.defaultCenter().postNotificationName(kLTVPNDidCreate, object: self)
-            
-//            dismissViewControllerAnimated(true) {}
         }
     }
     

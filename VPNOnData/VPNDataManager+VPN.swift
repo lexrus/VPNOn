@@ -46,7 +46,8 @@ extension VPNDataManager
             self.saveContext()
             
             if !vpn.objectID.temporaryID {
-                VPNKeychainWrapper.setPassword(password, andSecret: password, forVPNID: vpn.ID)
+                VPNKeychainWrapper.setPassword(password, forVPNID: vpn.ID)
+                VPNKeychainWrapper.setSecret(secret, forVPNID: vpn.ID)
                 
                 if allVPN().count == 0 {
                     VPNManager.sharedManager().activatedVPNDict = vpn.toDictionary()

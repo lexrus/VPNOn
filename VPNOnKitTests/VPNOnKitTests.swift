@@ -24,8 +24,10 @@ class VPNOnKitTests: XCTestCase {
     
     func testKeychainReadWrite() {
         self.measureBlock() {
-            VPNKeychainWrapper.setPassword("hello", andSecret: "world", forVPNID: "testVPN")
+            VPNKeychainWrapper.setPassword("hello", forVPNID: "testVPN")
             XCTAssertNotNil(VPNKeychainWrapper.passwordForVPNID("testVPN"), "Password data in keychain must not be nil.")
+            
+            VPNKeychainWrapper.setSecret("world", forVPNID: "testVPN")
             XCTAssertNotNil(VPNKeychainWrapper.secretForVPNID("testVPN"), "Secret data in keychain must not be nil.")
             
             VPNKeychainWrapper.destoryKeyForVPNID("testVPN")

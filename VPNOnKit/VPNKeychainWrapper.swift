@@ -26,10 +26,6 @@ class VPNKeychainWrapper
         return KeychainWrapper.setString(secret, forKey: "\(VPNID)psk")
     }
     
-    class func setPassword(password: String, andSecret secret: String, forVPNID VPNID: String) -> Bool {
-        return setPassword(password, forVPNID: VPNID) && setSecret(secret, forVPNID: VPNID)
-    }
-    
     class func passwordForVPNID(VPNID: String) -> NSData? {
         KeychainWrapper.serviceName = kKeychainServiceName
         return KeychainWrapper.dataForKey(VPNID)
