@@ -18,3 +18,5 @@ FOUNDATION_EXPORT const unsigned char VPNOnKitVersionString[];
 
 #import <VPNOnKit/VPNKeychainWrapper.h>
 #import <VPNOnKit/VPNManager.h>
+#import <VPNOnKit/SimplePing.h>
+#import <VPNOnKit/LTPingQueue.h>

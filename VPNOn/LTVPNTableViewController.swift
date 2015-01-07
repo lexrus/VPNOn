@@ -17,22 +17,29 @@ let kVPNAddSection = 1
 let kAddCellID = "AddCell"
 let kVPNCellID = "VPNCell"
 
-class LTVPNTableViewController: UITableViewController
+class LTVPNTableViewController: UITableViewController, SimplePingDelegate
 {
     var vpns = [VPN]()
     var activatedVPNID = ""
+    @IBOutlet weak var restartPingButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("VPNDidCreate:"), name: kLTVPNDidCreate, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("VPNDidUpdate:"), name: kLTVPNDidUpdate, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("VPNDidRemove:"), name: kLTVPNDidRemove, object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pingDidUpdate:"), name: "kLTPingDidUpdate", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pingDidComplete:"), name: "kLTPingDidComplete", object: nil)
     }
     
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self, name: kLTVPNDidCreate, object: nil)
         NSNotificationCenter.defaultCenter().removeObserver(self, name: kLTVPNDidUpdate, object: nil)
         NSNotificationCenter.defaultCenter().removeObserver(self, name: kLTVPNDidRemove, object: nil)
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "kLTPingDidUpdate", object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "kLTPingDidComplete", object: nil)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -47,6 +54,8 @@ class LTVPNTableViewController: UITableViewController
         }
         
         tableView.reloadData()
+        
+        let ping = SimplePing(hostName: "baidu.com")
     }
 
     // MARK: - Table view data source
@@ -70,7 +79,7 @@ class LTVPNTableViewController: UITableViewController
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier(kVPNCellID, forIndexPath: indexPath) as UITableViewCell
             
-            cell.textLabel?.text = vpns[indexPath.row].title
+            cell.textLabel?.attributedText = cellTitleForIndexPath(indexPath)
             cell.detailTextLabel?.text = vpns[indexPath.row].server
             
             if activatedVPNID == vpns[indexPath.row].ID {
@@ -165,10 +174,49 @@ class LTVPNTableViewController: UITableViewController
         }
     }
     
-    // MARK: Navigation
+    // MARK: - Cell title
     
-    @IBAction func unwindToList(segue: UIStoryboardSegue) {
+    func cellTitleForIndexPath(indexPath: NSIndexPath) -> NSAttributedString {
+        let vpn = vpns[indexPath.row]
+        let latency = LTPingQueue.sharedQueue().latencyForHostname(vpn.server)
         
+        let titleAttributes = [NSFontAttributeName:UIFont.preferredFontForTextStyle(UIFontTextStyleBody)]
+
+        var attributedTitle = NSMutableAttributedString(string: vpn.title, attributes: titleAttributes)
+        
+        
+        if latency != -1 {
+            var latencyColor = UIColor(red:0.49, green:0.78, blue:0.29, alpha:1)
+            if latency > 200 {
+                latencyColor = UIColor(red:0.83, green:0.64, blue:0.31, alpha:1)
+            } else if latency > 500 {
+                latencyColor = UIColor(red:1, green:0.21, blue:0.44, alpha:1)
+            }
+            
+            let latencyAttributes = [
+                NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleFootnote),
+                NSForegroundColorAttributeName: latencyColor
+            ]
+            var attributedLatency = NSMutableAttributedString(string: " \(latency)ms", attributes: latencyAttributes)
+            attributedTitle.appendAttributedString(attributedLatency)
+        }
+        
+        return attributedTitle
+    }
+    
+    // MARK: - Ping
+    
+    @IBAction func pingServers() {
+        restartPingButton.enabled = false
+        LTPingQueue.sharedQueue().restartPing()
+    }
+    
+    func pingDidUpdate(notification: NSNotification) {
+        tableView.reloadData()
+    }
+    
+    func pingDidComplete(notification: NSNotification) {
+        restartPingButton.enabled = true
     }
 
 }
