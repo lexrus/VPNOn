@@ -106,13 +106,13 @@ class VPNManager
                 p.sharedSecretReference = secretRef
             }
             
+            _manager.enabled = true
             _manager.`protocol` = p
             _manager.saveToPreferencesWithCompletionHandler {
                 (error: NSError!) -> Void in
                 if let err = error {
                     println("Failed to save profile: \(err.localizedDescription)")
                 } else {
-                    self._manager.enabled = true
                     var connectError : NSError?
                     self._manager.connection.startVPNTunnelAndReturnError(&connectError)
                     
