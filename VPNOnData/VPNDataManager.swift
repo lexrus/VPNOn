@@ -17,16 +17,10 @@ class VPNDataManager
     {
         struct Static
         {
-            static var onceToken : dispatch_once_t = 0
-            static var instance : VPNDataManager? = nil
+            static let sharedInstance = VPNDataManager()
         }
         
-        dispatch_once(&Static.onceToken)
-        {
-            Static.instance = VPNDataManager()
-        }
-        
-        return Static.instance!
+        return Static.sharedInstance
     }
     
     var lastVPNID: NSManagedObjectID? {

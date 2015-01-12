@@ -124,16 +124,10 @@ class LTPingQueue: NSObject, SimplePingDelegate {
     {
         struct Static
         {
-            static var onceToken : dispatch_once_t = 0
-            static var instance : LTPingQueue? = nil
+            static let sharedInstance = LTPingQueue()
         }
         
-        dispatch_once(&Static.onceToken)
-        {
-            Static.instance = LTPingQueue()
-        }
-        
-        return Static.instance!
+        return Static.sharedInstance
     }
     
     var operations = [LTPingOperation]()

@@ -28,24 +28,21 @@ class VPNManager
     {
         struct Static
         {
-            static var onceToken : dispatch_once_t = 0
-            static var instance : VPNManager? = nil
-        }
-        
-        dispatch_once(&Static.onceToken)
-            {
-                Static.instance = VPNManager()
-                Static.instance!._manager.loadFromPreferencesWithCompletionHandler {
+            static let sharedInstance : VPNManager = {
+                let instance = VPNManager()
+                instance._manager.loadFromPreferencesWithCompletionHandler {
                     (error: NSError!) -> Void in
                     if let err = error {
                         println("Failed to load preferences: \(err.localizedDescription)")
                     }
                 }
-                Static.instance!._manager.localizedDescription = "VPN On"
-                Static.instance!._manager.enabled = true
+                instance._manager.localizedDescription = "VPN On"
+                instance._manager.enabled = true
+                return instance
+            }()
         }
         
-        return Static.instance!
+        return Static.sharedInstance
     }
     
     class func sharedManager() -> VPNManager {
