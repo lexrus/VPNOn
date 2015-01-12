@@ -1,4 +1,3 @@
-osx_image: xcode611
 language: objective-c
 before_script:
     - brew update && brew upgrade xctool
