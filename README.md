@@ -33,6 +33,18 @@ TODOs and issues are [listed here](https://github.com/lexrus/VPNOn/issues).
 
 This project follows the gitflow workflow. You'd better create a branch called `feature/sth_improved` before any major improvements. Meanwhile minor bug fixes are welcomed in the develop branch.
 
+## URL Scheme
+
+VPN service providers may list a link for their customers to efficiently add server configurations in VPN On. By register the `vpnon://`protocol, it supports the following URL scheme:
+
+`vpnon://{account}:{password}@{server}/?title={title}&group={group}&secret={secret}`
+
+Fields are optional except the server field. The following URLs are valid:
+
+`vpnon://jony:ive@apple.com/?title=Apple&group=Design&secret=iPhone`
+`vpnon://apple.com/`
+`vpnon://admin@192.168.0.123/?group=devops`
+
 ## App Store Submission
 
 Most likely, Apple allows "Today" related widgets and rejects the others. Although it's impossible to pass the submission, I've just submit the tag 0.1 to App Store and pray for a miracle.
