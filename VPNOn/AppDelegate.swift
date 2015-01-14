@@ -56,6 +56,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         var group = ""
         var secret = ""
         
+        // The server is required, otherwise we just open the container app.
+        if server.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) == 0 {
+            return true
+        }
+        
+        // Parse the query string.
         if let params = url.query {
             for paramString in params.componentsSeparatedByString("&") {
                 let param = paramString.componentsSeparatedByString("=")
