@@ -2,6 +2,15 @@ import Foundation
 import CoreData
 import VPNOnKit
 
+class VPNInfo {
+    var title: String = ""
+    var server: String = ""
+    var account: String = ""
+    var password: String = ""
+    var group: String = ""
+    var secret: String = ""
+}
+
 @objc(VPN)
 class VPN : NSManagedObject{
     

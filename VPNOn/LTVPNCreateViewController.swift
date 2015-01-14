@@ -13,13 +13,15 @@ let kLTVPNDidCreate = "kLTVPNDidCreate"
 
 class LTVPNCreateViewController: UITableViewController, UITextFieldDelegate {
     
+    var initializedVPNInfo : VPNInfo? = VPNInfo()
+    
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var serverTextField: UITextField!
     @IBOutlet weak var accountTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var groupTextField: UITextField!
     @IBOutlet weak var secretTextField: UITextField!
-    @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var saveButton: UIBarButtonItem?
     
     @IBAction func createVPN(sender: AnyObject) {
         let success = VPNDataManager.sharedManager.createVPN(
@@ -68,6 +70,22 @@ class LTVPNCreateViewController: UITableViewController, UITextFieldDelegate {
     
     override func viewWillAppear(animated: Bool) {
         saveButton?.enabled = false
+        
+        if let info = initializedVPNInfo {
+            if info.title != "" {
+                titleTextField.text = info.title
+                serverTextField.text = info.server
+                accountTextField.text = info.account
+                passwordTextField.text = info.password
+                groupTextField.text = info.group
+                secretTextField.text = info.secret
+                toggleSaveButtonByStatus()
+            }
+        }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        initializedVPNInfo = nil
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool
@@ -95,14 +113,18 @@ class LTVPNCreateViewController: UITableViewController, UITextFieldDelegate {
         return true
     }
     
-    func textDidChange(notification: NSNotification) {
+    func toggleSaveButtonByStatus() {
         if self.titleTextField.text.isEmpty
             || self.accountTextField.text.isEmpty
             || self.serverTextField.text.isEmpty {
-                self.saveButton.enabled = false
+                self.saveButton?.enabled = false
         } else {
-            self.saveButton.enabled = true
+            self.saveButton?.enabled = true
         }
+    }
+    
+    func textDidChange(notification: NSNotification) {
+        toggleSaveButtonByStatus()
     }
     
     func keyboardWillShow(notification: NSNotification) {
