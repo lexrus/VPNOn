@@ -1,0 +1,8 @@
+machine:
+  environment:
+    XCODE_SCHEME: VPNOnKit
+
+checkout:
+  post:
+    - git submodule sync
+    - git submodule update --init
