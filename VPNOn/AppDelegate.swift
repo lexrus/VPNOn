@@ -46,6 +46,61 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         // Saves changes in the application's managed object context before the application terminates.
     }
     
+    // MARK: - URL scheme
+    
+    func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
+        var title = ""
+        var server = url.host ?? ""
+        var account = url.user ?? ""
+        var password = url.password ?? ""
+        var group = ""
+        var secret = ""
+        
+        if let params = url.query {
+            for paramString in params.componentsSeparatedByString("&") {
+                let param = paramString.componentsSeparatedByString("=")
+                if param.count == 2 {
+                    let value = param[1] ?? ""
+                    switch param[0] {
+                    case "title":
+                        title = value
+                        break
+                    case "group":
+                        group = value
+                        break
+                    case "secret":
+                        secret = value
+                        break
+                    default:
+                        ()
+                    }
+                }
+            }
+        }
+        
+        let splitVC = window!.rootViewController as UISplitViewController
+        
+        let detailNC = splitVC.viewControllers.last! as UINavigationController
+        detailNC.popToRootViewControllerAnimated(false)
+        
+        let createVC = splitVC.storyboard!.instantiateViewControllerWithIdentifier(
+            NSStringFromClass(LTVPNCreateViewController)
+            ) as LTVPNCreateViewController
+        
+        detailNC.pushViewController(createVC, animated: false)
+        
+        if let info = createVC.initializedVPNInfo {
+            info.title = title
+            info.server = server
+            info.account = account
+            info.password = password
+            info.group = group
+            info.secret = secret
+        }
+        
+        return true
+    }
+    
     // MARK: - Split view
     
     func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController:UIViewController!, ontoPrimaryViewController primaryViewController:UIViewController!) -> Bool {

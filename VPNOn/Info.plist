@@ -22,7 +22,7 @@
 	<array>
 		<dict>
 			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
+			<string>Viewer</string>
 			<key>CFBundleURLName</key>
 			<string>vpnon</string>
 			<key>CFBundleURLSchemes</key>
