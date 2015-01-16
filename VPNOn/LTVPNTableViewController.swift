@@ -180,7 +180,9 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate
         let vpn = vpns[indexPath.row]
         let latency = LTPingQueue.sharedQueue().latencyForHostname(vpn.server)
         
-        let titleAttributes = [NSFontAttributeName:UIFont.preferredFontForTextStyle(UIFontTextStyleBody)]
+        let titleAttributes = [
+            NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+        ]
 
         var attributedTitle = NSMutableAttributedString(string: vpn.title, attributes: titleAttributes)
         

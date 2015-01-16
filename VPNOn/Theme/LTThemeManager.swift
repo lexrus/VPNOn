@@ -23,6 +23,8 @@ class LTThemeManager
     
     func activateTheme(theme : LTTheme)
     {
+        UIWindow.appearance().tintColor = theme.tintColor
+        
         // Navigation
         UINavigationBar.appearance().barTintColor = theme.navigationBarColor
         UINavigationBar.appearance().tintColor = theme.tintColor
@@ -36,12 +38,12 @@ class LTThemeManager
         UITableViewCell.appearance().backgroundColor = theme.tableViewCellColor
         UITableViewCell.appearance().tintColor = theme.tintColor
         UITableViewCell.appearance().selectionStyle = UITableViewCellSelectionStyle.None
+        UILabel.lt_appearanceWhenContainedIn(UITableViewHeaderFooterView.self).textColor = theme.textColor
         
         // TextField
         UITextField.appearance().tintColor = theme.tintColor
         UITextField.appearance().textColor = theme.textFieldColor
-        UILabel.lt_appearanceWhenContainedIn(UITableViewCell.self).textColor = theme.textColor
-        UILabel.lt_appearanceWhenContainedIn(UITextField.self).textColor = theme.placeholderColor
+        UILabel.lt_appearanceWhenContainedIn(LTVPNTableViewCell.self).textColor = theme.textColor
         
     }
 }
