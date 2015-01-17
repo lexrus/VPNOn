@@ -99,9 +99,11 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate
             VPNManager.sharedManager().activatedVPNDict = vpns[indexPath.row].toDictionary()
             tableView.reloadData()
         } else {
+            // Add cell selected
+            VPNDataManager.sharedManager.lastVPNID = nil
             let detailNavigationController = splitViewController!.viewControllers.last! as UINavigationController
             detailNavigationController.popToRootViewControllerAnimated(false)
-            splitViewController!.viewControllers.last!.performSegueWithIdentifier("add", sender: nil)
+            splitViewController!.viewControllers.last!.performSegueWithIdentifier("config", sender: nil)
         }
     }
     
@@ -148,6 +150,7 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate
                 break
             }
         }
+        popDetailViewController()
     }
     
     func VPNDidRemove(notification: NSNotification) {
@@ -170,7 +173,7 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate
             
             let detailNavigationController = splitViewController!.viewControllers.last! as UINavigationController
             detailNavigationController.popToRootViewControllerAnimated(false)
-            detailNavigationController.performSegueWithIdentifier("edit", sender: self)
+            detailNavigationController.performSegueWithIdentifier("config", sender: self)
         }
     }
     

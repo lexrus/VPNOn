@@ -92,8 +92,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         detailNC.popToRootViewControllerAnimated(false)
         
         let createVC = splitVC.storyboard!.instantiateViewControllerWithIdentifier(
-            NSStringFromClass(LTVPNCreateViewController)
-            ) as LTVPNCreateViewController
+            NSStringFromClass(LTVPNConfigViewController)
+            ) as LTVPNConfigViewController
         
         detailNC.pushViewController(createVC, animated: false)
         
