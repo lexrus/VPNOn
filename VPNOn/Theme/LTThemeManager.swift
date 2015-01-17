@@ -11,6 +11,8 @@ import UIKit
 
 class LTThemeManager
 {
+    var currentTheme : LTTheme = LTDarkTheme()
+    
     class var sharedManager : LTThemeManager
     {
         struct Static
@@ -32,7 +34,6 @@ class LTThemeManager
         UINavigationBar.appearance().titleTextAttributes = NSDictionary(objects: [theme.textColor], forKeys: [NSForegroundColorAttributeName])
         
         // TableView
-        
         UITableView.appearance().backgroundColor = theme.tableViewBackgroundColor
         UITableView.appearance().separatorColor = theme.tableViewLineColor
         UITableViewCell.appearance().backgroundColor = theme.tableViewCellColor
