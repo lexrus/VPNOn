@@ -23,8 +23,16 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate
     var activatedVPNID = ""
     @IBOutlet weak var restartPingButton: UIBarButtonItem!
     
+    override func loadView() {
+        super.loadView()
+        
+        let backgroundView = LTViewControllerBackground()
+        tableView.backgroundView = backgroundView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("VPNDidCreate:"), name: kLTVPNDidCreate, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("VPNDidUpdate:"), name: kLTVPNDidUpdate, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("VPNDidRemove:"), name: kLTVPNDidRemove, object: nil)
@@ -99,9 +107,11 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate
             VPNManager.sharedManager().activatedVPNDict = vpns[indexPath.row].toDictionary()
             tableView.reloadData()
         } else {
+            // Add cell selected
+            VPNDataManager.sharedManager.lastVPNID = nil
             let detailNavigationController = splitViewController!.viewControllers.last! as UINavigationController
             detailNavigationController.popToRootViewControllerAnimated(false)
-            splitViewController!.viewControllers.last!.performSegueWithIdentifier("add", sender: nil)
+            splitViewController!.viewControllers.last!.performSegueWithIdentifier("config", sender: nil)
         }
     }
     
@@ -148,6 +158,7 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate
                 break
             }
         }
+        popDetailViewController()
     }
     
     func VPNDidRemove(notification: NSNotification) {
@@ -170,7 +181,7 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate
             
             let detailNavigationController = splitViewController!.viewControllers.last! as UINavigationController
             detailNavigationController.popToRootViewControllerAnimated(false)
-            detailNavigationController.performSegueWithIdentifier("edit", sender: self)
+            detailNavigationController.performSegueWithIdentifier("config", sender: self)
         }
     }
     
@@ -180,17 +191,19 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate
         let vpn = vpns[indexPath.row]
         let latency = LTPingQueue.sharedQueue().latencyForHostname(vpn.server)
         
-        let titleAttributes = [NSFontAttributeName:UIFont.preferredFontForTextStyle(UIFontTextStyleBody)]
+        let titleAttributes = [
+            NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+        ]
 
         var attributedTitle = NSMutableAttributedString(string: vpn.title, attributes: titleAttributes)
         
         
         if latency != -1 {
-            var latencyColor = UIColor(red:0.49, green:0.78, blue:0.29, alpha:1)
+            var latencyColor = UIColor(red:0.39, green:0.68, blue:0.19, alpha:1)
             if latency > 200 {
-                latencyColor = UIColor(red:0.83, green:0.64, blue:0.31, alpha:1)
+                latencyColor = UIColor(red:0.73, green:0.54, blue:0.21, alpha:1)
             } else if latency > 500 {
-                latencyColor = UIColor(red:1, green:0.21, blue:0.44, alpha:1)
+                latencyColor = UIColor(red:0.9 , green:0.11, blue:0.34, alpha:1)
             }
             
             let latencyAttributes = [

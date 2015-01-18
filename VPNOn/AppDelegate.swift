@@ -14,12 +14,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         let splitViewController = self.window!.rootViewController as UISplitViewController
         splitViewController.delegate = self
         splitViewController.preferredDisplayMode = .AllVisible
+        
+        LTThemeManager.sharedManager.activateTheme(LTDarkTheme())
+        
         return true
     }
 
@@ -90,8 +92,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         detailNC.popToRootViewControllerAnimated(false)
         
         let createVC = splitVC.storyboard!.instantiateViewControllerWithIdentifier(
-            NSStringFromClass(LTVPNCreateViewController)
-            ) as LTVPNCreateViewController
+            NSStringFromClass(LTVPNConfigViewController)
+            ) as LTVPNConfigViewController
         
         detailNC.pushViewController(createVC, animated: false)
         

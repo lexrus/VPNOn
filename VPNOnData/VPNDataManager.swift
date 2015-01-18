@@ -39,6 +39,8 @@ class VPNDataManager
                 let IDURL = value.URIRepresentation()
                 let URLData = NSKeyedArchiver.archivedDataWithRootObject(IDURL)
                 NSUserDefaults.standardUserDefaults().setObject(URLData, forKey: kLastVPNIDKey)
+            } else {
+                NSUserDefaults.standardUserDefaults().removeObjectForKey(kLastVPNIDKey)
             }
         }
     }
