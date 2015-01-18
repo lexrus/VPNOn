@@ -23,8 +23,16 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate
     var activatedVPNID = ""
     @IBOutlet weak var restartPingButton: UIBarButtonItem!
     
+    override func loadView() {
+        super.loadView()
+        
+        let backgroundView = LTViewControllerBackground()
+        tableView.backgroundView = backgroundView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("VPNDidCreate:"), name: kLTVPNDidCreate, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("VPNDidUpdate:"), name: kLTVPNDidUpdate, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("VPNDidRemove:"), name: kLTVPNDidRemove, object: nil)

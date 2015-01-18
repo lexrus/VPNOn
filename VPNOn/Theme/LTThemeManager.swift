@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 class LTThemeManager
 {
     var currentTheme : LTTheme = LTDarkTheme()
@@ -26,6 +25,7 @@ class LTThemeManager
     func activateTheme(theme : LTTheme)
     {
         UIWindow.appearance().tintColor = theme.tintColor
+        LTViewControllerBackground.appearance().backgroundColor = theme.defaultBackgroundColor
         
         // Navigation
         UINavigationBar.appearance().barTintColor = theme.navigationBarColor
@@ -40,6 +40,7 @@ class LTThemeManager
         UITableViewCell.appearance().tintColor = theme.tintColor
         UITableViewCell.appearance().selectionStyle = UITableViewCellSelectionStyle.None
         UILabel.lt_appearanceWhenContainedIn(UITableViewHeaderFooterView.self).textColor = theme.textColor
+        LTTableViewCellTitle.appearance().textColor = theme.textColor
         
         // TextField
         UITextField.appearance().tintColor = theme.tintColor

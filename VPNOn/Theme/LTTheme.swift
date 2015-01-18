@@ -8,7 +8,9 @@
 
 import UIKit
 
-public protocol LTTheme {
+public protocol LTTheme
+{
+    var defaultBackgroundColor   : UIColor { get set }
     var navigationBarColor       : UIColor { get set }
     var tintColor                : UIColor { get set }
     var textColor                : UIColor { get set }

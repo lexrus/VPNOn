@@ -73,6 +73,13 @@ class LTVPNConfigViewController: UITableViewController, UITextFieldDelegate
         }
     }
     
+    override func loadView() {
+        super.loadView()
+        
+        let backgroundView = LTViewControllerBackground()
+        tableView.backgroundView = backgroundView
+    }
+    
     override func viewWillAppear(animated: Bool) {
         saveButton?.enabled = false
         

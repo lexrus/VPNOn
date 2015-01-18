@@ -8,7 +8,9 @@
 
 import UIKit
 
-struct LTDarkTheme : LTTheme {
+struct LTDarkTheme : LTTheme
+{
+    var defaultBackgroundColor   = UIColor.blackColor()
     var navigationBarColor       = UIColor(red:0.03, green:0.03, blue:0.06, alpha:1)
     var tintColor                = UIColor(red:0   , green:0.6 , blue:1   , alpha:1)
     var textColor                = UIColor(red:0.45, green:0.45, blue:0.55, alpha:1)
