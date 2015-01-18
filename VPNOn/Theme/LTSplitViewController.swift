@@ -16,5 +16,9 @@ class LTSplitViewController: UISplitViewController
         
         self.view.backgroundColor = UIColor.blackColor()
     }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
 
 }
