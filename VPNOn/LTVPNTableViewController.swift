@@ -199,11 +199,11 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate
         
         
         if latency != -1 {
-            var latencyColor = UIColor(red:0.49, green:0.78, blue:0.29, alpha:1)
+            var latencyColor = UIColor(red:0.39, green:0.68, blue:0.19, alpha:1)
             if latency > 200 {
-                latencyColor = UIColor(red:0.83, green:0.64, blue:0.31, alpha:1)
+                latencyColor = UIColor(red:0.73, green:0.54, blue:0.21, alpha:1)
             } else if latency > 500 {
-                latencyColor = UIColor(red:1, green:0.21, blue:0.44, alpha:1)
+                latencyColor = UIColor(red:0.9 , green:0.11, blue:0.34, alpha:1)
             }
             
             let latencyAttributes = [
