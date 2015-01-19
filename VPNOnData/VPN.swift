@@ -9,6 +9,7 @@ class VPNInfo {
     var password: String = ""
     var group: String = ""
     var secret: String = ""
+    var alwaysOn: Bool = false
 }
 
 @objc(VPN)
@@ -18,6 +19,7 @@ class VPN : NSManagedObject{
 	@NSManaged var group : String!
 	@NSManaged var server : String!
     @NSManaged var title : String!
+    @NSManaged var alwaysOn : Bool
     
     var ID : String {
         if let id = objectID.URIRepresentation().lastPathComponent {
@@ -32,6 +34,7 @@ class VPN : NSManagedObject{
         setValue(group, forKey: "group")
         setValue(server, forKey: "server")
         setValue(title, forKey: "title")
+        setValue(alwaysOn, forKey: "alwaysOn")
     }
 
 	/**
@@ -52,6 +55,9 @@ class VPN : NSManagedObject{
 		if let titleValue = dictionary["title"] as? String{
 			title = titleValue
 		}
+        if let alwaysOnValue = dictionary["alwaysOn"] as? Bool {
+            alwaysOn = alwaysOnValue
+        }
 	}
 
 	/**
@@ -61,18 +67,19 @@ class VPN : NSManagedObject{
 	{
 		var dictionary = NSMutableDictionary()
         dictionary["ID"] = ID
-		if account != nil{
+		if account != nil {
 			dictionary["account"] = account
 		}
-		if group != nil{
+		if group != nil {
 			dictionary["group"] = group
 		}
-		if server != nil{
+		if server != nil {
 			dictionary["server"] = server
 		}
-		if title != nil{
+		if title != nil {
 			dictionary["title"] = title
 		}
+        dictionary["alwaysOn"] = alwaysOn
 		return dictionary
 	}
     

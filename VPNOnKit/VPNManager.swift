@@ -90,8 +90,13 @@ class VPNManager
                 p.remoteIdentifier = server
             }
             
+            if let alwaysOn = VPNDict.objectForKey("alwaysOn") as Bool? {
+                p.disconnectOnSleep = !alwaysOn
+            } else {
+                p.disconnectOnSleep = false
+            }
+            
             p.useExtendedAuthentication = true
-            p.disconnectOnSleep = false
             
             let VPNID = VPNDict.objectForKey("ID") as String
             

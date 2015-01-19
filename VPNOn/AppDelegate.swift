@@ -57,6 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         var password = url.password ?? ""
         var group = ""
         var secret = ""
+        var alwaysOn = true
         
         // The server is required, otherwise we just open the container app.
         if server.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) == 0 {
@@ -79,6 +80,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
                     case "secret":
                         secret = value
                         break
+                    case "alwayson":
+                        alwaysOn = Bool(value == "1" || value == "true" || value == "yes")
                     default:
                         ()
                     }
@@ -104,6 +107,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
             info.password = password
             info.group = group
             info.secret = secret
+            info.alwaysOn = alwaysOn
         }
         
         return true

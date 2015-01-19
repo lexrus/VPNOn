@@ -161,6 +161,7 @@
 		D7BB2DCD1A6C066B00D8D581 /* LTTableViewCellTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTTableViewCellTitle.swift; sourceTree = "<group>"; };
 		D7BB2DCF1A6C08BB00D8D581 /* LTSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTSplitViewController.swift; sourceTree = "<group>"; };
 		D7C7659C1A6CAEF70010C170 /* LTVPNTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTVPNTableViewCell.swift; sourceTree = "<group>"; };
+		D7C7659E1A6CB0500010C170 /* VPN On 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "VPN On 2.xcdatamodel"; sourceTree = "<group>"; };
 		D7E28A7B1A680D9400507F33 /* LTThemeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTThemeManager.swift; sourceTree = "<group>"; };
 		D7E28A7C1A680D9400507F33 /* UIAppearance+Swift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAppearance+Swift.h"; sourceTree = "<group>"; };
 		D7E28A7D1A680D9400507F33 /* UIAppearance+Swift.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAppearance+Swift.m"; sourceTree = "<group>"; };
@@ -955,9 +956,10 @@
 		D7453F9F1A3196E200F7E32D /* VPNOn.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				D7C7659E1A6CB0500010C170 /* VPN On 2.xcdatamodel */,
 				D7453FA01A3196E200F7E32D /* VPN On.xcdatamodel */,
 			);
-			currentVersion = D7453FA01A3196E200F7E32D /* VPN On.xcdatamodel */;
+			currentVersion = D7C7659E1A6CB0500010C170 /* VPN On 2.xcdatamodel */;
 			path = VPNOn.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

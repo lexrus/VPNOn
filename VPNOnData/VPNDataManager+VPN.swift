@@ -28,7 +28,7 @@ extension VPNDataManager
         return vpns
     }
     
-    func createVPN(title: String, server: String, account: String, password: String, group: String, secret: String) -> Bool
+    func createVPN(title: String, server: String, account: String, password: String, group: String, secret: String, alwaysOn: Bool = true) -> Bool
     {
         let entity = NSEntityDescription.entityForName("VPN", inManagedObjectContext: self.managedObjectContext!)
         let vpn = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: self.managedObjectContext!) as VPN
@@ -37,6 +37,7 @@ extension VPNDataManager
         vpn.server = server
         vpn.account = account
         vpn.group = group
+        vpn.alwaysOn = alwaysOn
         
         var error: NSError?
         if !self.managedObjectContext!.save(&error) {
@@ -52,8 +53,6 @@ extension VPNDataManager
                 if allVPN().count == 0 {
                     VPNManager.sharedManager().activatedVPNDict = vpn.toDictionary()
                 }
-
-                println("New VPN saved.")
             }
             return true
         }
