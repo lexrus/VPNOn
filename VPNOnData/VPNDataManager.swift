@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 
 let kLastVPNIDKey = "lastVPNID"
+let kAppGroupIdentifier = "group.VPNOn"
 
 class VPNDataManager
 {
@@ -47,10 +48,15 @@ class VPNDataManager
     
     // MARK: - Core Data stack
     
-    lazy var applicationDocumentsDirectory: NSURL = {
-        // The directory the application uses to store the Core Data store file. This code uses a directory named "com.LexTang.VPNOn" in the application's documents Application Support directory.
+    private lazy var _oldDataDirectory: NSURL = {
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
-        return urls[urls.count-1] as NSURL
+        let url = urls[urls.count-1] as NSURL
+        return url
+    }()
+    
+    lazy var dataDirectory: NSURL = {
+        // The directory the application uses to store the Core Data store file. This code uses a directory named "com.LexTang.VPNOn" in the application's documents Application Support directory.
+            return NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier(kAppGroupIdentifier)!
         }()
     
     lazy var managedObjectModel: NSManagedObjectModel = {
@@ -63,23 +69,46 @@ class VPNDataManager
         // The persistent store coordinator for the application. This implementation creates and return a coordinator, having added the store for the application to it. This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
         // Create the coordinator and store
         var coordinator: NSPersistentStoreCoordinator? = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
-        let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("VPNOn.sqlite")
-        var error: NSError? = nil
+        let url = self.dataDirectory.URLByAppendingPathComponent("VPNOn.sqlite")
         var failureReason = "There was an error creating or loading the application's saved data."
         
-        let options = NSDictionary(objects: [NSNumber(bool: true), NSNumber(bool: true)], forKeys: [NSMigratePersistentStoresAutomaticallyOption, NSInferMappingModelAutomaticallyOption])
+        let options = NSDictionary(
+            objects: [NSNumber(bool: true), NSNumber(bool: true), "WAL"],
+            forKeys: [NSMigratePersistentStoresAutomaticallyOption, NSInferMappingModelAutomaticallyOption, "journal_mode"])
         
-        if coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: options, error: &error) == nil {
+        // Migrate the old data
+        let oldURL = self._oldDataDirectory.URLByAppendingPathComponent("VPNOn.sqlite")
+        var error1: NSError? = nil
+        if let oldStore = coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: oldURL, options:options, error:&error1) {
+            if let err = error1 {
+                println("Failed to add old CoreData")
+            } else {
+                var migrationError: NSError?
+                let newStore = coordinator!.migratePersistentStore(oldStore, toURL: url, options: options, withType: NSSQLiteStoreType, error: &migrationError)
+                if let targetStore = newStore {
+                    println("CoreData migrated!")
+                } else {
+                    if let migrationErr = migrationError {
+                        println("Failed to migrate CoreData: \(migrationErr)")
+                    }
+                }
+            }
+        }
+        
+        var error2: NSError? = nil
+        if let newStore = coordinator!.persistentStoreForURL(url) {
+            
+        } else if coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: options, error: &error2) == nil {
             coordinator = nil
             // Report any error we got.
             let dict = NSMutableDictionary()
             dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
             dict[NSLocalizedFailureReasonErrorKey] = failureReason
-            dict[NSUnderlyingErrorKey] = error
-            error = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict)
+            dict[NSUnderlyingErrorKey] = error2
+            error2 = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict)
             // Replace this with code to handle the error appropriately.
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            NSLog("Unresolved error \(error), \(error!.userInfo)")
+            NSLog("Unresolved error \(error2), \(error2!.userInfo)")
             abort()
         }
         
@@ -107,6 +136,24 @@ class VPNDataManager
                 // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
                 NSLog("Unresolved error \(error), \(error!.userInfo)")
                 abort()
+            }
+        }
+    }
+    
+    // MARK: - Move data file to shared container if needed
+    
+    func shareCoreData () {
+        let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
+        let url = urls[urls.count-1] as NSURL
+        let oldDataURL = dataDirectory.URLByAppendingPathComponent("VPNOn.sqlite")
+        if let oldDataPath = oldDataURL.path {
+            if NSFileManager.defaultManager().fileExistsAtPath(oldDataPath) {
+                var error: NSError?
+                let newDataURL = dataDirectory.URLByAppendingPathComponent("VPNOn.sqlite")
+                NSFileManager.defaultManager().moveItemAtURL(oldDataURL, toURL: newDataURL, error: &error)
+                if let err = error {
+                    println("\(err)")
+                }
             }
         }
     }
