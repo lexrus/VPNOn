@@ -10,7 +10,7 @@ import UIKit
 
 class LTThemeManager
 {
-    var currentTheme : LTTheme = LTDarkTheme()
+    var currentTheme : LTTheme? = .None
     
     class var sharedManager : LTThemeManager
     {
@@ -24,6 +24,8 @@ class LTThemeManager
     
     func activateTheme(theme : LTTheme)
     {
+        currentTheme = theme
+        
         UIWindow.appearance().tintColor = theme.tintColor
         LTViewControllerBackground.appearance().backgroundColor = theme.defaultBackgroundColor
         
