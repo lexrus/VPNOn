@@ -19,4 +19,5 @@ public protocol LTTheme
     var tableViewBackgroundColor : UIColor { get set }
     var tableViewLineColor       : UIColor { get set }
     var tableViewCellColor       : UIColor { get set }
+    var switchBorderColor        : UIColor { get set }
 }

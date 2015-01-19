@@ -29,6 +29,11 @@ class LTThemeManager
         UIWindow.appearance().tintColor = theme.tintColor
         LTViewControllerBackground.appearance().backgroundColor = theme.defaultBackgroundColor
         
+        // Switch
+        UISwitch.appearance().tintColor = theme.switchBorderColor
+        UISwitch.appearance().onTintColor = theme.tintColor
+        UISwitch.appearance().thumbTintColor = theme.switchBorderColor
+        
         // Navigation
         UINavigationBar.appearance().barTintColor = theme.navigationBarColor
         UINavigationBar.appearance().tintColor = theme.tintColor
