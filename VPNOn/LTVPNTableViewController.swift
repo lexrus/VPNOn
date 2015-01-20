@@ -108,7 +108,7 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate
             tableView.reloadData()
         } else {
             // Add cell selected
-            VPNDataManager.sharedManager.lastVPNID = nil
+            VPNDataManager.sharedManager.selectedVPNID = nil
             let detailNavigationController = splitViewController!.viewControllers.last! as UINavigationController
             detailNavigationController.popToRootViewControllerAnimated(false)
             splitViewController!.viewControllers.last!.performSegueWithIdentifier("config", sender: nil)
@@ -177,7 +177,7 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate
     override func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
         if indexPath.section == kVPNListSectionIndex {
             let VPNID = vpns[indexPath.row].objectID
-            VPNDataManager.sharedManager.lastVPNID = VPNID
+            VPNDataManager.sharedManager.selectedVPNID = VPNID
             
             let detailNavigationController = splitViewController!.viewControllers.last! as UINavigationController
             detailNavigationController.popToRootViewControllerAnimated(false)

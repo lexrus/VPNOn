@@ -31,7 +31,7 @@ class LTVPNConfigViewController: UITableViewController, UITextFieldDelegate
     @IBOutlet weak var deleteCell: UITableViewCell!
     
     lazy var vpn: VPN? = {
-        if let ID = VPNDataManager.sharedManager.lastVPNID {
+        if let ID = VPNDataManager.sharedManager.selectedVPNID {
             if let result = VPNDataManager.sharedManager.VPNByID(ID) {
                 let vpn = result
                 return vpn
