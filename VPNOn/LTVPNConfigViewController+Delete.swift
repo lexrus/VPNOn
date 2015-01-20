@@ -41,5 +41,7 @@ extension LTVPNConfigViewController
                 presentViewController(alert, animated: true, completion: nil)
             }
         }
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: false)
     }
 }
