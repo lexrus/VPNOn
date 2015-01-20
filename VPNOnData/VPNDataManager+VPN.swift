@@ -58,10 +58,15 @@ extension VPNDataManager
         }
     }
     
-    func deleteVPN(vpn:VPN)
+    func deleteVPN(vpn:VPN) -> Bool
     {
-        self.managedObjectContext?.deleteObject(vpn)
-        self.saveContext()
+        let objectID = vpn.objectID
+        managedObjectContext?.deleteObject(vpn)
+        if let vpn = managedObjectContext?.existingObjectWithID(objectID, error: nil) {
+            return false
+        }
+        saveContext()
+        return true
     }
     
     func VPNByID(ID: NSManagedObjectID) -> VPN?
