@@ -9,7 +9,6 @@
 import UIKit
 import CoreData
 
-let kLastVPNIDKey = "lastVPNID"
 let kAppGroupIdentifier = "group.VPNOn"
 
 class VPNDataManager
@@ -22,28 +21,6 @@ class VPNDataManager
         }
         
         return Static.sharedInstance
-    }
-    
-    var lastVPNID: NSManagedObjectID? {
-        get {
-            if let URLData = NSUserDefaults.standardUserDefaults().objectForKey(kLastVPNIDKey) as NSData? {
-                let url = NSKeyedUnarchiver.unarchiveObjectWithData(URLData) as NSURL
-                if let ID = self.persistentStoreCoordinator!.managedObjectIDForURIRepresentation(url) {
-                    return ID
-                }
-            }
-            
-            return .None
-        }
-        set {
-            if let value = newValue {
-                let IDURL = value.URIRepresentation()
-                let URLData = NSKeyedArchiver.archivedDataWithRootObject(IDURL)
-                NSUserDefaults.standardUserDefaults().setObject(URLData, forKey: kLastVPNIDKey)
-            } else {
-                NSUserDefaults.standardUserDefaults().removeObjectForKey(kLastVPNIDKey)
-            }
-        }
     }
     
     // MARK: - Core Data stack
@@ -151,24 +128,6 @@ class VPNDataManager
                 // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
                 NSLog("Unresolved error \(error), \(error!.userInfo)")
                 abort()
-            }
-        }
-    }
-    
-    // MARK: - Move data file to shared container if needed
-    
-    func shareCoreData () {
-        let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
-        let url = urls[urls.count-1] as NSURL
-        let oldDataURL = dataDirectory.URLByAppendingPathComponent("VPNOn.sqlite")
-        if let oldDataPath = oldDataURL.path {
-            if NSFileManager.defaultManager().fileExistsAtPath(oldDataPath) {
-                var error: NSError?
-                let newDataURL = dataDirectory.URLByAppendingPathComponent("VPNOn.sqlite")
-                NSFileManager.defaultManager().moveItemAtURL(oldDataURL, toURL: newDataURL, error: &error)
-                if let err = error {
-                    println("\(err)")
-                }
             }
         }
     }
