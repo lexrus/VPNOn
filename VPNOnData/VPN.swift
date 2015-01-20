@@ -3,38 +3,41 @@ import CoreData
 import VPNOnKit
 
 class VPNInfo {
-    var title: String = ""
-    var server: String = ""
-    var account: String = ""
-    var password: String = ""
-    var group: String = ""
-    var secret: String = ""
-    var alwaysOn: Bool = false
+    var title:       String = ""
+    var server:      String = ""
+    var account:     String = ""
+    var password:    String = ""
+    var group:       String = ""
+    var secret:      String = ""
+    var alwaysOn:    Bool   = false
+    var enabled:     Bool   = true
+    var latency:     Int    = -1
+    var latitude:    Float  = 0.0
+    var longitude:   Float  = 0.0
+    var countryCode: String = ""
+    var isp:         String = ""
 }
 
 @objc(VPN)
 class VPN : NSManagedObject{
     
-	@NSManaged var account : String!
-	@NSManaged var group : String!
-	@NSManaged var server : String!
-    @NSManaged var title : String!
-    @NSManaged var alwaysOn : Bool
+	@NSManaged var account:     String!
+	@NSManaged var group:       String!
+	@NSManaged var server:      String!
+    @NSManaged var title:       String!
+    @NSManaged var alwaysOn:    Bool
+    @NSManaged var enabled:     Bool
+    @NSManaged var latency:     Int16
+    @NSManaged var latitude:    Float
+    @NSManaged var longitude:   Float
+    @NSManaged var countryCode: String!
+    @NSManaged var isp:         String!
     
     var ID : String {
         if let id = objectID.URIRepresentation().lastPathComponent {
             return id
         }
         return ""
-    }
-
-    override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
-        super.init(entity: entity, insertIntoManagedObjectContext: context)
-        setValue(account, forKey: "account")
-        setValue(group, forKey: "group")
-        setValue(server, forKey: "server")
-        setValue(title, forKey: "title")
-        setValue(alwaysOn, forKey: "alwaysOn")
     }
 
 	/**
@@ -55,8 +58,26 @@ class VPN : NSManagedObject{
 		if let titleValue = dictionary["title"] as? String{
 			title = titleValue
 		}
-        if let alwaysOnValue = dictionary["alwaysOn"] as? Bool {
-            alwaysOn = alwaysOnValue
+        if let alwaysOnValue = dictionary["alwaysOn"] as? NSNumber {
+            alwaysOn = alwaysOnValue.boolValue
+        }
+        if let enabledValue = dictionary["enabled"] as? NSNumber {
+            enabled = enabledValue.boolValue
+        }
+        if let latencyValue = dictionary["latency"] as? NSNumber {
+            latency = Int16(latencyValue.integerValue)
+        }
+        if let latitudeValue = dictionary["latitude"] as? NSNumber {
+            latitude = latitudeValue.floatValue
+        }
+        if let longitudeValue = dictionary["longitude"] as? NSNumber {
+            longitude = longitudeValue.floatValue
+        }
+        if let countryCodeValue = dictionary["countryCode"] as? String {
+            countryCode = countryCodeValue
+        }
+        if let ispValue = dictionary["isp"] as? String {
+            isp = ispValue
         }
 	}
 
@@ -71,15 +92,25 @@ class VPN : NSManagedObject{
 			dictionary["account"] = account
 		}
 		if group != nil {
-			dictionary["group"] = group
+			dictionary["group"]  = group
 		}
 		if server != nil {
 			dictionary["server"] = server
 		}
 		if title != nil {
-			dictionary["title"] = title
+			dictionary["title"]  = title
 		}
-        dictionary["alwaysOn"] = alwaysOn
+        dictionary["alwaysOn"]   = NSNumber(bool: alwaysOn)
+        dictionary["enabled"]    = NSNumber(bool: enabled)
+        dictionary["latency"]    = NSNumber(short: latency)
+        dictionary["latitude"]   = NSNumber(float: latitude)
+        dictionary["longitude"]  = NSNumber(float: longitude)
+        if countryCode != nil {
+            dictionary["countryCode"] = countryCode
+        }
+        if isp != nil {
+            dictionary["isp"] = isp
+        }
 		return dictionary
 	}
     
