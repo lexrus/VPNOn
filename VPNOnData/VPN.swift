@@ -27,7 +27,7 @@ class VPN : NSManagedObject{
     @NSManaged var title:       String!
     @NSManaged var alwaysOn:    Bool
     @NSManaged var enabled:     Bool
-    @NSManaged var latency:     Int16
+    @NSManaged var latency:     Int
     @NSManaged var latitude:    Float
     @NSManaged var longitude:   Float
     @NSManaged var countryCode: String!
@@ -38,6 +38,21 @@ class VPN : NSManagedObject{
             return id
         }
         return ""
+    }
+    
+    override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
+        super.init(entity: entity, insertIntoManagedObjectContext: context)
+        setValue(account,     forKey: "account")
+        setValue(group,       forKey: "group")
+        setValue(server,      forKey: "server")
+        setValue(title,       forKey: "title")
+        setValue(alwaysOn,    forKey: "alwaysOn")
+        setValue(enabled,     forKey: "enabled")
+        setValue(latency,     forKey: "latency")
+        setValue(latitude,    forKey: "latitude")
+        setValue(longitude,   forKey: "longitude")
+        setValue(countryCode, forKey: "countryCode")
+        setValue(isp,         forKey: "isp")
     }
 
 	/**
@@ -65,7 +80,7 @@ class VPN : NSManagedObject{
             enabled = enabledValue.boolValue
         }
         if let latencyValue = dictionary["latency"] as? NSNumber {
-            latency = Int16(latencyValue.integerValue)
+            latency = latencyValue.integerValue
         }
         if let latitudeValue = dictionary["latitude"] as? NSNumber {
             latitude = latitudeValue.floatValue
@@ -102,7 +117,7 @@ class VPN : NSManagedObject{
 		}
         dictionary["alwaysOn"]   = NSNumber(bool: alwaysOn)
         dictionary["enabled"]    = NSNumber(bool: enabled)
-        dictionary["latency"]    = NSNumber(short: latency)
+        dictionary["latency"]    = NSNumber(integer: latency)
         dictionary["latitude"]   = NSNumber(float: latitude)
         dictionary["longitude"]  = NSNumber(float: longitude)
         if countryCode != nil {
