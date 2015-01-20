@@ -7,7 +7,7 @@
         <attribute name="enabled" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
         <attribute name="group" optional="YES" attributeType="String" maxValueString="256" syncable="YES"/>
         <attribute name="isp" optional="YES" attributeType="String" maxValueString="256" syncable="YES"/>
-        <attribute name="latency" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="latency" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="latitude" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="server" attributeType="String" minValueString="1" maxValueString="256" defaultValueString="vpn" spotlightIndexingEnabled="YES" syncable="YES"/>
