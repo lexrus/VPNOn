@@ -84,8 +84,12 @@ extension VPNDataManager
     func VPNByIDString(ID: String) -> VPN?
     {
         if let URL = NSURL(string: ID) {
-            if let moid = self.persistentStoreCoordinator!.managedObjectIDForURIRepresentation(URL) {
-                return self.VPNByID(moid)
+            if let scheme = URL.scheme {
+                if scheme.lowercaseString == "x-coredata" {
+                    if let moid = self.persistentStoreCoordinator!.managedObjectIDForURIRepresentation(URL) {
+                        return self.VPNByID(moid)
+                    }
+                }
             }
         }
         return .None

@@ -15,15 +15,15 @@
 
 @interface VPNKeychainWrapper : NSObject
 
-+ (BOOL) setPassword:(NSString*)password forVPNID:(NSString*)VPNID;
++ (BOOL) setPassword:(NSString *)password forVPNID:(NSString *)VPNID;
 
-+ (BOOL) setSecret:(NSString*)secret forVPNID:(NSString*)VPNID;
++ (BOOL) setSecret:(NSString*)secret forVPNID:(NSString *)VPNID;
 
-+ (NSData*) passwordForVPNID:(NSString*)VPNID;
++ (NSData *) passwordForVPNID:(NSString *)VPNID;
 
-+ (NSData*) secretForVPNID:(NSString*)VPNID;
++ (NSData *) secretForVPNID:(NSString *)VPNID;
 
-+ (void)destoryKeyForVPNID:(NSString*)VPNID;
++ (void) destoryKeyForVPNID:(NSString *)VPNID;
 
 @end
 

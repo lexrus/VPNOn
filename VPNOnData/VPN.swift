@@ -34,7 +34,7 @@ public class VPN : NSManagedObject{
     @NSManaged var isp:         String!
     
     var ID : String {
-        if let id = objectID.URIRepresentation().lastPathComponent {
+        if let id = objectID.URIRepresentation().absoluteString {
             return id
         }
         return ""
