@@ -16,16 +16,22 @@
 
 @interface VPNManager : NSObject
 
-@property (strong, nonatomic) NSDictionary *activatedVPNDict;
+@property (strong, nonatomic) NSString *activatedVPNID;
 @property (readonly, nonatomic) NEVPNStatus status;
 
-+ (VPNManager *)sharedManager;
++ (VPNManager *) sharedManager;
 
-- (void)connect;
+- (void) connect:(NSString *)title
+          server:(NSString *)server
+         account:(NSString *)account
+           group:(NSString *)group
+        alwaysOn:(BOOL)alwaysOn
+     passwordRef:(NSData *)passwordRef
+       secretRef:(NSData *)secretRef;
 
-- (void)disconnect;
+- (void) disconnect;
 
-- (void)removeProfile;
+- (void) removeProfile;
 
 @end
 

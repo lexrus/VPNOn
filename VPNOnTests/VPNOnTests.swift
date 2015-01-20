@@ -21,9 +21,10 @@ class VPNOnTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
+    func testActivatedVPN() {
         // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
+        XCTAssert(VPNDataManager.sharedManager.createVPN("hello", server: "world", account: "aaa", password: "asdf", group: "asdf", secret: "asdf", alwaysOn: true), "VPN must be created.")
+        XCTAssert(VPNDataManager.sharedManager.activatedVPN != nil, "Activated VPN must not be nil.")
     }
     
     func testPerformanceExample() {

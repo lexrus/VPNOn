@@ -15,7 +15,6 @@
 
 @interface LTPingQueue : NSObject
 
-@property (strong, nonatomic) NSDictionary *activatedVPNDict;
 @property (readonly, nonatomic) NEVPNStatus status;
 
 + (LTPingQueue *)sharedQueue;

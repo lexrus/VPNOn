@@ -51,7 +51,7 @@ extension VPNDataManager
                 VPNKeychainWrapper.setSecret(secret, forVPNID: vpn.ID)
                 
                 if allVPN().count == 0 {
-                    VPNManager.sharedManager().activatedVPNDict = vpn.toDictionary()
+                    VPNManager.sharedManager().activatedVPNID = vpn.ID
                 }
             }
             return true
@@ -74,5 +74,15 @@ extension VPNDataManager
             println("Fetch error: \(error)")
             return .None
         }
+    }
+    
+    func VPNByIDString(ID: String) -> VPN?
+    {
+        if let URL = NSURL(string: ID) {
+            if let moid = self.persistentStoreCoordinator!.managedObjectIDForURIRepresentation(URL) {
+                return self.VPNByID(moid)
+            }
+        }
+        return .None
     }
 }
