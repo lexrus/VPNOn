@@ -20,8 +20,6 @@ class LTTextField: UITextField {
         
         let middleRect = fixedMiddlePlaceholderRect(rect)
         
-        println("\(middleRect)")
-        
         self.placeholder?.drawInRect(middleRect, withAttributes: attributes)
     }
     
