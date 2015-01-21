@@ -13,10 +13,29 @@ extension VPNDataManager
 {
     var activatedVPN: VPN? {
         get {
+            if VPNManager.sharedManager().isActivatedVPNIDDeprecated {
+                let vpns = allVPN()
+                for vpn in vpns {
+                    if let shortID = vpn.objectID.URIRepresentation().lastPathComponent {
+                        if shortID == VPNManager.sharedManager().activatedVPNID {
+                            VPNManager.sharedManager().activatedVPNID = vpn.ID
+                        }
+                    }
+                }
+            }
+            
             if let activatedVPNID = VPNManager.sharedManager().activatedVPNID {
-                return self.VPNByIDString(activatedVPNID)
+                return VPNByIDString(activatedVPNID)
+            } else {
+                let vpns = allVPN()
+                if vpns.count > 0 {
+                    VPNManager.sharedManager().activatedVPNID = vpns.first!.ID
+                    return vpns.first!
+                }
             }
             return .None
         }
     }
+    
+    
 }

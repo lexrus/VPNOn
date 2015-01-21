@@ -32,8 +32,8 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        activatedVPNID = VPNManager.sharedManager().activatedVPNID
+
+        vpns = VPNDataManager.sharedManager.allVPN()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("VPNDidCreate:"), name: kLTVPNDidCreate, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("VPNDidUpdate:"), name: kLTVPNDidUpdate, object: nil)
@@ -54,11 +54,9 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        vpns = VPNDataManager.sharedManager.allVPN()
         
-        if vpns.count == 1 {
-            activatedVPNID = vpns.first!.ID
-            VPNManager.sharedManager().activatedVPNID = activatedVPNID
+        if let activatedVPN = VPNDataManager.sharedManager.activatedVPN {
+            activatedVPNID = activatedVPN.ID
         }
         
         tableView.reloadData()

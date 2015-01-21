@@ -30,8 +30,25 @@ extension VPNManager
             _defaults.synchronize()
         }
     }
+
+    var isActivatedVPNIDDeprecated: Bool {
+        get {
+            if let ID = self.activatedVPNID {
+                if let URL = NSURL(string: ID) {
+                    if let scheme = URL.scheme {
+                        if scheme.isEmpty {
+                            return true
+                        }
+                    } else {
+                        return true
+                    }
+                }
+            }
+            return false
+        }
+    }
     
-    func migrateTo0_3AndReturnActivatedVPNID() -> String? {
+    private func migrateTo0_3AndReturnActivatedVPNID() -> String? {
         if let oldDict = self._defaults.objectForKey(kDeprecatedActivatedVPNDictKey) as NSDictionary? {
             if let ID = oldDict.objectForKey("ID") as String? {
                 _defaults.removeObjectForKey(kDeprecatedActivatedVPNDictKey)

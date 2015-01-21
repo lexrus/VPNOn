@@ -18,6 +18,7 @@
 
 @property (strong, nonatomic) NSString *activatedVPNID;
 @property (readonly, nonatomic) NEVPNStatus status;
+@property (readonly, nonatomic) BOOL isActivatedVPNIDDeprecated;
 
 + (VPNManager *) sharedManager;
 
