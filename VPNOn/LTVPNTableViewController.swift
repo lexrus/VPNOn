@@ -32,13 +32,11 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        vpns = VPNDataManager.sharedManager.allVPN()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("VPNDidCreate:"), name: kLTVPNDidCreate, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("VPNDidUpdate:"), name: kLTVPNDidUpdate, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("VPNDidRemove:"), name: kLTVPNDidRemove, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("VPNDidDuplicate:"), name: kLTVPNDidDuplicate, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("reloadDataAndPopDetail:"), name: kLTVPNDidCreate, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("reloadDataAndPopDetail:"), name: kLTVPNDidUpdate, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("reloadDataAndPopDetail:"), name: kLTVPNDidRemove, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("reloadDataAndPopDetail:"), name: kLTVPNDidDuplicate, object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pingDidUpdate:"), name: "kLTPingDidUpdate", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pingDidComplete:"), name: "kLTPingDidComplete", object: nil)
@@ -57,13 +55,19 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        vpns = VPNDataManager.sharedManager.allVPN()
+        
         if let activatedVPN = VPNDataManager.sharedManager.activatedVPN {
             activatedVPNID = activatedVPN.ID
         }
         
         tableView.reloadData()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
         
-        let ping = SimplePing(hostName: "baidu.com")
+        vpns = [VPN]()
     }
 
     // MARK: - Table view data source
@@ -141,33 +145,7 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate
     
     // MARK: - Notifications
     
-    func VPNDidCreate(notification: NSNotification) {
-        vpns = VPNDataManager.sharedManager.allVPN()
-        tableView.reloadData()
-        popDetailViewController()
-    }
-    
-    func VPNDidUpdate(notification: NSNotification) {
-        vpns = VPNDataManager.sharedManager.allVPN()
-        tableView.reloadData()
-        
-        // NOTE: Update activated VPN dict for widget
-        for vpn in vpns {
-            if vpn.ID == activatedVPNID {
-                VPNManager.sharedManager().activatedVPNID = vpn.ID
-                break
-            }
-        }
-        popDetailViewController()
-    }
-    
-    func VPNDidRemove(notification: NSNotification) {
-        vpns = VPNDataManager.sharedManager.allVPN()
-        tableView.reloadData()
-        popDetailViewController()
-    }
-    
-    func VPNDidDuplicate(notification: NSNotification) {
+    func reloadDataAndPopDetail(notifiation: NSNotification) {
         vpns = VPNDataManager.sharedManager.allVPN()
         tableView.reloadData()
         popDetailViewController()
