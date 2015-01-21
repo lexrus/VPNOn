@@ -132,7 +132,7 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == kVPNListSectionIndex {
+        if section == kVPNListSectionIndex && vpns.count > 0 {
             return "VPN CONFIGURATIONS"
         }
         
