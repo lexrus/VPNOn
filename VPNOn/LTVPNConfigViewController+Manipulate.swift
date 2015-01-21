@@ -19,20 +19,8 @@ extension LTVPNConfigViewController
                 var deleteAction = UIAlertAction(title: "Delete", style: UIAlertActionStyle.Destructive, handler: {
                     (action: UIAlertAction!) -> Void in
                     let deletedVPNID = currentVPN.ID
-                    currentVPN.destroy()
                     
-                    if let activatedVPNID = VPNManager.sharedManager().activatedVPNID {
-                        if activatedVPNID == deletedVPNID {
-                            let vpns = VPNDataManager.sharedManager.allVPN()
-                            if vpns.count >= 1 {
-                                VPNManager.sharedManager().activatedVPNID = vpns.first!.ID
-                            } else {
-                                VPNManager.sharedManager().activatedVPNID = .None
-                            }
-                        }
-                    }
-                    
-                    VPNKeychainWrapper.destoryKeyForVPNID(currentVPN.ID)
+                    VPNDataManager.sharedManager.deleteVPN(currentVPN)
                     
                     NSNotificationCenter.defaultCenter().postNotificationName(kLTVPNDidRemove, object: nil)
                 })

@@ -128,11 +128,4 @@ public class VPN : NSManagedObject{
         }
 		return dictionary
 	}
-    
-    func destroy() {
-        VPNManager.sharedManager().removeProfile()
-        
-        managedObjectContext!.deleteObject(self)
-        managedObjectContext!.save(nil)
-    }
 }

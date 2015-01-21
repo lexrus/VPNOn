@@ -44,7 +44,7 @@ extension VPNDataManager
             println("Could not save \(error), \(error?.userInfo)")
             return false
         } else {
-            self.saveContext()
+            saveContext()
             
             if !vpn.objectID.temporaryID {
                 VPNKeychainWrapper.setPassword(password, forVPNID: vpn.ID)
@@ -58,15 +58,26 @@ extension VPNDataManager
         }
     }
     
-    func deleteVPN(vpn:VPN) -> Bool
+    func deleteVPN(vpn:VPN)
     {
         let objectID = vpn.objectID
-        managedObjectContext?.deleteObject(vpn)
-        if let vpn = managedObjectContext?.existingObjectWithID(objectID, error: nil) {
-            return false
+        let ID = "\(vpn.ID)"
+        
+        var vpns: [VPN]? = allVPN()
+        if vpns!.count == 1 {
+            VPNManager.sharedManager().activatedVPNID = nil
+        } else if vpns!.count > 1 {
+            if let activatedVPNID = VPNManager.sharedManager().activatedVPNID {
+                if activatedVPNID == ID {
+                    VPNManager.sharedManager().activatedVPNID = vpns!.first!.ID
+                }
+            }
         }
+        vpns = nil
+        
+        VPNKeychainWrapper.destoryKeyForVPNID(ID)
+        managedObjectContext?.deleteObject(vpn)
         saveContext()
-        return true
     }
     
     func VPNByID(ID: NSManagedObjectID) -> VPN?
