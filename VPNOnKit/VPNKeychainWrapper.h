@@ -21,7 +21,11 @@
 
 + (NSData *) passwordForVPNID:(NSString *)VPNID;
 
++ (NSString *) passwordStringForVPNID:(NSString *)VPNID;
+
 + (NSData *) secretForVPNID:(NSString *)VPNID;
+
++ (NSString *) secretStringForVPNID:(NSString *)VPNID;
 
 + (void) destoryKeyForVPNID:(NSString *)VPNID;
 

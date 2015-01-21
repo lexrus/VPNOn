@@ -46,4 +46,16 @@ class VPNKeychainWrapper
         KeychainWrapper.removeObjectForKey(key)
         KeychainWrapper.removeObjectForKey("\(key)psk")
     }
+    
+    class func passwordStringForVPNID(VPNID: String) -> String? {
+        let key = NSURL(string: VPNID)!.lastPathComponent!
+        KeychainWrapper.serviceName = kKeychainServiceName
+        return KeychainWrapper.stringForKey(key)
+    }
+    
+    class func secretStringForVPNID(VPNID: String) -> String? {
+        let key = NSURL(string: VPNID)!.lastPathComponent!
+        KeychainWrapper.serviceName = kKeychainServiceName
+        return KeychainWrapper.stringForKey("\(key)psk")
+    }
 }

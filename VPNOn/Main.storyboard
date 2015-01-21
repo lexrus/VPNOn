@@ -483,6 +483,26 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection id="mBf-Hr-GPe">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="duplicateButton" textLabel="Ao2-Hb-0jD" style="IBUITableViewCellStyleDefault" id="663-D6-n2X">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="663-D6-n2X" id="fNl-8X-cbk">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Duplicate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ao2-Hb-0jD">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular-widthClass=compact">
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    </variation>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection id="prJ-9D-aJO">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="deleteButton" textLabel="Im7-xc-lxF" style="IBUITableViewCellStyleDefault" id="aVU-jp-9tN">
@@ -521,6 +541,7 @@
                         <outlet property="accountTextField" destination="eUh-Mf-gFu" id="4WC-M1-N94"/>
                         <outlet property="alwaysOnSwitch" destination="4Bg-cZ-sYk" id="ziv-mv-el3"/>
                         <outlet property="deleteCell" destination="aVU-jp-9tN" id="Ulk-73-rhF"/>
+                        <outlet property="duplicateCell" destination="663-D6-n2X" id="ah7-Hk-QgA"/>
                         <outlet property="groupTextField" destination="5bP-9z-qLc" id="CHk-vk-iCa"/>
                         <outlet property="passwordTextField" destination="Jej-Iu-pn8" id="kAU-cs-fMg"/>
                         <outlet property="saveButton" destination="dLM-eO-7ed" id="3k2-7P-osS"/>
