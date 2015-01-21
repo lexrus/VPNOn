@@ -35,27 +35,25 @@ This project follows the gitflow workflow. You'd better create a branch called `
 
 ## URL Scheme
 
-VPN service providers may list a link for their customers to efficiently add server configurations in VPN On. By register the `vpnon://`protocol, it supports the following URL scheme:
+VPN service providers may list a link for their customers to efficiently add server configurations in VPN On. By register the `vpnon://` protocol, it supports the following URL scheme:
 
-`vpnon://{account}:{password}@{server}/?title={title}&group={group}&secret={secret}`
+`vpnon://{account}:{password}@{server}/?title={title}&group={group}&secret={secret}&alwayson=[yes|no]`
 
 Fields are optional except the server field. The following URLs are valid:
 
-`vpnon://jony:ive@apple.com/?title=Apple&group=Design&secret=iPhone`
-`vpnon://apple.com/`
-`vpnon://admin@192.168.0.123/?group=devops`
+* `vpnon://jony:ive@apple.com/?title=Apple&group=Design&secret=iPhone`
 
-## App Store Submission
+* `vpnon://apple.com/`
 
-Most likely, Apple allows "Today" related widgets and rejects the others. Although it's impossible to pass the submission, I've just submit the tag 0.1 to App Store and pray for a miracle.
+* `vpnon://admin@192.168.0.123/?group=devops`
 
-...
+* `vpnon://admin@192.168.0.123/?alwayson=no`
 
-At last, [VPN On is now available on App Store](https://itunes.apple.com/app/vpn-on/id951344279)!
+## Donation
 
-## Donate
+Although this App is 100% open-sourced, it may takes about 20~60 minutes to configure the environment. I'd appreciate if you could [buy VPN On from App Store](https://itunes.apple.com/app/vpn-on/id951344279).
 
-I'm a coffee addict, buy me a coffee via PayPal or Alipay: `lexrus@gmail.com`
+BTW. I'm a coffee addict, buy me a coffee via PayPal or Alipay: `lexrus@gmail.com`
 
 ## Credits
 
