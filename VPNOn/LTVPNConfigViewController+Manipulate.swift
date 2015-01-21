@@ -41,6 +41,12 @@ extension LTVPNConfigViewController
                 alert.addAction(cancelAction)
                 presentViewController(alert, animated: true, completion: nil)
             }
+        } else if selectedCell == duplicateCell {
+            if let currentVPN = vpn {
+                if let newVPN = VPNDataManager.sharedManager.duplicate(currentVPN) {
+                    NSNotificationCenter.defaultCenter().postNotificationName(kLTVPNDidDuplicate, object: nil)
+                }
+            }
         }
         
         tableView.deselectRowAtIndexPath(indexPath, animated: false)

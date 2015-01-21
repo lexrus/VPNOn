@@ -13,6 +13,7 @@ import CoreData
 let kLTVPNDidCreate = "kLTVPNDidCreate"
 let kLTVPNDidUpdate = "kLTVPNDidUpdate"
 let kLTVPNDidRemove = "kLTVPNDidRemove"
+let kLTVPNDidDuplicate = "kLTVPNDidDuplicate"
 let kImpossibleHash = "~!@#$%^+_)(*&"
 
 class LTVPNConfigViewController: UITableViewController, UITextFieldDelegate
@@ -29,6 +30,7 @@ class LTVPNConfigViewController: UITableViewController, UITextFieldDelegate
     @IBOutlet weak var alwaysOnSwitch: UISwitch!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var deleteCell: UITableViewCell!
+    @IBOutlet weak var duplicateCell: UITableViewCell!
     
     lazy var vpn: VPN? = {
         if let ID = VPNDataManager.sharedManager.selectedVPNID {
@@ -104,8 +106,10 @@ class LTVPNConfigViewController: UITableViewController, UITextFieldDelegate
             if let secretRef = VPNKeychainWrapper.secretForVPNID(currentVPN.ID) {
                 secretTextField!.text = kImpossibleHash
             }
+            
+            deleteCell.hidden = false
+            duplicateCell.hidden = false
         } else if let info = initializedVPNInfo {
-            deleteCell.hidden = true
             if info.title != "" {
                 titleTextField.text = info.title
                 serverTextField.text = info.server
@@ -116,6 +120,9 @@ class LTVPNConfigViewController: UITableViewController, UITextFieldDelegate
                 alwaysOnSwitch.on = info.alwaysOn
                 toggleSaveButtonByStatus()
             }
+            
+            deleteCell.hidden = true
+            duplicateCell.hidden = true
         }
     }
     

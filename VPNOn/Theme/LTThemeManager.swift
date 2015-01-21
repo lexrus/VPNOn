@@ -48,11 +48,12 @@ class LTThemeManager
         UITableViewCell.appearance().selectionStyle = UITableViewCellSelectionStyle.None
         UILabel.lt_appearanceWhenContainedIn(UITableViewHeaderFooterView.self).textColor = theme.textColor
         LTTableViewCellTitle.appearance().textColor = theme.textColor
+        UILabel.lt_appearanceWhenContainedIn(LTTableViewActionCell.self).textColor = theme.tintColor
+        UILabel.lt_appearanceWhenContainedIn(LTVPNTableViewCell.self).textColor = theme.textColor
         
         // TextField
         UITextField.appearance().tintColor = theme.tintColor
         UITextField.appearance().textColor = theme.textFieldColor
-        UILabel.lt_appearanceWhenContainedIn(LTVPNTableViewCell.self).textColor = theme.textColor
         
     }
 }

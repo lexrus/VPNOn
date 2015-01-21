@@ -31,13 +31,13 @@ class VPNKeychainWrapper
     class func passwordForVPNID(VPNID: String) -> NSData? {
         let key = NSURL(string: VPNID)!.lastPathComponent!
         KeychainWrapper.serviceName = kKeychainServiceName
-        return KeychainWrapper.dataForKey(key)
+        return KeychainWrapper.dataRefForKey(key)
     }
     
     class func secretForVPNID(VPNID: String) -> NSData? {
         let key = NSURL(string: VPNID)!.lastPathComponent!
         KeychainWrapper.serviceName = kKeychainServiceName
-        return KeychainWrapper.dataForKey("\(key)psk")
+        return KeychainWrapper.dataRefForKey("\(key)psk")
     }
     
     class func destoryKeyForVPNID(VPNID: String) {
@@ -45,5 +45,17 @@ class VPNKeychainWrapper
         KeychainWrapper.serviceName = kKeychainServiceName
         KeychainWrapper.removeObjectForKey(key)
         KeychainWrapper.removeObjectForKey("\(key)psk")
+    }
+    
+    class func passwordStringForVPNID(VPNID: String) -> String? {
+        let key = NSURL(string: VPNID)!.lastPathComponent!
+        KeychainWrapper.serviceName = kKeychainServiceName
+        return KeychainWrapper.stringForKey(key)
+    }
+    
+    class func secretStringForVPNID(VPNID: String) -> String? {
+        let key = NSURL(string: VPNID)!.lastPathComponent!
+        KeychainWrapper.serviceName = kKeychainServiceName
+        return KeychainWrapper.stringForKey("\(key)psk")
     }
 }

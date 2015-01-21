@@ -30,6 +30,9 @@ class VPNOnKitTests: XCTestCase {
             VPNKeychainWrapper.setSecret("world", forVPNID: "testVPN")
             XCTAssertNotNil(VPNKeychainWrapper.secretForVPNID("testVPN"), "Secret data in keychain must not be nil.")
             
+            let passwordString = VPNKeychainWrapper.passwordStringForVPNID("testVPN")
+            XCTAssert(passwordString == "hello", "Password string must match the previous one.")
+            
             VPNKeychainWrapper.destoryKeyForVPNID("testVPN")
             XCTAssertNil(VPNKeychainWrapper.passwordForVPNID("testVPN"), "Password data must be empty after destory.")
             XCTAssertNil(VPNKeychainWrapper.secretForVPNID("testVPN"), "Secret data must be empty after destory.")

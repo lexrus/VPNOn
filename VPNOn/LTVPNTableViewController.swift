@@ -38,6 +38,7 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("VPNDidCreate:"), name: kLTVPNDidCreate, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("VPNDidUpdate:"), name: kLTVPNDidUpdate, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("VPNDidRemove:"), name: kLTVPNDidRemove, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("VPNDidDuplicate:"), name: kLTVPNDidDuplicate, object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pingDidUpdate:"), name: "kLTPingDidUpdate", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pingDidComplete:"), name: "kLTPingDidComplete", object: nil)
@@ -47,6 +48,7 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate
         NSNotificationCenter.defaultCenter().removeObserver(self, name: kLTVPNDidCreate, object: nil)
         NSNotificationCenter.defaultCenter().removeObserver(self, name: kLTVPNDidUpdate, object: nil)
         NSNotificationCenter.defaultCenter().removeObserver(self, name: kLTVPNDidRemove, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: kLTVPNDidDuplicate, object: nil)
         
         NSNotificationCenter.defaultCenter().removeObserver(self, name: "kLTPingDidUpdate", object: nil)
         NSNotificationCenter.defaultCenter().removeObserver(self, name: "kLTPingDidComplete", object: nil)
@@ -160,6 +162,12 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate
     }
     
     func VPNDidRemove(notification: NSNotification) {
+        vpns = VPNDataManager.sharedManager.allVPN()
+        tableView.reloadData()
+        popDetailViewController()
+    }
+    
+    func VPNDidDuplicate(notification: NSNotification) {
         vpns = VPNDataManager.sharedManager.allVPN()
         tableView.reloadData()
         popDetailViewController()
