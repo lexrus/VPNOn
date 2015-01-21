@@ -44,7 +44,7 @@ extension LTVPNConfigViewController
         } else if selectedCell == duplicateCell {
             if let currentVPN = vpn {
                 if let newVPN = VPNDataManager.sharedManager.duplicate(currentVPN) {
-                    
+                    NSNotificationCenter.defaultCenter().postNotificationName(kLTVPNDidDuplicate, object: nil)
                 }
             }
         }

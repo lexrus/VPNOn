@@ -13,6 +13,7 @@ import CoreData
 let kLTVPNDidCreate = "kLTVPNDidCreate"
 let kLTVPNDidUpdate = "kLTVPNDidUpdate"
 let kLTVPNDidRemove = "kLTVPNDidRemove"
+let kLTVPNDidDuplicate = "kLTVPNDidDuplicate"
 let kImpossibleHash = "~!@#$%^+_)(*&"
 
 class LTVPNConfigViewController: UITableViewController, UITextFieldDelegate
