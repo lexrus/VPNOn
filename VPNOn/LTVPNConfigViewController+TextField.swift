@@ -42,16 +42,16 @@ extension LTVPNConfigViewController
             accountTextField.becomeFirstResponder()
             break
         case accountTextField:
-            groupTextField.becomeFirstResponder()
-            break
-        case groupTextField:
             passwordTextField.becomeFirstResponder()
             break
         case passwordTextField:
             secretTextField.becomeFirstResponder()
             break
+        case secretTextField:
+            groupTextField.becomeFirstResponder()
+            break
         default:
-            secretTextField.resignFirstResponder()
+            groupTextField.resignFirstResponder()
         }
         
         return true
