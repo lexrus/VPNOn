@@ -28,16 +28,6 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         VPNLabel.userInteractionEnabled = true
         VPNLabel.addGestureRecognizer(tapGesture)
         
-        if let vpn = VPNDataManager.sharedManager.activatedVPN {
-            VPNTitle = vpn.title
-            VPNSwitch.enabled = true
-            VPNStatusDidChange(nil)
-        } else {
-            VPNLabel.text = "Please add a VPN."
-            VPNSwitch.setOn(false, animated: false)
-            VPNSwitch.enabled = false
-        }
-        
         NSNotificationCenter.defaultCenter().addObserver(
             self,
             selector: Selector("VPNStatusDidChange:"),
@@ -54,6 +44,16 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        if let vpn = VPNDataManager.sharedManager.activatedVPN {
+            VPNTitle = vpn.title
+            VPNSwitch.enabled = true
+            VPNStatusDidChange(nil)
+        } else {
+            VPNLabel.text = "Please add a VPN."
+            VPNSwitch.setOn(false, animated: false)
+            VPNSwitch.enabled = false
+        }
         
         self.VPNSwitch.setNeedsUpdateConstraints()
     }

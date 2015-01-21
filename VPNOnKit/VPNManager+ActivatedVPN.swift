@@ -52,6 +52,7 @@ extension VPNManager
         if let oldDict = self._defaults.objectForKey(kDeprecatedActivatedVPNDictKey) as NSDictionary? {
             if let ID = oldDict.objectForKey("ID") as String? {
                 _defaults.removeObjectForKey(kDeprecatedActivatedVPNDictKey)
+                _defaults.synchronize()
                 return ID
             }
         }

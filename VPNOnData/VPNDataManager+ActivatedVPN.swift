@@ -26,12 +26,6 @@ extension VPNDataManager
             
             if let activatedVPNID = VPNManager.sharedManager().activatedVPNID {
                 return VPNByIDString(activatedVPNID)
-            } else {
-                let vpns = allVPN()
-                if vpns.count > 0 {
-                    VPNManager.sharedManager().activatedVPNID = vpns.first!.ID
-                    return vpns.first!
-                }
             }
             return .None
         }

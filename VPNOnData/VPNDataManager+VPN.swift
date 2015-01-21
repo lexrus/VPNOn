@@ -16,13 +16,15 @@ extension VPNDataManager
         var vpns = [VPN]()
         
         var request = NSFetchRequest(entityName: "VPN")
-        var error: NSError?
-        let fetchResults = self.managedObjectContext!.executeFetchRequest(request, error: &error) as [VPN]?
+        let fetchResults = self.managedObjectContext!.executeFetchRequest(request, error: nil) as [VPN]?
         
         if let results = fetchResults {
-            vpns = results
-        } else {
-            println("cannot fetch vpns. \(error?.localizedDescription)")
+            for vpn in results {
+                if vpn.deleted {
+                    continue
+                }
+                vpns.append(vpn)
+            }
         }
         
         return vpns
@@ -41,7 +43,7 @@ extension VPNDataManager
         
         var error: NSError?
         if !self.managedObjectContext!.save(&error) {
-            println("Could not save \(error), \(error?.userInfo)")
+            println("Could not save VPN \(error), \(error?.userInfo)")
             return false
         } else {
             saveContext()
@@ -50,7 +52,7 @@ extension VPNDataManager
                 VPNKeychainWrapper.setPassword(password, forVPNID: vpn.ID)
                 VPNKeychainWrapper.setSecret(secret, forVPNID: vpn.ID)
                 
-                if allVPN().count == 0 {
+                if allVPN().count == 1 {
                     VPNManager.sharedManager().activatedVPNID = vpn.ID
                 }
             }
@@ -63,33 +65,43 @@ extension VPNDataManager
         let objectID = vpn.objectID
         let ID = "\(vpn.ID)"
         
-        var vpns: [VPN]? = allVPN()
-        if vpns!.count == 1 {
-            VPNManager.sharedManager().activatedVPNID = nil
-        } else if vpns!.count > 1 {
-            if let activatedVPNID = VPNManager.sharedManager().activatedVPNID {
-                if activatedVPNID == ID {
-                    VPNManager.sharedManager().activatedVPNID = vpns!.first!.ID
+        VPNKeychainWrapper.destoryKeyForVPNID(ID)
+        managedObjectContext!.deleteObject(vpn)
+        
+        var saveError: NSError?
+        managedObjectContext!.save(&saveError)
+        saveContext()
+        
+        if let activatedVPNID = VPNManager.sharedManager().activatedVPNID {
+            if activatedVPNID == ID {
+                VPNManager.sharedManager().activatedVPNID = nil
+                
+                var vpns = allVPN()
+                
+                if let firstVPN = vpns.first {
+                    VPNManager.sharedManager().activatedVPNID = firstVPN.ID
                 }
             }
         }
-        vpns = nil
-        
-        VPNKeychainWrapper.destoryKeyForVPNID(ID)
-        managedObjectContext?.deleteObject(vpn)
-        saveContext()
     }
     
     func VPNByID(ID: NSManagedObjectID) -> VPN?
     {
         var error: NSError?
-        var result = self.managedObjectContext?.existingObjectWithID(ID, error: &error) as VPN?
+        if ID.temporaryID {
+            return .None
+        }
+        
+        var result = self.managedObjectContext?.existingObjectWithID(ID, error: &error)
         if let vpn = result {
-            return vpn
+            if !vpn.deleted {
+                return vpn as? VPN
+            }
         } else {
             println("Fetch error: \(error)")
             return .None
         }
+        return .None
     }
     
     func VPNByIDString(ID: String) -> VPN?
@@ -116,9 +128,14 @@ extension VPNDataManager
         let fetchResults = self.managedObjectContext!.executeFetchRequest(request, error: &error) as [VPN]?
         
         if let results = fetchResults {
-            vpns = results
+            for vpn in results {
+                if vpn.deleted {
+                    continue
+                }
+                vpns.append(vpn)
+            }
         } else {
-            println("cannot fetch vpns. \(error?.localizedDescription)")
+            println("Failed to fetch VPNs: \(error?.localizedDescription)")
         }
         
         return vpns
