@@ -82,7 +82,28 @@ class KeychainWrapper {
         keychainQueryDictionary[SecMatchLimit] = kSecMatchLimitOne
         
         // Specify we want NSData/CFData returned
-//        keychainQueryDictionary[SecReturnData] = kCFBooleanTrue
+        keychainQueryDictionary[SecReturnData] = kCFBooleanTrue
+        
+        // Search
+        var searchResultRef: Unmanaged<AnyObject>?
+        var keychainValue: NSData?
+        
+        let status: OSStatus = SecItemCopyMatching(keychainQueryDictionary, &searchResultRef)
+        
+        if status == noErr {
+            if let resultRef = searchResultRef {
+                keychainValue = resultRef.takeUnretainedValue() as? NSData
+            }
+        }
+        
+        return keychainValue;
+    }
+    
+    class func dataRefForKey(keyName: String) -> NSData? {
+        var keychainQueryDictionary = self.setupKeychainQueryDictionaryForKey(keyName)
+        
+        // Limit search results to one
+        keychainQueryDictionary[SecMatchLimit] = kSecMatchLimitOne
         
         keychainQueryDictionary[SecReturnPersistentRef] = kCFBooleanTrue
         
@@ -174,8 +195,6 @@ class KeychainWrapper {
         var encodedIdentifier: NSData? = keyName.dataUsingEncoding(NSUTF8StringEncoding)
         
         keychainQueryDictionary[SecAttrGeneric] = encodedIdentifier
-        
-        keychainQueryDictionary[SecReturnPersistentRef] = kCFBooleanTrue
         
         keychainQueryDictionary[SecAttrAccount] = encodedIdentifier
         
