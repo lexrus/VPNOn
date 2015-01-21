@@ -20,7 +20,7 @@ let kVPNCellID = "VPNCell"
 class LTVPNTableViewController: UITableViewController, SimplePingDelegate
 {
     var vpns = [VPN]()
-    var activatedVPNID = ""
+    var activatedVPNID: NSString? = nil
     @IBOutlet weak var restartPingButton: UIBarButtonItem!
     
     override func loadView() {
@@ -32,6 +32,8 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        vpns = VPNDataManager.sharedManager.allVPN()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("VPNDidCreate:"), name: kLTVPNDidCreate, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("VPNDidUpdate:"), name: kLTVPNDidUpdate, object: nil)
@@ -52,13 +54,9 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        vpns = VPNDataManager.sharedManager.allVPN()
         
-        if let activatedVPN = VPNManager.sharedManager().activatedVPNDict as NSDictionary? {
-            activatedVPNID = activatedVPN.objectForKey("ID") as String
-        } else if vpns.count == 1 {
-            activatedVPNID = vpns.first!.ID
-            VPNManager.sharedManager().activatedVPNDict = vpns.first!.toDictionary()
+        if let activatedVPN = VPNDataManager.sharedManager.activatedVPN {
+            activatedVPNID = activatedVPN.ID
         }
         
         tableView.reloadData()
@@ -104,7 +102,7 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         if indexPath.section == kVPNListSectionIndex {
             activatedVPNID = vpns[indexPath.row].ID
-            VPNManager.sharedManager().activatedVPNDict = vpns[indexPath.row].toDictionary()
+            VPNManager.sharedManager().activatedVPNID = activatedVPNID
             tableView.reloadData()
         } else {
             // Add cell selected
@@ -154,7 +152,7 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate
         // NOTE: Update activated VPN dict for widget
         for vpn in vpns {
             if vpn.ID == activatedVPNID {
-                VPNManager.sharedManager().activatedVPNDict = vpn.toDictionary()
+                VPNManager.sharedManager().activatedVPNID = vpn.ID
                 break
             }
         }

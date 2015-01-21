@@ -19,7 +19,7 @@ class VPNInfo {
 }
 
 @objc(VPN)
-class VPN : NSManagedObject{
+public class VPN : NSManagedObject{
     
 	@NSManaged var account:     String!
 	@NSManaged var group:       String!
@@ -34,7 +34,7 @@ class VPN : NSManagedObject{
     @NSManaged var isp:         String!
     
     var ID : String {
-        if let id = objectID.URIRepresentation().lastPathComponent {
+        if let id = objectID.URIRepresentation().absoluteString {
             return id
         }
         return ""
@@ -132,6 +132,7 @@ class VPN : NSManagedObject{
     func destroy() {
         VPNManager.sharedManager().removeProfile()
         
-        self.managedObjectContext!.deleteObject(self)
+        managedObjectContext!.deleteObject(self)
+        managedObjectContext!.save(nil)
     }
 }

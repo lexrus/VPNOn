@@ -21,16 +21,17 @@ extension LTVPNConfigViewController
                     let deletedVPNID = currentVPN.ID
                     currentVPN.destroy()
                     
-                    if let activatedVPNDict = VPNManager.sharedManager().activatedVPNDict as NSDictionary? {
-                        if activatedVPNDict.objectForKey("ID") as String == deletedVPNID {
+                    if let activatedVPNID = VPNManager.sharedManager().activatedVPNID {
+                        if activatedVPNID == deletedVPNID {
                             let vpns = VPNDataManager.sharedManager.allVPN()
                             if vpns.count >= 1 {
-                                VPNManager.sharedManager().activatedVPNDict = vpns.first!.toDictionary()
+                                VPNManager.sharedManager().activatedVPNID = vpns.first!.ID
                             } else {
-                                VPNManager.sharedManager().activatedVPNDict = .None
+                                VPNManager.sharedManager().activatedVPNID = .None
                             }
                         }
                     }
+                    
                     VPNKeychainWrapper.destoryKeyForVPNID(currentVPN.ID)
                     
                     NSNotificationCenter.defaultCenter().postNotificationName(kLTVPNDidRemove, object: nil)

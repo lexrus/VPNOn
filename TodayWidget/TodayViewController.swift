@@ -28,10 +28,9 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         VPNLabel.userInteractionEnabled = true
         VPNLabel.addGestureRecognizer(tapGesture)
         
-        if let vpn = VPNManager.sharedManager().activatedVPNDict as NSDictionary? {
-            VPNTitle = vpn.objectForKey("title") as String
+        if let vpn = VPNDataManager.sharedManager.activatedVPN {
+            VPNTitle = vpn.title
             VPNSwitch.enabled = true
-            
             VPNStatusDidChange(nil)
         } else {
             VPNLabel.text = "Please add a VPN."
@@ -79,7 +78,11 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     @IBAction func toggleVPN(sender: UISwitch) {
         if sender.on {
-            VPNManager.sharedManager().connect()
+            if let vpn = VPNDataManager.sharedManager.activatedVPN {
+                let passwordRef = VPNKeychainWrapper.passwordForVPNID(vpn.ID)
+                let secretRef = VPNKeychainWrapper.secretForVPNID(vpn.ID)
+                VPNManager.sharedManager().connect(vpn.title, server: vpn.server, account: vpn.account, group: vpn.group, alwaysOn: vpn.alwaysOn, passwordRef: passwordRef, secretRef: secretRef)
+            }
         } else {
             VPNManager.sharedManager().disconnect()
         }

@@ -51,17 +51,22 @@ extension VPNDataManager
                 VPNKeychainWrapper.setSecret(secret, forVPNID: vpn.ID)
                 
                 if allVPN().count == 0 {
-                    VPNManager.sharedManager().activatedVPNDict = vpn.toDictionary()
+                    VPNManager.sharedManager().activatedVPNID = vpn.ID
                 }
             }
             return true
         }
     }
     
-    func deleteVPN(vpn:VPN)
+    func deleteVPN(vpn:VPN) -> Bool
     {
-        self.managedObjectContext?.deleteObject(vpn)
-        self.saveContext()
+        let objectID = vpn.objectID
+        managedObjectContext?.deleteObject(vpn)
+        if let vpn = managedObjectContext?.existingObjectWithID(objectID, error: nil) {
+            return false
+        }
+        saveContext()
+        return true
     }
     
     func VPNByID(ID: NSManagedObjectID) -> VPN?
@@ -74,5 +79,19 @@ extension VPNDataManager
             println("Fetch error: \(error)")
             return .None
         }
+    }
+    
+    func VPNByIDString(ID: String) -> VPN?
+    {
+        if let URL = NSURL(string: ID) {
+            if let scheme = URL.scheme {
+                if scheme.lowercaseString == "x-coredata" {
+                    if let moid = self.persistentStoreCoordinator!.managedObjectIDForURIRepresentation(URL) {
+                        return self.VPNByID(moid)
+                    }
+                }
+            }
+        }
+        return .None
     }
 }
