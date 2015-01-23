@@ -54,42 +54,6 @@ class LTVPNConfigViewController: UITableViewController, UITextFieldDelegate
         toggleSaveButtonByStatus()
     }
     
-    @IBAction func saveVPN(sender: AnyObject) {
-        if let currentVPN = vpn {
-            currentVPN.title = titleTextField.text
-            currentVPN.server = serverTextField.text
-            currentVPN.account = accountTextField.text
-            currentVPN.group = groupTextField.text
-            currentVPN.alwaysOn = alwaysOnSwitch.on
-            
-            if passwordTextField!.text != kImpossibleHash {
-                VPNKeychainWrapper.setPassword(passwordTextField!.text, forVPNID: currentVPN.ID)
-            }
-            
-            if secretTextField!.text != kImpossibleHash {
-                VPNKeychainWrapper.setSecret(secretTextField!.text, forVPNID: currentVPN.ID)
-            }
-            
-            VPNDataManager.sharedManager.saveContext()
-            
-            NSNotificationCenter.defaultCenter().postNotificationName(kLTVPNDidUpdate, object: nil)
-        } else {
-            let success = VPNDataManager.sharedManager.createVPN(
-                titleTextField.text,
-                server: serverTextField.text,
-                account: accountTextField.text,
-                password: passwordTextField.text,
-                group: groupTextField.text,
-                secret: secretTextField.text,
-                alwaysOn: alwaysOnSwitch.on
-            )
-            
-            if success {
-                NSNotificationCenter.defaultCenter().postNotificationName(kLTVPNDidCreate, object: self)
-            }
-        }
-    }
-    
     override func loadView() {
         super.loadView()
         
@@ -106,6 +70,7 @@ class LTVPNConfigViewController: UITableViewController, UITextFieldDelegate
             accountTextField.text = currentVPN.account
             groupTextField.text = currentVPN.group
             alwaysOnSwitch.on = currentVPN.alwaysOn
+            typeSegment.selectedSegmentIndex = currentVPN.ikev2 ? 1 : 0
             
             if let passwordRef = VPNKeychainWrapper.passwordForVPNID(currentVPN.ID) {
                 passwordTextField!.text = kImpossibleHash
@@ -126,6 +91,7 @@ class LTVPNConfigViewController: UITableViewController, UITextFieldDelegate
                 groupTextField.text = info.group
                 secretTextField.text = info.secret
                 alwaysOnSwitch.on = info.alwaysOn
+                typeSegment.selectedSegmentIndex = info.ikev2 ? 1 : 0
                 toggleSaveButtonByStatus()
             }
             
@@ -142,15 +108,5 @@ class LTVPNConfigViewController: UITableViewController, UITextFieldDelegate
     
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
-    }
-    
-    func toggleSaveButtonByStatus() {
-        if self.titleTextField.text.isEmpty
-            || self.accountTextField.text.isEmpty
-            || self.serverTextField.text.isEmpty {
-                self.saveButton?.enabled = false
-        } else {
-            self.saveButton?.enabled = true
-        }
     }
 }
