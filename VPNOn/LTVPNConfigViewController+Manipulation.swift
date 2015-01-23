@@ -1,5 +1,5 @@
 //
-//  LTVPNConfigViewController+Delete.swift
+//  LTVPNConfigViewController+Manipulation.swift
 //  VPNOn
 //
 //  Created by Lex Tang on 1/20/15.

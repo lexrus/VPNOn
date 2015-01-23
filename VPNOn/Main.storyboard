@@ -373,6 +373,9 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="p21-Cr-Izw">
                                                     <rect key="frame" x="535" y="6" width="51" height="31"/>
+                                                    <connections>
+                                                        <action selector="didChangeCertificationSwitch:" destination="z7c-q3-RcX" eventType="valueChanged" id="QJk-Gp-9O6"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <constraints>
@@ -490,6 +493,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="RyC-km-4Av" kind="show" id="VfC-US-l9Z"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -603,7 +609,7 @@
                         <outlet property="accountTextField" destination="eUh-Mf-gFu" id="4WC-M1-N94"/>
                         <outlet property="alwaysOnSwitch" destination="4Bg-cZ-sYk" id="ziv-mv-el3"/>
                         <outlet property="certficationCell" destination="UD8-VF-g5N" id="MTh-Vz-I9s"/>
-                        <outlet property="certificateSwith" destination="p21-Cr-Izw" id="f85-lr-aSm"/>
+                        <outlet property="certificationSwitch" destination="p21-Cr-Izw" id="hUS-hM-Nyh"/>
                         <outlet property="deleteCell" destination="aVU-jp-9tN" id="Ulk-73-rhF"/>
                         <outlet property="duplicateCell" destination="663-D6-n2X" id="ah7-Hk-QgA"/>
                         <outlet property="groupCell" destination="S09-rd-58a" id="9j7-ht-aol"/>
@@ -620,6 +626,48 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NXS-OW-yAu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1937" y="183"/>
+        </scene>
+        <!--Certification-->
+        <scene sceneID="UKw-fc-C2t">
+            <objects>
+                <tableViewController title="Certification" id="RyC-km-4Av" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="1gR-8s-pXN">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection id="LMw-lh-D2c">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="7pf-yf-nZx">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7pf-yf-nZx" id="q7L-dn-abJ">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ckk-x3-P2K">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ckk-x3-P2K" id="1hc-su-eMO">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="23r-xi-YHl">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="23r-xi-YHl" id="alZ-xA-OK5">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="RyC-km-4Av" id="X50-mv-BHN"/>
+                            <outlet property="delegate" destination="RyC-km-4Av" id="293-AC-zcW"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bcL-pD-N1D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2708" y="183"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2dQ-gU-dhf">

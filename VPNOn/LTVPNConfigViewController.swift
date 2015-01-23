@@ -22,7 +22,7 @@ class LTVPNConfigViewController: UITableViewController, UITextFieldDelegate
     var initializedVPNInfo : VPNInfo? = VPNInfo()
     
     @IBOutlet weak var typeSegment: UISegmentedControl!
-    @IBOutlet weak var certificateSwith: UISwitch!
+    @IBOutlet weak var certificationSwitch: UISwitch!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var serverTextField: UITextField!
     @IBOutlet weak var accountTextField: UITextField!
@@ -46,10 +46,6 @@ class LTVPNConfigViewController: UITableViewController, UITextFieldDelegate
         }
         return Optional.None
         }()
-    
-    @IBAction func didChangeType(sender: AnyObject) {
-        
-    }
     
     @IBAction func didChangeAlwaysOn(sender: AnyObject) {
         toggleSaveButtonByStatus()
@@ -133,6 +129,8 @@ class LTVPNConfigViewController: UITableViewController, UITextFieldDelegate
             deleteCell.hidden = true
             duplicateCell.hidden = true
         }
+        
+        toggleCertificationOptions()
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -152,5 +150,4 @@ class LTVPNConfigViewController: UITableViewController, UITextFieldDelegate
             self.saveButton?.enabled = true
         }
     }
-    
 }
