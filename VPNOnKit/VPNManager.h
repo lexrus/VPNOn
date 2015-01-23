@@ -22,13 +22,23 @@
 
 + (VPNManager *) sharedManager;
 
-- (void) connect:(NSString *)title
-          server:(NSString *)server
-         account:(NSString *)account
-           group:(NSString *)group
-        alwaysOn:(BOOL)alwaysOn
-     passwordRef:(NSData *)passwordRef
-       secretRef:(NSData *)secretRef;
+- (void) connectIPSec:(NSString *)title
+               server:(NSString *)server
+              account:(NSString *)account
+                group:(NSString *)group
+             alwaysOn:(BOOL)alwaysOn
+          passwordRef:(NSData *)passwordRef
+            secretRef:(NSData *)secretRef
+          certificate:(NSString *)certificate;
+
+- (void) connectIKEv2:(NSString *)title
+               server:(NSString *)server
+              account:(NSString *)account
+                group:(NSString *)group
+             alwaysOn:(BOOL)alwaysOn
+          passwordRef:(NSData *)passwordRef
+            secretRef:(NSData *)secretRef
+          certificate:(NSString *)certificate;
 
 - (void) disconnect;
 
