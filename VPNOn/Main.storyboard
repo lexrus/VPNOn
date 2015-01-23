@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C99d" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ViW-99-x1O">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ViW-99-x1O">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -630,13 +630,13 @@
         <!--Certificate-->
         <scene sceneID="UKw-fc-C2t">
             <objects>
-                <tableViewController title="Certificate" id="RyC-km-4Av" sceneMemberID="viewController">
+                <tableViewController title="Certificate" id="RyC-km-4Av" customClass="LTVPNCertificateViewController" customModule="VPNOn" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="1gR-8s-pXN">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
-                            <tableViewSection id="LMw-lh-D2c">
+                            <tableViewSection headerTitle="Certificate Content" footerTitle="Certificate is stored in KeyChain" id="LMw-lh-D2c">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="100" id="7pf-yf-nZx">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -644,18 +644,25 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jcO-em-k7M">
-                                                    <rect key="frame" x="16" y="8" width="568" height="83.5"/>
+                                                    <rect key="frame" x="11" y="8" width="581" height="83.5"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" keyboardAppearance="alert" returnKeyType="done"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="RyC-km-4Av" id="ZeM-CT-BZy"/>
+                                                    </connections>
                                                 </textView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="jcO-em-k7M" secondAttribute="trailing" constant="8" id="OUk-LN-hqa"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="jcO-em-k7M" secondAttribute="trailing" id="OUk-LN-hqa"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="jcO-em-k7M" secondAttribute="bottom" id="Oeo-nR-HkH"/>
                                                 <constraint firstItem="jcO-em-k7M" firstAttribute="top" secondItem="q7L-dn-abJ" secondAttribute="topMargin" id="pKi-gy-Sc5"/>
-                                                <constraint firstItem="jcO-em-k7M" firstAttribute="leading" secondItem="q7L-dn-abJ" secondAttribute="leadingMargin" constant="8" id="q47-Zq-cbx"/>
+                                                <constraint firstItem="jcO-em-k7M" firstAttribute="leading" secondItem="q7L-dn-abJ" secondAttribute="leadingMargin" constant="3" id="q47-Zq-cbx">
+                                                    <variation key="heightClass=regular" constant="6"/>
+                                                    <variation key="widthClass=compact" constant="3"/>
+                                                    <variation key="heightClass=regular-widthClass=regular" constant="6"/>
+                                                </constraint>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -704,8 +711,17 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Certificate" id="whE-eZ-DWz">
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="save" id="Z2z-CY-K0P"/>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="save" id="Z2z-CY-K0P">
+                            <connections>
+                                <action selector="save:" destination="RyC-km-4Av" id="TUL-Fb-Jj9"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="certificateTextView" destination="jcO-em-k7M" id="o3F-R2-Qk9"/>
+                        <outlet property="deleteCell" destination="wPJ-3O-kQF" id="Qeq-T4-fhT"/>
+                        <outlet property="saveButton" destination="Z2z-CY-K0P" id="aWg-2T-Wmo"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bcL-pD-N1D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
