@@ -1,5 +1,5 @@
 //
-//  LTVPNConfigViewController+Certification.swift
+//  LTVPNConfigViewController+Certificate.swift
 //  VPNOn
 //
 //  Created by Lex Tang on 1/23/15.
@@ -10,18 +10,18 @@ import UIKit
 
 extension LTVPNConfigViewController
 {
-    func toggleCertificationOptions() {
-        groupCell.hidden = certificationSwitch.on
-        secretCell.hidden = certificationSwitch.on
-        certficationCell.hidden = !certificationSwitch.on
+    func toggleCertificateOptions() {
+        groupCell.hidden = certificateSwitch.on
+        secretCell.hidden = certificateSwitch.on
+        certficateCell.hidden = !certificateSwitch.on
         
-        passwordTextField.returnKeyType = certificationSwitch.on ? .Done : .Next
+        passwordTextField.returnKeyType = certificateSwitch.on ? .Done : .Next
         
         tableView.reloadData()
     }
     
-    @IBAction func didChangeCertificationSwitch(sender: AnyObject) {
-        toggleCertificationOptions()
+    @IBAction func didChangeCertificateSwitch(sender: AnyObject) {
+        toggleCertificateOptions()
     }
     
     // MARK: - TableView data source
@@ -30,11 +30,11 @@ extension LTVPNConfigViewController
         let height = super.tableView(tableView, heightForRowAtIndexPath: indexPath)
         
         if indexPath.section == 1 {
-            if indexPath.row == 5 && certificationSwitch.on {
+            if indexPath.row == 5 && certificateSwitch.on {
                 return 0
-            } else if indexPath.row == 6 && certificationSwitch.on {
+            } else if indexPath.row == 6 && certificateSwitch.on {
                 return 0
-            } else if indexPath.row == 7 && !certificationSwitch.on {
+            } else if indexPath.row == 7 && !certificateSwitch.on {
                 return 0
             }
         }

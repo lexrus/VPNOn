@@ -45,7 +45,7 @@ extension LTVPNConfigViewController
             passwordTextField.becomeFirstResponder()
             break
         case passwordTextField:
-            if certificationSwitch.on {
+            if certificateSwitch.on {
                 passwordTextField.resignFirstResponder()
             } else {
                 secretTextField.becomeFirstResponder()

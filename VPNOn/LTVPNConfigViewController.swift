@@ -21,8 +21,9 @@ class LTVPNConfigViewController: UITableViewController, UITextFieldDelegate
     
     var initializedVPNInfo : VPNInfo? = VPNInfo()
     
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var typeSegment: UISegmentedControl!
-    @IBOutlet weak var certificationSwitch: UISwitch!
+    
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var serverTextField: UITextField!
     @IBOutlet weak var accountTextField: UITextField!
@@ -30,12 +31,15 @@ class LTVPNConfigViewController: UITableViewController, UITextFieldDelegate
     @IBOutlet weak var groupTextField: UITextField!
     @IBOutlet weak var secretTextField: UITextField!
     @IBOutlet weak var alwaysOnSwitch: UISwitch!
-    @IBOutlet weak var saveButton: UIBarButtonItem!
-    @IBOutlet weak var deleteCell: UITableViewCell!
-    @IBOutlet weak var duplicateCell: UITableViewCell!
+    
+    @IBOutlet weak var certificateSwitch: UISwitch!
+    
     @IBOutlet weak var secretCell: UITableViewCell!
     @IBOutlet weak var groupCell: UITableViewCell!
-    @IBOutlet weak var certficationCell: UITableViewCell!
+    @IBOutlet weak var certficateCell: UITableViewCell!
+    
+    @IBOutlet weak var deleteCell: UITableViewCell!
+    @IBOutlet weak var duplicateCell: UITableViewCell!
     
     lazy var vpn: VPN? = {
         if let ID = VPNDataManager.sharedManager.selectedVPNID {
@@ -130,7 +134,7 @@ class LTVPNConfigViewController: UITableViewController, UITextFieldDelegate
             duplicateCell.hidden = true
         }
         
-        toggleCertificationOptions()
+        toggleCertificateOptions()
     }
     
     override func viewWillDisappear(animated: Bool) {

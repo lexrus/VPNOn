@@ -374,7 +374,7 @@
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="p21-Cr-Izw">
                                                     <rect key="frame" x="535" y="6" width="51" height="31"/>
                                                     <connections>
-                                                        <action selector="didChangeCertificationSwitch:" destination="z7c-q3-RcX" eventType="valueChanged" id="QJk-Gp-9O6"/>
+                                                        <action selector="didChangeCertificateSwitch:" destination="z7c-q3-RcX" eventType="valueChanged" id="3Ad-M0-Sg3"/>
                                                     </connections>
                                                 </switch>
                                             </subviews>
@@ -485,7 +485,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Certification Name" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yI7-6o-40u">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yI7-6o-40u">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
@@ -494,7 +494,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="RyC-km-4Av" kind="show" id="VfC-US-l9Z"/>
+                                            <segue destination="RyC-km-4Av" kind="show" id="Hvv-zR-5XW"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -608,8 +608,8 @@
                     <connections>
                         <outlet property="accountTextField" destination="eUh-Mf-gFu" id="4WC-M1-N94"/>
                         <outlet property="alwaysOnSwitch" destination="4Bg-cZ-sYk" id="ziv-mv-el3"/>
-                        <outlet property="certficationCell" destination="UD8-VF-g5N" id="MTh-Vz-I9s"/>
-                        <outlet property="certificationSwitch" destination="p21-Cr-Izw" id="hUS-hM-Nyh"/>
+                        <outlet property="certficateCell" destination="UD8-VF-g5N" id="bmm-hy-6Rf"/>
+                        <outlet property="certificateSwitch" destination="p21-Cr-Izw" id="tpn-yq-J8f"/>
                         <outlet property="deleteCell" destination="aVU-jp-9tN" id="Ulk-73-rhF"/>
                         <outlet property="duplicateCell" destination="663-D6-n2X" id="ah7-Hk-QgA"/>
                         <outlet property="groupCell" destination="S09-rd-58a" id="9j7-ht-aol"/>
@@ -627,10 +627,10 @@
             </objects>
             <point key="canvasLocation" x="1937" y="183"/>
         </scene>
-        <!--Certification-->
+        <!--Certificate-->
         <scene sceneID="UKw-fc-C2t">
             <objects>
-                <tableViewController title="Certification" id="RyC-km-4Av" sceneMemberID="viewController">
+                <tableViewController title="Certificate" id="RyC-km-4Av" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="1gR-8s-pXN">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
