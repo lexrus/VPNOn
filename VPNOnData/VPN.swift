@@ -16,6 +16,7 @@ class VPNInfo {
     var longitude:   Float  = 0.0
     var countryCode: String = ""
     var isp:         String = ""
+    var ikev2:       Bool   = false
 }
 
 @objc(VPN)
@@ -32,6 +33,7 @@ public class VPN : NSManagedObject{
     @NSManaged var longitude:   Float
     @NSManaged var countryCode: String!
     @NSManaged var isp:         String!
+    @NSManaged var ikev2:       Bool
     
     var ID : String {
         if let id = objectID.URIRepresentation().absoluteString {
@@ -53,6 +55,7 @@ public class VPN : NSManagedObject{
         setValue(longitude,   forKey: "longitude")
         setValue(countryCode, forKey: "countryCode")
         setValue(isp,         forKey: "isp")
+        setValue(ikev2,       forKey: "ikev2")
     }
 
 	/**
@@ -94,6 +97,9 @@ public class VPN : NSManagedObject{
         if let ispValue = dictionary["isp"] as? String {
             isp = ispValue
         }
+        if let ikev2Value = dictionary["ikev2"] as? NSNumber {
+            ikev2 = ikev2Value.boolValue
+        }
 	}
 
 	/**
@@ -120,6 +126,7 @@ public class VPN : NSManagedObject{
         dictionary["latency"]    = NSNumber(integer: latency)
         dictionary["latitude"]   = NSNumber(float: latitude)
         dictionary["longitude"]  = NSNumber(float: longitude)
+        dictionary["ikev2"]      = NSNumber(bool: ikev2)
         if countryCode != nil {
             dictionary["countryCode"] = countryCode
         }

@@ -199,6 +199,7 @@
 		D77F341A1A6F842C00796827 /* LTTableViewActionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTTableViewActionCell.swift; sourceTree = "<group>"; };
 		D77F341C1A6F875E00796827 /* LTTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTTextField.swift; sourceTree = "<group>"; };
 		D79F736F1A72823400EB2289 /* LTVPNCertificateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTVPNCertificateViewController.swift; sourceTree = "<group>"; };
+		D79F73711A728C7D00EB2289 /* VPN On 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "VPN On 3.xcdatamodel"; sourceTree = "<group>"; };
 		D7B033BA1A6E5ED1009D791E /* VPNDataManager+ActivatedVPN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VPNDataManager+ActivatedVPN.swift"; sourceTree = "<group>"; };
 		D7BB2DCD1A6C066B00D8D581 /* LTTableViewCellTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTTableViewCellTitle.swift; sourceTree = "<group>"; };
 		D7BB2DCF1A6C08BB00D8D581 /* LTSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTSplitViewController.swift; sourceTree = "<group>"; };
@@ -1160,10 +1161,11 @@
 		D7453F9F1A3196E200F7E32D /* VPNOn.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				D79F73711A728C7D00EB2289 /* VPN On 3.xcdatamodel */,
 				D7C7659E1A6CB0500010C170 /* VPN On 2.xcdatamodel */,
 				D7453FA01A3196E200F7E32D /* VPN On.xcdatamodel */,
 			);
-			currentVersion = D7C7659E1A6CB0500010C170 /* VPN On 2.xcdatamodel */;
+			currentVersion = D79F73711A728C7D00EB2289 /* VPN On 3.xcdatamodel */;
 			path = VPNOn.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
