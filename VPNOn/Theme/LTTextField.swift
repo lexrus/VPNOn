@@ -24,7 +24,7 @@ class LTTextField: UITextField {
     }
     
     private func fixedMiddlePlaceholderRect(rect: CGRect) -> CGRect {
-        return CGRectMake(bounds.origin.x, bounds.origin.y + (rect.size.height - font.pointSize) / 2 - 2, rect.size.width, font.pointSize)
+        return CGRectMake(bounds.origin.x, bounds.origin.y + (rect.size.height - font.pointSize) / 2 - 2, rect.size.width, font.pointSize * 1.3)
     }
 
 }
