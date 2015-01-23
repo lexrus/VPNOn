@@ -30,7 +30,17 @@ extension VPNDataManager
         return vpns
     }
     
-    func createVPN(title: String, server: String, account: String, password: String, group: String, secret: String, alwaysOn: Bool = true) -> Bool
+    func createVPN(
+        title: String,
+        server: String,
+        account: String,
+        password: String,
+        group: String,
+        secret: String,
+        alwaysOn: Bool = true,
+        ikev2: Bool = false,
+        certificate: String = ""
+        ) -> Bool
     {
         let entity = NSEntityDescription.entityForName("VPN", inManagedObjectContext: self.managedObjectContext!)
         let vpn = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: self.managedObjectContext!) as VPN
@@ -40,6 +50,7 @@ extension VPNDataManager
         vpn.account = account
         vpn.group = group
         vpn.alwaysOn = alwaysOn
+        vpn.ikev2 = ikev2
         
         var error: NSError?
         if !self.managedObjectContext!.save(&error) {
@@ -49,8 +60,15 @@ extension VPNDataManager
             saveContext()
             
             if !vpn.objectID.temporaryID {
-                VPNKeychainWrapper.setPassword(password, forVPNID: vpn.ID)
-                VPNKeychainWrapper.setSecret(secret, forVPNID: vpn.ID)
+                if !password.isEmpty {
+                    VPNKeychainWrapper.setPassword(password, forVPNID: vpn.ID)
+                }
+                if !secret.isEmpty {
+                    VPNKeychainWrapper.setSecret(secret, forVPNID: vpn.ID)
+                }
+                if !certificate.isEmpty {
+                    VPNKeychainWrapper.setCertificate(certificate, forVPNID: vpn.ID)
+                }
                 
                 if allVPN().count == 1 {
                     VPNManager.sharedManager().activatedVPNID = vpn.ID
@@ -164,10 +182,13 @@ extension VPNDataManager
                 newTitle,
                 server: vpn.server,
                 account: vpn.account,
-                password: VPNKeychainWrapper.passwordStringForVPNID(vpn.ID),
+                password: VPNKeychainWrapper.passwordStringForVPNID(vpn.ID) ?? "",
                 group: vpn.group,
-                secret: VPNKeychainWrapper.secretStringForVPNID(vpn.ID),
-                alwaysOn: vpn.alwaysOn)
+                secret: VPNKeychainWrapper.secretStringForVPNID(vpn.ID) ?? "",
+                alwaysOn: vpn.alwaysOn,
+                ikev2: vpn.ikev2,
+                certificate: VPNKeychainWrapper.certificateStringForVPNID(vpn.ID) ?? ""
+                )
             {
                 let newVPNs = VPNHasTitle(newTitle)
                 if newVPNs.count > 0 {

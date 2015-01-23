@@ -52,9 +52,13 @@ class VPNDataManager
         let url = self.dataDirectory.URLByAppendingPathComponent("VPNOn.sqlite")
         var failureReason = "There was an error creating or loading the application's saved data."
         
+        let options = NSDictionary(
+            objects: [NSNumber(bool: true), NSNumber(bool: true), "WAL"],
+            forKeys: [NSMigratePersistentStoresAutomaticallyOption, NSInferMappingModelAutomaticallyOption, "journal_mode"])
+        
         var error: NSError? = nil
         if let store = coordinator!.persistentStoreForURL(url) { }
-        else if coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil, error: &error) == nil {
+        else if coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: options, error: &error) == nil {
             coordinator = nil
             // Report any error we got.
             let dict = NSMutableDictionary()

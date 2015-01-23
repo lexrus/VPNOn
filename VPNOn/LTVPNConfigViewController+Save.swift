@@ -18,6 +18,7 @@ extension LTVPNConfigViewController
             currentVPN.account = accountTextField.text
             currentVPN.group = groupTextField.text
             currentVPN.alwaysOn = alwaysOnSwitch.on
+            currentVPN.ikev2 = typeSegment.selectedSegmentIndex == 1
             
             if passwordTextField!.text != kImpossibleHash {
                 VPNKeychainWrapper.setPassword(passwordTextField!.text, forVPNID: currentVPN.ID)
@@ -38,7 +39,8 @@ extension LTVPNConfigViewController
                 password: passwordTextField.text,
                 group: groupTextField.text,
                 secret: secretTextField.text,
-                alwaysOn: alwaysOnSwitch.on
+                alwaysOn: alwaysOnSwitch.on,
+                ikev2: typeSegment.selectedSegmentIndex == 1
             )
             
             if success {

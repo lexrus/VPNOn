@@ -11,6 +11,8 @@ import UIKit
 extension LTVPNConfigViewController
 {
     @IBAction func didChangeType(sender: AnyObject) {
+        toggleSaveButtonByStatus()
+        
         
     }
 }

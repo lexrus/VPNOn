@@ -17,7 +17,9 @@
 
 + (BOOL) setPassword:(NSString *)password forVPNID:(NSString *)VPNID;
 
-+ (BOOL) setSecret:(NSString*)secret forVPNID:(NSString *)VPNID;
++ (BOOL) setSecret:(NSString *)secret forVPNID:(NSString *)VPNID;
+
++ (BOOL) setCertificate:(NSString *)certificate forVPNID:(NSString *)VPNID;
 
 + (NSData *) passwordForVPNID:(NSString *)VPNID;
 
@@ -26,6 +28,8 @@
 + (NSData *) secretForVPNID:(NSString *)VPNID;
 
 + (NSString *) secretStringForVPNID:(NSString *)VPNID;
+
++ (NSString *) certificateStringForVPNID:(NSString *)VPNID;
 
 + (void) destoryKeyForVPNID:(NSString *)VPNID;
 

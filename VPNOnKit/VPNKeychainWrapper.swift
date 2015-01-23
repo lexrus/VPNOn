@@ -28,6 +28,13 @@ class VPNKeychainWrapper
         return KeychainWrapper.setString(secret, forKey: "\(key)psk")
     }
     
+    class func setCertificate(secret: String, forVPNID VPNID: String) -> Bool {
+        let key = NSURL(string: VPNID)!.lastPathComponent!
+        KeychainWrapper.serviceName = kKeychainServiceName
+        KeychainWrapper.removeObjectForKey("\(key)cert")
+        return KeychainWrapper.setString(secret, forKey: "\(key)cert")
+    }
+    
     class func passwordForVPNID(VPNID: String) -> NSData? {
         let key = NSURL(string: VPNID)!.lastPathComponent!
         KeychainWrapper.serviceName = kKeychainServiceName
@@ -45,6 +52,7 @@ class VPNKeychainWrapper
         KeychainWrapper.serviceName = kKeychainServiceName
         KeychainWrapper.removeObjectForKey(key)
         KeychainWrapper.removeObjectForKey("\(key)psk")
+        KeychainWrapper.removeObjectForKey("\(key)cert")
     }
     
     class func passwordStringForVPNID(VPNID: String) -> String? {
@@ -57,5 +65,11 @@ class VPNKeychainWrapper
         let key = NSURL(string: VPNID)!.lastPathComponent!
         KeychainWrapper.serviceName = kKeychainServiceName
         return KeychainWrapper.stringForKey("\(key)psk")
+    }
+    
+    class func certificateStringForVPNID(VPNID: String) -> String? {
+        let key = NSURL(string: VPNID)!.lastPathComponent!
+        KeychainWrapper.serviceName = kKeychainServiceName
+        return KeychainWrapper.stringForKey("\(key)cert")
     }
 }
