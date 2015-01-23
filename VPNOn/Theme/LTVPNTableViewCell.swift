@@ -10,5 +10,14 @@ import UIKit
 
 class LTVPNTableViewCell: UITableViewCell
 {
-    
+    override func willMoveToSuperview(newSuperview: UIView?) {
+        if newSuperview != nil {
+            if accessoryType == .DisclosureIndicator {
+                if accessoryView == nil {
+                    accessoryView = LTTableViewCellDeclosureIndicator()
+                    accessoryView!.frame = CGRectMake(0, 0, 16, 16)
+                }
+            }
+        }
+    }
 }

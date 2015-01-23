@@ -62,6 +62,7 @@
 		D7C7659D1A6CAEF70010C170 /* LTVPNTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7C7659C1A6CAEF70010C170 /* LTVPNTableViewCell.swift */; };
 		D7D4992D1A723F6700B5F5ED /* LTVPNConfigViewController+Certification.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D4992C1A723F6700B5F5ED /* LTVPNConfigViewController+Certification.swift */; };
 		D7D4992F1A724B4C00B5F5ED /* LTVPNConfigViewController+Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D4992E1A724B4C00B5F5ED /* LTVPNConfigViewController+Type.swift */; };
+		D7D499311A72542400B5F5ED /* LTTableViewCellDeclosureIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D499301A72542400B5F5ED /* LTTableViewCellDeclosureIndicator.swift */; };
 		D7E28A7F1A680D9400507F33 /* LTThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E28A7B1A680D9400507F33 /* LTThemeManager.swift */; };
 		D7E28A801A680D9400507F33 /* UIAppearance+Swift.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E28A7D1A680D9400507F33 /* UIAppearance+Swift.m */; };
 		D7E28A831A680DBD00507F33 /* LTTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E28A821A680DBD00507F33 /* LTTheme.swift */; };
@@ -203,6 +204,7 @@
 		D7C7659E1A6CB0500010C170 /* VPN On 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "VPN On 2.xcdatamodel"; sourceTree = "<group>"; };
 		D7D4992C1A723F6700B5F5ED /* LTVPNConfigViewController+Certification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LTVPNConfigViewController+Certification.swift"; sourceTree = "<group>"; };
 		D7D4992E1A724B4C00B5F5ED /* LTVPNConfigViewController+Type.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LTVPNConfigViewController+Type.swift"; sourceTree = "<group>"; };
+		D7D499301A72542400B5F5ED /* LTTableViewCellDeclosureIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTTableViewCellDeclosureIndicator.swift; sourceTree = "<group>"; };
 		D7E28A7B1A680D9400507F33 /* LTThemeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTThemeManager.swift; sourceTree = "<group>"; };
 		D7E28A7C1A680D9400507F33 /* UIAppearance+Swift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAppearance+Swift.h"; sourceTree = "<group>"; };
 		D7E28A7D1A680D9400507F33 /* UIAppearance+Swift.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAppearance+Swift.m"; sourceTree = "<group>"; };
@@ -428,6 +430,7 @@
 				D7BB2DCF1A6C08BB00D8D581 /* LTSplitViewController.swift */,
 				D77F341A1A6F842C00796827 /* LTTableViewActionCell.swift */,
 				D77F341C1A6F875E00796827 /* LTTextField.swift */,
+				D7D499301A72542400B5F5ED /* LTTableViewCellDeclosureIndicator.swift */,
 			);
 			path = Theme;
 			sourceTree = "<group>";
@@ -688,6 +691,7 @@
 				D7E28A7F1A680D9400507F33 /* LTThemeManager.swift in Sources */,
 				D7E28A801A680D9400507F33 /* UIAppearance+Swift.m in Sources */,
 				D7322C7A1A6C024800B34AA0 /* LTViewControllerBackground.swift in Sources */,
+				D7D499311A72542400B5F5ED /* LTTableViewCellDeclosureIndicator.swift in Sources */,
 				D7453FA41A3196E200F7E32D /* VPNOn.xcdatamodeld in Sources */,
 				D7453F2F1A31966F00F7E32D /* AppDelegate.swift in Sources */,
 				D7F0A01A1A6E47EA00F9C09A /* VPNDataManager+Selection.swift in Sources */,
