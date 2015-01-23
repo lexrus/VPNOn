@@ -2,7 +2,7 @@ import Foundation
 import CoreData
 import VPNOnKit
 
-class VPNInfo {
+public class VPNInfo {
     var title:       String = ""
     var server:      String = ""
     var account:     String = ""

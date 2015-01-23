@@ -37,7 +37,7 @@ This project follows the gitflow workflow. You'd better create a branch called `
 
 VPN service providers may list a link for their customers to efficiently add server configurations in VPN On. By register the `vpnon://` protocol, it supports the following URL scheme:
 
-`vpnon://{account}:{password}@{server}/?title={title}&group={group}&secret={secret}&alwayson=[yes|no]`
+`vpnon://{account}:{password}@{server}/?title={title}&group={group}&secret={secret}&alwayson=[yes|no]&ikev2=[yes|no]`
 
 Fields are optional except the server field. The following URLs are valid:
 
@@ -47,7 +47,9 @@ Fields are optional except the server field. The following URLs are valid:
 
 * `vpnon://admin@192.168.0.123/?group=devops`
 
-* `vpnon://admin@192.168.0.123/?alwayson=no`
+* `vpnon://admin@202.96.209.6/?alwayson=no`
+
+* `vpnon://jony:ive@202.96.209.5/?ikev2=yes` 
 
 ## Donation
 

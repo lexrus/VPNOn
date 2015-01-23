@@ -18,8 +18,7 @@ let kImpossibleHash = "~!@#$%^+_)(*&"
 
 class LTVPNConfigViewController: UITableViewController, UITextFieldDelegate
 {
-    
-    var initializedVPNInfo : VPNInfo? = VPNInfo()
+    var initializedVPNInfo : VPNInfo? = nil
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var typeSegment: UISegmentedControl!
