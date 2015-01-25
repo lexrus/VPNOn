@@ -107,10 +107,14 @@ class VPNManager
     func connectIKEv2(title: String, server: String, account: String?, group: String?, alwaysOn: Bool = true, passwordRef: NSData?, secretRef: NSData?, certificate: String?) {
         let p = NEVPNProtocolIKEv2()
         
-        p.authenticationMethod = NEVPNIKEAuthenticationMethod.SharedSecret
+        p.authenticationMethod = NEVPNIKEAuthenticationMethod.Certificate
         p.useExtendedAuthentication = true
         p.serverAddress = server
+        p.serverCertificateIssuerCommonName = "VPN On CA"
         p.disconnectOnSleep = !alwaysOn
+        p.deadPeerDetectionRate = NEVPNIKEv2DeadPeerDetectionRate.Medium
+        
+        // TODO: Add an option into config page
         
         _manager.localizedDescription = "VPN On - \(title)"
         
@@ -130,6 +134,13 @@ class VPNManager
         
         if let secret = secretRef {
             p.sharedSecretReference = secret
+        }
+        
+        if let certficiateContent = certificate {
+//            let certData = NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("ca_cert", ofType: "p12")!)
+//            
+//            p.identityData = certData
+//            p.identityDataPassword = "vpnon"
         }
         
         _manager.enabled = true
