@@ -12,6 +12,9 @@ import VPNOnKit
 extension LTVPNConfigViewController
 {
     @IBAction func saveVPN(sender: AnyObject) {
+        
+        // TODO: Store certificate to KeyChain
+        
         if let currentVPN = vpn {
             currentVPN.title = titleTextField.text
             currentVPN.server = serverTextField.text
@@ -40,7 +43,8 @@ extension LTVPNConfigViewController
                 group: groupTextField.text,
                 secret: secretTextField.text,
                 alwaysOn: alwaysOnSwitch.on,
-                ikev2: typeSegment.selectedSegmentIndex == 1
+                ikev2: typeSegment.selectedSegmentIndex == 1,
+                certificate: nil
             )
             
             if success {

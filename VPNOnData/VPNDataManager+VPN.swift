@@ -39,7 +39,7 @@ extension VPNDataManager
         secret: String,
         alwaysOn: Bool = true,
         ikev2: Bool = false,
-        certificate: String = ""
+        certificate: NSData?
         ) -> Bool
     {
         let entity = NSEntityDescription.entityForName("VPN", inManagedObjectContext: self.managedObjectContext!)
@@ -66,8 +66,8 @@ extension VPNDataManager
                 if !secret.isEmpty {
                     VPNKeychainWrapper.setSecret(secret, forVPNID: vpn.ID)
                 }
-                if !certificate.isEmpty {
-                    VPNKeychainWrapper.setCertificate(certificate, forVPNID: vpn.ID)
+                if let certificateData = certificate {
+                    VPNKeychainWrapper.setCertificate(certificateData, forVPNID: vpn.ID)
                 }
                 
                 if allVPN().count == 1 {
@@ -187,7 +187,7 @@ extension VPNDataManager
                 secret: VPNKeychainWrapper.secretStringForVPNID(vpn.ID) ?? "",
                 alwaysOn: vpn.alwaysOn,
                 ikev2: vpn.ikev2,
-                certificate: VPNKeychainWrapper.certificateStringForVPNID(vpn.ID) ?? ""
+                certificate: VPNKeychainWrapper.certificateForVPNID(vpn.ID)
                 )
             {
                 let newVPNs = VPNHasTitle(newTitle)
