@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ViW-99-x1O">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C99d" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ViW-99-x1O">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -60,6 +60,58 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <color key="tintColor" red="0.0" green="0.58573454618453979" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ConnectionCell" rowHeight="44" id="IT1-yk-TTT" customClass="LTVPNConnectionCell" customModule="VPNOn" customModuleProvider="target">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IT1-yk-TTT" id="JcU-uF-VOo">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not Connected" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Vlk-GJ-USi" customClass="LTTableViewCellTitle" customModule="VPNOn" customModuleProvider="target">
+                                            <rect key="frame" x="16" y="0.0" width="511" height="44"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="120" id="ask-HU-ECy"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="ask-HU-ECy"/>
+                                                </mask>
+                                            </variation>
+                                        </label>
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="47m-SX-NPE">
+                                            <rect key="frame" x="535" y="6.5" width="51" height="31"/>
+                                            <connections>
+                                                <action selector="toggleVPN:" destination="Pga-4R-p1I" eventType="valueChanged" id="UnJ-wh-e0Z"/>
+                                            </connections>
+                                        </switch>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="Vlk-GJ-USi" secondAttribute="bottom" id="8eL-vO-cqf"/>
+                                        <constraint firstItem="47m-SX-NPE" firstAttribute="leading" secondItem="Vlk-GJ-USi" secondAttribute="trailing" constant="8" id="IZn-rm-qeX"/>
+                                        <constraint firstAttribute="centerY" secondItem="47m-SX-NPE" secondAttribute="centerY" id="IyA-Dg-zVl"/>
+                                        <constraint firstAttribute="trailing" secondItem="47m-SX-NPE" secondAttribute="trailing" constant="15" id="V4D-RV-Hka"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="47m-SX-NPE" secondAttribute="trailing" constant="8" id="WLg-WA-tgp"/>
+                                        <constraint firstItem="Vlk-GJ-USi" firstAttribute="leading" secondItem="JcU-uF-VOo" secondAttribute="leadingMargin" constant="8" id="hzZ-d9-TXx">
+                                            <variation key="heightClass=regular" constant="12"/>
+                                            <variation key="widthClass=compact" constant="8"/>
+                                            <variation key="heightClass=regular-widthClass=regular" constant="12"/>
+                                        </constraint>
+                                        <constraint firstItem="47m-SX-NPE" firstAttribute="leading" secondItem="Vlk-GJ-USi" secondAttribute="trailing" constant="8" id="slt-LK-NRG"/>
+                                        <constraint firstItem="Vlk-GJ-USi" firstAttribute="top" secondItem="JcU-uF-VOo" secondAttribute="top" id="xGC-eo-MyB"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="slt-LK-NRG"/>
+                                            <exclude reference="V4D-RV-Hka"/>
+                                        </mask>
+                                    </variation>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="connectionLabel" destination="Vlk-GJ-USi" id="7DW-sk-MEF"/>
+                                    <outlet property="connectionSwitch" destination="47m-SX-NPE" id="A5X-yj-pvs"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
