@@ -54,13 +54,13 @@ class VPNManager
         return VPNManager._sharedManager
     }
     
-    func connectIPSec(title: String, server: String, account: String?, group: String?, alwaysOn: Bool = true, passwordRef: NSData?, secretRef: NSData?, certificate: String?) {
+    func connectIPSec(title: String, server: String, account: String?, group: String?, alwaysOn: Bool = true, passwordRef: NSData?, secretRef: NSData?, certificate: NSData?) {
         
         // TODO: Add a tailing closure for callback.
         
         let p = NEVPNProtocolIPSec()
 
-        p.authenticationMethod = NEVPNIKEAuthenticationMethod.SharedSecret
+        p.authenticationMethod = NEVPNIKEAuthenticationMethod.None
         p.useExtendedAuthentication = true
         p.serverAddress = server
         p.disconnectOnSleep = !alwaysOn
@@ -82,7 +82,15 @@ class VPNManager
         }
         
         if let secret = secretRef {
+            p.authenticationMethod = NEVPNIKEAuthenticationMethod.SharedSecret
             p.sharedSecretReference = secret
+        }
+        
+        if let certficiateData = certificate {
+            p.authenticationMethod = NEVPNIKEAuthenticationMethod.Certificate
+            
+            p.identityData = certficiateData
+            p.identityDataPassword = "vpnonoff"
         }
     
         _manager.enabled = true
@@ -104,13 +112,13 @@ class VPNManager
         }
     }
     
-    func connectIKEv2(title: String, server: String, account: String?, group: String?, alwaysOn: Bool = true, passwordRef: NSData?, secretRef: NSData?, certificate: String?) {
+    func connectIKEv2(title: String, server: String, account: String?, group: String?, alwaysOn: Bool = true, passwordRef: NSData?, secretRef: NSData?, certificate: NSData?) {
         let p = NEVPNProtocolIKEv2()
         
-        p.authenticationMethod = NEVPNIKEAuthenticationMethod.Certificate
+        p.authenticationMethod = NEVPNIKEAuthenticationMethod.None
         p.useExtendedAuthentication = true
         p.serverAddress = server
-        p.serverCertificateIssuerCommonName = "VPN On CA"
+        p.remoteIdentifier = server
         p.disconnectOnSleep = !alwaysOn
         p.deadPeerDetectionRate = NEVPNIKEv2DeadPeerDetectionRate.Medium
         
@@ -133,14 +141,17 @@ class VPNManager
         }
         
         if let secret = secretRef {
+            p.authenticationMethod = NEVPNIKEAuthenticationMethod.SharedSecret
             p.sharedSecretReference = secret
         }
         
-        if let certficiateContent = certificate {
-//            let certData = NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("ca_cert", ofType: "p12")!)
-//            
-//            p.identityData = certData
-//            p.identityDataPassword = "vpnon"
+        if let certficiateData = certificate {
+            p.authenticationMethod = NEVPNIKEAuthenticationMethod.Certificate
+            p.serverCertificateCommonName = server
+            p.serverCertificateIssuerCommonName = server
+
+            p.identityData = certficiateData
+            p.identityDataPassword = "vpnonoff"
         }
         
         _manager.enabled = true
@@ -151,12 +162,14 @@ class VPNManager
                 println("Failed to save profile: \(err.localizedDescription)")
             } else {
                 var connectError : NSError?
-                self._manager.connection.startVPNTunnelAndReturnError(&connectError)
-                
-                if let connectErr = connectError {
-                    println("Failed to start IKEv2 tunnel: \(connectErr.localizedDescription)")
+                if self._manager.connection.startVPNTunnelAndReturnError(&connectError) {
+                    if let connectErr = connectError {
+                        println("Failed to start IKEv2 tunnel: \(connectErr.localizedDescription)")
+                    } else {
+                        println("IKEv2 tunnel started.")
+                    }
                 } else {
-                    println("IKEv2 tunnel started.")
+                    println("Failed to connect: \(connectError?.localizedDescription)")
                 }
             }
         }

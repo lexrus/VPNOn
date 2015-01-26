@@ -29,7 +29,7 @@
              alwaysOn:(BOOL)alwaysOn
           passwordRef:(NSData *)passwordRef
             secretRef:(NSData *)secretRef
-          certificate:(NSString *)certificate;
+          certificate:(NSData *)certificate;
 
 - (void) connectIKEv2:(NSString *)title
                server:(NSString *)server
@@ -38,7 +38,7 @@
              alwaysOn:(BOOL)alwaysOn
           passwordRef:(NSData *)passwordRef
             secretRef:(NSData *)secretRef
-          certificate:(NSString *)certificate;
+          certificate:(NSData *)certificate;
 
 - (void) disconnect;
 
