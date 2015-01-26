@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C99d" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ViW-99-x1O">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ViW-99-x1O">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -103,8 +103,8 @@
                                     </constraints>
                                     <variation key="default">
                                         <mask key="constraints">
-                                            <exclude reference="slt-LK-NRG"/>
                                             <exclude reference="V4D-RV-Hka"/>
+                                            <exclude reference="slt-LK-NRG"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
@@ -688,40 +688,48 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
-                            <tableViewSection headerTitle="Certificate Content" footerTitle="Certificate is stored in KeyChain" id="LMw-lh-D2c">
+                            <tableViewSection headerTitle="Certificate URL" footerTitle="" id="LMw-lh-D2c">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="100" id="7pf-yf-nZx">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="44" id="7pf-yf-nZx">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7pf-yf-nZx" id="q7L-dn-abJ">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jcO-em-k7M">
-                                                    <rect key="frame" x="11" y="8" width="581" height="83.5"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" keyboardAppearance="alert" returnKeyType="done"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="http://" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Otm-uK-bXz" customClass="LTTextField" customModule="VPNOn" customModuleProvider="target">
+                                                    <rect key="frame" x="16" y="0.0" width="576" height="44"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL" keyboardAppearance="alert" returnKeyType="done"/>
                                                     <connections>
-                                                        <outlet property="delegate" destination="RyC-km-4Av" id="ZeM-CT-BZy"/>
+                                                        <outlet property="delegate" destination="RyC-km-4Av" id="mdH-Jd-A21"/>
                                                     </connections>
-                                                </textView>
+                                                </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="jcO-em-k7M" secondAttribute="trailing" id="OUk-LN-hqa"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="jcO-em-k7M" secondAttribute="bottom" id="Oeo-nR-HkH"/>
-                                                <constraint firstItem="jcO-em-k7M" firstAttribute="top" secondItem="q7L-dn-abJ" secondAttribute="topMargin" id="pKi-gy-Sc5"/>
-                                                <constraint firstItem="jcO-em-k7M" firstAttribute="leading" secondItem="q7L-dn-abJ" secondAttribute="leadingMargin" constant="3" id="q47-Zq-cbx">
-                                                    <variation key="heightClass=regular" constant="6"/>
-                                                    <variation key="widthClass=compact" constant="3"/>
-                                                    <variation key="heightClass=regular-widthClass=regular" constant="6"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Otm-uK-bXz" secondAttribute="trailing" id="5TI-FU-t1Q"/>
+                                                <constraint firstAttribute="bottom" secondItem="Otm-uK-bXz" secondAttribute="bottom" id="gVA-LL-3sQ"/>
+                                                <constraint firstItem="Otm-uK-bXz" firstAttribute="leading" secondItem="q7L-dn-abJ" secondAttribute="leadingMargin" constant="8" id="r7O-9u-uqg">
+                                                    <variation key="heightClass=regular" constant="12"/>
+                                                    <variation key="widthClass=compact" constant="8"/>
+                                                    <variation key="heightClass=regular-widthClass=regular" constant="12"/>
                                                 </constraint>
+                                                <constraint firstItem="Otm-uK-bXz" firstAttribute="top" secondItem="q7L-dn-abJ" secondAttribute="top" id="t58-9C-xg9"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection id="ui1-LM-7EH">
-                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="ijT-Cj-eqv" style="IBUITableViewCellStyleDefault" id="B6o-C5-KyU" customClass="LTTableViewActionCell" customModule="VPNOn" customModuleProvider="target">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="B6o-C5-KyU" id="ejO-rS-Qpc">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Download" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="ijT-Cj-eqv">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="Pcz-Ic-xcR" style="IBUITableViewCellStyleDefault" id="MuF-AP-VDe" customClass="LTTableViewActionCell" customModule="VPNOn" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MuF-AP-VDe" id="pxB-yl-wip">
@@ -770,9 +778,11 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="certificateTextView" destination="jcO-em-k7M" id="o3F-R2-Qk9"/>
+                        <outlet property="certificateURLField" destination="Otm-uK-bXz" id="V0i-dp-D6a"/>
                         <outlet property="deleteCell" destination="wPJ-3O-kQF" id="Qeq-T4-fhT"/>
+                        <outlet property="downloadCell" destination="B6o-C5-KyU" id="yT8-sJ-pDX"/>
                         <outlet property="saveButton" destination="Z2z-CY-K0P" id="aWg-2T-Wmo"/>
+                        <outlet property="scanCell" destination="MuF-AP-VDe" id="gBp-E1-9K3"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bcL-pD-N1D" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -40,4 +40,12 @@ extension LTVPNConfigViewController
         }
         return height
     }
+    
+    // MARK: - Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let targetVC = segue.destinationViewController as? UIViewController {
+            println("\(targetVC)")
+        }
+    }
 }
