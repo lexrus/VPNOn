@@ -9,7 +9,7 @@ Turning on a VPN is always a painful experience on an iOS device due to the deep
 ## Requirements
 
 - An iPhone running iOS 8.1
-- An IPSec IKEv1 VPN(create yours with [my Ansible Playbook](https://github.com/lexrus/vpn-deploy-playbook) or [deploy on DigitalOcean](http://installer.71m.us/install?url=https://github.com/lexrus/do-ikev1))
+- An IPSec IKEv1 / IKEv2 VPN(create yours with [my Ansible Playbook](https://github.com/lexrus/vpn-deploy-playbook) or [deploy on DigitalOcean](http://installer.71m.us/install?url=https://github.com/lexrus/do-ikev1))
 - Xcode 6.1.1
 - An Apple iOS developer account
 
@@ -29,7 +29,7 @@ After creating a VPN configuration you can activate the Today Widget in Notifica
 
 ## Contribution
 
-TODOs and issues are [listed here](https://github.com/lexrus/VPNOn/issues).
+Issues and roadmap are [listed here](https://github.com/lexrus/VPNOn/issues).
 
 This project follows the gitflow workflow. You'd better create a branch called `feature/sth_improved` before any major improvements. Meanwhile minor bug fixes are welcomed in the develop branch.
 
@@ -37,19 +37,21 @@ This project follows the gitflow workflow. You'd better create a branch called `
 
 VPN service providers may list a link for their customers to efficiently add server configurations in VPN On. By register the `vpnon://` protocol, it supports the following URL scheme:
 
-`vpnon://{account}:{password}@{server}/?title={title}&group={group}&secret={secret}&alwayson=[yes|no]&ikev2=[yes|no]`
+`vpnon://{account}:{password}@{server}/?title={title}&group={group}&secret={secret}&alwayson=[yes|no]&ikev2=[yes|no]&certificate={certificate}`
 
-Fields are optional except the server field. The following URLs are valid:
+`server` and `title` are required, other fields are optional. The following URLs are valid:
 
 * `vpnon://jony:ive@apple.com/?title=Apple&group=Design&secret=iPhone`
 
-* `vpnon://apple.com/`
+* `vpnon://apple.com/?title=Apple`
 
-* `vpnon://admin@192.168.0.123/?group=devops`
+* `vpnon://admin@192.168.0.123/?title=Google&group=devops`
 
-* `vpnon://admin@202.96.209.6/?alwayson=no`
+* `vpnon://admin@202.96.209.6/?title=Yahoo&alwayson=no`
 
-* `vpnon://jony:ive@202.96.209.5/?ikev2=yes` 
+* `vpnon://jony:ive@202.96.209.5/?title=Twitter&ikev2=yes` 
+
+* `vpnon://jony:ive@202.96.209.5/?title=GitHub&ikev2=yes&certificate=https://github.com/`
 
 ## Donation
 

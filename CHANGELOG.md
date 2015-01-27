@@ -1,5 +1,10 @@
 # VPN On Changelog
 
+## 0.4 - develop branch
+
+1. Add IPSec IKEv2.
+2. Support IPSec IKEv1 authentication with certificate.
+
 ## 0.3
 
 1. New midnight theme.
