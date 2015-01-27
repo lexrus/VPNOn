@@ -41,7 +41,7 @@ extension VPNDataManager
         ikev2: Bool = false,
         certificateURL: String,
         certificate: NSData?
-        ) -> Bool
+        ) -> VPN?
     {
         let entity = NSEntityDescription.entityForName("VPN", inManagedObjectContext: self.managedObjectContext!)
         let vpn = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: self.managedObjectContext!) as VPN
@@ -57,7 +57,6 @@ extension VPNDataManager
         var error: NSError?
         if !self.managedObjectContext!.save(&error) {
             println("Could not save VPN \(error), \(error?.userInfo)")
-            return false
         } else {
             saveContext()
             
@@ -75,9 +74,11 @@ extension VPNDataManager
                 if allVPN().count == 1 {
                     VPNManager.sharedManager().activatedVPNID = vpn.ID
                 }
+                return vpn
             }
-            return true
         }
+        
+        return .None
     }
     
     func deleteVPN(vpn:VPN)
@@ -180,7 +181,7 @@ extension VPNDataManager
             
             VPNKeychainWrapper.passwordForVPNID(vpn.ID)
             
-            if createVPN(
+            return createVPN(
                 newTitle,
                 server: vpn.server,
                 account: vpn.account,
@@ -192,12 +193,6 @@ extension VPNDataManager
                 certificateURL: vpn.certificateURL,
                 certificate: VPNKeychainWrapper.certificateForVPNID(vpn.ID)
                 )
-            {
-                let newVPNs = VPNHasTitle(newTitle)
-                if newVPNs.count > 0 {
-                    return newVPNs.first!
-                }
-            }
         }
         
         return .None

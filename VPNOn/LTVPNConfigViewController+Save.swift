@@ -12,9 +12,6 @@ import VPNOnKit
 extension LTVPNConfigViewController
 {
     @IBAction func saveVPN(sender: AnyObject) {
-        
-        // TODO: Store certificate to KeyChain
-        
         if let currentVPN = vpn {
             currentVPN.title = titleTextField.text
             currentVPN.server = serverTextField.text
@@ -22,21 +19,17 @@ extension LTVPNConfigViewController
             currentVPN.group = groupTextField.text
             currentVPN.alwaysOn = alwaysOnSwitch.on
             currentVPN.ikev2 = typeSegment.selectedSegmentIndex == 1
-            currentVPN.certificateURL = "" // TODO: Save updated certificate URL
+            currentVPN.certificateURL = certificateURL
             
-            if passwordTextField!.text != kImpossibleHash {
-                VPNKeychainWrapper.setPassword(passwordTextField!.text, forVPNID: currentVPN.ID)
-            }
+            VPNKeychainWrapper.setPassword(passwordTextField.text, forVPNID: currentVPN.ID)
             
-            if secretTextField!.text != kImpossibleHash {
-                VPNKeychainWrapper.setSecret(secretTextField!.text, forVPNID: currentVPN.ID)
-            }
+            VPNKeychainWrapper.setSecret(secretTextField.text, forVPNID: currentVPN.ID)
             
             VPNDataManager.sharedManager.saveContext()
             
             NSNotificationCenter.defaultCenter().postNotificationName(kLTVPNDidUpdate, object: nil)
         } else {
-            let success = VPNDataManager.sharedManager.createVPN(
+            if let _ = VPNDataManager.sharedManager.createVPN(
                 titleTextField.text,
                 server: serverTextField.text,
                 account: accountTextField.text,
@@ -45,12 +38,10 @@ extension LTVPNConfigViewController
                 secret: secretTextField.text,
                 alwaysOn: alwaysOnSwitch.on,
                 ikev2: typeSegment.selectedSegmentIndex == 1,
-                certificateURL: "", // TODO: Save certificate URL
-                certificate: nil // TODO: Save certificate
-            )
-            
-            if success {
-                NSNotificationCenter.defaultCenter().postNotificationName(kLTVPNDidCreate, object: self)
+                certificateURL: certificateURL ?? "",
+                certificate: temporaryCertificateData
+                ) {
+                    NSNotificationCenter.defaultCenter().postNotificationName(kLTVPNDidCreate, object: self)
             }
         }
     }

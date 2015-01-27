@@ -10,10 +10,10 @@ import UIKit
 
 extension LTVPNConfigViewController
 {
-    func toggleCertificateOptions() {
+    func updateCertificateOptions() {
         groupCell.hidden = certificateSwitch.on
         secretCell.hidden = certificateSwitch.on
-        certficateCell.hidden = !certificateSwitch.on
+        certificateCell.hidden = !certificateSwitch.on
         
         passwordTextField.returnKeyType = certificateSwitch.on ? .Done : .Next
         
@@ -21,7 +21,7 @@ extension LTVPNConfigViewController
     }
     
     @IBAction func didChangeCertificateSwitch(sender: AnyObject) {
-        toggleCertificateOptions()
+        updateCertificateOptions()
     }
     
     // MARK: - TableView data source
@@ -41,11 +41,23 @@ extension LTVPNConfigViewController
         return height
     }
     
-    // MARK: - Navigation
+    // MARK: - Certificate
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let targetVC = segue.destinationViewController as? UIViewController {
-//            println("\(targetVC)")
+        if segue.identifier == "certificate" {
+            if let targetVC = segue.destinationViewController as? LTVPNCertificateViewController {
+                targetVC.delegate = self
+                targetVC.temporaryCertificateURL = certificateURL
+                targetVC.temporaryCertificateData = temporaryCertificateData
+            }
         }
+    }
+
+    func didTapSaveCertificateWithData(data: NSData?, URLString: String) {
+        certificateURL = URLString
+        if let d = data {
+            temporaryCertificateData = d.copy() as? NSData
+        }
+        toggleSaveButtonByStatus()
     }
 }

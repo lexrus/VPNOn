@@ -9,10 +9,17 @@
 import UIKit
 import VPNOnKit
 
-class LTVPNCertificateViewController: UITableViewController, UITextFieldDelegate {
+@objc protocol LTVPNCertificateViewControllerDelegate {
+    optional func didTapSaveCertificateWithData(data: NSData?, URLString andURLString: String)
+}
+
+class LTVPNCertificateViewController: UITableViewController, UITextFieldDelegate
+{
+    weak var delegate: LTVPNCertificateViewControllerDelegate?
+    var temporaryCertificateURL: String?
+    var temporaryCertificateData: NSData?
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
-    
     @IBOutlet weak var certificateURLField: UITextField!
     @IBOutlet weak var certificateSummaryCell: LTVPNTableViewCell!
     @IBOutlet weak var deleteCell: UITableViewCell!
@@ -28,26 +35,16 @@ class LTVPNCertificateViewController: UITableViewController, UITextFieldDelegate
         }
         return Optional.None
         }()
-    
-    private var _downloading = false
-    var downloading: Bool {
-        get {
-            return _downloading
-        }
-        set {
-            _downloading = newValue
-            self.downloadCell.textLabel!.text = _downloading ? "Downloading..." : "Download"
-            self.downloadCell.disabled = _downloading
+
+    var downloading: Bool = false {
+        didSet {
+            self.downloadCell.textLabel!.text = self.downloading ? "Downloading..." : "Download"
+            self.downloadCell.disabled = self.downloading
         }
     }
     
-    private var _certificateData: NSData? = nil
     var certificateData: NSData? {
-        get {
-            return _certificateData
-        }
-        set {
-            _certificateData = newValue
+        didSet {
             self.updateCertificateSummary()
             self.updateSaveButton()
         }
@@ -61,13 +58,24 @@ class LTVPNCertificateViewController: UITableViewController, UITextFieldDelegate
         super.viewWillAppear(animated)
         
         if let vpnObject = vpn {
+            certificateURLField.text = vpnObject.certificateURL
             if let certificate = VPNKeychainWrapper.certificateForVPNID(vpnObject.ID) {
                 certificateData = certificate
-                updateCertificateSummary()
+            }
+        } else {
+            if let url = temporaryCertificateURL {
+                certificateURLField.text = url
+            }
+            if let data = temporaryCertificateData {
+                certificateData = data
             }
         }
-        
-        updateSaveButton()
+    }
+    
+    deinit {
+        vpn = nil
+        certificateData = nil
+        delegate = nil
     }
     
     // MARK: - Save
@@ -76,9 +84,10 @@ class LTVPNCertificateViewController: UITableViewController, UITextFieldDelegate
         if let data = certificateData {
             if let vpnObject = vpn {
                 VPNKeychainWrapper.setCertificate(data, forVPNID: vpnObject.ID)
+                vpnObject.certificateURL = certificateURLField.text
+            } else if let d = delegate {
+                d.didTapSaveCertificateWithData?(data, URLString: certificateURLField.text)
             }
-        } else { // New VPN configuration
-            // TODO: Save certificate some where
         }
         
         popDetailViewController()
