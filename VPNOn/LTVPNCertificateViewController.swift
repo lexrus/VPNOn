@@ -85,6 +85,7 @@ class LTVPNCertificateViewController: UITableViewController, UITextFieldDelegate
             if let vpnObject = vpn {
                 VPNKeychainWrapper.setCertificate(data, forVPNID: vpnObject.ID)
                 vpnObject.certificateURL = certificateURLField.text
+                VPNDataManager.sharedManager.saveContext()
             } else if let d = delegate {
                 d.didTapSaveCertificateWithData?(data, URLString: certificateURLField.text)
             }
@@ -150,8 +151,16 @@ class LTVPNCertificateViewController: UITableViewController, UITextFieldDelegate
     
     func deleteCertificate() {
         certificateData = nil
-        updateCertificateSummary()
-        updateSaveButton()
+        
+        if let vpnObject = vpn {
+            VPNKeychainWrapper.setCertificate(nil, forVPNID: vpnObject.ID)
+            vpnObject.certificateURL = ""
+            VPNDataManager.sharedManager.saveContext()
+        } else if let d = delegate {
+            d.didTapSaveCertificateWithData?(nil, URLString: "")
+        }
+        
+        popDetailViewController()
     }
     
     // MARK: - TextField delegate
