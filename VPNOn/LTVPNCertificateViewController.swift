@@ -14,6 +14,7 @@ class LTVPNCertificateViewController: UITableViewController, UITextFieldDelegate
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
     @IBOutlet weak var certificateURLField: UITextField!
+    @IBOutlet weak var certificateSummaryCell: LTVPNTableViewCell!
     @IBOutlet weak var deleteCell: UITableViewCell!
     @IBOutlet weak var downloadCell: LTTableViewActionCell!
     @IBOutlet weak var scanCell: LTTableViewActionCell!
@@ -28,8 +29,29 @@ class LTVPNCertificateViewController: UITableViewController, UITextFieldDelegate
         return Optional.None
         }()
     
-    private var downloading = false
-    private var certificateData: NSData? = nil
+    private var _downloading = false
+    var downloading: Bool {
+        get {
+            return _downloading
+        }
+        set {
+            _downloading = newValue
+            self.downloadCell.textLabel!.text = _downloading ? "Downloading..." : "Download"
+            self.downloadCell.disabled = _downloading
+        }
+    }
+    
+    private var _certificateData: NSData? = nil
+    var certificateData: NSData? {
+        get {
+            return _certificateData
+        }
+        set {
+            _certificateData = newValue
+            self.updateCertificateSummary()
+            self.updateSaveButton()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,11 +72,17 @@ class LTVPNCertificateViewController: UITableViewController, UITextFieldDelegate
     // MARK: - Save
     
     @IBAction func save(sender: AnyObject) {
+        // TODO: Save certificate data
+        
         popDetailViewController()
     }
     
     func updateSaveButton() {
-        saveButton.enabled = !certificateURLField.text!.isEmpty
+        if certificateData == nil {
+            saveButton.enabled = false
+        } else {
+            saveButton.enabled = true
+        }
     }
     
     // MARK: - Download && Scan && Delete
@@ -64,29 +92,55 @@ class LTVPNCertificateViewController: UITableViewController, UITextFieldDelegate
             if cell == deleteCell {
                 
             } else if cell == downloadCell {
-                
+                downloadURL()
             } else if cell == scanCell {
                 
             }
         }
     }
     
-    // MARK: - TextField delegate
-    
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        
-        // TODO: Download URL
-        
-        return true
+    func downloadURL() {
+        downloading = true
+        if let URL = NSURL(string: certificateURLField.text) {
+            LTVPNDownloader().download(URL) {
+                response, data, error in
+                dispatch_async(dispatch_get_main_queue(), {
+                    if let err = error {
+                        self.certificateSummaryCell.textLabel!.text = error.localizedDescription
+                    } else {
+                        self.certificateData = data
+                    }
+                    self.downloading = false
+                })
+            }
+        }
     }
     
-    func textFieldDidEndEditing(textField: UITextField) {
-        updateSaveButton()
+    func updateCertificateSummary() {
+        if let data = certificateData {
+            let bytesFormatter = NSByteCountFormatter()
+            bytesFormatter.countStyle = NSByteCountFormatterCountStyle.File
+            let bytesCount = bytesFormatter.stringFromByteCount(Int64(data.length))
+            certificateSummaryCell.textLabel!.text = "Certificate downloaded (\(bytesCount))"
+        } else {
+            certificateSummaryCell.textLabel!.text = "Certificate will be downloaded and stored in Keychain"
+        }
+    }
+    
+    // MARK: - TextField delegate
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        updateCertificateSummary()
     }
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-        updateSaveButton()
+        updateCertificateSummary()
+        return true
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        downloadURL()
         return true
     }
     

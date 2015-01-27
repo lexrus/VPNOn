@@ -45,7 +45,7 @@ extension LTVPNConfigViewController
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let targetVC = segue.destinationViewController as? UIViewController {
-            println("\(targetVC)")
+//            println("\(targetVC)")
         }
     }
 }

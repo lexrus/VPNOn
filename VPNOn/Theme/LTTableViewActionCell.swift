@@ -10,5 +10,17 @@ import UIKit
 
 class LTTableViewActionCell: UITableViewCell
 {
-    
+    var _disabled = false
+    var disabled: Bool {
+        get {
+            return _disabled
+        }
+        set {
+            if newValue {
+                self.textLabel?.textColor = LTThemeManager.sharedManager.currentTheme!.textColor
+            } else {
+                self.textLabel?.textColor = LTThemeManager.sharedManager.currentTheme!.tintColor
+            }
+        }
+    }
 }
