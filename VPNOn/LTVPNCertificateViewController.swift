@@ -63,6 +63,7 @@ class LTVPNCertificateViewController: UITableViewController, UITextFieldDelegate
         if let vpnObject = vpn {
             if let certificate = VPNKeychainWrapper.certificateForVPNID(vpnObject.ID) {
                 certificateData = certificate
+                updateCertificateSummary()
             }
         }
         
@@ -72,7 +73,13 @@ class LTVPNCertificateViewController: UITableViewController, UITextFieldDelegate
     // MARK: - Save
     
     @IBAction func save(sender: AnyObject) {
-        // TODO: Save certificate data
+        if let data = certificateData {
+            if let vpnObject = vpn {
+                VPNKeychainWrapper.setCertificate(data, forVPNID: vpnObject.ID)
+            }
+        } else { // New VPN configuration
+            // TODO: Save certificate some where
+        }
         
         popDetailViewController()
     }
@@ -90,11 +97,16 @@ class LTVPNCertificateViewController: UITableViewController, UITextFieldDelegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if let cell = tableView.cellForRowAtIndexPath(indexPath) {
             if cell == deleteCell {
-                
+                let alert = UIAlertController(title: "Delete Certificate?", message: "", preferredStyle: .Alert)
+                alert.addAction(UIAlertAction(title: "Delete", style: .Destructive, handler: { _ -> Void in
+                    self.deleteCertificate()
+                }))
+                alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
             } else if cell == downloadCell {
                 downloadURL()
             } else if cell == scanCell {
-                
+                // TODO: Present scan interface
             }
         }
     }
@@ -125,6 +137,12 @@ class LTVPNCertificateViewController: UITableViewController, UITextFieldDelegate
         } else {
             certificateSummaryCell.textLabel!.text = "Certificate will be downloaded and stored in Keychain"
         }
+    }
+    
+    func deleteCertificate() {
+        certificateData = nil
+        updateCertificateSummary()
+        updateSaveButton()
     }
     
     // MARK: - TextField delegate

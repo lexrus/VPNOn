@@ -744,7 +744,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="Pcz-Ic-xcR" style="IBUITableViewCellStyleDefault" id="MuF-AP-VDe" customClass="LTTableViewActionCell" customModule="VPNOn" customModuleProvider="target">
+                                    <tableViewCell hidden="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="Pcz-Ic-xcR" style="IBUITableViewCellStyleDefault" id="MuF-AP-VDe" customClass="LTTableViewActionCell" customModule="VPNOn" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MuF-AP-VDe" id="pxB-yl-wip">
                                             <autoresizingMask key="autoresizingMask"/>

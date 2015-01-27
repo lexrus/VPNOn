@@ -39,6 +39,7 @@ extension VPNDataManager
         secret: String,
         alwaysOn: Bool = true,
         ikev2: Bool = false,
+        certificateURL: String,
         certificate: NSData?
         ) -> Bool
     {
@@ -51,6 +52,7 @@ extension VPNDataManager
         vpn.group = group
         vpn.alwaysOn = alwaysOn
         vpn.ikev2 = ikev2
+        vpn.certificateURL = certificateURL
         
         var error: NSError?
         if !self.managedObjectContext!.save(&error) {
@@ -187,6 +189,7 @@ extension VPNDataManager
                 secret: VPNKeychainWrapper.secretStringForVPNID(vpn.ID) ?? "",
                 alwaysOn: vpn.alwaysOn,
                 ikev2: vpn.ikev2,
+                certificateURL: vpn.certificateURL,
                 certificate: VPNKeychainWrapper.certificateForVPNID(vpn.ID)
                 )
             {

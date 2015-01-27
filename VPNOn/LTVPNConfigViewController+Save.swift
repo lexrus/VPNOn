@@ -22,6 +22,7 @@ extension LTVPNConfigViewController
             currentVPN.group = groupTextField.text
             currentVPN.alwaysOn = alwaysOnSwitch.on
             currentVPN.ikev2 = typeSegment.selectedSegmentIndex == 1
+            currentVPN.certificateURL = "" // TODO: Save updated certificate URL
             
             if passwordTextField!.text != kImpossibleHash {
                 VPNKeychainWrapper.setPassword(passwordTextField!.text, forVPNID: currentVPN.ID)
@@ -44,7 +45,8 @@ extension LTVPNConfigViewController
                 secret: secretTextField.text,
                 alwaysOn: alwaysOnSwitch.on,
                 ikev2: typeSegment.selectedSegmentIndex == 1,
-                certificate: nil
+                certificateURL: "", // TODO: Save certificate URL
+                certificate: nil // TODO: Save certificate
             )
             
             if success {

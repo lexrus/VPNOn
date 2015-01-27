@@ -3,37 +3,39 @@ import CoreData
 import VPNOnKit
 
 public class VPNInfo {
-    var title:       String = ""
-    var server:      String = ""
-    var account:     String = ""
-    var password:    String = ""
-    var group:       String = ""
-    var secret:      String = ""
-    var alwaysOn:    Bool   = false
-    var enabled:     Bool   = true
-    var latency:     Int    = -1
-    var latitude:    Float  = 0.0
-    var longitude:   Float  = 0.0
-    var countryCode: String = ""
-    var isp:         String = ""
-    var ikev2:       Bool   = false
+    var title:          String = ""
+    var server:         String = ""
+    var account:        String = ""
+    var password:       String = ""
+    var group:          String = ""
+    var secret:         String = ""
+    var alwaysOn:       Bool   = false
+    var enabled:        Bool   = true
+    var latency:        Int    = -1
+    var latitude:       Float  = 0.0
+    var longitude:      Float  = 0.0
+    var countryCode:    String = ""
+    var isp:            String = ""
+    var ikev2:          Bool   = false
+    var certificateURL: String = ""
 }
 
 @objc(VPN)
 public class VPN : NSManagedObject{
     
-	@NSManaged var account:     String!
-	@NSManaged var group:       String!
-	@NSManaged var server:      String!
-    @NSManaged var title:       String!
-    @NSManaged var alwaysOn:    Bool
-    @NSManaged var enabled:     Bool
-    @NSManaged var latency:     Int
-    @NSManaged var latitude:    Float
-    @NSManaged var longitude:   Float
-    @NSManaged var countryCode: String!
-    @NSManaged var isp:         String!
-    @NSManaged var ikev2:       Bool
+	@NSManaged var account:        String!
+	@NSManaged var group:          String!
+	@NSManaged var server:         String!
+    @NSManaged var title:          String!
+    @NSManaged var alwaysOn:       Bool
+    @NSManaged var enabled:        Bool
+    @NSManaged var latency:        Int
+    @NSManaged var latitude:       Float
+    @NSManaged var longitude:      Float
+    @NSManaged var countryCode:    String!
+    @NSManaged var isp:            String!
+    @NSManaged var ikev2:          Bool
+    @NSManaged var certificateURL: String!
     
     var ID : String {
         if let id = objectID.URIRepresentation().absoluteString {
@@ -44,18 +46,19 @@ public class VPN : NSManagedObject{
     
     override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
-        setValue(account,     forKey: "account")
-        setValue(group,       forKey: "group")
-        setValue(server,      forKey: "server")
-        setValue(title,       forKey: "title")
-        setValue(alwaysOn,    forKey: "alwaysOn")
-        setValue(enabled,     forKey: "enabled")
-        setValue(latency,     forKey: "latency")
-        setValue(latitude,    forKey: "latitude")
-        setValue(longitude,   forKey: "longitude")
-        setValue(countryCode, forKey: "countryCode")
-        setValue(isp,         forKey: "isp")
-        setValue(ikev2,       forKey: "ikev2")
+        setValue(account,        forKey: "account")
+        setValue(group,          forKey: "group")
+        setValue(server,         forKey: "server")
+        setValue(title,          forKey: "title")
+        setValue(alwaysOn,       forKey: "alwaysOn")
+        setValue(enabled,        forKey: "enabled")
+        setValue(latency,        forKey: "latency")
+        setValue(latitude,       forKey: "latitude")
+        setValue(longitude,      forKey: "longitude")
+        setValue(countryCode,    forKey: "countryCode")
+        setValue(isp,            forKey: "isp")
+        setValue(ikev2,          forKey: "ikev2")
+        setValue(certificateURL, forKey: "certificateURL")
     }
 
 	/**
@@ -100,6 +103,9 @@ public class VPN : NSManagedObject{
         if let ikev2Value = dictionary["ikev2"] as? NSNumber {
             ikev2 = ikev2Value.boolValue
         }
+        if let certificateURLValue = dictionary["certificateURL"] as? String{
+            certificateURL = certificateURLValue
+        }
 	}
 
 	/**
@@ -132,6 +138,9 @@ public class VPN : NSManagedObject{
         }
         if isp != nil {
             dictionary["isp"] = isp
+        }
+        if certificateURL != nil {
+            dictionary["certificateURL"]  = certificateURL
         }
 		return dictionary
 	}
