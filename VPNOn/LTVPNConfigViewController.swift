@@ -14,12 +14,13 @@ let kLTVPNDidCreate = "kLTVPNDidCreate"
 let kLTVPNDidUpdate = "kLTVPNDidUpdate"
 let kLTVPNDidRemove = "kLTVPNDidRemove"
 let kLTVPNDidDuplicate = "kLTVPNDidDuplicate"
-let kImpossibleHash = "~!@#$%^+_)(*&"
 
-class LTVPNConfigViewController: UITableViewController, UITextFieldDelegate
+class LTVPNConfigViewController: UITableViewController, UITextFieldDelegate, LTVPNCertificateViewControllerDelegate
 {
+    var initializedVPNInfo: VPNInfo? = nil
     
-    var initializedVPNInfo : VPNInfo? = VPNInfo()
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var typeSegment: UISegmentedControl!
     
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var serverTextField: UITextField!
@@ -28,9 +29,19 @@ class LTVPNConfigViewController: UITableViewController, UITextFieldDelegate
     @IBOutlet weak var groupTextField: UITextField!
     @IBOutlet weak var secretTextField: UITextField!
     @IBOutlet weak var alwaysOnSwitch: UISwitch!
-    @IBOutlet weak var saveButton: UIBarButtonItem!
+    
+    @IBOutlet weak var certificateSwitch: UISwitch!
+    
+    @IBOutlet weak var secretCell: UITableViewCell!
+    @IBOutlet weak var groupCell: UITableViewCell!
+    @IBOutlet weak var certificateCell: UITableViewCell!
+    
     @IBOutlet weak var deleteCell: UITableViewCell!
     @IBOutlet weak var duplicateCell: UITableViewCell!
+    
+    @IBAction func didChangeAlwaysOn(sender: AnyObject) {
+        toggleSaveButtonByStatus()
+    }
     
     lazy var vpn: VPN? = {
         if let ID = VPNDataManager.sharedManager.selectedVPNID {
@@ -42,42 +53,22 @@ class LTVPNConfigViewController: UITableViewController, UITextFieldDelegate
         return Optional.None
         }()
     
-    @IBAction func didChangeAlwaysOn(sender: AnyObject) {
-        toggleSaveButtonByStatus()
-    }
+    var certificateURL: String?
     
-    @IBAction func saveVPN(sender: AnyObject) {
-        if let currentVPN = vpn {
-            currentVPN.title = titleTextField.text
-            currentVPN.server = serverTextField.text
-            currentVPN.account = accountTextField.text
-            currentVPN.group = groupTextField.text
-            currentVPN.alwaysOn = alwaysOnSwitch.on
-            
-            if passwordTextField!.text != kImpossibleHash {
-                VPNKeychainWrapper.setPassword(passwordTextField!.text, forVPNID: currentVPN.ID)
-            }
-            
-            if secretTextField!.text != kImpossibleHash {
-                VPNKeychainWrapper.setSecret(secretTextField!.text, forVPNID: currentVPN.ID)
-            }
-            
-            VPNDataManager.sharedManager.saveContext()
-            
-            NSNotificationCenter.defaultCenter().postNotificationName(kLTVPNDidUpdate, object: nil)
-        } else {
-            let success = VPNDataManager.sharedManager.createVPN(
-                titleTextField.text,
-                server: serverTextField.text,
-                account: accountTextField.text,
-                password: passwordTextField.text,
-                group: groupTextField.text,
-                secret: secretTextField.text,
-                alwaysOn: alwaysOnSwitch.on
-            )
-            
-            if success {
-                NSNotificationCenter.defaultCenter().postNotificationName(kLTVPNDidCreate, object: self)
+    var temporaryCertificateData: NSData? {
+        didSet {
+            if let d = self.temporaryCertificateData {
+                let bytesFormatter = NSByteCountFormatter()
+                bytesFormatter.countStyle = .File
+                let bytesString = bytesFormatter.stringFromByteCount(Int64(d.length))
+                
+                if let certCell = certificateCell {
+                    certCell.detailTextLabel?.text = bytesString
+                }
+            } else {
+                if let certCell = certificateCell {
+                    certCell.detailTextLabel?.text = " "
+                }
             }
         }
     }
@@ -98,17 +89,16 @@ class LTVPNConfigViewController: UITableViewController, UITextFieldDelegate
             accountTextField.text = currentVPN.account
             groupTextField.text = currentVPN.group
             alwaysOnSwitch.on = currentVPN.alwaysOn
-            
-            if let passwordRef = VPNKeychainWrapper.passwordForVPNID(currentVPN.ID) {
-                passwordTextField!.text = kImpossibleHash
-            }
-            
-            if let secretRef = VPNKeychainWrapper.secretForVPNID(currentVPN.ID) {
-                secretTextField!.text = kImpossibleHash
-            }
-            
+            typeSegment.selectedSegmentIndex = currentVPN.ikev2 ? 1 : 0
+            certificateURL = currentVPN.certificateURL
+            passwordTextField.text = VPNKeychainWrapper.passwordStringForVPNID(currentVPN.ID)
+            secretTextField.text = VPNKeychainWrapper.secretStringForVPNID(currentVPN.ID)
             deleteCell.hidden = false
             duplicateCell.hidden = false
+            temporaryCertificateData = VPNKeychainWrapper.certificateForVPNID(currentVPN.ID)
+            if temporaryCertificateData != nil {
+                certificateSwitch.on = true
+            }
         } else if let info = initializedVPNInfo {
             if info.title != "" {
                 titleTextField.text = info.title
@@ -118,12 +108,19 @@ class LTVPNConfigViewController: UITableViewController, UITextFieldDelegate
                 groupTextField.text = info.group
                 secretTextField.text = info.secret
                 alwaysOnSwitch.on = info.alwaysOn
-                toggleSaveButtonByStatus()
+                typeSegment.selectedSegmentIndex = info.ikev2 ? 1 : 0
+                certificateURL = info.certificateURL
+                if certificateURL != nil {
+                    certificateSwitch.on = true
+                }
             }
             
             deleteCell.hidden = true
             duplicateCell.hidden = true
         }
+        
+        toggleSaveButtonByStatus()
+        updateCertificateOptions()
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -131,17 +128,7 @@ class LTVPNConfigViewController: UITableViewController, UITextFieldDelegate
     }
     
     deinit {
+        temporaryCertificateData = nil
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
-    
-    func toggleSaveButtonByStatus() {
-        if self.titleTextField.text.isEmpty
-            || self.accountTextField.text.isEmpty
-            || self.serverTextField.text.isEmpty {
-                self.saveButton?.enabled = false
-        } else {
-            self.saveButton?.enabled = true
-        }
-    }
-    
 }

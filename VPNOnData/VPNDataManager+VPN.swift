@@ -30,7 +30,18 @@ extension VPNDataManager
         return vpns
     }
     
-    func createVPN(title: String, server: String, account: String, password: String, group: String, secret: String, alwaysOn: Bool = true) -> Bool
+    func createVPN(
+        title: String,
+        server: String,
+        account: String,
+        password: String,
+        group: String,
+        secret: String,
+        alwaysOn: Bool = true,
+        ikev2: Bool = false,
+        certificateURL: String,
+        certificate: NSData?
+        ) -> VPN?
     {
         let entity = NSEntityDescription.entityForName("VPN", inManagedObjectContext: self.managedObjectContext!)
         let vpn = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: self.managedObjectContext!) as VPN
@@ -40,24 +51,34 @@ extension VPNDataManager
         vpn.account = account
         vpn.group = group
         vpn.alwaysOn = alwaysOn
+        vpn.ikev2 = ikev2
+        vpn.certificateURL = certificateURL
         
         var error: NSError?
         if !self.managedObjectContext!.save(&error) {
             println("Could not save VPN \(error), \(error?.userInfo)")
-            return false
         } else {
             saveContext()
             
             if !vpn.objectID.temporaryID {
-                VPNKeychainWrapper.setPassword(password, forVPNID: vpn.ID)
-                VPNKeychainWrapper.setSecret(secret, forVPNID: vpn.ID)
+                if !password.isEmpty {
+                    VPNKeychainWrapper.setPassword(password, forVPNID: vpn.ID)
+                }
+                if !secret.isEmpty {
+                    VPNKeychainWrapper.setSecret(secret, forVPNID: vpn.ID)
+                }
+                if let certificateData = certificate {
+                    VPNKeychainWrapper.setCertificate(certificateData, forVPNID: vpn.ID)
+                }
                 
                 if allVPN().count == 1 {
                     VPNManager.sharedManager().activatedVPNID = vpn.ID
                 }
+                return vpn
             }
-            return true
         }
+        
+        return .None
     }
     
     func deleteVPN(vpn:VPN)
@@ -160,20 +181,18 @@ extension VPNDataManager
             
             VPNKeychainWrapper.passwordForVPNID(vpn.ID)
             
-            if createVPN(
+            return createVPN(
                 newTitle,
                 server: vpn.server,
                 account: vpn.account,
-                password: VPNKeychainWrapper.passwordStringForVPNID(vpn.ID),
+                password: VPNKeychainWrapper.passwordStringForVPNID(vpn.ID) ?? "",
                 group: vpn.group,
-                secret: VPNKeychainWrapper.secretStringForVPNID(vpn.ID),
-                alwaysOn: vpn.alwaysOn)
-            {
-                let newVPNs = VPNHasTitle(newTitle)
-                if newVPNs.count > 0 {
-                    return newVPNs.first!
-                }
-            }
+                secret: VPNKeychainWrapper.secretStringForVPNID(vpn.ID) ?? "",
+                alwaysOn: vpn.alwaysOn,
+                ikev2: vpn.ikev2,
+                certificateURL: vpn.certificateURL,
+                certificate: VPNKeychainWrapper.certificateForVPNID(vpn.ID)
+                )
         }
         
         return .None

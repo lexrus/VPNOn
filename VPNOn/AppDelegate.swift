@@ -51,63 +51,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     // MARK: - URL scheme
     
     func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
-        var title = ""
-        var server = url.host ?? ""
-        var account = url.user ?? ""
-        var password = url.password ?? ""
-        var group = ""
-        var secret = ""
-        var alwaysOn = true
-        
-        // The server is required, otherwise we just open the container app.
-        if server.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) == 0 {
-            return true
-        }
-        
-        // Parse the query string.
-        if let params = url.query {
-            for paramString in params.componentsSeparatedByString("&") {
-                let param = paramString.componentsSeparatedByString("=")
-                if param.count == 2 {
-                    let value = param[1] ?? ""
-                    switch param[0] {
-                    case "title":
-                        title = value
-                        break
-                    case "group":
-                        group = value
-                        break
-                    case "secret":
-                        secret = value
-                        break
-                    case "alwayson":
-                        alwaysOn = Bool(value == "1" || value == "true" || value == "yes")
-                    default:
-                        ()
-                    }
-                }
-            }
-        }
-        
-        let splitVC = window!.rootViewController as UISplitViewController
-        
-        let detailNC = splitVC.viewControllers.last! as UINavigationController
-        detailNC.popToRootViewControllerAnimated(false)
-        
-        let createVC = splitVC.storyboard!.instantiateViewControllerWithIdentifier(
-            NSStringFromClass(LTVPNConfigViewController)
-            ) as LTVPNConfigViewController
-        
-        detailNC.pushViewController(createVC, animated: false)
-        
-        if let info = createVC.initializedVPNInfo {
-            info.title = title
-            info.server = server
-            info.account = account
-            info.password = password
-            info.group = group
-            info.secret = secret
-            info.alwaysOn = alwaysOn
+        if let info = VPN.parseURL(url) {
+            let splitVC = window!.rootViewController as UISplitViewController
+            
+            let detailNC = splitVC.viewControllers.last! as UINavigationController
+            detailNC.popToRootViewControllerAnimated(false)
+            
+            let createVC = splitVC.storyboard!.instantiateViewControllerWithIdentifier(
+                NSStringFromClass(LTVPNConfigViewController)
+                ) as LTVPNConfigViewController
+            createVC.initializedVPNInfo = info
+            
+            detailNC.pushViewController(createVC, animated: false)
         }
         
         return true

@@ -54,12 +54,13 @@ class VPNManager
         return VPNManager._sharedManager
     }
     
-    func connect(title: String, server: String, account: String?, group: String?, alwaysOn: Bool = true, passwordRef: NSData?, secretRef: NSData?) {
+    func connectIPSec(title: String, server: String, account: String?, group: String?, alwaysOn: Bool = true, passwordRef: NSData?, secretRef: NSData?, certificate: NSData?) {
         
         // TODO: Add a tailing closure for callback.
         
         let p = NEVPNProtocolIPSec()
-        p.authenticationMethod = NEVPNIKEAuthenticationMethod.SharedSecret
+
+        p.authenticationMethod = NEVPNIKEAuthenticationMethod.None
         p.useExtendedAuthentication = true
         p.serverAddress = server
         p.disconnectOnSleep = !alwaysOn
@@ -81,7 +82,15 @@ class VPNManager
         }
         
         if let secret = secretRef {
+            p.authenticationMethod = NEVPNIKEAuthenticationMethod.SharedSecret
             p.sharedSecretReference = secret
+        }
+        
+        if let certficiateData = certificate {
+            p.authenticationMethod = NEVPNIKEAuthenticationMethod.Certificate
+            
+            p.identityData = certficiateData
+            p.identityDataPassword = "vpnonoff"
         }
     
         _manager.enabled = true
@@ -98,6 +107,69 @@ class VPNManager
 //                    println("Failed to start tunnel: \(connectErr.localizedDescription)")
                 } else {
 //                    println("VPN tunnel started.")
+                }
+            }
+        }
+    }
+    
+    func connectIKEv2(title: String, server: String, account: String?, group: String?, alwaysOn: Bool = true, passwordRef: NSData?, secretRef: NSData?, certificate: NSData?) {
+        let p = NEVPNProtocolIKEv2()
+        
+        p.authenticationMethod = NEVPNIKEAuthenticationMethod.None
+        p.useExtendedAuthentication = true
+        p.serverAddress = server
+        p.remoteIdentifier = server
+        p.disconnectOnSleep = !alwaysOn
+        p.deadPeerDetectionRate = NEVPNIKEv2DeadPeerDetectionRate.Medium
+        
+        // TODO: Add an option into config page
+        
+        _manager.localizedDescription = "VPN On - \(title)"
+        
+        if let grp = group {
+            p.localIdentifier = grp
+        } else {
+            p.localIdentifier = "VPN"
+        }
+        
+        if let username = account {
+            p.username = username
+        }
+        
+        if let password = passwordRef {
+            p.passwordReference = password
+        }
+        
+        if let secret = secretRef {
+            p.authenticationMethod = NEVPNIKEAuthenticationMethod.SharedSecret
+            p.sharedSecretReference = secret
+        }
+        
+        if let certficiateData = certificate {
+            p.authenticationMethod = NEVPNIKEAuthenticationMethod.Certificate
+            p.serverCertificateCommonName = server
+            p.serverCertificateIssuerCommonName = server
+
+            p.identityData = certficiateData
+            p.identityDataPassword = "vpnonoff"
+        }
+        
+        _manager.enabled = true
+        _manager.`protocol` = p
+        _manager.saveToPreferencesWithCompletionHandler {
+            (error: NSError!) -> Void in
+            if let err = error {
+                println("Failed to save profile: \(err.localizedDescription)")
+            } else {
+                var connectError : NSError?
+                if self._manager.connection.startVPNTunnelAndReturnError(&connectError) {
+                    if let connectErr = connectError {
+                        println("Failed to start IKEv2 tunnel: \(connectErr.localizedDescription)")
+                    } else {
+                        println("IKEv2 tunnel started.")
+                    }
+                } else {
+                    println("Failed to connect: \(connectError?.localizedDescription)")
                 }
             }
         }

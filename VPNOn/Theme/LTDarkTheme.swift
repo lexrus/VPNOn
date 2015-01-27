@@ -19,5 +19,5 @@ struct LTDarkTheme : LTTheme
     var tableViewBackgroundColor = UIColor.blackColor()
     var tableViewLineColor       = UIColor(red:0.15, green:0.15, blue:0.2 , alpha:1)
     var tableViewCellColor       = UIColor(red:0.07, green:0.07, blue:0.09, alpha:1)
-    var switchBorderColor        = UIColor(red:0.15, green:0.15, blue:0.2 , alpha:1)
+    var switchBorderColor        = UIColor(red:0.2 , green:0.2 , blue:0.25, alpha:1)
 }
