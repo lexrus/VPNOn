@@ -40,7 +40,9 @@ extension VPNDataManager
         alwaysOn: Bool = true,
         ikev2: Bool = false,
         certificateURL: String,
-        certificate: NSData?
+        certificate: NSData?,
+        onDemand: Bool = false,
+        domains: String
         ) -> VPN?
     {
         let entity = NSEntityDescription.entityForName("VPN", inManagedObjectContext: self.managedObjectContext!)
@@ -53,6 +55,8 @@ extension VPNDataManager
         vpn.alwaysOn = alwaysOn
         vpn.ikev2 = ikev2
         vpn.certificateURL = certificateURL
+        vpn.onDemand = onDemand
+        vpn.domains = domains
         
         var error: NSError?
         if !self.managedObjectContext!.save(&error) {
@@ -191,7 +195,9 @@ extension VPNDataManager
                 alwaysOn: vpn.alwaysOn,
                 ikev2: vpn.ikev2,
                 certificateURL: vpn.certificateURL,
-                certificate: VPNKeychainWrapper.certificateForVPNID(vpn.ID)
+                certificate: VPNKeychainWrapper.certificateForVPNID(vpn.ID),
+                onDemand: vpn.onDemand,
+                domains: vpn.domains
                 )
         }
         

@@ -11,8 +11,20 @@ import UIKit
 extension VPN
 {
     func domainsArray() -> [String] {
-        var arr = [String]()
-
-        return arr
+        return VPN.domainsInString(domains ?? "")
+    }
+    
+    class func domainsInString(string: String) -> [String] {
+        let s = string.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+        if s.isEmpty {
+            return [String]()
+        }
+        var a = s.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        if a.count > 1 {
+            if a[a.count - 1].isEmpty {
+                a.removeAtIndex(a.count - 1)
+            }
+        }
+        return a
     }
 }

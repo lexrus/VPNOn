@@ -15,7 +15,8 @@ let kLTVPNDidUpdate = "kLTVPNDidUpdate"
 let kLTVPNDidRemove = "kLTVPNDidRemove"
 let kLTVPNDidDuplicate = "kLTVPNDidDuplicate"
 
-class LTVPNConfigViewController: UITableViewController, UITextFieldDelegate, LTVPNCertificateViewControllerDelegate
+class LTVPNConfigViewController: UITableViewController, UITextFieldDelegate,
+LTVPNCertificateViewControllerDelegate, LTVPNDomainsViewControllerDelegate
 {
     var initializedVPNInfo: VPNInfo? = nil
     
@@ -77,6 +78,8 @@ class LTVPNConfigViewController: UITableViewController, UITextFieldDelegate, LTV
         }
     }
     
+    var temporaryDomains: String?
+    
     override func loadView() {
         super.loadView()
         
@@ -104,7 +107,7 @@ class LTVPNConfigViewController: UITableViewController, UITextFieldDelegate, LTV
                 certificateSwitch.on = true
             }
             onDemandSwitch.on = currentVPN.onDemand
-            domainsCell.detailTextLabel!.text = "\(currentVPN.domainsArray().count) domains"
+            updateDomainsCell()
         } else if let info = initializedVPNInfo {
             if info.title != "" {
                 titleTextField.text = info.title
@@ -136,5 +139,22 @@ class LTVPNConfigViewController: UITableViewController, UITextFieldDelegate, LTV
     deinit {
         temporaryCertificateData = nil
         NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+
+    // MARK: - Navigation
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "certificate" {
+            if let targetVC = segue.destinationViewController as? LTVPNCertificateViewController {
+                targetVC.delegate = self
+                targetVC.temporaryCertificateURL = certificateURL
+                targetVC.temporaryCertificateData = temporaryCertificateData
+            }
+        } else if segue.identifier == "domains" {
+            if let targetVC = segue.destinationViewController as? LTVPNDomainsViewController {
+                targetVC.delegate = self
+                targetVC.domains = temporaryDomains
+            }
+        }
     }
 }

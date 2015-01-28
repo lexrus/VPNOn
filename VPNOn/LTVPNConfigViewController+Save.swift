@@ -20,6 +20,8 @@ extension LTVPNConfigViewController
             currentVPN.alwaysOn = alwaysOnSwitch.on
             currentVPN.ikev2 = typeSegment.selectedSegmentIndex == 1
             currentVPN.certificateURL = certificateURL
+            currentVPN.onDemand = onDemandSwitch.on
+            currentVPN.domains = temporaryDomains
             
             VPNKeychainWrapper.setPassword(passwordTextField.text, forVPNID: currentVPN.ID)
             
@@ -39,7 +41,9 @@ extension LTVPNConfigViewController
                 alwaysOn: alwaysOnSwitch.on,
                 ikev2: typeSegment.selectedSegmentIndex == 1,
                 certificateURL: certificateURL ?? "",
-                certificate: temporaryCertificateData
+                certificate: temporaryCertificateData,
+                onDemand: onDemandSwitch.on,
+                domains: temporaryDomains ?? ""
                 ) {
                     NSNotificationCenter.defaultCenter().postNotificationName(kLTVPNDidCreate, object: self)
             }

@@ -42,16 +42,6 @@ extension LTVPNConfigViewController
     }
     
     // MARK: - Certificate
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "certificate" {
-            if let targetVC = segue.destinationViewController as? LTVPNCertificateViewController {
-                targetVC.delegate = self
-                targetVC.temporaryCertificateURL = certificateURL
-                targetVC.temporaryCertificateData = temporaryCertificateData
-            }
-        }
-    }
 
     func didTapSaveCertificateWithData(data: NSData?, URLString: String) {
         certificateURL = URLString
