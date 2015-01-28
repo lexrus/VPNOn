@@ -121,10 +121,11 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate
         case kVPNAddSection:
             return tableView.dequeueReusableCellWithIdentifier(kAddCellID, forIndexPath: indexPath) as UITableViewCell
         default:
-            let cell = tableView.dequeueReusableCellWithIdentifier(kVPNCellID, forIndexPath: indexPath) as UITableViewCell
-            
+            let cell = tableView.dequeueReusableCellWithIdentifier(kVPNCellID, forIndexPath: indexPath) as LTVPNTableViewCell
+            let vpn = vpns[indexPath.row]
             cell.textLabel?.attributedText = cellTitleForIndexPath(indexPath)
-            cell.detailTextLabel?.text = vpns[indexPath.row].server
+            cell.detailTextLabel?.text = vpn.server
+            cell.IKEv2 = vpn.ikev2
             
             if activatedVPNID == vpns[indexPath.row].ID {
                 cell.imageView!.image = UIImage(named: "CheckMark")
