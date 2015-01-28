@@ -15,18 +15,42 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     @IBOutlet weak var VPNSwitch: UISwitch!
     @IBOutlet weak var VPNLabel: UILabel!
-    var VPNTitle = ""
+    @IBOutlet weak var VPNStatusLabel: UILabel!
+    @IBOutlet weak var tagLabel: UIView!
+    
+    @IBOutlet weak var contentArea: UIView!
+    @IBOutlet weak var switchArea: UIView!
+    
+    var typeTag: VPNTypeTag {
+        get {
+            if tagLabel.subviews.first == nil {
+                let effect = UIVibrancyEffect()
+                let tagEffectView = UIVisualEffectView(effect: UIVibrancyEffect.notificationCenterVibrancyEffect())
+                tagEffectView.frame = tagLabel.bounds
+                let tagView = VPNTypeTag(frame: tagEffectView.bounds)
+                tagLabel.addSubview(tagEffectView)
+                tagEffectView.contentView.addSubview(tagView)
+            }
+            return tagLabel.subviews.first!.contentView.subviews.first! as VPNTypeTag
+        }
+    }
         
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        preferredContentSize = CGSizeMake(0, 50)
+        preferredContentSize = CGSizeMake(0, 60)
         
-        var tapGesture = UITapGestureRecognizer(target: self, action: Selector("didTapLabel:"))
-        tapGesture.numberOfTapsRequired = 1
-        tapGesture.numberOfTouchesRequired = 1
-        VPNLabel.userInteractionEnabled = true
-        VPNLabel.addGestureRecognizer(tapGesture)
+        var labelTapGesture = UITapGestureRecognizer(target: self, action: Selector("didTapLabel:"))
+        labelTapGesture.numberOfTapsRequired = 1
+        labelTapGesture.numberOfTouchesRequired = 1
+        contentArea.userInteractionEnabled = true
+        contentArea.addGestureRecognizer(labelTapGesture)
+        
+        var switchTapGesture = UITapGestureRecognizer(target: self, action: Selector("didTapSwitch:"))
+        switchTapGesture.numberOfTapsRequired = 1
+        switchTapGesture.numberOfTouchesRequired = 1
+        switchArea.userInteractionEnabled = true
+        switchArea.addGestureRecognizer(switchTapGesture)
         
         NSNotificationCenter.defaultCenter().addObserver(
             self,
@@ -46,13 +70,19 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         super.viewWillAppear(animated)
         
         if let vpn = VPNDataManager.sharedManager.activatedVPN {
-            VPNTitle = vpn.title
+            VPNLabel.text = vpn.title
+            typeTag.type = vpn.ikev2 ? .IKEv2 : .IKEv1
+            typeTag.hidden = false
             VPNSwitch.enabled = true
+            switchArea.userInteractionEnabled = true
             VPNStatusDidChange(nil)
         } else {
-            VPNLabel.text = "Please add a VPN."
+            VPNLabel.text = "No VPN configured."
+            VPNStatusLabel.text = "Please add a VPN."
+            typeTag.hidden = true
             VPNSwitch.setOn(false, animated: false)
             VPNSwitch.enabled = false
+            switchArea.userInteractionEnabled = false
         }
         
         self.VPNSwitch.setNeedsUpdateConstraints()
@@ -76,8 +106,8 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         return edgeInsets
     }
     
-    @IBAction func toggleVPN(sender: UISwitch) {
-        if sender.on {
+    func toggleVPN() {
+        if VPNSwitch.on {
             if let vpn = VPNDataManager.sharedManager.activatedVPN {
                 let passwordRef = VPNKeychainWrapper.passwordForVPNID(vpn.ID)
                 let secretRef = VPNKeychainWrapper.secretForVPNID(vpn.ID)
@@ -93,7 +123,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         }
     }
     
-    func didTapLabel(label: UILabel) {
+    func didTapLabel(gesture: UITapGestureRecognizer) {
         let appURL = NSURL(string: "vpnon://")
         extensionContext!.openURL(appURL!, completionHandler: {
             (complete: Bool) -> Void in
@@ -101,25 +131,39 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         })
     }
     
+    func didTapSwitch(gesture: UITapGestureRecognizer) {
+        VPNSwitch.setOn(!VPNSwitch.on, animated: true)
+        toggleVPN()
+    }
+    
     func VPNStatusDidChange(notification: NSNotification?) {
         switch VPNManager.sharedManager().status {
         case NEVPNStatus.Connecting:
-            VPNLabel.text = "\(VPNTitle) - Connecting..."
-            VPNSwitch.enabled = false
+            VPNStatusLabel.text = "Connecting..."
+            VPNStatusLabel.textColor = UIColor.lightGrayColor()
+            VPNLabel.textColor = UIColor.lightGrayColor()
             break
         case NEVPNStatus.Connected:
-            VPNLabel.text = "\(VPNTitle) - Connected"
+            VPNStatusLabel.text = "Connected"
             VPNSwitch.setOn(true, animated: false)
-            VPNSwitch.enabled = true
+            VPNStatusLabel.textColor = UIColor.whiteColor()
+            VPNLabel.textColor = UIColor.whiteColor()
             break
         case NEVPNStatus.Disconnecting:
-            VPNLabel.text = "\(VPNTitle) - Disconnecting..."
-            VPNSwitch.enabled = false
+            VPNStatusLabel.text = "Disconnecting..."
+            VPNStatusLabel.textColor = UIColor.whiteColor()
+            VPNLabel.textColor = UIColor.whiteColor()
+            break
+        case NEVPNStatus.Invalid:
+            VPNStatusLabel.text = "Invalid"
+            VPNStatusLabel.textColor = UIColor.lightGrayColor()
+            VPNLabel.textColor = UIColor.lightGrayColor()
             break
         default:
             VPNSwitch.setOn(false, animated: false)
-            VPNSwitch.enabled = true
-            VPNLabel.text = "\(VPNTitle) - Not Connected"
+            VPNStatusLabel.textColor = UIColor.lightGrayColor()
+            VPNLabel.textColor = UIColor.lightGrayColor()
+            VPNStatusLabel.text = "Not Connected"
         }
     }
 }
