@@ -36,6 +36,10 @@ class LTVPNConfigViewController: UITableViewController, UITextFieldDelegate, LTV
     @IBOutlet weak var groupCell: UITableViewCell!
     @IBOutlet weak var certificateCell: UITableViewCell!
     
+    @IBOutlet weak var onDemandCell: UITableViewCell!
+    @IBOutlet weak var domainsCell: LTVPNTableViewCell!
+    @IBOutlet weak var onDemandSwitch: UISwitch!
+
     @IBOutlet weak var deleteCell: UITableViewCell!
     @IBOutlet weak var duplicateCell: UITableViewCell!
     
@@ -99,6 +103,8 @@ class LTVPNConfigViewController: UITableViewController, UITextFieldDelegate, LTV
             if temporaryCertificateData != nil {
                 certificateSwitch.on = true
             }
+            onDemandSwitch.on = currentVPN.onDemand
+            domainsCell.detailTextLabel!.text = "\(currentVPN.domainsArray().count) domains"
         } else if let info = initializedVPNInfo {
             if info.title != "" {
                 titleTextField.text = info.title

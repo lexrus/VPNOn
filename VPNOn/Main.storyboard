@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C99d" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ViW-99-x1O">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ViW-99-x1O">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -603,6 +603,78 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection footerTitle="Requesting domains specified here may turn on this VPN automatically" id="F9g-g3-Ptb">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="44" id="Jk6-I4-raK">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Jk6-I4-raK" id="2UA-kf-JzW">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On Demand" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="COD-5W-XRd" customClass="LTTableViewCellTitle" customModule="VPNOn" customModuleProvider="target">
+                                                    <rect key="frame" x="16" y="0.0" width="511" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="120" id="YPG-xv-cRh"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="YPG-xv-cRh"/>
+                                                        </mask>
+                                                    </variation>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Yme-gq-QFh">
+                                                    <rect key="frame" x="535" y="6.5" width="51" height="31"/>
+                                                </switch>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="COD-5W-XRd" firstAttribute="top" secondItem="2UA-kf-JzW" secondAttribute="top" id="1ck-Ey-dht"/>
+                                                <constraint firstAttribute="centerY" secondItem="Yme-gq-QFh" secondAttribute="centerY" id="2rF-0f-wOv"/>
+                                                <constraint firstAttribute="trailing" secondItem="Yme-gq-QFh" secondAttribute="trailing" constant="15" id="LAu-HA-Pyg"/>
+                                                <constraint firstItem="Yme-gq-QFh" firstAttribute="leading" secondItem="COD-5W-XRd" secondAttribute="trailing" constant="8" id="XML-4X-fUx"/>
+                                                <constraint firstAttribute="bottom" secondItem="COD-5W-XRd" secondAttribute="bottom" id="oNQ-EU-nU0"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Yme-gq-QFh" secondAttribute="trailing" constant="8" id="oOH-Fm-2yF"/>
+                                                <constraint firstItem="COD-5W-XRd" firstAttribute="leading" secondItem="2UA-kf-JzW" secondAttribute="leadingMargin" constant="8" id="p4Q-cx-92W">
+                                                    <variation key="heightClass=regular" constant="12"/>
+                                                    <variation key="widthClass=compact" constant="8"/>
+                                                    <variation key="heightClass=regular-widthClass=regular" constant="12"/>
+                                                </constraint>
+                                                <constraint firstItem="Yme-gq-QFh" firstAttribute="leading" secondItem="COD-5W-XRd" secondAttribute="trailing" constant="8" id="zHL-F5-rGh"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="zHL-F5-rGh"/>
+                                                    <exclude reference="LAu-HA-Pyg"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="err-Z8-0CC" detailTextLabel="tgC-Za-lAf" rowHeight="44" style="IBUITableViewCellStyleValue1" id="1AP-XI-Lg9" customClass="LTVPNTableViewCell" customModule="VPNOn" customModuleProvider="target">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1AP-XI-Lg9" id="dYM-Oe-hUC">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Domains relies on this VPN " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="err-Z8-0CC">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="0 domains" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tgC-Za-lAf">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="IFb-GO-E2U" kind="show" id="bbG-kx-bPF"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection id="mBf-Hr-GPe">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="duplicateButton" textLabel="Ao2-Hb-0jD" style="IBUITableViewCellStyleDefault" id="663-D6-n2X" customClass="LTTableViewActionCell" customModule="VPNOn" customModuleProvider="target">
@@ -663,9 +735,12 @@
                         <outlet property="certificateCell" destination="UD8-VF-g5N" id="h2j-kH-rdl"/>
                         <outlet property="certificateSwitch" destination="p21-Cr-Izw" id="tpn-yq-J8f"/>
                         <outlet property="deleteCell" destination="aVU-jp-9tN" id="Ulk-73-rhF"/>
+                        <outlet property="domainsCell" destination="1AP-XI-Lg9" id="VTW-t5-tkP"/>
                         <outlet property="duplicateCell" destination="663-D6-n2X" id="ah7-Hk-QgA"/>
                         <outlet property="groupCell" destination="S09-rd-58a" id="9j7-ht-aol"/>
                         <outlet property="groupTextField" destination="5bP-9z-qLc" id="CHk-vk-iCa"/>
+                        <outlet property="onDemandCell" destination="Jk6-I4-raK" id="044-QU-Ljh"/>
+                        <outlet property="onDemandSwitch" destination="Yme-gq-QFh" id="cLA-tG-yIU"/>
                         <outlet property="passwordTextField" destination="Jej-Iu-pn8" id="kAU-cs-fMg"/>
                         <outlet property="saveButton" destination="dLM-eO-7ed" id="3k2-7P-osS"/>
                         <outlet property="secretCell" destination="gNQ-Oc-Xan" id="Qbt-ve-bQE"/>
@@ -803,6 +878,66 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bcL-pD-N1D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2708" y="183"/>
+        </scene>
+        <!--Domains-->
+        <scene sceneID="Jq9-0t-dxT">
+            <objects>
+                <tableViewController id="IFb-GO-E2U" customClass="LTVPNDomainsViewController" customModule="VPNOn" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="vZ7-kQ-XD7">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection footerTitle="Separate domains with whitespece or new line" id="PP3-2a-1up">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="200" id="5Av-ta-6aO">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5Av-ta-6aO" id="Gc1-pe-asp">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Fl-Y2-HnO">
+                                                    <rect key="frame" x="11" y="8" width="581" height="183.5"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <string key="text">google.com google.sg google.hk google.jp
+twitter.com</string>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL" keyboardAppearance="alert" returnKeyType="done"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="IFb-GO-E2U" id="e6L-2d-LLM"/>
+                                                    </connections>
+                                                </textView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="8Fl-Y2-HnO" secondAttribute="trailing" id="a1p-0U-ztu"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="8Fl-Y2-HnO" secondAttribute="bottom" id="bGB-sX-DoF"/>
+                                                <constraint firstItem="8Fl-Y2-HnO" firstAttribute="top" secondItem="Gc1-pe-asp" secondAttribute="topMargin" id="d66-Q7-NPW"/>
+                                                <constraint firstItem="8Fl-Y2-HnO" firstAttribute="leading" secondItem="Gc1-pe-asp" secondAttribute="leadingMargin" constant="3" id="hHH-bX-bSZ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="IFb-GO-E2U" id="t9j-2B-3XW"/>
+                            <outlet property="delegate" destination="IFb-GO-E2U" id="9GO-Ip-lrg"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Domains" id="rTs-vk-ZUy">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="save" id="fDy-1u-D5j">
+                            <connections>
+                                <action selector="save:" destination="RyC-km-4Av" id="nyg-wW-lUp"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="saveButton" destination="fDy-1u-D5j" id="Kyd-Fb-0cj"/>
+                        <outlet property="textView" destination="8Fl-Y2-HnO" id="gJU-zC-jhn"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fnz-xa-XIC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2708" y="902"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2dQ-gU-dhf">

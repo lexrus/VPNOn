@@ -256,12 +256,12 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate
             if let vpn = VPNDataManager.sharedManager.activatedVPN {
                 let passwordRef = VPNKeychainWrapper.passwordForVPNID(vpn.ID)
                 let secretRef = VPNKeychainWrapper.secretForVPNID(vpn.ID)
-                
+                let certificate = VPNKeychainWrapper.certificateForVPNID(vpn.ID)
                 
                 if vpn.ikev2 {
-                    VPNManager.sharedManager().connectIKEv2(vpn.title, server: vpn.server, account: vpn.account, group: vpn.group, alwaysOn: vpn.alwaysOn, passwordRef: passwordRef, secretRef: secretRef, certificate: nil)
+                    VPNManager.sharedManager().connectIKEv2(vpn.title, server: vpn.server, account: vpn.account, group: vpn.group, alwaysOn: vpn.alwaysOn, passwordRef: passwordRef, secretRef: secretRef, certificate: certificate)
                 } else {
-                    VPNManager.sharedManager().connectIPSec(vpn.title, server: vpn.server, account: vpn.account, group: vpn.group, alwaysOn: vpn.alwaysOn, passwordRef: passwordRef, secretRef: secretRef, certificate: nil)
+                    VPNManager.sharedManager().connectIPSec(vpn.title, server: vpn.server, account: vpn.account, group: vpn.group, alwaysOn: vpn.alwaysOn, passwordRef: passwordRef, secretRef: secretRef, certificate: certificate)
                 }
             }
         } else {
