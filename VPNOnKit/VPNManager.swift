@@ -88,9 +88,7 @@ class VPNManager
         
         if let certficiateData = certificate {
             p.authenticationMethod = NEVPNIKEAuthenticationMethod.Certificate
-            
             p.identityData = certficiateData
-            p.identityDataPassword = "vpnonoff"
         }
     
         _manager.enabled = true
@@ -149,9 +147,7 @@ class VPNManager
             p.authenticationMethod = NEVPNIKEAuthenticationMethod.Certificate
             p.serverCertificateCommonName = server
             p.serverCertificateIssuerCommonName = server
-
             p.identityData = certficiateData
-            p.identityDataPassword = "vpnonoff"
         }
         
         _manager.enabled = true
