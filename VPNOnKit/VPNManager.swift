@@ -187,7 +187,7 @@ class VPNManager
             _manager.onDemandRules = [ruleEvaluateConnection]
             _manager.onDemandEnabled = true
         } else {
-            _manager.onDemandRules.removeAll(keepCapacity: true)
+            _manager.onDemandRules = [AnyObject]()
             _manager.onDemandEnabled = false
         }
     }
