@@ -4,6 +4,7 @@
 
 1. Add IPSec IKEv2.
 2. Support IPSec IKEv1 authentication with certificate.
+3. Connect on demand by a domains list.
 
 ## 0.3
 
