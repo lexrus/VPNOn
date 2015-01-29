@@ -885,7 +885,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
-                            <tableViewSection headerTitle="Domains relies on VPN" footerTitle="Requesting domains specified here may turn on VPN automatically. Please separate domains with whitespace or newline." id="PP3-2a-1up">
+                            <tableViewSection headerTitle="Domains relies on VPN" id="PP3-2a-1up">
+                                <string key="footerTitle">Requesting domains specified here may turn on VPN connection automatically. Please separate domains with whitespace or newline. And use "*" for wild card (e.g., *.twitter.com).</string>
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="200" id="5Av-ta-6aO">
                                         <autoresizingMask key="autoresizingMask"/>
