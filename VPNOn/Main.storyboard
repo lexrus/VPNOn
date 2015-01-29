@@ -896,7 +896,7 @@
                                                     <rect key="frame" x="11" y="8" width="581" height="183.5"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" keyboardAppearance="alert" returnKeyType="done"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" keyboardAppearance="alert"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="IFb-GO-E2U" id="e6L-2d-LLM"/>
                                                     </connections>
