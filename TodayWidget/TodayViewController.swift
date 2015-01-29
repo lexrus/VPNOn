@@ -10,6 +10,7 @@ import UIKit
 import NotificationCenter
 import NetworkExtension
 import VPNOnKit
+import CoreData
 
 class TodayViewController: UIViewController, NCWidgetProviding {
     
@@ -54,6 +55,12 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
         NSNotificationCenter.defaultCenter().addObserver(
             self,
+            selector: Selector("coreDataDidSave:"),
+            name: NSManagedObjectContextDidSaveNotification,
+            object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
             selector: Selector("VPNStatusDidChange:"),
             name: NEVPNStatusDidChangeNotification,
             object: nil)
@@ -68,6 +75,14 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        updateContent()
+    }
+    
+    func updateContent() {
+        // Note: In order to get the latest data.
+        // @see: http://stackoverflow.com/questions/25924223/core-data-ios-8-today-widget-issue
+        VPNDataManager.sharedManager.managedObjectContext?.reset()
         
         if let vpn = VPNDataManager.sharedManager.activatedVPN {
             VPNLabel.text = vpn.title
@@ -85,7 +100,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             switchArea.userInteractionEnabled = false
         }
         
-        self.VPNSwitch.setNeedsUpdateConstraints()
+//        self.VPNSwitch.setNeedsUpdateConstraints()
     }
     
     func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)!) {
@@ -98,6 +113,8 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         completionHandler(NCUpdateResult.NewData)
     }
     
+    // MARK: - Layout
+    
     func widgetMarginInsetsForProposedMarginInsets(defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets
     {
         var edgeInsets = defaultMarginInsets
@@ -106,16 +123,33 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         return edgeInsets
     }
     
+    // MARK: - User actions
+    
     func toggleVPN() {
         if VPNSwitch.on {
             if let vpn = VPNDataManager.sharedManager.activatedVPN {
                 let passwordRef = VPNKeychainWrapper.passwordForVPNID(vpn.ID)
                 let secretRef = VPNKeychainWrapper.secretForVPNID(vpn.ID)
+                let certificate = VPNKeychainWrapper.certificateForVPNID(vpn.ID)
                 
                 if vpn.ikev2 {
-                    VPNManager.sharedManager().connectIKEv2(vpn.title, server: vpn.server, account: vpn.account, group: vpn.group, alwaysOn: vpn.alwaysOn, passwordRef: passwordRef, secretRef: secretRef, certificate: nil)
+                    VPNManager.sharedManager().connectIKEv2(vpn.title,
+                        server: vpn.server,
+                        account: vpn.account,
+                        group: vpn.group,
+                        alwaysOn: vpn.alwaysOn,
+                        passwordRef: passwordRef,
+                        secretRef: secretRef,
+                        certificate: certificate)
                 } else {
-                    VPNManager.sharedManager().connectIPSec(vpn.title, server: vpn.server, account: vpn.account, group: vpn.group, alwaysOn: vpn.alwaysOn, passwordRef: passwordRef, secretRef: secretRef, certificate: nil)
+                    VPNManager.sharedManager().connectIPSec(vpn.title,
+                        server: vpn.server,
+                        account: vpn.account,
+                        group: vpn.group,
+                        alwaysOn: vpn.alwaysOn,
+                        passwordRef: passwordRef,
+                        secretRef: secretRef,
+                        certificate: certificate)
                 }
             }
         } else {
@@ -134,6 +168,13 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     func didTapSwitch(gesture: UITapGestureRecognizer) {
         VPNSwitch.setOn(!VPNSwitch.on, animated: true)
         toggleVPN()
+    }
+    
+    // MARK: - Notification
+    
+    func coreDataDidSave(notification: NSNotification) {
+        VPNDataManager.sharedManager.managedObjectContext?.mergeChangesFromContextDidSaveNotification(notification)
+        updateContent()
     }
     
     func VPNStatusDidChange(notification: NSNotification?) {
@@ -157,12 +198,6 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             VPNStatusLabel.textColor = UIColor.whiteColor()
             VPNLabel.textColor = UIColor.whiteColor()
             break
-            
-//        case NEVPNStatus.Invalid:
-//            VPNStatusLabel.text = NSLocalizedString("Invalid", comment: "Today Widget - Status")
-//            VPNStatusLabel.textColor = UIColor.lightGrayColor()
-//            VPNLabel.textColor = UIColor.lightGrayColor()
-//            break
             
         default:
             VPNSwitch.setOn(false, animated: false)

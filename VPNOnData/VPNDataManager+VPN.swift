@@ -115,6 +115,7 @@ extension VPNDataManager
         var result = managedObjectContext?.existingObjectWithID(ID, error: &error)
         if let vpn = result {
             if !vpn.deleted {
+                managedObjectContext?.refreshObject(vpn, mergeChanges: true)
                 return vpn as? VPN
             }
         } else {
