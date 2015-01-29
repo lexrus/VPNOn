@@ -211,6 +211,9 @@
 		D769FE9E1A7A3E1800EF1A1F /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/Main.strings"; sourceTree = "<group>"; };
 		D769FE9F1A7A3E1800EF1A1F /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		D769FEA01A7A3E1800EF1A1F /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		D769FEA11A7A3F1900EF1A1F /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/Main.strings"; sourceTree = "<group>"; };
+		D769FEA21A7A3F1900EF1A1F /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		D769FEA31A7A3F1900EF1A1F /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		D77593D71A79E53C007161B2 /* LTVPNTableViewController+OnDemand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LTVPNTableViewController+OnDemand.swift"; sourceTree = "<group>"; };
 		D77593D91A79E674007161B2 /* VPNManager+Domains.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VPNManager+Domains.swift"; sourceTree = "<group>"; };
 		D77593DC1A7A2E5A007161B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -298,6 +301,7 @@
 		D7453F201A31966F00F7E32D = {
 			isa = PBXGroup;
 			children = (
+				D769FEA41A7A3F8200EF1A1F /* I18n */,
 				D7453F2B1A31966F00F7E32D /* VPNOn */,
 				D7F0A00F1A6E46F600F9C09A /* VPNOnTests */,
 				D7453F9B1A3196E200F7E32D /* VPNOnData */,
@@ -342,9 +346,7 @@
 				D7784F9D1A75F311009360CE /* Views */,
 				D7E28A7A1A680D9400507F33 /* Theme */,
 				D7453F381A31966F00F7E32D /* Images.xcassets */,
-				D77593DD1A7A2E5A007161B2 /* Main.storyboard */,
 				D7453F3A1A31966F00F7E32D /* LaunchScreen.xib */,
-				D769FE961A7A3A3500EF1A1F /* Localizable.strings */,
 				D7453F2C1A31966F00F7E32D /* Supporting Files */,
 			);
 			path = VPNOn;
@@ -389,7 +391,6 @@
 				D74C91AA1A383FED00EAAAE1 /* TodayViewController.swift */,
 				D7DDB5611A78A1D100BE7FB7 /* VPNTypeTag.swift */,
 				D74C91AC1A383FED00EAAAE1 /* MainInterface.storyboard */,
-				D769FE9C1A7A3ADC00EF1A1F /* Localizable.strings */,
 				D74C91A81A383FED00EAAAE1 /* Supporting Files */,
 			);
 			path = TodayWidget;
@@ -454,6 +455,16 @@
 				D757AF971A3B370E00AEF3CB /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D769FEA41A7A3F8200EF1A1F /* I18n */ = {
+			isa = PBXGroup;
+			children = (
+				D77593DD1A7A2E5A007161B2 /* Main.storyboard */,
+				D769FE961A7A3A3500EF1A1F /* Localizable.strings */,
+				D769FE9C1A7A3ADC00EF1A1F /* Localizable.strings */,
+			);
+			name = I18n;
 			sourceTree = "<group>";
 		};
 		D7784F9D1A75F311009360CE /* Views */ = {
@@ -677,6 +688,7 @@
 				Base,
 				"zh-Hans",
 				"zh-Hant-TW",
+				"zh-Hant-HK",
 			);
 			mainGroup = D7453F201A31966F00F7E32D;
 			productRefGroup = D7453F2A1A31966F00F7E32D /* Products */;
@@ -879,8 +891,10 @@
 				D769FE951A7A3A3500EF1A1F /* Base */,
 				D769FE971A7A3A3700EF1A1F /* zh-Hans */,
 				D769FE9F1A7A3E1800EF1A1F /* zh-Hant-TW */,
+				D769FEA21A7A3F1900EF1A1F /* zh-Hant-HK */,
 			);
 			name = Localizable.strings;
+			path = VPNOn;
 			sourceTree = "<group>";
 		};
 		D769FE9C1A7A3ADC00EF1A1F /* Localizable.strings */ = {
@@ -889,8 +903,10 @@
 				D769FE9B1A7A3ADC00EF1A1F /* Base */,
 				D769FE9D1A7A3ADD00EF1A1F /* zh-Hans */,
 				D769FEA01A7A3E1800EF1A1F /* zh-Hant-TW */,
+				D769FEA31A7A3F1900EF1A1F /* zh-Hant-HK */,
 			);
 			name = Localizable.strings;
+			path = TodayWidget;
 			sourceTree = "<group>";
 		};
 		D77593DD1A7A2E5A007161B2 /* Main.storyboard */ = {
@@ -899,8 +915,10 @@
 				D77593DC1A7A2E5A007161B2 /* Base */,
 				D77593E21A7A2F12007161B2 /* zh-Hans */,
 				D769FE9E1A7A3E1800EF1A1F /* zh-Hant-TW */,
+				D769FEA11A7A3F1900EF1A1F /* zh-Hant-HK */,
 			);
 			name = Main.storyboard;
+			path = VPNOn;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
