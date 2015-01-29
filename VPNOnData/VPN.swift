@@ -18,8 +18,6 @@ public class VPNInfo {
     var isp:            String = ""
     var ikev2:          Bool   = false
     var certificateURL: String = ""
-    var domains:        String = ""
-    var onDemand:       Bool   = false
 }
 
 @objc(VPN)
@@ -38,8 +36,6 @@ public class VPN : NSManagedObject{
     @NSManaged var isp:            String!
     @NSManaged var ikev2:          Bool
     @NSManaged var certificateURL: String!
-    @NSManaged var domains:        String!
-    @NSManaged var onDemand:       Bool
     
     var ID : String {
         if let id = objectID.URIRepresentation().absoluteString {
@@ -63,8 +59,6 @@ public class VPN : NSManagedObject{
         setValue(isp,            forKey: "isp")
         setValue(ikev2,          forKey: "ikev2")
         setValue(certificateURL, forKey: "certificateURL")
-        setValue(domains,        forKey: "domains")
-        setValue(onDemand,       forKey: "onDemand")
     }
 
 	/**
@@ -112,12 +106,6 @@ public class VPN : NSManagedObject{
         if let certificateURLValue = dictionary["certificateURL"] as? String{
             certificateURL = certificateURLValue
         }
-        if let domainsValue = dictionary["domains"] as? String{
-            domains = domainsValue
-        }
-        if let onDemandValue = dictionary["onDemand"] as? NSNumber {
-            onDemand = onDemandValue.boolValue
-        }
 	}
 
 	/**
@@ -145,7 +133,6 @@ public class VPN : NSManagedObject{
         dictionary["latitude"]   = NSNumber(float: latitude)
         dictionary["longitude"]  = NSNumber(float: longitude)
         dictionary["ikev2"]      = NSNumber(bool: ikev2)
-        dictionary["onDemand"]   = NSNumber(bool: onDemand)
         if countryCode != nil {
             dictionary["countryCode"] = countryCode
         }
@@ -154,9 +141,6 @@ public class VPN : NSManagedObject{
         }
         if certificateURL != nil {
             dictionary["certificateURL"]  = certificateURL
-        }
-        if domains != nil {
-            dictionary["domains"]  = domains
         }
 		return dictionary
 	}

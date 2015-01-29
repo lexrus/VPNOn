@@ -16,7 +16,7 @@ let kLTVPNDidRemove = "kLTVPNDidRemove"
 let kLTVPNDidDuplicate = "kLTVPNDidDuplicate"
 
 class LTVPNConfigViewController: UITableViewController, UITextFieldDelegate,
-LTVPNCertificateViewControllerDelegate, LTVPNDomainsViewControllerDelegate
+LTVPNCertificateViewControllerDelegate
 {
     var initializedVPNInfo: VPNInfo? = nil
     
@@ -36,10 +36,6 @@ LTVPNCertificateViewControllerDelegate, LTVPNDomainsViewControllerDelegate
     @IBOutlet weak var secretCell: UITableViewCell!
     @IBOutlet weak var groupCell: UITableViewCell!
     @IBOutlet weak var certificateCell: UITableViewCell!
-    
-    @IBOutlet weak var onDemandCell: UITableViewCell!
-    @IBOutlet weak var domainsCell: LTVPNTableViewCell!
-    @IBOutlet weak var onDemandSwitch: UISwitch!
 
     @IBOutlet weak var deleteCell: UITableViewCell!
     @IBOutlet weak var duplicateCell: UITableViewCell!
@@ -78,8 +74,6 @@ LTVPNCertificateViewControllerDelegate, LTVPNDomainsViewControllerDelegate
         }
     }
     
-    var temporaryDomains: String?
-    
     override func loadView() {
         super.loadView()
         
@@ -106,8 +100,6 @@ LTVPNCertificateViewControllerDelegate, LTVPNDomainsViewControllerDelegate
             if temporaryCertificateData != nil {
                 certificateSwitch.on = true
             }
-            onDemandSwitch.on = currentVPN.onDemand
-            updateDomainsCell()
         } else if let info = initializedVPNInfo {
             if info.title != "" {
                 titleTextField.text = info.title
@@ -149,11 +141,6 @@ LTVPNCertificateViewControllerDelegate, LTVPNDomainsViewControllerDelegate
                 targetVC.delegate = self
                 targetVC.temporaryCertificateURL = certificateURL
                 targetVC.temporaryCertificateData = temporaryCertificateData
-            }
-        } else if segue.identifier == "domains" {
-            if let targetVC = segue.destinationViewController as? LTVPNDomainsViewController {
-                targetVC.delegate = self
-                targetVC.domains = temporaryDomains
             }
         }
     }

@@ -19,6 +19,9 @@
 @property (strong, nonatomic) NSString *activatedVPNID;
 @property (readonly, nonatomic) NEVPNStatus status;
 @property (readonly, nonatomic) BOOL isActivatedVPNIDDeprecated;
+@property (strong, nonatomic) NSString *onDemandDomains;
+@property (strong, nonatomic) NSArray *onDemandDomainsArray;
+@property (assign, nonatomic) BOOL onDemand;
 
 + (VPNManager *) sharedManager;
 
@@ -43,6 +46,8 @@
 - (void) disconnect;
 
 - (void) removeProfile;
+
+- (NSArray *) domainsInString:(NSString *)string;
 
 @end
 

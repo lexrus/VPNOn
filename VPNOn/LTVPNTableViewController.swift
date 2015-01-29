@@ -13,13 +13,16 @@ import VPNOnKit
 
 let kLTVPNIDKey = "VPNID"
 let kVPNConnectionSection = 0
-let kVPNListSectionIndex = 1
-let kVPNAddSection = 2
+let kVPNOnDemandSection = 1
+let kVPNListSectionIndex = 2
+let kVPNAddSection = 3
 let kConnectionCellID = "ConnectionCell"
 let kAddCellID = "AddCell"
 let kVPNCellID = "VPNCell"
+let kOnDemandCellID = "OnDemandCell"
+let kDomainsCellID = "DomainsCell"
 
-class LTVPNTableViewController: UITableViewController, SimplePingDelegate
+class LTVPNTableViewController: UITableViewController, SimplePingDelegate, LTVPNDomainsViewControllerDelegate
 {
     var vpns = [VPN]()
     var activatedVPNID: NSString? = nil
@@ -89,38 +92,49 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if vpns.count > 0 {
-            return 3
-        }
-        return 1
+        return 4
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if vpns.count > 0 {
-            switch section {
-            case kVPNConnectionSection, kVPNAddSection:
-                return 1
-            default:
-                return vpns.count
+        switch section
+        {
+        case kVPNOnDemandSection:
+            if VPNManager.sharedManager().onDemand {
+                return 2
             }
+            return 1
+            
+        case kVPNListSectionIndex:
+            return vpns.count
+            
+        default:
+            return 1
         }
-        return 1
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if 0 == vpns.count {
-            return tableView.dequeueReusableCellWithIdentifier(kAddCellID, forIndexPath: indexPath) as UITableViewCell
-        }
-        
-        switch indexPath.section {
+        switch indexPath.section
+        {
         case kVPNConnectionSection:
-            let cell = tableView.dequeueReusableCellWithIdentifier(kConnectionCellID, forIndexPath: indexPath) as LTVPNConnectionCell
-            cell.connectionLabel!.text = connectionStatus
-            cell.connectionSwitch.on = connectionOn
+            let cell = tableView.dequeueReusableCellWithIdentifier(kConnectionCellID, forIndexPath: indexPath) as LTVPNSwitchCell
+            cell.titleLabel!.text = connectionStatus
+            cell.switchButton.on = connectionOn
+            cell.switchButton.enabled = vpns.count != 0
             return cell
-        case kVPNAddSection:
-            return tableView.dequeueReusableCellWithIdentifier(kAddCellID, forIndexPath: indexPath) as UITableViewCell
-        default:
+            
+        case kVPNOnDemandSection:
+            if indexPath.row == 0 {
+                let switchCell = tableView.dequeueReusableCellWithIdentifier(kOnDemandCellID) as LTVPNSwitchCell
+                switchCell.switchButton.on = VPNManager.sharedManager().onDemand
+                return switchCell
+            } else {
+                let domainsCell = tableView.dequeueReusableCellWithIdentifier(kDomainsCellID) as LTVPNTableViewCell
+                let domainsCount = VPNManager.sharedManager().onDemandDomainsArray.count
+                domainsCell.detailTextLabel!.text = "\(domainsCount) Domains"
+                return domainsCell
+            }
+            
+        case kVPNListSectionIndex:
             let cell = tableView.dequeueReusableCellWithIdentifier(kVPNCellID, forIndexPath: indexPath) as LTVPNTableViewCell
             let vpn = vpns[indexPath.row]
             cell.textLabel?.attributedText = cellTitleForIndexPath(indexPath)
@@ -134,28 +148,47 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate
             }
             
             return cell
+            
+        default:
+            return tableView.dequeueReusableCellWithIdentifier(kAddCellID, forIndexPath: indexPath) as UITableViewCell
         }
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        if vpns.count == 0 || indexPath.section == kVPNAddSection {
-            // Add cell selected
+        switch indexPath.section
+        {
+        case kVPNAddSection:
             VPNDataManager.sharedManager.selectedVPNID = nil
             let detailNavigationController = splitViewController!.viewControllers.last! as UINavigationController
             detailNavigationController.popToRootViewControllerAnimated(false)
             splitViewController!.viewControllers.last!.performSegueWithIdentifier("config", sender: nil)
-        } else if indexPath.section == kVPNListSectionIndex {
+            break
+            
+        case kVPNOnDemandSection:
+            if indexPath.row == 1 {
+                let detailNavigationController = splitViewController!.viewControllers.last! as UINavigationController
+                detailNavigationController.popToRootViewControllerAnimated(false)
+                splitViewController!.viewControllers.last!.performSegueWithIdentifier("domains", sender: nil)
+            }
+            break
+            
+        case kVPNListSectionIndex:
             activatedVPNID = vpns[indexPath.row].ID
             VPNManager.sharedManager().activatedVPNID = activatedVPNID
             tableView.reloadData()
+            break
+            
+        default:
+            ()
         }
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        switch indexPath.section {
+        switch indexPath.section
+        {
         case kVPNListSectionIndex:
             return 60
+            
         default:
             return 44
         }
@@ -270,23 +303,28 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate
     }
     
     func VPNStatusDidChange(notification: NSNotification?) {
-        switch VPNManager.sharedManager().status {
+        switch VPNManager.sharedManager().status
+        {
         case NEVPNStatus.Connecting:
             connectionStatus = "Connecting..."
             connectionOn = true
             break
+            
         case NEVPNStatus.Connected:
             connectionStatus = "Connected"
             connectionOn = true
             break
+            
         case NEVPNStatus.Disconnecting:
             connectionStatus = "Disconnecting..."
             connectionOn = false
             break
+            
         case NEVPNStatus.Invalid:
             connectionStatus = "Invalid"
             connectionOn = false
             break
+            
         default:
             connectionStatus = "Not Connected"
             connectionOn = false

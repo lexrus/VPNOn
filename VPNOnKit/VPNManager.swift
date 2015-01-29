@@ -93,6 +93,9 @@ class VPNManager
     
         _manager.enabled = true
         _manager.`protocol` = p
+        
+        configOnDemand()
+        
         _manager.saveToPreferencesWithCompletionHandler {
             (error: NSError!) -> Void in
             if let err = error {
@@ -119,7 +122,6 @@ class VPNManager
         p.remoteIdentifier = server
         p.disconnectOnSleep = !alwaysOn
         p.deadPeerDetectionRate = NEVPNIKEv2DeadPeerDetectionRate.Medium
-        
         // TODO: Add an option into config page
         
         _manager.localizedDescription = "VPN On - \(title)"
@@ -152,6 +154,9 @@ class VPNManager
         
         _manager.enabled = true
         _manager.`protocol` = p
+        
+        configOnDemand()
+        
         _manager.saveToPreferencesWithCompletionHandler {
             (error: NSError!) -> Void in
             if let err = error {
@@ -168,6 +173,22 @@ class VPNManager
                     println("Failed to connect: \(connectError?.localizedDescription)")
                 }
             }
+        }
+    }
+    
+    func configOnDemand() {
+        if onDemandDomainsArray.count > 0 && onDemand {
+            let connectionRule = NEEvaluateConnectionRule(
+                matchDomains: onDemandDomainsArray,
+                andAction: NEEvaluateConnectionRuleAction.ConnectIfNeeded
+            )
+            let ruleEvaluateConnection = NEOnDemandRuleEvaluateConnection()
+            ruleEvaluateConnection.connectionRules = [connectionRule]
+            _manager.onDemandRules = [ruleEvaluateConnection]
+            _manager.onDemandEnabled = true
+        } else {
+            _manager.onDemandRules.removeAll(keepCapacity: true)
+            _manager.onDemandEnabled = false
         }
     }
     

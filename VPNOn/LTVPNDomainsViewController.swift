@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import VPNOnKit
 
 @objc protocol LTVPNDomainsViewControllerDelegate {
     optional func didTapSaveDomainsWithText(text: String)
@@ -15,12 +16,13 @@ import UIKit
 class LTVPNDomainsViewController: UITableViewController
 {
     weak var delegate: LTVPNDomainsViewControllerDelegate?
-    var domains: String?
 
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var textView: UITextView!
     
     @IBAction func save(sender: AnyObject?) {
+        VPNManager.sharedManager().onDemandDomains = textView.text
+        
         if let d = delegate {
             d.didTapSaveDomainsWithText?(textView.text)
         }
@@ -30,7 +32,7 @@ class LTVPNDomainsViewController: UITableViewController
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        textView.text = domains
+        textView.text = VPNManager.sharedManager().onDemandDomains
     }
     
     override func viewWillDisappear(animated: Bool) {
