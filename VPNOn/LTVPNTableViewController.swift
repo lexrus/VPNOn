@@ -26,7 +26,7 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate, LTVPN
 {
     var vpns = [VPN]()
     var activatedVPNID: NSString? = nil
-    var connectionStatus = "Not Connected"
+    var connectionStatus = NSLocalizedString("Not Connected", comment: "VPN Table - Connection Status")
     var connectionOn = false
     
     @IBOutlet weak var restartPingButton: UIBarButtonItem!
@@ -203,7 +203,7 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate, LTVPN
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == kVPNListSectionIndex && vpns.count > 0 {
-            return "VPN CONFIGURATIONS"
+            return NSLocalizedString("VPN CONFIGURATIONS", comment: "VPN Table - List Section Header")
         }
         
         return .None
@@ -306,17 +306,17 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate, LTVPN
         switch VPNManager.sharedManager().status
         {
         case NEVPNStatus.Connecting:
-            connectionStatus = "Connecting..."
+            connectionStatus = NSLocalizedString("Connecting", comment: "VPN Table - Connection Status")
             connectionOn = true
             break
             
         case NEVPNStatus.Connected:
-            connectionStatus = "Connected"
+            connectionStatus = NSLocalizedString("Connected", comment: "VPN Table - Connection Status")
             connectionOn = true
             break
             
         case NEVPNStatus.Disconnecting:
-            connectionStatus = "Disconnecting..."
+            connectionStatus = NSLocalizedString("Disconnecting...", comment: "VPN Table - Connection Status")
             connectionOn = false
             break
             
@@ -326,7 +326,7 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate, LTVPN
 //            break
             
         default:
-            connectionStatus = "Not Connected"
+            connectionStatus = NSLocalizedString("Not Connected", comment: "VPN Table - Connection Status")
             connectionOn = false
         }
         

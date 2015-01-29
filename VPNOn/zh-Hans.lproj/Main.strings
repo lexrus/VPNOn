@@ -1,0 +1,120 @@
+
+/* Class = "IBUILabel"; text = "Detail"; ObjectID = "02c-Df-tae"; */
+"02c-Df-tae.text" = "详情";
+
+/* Class = "IBUILabel"; text = "VPN On"; ObjectID = "0fX-zU-loY"; */
+"0fX-zU-loY.text" = "VPN On";
+
+/* Class = "IBUILabel"; text = "Server"; ObjectID = "2ji-tt-sNU"; */
+"2ji-tt-sNU.text" = "服务器";
+
+/* Class = "IBUITableViewSection"; footerTitle = "Turn this option on will keep VPN connection alive even screen is locked or network is unstable."; ObjectID = "5Qn-Bw-nVD"; */
+"5Qn-Bw-nVD.footerTitle" = "打开此选项可以在锁屏状态或网络不稳定时保持 VPN 连接。";
+
+/* Class = "IBUINavigationItem"; title = "VPN On"; ObjectID = "96C-Eg-mId"; */
+"96C-Eg-mId.title" = "VPN On";
+
+/* Class = "IBUILabel"; text = "Duplicate"; ObjectID = "Ao2-Hb-0jD"; */
+"Ao2-Hb-0jD.text" = "复制";
+
+/* Class = "IBUILabel"; text = "Domains relies on VPN "; ObjectID = "C2u-J4-G5f"; */
+"C2u-J4-G5f.text" = "依赖 VPN 的域名";
+
+/* Class = "IBUILabel"; text = "On Demand"; ObjectID = "FSL-Tv-Cp6"; */
+"FSL-Tv-Cp6.text" = "按需连接";
+
+/* Class = "IBUILabel"; text = "Delete VPN"; ObjectID = "Im7-xc-lxF"; */
+"Im7-xc-lxF.text" = "删除 VPN";
+
+/* Class = "IBUITextField"; placeholder = "Ask Every Time"; ObjectID = "Jej-Iu-pn8"; */
+"Jej-Iu-pn8.placeholder" = "每次询问";
+
+/* Class = "IBUILabel"; text = "Always On"; ObjectID = "KqD-kH-A4B"; */
+"KqD-kH-A4B.text" = "保持连接";
+
+/* Class = "IBUITableViewSection"; headerTitle = "Certificate URL"; ObjectID = "LMw-lh-D2c"; */
+"LMw-lh-D2c.headerTitle" = "证书 URL";
+
+/* Class = "IBUITextField"; placeholder = "http://"; ObjectID = "Otm-uK-bXz"; */
+"Otm-uK-bXz.placeholder" = "http://";
+
+/* Class = "IBUILabel"; text = "Description"; ObjectID = "P5o-gM-dBq"; */
+"P5o-gM-dBq.text" = "描述";
+
+/* Class = "IBUITableViewSection"; footerTitle = "Requesting domains specified here may turn on VPN connection automatically. Please separate domains with whitespace or newline. And use \"*\" for wild card (e.g., *.twitter.com)."; ObjectID = "PP3-2a-1up"; */
+"PP3-2a-1up.footerTitle" = "访问在此指定的域名会自动打开 VPN 链接。请使用空格或换行分隔域名。使用 \"*\" 作为通配符(比如: *.twitter.com)。";
+
+/* Class = "IBUITableViewSection"; headerTitle = "Domains relies on VPN"; ObjectID = "PP3-2a-1up"; */
+"PP3-2a-1up.headerTitle" = "依赖 VPN 的域名";
+
+/* Class = "IBUILabel"; text = "Scan QR code"; ObjectID = "Pcz-Ic-xcR"; */
+"Pcz-Ic-xcR.text" = "扫描二维码";
+
+/* Class = "IBUILabel"; text = "Certificate"; ObjectID = "Rjp-ng-T6V"; */
+"Rjp-ng-T6V.text" = "证书";
+
+/* Class = "IBUITableViewController"; title = "Certificate"; ObjectID = "RyC-km-4Av"; */
+"RyC-km-4Av.title" = "证书";
+
+/* Class = "IBUILabel"; text = "Account"; ObjectID = "Ud8-O3-Mk9"; */
+"Ud8-O3-Mk9.text" = "帐号";
+
+/* Class = "IBUILabel"; text = "Not Connected"; ObjectID = "Vlk-GJ-USi"; */
+"Vlk-GJ-USi.text" = "未连接";
+
+/* Class = "IBUILabel"; text = "Use Certificate"; ObjectID = "WSx-ME-hWf"; */
+"WSx-ME-hWf.text" = "使用证书";
+
+/* Class = "IBUILabel"; text = "Password"; ObjectID = "XpY-Af-O6z"; */
+"XpY-Af-O6z.text" = "密码";
+
+/* Class = "IBUISegmentedControl"; be7-Ah-lJc.segmentTitles[0] = "Cisco IPSec"; ObjectID = "be7-Ah-lJc"; */
+"be7-Ah-lJc.segmentTitles[0]" = "Cisco IPSec";
+
+/* Class = "IBUISegmentedControl"; be7-Ah-lJc.segmentTitles[1] = "IKEv2"; ObjectID = "be7-Ah-lJc"; */
+"be7-Ah-lJc.segmentTitles[1]" = "IKEv2";
+
+/* Class = "IBUILabel"; text = "Add VPN Configuration..."; ObjectID = "dxQ-Vo-JWP"; */
+"dxQ-Vo-JWP.text" = "添加 VPN 配置...";
+
+/* Class = "IBUITextField"; placeholder = "Required"; ObjectID = "eUh-Mf-gFu"; */
+"eUh-Mf-gFu.placeholder" = "必填";
+
+/* Class = "IBUITextField"; placeholder = "Required"; ObjectID = "iNr-tg-tO5"; */
+"iNr-tg-tO5.placeholder" = "必填";
+
+/* Class = "IBUILabel"; text = "Download"; ObjectID = "ijT-Cj-eqv"; */
+"ijT-Cj-eqv.text" = "下载";
+
+/* Class = "IBUITextField"; placeholder = "Required"; ObjectID = "lOt-LM-XMh"; */
+"lOt-LM-XMh.placeholder" = "必填";
+
+/* Class = "IBUILabel"; text = "Title"; ObjectID = "lZH-8X-gAr"; */
+"lZH-8X-gAr.text" = "标题";
+
+/* Class = "IBUINavigationItem"; title = "Configuration"; ObjectID = "p5c-ZP-mHC"; */
+"p5c-ZP-mHC.title" = "配置";
+
+/* Class = "IBUILabel"; text = "Secret"; ObjectID = "pXD-5j-wvs"; */
+"pXD-5j-wvs.text" = "密钥";
+
+/* Class = "IBUINavigationItem"; title = "Domains"; ObjectID = "rTs-vk-ZUy"; */
+"rTs-vk-ZUy.title" = "域名";
+
+/* Class = "IBUILabel"; text = "0 domains"; ObjectID = "rtd-Ll-4ML"; */
+"rtd-Ll-4ML.text" = "0 域名";
+
+/* Class = "IBUILabel"; text = "Delete"; ObjectID = "tHf-HC-jcR"; */
+"tHf-HC-jcR.text" = "删除";
+
+/* Class = "IBUILabel"; text = "Certificate will be downloaded and stored in Keychain"; ObjectID = "w42-LH-TM5"; */
+"w42-LH-TM5.text" = "证书将被下载并存储在钥匙串中。";
+
+/* Class = "IBUILabel"; text = "Group"; ObjectID = "w4U-Px-gJH"; */
+"w4U-Px-gJH.text" = "组";
+
+/* Class = "IBUINavigationItem"; title = "Certificate"; ObjectID = "whE-eZ-DWz"; */
+"whE-eZ-DWz.title" = "证书";
+
+/* Class = "IBUILabel"; text = " "; ObjectID = "yI7-6o-40u"; */
+"yI7-6o-40u.text" = " ";

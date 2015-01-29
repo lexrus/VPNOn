@@ -19,6 +19,9 @@ class LTVPNCertificateViewController: UITableViewController, UITextFieldDelegate
     var temporaryCertificateURL: String?
     var temporaryCertificateData: NSData?
     
+    private let kDownloadingText = NSLocalizedString("Downloading...", comment: "Certifiate - Download Cell - Downloading")
+    private let kDownloadText = NSLocalizedString("Download", comment: "Certifiate - Download Cell")
+    
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var certificateURLField: UITextField!
     @IBOutlet weak var certificateSummaryCell: LTVPNTableViewCell!
@@ -38,7 +41,7 @@ class LTVPNCertificateViewController: UITableViewController, UITextFieldDelegate
 
     var downloading: Bool = false {
         didSet {
-            self.downloadCell.textLabel!.text = self.downloading ? "Downloading..." : "Download"
+            self.downloadCell.textLabel!.text = self.downloading ? kDownloadingText : kDownloadText
             self.downloadCell.disabled = self.downloading
         }
     }
@@ -107,11 +110,15 @@ class LTVPNCertificateViewController: UITableViewController, UITextFieldDelegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if let cell = tableView.cellForRowAtIndexPath(indexPath) {
             if cell == deleteCell {
-                let alert = UIAlertController(title: "Delete Certificate?", message: "", preferredStyle: .Alert)
-                alert.addAction(UIAlertAction(title: "Delete", style: .Destructive, handler: { _ -> Void in
+                let deleteTitle = NSLocalizedString("Delete Certificate?", comment: "Certificate - Delete alert - Title")
+                let deleteButtonTitle = NSLocalizedString("Delete", comment: "Certificate - Delete alert - Delete button")
+                let cancelButtonTitle = NSLocalizedString("Cancel", comment: "Certificate - Delete alert - Cancel button")
+                
+                let alert = UIAlertController(title: deleteTitle, message: "", preferredStyle: .Alert)
+                alert.addAction(UIAlertAction(title: deleteButtonTitle, style: .Destructive, handler: { _ -> Void in
                     self.deleteCertificate()
                 }))
-                alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+                alert.addAction(UIAlertAction(title: cancelButtonTitle, style: .Cancel, handler: nil))
                 self.presentViewController(alert, animated: true, completion: nil)
             } else if cell == downloadCell {
                 downloadURL()
@@ -143,9 +150,12 @@ class LTVPNCertificateViewController: UITableViewController, UITextFieldDelegate
             let bytesFormatter = NSByteCountFormatter()
             bytesFormatter.countStyle = NSByteCountFormatterCountStyle.File
             let bytesCount = bytesFormatter.stringFromByteCount(Int64(data.length))
-            certificateSummaryCell.textLabel!.text = "Certificate downloaded (\(bytesCount))"
+            let certificateFormat = NSLocalizedString("Certificate downloaded (%s)", comment: "Certificate - Status")
+            let certificateText = String(format: certificateFormat, bytesCount)
+            certificateSummaryCell.textLabel!.text = certificateText
         } else {
-            certificateSummaryCell.textLabel!.text = "Certificate will be downloaded and stored in Keychain"
+            let defaultCertificateStatus = NSLocalizedString("Certificate will be downloaded and stored in Keychain", comment: "Certificate - Default status")
+            certificateSummaryCell.textLabel!.text = defaultCertificateStatus
         }
     }
     

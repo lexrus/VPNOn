@@ -77,8 +77,8 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             switchArea.userInteractionEnabled = true
             VPNStatusDidChange(nil)
         } else {
-            VPNLabel.text = "No VPN configured."
-            VPNStatusLabel.text = "Please add a VPN."
+            VPNLabel.text = NSLocalizedString("No VPN configured.", comment: "Today Widget - Default text")
+            VPNStatusLabel.text = NSLocalizedString("Please add a VPN.", comment: "Today Widget - Add VPN")
             typeTag.hidden = true
             VPNSwitch.setOn(false, animated: false)
             VPNSwitch.enabled = false
@@ -140,26 +140,26 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         switch VPNManager.sharedManager().status
         {
         case NEVPNStatus.Connecting:
-            VPNStatusLabel.text = "Connecting..."
+            VPNStatusLabel.text = NSLocalizedString("Connecting...", comment: "Today Widget - Status")
             VPNStatusLabel.textColor = UIColor.lightGrayColor()
             VPNLabel.textColor = UIColor.lightGrayColor()
             break
             
         case NEVPNStatus.Connected:
-            VPNStatusLabel.text = "Connected"
+            VPNStatusLabel.text = NSLocalizedString("Connected", comment: "Today Widget - Status")
             VPNSwitch.setOn(true, animated: false)
             VPNStatusLabel.textColor = UIColor.whiteColor()
             VPNLabel.textColor = UIColor.whiteColor()
             break
             
         case NEVPNStatus.Disconnecting:
-            VPNStatusLabel.text = "Disconnecting..."
+            VPNStatusLabel.text = NSLocalizedString("Disconnecting...", comment: "Today Widget - Status")
             VPNStatusLabel.textColor = UIColor.whiteColor()
             VPNLabel.textColor = UIColor.whiteColor()
             break
             
 //        case NEVPNStatus.Invalid:
-//            VPNStatusLabel.text = "Invalid"
+//            VPNStatusLabel.text = NSLocalizedString("Invalid", comment: "Today Widget - Status")
 //            VPNStatusLabel.textColor = UIColor.lightGrayColor()
 //            VPNLabel.textColor = UIColor.lightGrayColor()
 //            break
@@ -168,7 +168,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             VPNSwitch.setOn(false, animated: false)
             VPNStatusLabel.textColor = UIColor.lightGrayColor()
             VPNLabel.textColor = UIColor.lightGrayColor()
-            VPNStatusLabel.text = "Not Connected"
+            VPNStatusLabel.text = NSLocalizedString("Not Connected", comment: "Today Widget - Status")
         }
     }
 }
