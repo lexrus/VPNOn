@@ -16,7 +16,12 @@ extension VPNDataManager
         var vpns = [VPN]()
         
         var request = NSFetchRequest(entityName: "VPN")
-        let fetchResults = self.managedObjectContext!.executeFetchRequest(request, error: nil) as [VPN]?
+        let sortByTitle = NSSortDescriptor(key: "title", ascending: true)
+        let sortByServer = NSSortDescriptor(key: "server", ascending: true)
+        let sortByType = NSSortDescriptor(key: "ikev2", ascending: false)
+        request.sortDescriptors = [sortByTitle, sortByServer, sortByType]
+        
+        let fetchResults = managedObjectContext!.executeFetchRequest(request, error: nil) as [VPN]?
         
         if let results = fetchResults {
             for vpn in results {
@@ -43,8 +48,8 @@ extension VPNDataManager
         certificate: NSData?
         ) -> VPN?
     {
-        let entity = NSEntityDescription.entityForName("VPN", inManagedObjectContext: self.managedObjectContext!)
-        let vpn = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: self.managedObjectContext!) as VPN
+        let entity = NSEntityDescription.entityForName("VPN", inManagedObjectContext: managedObjectContext!)
+        let vpn = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedObjectContext!) as VPN
         
         vpn.title = title
         vpn.server = server
@@ -55,21 +60,15 @@ extension VPNDataManager
         vpn.certificateURL = certificateURL
         
         var error: NSError?
-        if !self.managedObjectContext!.save(&error) {
+        if !managedObjectContext!.save(&error) {
             println("Could not save VPN \(error), \(error?.userInfo)")
         } else {
             saveContext()
             
             if !vpn.objectID.temporaryID {
-                if !password.isEmpty {
-                    VPNKeychainWrapper.setPassword(password, forVPNID: vpn.ID)
-                }
-                if !secret.isEmpty {
-                    VPNKeychainWrapper.setSecret(secret, forVPNID: vpn.ID)
-                }
-                if let certificateData = certificate {
-                    VPNKeychainWrapper.setCertificate(certificateData, forVPNID: vpn.ID)
-                }
+                VPNKeychainWrapper.setPassword(password, forVPNID: vpn.ID)
+                VPNKeychainWrapper.setSecret(secret, forVPNID: vpn.ID)
+                VPNKeychainWrapper.setCertificate(certificate, forVPNID: vpn.ID)
                 
                 if allVPN().count == 1 {
                     VPNManager.sharedManager().activatedVPNID = vpn.ID
@@ -113,7 +112,7 @@ extension VPNDataManager
             return .None
         }
         
-        var result = self.managedObjectContext?.existingObjectWithID(ID, error: &error)
+        var result = managedObjectContext?.existingObjectWithID(ID, error: &error)
         if let vpn = result {
             if !vpn.deleted {
                 return vpn as? VPN
@@ -130,8 +129,8 @@ extension VPNDataManager
         if let URL = NSURL(string: ID) {
             if let scheme = URL.scheme {
                 if scheme.lowercaseString == "x-coredata" {
-                    if let moid = self.persistentStoreCoordinator!.managedObjectIDForURIRepresentation(URL) {
-                        return self.VPNByID(moid)
+                    if let moid = persistentStoreCoordinator!.managedObjectIDForURIRepresentation(URL) {
+                        return VPNByID(moid)
                     }
                 }
             }
@@ -146,7 +145,7 @@ extension VPNDataManager
         request.predicate = predicate
         
         var error: NSError?
-        let fetchResults = self.managedObjectContext!.executeFetchRequest(request, error: &error) as [VPN]?
+        let fetchResults = managedObjectContext!.executeFetchRequest(request, error: &error) as [VPN]?
         
         if let results = fetchResults {
             for vpn in results {
@@ -174,7 +173,8 @@ extension VPNDataManager
         return VPNByPredicate(titleBeginsWithPredicate)
     }
     
-    func duplicate(vpn: VPN) -> VPN? {
+    func duplicate(vpn: VPN) -> VPN?
+    {
         let duplicatedVPNs = VPNDataManager.sharedManager.VPNBeginsWithTitle(vpn.title)
         if duplicatedVPNs.count > 0 {
             let newTitle = "\(vpn.title) \(duplicatedVPNs.count)"
@@ -192,7 +192,7 @@ extension VPNDataManager
                 ikev2: vpn.ikev2,
                 certificateURL: vpn.certificateURL,
                 certificate: VPNKeychainWrapper.certificateForVPNID(vpn.ID)
-                )
+            )
         }
         
         return .None
