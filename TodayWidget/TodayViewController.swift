@@ -137,28 +137,33 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
     
     func VPNStatusDidChange(notification: NSNotification?) {
-        switch VPNManager.sharedManager().status {
+        switch VPNManager.sharedManager().status
+        {
         case NEVPNStatus.Connecting:
             VPNStatusLabel.text = "Connecting..."
             VPNStatusLabel.textColor = UIColor.lightGrayColor()
             VPNLabel.textColor = UIColor.lightGrayColor()
             break
+            
         case NEVPNStatus.Connected:
             VPNStatusLabel.text = "Connected"
             VPNSwitch.setOn(true, animated: false)
             VPNStatusLabel.textColor = UIColor.whiteColor()
             VPNLabel.textColor = UIColor.whiteColor()
             break
+            
         case NEVPNStatus.Disconnecting:
             VPNStatusLabel.text = "Disconnecting..."
             VPNStatusLabel.textColor = UIColor.whiteColor()
             VPNLabel.textColor = UIColor.whiteColor()
             break
-        case NEVPNStatus.Invalid:
-            VPNStatusLabel.text = "Invalid"
-            VPNStatusLabel.textColor = UIColor.lightGrayColor()
-            VPNLabel.textColor = UIColor.lightGrayColor()
-            break
+            
+//        case NEVPNStatus.Invalid:
+//            VPNStatusLabel.text = "Invalid"
+//            VPNStatusLabel.textColor = UIColor.lightGrayColor()
+//            VPNLabel.textColor = UIColor.lightGrayColor()
+//            break
+            
         default:
             VPNSwitch.setOn(false, animated: false)
             VPNStatusLabel.textColor = UIColor.lightGrayColor()

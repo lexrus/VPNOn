@@ -320,10 +320,10 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate, LTVPN
             connectionOn = false
             break
             
-        case NEVPNStatus.Invalid:
-            connectionStatus = "Invalid"
-            connectionOn = false
-            break
+//        case NEVPNStatus.Invalid:
+//            connectionStatus = "Invalid"
+//            connectionOn = false
+//            break
             
         default:
             connectionStatus = "Not Connected"
