@@ -3,8 +3,9 @@
 ## 0.4 - develop branch
 
 1. Add IPSec IKEv2.
-2. Support IPSec IKEv1 authentication with certificate.
+2. Support authentication with certificate for both IKEv1 and IKEv2.
 3. Connect on demand by a domains list.
+4. Localized for Simplified Chinese and Traditional Chinese.
 
 ## 0.3
 
