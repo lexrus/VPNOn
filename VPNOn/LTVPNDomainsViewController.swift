@@ -28,6 +28,13 @@ class LTVPNDomainsViewController: UITableViewController
         }
         popDetailViewController()
     }
+    
+    override func loadView() {
+        super.loadView()
+        
+        let backgroundView = LTViewControllerBackground()
+        tableView.backgroundView = backgroundView
+    }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
