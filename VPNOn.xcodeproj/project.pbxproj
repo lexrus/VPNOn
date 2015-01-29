@@ -208,6 +208,9 @@
 		D769FE971A7A3A3700EF1A1F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		D769FE9B1A7A3ADC00EF1A1F /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D769FE9D1A7A3ADD00EF1A1F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		D769FE9E1A7A3E1800EF1A1F /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/Main.strings"; sourceTree = "<group>"; };
+		D769FE9F1A7A3E1800EF1A1F /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		D769FEA01A7A3E1800EF1A1F /* zh-Hant-TW */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-TW"; path = "zh-Hant-TW.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		D77593D71A79E53C007161B2 /* LTVPNTableViewController+OnDemand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LTVPNTableViewController+OnDemand.swift"; sourceTree = "<group>"; };
 		D77593D91A79E674007161B2 /* VPNManager+Domains.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VPNManager+Domains.swift"; sourceTree = "<group>"; };
 		D77593DC1A7A2E5A007161B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -341,6 +344,7 @@
 				D7453F381A31966F00F7E32D /* Images.xcassets */,
 				D77593DD1A7A2E5A007161B2 /* Main.storyboard */,
 				D7453F3A1A31966F00F7E32D /* LaunchScreen.xib */,
+				D769FE961A7A3A3500EF1A1F /* Localizable.strings */,
 				D7453F2C1A31966F00F7E32D /* Supporting Files */,
 			);
 			path = VPNOn;
@@ -349,7 +353,6 @@
 		D7453F2C1A31966F00F7E32D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D769FE961A7A3A3500EF1A1F /* Localizable.strings */,
 				D7453F2D1A31966F00F7E32D /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -673,6 +676,7 @@
 				en,
 				Base,
 				"zh-Hans",
+				"zh-Hant-TW",
 			);
 			mainGroup = D7453F201A31966F00F7E32D;
 			productRefGroup = D7453F2A1A31966F00F7E32D /* Products */;
@@ -874,6 +878,7 @@
 			children = (
 				D769FE951A7A3A3500EF1A1F /* Base */,
 				D769FE971A7A3A3700EF1A1F /* zh-Hans */,
+				D769FE9F1A7A3E1800EF1A1F /* zh-Hant-TW */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -883,6 +888,7 @@
 			children = (
 				D769FE9B1A7A3ADC00EF1A1F /* Base */,
 				D769FE9D1A7A3ADD00EF1A1F /* zh-Hans */,
+				D769FEA01A7A3E1800EF1A1F /* zh-Hant-TW */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -892,6 +898,7 @@
 			children = (
 				D77593DC1A7A2E5A007161B2 /* Base */,
 				D77593E21A7A2F12007161B2 /* zh-Hans */,
+				D769FE9E1A7A3E1800EF1A1F /* zh-Hant-TW */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
