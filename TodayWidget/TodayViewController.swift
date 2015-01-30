@@ -131,9 +131,10 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                 let passwordRef = VPNKeychainWrapper.passwordForVPNID(vpn.ID)
                 let secretRef = VPNKeychainWrapper.secretForVPNID(vpn.ID)
                 let certificate = VPNKeychainWrapper.certificateForVPNID(vpn.ID)
+                let titleWithSubfix = "Widget - \(vpn.title)"
                 
                 if vpn.ikev2 {
-                    VPNManager.sharedManager().connectIKEv2(vpn.title,
+                    VPNManager.sharedManager().connectIKEv2(titleWithSubfix,
                         server: vpn.server,
                         account: vpn.account,
                         group: vpn.group,
@@ -142,7 +143,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                         secretRef: secretRef,
                         certificate: certificate)
                 } else {
-                    VPNManager.sharedManager().connectIPSec(vpn.title,
+                    VPNManager.sharedManager().connectIPSec(titleWithSubfix,
                         server: vpn.server,
                         account: vpn.account,
                         group: vpn.group,
