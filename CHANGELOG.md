@@ -7,6 +7,7 @@
 3. Connect on demand by a domains list.
 4. Localized for Simplified Chinese and Traditional Chinese.
 5. Fix a bug which cause the App crashes on 32bit devices.
+6. Shake to switch themes.
 
 ## 0.3 20150130
 
