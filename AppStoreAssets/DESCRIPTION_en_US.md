@@ -1,0 +1,4 @@
+A VPN management tool for your IPSec IKEv1(a.k.a. Cisco IPSec) and IKEv2 VPN servers.
+After creating a VPN configuration you can activate the Today Widget in Notification Center which make it possible to turn on a VPN in about 3 seconds(depends on the connection speed). Furthermore, by turning on On Demand feature, the VPN could be automatically connected when you visit any domain specified in this App.
+
+Attention: Other VPN protocols(e.g., L2TP over IPSec, PPTP, AnyConnect and OpenVPN) are not compatible with VPN On. You'd better confirm that your VPN provider support the IPSec IKEv1 or IKEv2 protocol before purchase.
