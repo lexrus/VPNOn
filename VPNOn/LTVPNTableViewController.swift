@@ -135,7 +135,8 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate, LTVPN
                         domainsCount++
                     }
                 }
-                domainsCell.detailTextLabel!.text = "\(domainsCount) Domains"
+                let domainsCountFormat = NSLocalizedString("%d Domains", comment: "VPN Table - Domains count")
+                domainsCell.detailTextLabel!.text = NSString(format: domainsCountFormat, domainsCount)
                 return domainsCell
             }
             
