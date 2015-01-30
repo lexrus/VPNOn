@@ -21,17 +21,18 @@ extension VPNDataManager
         let sortByType = NSSortDescriptor(key: "ikev2", ascending: false)
         request.sortDescriptors = [sortByTitle, sortByServer, sortByType]
         
-        let fetchResults = managedObjectContext!.executeFetchRequest(request, error: nil) as [VPN]?
-        
-        if let results = fetchResults {
-            for vpn in results {
-                if vpn.deleted {
-                    continue
+        if let moc = managedObjectContext {
+            if let results = moc.executeFetchRequest(request, error: nil) {
+                for vpn in results {
+                    
+                    println("\(vpn)")
+//                    if vpn.deleted {
+//                        continue
+//                    }
+                    vpns.append(vpn as VPN)
                 }
-                vpns.append(vpn)
             }
         }
-        
         return vpns
     }
     

@@ -11,7 +11,7 @@ public class VPNInfo {
     var secret:         String = ""
     var alwaysOn:       Bool   = false
     var enabled:        Bool   = true
-    var latency:        Int    = -1
+    var latency:        Int16  = -1
     var latitude:       Float  = 0.0
     var longitude:      Float  = 0.0
     var countryCode:    String = ""
@@ -29,7 +29,7 @@ public class VPN : NSManagedObject{
     @NSManaged var title:          String!
     @NSManaged var alwaysOn:       Bool
     @NSManaged var enabled:        Bool
-    @NSManaged var latency:        Int
+    @NSManaged var latency:        Int16
     @NSManaged var latitude:       Float
     @NSManaged var longitude:      Float
     @NSManaged var countryCode:    String!
@@ -52,7 +52,7 @@ public class VPN : NSManagedObject{
         setValue(title,          forKey: "title")
         setValue(alwaysOn,       forKey: "alwaysOn")
         setValue(enabled,        forKey: "enabled")
-        setValue(latency,        forKey: "latency")
+        setValue(Int(latency),   forKey: "latency")
         setValue(latitude,       forKey: "latitude")
         setValue(longitude,      forKey: "longitude")
         setValue(countryCode,    forKey: "countryCode")
@@ -86,7 +86,7 @@ public class VPN : NSManagedObject{
             enabled = enabledValue.boolValue
         }
         if let latencyValue = dictionary["latency"] as? NSNumber {
-            latency = latencyValue.integerValue
+            latency = Int16(latencyValue.intValue)
         }
         if let latitudeValue = dictionary["latitude"] as? NSNumber {
             latitude = latitudeValue.floatValue
@@ -129,7 +129,7 @@ public class VPN : NSManagedObject{
 		}
         dictionary["alwaysOn"]   = NSNumber(bool: alwaysOn)
         dictionary["enabled"]    = NSNumber(bool: enabled)
-        dictionary["latency"]    = NSNumber(integer: latency)
+        dictionary["latency"]    = NSNumber(short: Int16(latency))
         dictionary["latitude"]   = NSNumber(float: latitude)
         dictionary["longitude"]  = NSNumber(float: longitude)
         dictionary["ikev2"]      = NSNumber(bool: ikev2)
