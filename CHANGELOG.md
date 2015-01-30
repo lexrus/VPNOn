@@ -2,12 +2,13 @@
 
 ## 0.4 - develop branch
 
-1. Add IPSec IKEv2.
+1. Support IPSec IKEv2.
 2. Support authentication with certificate for both IKEv1 and IKEv2.
 3. Connect on demand by a domains list.
 4. Localized for Simplified Chinese and Traditional Chinese.
+5. Fix a bug which cause the App crashes on 32bit devices.
 
-## 0.3
+## 0.3 20150130
 
 1. New midnight theme.
 2. Minor bug fixes.
