@@ -56,12 +56,33 @@ extension VPNManager
         if s.isEmpty {
             return [String]()
         }
-        var a = s.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-        if a.count > 1 {
-            if a[a.count - 1].isEmpty {
-                a.removeAtIndex(a.count - 1)
+        var domains = s.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()) as [String]
+        var wildCardDomains = [String]()
+        if domains.count > 1 {
+            if domains[domains.count - 1].isEmpty {
+                domains.removeAtIndex(domains.count - 1)
+            }
+            for domain in domains {
+                wildCardDomains.append(domain)
+                if domain.rangeOfString("*.") == nil {
+                    wildCardDomains.append("*.\(domain)")
+                }
             }
         }
-        return a
+        
+        return uniq(wildCardDomains)
+    }
+    
+    // See: http://stackoverflow.com/questions/25738817/does-there-exist-within-swifts-api-an-easy-way-to-remove-duplicate-elements-fro
+    private func uniq<S : SequenceType, T : Hashable where S.Generator.Element == T>(source: S) -> [T] {
+        var buffer = Array<T>()
+        var addedDict = [T: Bool]()
+        for elem in source {
+            if addedDict[elem] == nil {
+                addedDict[elem] = true
+                buffer.append(elem)
+            }
+        }
+        return buffer
     }
 }

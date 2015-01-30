@@ -41,8 +41,8 @@
 /* Class = "IBUILabel"; text = "Description"; ObjectID = "P5o-gM-dBq"; */
 "P5o-gM-dBq.text" = "描述";
 
-/* Class = "IBUITableViewSection"; footerTitle = "Requesting domains specified here may turn on VPN connection automatically. Please separate domains with whitespace or newline. And use \"*\" for wild card (e.g., *.twitter.com)."; ObjectID = "PP3-2a-1up"; */
-"PP3-2a-1up.footerTitle" = "访问在此指定的域名会自动打开 VPN 链接。请使用空格或换行分隔域名。使用 \"*\" 作为通配符(比如: *.twitter.com)。";
+/* Class = "IBUITableViewSection"; footerTitle = "Requesting domains specified here may turn on VPN connection automatically. Please separate domains with whitespace or newline. "; ObjectID = "PP3-2a-1up"; */
+"PP3-2a-1up.footerTitle" = "访问在此指定的域名会自动打开 VPN 链接。请使用空格或换行分隔域名。";
 
 /* Class = "IBUITableViewSection"; headerTitle = "Domains relies on VPN"; ObjectID = "PP3-2a-1up"; */
 "PP3-2a-1up.headerTitle" = "依赖 VPN 的域名";

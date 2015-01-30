@@ -885,8 +885,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
-                            <tableViewSection headerTitle="Domains relies on VPN" id="PP3-2a-1up">
-                                <string key="footerTitle">Requesting domains specified here may turn on VPN connection automatically. Please separate domains with whitespace or newline. And use "*" for wild card (e.g., *.twitter.com).</string>
+                            <tableViewSection headerTitle="Domains relies on VPN" footerTitle="Requesting domains specified here may turn on VPN connection automatically. Please separate domains with whitespace or newline." id="PP3-2a-1up">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="200" id="5Av-ta-6aO">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -897,7 +896,7 @@
                                                     <rect key="frame" x="11" y="8" width="581" height="183.5"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" keyboardAppearance="alert"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL" keyboardAppearance="alert"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="IFb-GO-E2U" id="e6L-2d-LLM"/>
                                                     </connections>

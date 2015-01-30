@@ -129,7 +129,12 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate, LTVPN
                 return switchCell
             } else {
                 let domainsCell = tableView.dequeueReusableCellWithIdentifier(kDomainsCellID) as LTVPNTableViewCell
-                let domainsCount = VPNManager.sharedManager().onDemandDomainsArray.count
+                var domainsCount = 0
+                for domain in VPNManager.sharedManager().onDemandDomainsArray as [String] {
+                    if domain.rangeOfString("*.") == nil {
+                        domainsCount++
+                    }
+                }
                 domainsCell.detailTextLabel!.text = "\(domainsCount) Domains"
                 return domainsCell
             }
