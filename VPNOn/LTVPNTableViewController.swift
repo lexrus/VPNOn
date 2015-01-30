@@ -306,7 +306,7 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate, LTVPN
         switch VPNManager.sharedManager().status
         {
         case NEVPNStatus.Connecting:
-            connectionStatus = NSLocalizedString("Connecting", comment: "VPN Table - Connection Status")
+            connectionStatus = NSLocalizedString("Connecting...", comment: "VPN Table - Connection Status")
             connectionOn = true
             break
             
