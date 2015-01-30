@@ -14,7 +14,7 @@ class LTThemeManager
 {
     var currentTheme : LTTheme? = .None
     
-    let themes: [LTTheme] = [LTDarkTheme(), LTLightTheme(), LTDarkPurpleTheme()]
+    let themes: [LTTheme] = [LTDarkTheme(), LTLightTheme(), LTHelloKittyTheme(), LTDarkGreenTheme(), LTDarkPurpleTheme()]
     
     class var sharedManager : LTThemeManager
     {

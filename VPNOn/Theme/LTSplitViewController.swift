@@ -18,7 +18,7 @@ class LTSplitViewController: UISplitViewController
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        if LTThemeManager.sharedManager.currentTheme?.name == "Light" {
+        if LTThemeManager.sharedManager.currentTheme?.name.rangeOfString("Light") != nil {
             return UIStatusBarStyle.Default
         } else {
             return UIStatusBarStyle.LightContent
