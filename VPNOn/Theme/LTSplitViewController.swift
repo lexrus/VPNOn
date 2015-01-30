@@ -18,7 +18,22 @@ class LTSplitViewController: UISplitViewController
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.LightContent
+        if LTThemeManager.sharedManager.currentTheme?.name == "Light" {
+            return UIStatusBarStyle.Default
+        } else {
+            return UIStatusBarStyle.LightContent
+        }
+    }
+    
+    override func canBecomeFirstResponder() -> Bool {
+        return true
+    }
+    
+    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent) {
+        if(event.subtype == UIEventSubtype.MotionShake) {
+            LTThemeManager.sharedManager.activateNextTheme()
+            self.setNeedsStatusBarAppearanceUpdate()
+        }
     }
 
 }

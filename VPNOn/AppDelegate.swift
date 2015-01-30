@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
         splitViewController.delegate = self
         splitViewController.preferredDisplayMode = .AllVisible
         
-        LTThemeManager.sharedManager.activateTheme(LTDarkTheme())
+        LTThemeManager.sharedManager.activateTheme()
         
         return true
     }

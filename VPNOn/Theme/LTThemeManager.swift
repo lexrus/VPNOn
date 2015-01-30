@@ -8,9 +8,13 @@
 
 import UIKit
 
+let kLTCurrentThemeIndexKey = "CurrentThemeIndex"
+
 class LTThemeManager
 {
     var currentTheme : LTTheme? = .None
+    
+    let themes: [LTTheme] = [LTDarkTheme(), LTLightTheme(), LTDarkPurpleTheme()]
     
     class var sharedManager : LTThemeManager
     {
@@ -20,6 +24,26 @@ class LTThemeManager
         }
         
         return Static.sharedInstance
+    }
+    
+    var themeIndex: Int {
+        get {
+            if let index = NSUserDefaults.standardUserDefaults().objectForKey(kLTCurrentThemeIndexKey) as? NSNumber {
+                if index.isKindOfClass(NSNumber.self) {
+                    return index.integerValue ?? 0
+                }
+            }
+            return 0
+        }
+        set {
+            let newNumber = NSNumber(integer: newValue)
+            NSUserDefaults.standardUserDefaults().setObject(newNumber, forKey: kLTCurrentThemeIndexKey)
+            NSUserDefaults.standardUserDefaults().synchronize()
+        }
+    }
+    
+    func activateTheme() {
+        activateTheme(themes[themeIndex])
     }
     
     func activateTheme(theme : LTTheme)
@@ -57,5 +81,28 @@ class LTThemeManager
         UITextField.appearance().tintColor = theme.tintColor
         UITextField.appearance().textColor = theme.textFieldColor
         
+    }
+    
+    func activateNextTheme()
+    {
+        var index = themeIndex
+        
+        if index == themes.count - 1 {
+            themeIndex = 0
+        } else {
+            index++
+            themeIndex = index
+        }
+        
+        activateTheme(themes[index])
+        
+        let windows = UIApplication.sharedApplication().windows
+        
+        for window in windows {
+            for view in window.subviews {
+                view.removeFromSuperview()
+                window.addSubview(view as UIView)
+            }
+        }
     }
 }

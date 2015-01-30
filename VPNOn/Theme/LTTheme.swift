@@ -10,6 +10,7 @@ import UIKit
 
 public protocol LTTheme
 {
+    var name                     : String  { get set }
     var defaultBackgroundColor   : UIColor { get set }
     var navigationBarColor       : UIColor { get set }
     var tintColor                : UIColor { get set }
