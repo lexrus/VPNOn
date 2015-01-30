@@ -22,14 +22,12 @@ extension VPNDataManager
         request.sortDescriptors = [sortByTitle, sortByServer, sortByType]
         
         if let moc = managedObjectContext {
-            if let results = moc.executeFetchRequest(request, error: nil) {
+            if let results = moc.executeFetchRequest(request, error: nil) as [VPN]? {
                 for vpn in results {
-                    
-                    println("\(vpn)")
-//                    if vpn.deleted {
-//                        continue
-//                    }
-                    vpns.append(vpn as VPN)
+                    if vpn.deleted {
+                        continue
+                    }
+                    vpns.append(vpn)
                 }
             }
         }
