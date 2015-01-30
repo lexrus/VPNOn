@@ -30,7 +30,7 @@ class LTThemeManager
         get {
             if let index = NSUserDefaults.standardUserDefaults().objectForKey(kLTCurrentThemeIndexKey) as? NSNumber {
                 if index.isKindOfClass(NSNumber.self) {
-                    return index.integerValue ?? 0
+                    return min(themes.count - 1, index.integerValue ?? 0)
                 }
             }
             return 0
@@ -86,15 +86,15 @@ class LTThemeManager
     func activateNextTheme()
     {
         var index = themeIndex
+        index++
         
-        if index == themes.count - 1 {
+        if index >= themes.count {
             themeIndex = 0
         } else {
-            index++
             themeIndex = index
         }
         
-        activateTheme(themes[index])
+        activateTheme(themes[themeIndex])
         
         let windows = UIApplication.sharedApplication().windows
         
