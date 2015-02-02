@@ -43,7 +43,7 @@ extension VPNDataManager
         secret: String,
         alwaysOn: Bool = true,
         ikev2: Bool = false,
-        certificateURL: String,
+        certificateURL: String?,
         certificate: NSData?
         ) -> VPN?
     {

@@ -35,7 +35,7 @@ public class VPN : NSManagedObject{
     @NSManaged var countryCode:    String!
     @NSManaged var isp:            String!
     @NSManaged var ikev2:          Bool
-    @NSManaged var certificateURL: String!
+    @NSManaged var certificateURL: String?
     
     var ID : String {
         if let id = objectID.URIRepresentation().absoluteString {
