@@ -171,6 +171,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D7095DB91A81C54600BAF797 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
+		D7095DBA1A81C54600BAF797 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D7095DBB1A81C54600BAF797 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D7322C791A6C024800B34AA0 /* LTViewControllerBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTViewControllerBackground.swift; sourceTree = "<group>"; };
 		D74129A71A5CFCDA008DE603 /* SimplePing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplePing.h; sourceTree = "<group>"; };
 		D74129A81A5CFCDA008DE603 /* SimplePing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimplePing.m; sourceTree = "<group>"; };
@@ -710,6 +713,7 @@
 				"zh-Hans",
 				"zh-Hant-TW",
 				"zh-Hant-HK",
+				ko,
 			);
 			mainGroup = D7453F201A31966F00F7E32D;
 			productRefGroup = D7453F2A1A31966F00F7E32D /* Products */;
@@ -917,6 +921,7 @@
 				D769FE971A7A3A3700EF1A1F /* zh-Hans */,
 				D769FE9F1A7A3E1800EF1A1F /* zh-Hant-TW */,
 				D769FEA21A7A3F1900EF1A1F /* zh-Hant-HK */,
+				D7095DBA1A81C54600BAF797 /* ko */,
 			);
 			name = Localizable.strings;
 			path = VPNOn;
@@ -929,6 +934,7 @@
 				D769FE9D1A7A3ADD00EF1A1F /* zh-Hans */,
 				D769FEA01A7A3E1800EF1A1F /* zh-Hant-TW */,
 				D769FEA31A7A3F1900EF1A1F /* zh-Hant-HK */,
+				D7095DBB1A81C54600BAF797 /* ko */,
 			);
 			name = Localizable.strings;
 			path = TodayWidget;
@@ -941,6 +947,7 @@
 				D77593E21A7A2F12007161B2 /* zh-Hans */,
 				D769FE9E1A7A3E1800EF1A1F /* zh-Hant-TW */,
 				D769FEA11A7A3F1900EF1A1F /* zh-Hant-HK */,
+				D7095DB91A81C54600BAF797 /* ko */,
 			);
 			name = Main.storyboard;
 			path = VPNOn;
