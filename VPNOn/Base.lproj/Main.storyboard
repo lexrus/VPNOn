@@ -816,20 +816,6 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell hidden="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="Pcz-Ic-xcR" style="IBUITableViewCellStyleDefault" id="MuF-AP-VDe" customClass="LTTableViewActionCell" customModule="VPNOn" customModuleProvider="target">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MuF-AP-VDe" id="pxB-yl-wip">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Scan QR code" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="Pcz-Ic-xcR">
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection id="lkp-jQ-IIt">
@@ -869,7 +855,6 @@
                         <outlet property="deleteCell" destination="wPJ-3O-kQF" id="Qeq-T4-fhT"/>
                         <outlet property="downloadCell" destination="B6o-C5-KyU" id="yT8-sJ-pDX"/>
                         <outlet property="saveButton" destination="Z2z-CY-K0P" id="aWg-2T-Wmo"/>
-                        <outlet property="scanCell" destination="MuF-AP-VDe" id="gBp-E1-9K3"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bcL-pD-N1D" userLabel="First Responder" sceneMemberID="firstResponder"/>

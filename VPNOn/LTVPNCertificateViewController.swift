@@ -27,7 +27,6 @@ class LTVPNCertificateViewController: UITableViewController, UITextFieldDelegate
     @IBOutlet weak var certificateSummaryCell: LTVPNTableViewCell!
     @IBOutlet weak var deleteCell: UITableViewCell!
     @IBOutlet weak var downloadCell: LTTableViewActionCell!
-    @IBOutlet weak var scanCell: LTTableViewActionCell!
     
     lazy var vpn: VPN? = {
         if let ID = VPNDataManager.sharedManager.selectedVPNID {
@@ -122,8 +121,6 @@ class LTVPNCertificateViewController: UITableViewController, UITextFieldDelegate
                 self.presentViewController(alert, animated: true, completion: nil)
             } else if cell == downloadCell {
                 downloadURL()
-            } else if cell == scanCell {
-                // TODO: Present scan interface
             }
         }
     }
