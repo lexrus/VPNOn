@@ -1,6 +1,11 @@
 # VPN On Changelog
 
-## 0.4 - develop branch
+## 0.5 - develop branch
+
+1. Localization - add Korean, Russian, German, French, Italian, Japanese, Spanish, Portuguese.
+2. Minor bug fixes.
+
+## 0.4 20150203
 
 1. Support IPSec IKEv2.
 2. Support authentication with certificate for both IKEv1 and IKEv2.
