@@ -183,6 +183,12 @@
 		D7095DC21A8307B400BAF797 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
 		D7095DC31A8307B400BAF797 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D7095DC41A8307B400BAF797 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D7095DC81A83646E00BAF797 /* CHANGELOG_en_US.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = CHANGELOG_en_US.txt; sourceTree = "<group>"; };
+		D7095DC91A83646E00BAF797 /* CHANGELOG_zh_CN.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = CHANGELOG_zh_CN.txt; sourceTree = "<group>"; };
+		D7095DCA1A83646E00BAF797 /* CHANGELOG_zh_HK.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = CHANGELOG_zh_HK.txt; sourceTree = "<group>"; };
+		D7095DCB1A83646E00BAF797 /* DESCRIPTION_en_US.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = DESCRIPTION_en_US.txt; sourceTree = "<group>"; };
+		D7095DCC1A83646E00BAF797 /* DESCRIPTION_zh_CN.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = DESCRIPTION_zh_CN.txt; sourceTree = "<group>"; };
+		D7095DCD1A83646E00BAF797 /* DESCRIPTION_zh_HK.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = DESCRIPTION_zh_HK.txt; sourceTree = "<group>"; };
 		D7322C791A6C024800B34AA0 /* LTViewControllerBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTViewControllerBackground.swift; sourceTree = "<group>"; };
 		D74129A71A5CFCDA008DE603 /* SimplePing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplePing.h; sourceTree = "<group>"; };
 		D74129A81A5CFCDA008DE603 /* SimplePing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimplePing.m; sourceTree = "<group>"; };
@@ -319,6 +325,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D7095DC71A83646E00BAF797 /* AppStoreAssets */ = {
+			isa = PBXGroup;
+			children = (
+				D7095DC81A83646E00BAF797 /* CHANGELOG_en_US.txt */,
+				D7095DC91A83646E00BAF797 /* CHANGELOG_zh_CN.txt */,
+				D7095DCA1A83646E00BAF797 /* CHANGELOG_zh_HK.txt */,
+				D7095DCB1A83646E00BAF797 /* DESCRIPTION_en_US.txt */,
+				D7095DCC1A83646E00BAF797 /* DESCRIPTION_zh_CN.txt */,
+				D7095DCD1A83646E00BAF797 /* DESCRIPTION_zh_HK.txt */,
+			);
+			path = AppStoreAssets;
+			sourceTree = "<group>";
+		};
 		D7453F201A31966F00F7E32D = {
 			isa = PBXGroup;
 			children = (
@@ -481,6 +500,7 @@
 		D769FEA41A7A3F8200EF1A1F /* I18n */ = {
 			isa = PBXGroup;
 			children = (
+				D7095DC71A83646E00BAF797 /* AppStoreAssets */,
 				D77593DD1A7A2E5A007161B2 /* Main.storyboard */,
 				D769FE961A7A3A3500EF1A1F /* Localizable.strings */,
 				D769FE9C1A7A3ADC00EF1A1F /* Localizable.strings */,
