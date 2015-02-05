@@ -180,6 +180,9 @@
 		D7095DBF1A81CF3200BAF797 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		D7095DC01A81CF3200BAF797 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D7095DC11A81CF3200BAF797 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D7095DC21A8307B400BAF797 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Main.strings; sourceTree = "<group>"; };
+		D7095DC31A8307B400BAF797 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D7095DC41A8307B400BAF797 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D7322C791A6C024800B34AA0 /* LTViewControllerBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTViewControllerBackground.swift; sourceTree = "<group>"; };
 		D74129A71A5CFCDA008DE603 /* SimplePing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplePing.h; sourceTree = "<group>"; };
 		D74129A81A5CFCDA008DE603 /* SimplePing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimplePing.m; sourceTree = "<group>"; };
@@ -722,6 +725,7 @@
 				ko,
 				ru,
 				es,
+				de,
 			);
 			mainGroup = D7453F201A31966F00F7E32D;
 			productRefGroup = D7453F2A1A31966F00F7E32D /* Products */;
@@ -932,6 +936,7 @@
 				D7095DBA1A81C54600BAF797 /* ko */,
 				D7095DBD1A81CBE500BAF797 /* ru */,
 				D7095DC01A81CF3200BAF797 /* es */,
+				D7095DC31A8307B400BAF797 /* de */,
 			);
 			name = Localizable.strings;
 			path = VPNOn;
@@ -947,6 +952,7 @@
 				D7095DBB1A81C54600BAF797 /* ko */,
 				D7095DBE1A81CBE500BAF797 /* ru */,
 				D7095DC11A81CF3200BAF797 /* es */,
+				D7095DC41A8307B400BAF797 /* de */,
 			);
 			name = Localizable.strings;
 			path = TodayWidget;
@@ -962,6 +968,7 @@
 				D7095DB91A81C54600BAF797 /* ko */,
 				D7095DBC1A81CBE500BAF797 /* ru */,
 				D7095DBF1A81CF3200BAF797 /* es */,
+				D7095DC21A8307B400BAF797 /* de */,
 			);
 			name = Main.storyboard;
 			path = VPNOn;
