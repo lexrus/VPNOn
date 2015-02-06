@@ -33,6 +33,11 @@ Issues and roadmap are [listed here](https://github.com/lexrus/VPNOn/issues).
 
 This project follows the gitflow workflow. You'd better create a branch called `feature/sth_improved` before any major improvements. Meanwhile minor bug fixes are welcomed in the develop branch.
 
+## Localization
+
+Please contribute to [my Crowdin project](https://crowdin.com/project/vpnon). I
+may send some redeem code once you complete a language.
+
 ## URL Scheme
 
 VPN service providers may list a link for their customers to efficiently add server configurations in VPN On. By register the `vpnon://` protocol, it supports the following URL scheme:
