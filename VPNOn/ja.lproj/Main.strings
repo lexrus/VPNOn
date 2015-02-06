@@ -1,0 +1,119 @@
+/* Do not translate the following lines */
+/* Class = "IBUINavigationItem"; title = "VPN On"; ObjectID = "96C-Eg-mId"; */
+"96C-Eg-mId.title" = "VPN On";
+
+/* Class = "IBUILabel"; text = "VPN On"; ObjectID = "0fX-zU-loY"; */
+"0fX-zU-loY.text" = "VPN On";
+
+/* Class = "IBUITextField"; placeholder = "http://"; ObjectID = "Otm-uK-bXz"; */
+"Otm-uK-bXz.placeholder" = "http://";
+
+/* Class = "IBUISegmentedControl"; be7-Ah-lJc.segmentTitles[0] = "Cisco IPSec"; ObjectID = "be7-Ah-lJc"; */
+"be7-Ah-lJc.segmentTitles[0]" = "Cisco IPSec";
+
+/* Class = "IBUISegmentedControl"; be7-Ah-lJc.segmentTitles[1] = "IKEv2"; ObjectID = "be7-Ah-lJc"; */
+"be7-Ah-lJc.segmentTitles[1]" = "IKEv2";
+
+/* Class = "IBUILabel"; text = " "; ObjectID = "yI7-6o-40u"; */
+"yI7-6o-40u.text" = " ";
+
+/* Please translate the following lines: */
+/* Class = "IBUILabel"; text = "Detail"; ObjectID = "02c-Df-tae"; */
+"02c-Df-tae.text" = "詳細";
+
+/* Class = "IBUILabel"; text = "Server"; ObjectID = "2ji-tt-sNU"; */
+"2ji-tt-sNU.text" = "サーバー";
+
+/* Class = "IBUITableViewSection"; footerTitle = "Turn this option on will keep VPN connection alive even screen is locked or network is unstable."; ObjectID = "5Qn-Bw-nVD"; */
+"5Qn-Bw-nVD.footerTitle" = "このオプションをオンにして、画面がロックされった、又は電波悪くでも VPN 接続を維持しています。";
+
+/* Class = "IBUILabel"; text = "Duplicate"; ObjectID = "Ao2-Hb-0jD"; */
+"Ao2-Hb-0jD.text" = "複製する";
+
+/* Class = "IBUILabel"; text = "Domains relies on VPN "; ObjectID = "C2u-J4-G5f"; */
+"C2u-J4-G5f.text" = "VPNでアクセスするドメイン";
+
+/* Class = "IBUILabel"; text = "On Demand"; ObjectID = "FSL-Tv-Cp6"; */
+"FSL-Tv-Cp6.text" = "オンデマンド";
+
+/* Class = "IBUILabel"; text = "Delete VPN"; ObjectID = "Im7-xc-lxF"; */
+"Im7-xc-lxF.text" = "VPN を削除する";
+
+/* Class = "IBUITextField"; placeholder = "Ask Every Time"; ObjectID = "Jej-Iu-pn8"; */
+"Jej-Iu-pn8.placeholder" = "毎回聞く";
+
+/* Class = "IBUILabel"; text = "Always On"; ObjectID = "KqD-kH-A4B"; */
+"KqD-kH-A4B.text" = "常にオン";
+
+/* Class = "IBUITableViewSection"; headerTitle = "Certificate URL"; ObjectID = "LMw-lh-D2c"; */
+"LMw-lh-D2c.headerTitle" = "証明書の URL";
+
+/* Class = "IBUILabel"; text = "Description"; ObjectID = "P5o-gM-dBq"; */
+"P5o-gM-dBq.text" = "説明";
+
+/* Class = "IBUITableViewSection"; footerTitle = "Requesting domains specified here may turn on VPN connection automatically. Please separate domains with whitespace or newline."; ObjectID = "PP3-2a-1up"; */
+"PP3-2a-1up.footerTitle" = "ここで指定したドメインをリクエストすると、VPN 接続を自動的にオンにします。ドメインを空白または改行で区切ってください。";
+
+/* Class = "IBUITableViewSection"; headerTitle = "Domains relies on VPN"; ObjectID = "PP3-2a-1up"; */
+"PP3-2a-1up.headerTitle" = "VPNでアクセスするドメイン";
+
+/* Class = "IBUILabel"; text = "Certificate"; ObjectID = "Rjp-ng-T6V"; */
+"Rjp-ng-T6V.text" = "証明書";
+
+/* Class = "IBUITableViewController"; title = "Certificate"; ObjectID = "RyC-km-4Av"; */
+"RyC-km-4Av.title" = "証明書";
+
+/* Class = "IBUILabel"; text = "Account"; ObjectID = "Ud8-O3-Mk9"; */
+"Ud8-O3-Mk9.text" = "アカウント";
+
+/* Class = "IBUILabel"; text = "Not Connected"; ObjectID = "Vlk-GJ-USi"; */
+"Vlk-GJ-USi.text" = "接続されていません";
+
+/* Class = "IBUILabel"; text = "Use Certificate"; ObjectID = "WSx-ME-hWf"; */
+"WSx-ME-hWf.text" = "証明書を使用します。";
+
+/* Class = "IBUILabel"; text = "Password"; ObjectID = "XpY-Af-O6z"; */
+"XpY-Af-O6z.text" = "パスワード";
+
+/* Class = "IBUILabel"; text = "Add VPN Configuration..."; ObjectID = "dxQ-Vo-JWP"; */
+"dxQ-Vo-JWP.text" = "VPN コンフィグレーションを追加";
+
+/* Class = "IBUITextField"; placeholder = "Required"; ObjectID = "eUh-Mf-gFu"; */
+"eUh-Mf-gFu.placeholder" = "必須";
+
+/* Class = "IBUITextField"; placeholder = "Required"; ObjectID = "iNr-tg-tO5"; */
+"iNr-tg-tO5.placeholder" = "必須";
+
+/* Class = "IBUILabel"; text = "Download"; ObjectID = "ijT-Cj-eqv"; */
+"ijT-Cj-eqv.text" = "ダウンロード";
+
+/* Class = "IBUITextField"; placeholder = "Required"; ObjectID = "lOt-LM-XMh"; */
+"lOt-LM-XMh.placeholder" = "必須";
+
+/* Class = "IBUILabel"; text = "Title"; ObjectID = "lZH-8X-gAr"; */
+"lZH-8X-gAr.text" = "タイトル";
+
+/* Class = "IBUINavigationItem"; title = "Configuration"; ObjectID = "p5c-ZP-mHC"; */
+"p5c-ZP-mHC.title" = "コンフィギュレーション";
+
+/* Class = "IBUILabel"; text = "Secret"; ObjectID = "pXD-5j-wvs"; */
+"pXD-5j-wvs.text" = "秘密鍵";
+
+/* Class = "IBUINavigationItem"; title = "Domains"; ObjectID = "rTs-vk-ZUy"; */
+"rTs-vk-ZUy.title" = "ドメイン";
+
+/* Class = "IBUILabel"; text = "0 domains"; ObjectID = "rtd-Ll-4ML"; */
+"rtd-Ll-4ML.text" = "0 ドメイン";
+
+/* Class = "IBUILabel"; text = "Delete"; ObjectID = "tHf-HC-jcR"; */
+"tHf-HC-jcR.text" = "削除";
+
+/* Class = "IBUILabel"; text = "Certificate will be downloaded and stored in Keychain"; ObjectID = "w42-LH-TM5"; */
+"w42-LH-TM5.text" = "証明書をダウンロードしてキーチェーンに保存されます。";
+
+/* Class = "IBUILabel"; text = "Group"; ObjectID = "w4U-Px-gJH"; */
+"w4U-Px-gJH.text" = "グループ";
+
+/* Class = "IBUINavigationItem"; title = "Certificate"; ObjectID = "whE-eZ-DWz"; */
+"whE-eZ-DWz.title" = "証明書";
+
