@@ -35,6 +35,8 @@ This project follows the gitflow workflow. You'd better create a branch called `
 
 ## Localization
 
+[![Crowdin](https://d322cqt584bo4o.cloudfront.net/vpnon/localized.png)](https://crowdin.com/project/vpnon)
+
 Please contribute to [my Crowdin project](https://crowdin.com/project/vpnon). I
 may send some redeem code once you complete a language.
 
