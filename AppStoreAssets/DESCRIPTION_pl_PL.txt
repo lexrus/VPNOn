@@ -1,0 +1,22 @@
+Narzędzie do zarządzania serwerami IPSec IKEv1 (uprzednio znane jako Cisco IPSec) i IKEv2 VPN.
+
+Po stworzeniu konfiguracji sieci VPN możesz aktywować dzisiejszy widźet w centrum powiadomień, który umożliwia włączenie sieci VPN w 3 sekundy (w zależności od szybkości łącza).  Ponadto po włączeniu funkcjonalności na żądanie, sieć VPN może być automatycznie podłączona kiedy odwiedzisz jakąkolwiek domenę wyszczególnioną w tej aplikacji.
+
+Uwaga: Inne protokoły VPN  (np. L2TP przez IPSec, PPTP, AnyConnect i OpenVPN) nie są kompatybilne z włączonym dostępem do VPN.  Przed zakupem zaleca się potwierdzenie wsparcia dla protokołu IPSec IKEv1 lub IKEv2 u dostawcy sieci VPN.
+
+
+
+1. Lokalizacja - dodano wsparice dla języków: Koreańskiego, Rosyjskiego, Niemieckiego, Francuskiego, Włoskiego, Japońskiego, Hiszpańskiego i Polskiego. 
+2. Naprawiono drobne błędy.
+
+
+
+Skonfiguruj sieć VPN IKEv1 lub IKEv2.
+
+Porównaj serwery po opóźnieniu.
+
+Włącz sieć VPN w centrum powiadomień.
+
+Połączenia na żądanie przez domeny.
+
+Wstrząśnij by zmienić motyw.
