@@ -232,6 +232,9 @@
 		D75E75841A85DAF9004130D6 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Main.strings; sourceTree = "<group>"; };
 		D75E75851A85DAF9004130D6 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D75E75861A85DAF9004130D6 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D75E75871A85E50C004130D6 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Main.strings; sourceTree = "<group>"; };
+		D75E75881A85E50C004130D6 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D75E75891A85E50C004130D6 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D769FE951A7A3A3500EF1A1F /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D769FE971A7A3A3700EF1A1F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		D769FE9B1A7A3ADC00EF1A1F /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -754,6 +757,7 @@
 				de,
 				ja,
 				pl,
+				it,
 			);
 			mainGroup = D7453F201A31966F00F7E32D;
 			productRefGroup = D7453F2A1A31966F00F7E32D /* Products */;
@@ -967,6 +971,7 @@
 				D7095DC31A8307B400BAF797 /* de */,
 				D7095DD11A84923A00BAF797 /* ja */,
 				D75E75851A85DAF9004130D6 /* pl */,
+				D75E75881A85E50C004130D6 /* it */,
 			);
 			name = Localizable.strings;
 			path = VPNOn;
@@ -985,6 +990,7 @@
 				D7095DC41A8307B400BAF797 /* de */,
 				D7095DD21A84923A00BAF797 /* ja */,
 				D75E75861A85DAF9004130D6 /* pl */,
+				D75E75891A85E50C004130D6 /* it */,
 			);
 			name = Localizable.strings;
 			path = TodayWidget;
@@ -1003,6 +1009,7 @@
 				D7095DC21A8307B400BAF797 /* de */,
 				D7095DD01A84923A00BAF797 /* ja */,
 				D75E75841A85DAF9004130D6 /* pl */,
+				D75E75871A85E50C004130D6 /* it */,
 			);
 			name = Main.storyboard;
 			path = VPNOn;
