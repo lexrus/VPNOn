@@ -1,0 +1,21 @@
+Un outil de gestion VPN pour vos serveurs IPSec IKEv1(a.k.a. Cisco IPSec) et vos serveurs IKEv2 VPN. 
+Après avoir créé une configuration VPN, vous pouvez activer le Widget Quotidien via le Centre de Notification ce qui vous permet d’activer un VPN en 3 secondes (cela dépend de la vitesse de connexion). De plus, en activant  l’option Fonctionnalité à la Demande, la connexion du VPN s’effectuera automatiquement lorsque vous visitez tous les domaines spécifiés dans cette application.
+
+Attention : Les autres protocoles VPN (par exemple, L2TP over IPSec, PPTP, AnyConnect et OpenVPN) ne sont pas compatibles avec le VPN On. Il est recommandé de confirmer vérifier que votre fournisseur VPN prend en charge le protocole IPSec IKEv1 ou IKEv2 avant d’effectuer l’achat.
+
+
+
+1. Localisation - ajouter coréen, russe, allemand, Français, italien, japonais, espagnol, portugais et polonais.
+2. Corrections de bugs mineures.
+
+
+
+Configurez votre VPN IKEv1 ou IKEv2.
+
+Comparez les serveurs par la latence.
+
+Activer le VPN dans le Centre de notifications.
+
+Connexion à la demande en fonction des domaines.
+
+Secouez pour changer de thème.
