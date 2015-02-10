@@ -1,0 +1,21 @@
+A VPN management tool for your IPSec IKEv1(formerly known as Cisco IPSec) and IKEv2 VPN servers.
+After creating a VPN configuration you can activate the Today Widget in Notification Center which makes it possible to turn on a VPN in about 3 seconds(depends on the connection speed). Furthermore, by turning on the On Demand feature, the VPN could be automatically connected when you visit any domain specified in this App.
+
+Chú ý: Các giao thức VPN khác (ví dụ như, L2TP qua IPSec, PPTP, AnyConnect và OpenVPN) là không tương thích với VPN On. Bạn nên xác nhận rằng nhà cung cấp VPN của bạn hỗ trợ giao thức IPSec IKEv1 hoặc IKEv2 trước khi mua.
+
+
+
+1. Địa phương hoá - thêm Hàn Quốc, Nga, Đức, Pháp, tiếng ý, tiếng Nhật, tiếng Tây Ban Nha, tiếng Bồ Đào Nha và Ba Lan.
+2. Sửa lỗi nhỏ.
+
+
+
+Cấu hình VPN IKEv1 hoặc IKEv2 của bạn.
+
+So sánh các máy chủ theo độ trễ.
+
+Bật VPN trong Trung tâm Thông báo.
+
+Kết nối theo yêu cầu của các miền.
+
+Hãy lắc các màu của bạn.
