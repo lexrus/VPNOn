@@ -11,7 +11,6 @@
 		D74129A91A5CFCDA008DE603 /* SimplePing.h in Headers */ = {isa = PBXBuildFile; fileRef = D74129A71A5CFCDA008DE603 /* SimplePing.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D74129AA1A5CFCDA008DE603 /* SimplePing.m in Sources */ = {isa = PBXBuildFile; fileRef = D74129A81A5CFCDA008DE603 /* SimplePing.m */; };
 		D74129B01A5D1A91008DE603 /* LTPingQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74129AF1A5D1A91008DE603 /* LTPingQueue.swift */; };
-		D74129B21A5D2565008DE603 /* LTPingQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = D74129B11A5D2565008DE603 /* LTPingQueue.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D7453F2F1A31966F00F7E32D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7453F2E1A31966F00F7E32D /* AppDelegate.swift */; };
 		D7453F391A31966F00F7E32D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7453F381A31966F00F7E32D /* Images.xcassets */; };
 		D7453F3C1A31966F00F7E32D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7453F3A1A31966F00F7E32D /* LaunchScreen.xib */; };
@@ -28,8 +27,6 @@
 		D74C91B01A383FED00EAAAE1 /* TodayWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D74C91A51A383FEC00EAAAE1 /* TodayWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D74C91B41A384AB800EAAAE1 /* VPN.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7453F9C1A3196E200F7E32D /* VPN.swift */; };
 		D74C91C71A399AA400EAAAE1 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7453FAE1A31A69100F7E32D /* NetworkExtension.framework */; };
-		D754E2021A3B3A1B00E8F135 /* VPNKeychainWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = D754E1FF1A3B3A1B00E8F135 /* VPNKeychainWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D754E2031A3B3A1B00E8F135 /* VPNManager.h in Headers */ = {isa = PBXBuildFile; fileRef = D754E2001A3B3A1B00E8F135 /* VPNManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D754E2041A3B3A1B00E8F135 /* VPNOnKit.h in Headers */ = {isa = PBXBuildFile; fileRef = D754E2011A3B3A1B00E8F135 /* VPNOnKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D754E2071A3B3A7B00E8F135 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D754E2061A3B3A7B00E8F135 /* KeychainWrapper.swift */; };
 		D754E2081A3B3A7B00E8F135 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D754E2061A3B3A7B00E8F135 /* KeychainWrapper.swift */; };
@@ -193,7 +190,6 @@
 		D74129A71A5CFCDA008DE603 /* SimplePing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplePing.h; sourceTree = "<group>"; };
 		D74129A81A5CFCDA008DE603 /* SimplePing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimplePing.m; sourceTree = "<group>"; };
 		D74129AF1A5D1A91008DE603 /* LTPingQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTPingQueue.swift; sourceTree = "<group>"; };
-		D74129B11A5D2565008DE603 /* LTPingQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTPingQueue.h; sourceTree = "<group>"; };
 		D7453F291A31966F00F7E32D /* VPN On.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VPN On.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7453F2D1A31966F00F7E32D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D7453F2E1A31966F00F7E32D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -213,8 +209,6 @@
 		D74C91AA1A383FED00EAAAE1 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		D74C91AC1A383FED00EAAAE1 /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
 		D74C91C61A399A8200EAAAE1 /* TodayWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TodayWidget.entitlements; sourceTree = "<group>"; };
-		D754E1FF1A3B3A1B00E8F135 /* VPNKeychainWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPNKeychainWrapper.h; sourceTree = "<group>"; };
-		D754E2001A3B3A1B00E8F135 /* VPNManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPNManager.h; sourceTree = "<group>"; };
 		D754E2011A3B3A1B00E8F135 /* VPNOnKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPNOnKit.h; sourceTree = "<group>"; };
 		D754E2061A3B3A7B00E8F135 /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
 		D757AF851A3B370E00AEF3CB /* VPNOnKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VPNOnKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -457,14 +451,11 @@
 		D757AF861A3B370E00AEF3CB /* VPNOnKit */ = {
 			isa = PBXGroup;
 			children = (
-				D754E1FF1A3B3A1B00E8F135 /* VPNKeychainWrapper.h */,
 				D754E2011A3B3A1B00E8F135 /* VPNOnKit.h */,
 				D757AFA51A3B374200AEF3CB /* VPNKeychainWrapper.swift */,
-				D754E2001A3B3A1B00E8F135 /* VPNManager.h */,
 				D757AFA61A3B374200AEF3CB /* VPNManager.swift */,
 				D7F0A0251A6E520300F9C09A /* VPNManager+ActivatedVPN.swift */,
 				D77593D91A79E674007161B2 /* VPNManager+Domains.swift */,
-				D74129B11A5D2565008DE603 /* LTPingQueue.h */,
 				D74129AF1A5D1A91008DE603 /* LTPingQueue.swift */,
 				D754E2051A3B3A7B00E8F135 /* Vendor */,
 				D757AF871A3B370E00AEF3CB /* Supporting Files */,
@@ -571,11 +562,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D754E2021A3B3A1B00E8F135 /* VPNKeychainWrapper.h in Headers */,
 				D754E2041A3B3A1B00E8F135 /* VPNOnKit.h in Headers */,
 				D74129A91A5CFCDA008DE603 /* SimplePing.h in Headers */,
-				D74129B21A5D2565008DE603 /* LTPingQueue.h in Headers */,
-				D754E2031A3B3A1B00E8F135 /* VPNManager.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

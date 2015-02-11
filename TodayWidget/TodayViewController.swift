@@ -134,7 +134,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                 let titleWithSubfix = "Widget - \(vpn.title)"
                 
                 if vpn.ikev2 {
-                    VPNManager.sharedManager().connectIKEv2(titleWithSubfix,
+                    VPNManager.sharedManager.connectIKEv2(titleWithSubfix,
                         server: vpn.server,
                         account: vpn.account,
                         group: vpn.group,
@@ -143,7 +143,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                         secretRef: secretRef,
                         certificate: certificate)
                 } else {
-                    VPNManager.sharedManager().connectIPSec(titleWithSubfix,
+                    VPNManager.sharedManager.connectIPSec(titleWithSubfix,
                         server: vpn.server,
                         account: vpn.account,
                         group: vpn.group,
@@ -154,7 +154,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
                 }
             }
         } else {
-            VPNManager.sharedManager().disconnect()
+            VPNManager.sharedManager.disconnect()
         }
     }
     
@@ -179,7 +179,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
     
     func VPNStatusDidChange(notification: NSNotification?) {
-        switch VPNManager.sharedManager().status
+        switch VPNManager.sharedManager.status
         {
         case NEVPNStatus.Connecting:
             VPNStatusLabel.text = NSLocalizedString("Connecting...", comment: "Today Widget - Status")

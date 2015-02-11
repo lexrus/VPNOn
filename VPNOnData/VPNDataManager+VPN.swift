@@ -70,7 +70,7 @@ extension VPNDataManager
                 VPNKeychainWrapper.setCertificate(certificate, forVPNID: vpn.ID)
                 
                 if allVPN().count == 1 {
-                    VPNManager.sharedManager().activatedVPNID = vpn.ID
+                    VPNManager.sharedManager.activatedVPNID = vpn.ID
                 }
                 return vpn
             }
@@ -91,14 +91,14 @@ extension VPNDataManager
         managedObjectContext!.save(&saveError)
         saveContext()
         
-        if let activatedVPNID = VPNManager.sharedManager().activatedVPNID {
+        if let activatedVPNID = VPNManager.sharedManager.activatedVPNID {
             if activatedVPNID == ID {
-                VPNManager.sharedManager().activatedVPNID = nil
+                VPNManager.sharedManager.activatedVPNID = nil
                 
                 var vpns = allVPN()
                 
                 if let firstVPN = vpns.first {
-                    VPNManager.sharedManager().activatedVPNID = firstVPN.ID
+                    VPNManager.sharedManager.activatedVPNID = firstVPN.ID
                 }
             }
         }

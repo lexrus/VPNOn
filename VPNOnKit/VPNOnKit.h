@@ -16,7 +16,4 @@ FOUNDATION_EXPORT const unsigned char VPNOnKitVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <VPNOnKit/PublicHeader.h>
 
-#import <VPNOnKit/VPNKeychainWrapper.h>
-#import <VPNOnKit/VPNManager.h>
 #import <VPNOnKit/SimplePing.h>
-#import <VPNOnKit/LTPingQueue.h>

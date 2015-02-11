@@ -8,22 +8,22 @@
 
 import Foundation
 
-struct LTHostLatency {
-    let hostname: String
-    var latency: Int
+public struct LTHostLatency {
+    public let hostname: String
+    public var latency: Int
 }
 
 let kLTPingDidUpdate = "kLTPingDidUpdate"
 let kLTPingDidComplete = "kLTPingDidComplete"
 let kLTPingTimeout: NSTimeInterval = 5
 
-class LTPingOperation: NSObject, SimplePingDelegate {
+public class LTPingOperation: NSObject, SimplePingDelegate {
     
-    var hostLatency: LTHostLatency
-    var ping: SimplePing?
+    public var hostLatency: LTHostLatency
+    public var ping: SimplePing?
     var timeoutTimer: NSTimer?
     var startTimeInterval: NSTimeInterval?
-    var complete = false
+    public var complete = false
     
     init(hostname: String) {
         hostLatency = LTHostLatency(hostname: hostname, latency: -1)
@@ -35,7 +35,7 @@ class LTPingOperation: NSObject, SimplePingDelegate {
         }
     }
     
-    func start() {
+    public func start() {
         complete = false
         ping = SimplePing(hostName: hostLatency.hostname)
         if let p = ping {
@@ -45,7 +45,7 @@ class LTPingOperation: NSObject, SimplePingDelegate {
         }
     }
     
-    func stop() {
+    public func stop() {
         if let p = ping {
             p.stop()
             ping = nil
@@ -66,7 +66,7 @@ class LTPingOperation: NSObject, SimplePingDelegate {
     Called after the SimplePing has successfully started up.  After this callback, you
     can start sending pings via -sendPingWithData:
     */
-    func simplePing(pinger: SimplePing!, didStartWithAddress address: NSData!) {
+    public func simplePing(pinger: SimplePing!, didStartWithAddress address: NSData!) {
         startTimeInterval = NSDate.timeIntervalSinceReferenceDate()
         pinger.sendPingWithData(nil)
     }
@@ -79,21 +79,21 @@ class LTPingOperation: NSObject, SimplePingDelegate {
     On the receive side, it does.  In that case, use +[SimplePing icmpInPacket:]
     to find the ICMP header within the packet.
     */
-    func simplePing(pinger: SimplePing!, didFailWithError error: NSError!) {
+    public func simplePing(pinger: SimplePing!, didFailWithError error: NSError!) {
         stop()
     }
     
     /**
     Called whenever the SimplePing object has successfully sent a ping packet.
     */
-    func simplePing(pinger: SimplePing!, didSendPacket packet: NSData!) {
+    public func simplePing(pinger: SimplePing!, didSendPacket packet: NSData!) {
         
     }
     
     /**
     Called whenever the SimplePing object tries and fails to send a ping packet.
     */
-    func simplePing(pinger: SimplePing!, didFailToSendPacket packet: NSData!, error: NSError!) {
+    public func simplePing(pinger: SimplePing!, didFailToSendPacket packet: NSData!, error: NSError!) {
         stop()
     }
     
@@ -102,8 +102,8 @@ class LTPingOperation: NSObject, SimplePingDelegate {
     a response to one of our pings (that is, has a valid ICMP checksum, has
     an identifier that matches our identifier, and has a sequence number in
     the range of sequence numbers that we've sent out).
-    */
-    func simplePing(pinger: SimplePing!, didReceivePingResponsePacket packet: NSData!) {
+    public */
+    public func simplePing(pinger: SimplePing!, didReceivePingResponsePacket packet: NSData!) {
         if let startTime = startTimeInterval {
             let latency = NSDate.timeIntervalSinceReferenceDate() - startTime
             hostLatency.latency = Int(latency * 1000)
@@ -112,15 +112,14 @@ class LTPingOperation: NSObject, SimplePingDelegate {
         stop()
     }
     
-    func simplePing(pinger: SimplePing!, didReceiveUnexpectedPacket packet: NSData!) {
+    public func simplePing(pinger: SimplePing!, didReceiveUnexpectedPacket packet: NSData!) {
         
     }
 }
 
-@objc(LTPingQueue)
-class LTPingQueue: NSObject, SimplePingDelegate {
+public class LTPingQueue: NSObject, SimplePingDelegate {
     
-    class var sharedQueue : LTPingQueue
+    public class var sharedQueue : LTPingQueue
     {
         struct Static
         {
@@ -130,7 +129,7 @@ class LTPingQueue: NSObject, SimplePingDelegate {
         return Static.sharedInstance
     }
     
-    var operations = [LTPingOperation]()
+    public var operations = [LTPingOperation]()
     
     override init() {
         super.init()
@@ -141,7 +140,7 @@ class LTPingQueue: NSObject, SimplePingDelegate {
         NSNotificationCenter.defaultCenter().removeObserver(self, name: kLTPingDidUpdate, object: nil)
     }
     
-    func latencyForHostname(hostname: String) -> Int {
+    public func latencyForHostname(hostname: String) -> Int {
         for pingOperation in operations {
             let pinger = pingOperation as LTPingOperation
             if pinger.hostLatency.hostname != hostname {
@@ -157,21 +156,21 @@ class LTPingQueue: NSObject, SimplePingDelegate {
         return -1
     }
     
-    func restartPing() {
+    public func restartPing() {
         for pingOperation in operations {
             pingOperation.hostLatency.latency = -1
             pingOperation.start()
         }
     }
     
-    func clean() {
+    public func clean() {
         for pingOperation in operations {
             pingOperation.stop()
         }
         operations.removeAll(keepCapacity: false)
     }
     
-    func pingDidUpdate(notification: NSNotification) {
+    public func pingDidUpdate(notification: NSNotification) {
         if operations.count == 0 {
             return
         }

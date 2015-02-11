@@ -99,7 +99,7 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate, LTVPN
         switch section
         {
         case kVPNOnDemandSection:
-            if VPNManager.sharedManager().onDemand {
+            if VPNManager.sharedManager.onDemand {
                 return 2
             }
             return 1
@@ -125,12 +125,12 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate, LTVPN
         case kVPNOnDemandSection:
             if indexPath.row == 0 {
                 let switchCell = tableView.dequeueReusableCellWithIdentifier(kOnDemandCellID) as LTVPNSwitchCell
-                switchCell.switchButton.on = VPNManager.sharedManager().onDemand
+                switchCell.switchButton.on = VPNManager.sharedManager.onDemand
                 return switchCell
             } else {
                 let domainsCell = tableView.dequeueReusableCellWithIdentifier(kDomainsCellID) as LTVPNTableViewCell
                 var domainsCount = 0
-                for domain in VPNManager.sharedManager().onDemandDomainsArray as [String] {
+                for domain in VPNManager.sharedManager.onDemandDomainsArray as [String] {
                     if domain.rangeOfString("*.") == nil {
                         domainsCount++
                     }
@@ -180,7 +180,7 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate, LTVPN
             
         case kVPNListSectionIndex:
             activatedVPNID = vpns[indexPath.row].ID
-            VPNManager.sharedManager().activatedVPNID = activatedVPNID
+            VPNManager.sharedManager.activatedVPNID = activatedVPNID
             tableView.reloadData()
             break
             
@@ -245,7 +245,7 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate, LTVPN
     
     func cellTitleForIndexPath(indexPath: NSIndexPath) -> NSAttributedString {
         let vpn = vpns[indexPath.row]
-        let latency = LTPingQueue.sharedQueue().latencyForHostname(vpn.server)
+        let latency = LTPingQueue.sharedQueue.latencyForHostname(vpn.server)
         
         let titleAttributes = [
             NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
@@ -277,7 +277,7 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate, LTVPN
     
     @IBAction func pingServers() {
         restartPingButton.enabled = false
-        LTPingQueue.sharedQueue().restartPing()
+        LTPingQueue.sharedQueue.restartPing()
     }
     
     func pingDidUpdate(notification: NSNotification) {
@@ -298,18 +298,18 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate, LTVPN
                 let certificate = VPNKeychainWrapper.certificateForVPNID(vpn.ID)
                 
                 if vpn.ikev2 {
-                    VPNManager.sharedManager().connectIKEv2(vpn.title, server: vpn.server, account: vpn.account, group: vpn.group, alwaysOn: vpn.alwaysOn, passwordRef: passwordRef, secretRef: secretRef, certificate: certificate)
+                    VPNManager.sharedManager.connectIKEv2(vpn.title, server: vpn.server, account: vpn.account, group: vpn.group, alwaysOn: vpn.alwaysOn, passwordRef: passwordRef, secretRef: secretRef, certificate: certificate)
                 } else {
-                    VPNManager.sharedManager().connectIPSec(vpn.title, server: vpn.server, account: vpn.account, group: vpn.group, alwaysOn: vpn.alwaysOn, passwordRef: passwordRef, secretRef: secretRef, certificate: certificate)
+                    VPNManager.sharedManager.connectIPSec(vpn.title, server: vpn.server, account: vpn.account, group: vpn.group, alwaysOn: vpn.alwaysOn, passwordRef: passwordRef, secretRef: secretRef, certificate: certificate)
                 }
             }
         } else {
-            VPNManager.sharedManager().disconnect()
+            VPNManager.sharedManager.disconnect()
         }
     }
     
     func VPNStatusDidChange(notification: NSNotification?) {
-        switch VPNManager.sharedManager().status
+        switch VPNManager.sharedManager.status
         {
         case NEVPNStatus.Connecting:
             connectionStatus = NSLocalizedString("Connecting...", comment: "VPN Table - Connection Status")

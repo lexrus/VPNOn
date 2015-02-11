@@ -13,7 +13,7 @@ let kOnDemandDomainsKey = "onDemandDomains"
 
 extension VPNManager
 {
-    var onDemand: Bool {
+    public var onDemand: Bool {
         get {
             if let onDemandObject = _defaults.objectForKey(kOnDemandKey) as NSNumber? {
                 if onDemandObject.isKindOfClass(NSNumber.self) {
@@ -28,7 +28,7 @@ extension VPNManager
         }
     }
     
-    var onDemandDomains: String? {
+    public var onDemandDomains: String? {
         get {
             if let domainsObject = _defaults.stringForKey(kOnDemandDomainsKey) {
                 return domainsObject
@@ -45,13 +45,13 @@ extension VPNManager
         }
     }
     
-    var onDemandDomainsArray: [String] {
+    public var onDemandDomainsArray: [String] {
         get {
             return self.domainsInString(onDemandDomains ?? "")
         }
     }
     
-    func domainsInString(string: String) -> [String] {
+    public func domainsInString(string: String) -> [String] {
         let s = string.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
         if s.isEmpty {
             return [String]()

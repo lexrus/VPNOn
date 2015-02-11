@@ -12,8 +12,7 @@ import CoreData
 
 let kAppGroupIdentifier = "group.VPNOn"
 
-@objc(VPNManager)
-class VPNManager
+final public class VPNManager
 {
     lazy var _manager: NEVPNManager = {
         return NEVPNManager.sharedManager()!
@@ -23,13 +22,13 @@ class VPNManager
         return NSUserDefaults(suiteName: kAppGroupIdentifier)!
         }()
     
-    var status: NEVPNStatus {
+    public var status: NEVPNStatus {
         get {
             return _manager.connection.status
         }
     }
     
-    class var _sharedManager : VPNManager
+    public class var sharedManager : VPNManager
     {
         struct Static
         {
@@ -50,11 +49,7 @@ class VPNManager
         return Static.sharedInstance
     }
     
-    class func sharedManager() -> VPNManager {
-        return VPNManager._sharedManager
-    }
-    
-    func connectIPSec(title: String, server: String, account: String?, group: String?, alwaysOn: Bool = true, passwordRef: NSData?, secretRef: NSData?, certificate: NSData?) {
+    public func connectIPSec(title: String, server: String, account: String?, group: String?, alwaysOn: Bool = true, passwordRef: NSData?, secretRef: NSData?, certificate: NSData?) {
         
         // TODO: Add a tailing closure for callback.
         
@@ -113,7 +108,7 @@ class VPNManager
         }
     }
     
-    func connectIKEv2(title: String, server: String, account: String?, group: String?, alwaysOn: Bool = true, passwordRef: NSData?, secretRef: NSData?, certificate: NSData?) {
+    public func connectIKEv2(title: String, server: String, account: String?, group: String?, alwaysOn: Bool = true, passwordRef: NSData?, secretRef: NSData?, certificate: NSData?) {
         let p = NEVPNProtocolIKEv2()
         
         p.authenticationMethod = NEVPNIKEAuthenticationMethod.None
@@ -176,7 +171,7 @@ class VPNManager
         }
     }
     
-    func configOnDemand() {
+    public func configOnDemand() {
         if onDemandDomainsArray.count > 0 && onDemand {
             let connectionRule = NEEvaluateConnectionRule(
                 matchDomains: onDemandDomainsArray,
@@ -192,11 +187,11 @@ class VPNManager
         }
     }
     
-    func disconnect() {
+    public func disconnect() {
         _manager.connection.stopVPNTunnel()
     }
     
-    func removeProfile() {
+    public func removeProfile() {
         _manager.removeFromPreferencesWithCompletionHandler {
             (error: NSError!) -> Void in
             

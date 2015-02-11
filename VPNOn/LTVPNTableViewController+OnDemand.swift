@@ -12,7 +12,7 @@ import VPNOnKit
 extension LTVPNTableViewController
 {
     @IBAction func didTapOnDemandSwitch(sender: UISwitch?) {
-        VPNManager.sharedManager().onDemand = sender!.on
+        VPNManager.sharedManager.onDemand = sender!.on
         updateOnDemandCell()
     }
     

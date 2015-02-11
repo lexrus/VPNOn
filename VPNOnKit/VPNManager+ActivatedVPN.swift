@@ -13,7 +13,7 @@ let kActivatedVPNIDKey = "activatedVPNID"
 
 extension VPNManager
 {
-    var activatedVPNID: String? {
+    public var activatedVPNID: String? {
         get {
             if let deprecatedID = migrateTo0_3AndReturnActivatedVPNID() {
                 self.activatedVPNID = deprecatedID
@@ -31,7 +31,7 @@ extension VPNManager
         }
     }
 
-    var isActivatedVPNIDDeprecated: Bool {
+    public var isActivatedVPNIDDeprecated: Bool {
         get {
             if let ID = self.activatedVPNID {
                 if let URL = NSURL(string: ID) {
