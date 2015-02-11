@@ -1,7 +1,4 @@
 
-/* Class = "IBUILabel"; text = "Detail"; ObjectID = "02c-Df-tae"; */
-"02c-Df-tae.text" = "Detail";
-
 /* Class = "IBUILabel"; text = "VPN On"; ObjectID = "0fX-zU-loY"; */
 "0fX-zU-loY.text" = "VPN On";
 
@@ -9,64 +6,58 @@
 "2ji-tt-sNU.text" = "Server";
 
 /* Class = "IBUITableViewSection"; footerTitle = "Turn this option on will keep VPN connection alive even screen is locked or network is unstable."; ObjectID = "5Qn-Bw-nVD"; */
-"5Qn-Bw-nVD.footerTitle" = "Aktivieren dieser Option wird die VPN-Verbindung aufrecht erhalten, selbst wenn der Bildschirm gesperrt ist oder das Netzwerk instabil ist.";
+"5Qn-Bw-nVD.footerTitle" = "Turn this option on will keep VPN connection alive even screen is locked or network is unstable.";
 
 /* Class = "IBUINavigationItem"; title = "VPN On"; ObjectID = "96C-Eg-mId"; */
 "96C-Eg-mId.title" = "VPN On";
 
 /* Class = "IBUILabel"; text = "Duplicate"; ObjectID = "Ao2-Hb-0jD"; */
-"Ao2-Hb-0jD.text" = "Vervielfältigen";
+"Ao2-Hb-0jD.text" = "Duplicate";
 
 /* Class = "IBUILabel"; text = "Domains relies on VPN "; ObjectID = "C2u-J4-G5f"; */
-"C2u-J4-G5f.text" = "Domains basiert auf VPN";
+"C2u-J4-G5f.text" = "Domains relies on VPN ";
 
 /* Class = "IBUILabel"; text = "On Demand"; ObjectID = "FSL-Tv-Cp6"; */
-"FSL-Tv-Cp6.text" = "Auf Anfrage";
+"FSL-Tv-Cp6.text" = "On Demand";
 
 /* Class = "IBUILabel"; text = "Delete VPN"; ObjectID = "Im7-xc-lxF"; */
-"Im7-xc-lxF.text" = "VPN löschen";
+"Im7-xc-lxF.text" = "Delete VPN";
 
 /* Class = "IBUITextField"; placeholder = "Ask Every Time"; ObjectID = "Jej-Iu-pn8"; */
-"Jej-Iu-pn8.placeholder" = "Jedes Mal fragen";
+"Jej-Iu-pn8.placeholder" = "Ask Every Time";
 
 /* Class = "IBUILabel"; text = "Always On"; ObjectID = "KqD-kH-A4B"; */
-"KqD-kH-A4B.text" = "Immer an";
+"KqD-kH-A4B.text" = "Always On";
 
 /* Class = "IBUITableViewSection"; headerTitle = "Certificate URL"; ObjectID = "LMw-lh-D2c"; */
-"LMw-lh-D2c.headerTitle" = "Zertifikat URL";
+"LMw-lh-D2c.headerTitle" = "Certificate URL";
 
 /* Class = "IBUITextField"; placeholder = "http://"; ObjectID = "Otm-uK-bXz"; */
 "Otm-uK-bXz.placeholder" = "http://";
 
 /* Class = "IBUILabel"; text = "Description"; ObjectID = "P5o-gM-dBq"; */
-"P5o-gM-dBq.text" = "Beschreibung";
+"P5o-gM-dBq.text" = "Description";
 
 /* Class = "IBUITableViewSection"; footerTitle = "Requesting domains specified here may turn on VPN connection automatically. Please separate domains with whitespace or newline."; ObjectID = "PP3-2a-1up"; */
-"PP3-2a-1up.footerTitle" = "Hier angegebenene Domänen anzufragen, könnte automatisch die VPN-Verbindung anstellen. Bitte trennen Sie Domains mit Leerzeichen oder Zeilenumbruch.";
+"PP3-2a-1up.footerTitle" = "Requesting domains specified here may turn on VPN connection automatically. Please separate domains with whitespace or newline.";
 
 /* Class = "IBUITableViewSection"; headerTitle = "Domains relies on VPN"; ObjectID = "PP3-2a-1up"; */
-"PP3-2a-1up.headerTitle" = "Domains basiert auf VPN";
-
-/* Class = "IBUILabel"; text = "Scan QR code"; ObjectID = "Pcz-Ic-xcR"; */
-"Pcz-Ic-xcR.text" = "Scan QR code";
+"PP3-2a-1up.headerTitle" = "Domains relies on VPN";
 
 /* Class = "IBUILabel"; text = "Certificate"; ObjectID = "Rjp-ng-T6V"; */
-"Rjp-ng-T6V.text" = "Zertifikat";
+"Rjp-ng-T6V.text" = "Certificate";
 
 /* Class = "IBUITableViewController"; title = "Certificate"; ObjectID = "RyC-km-4Av"; */
-"RyC-km-4Av.title" = "Zertifikat";
+"RyC-km-4Av.title" = "Certificate";
 
 /* Class = "IBUILabel"; text = "Account"; ObjectID = "Ud8-O3-Mk9"; */
-"Ud8-O3-Mk9.text" = "Konto";
-
-/* Class = "IBUILabel"; text = "Not Connected"; ObjectID = "Vlk-GJ-USi"; */
-"Vlk-GJ-USi.text" = "Nicht verbunden";
+"Ud8-O3-Mk9.text" = "Account";
 
 /* Class = "IBUILabel"; text = "Use Certificate"; ObjectID = "WSx-ME-hWf"; */
-"WSx-ME-hWf.text" = "Zertifikat verwenden";
+"WSx-ME-hWf.text" = "Use Certificate";
 
 /* Class = "IBUILabel"; text = "Password"; ObjectID = "XpY-Af-O6z"; */
-"XpY-Af-O6z.text" = "Passwort";
+"XpY-Af-O6z.text" = "Password";
 
 /* Class = "IBUISegmentedControl"; be7-Ah-lJc.segmentTitles[0] = "Cisco IPSec"; ObjectID = "be7-Ah-lJc"; */
 "be7-Ah-lJc.segmentTitles[0]" = "Cisco IPSec";
@@ -75,46 +66,43 @@
 "be7-Ah-lJc.segmentTitles[1]" = "IKEv2";
 
 /* Class = "IBUILabel"; text = "Add VPN Configuration..."; ObjectID = "dxQ-Vo-JWP"; */
-"dxQ-Vo-JWP.text" = "VPN Konfiguration hinzufügen.";
+"dxQ-Vo-JWP.text" = "Add VPN Configuration...";
 
 /* Class = "IBUITextField"; placeholder = "Required"; ObjectID = "eUh-Mf-gFu"; */
-"eUh-Mf-gFu.placeholder" = "Erforderlich";
+"eUh-Mf-gFu.placeholder" = "Required";
 
 /* Class = "IBUITextField"; placeholder = "Required"; ObjectID = "iNr-tg-tO5"; */
-"iNr-tg-tO5.placeholder" = "Erforderlich";
+"iNr-tg-tO5.placeholder" = "Required";
 
 /* Class = "IBUILabel"; text = "Download"; ObjectID = "ijT-Cj-eqv"; */
-"ijT-Cj-eqv.text" = "Herunterladen";
+"ijT-Cj-eqv.text" = "Download";
 
 /* Class = "IBUITextField"; placeholder = "Required"; ObjectID = "lOt-LM-XMh"; */
-"lOt-LM-XMh.placeholder" = "Erforderlich";
-
-/* Class = "IBUILabel"; text = "Title"; ObjectID = "lZH-8X-gAr"; */
-"lZH-8X-gAr.text" = "Titel";
+"lOt-LM-XMh.placeholder" = "Required";
 
 /* Class = "IBUINavigationItem"; title = "Configuration"; ObjectID = "p5c-ZP-mHC"; */
-"p5c-ZP-mHC.title" = "Konfiguration";
+"p5c-ZP-mHC.title" = "Configuration";
 
 /* Class = "IBUILabel"; text = "Secret"; ObjectID = "pXD-5j-wvs"; */
-"pXD-5j-wvs.text" = "Geheimnis";
+"pXD-5j-wvs.text" = "Secret";
 
 /* Class = "IBUINavigationItem"; title = "Domains"; ObjectID = "rTs-vk-ZUy"; */
 "rTs-vk-ZUy.title" = "Domains";
 
 /* Class = "IBUILabel"; text = "0 domains"; ObjectID = "rtd-Ll-4ML"; */
-"rtd-Ll-4ML.text" = "0 Domains";
+"rtd-Ll-4ML.text" = "0 domains";
 
 /* Class = "IBUILabel"; text = "Delete"; ObjectID = "tHf-HC-jcR"; */
-"tHf-HC-jcR.text" = "Löschen";
+"tHf-HC-jcR.text" = "Delete";
 
 /* Class = "IBUILabel"; text = "Certificate will be downloaded and stored in Keychain"; ObjectID = "w42-LH-TM5"; */
-"w42-LH-TM5.text" = "Zertifikate werden heruntergeladen und in Keychain gespeichert";
+"w42-LH-TM5.text" = "Certificate will be downloaded and stored in Keychain";
 
 /* Class = "IBUILabel"; text = "Group"; ObjectID = "w4U-Px-gJH"; */
-"w4U-Px-gJH.text" = "Gruppe";
+"w4U-Px-gJH.text" = "Group";
 
 /* Class = "IBUINavigationItem"; title = "Certificate"; ObjectID = "whE-eZ-DWz"; */
-"whE-eZ-DWz.title" = "Zertifikat";
+"whE-eZ-DWz.title" = "Certificate";
 
 /* Class = "IBUILabel"; text = " "; ObjectID = "yI7-6o-40u"; */
 "yI7-6o-40u.text" = " ";
