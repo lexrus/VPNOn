@@ -147,7 +147,7 @@ class LTVPNCertificateViewController: UITableViewController, UITextFieldDelegate
             let bytesFormatter = NSByteCountFormatter()
             bytesFormatter.countStyle = NSByteCountFormatterCountStyle.File
             let bytesCount = bytesFormatter.stringFromByteCount(Int64(data.length))
-            let certificateFormat = NSLocalizedString("Certificate downloaded (%s)", comment: "Certificate - Status")
+            let certificateFormat = NSLocalizedString("Certificate downloaded (%@)", comment: "Certificate - Status")
             let certificateText = String(format: certificateFormat, bytesCount)
             certificateSummaryCell.textLabel!.text = certificateText
         } else {
