@@ -35,10 +35,9 @@ This project follows the gitflow workflow. You'd better create a branch called `
 
 ## Localization
 
-<img src="https://www.transifex.com/projects/p/vpnon/resource/vpnonxliff/chart/image_png" width="175" alt="Transifex Progress"/>
-
 Please contribute to [the Transifex project](https://www.transifex.com/projects/p/vpnon/).
-I may send some redeem code once you complete a language.
+
+![Transifex Progress](https://www.transifex.com/projects/p/vpnon/resource/vpnonxliff/chart/image_png)
 
 ## URL Scheme
 
