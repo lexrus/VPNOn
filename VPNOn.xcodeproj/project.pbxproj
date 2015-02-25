@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D705784D1A9E103F00040279 /* VPNManager+Domains.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77593D91A79E674007161B2 /* VPNManager+Domains.swift */; };
+		D705784E1A9E104400040279 /* VPNManager+Geo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CFDDA41A9E05700057F53D /* VPNManager+Geo.swift */; };
 		D7322C7A1A6C024800B34AA0 /* LTViewControllerBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7322C791A6C024800B34AA0 /* LTViewControllerBackground.swift */; };
 		D74129A91A5CFCDA008DE603 /* SimplePing.h in Headers */ = {isa = PBXBuildFile; fileRef = D74129A71A5CFCDA008DE603 /* SimplePing.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D74129AA1A5CFCDA008DE603 /* SimplePing.m in Sources */ = {isa = PBXBuildFile; fileRef = D74129A81A5CFCDA008DE603 /* SimplePing.m */; };
@@ -69,6 +71,7 @@
 		D7BB2DD41A6E986F00D8D581 /* VPN.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7453F9C1A3196E200F7E32D /* VPN.swift */; };
 		D7CB6A321A7B8FA500B8B568 /* LTLightTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CB6A311A7B8FA500B8B568 /* LTLightTheme.swift */; };
 		D7CB6A341A7B92CA00B8B568 /* LTDarkPurpleTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CB6A331A7B92CA00B8B568 /* LTDarkPurpleTheme.swift */; };
+		D7CFDDA51A9E05700057F53D /* VPNManager+Geo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CFDDA41A9E05700057F53D /* VPNManager+Geo.swift */; };
 		D7D4992D1A723F6700B5F5ED /* LTVPNConfigViewController+Certificate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D4992C1A723F6700B5F5ED /* LTVPNConfigViewController+Certificate.swift */; };
 		D7D4992F1A724B4C00B5F5ED /* LTVPNConfigViewController+Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D4992E1A724B4C00B5F5ED /* LTVPNConfigViewController+Type.swift */; };
 		D7D499311A72542400B5F5ED /* LTTableViewCellDeclosureIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D499301A72542400B5F5ED /* LTTableViewCellDeclosureIndicator.swift */; };
@@ -265,6 +268,7 @@
 		D7CB6A301A7B5F7500B8B568 /* VPN On 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "VPN On 4.xcdatamodel"; sourceTree = "<group>"; };
 		D7CB6A311A7B8FA500B8B568 /* LTLightTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTLightTheme.swift; sourceTree = "<group>"; };
 		D7CB6A331A7B92CA00B8B568 /* LTDarkPurpleTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTDarkPurpleTheme.swift; sourceTree = "<group>"; };
+		D7CFDDA41A9E05700057F53D /* VPNManager+Geo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VPNManager+Geo.swift"; sourceTree = "<group>"; };
 		D7D4992C1A723F6700B5F5ED /* LTVPNConfigViewController+Certificate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LTVPNConfigViewController+Certificate.swift"; sourceTree = "<group>"; };
 		D7D4992E1A724B4C00B5F5ED /* LTVPNConfigViewController+Type.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LTVPNConfigViewController+Type.swift"; sourceTree = "<group>"; };
 		D7D499301A72542400B5F5ED /* LTTableViewCellDeclosureIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTTableViewCellDeclosureIndicator.swift; sourceTree = "<group>"; };
@@ -459,6 +463,7 @@
 				D757AFA61A3B374200AEF3CB /* VPNManager.swift */,
 				D7F0A0251A6E520300F9C09A /* VPNManager+ActivatedVPN.swift */,
 				D77593D91A79E674007161B2 /* VPNManager+Domains.swift */,
+				D7CFDDA41A9E05700057F53D /* VPNManager+Geo.swift */,
 				D74129AF1A5D1A91008DE603 /* LTPingQueue.swift */,
 				D754E2051A3B3A7B00E8F135 /* Vendor */,
 				D757AF871A3B370E00AEF3CB /* Supporting Files */,
@@ -861,11 +866,12 @@
 			files = (
 				D74129B01A5D1A91008DE603 /* LTPingQueue.swift in Sources */,
 				D754E2071A3B3A7B00E8F135 /* KeychainWrapper.swift in Sources */,
-				D757AFA91A3B374200AEF3CB /* VPNManager.swift in Sources */,
 				D757AFA71A3B374200AEF3CB /* VPNKeychainWrapper.swift in Sources */,
 				D74129AA1A5CFCDA008DE603 /* SimplePing.m in Sources */,
+				D757AFA91A3B374200AEF3CB /* VPNManager.swift in Sources */,
 				D7F0A0261A6E520300F9C09A /* VPNManager+ActivatedVPN.swift in Sources */,
 				D77593DA1A79E674007161B2 /* VPNManager+Domains.swift in Sources */,
+				D7CFDDA51A9E05700057F53D /* VPNManager+Geo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -873,10 +879,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D757AFAA1A3B374200AEF3CB /* VPNManager.swift in Sources */,
 				D7F0A0271A6E520300F9C09A /* VPNManager+ActivatedVPN.swift in Sources */,
+				D705784D1A9E103F00040279 /* VPNManager+Domains.swift in Sources */,
+				D705784E1A9E104400040279 /* VPNManager+Geo.swift in Sources */,
 				D757AFA81A3B374200AEF3CB /* VPNKeychainWrapper.swift in Sources */,
 				D754E2081A3B3A7B00E8F135 /* KeychainWrapper.swift in Sources */,
-				D757AFAA1A3B374200AEF3CB /* VPNManager.swift in Sources */,
 				D757AF991A3B370E00AEF3CB /* VPNOnKitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

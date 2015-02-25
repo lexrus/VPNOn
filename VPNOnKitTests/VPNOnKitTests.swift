@@ -39,4 +39,9 @@ class VPNOnKitTests: XCTestCase {
         }
     }
     
+    func testGeoIP() {
+        let geoInfoOfGoogleDNS = VPNManager.sharedManager.geoInfoOfIP("8.8.4.4")
+        XCTAssert(geoInfoOfGoogleDNS != nil, "Google DNS must has Geo IP info.")
+        XCTAssert(geoInfoOfGoogleDNS!.isp == "Google Inc.", "Google DNS must be hosted by Google Inc.")
+    }
 }
