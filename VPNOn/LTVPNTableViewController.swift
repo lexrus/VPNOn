@@ -82,12 +82,6 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate, LTVPN
         
         tableView.reloadData()
     }
-    
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        vpns = [VPN]()
-    }
 
     // MARK: - Table view data source
 
