@@ -272,7 +272,7 @@
         <!--Configuration-->
         <scene sceneID="rNb-dC-oga">
             <objects>
-                <tableViewController storyboardIdentifier="VPNOn.LTVPNCreateViewController" id="z7c-q3-RcX" customClass="LTVPNConfigViewController" customModule="VPNOn" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="VPNOn.LTVPNConfigViewController" id="z7c-q3-RcX" customClass="LTVPNConfigViewController" customModule="VPNOn" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="z01-o8-60b">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

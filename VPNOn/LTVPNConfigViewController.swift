@@ -84,23 +84,7 @@ LTVPNCertificateViewControllerDelegate
     override func viewWillAppear(animated: Bool) {
         saveButton?.enabled = false
         
-        if let currentVPN = vpn {
-            titleTextField.text = currentVPN.title
-            serverTextField.text = currentVPN.server
-            accountTextField.text = currentVPN.account
-            groupTextField.text = currentVPN.group
-            alwaysOnSwitch.on = currentVPN.alwaysOn
-            typeSegment.selectedSegmentIndex = currentVPN.ikev2 ? 1 : 0
-            certificateURL = currentVPN.certificateURL
-            passwordTextField.text = VPNKeychainWrapper.passwordStringForVPNID(currentVPN.ID)
-            secretTextField.text = VPNKeychainWrapper.secretStringForVPNID(currentVPN.ID)
-            deleteCell.hidden = false
-            duplicateCell.hidden = false
-            temporaryCertificateData = VPNKeychainWrapper.certificateForVPNID(currentVPN.ID)
-            if temporaryCertificateData != nil {
-                certificateSwitch.on = true
-            }
-        } else if let info = initializedVPNInfo {
+        if let info = initializedVPNInfo {
             if info.title != "" {
                 titleTextField.text = info.title
                 serverTextField.text = info.server
@@ -118,6 +102,22 @@ LTVPNCertificateViewControllerDelegate
             
             deleteCell.hidden = true
             duplicateCell.hidden = true
+        } else if let currentVPN = vpn {
+            titleTextField.text = currentVPN.title
+            serverTextField.text = currentVPN.server
+            accountTextField.text = currentVPN.account
+            groupTextField.text = currentVPN.group
+            alwaysOnSwitch.on = currentVPN.alwaysOn
+            typeSegment.selectedSegmentIndex = currentVPN.ikev2 ? 1 : 0
+            certificateURL = currentVPN.certificateURL
+            passwordTextField.text = VPNKeychainWrapper.passwordStringForVPNID(currentVPN.ID)
+            secretTextField.text = VPNKeychainWrapper.secretStringForVPNID(currentVPN.ID)
+            deleteCell.hidden = false
+            duplicateCell.hidden = false
+            temporaryCertificateData = VPNKeychainWrapper.certificateForVPNID(currentVPN.ID)
+            if temporaryCertificateData != nil {
+                certificateSwitch.on = true
+            }
         }
         
         toggleSaveButtonByStatus()
