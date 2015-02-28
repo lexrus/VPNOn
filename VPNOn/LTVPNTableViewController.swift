@@ -141,11 +141,15 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate, LTVPN
             cell.detailTextLabel?.text = vpn.server
             cell.IKEv2 = vpn.ikev2
             
-            if activatedVPNID == vpns[indexPath.row].ID {
-                cell.imageView!.image = UIImage(named: "CheckMark")
-            } else {
-                cell.imageView!.image = UIImage(named: "CheckMarkUnchecked")
+            cell.imageView!.image = nil
+            
+            if let cc = vpn.countryCode {
+                if let image = UIImage(named: cc) {
+                    cell.imageView!.image = image
+                }
             }
+            
+            cell.current = Bool(activatedVPNID == vpns[indexPath.row].ID)
             
             return cell
             

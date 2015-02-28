@@ -19,6 +19,12 @@ class LTVPNTableViewCell: UITableViewCell
         }
     }
     
+    var current: Bool = false {
+        didSet {
+            self.setNeedsDisplay()
+        }
+    }
+    
     override func drawRect(rect: CGRect) {
         if IKEv2 {
             let tagWidth: CGFloat = 34
@@ -27,6 +33,13 @@ class LTVPNTableViewCell: UITableViewCell
             let tagY = (CGRectGetHeight(bounds) - tagHeight) / 2
             let tagRect = CGRectMake(tagX, tagY, tagWidth, tagHeight)
             drawIKEv2Tag(radius: 2, rect: tagRect, tagText: "IKEv2", color: tintColor)
+        }
+        if current {
+            let context = UIGraphicsGetCurrentContext()
+            let currentIndicatorRect = CGRect(x: 0, y: 0, width: 7, height: rect.size.height)
+            let rectanglePath = UIBezierPath(rect: currentIndicatorRect)
+            LTThemeManager.sharedManager.currentTheme!.tintColor.setFill()
+            rectanglePath.fill()
         }
     }
     
