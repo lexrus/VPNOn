@@ -73,6 +73,8 @@ BTW. I'm a coffee addict, buy me a coffee via PayPal or Alipay: `lexrus@gmail.co
 [KeychainWrapper](https://github.com/jrendel/KeychainWrapper)
 Note: I set the optimization level of VPNOnKit to `None` in order to read Keychain properly due to [an issue of Swift](http://stackoverflow.com/questions/26355630/swift-keychain-and-provisioning-profiles).
 
+Flags are rasterized from [flag-icon-css](https://github.com/lipis/flag-icon-css).
+
 ## Contact
 
 [Lex Tang](https://github.com/lexrus/) ([@lexrus on Twitter](https://twitter.com/lexrus/))
