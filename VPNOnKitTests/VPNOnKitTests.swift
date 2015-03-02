@@ -46,10 +46,23 @@ class VPNOnKitTests: XCTestCase {
     }
     
     func testResolve() {
-        let ipOfPingAn = VPNManager.sharedManager.getIPOfHost("pingan.com")
+        let ipOfPingAn = VPNManager.sharedManager.IPOfHost("pingan.com")
         XCTAssert(ipOfPingAn != nil, "IP must not be nil.")
         XCTAssert(ipOfPingAn! == "202.69.26.11", "IP of PingAn must not be changed for years.")
-        let ipOfGoogleDNS = VPNManager.sharedManager.getIPOfHost("8.8.4.4")
+        let ipOfGoogleDNS = VPNManager.sharedManager.IPOfHost("8.8.4.4")
         XCTAssert(ipOfGoogleDNS! == "8.8.4.4", "IP of Google DNS must be valid.")
+    }
+    
+    func testAsyncResolve() {
+        var expectation = self.expectationWithDescription("Async fetch GeoInfo.")
+        
+        VPNManager.sharedManager.geoInfoOfHost("google.com") {
+            geoInfo in
+            
+            XCTAssert(geoInfo.countryCode != "", "Country code must not be empty.")
+            expectation.fulfill()
+        }
+        
+        self.waitForExpectationsWithTimeout(3.0, handler: nil)
     }
 }

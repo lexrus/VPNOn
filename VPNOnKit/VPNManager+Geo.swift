@@ -54,7 +54,7 @@ extension VPNManager
     }
     
     // See http://stackoverflow.com/questions/25890533/how-can-i-get-a-real-ip-address-from-dns-query-in-swift
-    public func getIPOfHost(host: String) -> String? {
+    public func IPOfHost(host: String) -> String? {
         let host = CFHostCreateWithName(nil, host).takeRetainedValue()
         CFHostStartInfoResolution(host, .Addresses, nil)
         var success: Boolean = 0
@@ -71,5 +71,22 @@ extension VPNManager
         }
         
         return .None
+    }
+    
+    public func geoInfoOfHost(host: String, callback: (geoInfo: GeoIP) -> ()) -> Void {
+        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
+        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+            [weak self] in
+            if let strongSelf = self {
+                
+                if let ip = strongSelf.IPOfHost(host) {
+                    if let geo = strongSelf.geoInfoOfIP(ip) {
+                        dispatch_async(dispatch_get_main_queue()) {
+                            callback(geoInfo: geo)
+                        }
+                    }
+                }
+            }
+        }
     }
 }
