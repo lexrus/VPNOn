@@ -52,4 +52,24 @@ extension VPNManager
         
         return .None
     }
+    
+    // See http://stackoverflow.com/questions/25890533/how-can-i-get-a-real-ip-address-from-dns-query-in-swift
+    public func getIPOfHost(host: String) -> String? {
+        let host = CFHostCreateWithName(nil, host).takeRetainedValue()
+        CFHostStartInfoResolution(host, .Addresses, nil)
+        var success: Boolean = 0
+        let addresses = CFHostGetAddressing(host, &success).takeUnretainedValue() as NSArray
+        if addresses.count > 0 {
+            let theAddress = addresses[0] as NSData
+            var hostname = [CChar](count: Int(NI_MAXHOST), repeatedValue: 0)
+            if getnameinfo(UnsafePointer(theAddress.bytes), socklen_t(theAddress.length),
+                &hostname, socklen_t(hostname.count), nil, 0, NI_NUMERICHOST) == 0 {
+                    if let numAddress = String.fromCString(hostname) {
+                        return numAddress
+                    }
+            }
+        }
+        
+        return .None
+    }
 }

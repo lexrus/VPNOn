@@ -44,4 +44,12 @@ class VPNOnKitTests: XCTestCase {
         XCTAssert(geoInfoOfGoogleDNS != nil, "Google DNS must has Geo IP info.")
         XCTAssert(geoInfoOfGoogleDNS!.isp == "Google Inc.", "Google DNS must be hosted by Google Inc.")
     }
+    
+    func testResolve() {
+        let ipOfPingAn = VPNManager.sharedManager.getIPOfHost("pingan.com")
+        XCTAssert(ipOfPingAn != nil, "IP must not be nil.")
+        XCTAssert(ipOfPingAn! == "202.69.26.11", "IP of PingAn must not be changed for years.")
+        let ipOfGoogleDNS = VPNManager.sharedManager.getIPOfHost("8.8.4.4")
+        XCTAssert(ipOfGoogleDNS! == "8.8.4.4", "IP of Google DNS must be valid.")
+    }
 }
