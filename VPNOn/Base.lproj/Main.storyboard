@@ -14,7 +14,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="detailButton" indentationWidth="0.0" reuseIdentifier="VPNCell" textLabel="lZH-8X-gAr" detailTextLabel="02c-Df-tae" imageView="Tiq-7y-j7D" rowHeight="60" style="IBUITableViewCellStyleSubtitle" id="zWG-PH-mx8" customClass="LTVPNTableViewCell" customModule="VPNOn" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="detailButton" indentationWidth="0.0" reuseIdentifier="VPNCell" textLabel="lZH-8X-gAr" detailTextLabel="02c-Df-tae" rowHeight="60" style="IBUITableViewCellStyleSubtitle" id="zWG-PH-mx8" customClass="LTVPNTableViewCell" customModule="VPNOn" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zWG-PH-mx8" id="EXE-UE-P7d">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -37,9 +37,6 @@
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                             </variation>
                                         </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="CheckMark" id="Tiq-7y-j7D">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -973,9 +970,6 @@
             <point key="canvasLocation" x="961.5" y="813"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="CheckMark" width="12" height="9"/>
-    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="g71-fB-Wil"/>
         <segue reference="Zrc-rj-vHJ"/>

@@ -32,8 +32,8 @@ public class VPN : NSManagedObject{
     @NSManaged var latency:        Int16
     @NSManaged var latitude:       Float
     @NSManaged var longitude:      Float
-    @NSManaged var countryCode:    String!
-    @NSManaged var isp:            String!
+    @NSManaged var countryCode:    String?
+    @NSManaged var isp:            String?
     @NSManaged var ikev2:          Bool
     @NSManaged var certificateURL: String?
     

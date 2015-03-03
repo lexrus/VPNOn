@@ -37,12 +37,16 @@ extension VPNManager
                 let json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &parseError) as NSDictionary?
                 if parseError == nil {
                     if let js = json {
-                        let countryCode = js.valueForKey("country_code3") as String?
+                        let countryCode = js.valueForKey("country_code") as String?
                         let isp = js.valueForKey("isp") as String?
                         let latitude = js.valueForKey("latitude") as Float?
                         let longitude = js.valueForKey("longitude") as Float?
                         if countryCode != nil && isp != nil && latitude != nil && longitude != nil {
-                            var geoIP = GeoIP(countryCode: countryCode!, isp: isp!, latitude: latitude!, longitude: longitude!)
+                            var geoIP = GeoIP(
+                                countryCode: countryCode!.lowercaseString,
+                                isp: isp!,
+                                latitude: latitude!,
+                                longitude: longitude!)
                             return geoIP
                         }
                     }

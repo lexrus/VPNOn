@@ -49,6 +49,8 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate, LTVPN
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pingDidUpdate:"), name: "kLTPingDidUpdate", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pingDidComplete:"), name: "kLTPingDidComplete", object: nil)
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("geoDidUpdate:"), name: "kLTGeoDidUpdate", object: nil)
+        
         NSNotificationCenter.defaultCenter().addObserver(
             self,
             selector: Selector("VPNStatusDidChange:"),
@@ -64,6 +66,8 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate, LTVPN
         
         NSNotificationCenter.defaultCenter().removeObserver(self, name: "kLTPingDidUpdate", object: nil)
         NSNotificationCenter.defaultCenter().removeObserver(self, name: "kLTPingDidComplete", object: nil)
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "kLTGeoDidUpdate", object: nil)
         
         NSNotificationCenter.defaultCenter().removeObserver(
             self,
@@ -215,9 +219,12 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate, LTVPN
     
     // MARK: - Notifications
     
-    func reloadDataAndPopDetail(notifiation: NSNotification) {
+    func reloadDataAndPopDetail(notification: NSNotification) {
         vpns = VPNDataManager.sharedManager.allVPN()
         tableView.reloadData()
+        if let vpn = notification.object as VPN? {
+            NSNotificationCenter.defaultCenter().postNotificationName("kLTGeoDidUpdate", object: vpn)
+        }
         popDetailViewController()
     }
     
