@@ -12,46 +12,36 @@ import NetworkExtension
 import VPNOnKit
 import CoreData
 
-class TodayViewController: UIViewController, NCWidgetProviding {
+let kVPNOnSelectedIDInToday = "kVPNOnSelectedIDInToday"
+
+class TodayViewController: UIViewController, NCWidgetProviding, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    @IBOutlet weak var VPNSwitch: UISwitch!
-    @IBOutlet weak var VPNLabel: UILabel!
-    @IBOutlet weak var VPNStatusLabel: UILabel!
-    @IBOutlet weak var tagLabel: UIView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
-    @IBOutlet weak var contentArea: UIView!
-    @IBOutlet weak var switchArea: UIView!
-    
-    var typeTag: VPNTypeTag {
+    var vpns: [VPN] {
         get {
-            if tagLabel.subviews.first == nil {
-                let effect = UIVibrancyEffect()
-                let tagEffectView = UIVisualEffectView(effect: UIVibrancyEffect.notificationCenterVibrancyEffect())
-                tagEffectView.frame = tagLabel.bounds
-                let tagView = VPNTypeTag(frame: tagEffectView.bounds)
-                tagLabel.addSubview(tagEffectView)
-                tagEffectView.contentView.addSubview(tagView)
-            }
-            return tagLabel.subviews.first!.contentView.subviews.first! as VPNTypeTag
+            return VPNDataManager.sharedManager.allVPN()
         }
     }
-        
+    
+    var selectedID: String? {
+        get {
+            return NSUserDefaults.standardUserDefaults().objectForKey(kVPNOnSelectedIDInToday) as String?
+        }
+        set {
+            if let newID = newValue {
+                NSUserDefaults.standardUserDefaults().setObject(newID, forKey: kVPNOnSelectedIDInToday)
+            } else {
+                NSUserDefaults.standardUserDefaults().removeObjectForKey(kVPNOnSelectedIDInToday)
+            }
+            
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        preferredContentSize = CGSizeMake(0, 60)
-        
-        var labelTapGesture = UITapGestureRecognizer(target: self, action: Selector("didTapLabel:"))
-        labelTapGesture.numberOfTapsRequired = 1
-        labelTapGesture.numberOfTouchesRequired = 1
-        contentArea.userInteractionEnabled = true
-        contentArea.addGestureRecognizer(labelTapGesture)
-        
-        var switchTapGesture = UITapGestureRecognizer(target: self, action: Selector("didTapSwitch:"))
-        switchTapGesture.numberOfTapsRequired = 1
-        switchTapGesture.numberOfTouchesRequired = 1
-        switchArea.userInteractionEnabled = true
-        switchArea.addGestureRecognizer(switchTapGesture)
+        preferredContentSize = CGSizeMake(0, 80)
         
         NSNotificationCenter.defaultCenter().addObserver(
             self,
@@ -75,8 +65,10 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         updateContent()
+        
+        preferredContentSize = collectionView.contentSize
     }
     
     func updateContent() {
@@ -84,6 +76,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         // @see: http://stackoverflow.com/questions/25924223/core-data-ios-8-today-widget-issue
         VPNDataManager.sharedManager.managedObjectContext?.reset()
         
+        /*
         if let vpn = VPNDataManager.sharedManager.activatedVPN {
             VPNLabel.text = vpn.title
             typeTag.type = vpn.ikev2 ? .IKEv2 : .IKEv1
@@ -99,6 +92,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             VPNSwitch.enabled = false
             switchArea.userInteractionEnabled = false
         }
+*/
         
 //        self.VPNSwitch.setNeedsUpdateConstraints()
     }
@@ -117,46 +111,71 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     func widgetMarginInsetsForProposedMarginInsets(defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets
     {
-        var edgeInsets = defaultMarginInsets
-        edgeInsets.bottom = 0
-        edgeInsets.right = 0
-        return edgeInsets
+        return UIEdgeInsetsZero
     }
     
-    // MARK: - User actions
+    // MARK: - Collection View Data source
     
-    func toggleVPN() {
-        if VPNSwitch.on {
-            if let vpn = VPNDataManager.sharedManager.activatedVPN {
-                let passwordRef = VPNKeychainWrapper.passwordForVPNID(vpn.ID)
-                let secretRef = VPNKeychainWrapper.secretForVPNID(vpn.ID)
-                let certificate = VPNKeychainWrapper.certificateForVPNID(vpn.ID)
-                let titleWithSubfix = "Widget - \(vpn.title)"
-                
-                if vpn.ikev2 {
-                    VPNManager.sharedManager.connectIKEv2(titleWithSubfix,
-                        server: vpn.server,
-                        account: vpn.account,
-                        group: vpn.group,
-                        alwaysOn: vpn.alwaysOn,
-                        passwordRef: passwordRef,
-                        secretRef: secretRef,
-                        certificate: certificate)
-                } else {
-                    VPNManager.sharedManager.connectIPSec(titleWithSubfix,
-                        server: vpn.server,
-                        account: vpn.account,
-                        group: vpn.group,
-                        alwaysOn: vpn.alwaysOn,
-                        passwordRef: passwordRef,
-                        secretRef: secretRef,
-                        certificate: certificate)
-                }
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
+    {
+        return vpns.count
+    }
+    
+    // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
+    {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("vpnCell", forIndexPath: indexPath) as VPNCell
+        let vpn = vpns[indexPath.row]
+        let selected = Bool(selectedID == vpn.ID)
+        cell.configureWithVPN(vpns[indexPath.row], selected: selected)
+        if selected {
+            cell.status = VPNManager.sharedManager.status
+        } else {
+            cell.status = .Disconnected
+        }
+        
+        return cell
+    }
+    
+    // MARK: - Collection View Delegate
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
+    {
+        let vpn = vpns[indexPath.row]
+        selectedID = vpn.ID
+        
+        let cell = collectionView.cellForItemAtIndexPath(indexPath)! as VPNCell
+        if cell.status != .Connected {
+            let passwordRef = VPNKeychainWrapper.passwordForVPNID(vpn.ID)
+            let secretRef = VPNKeychainWrapper.secretForVPNID(vpn.ID)
+            let certificate = VPNKeychainWrapper.certificateForVPNID(vpn.ID)
+            let titleWithSubfix = "Widget - \(vpn.title)"
+            
+            if vpn.ikev2 {
+                VPNManager.sharedManager.connectIKEv2(titleWithSubfix,
+                    server: vpn.server,
+                    account: vpn.account,
+                    group: vpn.group,
+                    alwaysOn: vpn.alwaysOn,
+                    passwordRef: passwordRef,
+                    secretRef: secretRef,
+                    certificate: certificate)
+            } else {
+                VPNManager.sharedManager.connectIPSec(titleWithSubfix,
+                    server: vpn.server,
+                    account: vpn.account,
+                    group: vpn.group,
+                    alwaysOn: vpn.alwaysOn,
+                    passwordRef: passwordRef,
+                    secretRef: secretRef,
+                    certificate: certificate)
             }
         } else {
             VPNManager.sharedManager.disconnect()
         }
     }
+    
+    /*
     
     func didTapLabel(gesture: UITapGestureRecognizer) {
         let appURL = NSURL(string: "vpnon://")
@@ -171,6 +190,8 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         toggleVPN()
     }
     
+    */
+    
     // MARK: - Notification
     
     func coreDataDidSave(notification: NSNotification) {
@@ -179,32 +200,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     }
     
     func VPNStatusDidChange(notification: NSNotification?) {
-        switch VPNManager.sharedManager.status
-        {
-        case NEVPNStatus.Connecting:
-            VPNStatusLabel.text = NSLocalizedString("Connecting...", comment: "Today Widget - Status")
-            VPNStatusLabel.textColor = UIColor.lightGrayColor()
-            VPNLabel.textColor = UIColor.lightGrayColor()
-            break
-            
-        case NEVPNStatus.Connected:
-            VPNStatusLabel.text = NSLocalizedString("Connected", comment: "Today Widget - Status")
-            VPNSwitch.setOn(true, animated: false)
-            VPNStatusLabel.textColor = UIColor.whiteColor()
-            VPNLabel.textColor = UIColor.whiteColor()
-            break
-            
-        case NEVPNStatus.Disconnecting:
-            VPNStatusLabel.text = NSLocalizedString("Disconnecting...", comment: "Today Widget - Status")
-            VPNStatusLabel.textColor = UIColor.whiteColor()
-            VPNLabel.textColor = UIColor.whiteColor()
-            break
-            
-        default:
-            VPNSwitch.setOn(false, animated: false)
-            VPNStatusLabel.textColor = UIColor.lightGrayColor()
-            VPNLabel.textColor = UIColor.lightGrayColor()
-            VPNStatusLabel.text = NSLocalizedString("Not Connected", comment: "Today Widget - Status")
-        }
+        collectionView.reloadData()
     }
+
 }
