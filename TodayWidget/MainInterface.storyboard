@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="5" maxX="0.0" maxY="5"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="0.0" id="VP4-dx-j9t">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="VP4-dx-j9t">
                                     <size key="itemSize" width="80" height="70"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -34,22 +34,60 @@
                                             <rect key="frame" x="0.0" y="0.0" width="80" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Singapore" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ngz-I2-iCK">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Singapore" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ngz-I2-iCK">
                                                     <rect key="frame" x="0.0" y="49" width="80" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="vMQ-BC-gKT"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sg" translatesAutoresizingMaskIntoConstraints="NO" id="Zxb-7j-eMg">
-                                                    <rect key="frame" x="14" y="11" width="52" height="39"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rRn-Ek-JTc">
+                                                    <rect key="frame" x="8" y="14" width="64" height="36"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zxb-7j-eMg">
+                                                    <rect key="frame" x="16" y="14" width="48" height="36"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="36" id="SKP-Uc-vPE"/>
+                                                        <constraint firstAttribute="width" constant="48" id="xLH-L4-XHX"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <constraints>
+                                            <constraint firstAttribute="centerY" secondItem="Zxb-7j-eMg" secondAttribute="centerY" constant="3" id="2SW-hx-vju"/>
+                                            <constraint firstAttribute="centerX" secondItem="Zxb-7j-eMg" secondAttribute="centerX" id="DZJ-bg-xyw"/>
+                                            <constraint firstItem="ngz-I2-iCK" firstAttribute="top" secondItem="vDN-Kt-1WR" secondAttribute="top" constant="7" id="Fgu-Ft-nFj"/>
+                                            <constraint firstAttribute="bottom" secondItem="ngz-I2-iCK" secondAttribute="bottom" id="WQQ-tF-ifH"/>
+                                            <constraint firstAttribute="trailing" secondItem="ngz-I2-iCK" secondAttribute="trailing" id="dfJ-RK-rBN"/>
+                                            <constraint firstItem="ngz-I2-iCK" firstAttribute="leading" secondItem="vDN-Kt-1WR" secondAttribute="leading" id="h8A-w3-OgO"/>
+                                            <constraint firstAttribute="bottom" secondItem="ngz-I2-iCK" secondAttribute="bottom" id="wnl-ma-Uv8"/>
+                                        </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="Fgu-Ft-nFj"/>
+                                                <exclude reference="wnl-ma-Uv8"/>
+                                            </mask>
+                                        </variation>
                                         <connections>
                                             <outlet property="flagImageView" destination="Zxb-7j-eMg" id="lyK-lC-Sni"/>
+                                            <outlet property="latencyLabel" destination="rRn-Ek-JTc" id="GoA-7C-c6C"/>
                                             <outlet property="titleLabel" destination="ngz-I2-iCK" id="x9k-vg-GS3"/>
                                         </connections>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="addCell" id="80D-o9-QK9" customClass="AddCell">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="70"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
@@ -80,7 +118,4 @@
             <point key="canvasLocation" x="1066" y="215"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="sg" width="53" height="40"/>
-    </resources>
 </document>

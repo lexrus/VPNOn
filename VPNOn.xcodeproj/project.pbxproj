@@ -94,6 +94,8 @@
 		D7F0A0261A6E520300F9C09A /* VPNManager+ActivatedVPN.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F0A0251A6E520300F9C09A /* VPNManager+ActivatedVPN.swift */; };
 		D7F0A0271A6E520300F9C09A /* VPNManager+ActivatedVPN.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F0A0251A6E520300F9C09A /* VPNManager+ActivatedVPN.swift */; };
 		D7F64F021AA8407400C41789 /* VPNCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F64F011AA8407400C41789 /* VPNCell.swift */; };
+		D7F64F041AA9B87300C41789 /* PlusMarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F64F031AA9B87300C41789 /* PlusMarkView.swift */; };
+		D7F64F061AA9B90000C41789 /* AddCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F64F051AA9B90000C41789 /* AddCell.swift */; };
 		D7FEC8D01A7897310004E7FA /* LTVPNTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FEC8CF1A7897310004E7FA /* LTVPNTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -296,6 +298,8 @@
 		D7F0A0191A6E47EA00F9C09A /* VPNDataManager+Selection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VPNDataManager+Selection.swift"; sourceTree = "<group>"; };
 		D7F0A0251A6E520300F9C09A /* VPNManager+ActivatedVPN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VPNManager+ActivatedVPN.swift"; sourceTree = "<group>"; };
 		D7F64F011AA8407400C41789 /* VPNCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNCell.swift; sourceTree = "<group>"; };
+		D7F64F031AA9B87300C41789 /* PlusMarkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlusMarkView.swift; sourceTree = "<group>"; };
+		D7F64F051AA9B90000C41789 /* AddCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCell.swift; sourceTree = "<group>"; };
 		D7FEC8CF1A7897310004E7FA /* LTVPNTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTVPNTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -442,6 +446,8 @@
 				D7F64F011AA8407400C41789 /* VPNCell.swift */,
 				D7DDB5611A78A1D100BE7FB7 /* VPNTypeTag.swift */,
 				D74C91AC1A383FED00EAAAE1 /* MainInterface.storyboard */,
+				D7F64F051AA9B90000C41789 /* AddCell.swift */,
+				D7F64F031AA9B87300C41789 /* PlusMarkView.swift */,
 				D74C91A81A383FED00EAAAE1 /* Supporting Files */,
 			);
 			path = TodayWidget;
@@ -871,6 +877,8 @@
 				D74C91AB1A383FED00EAAAE1 /* TodayViewController.swift in Sources */,
 				D7F64F021AA8407400C41789 /* VPNCell.swift in Sources */,
 				D77110351A6D0080003D9605 /* VPNDataManager+VPN.swift in Sources */,
+				D7F64F061AA9B90000C41789 /* AddCell.swift in Sources */,
+				D7F64F041AA9B87300C41789 /* PlusMarkView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
