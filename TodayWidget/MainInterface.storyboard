@@ -24,7 +24,7 @@
                                     <size key="itemSize" width="80" height="70"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="2" maxX="0.0" maxY="7"/>
+                                    <inset key="sectionInset" minX="0.0" minY="5" maxX="0.0" maxY="7"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="vpnCell" id="vDN-Kt-1WR" customClass="VPNCell" customModule="TodayWidget" customModuleProvider="target">
@@ -35,7 +35,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Singapore" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ngz-I2-iCK">
-                                                    <rect key="frame" x="0.0" y="49" width="80" height="21"/>
+                                                    <rect key="frame" x="0.0" y="47" width="80" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="vMQ-BC-gKT"/>
                                                     </constraints>
@@ -50,7 +50,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zxb-7j-eMg">
-                                                    <rect key="frame" x="16" y="14" width="48" height="36"/>
+                                                    <rect key="frame" x="16" y="11" width="48" height="36"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="36" id="SKP-Uc-vPE"/>
                                                         <constraint firstAttribute="width" constant="48" id="xLH-L4-XHX"/>
@@ -60,10 +60,10 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
-                                            <constraint firstAttribute="centerY" secondItem="Zxb-7j-eMg" secondAttribute="centerY" constant="3" id="2SW-hx-vju"/>
+                                            <constraint firstAttribute="centerY" secondItem="Zxb-7j-eMg" secondAttribute="centerY" constant="6" id="2SW-hx-vju"/>
                                             <constraint firstAttribute="centerX" secondItem="Zxb-7j-eMg" secondAttribute="centerX" id="DZJ-bg-xyw"/>
                                             <constraint firstItem="ngz-I2-iCK" firstAttribute="top" secondItem="vDN-Kt-1WR" secondAttribute="top" constant="7" id="Fgu-Ft-nFj"/>
-                                            <constraint firstAttribute="bottom" secondItem="ngz-I2-iCK" secondAttribute="bottom" id="WQQ-tF-ifH"/>
+                                            <constraint firstAttribute="bottom" secondItem="ngz-I2-iCK" secondAttribute="bottom" constant="2" id="WQQ-tF-ifH"/>
                                             <constraint firstAttribute="trailing" secondItem="ngz-I2-iCK" secondAttribute="trailing" id="dfJ-RK-rBN"/>
                                             <constraint firstItem="ngz-I2-iCK" firstAttribute="leading" secondItem="vDN-Kt-1WR" secondAttribute="leading" id="h8A-w3-OgO"/>
                                             <constraint firstAttribute="bottom" secondItem="ngz-I2-iCK" secondAttribute="bottom" id="wnl-ma-Uv8"/>

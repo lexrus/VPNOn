@@ -113,31 +113,44 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
+//        return vpns.count + 1
         return vpns.count
     }
     
     // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
     {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("vpnCell", forIndexPath: indexPath) as VPNCell
-        let vpn = vpns[indexPath.row]
-        let selected = Bool(selectedID == vpn.ID)
-        cell.configureWithVPN(vpns[indexPath.row], selected: selected)
-        if selected {
-            cell.status = VPNManager.sharedManager.status
+        if indexPath.row == vpns.count {
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("addCell", forIndexPath: indexPath) as AddCell
+            
+            return cell
         } else {
-            cell.status = .Disconnected
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("vpnCell", forIndexPath: indexPath) as VPNCell
+            let vpn = vpns[indexPath.row]
+            let selected = Bool(selectedID == vpn.ID)
+            cell.configureWithVPN(vpns[indexPath.row], selected: selected)
+            if selected {
+                cell.status = VPNManager.sharedManager.status
+            } else {
+                cell.status = .Disconnected
+            }
+            
+            cell.latency = LTPingQueue.sharedQueue.latencyForHostname(vpn.server)
+            
+            return cell
         }
-        
-        cell.latency = LTPingQueue.sharedQueue.latencyForHostname(vpn.server)
-        
-        return cell
     }
     
     // MARK: - Collection View Delegate
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
     {
+        if indexPath.row == vpns.count {
+            didTapAdd()
+            
+            return
+        }
+        
         let vpn = vpns[indexPath.row]
         
         if VPNManager.sharedManager.status == .Connected {
@@ -181,7 +194,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
     
     // MARK: - Open App
     
-    func didTapAdd(gesture: UITapGestureRecognizer) {
+    func didTapAdd() {
         let appURL = NSURL(string: "vpnon://")
         extensionContext!.openURL(appURL!, completionHandler: {
             (complete: Bool) -> Void in

@@ -24,6 +24,8 @@ class VPNCell: UICollectionViewCell {
         latencyLabel.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 16)
     }
     
+    var current: Bool = false
+    
     var latency: Int = -1 {
         didSet {
             latencyLabel.textColor = colorOfLatency
@@ -40,7 +42,7 @@ class VPNCell: UICollectionViewCell {
             } else if latency > 500 {
                 latencyColor = UIColor(red:1 , green:0.11, blue:0.34, alpha:1)
             } else if latency == -1 {
-                latencyColor = UIColor(white: 1.0, alpha: 0.5)
+                latencyColor = UIColor(white: 0.5, alpha: 1)
             }
             
             return latencyColor
@@ -49,18 +51,7 @@ class VPNCell: UICollectionViewCell {
     
     var status: NEVPNStatus = .Disconnected {
         didSet {
-            flagImageView.transform = CGAffineTransformIdentity
-            switch status {
-            case .Connected:
-                titleLabel.textColor = UIColor(red:0, green:0.75, blue:1, alpha:1)
-                break
-            case .Connecting:
-                titleLabel.textColor = UIColor.yellowColor()
-                break
-            default:
-                titleLabel.textColor = UIColor(white: 1.0, alpha: 0.5)
-            }
-            
+            updateTitleColor()
             animateFlagByStatus()
         }
     }
@@ -73,34 +64,6 @@ class VPNCell: UICollectionViewCell {
         if latency == -1 {
             return
         }
-        
-        var lineRect = flagImageView.frame
-        lineRect.origin.y = lineRect.origin.y - 6
-        lineRect.size.height = 2
-        let dotSpacing: CGFloat = 3
-        let dotWidth = (lineRect.size.width - dotSpacing * 4) / 3
-        lineRect.origin.x += dotSpacing
-        lineRect.size.width = dotWidth
-        
-        var rectanglePath = UIBezierPath(roundedRect: lineRect, cornerRadius: 2)
-        
-        colorOfLatency.setFill()
-        
-        if latency <= 200 {
-            rectanglePath.fill()
-            lineRect.origin.x += dotWidth + dotSpacing
-            rectanglePath = UIBezierPath(roundedRect: lineRect, cornerRadius: 2)
-            rectanglePath.fill()
-            lineRect.origin.x += dotWidth + dotSpacing
-            rectanglePath = UIBezierPath(roundedRect: lineRect, cornerRadius: 2)
-            rectanglePath.fill()
-        } else if latency <= 500 {
-            rectanglePath.fill()
-            lineRect.origin.x += dotWidth + dotSpacing
-            rectanglePath = UIBezierPath(roundedRect: lineRect, cornerRadius: 2)
-        }
-
-        rectanglePath.fill()
     }
     
     func configureWithVPN(vpn: VPN, selected: Bool = false) {
@@ -113,15 +76,32 @@ class VPNCell: UICollectionViewCell {
             flagImageView.image = nil
             flagImageView.hidden = true
         }
-        
-        // TODO: Display a more vivid selection mark
+
+        current = selected
         if selected && VPNManager.sharedManager.status == .Connected {
             flagImageView.alpha = 1.0
         } else {
-            flagImageView.alpha = 0.6
+            flagImageView.alpha = 0.7
         }
         
-        latencyLabel.text = ""
+        updateTitleColor()
+    }
+    
+    func updateTitleColor() {
+        var statusColor = UIColor(white: 0.5, alpha: 1)
+        
+        switch status {
+        case .Connected:
+            statusColor = UIColor(red:0, green:0.75, blue:1, alpha:1)
+            break
+        case .Connecting:
+            statusColor = UIColor.yellowColor()
+            break
+        default:
+            ()
+        }
+        
+        titleLabel.textColor = statusColor
     }
     
     func animateFlagByStatus() {
