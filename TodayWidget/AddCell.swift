@@ -20,9 +20,10 @@ class AddCell: UICollectionViewCell
                 }
             }
             
-            let effect = UIVibrancyEffect(forBlurEffect: UIBlurEffect())
-            let effectView = UIVisualEffectView(effect: effect)
+            let effectView = UIVisualEffectView(effect: UIVibrancyEffect.notificationCenterVibrancyEffect())
             let plusMark = PlusMarkView()
+            effectView.frame = self.bounds
+            effectView.autoresizingMask = .FlexibleWidth | .FlexibleHeight
             effectView.contentView.addSubview(plusMark)
             addSubview(effectView)
             return plusMark
@@ -30,6 +31,6 @@ class AddCell: UICollectionViewCell
     }
     
     override func didMoveToSuperview() {
-        iconView.frame = CGRectMake((bounds.size.width - 48) / 2, (bounds.size.height - 36) / 2, 48, 36)
+        iconView.frame = CGRectMake((bounds.size.width - 48) / 2, 11, 48, 36)
     }
 }

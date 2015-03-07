@@ -10,29 +10,30 @@ import UIKit
 
 class PlusMarkView: UIView
 {
+    let lineWidth: CGFloat = 0.5
+    
+    override func didMoveToSuperview() {
+        backgroundColor = UIColor.clearColor()
+    }
+    
     override func drawRect(rect: CGRect) {
-        //// Color Declarations
         let color = UIColor.whiteColor()
-        
-        //// Rectangle Drawing
-        let rectanglePath = UIBezierPath(roundedRect: CGRectMake(1, 1, 48, 36), cornerRadius: 5)
+        color.setFill()
         color.setStroke()
-        rectanglePath.lineWidth = 2
+        
+        let flagRect = CGRectMake(lineWidth, lineWidth, rect.size.width - lineWidth * 2, rect.size.height - lineWidth * 2)
+        
+        let rectanglePath = UIBezierPath(roundedRect: flagRect, cornerRadius: 5)
+        rectanglePath.lineWidth = lineWidth
         rectanglePath.stroke()
         
+        let plusWidth = flagRect.size.width / 3
         
-        //// Rectangle 2 Drawing
-        let rectangle2Path = UIBezierPath(roundedRect: CGRectMake(18, 18, 15, 1), cornerRadius: 0.5)
-        color.setStroke()
-        rectangle2Path.lineWidth = 2
-        rectangle2Path.stroke()
+        let rectangle2Path = UIBezierPath(rect: CGRectMake((flagRect.size.width - plusWidth) / 2, flagRect.size.height / 2, plusWidth, lineWidth))
+        rectangle2Path.fill()
         
-        
-        //// Rectangle 3 Drawing
-        let rectangle3Path = UIBezierPath(roundedRect: CGRectMake(25, 11, 1, 15), cornerRadius: 0.5)
-        color.setStroke()
-        rectangle3Path.lineWidth = 2
-        rectangle3Path.stroke()
-
+        let rectangle3Path = UIBezierPath(rect: CGRectMake(flagRect.size.width / 2, (flagRect.size.height - plusWidth) / 2, lineWidth, plusWidth))
+        color.setFill()
+        rectangle3Path.fill()
     }
 }

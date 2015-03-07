@@ -113,8 +113,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
-//        return vpns.count + 1
-        return vpns.count
+        return vpns.count + 1
     }
     
     // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
