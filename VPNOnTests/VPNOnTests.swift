@@ -14,7 +14,7 @@ import CoreData
 class VPNOnTests: XCTestCase {
     
     var dataManager = VPNDataManager.sharedManager
-    var manager = VPNManager.sharedManager()
+    var manager = VPNManager.sharedManager
     
     override func setUp() {
         super.setUp()
@@ -29,7 +29,7 @@ class VPNOnTests: XCTestCase {
     }
     
     func testCreateVPN() {
-        XCTAssert(dataManager.createVPN("hello", server: "world", account: "aaa", password: "asdf", group: "asdf", secret: "asdf", alwaysOn: true), "VPN must be created.")
+        (XCTAssert(dataManager.createVPN("hello", server: "world", account: "aaa", password: "asdf", group: "asdf", secret: "asdf", alwaysOn: true, certificateURL: "", certificate: nil) != nil, "VPN must be created."))
     }
     
     func testActivatedVPN() {
@@ -39,7 +39,8 @@ class VPNOnTests: XCTestCase {
     
     func testDeleteVPN() {
         let lastVPN = dataManager.allVPN().last!
-        XCTAssert(dataManager.deleteVPN(lastVPN), "This VPN must be deleted.")
+        dataManager.deleteVPN(lastVPN)
+        XCTAssert(lastVPN.deleted, "This VPN must be deleted.")
     }
     
     func testPerformanceExample() {

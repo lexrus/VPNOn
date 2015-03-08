@@ -49,6 +49,8 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate, LTVPN
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pingDidUpdate:"), name: "kLTPingDidUpdate", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pingDidComplete:"), name: "kLTPingDidComplete", object: nil)
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("geoDidUpdate:"), name: "kLTGeoDidUpdate", object: nil)
+        
         NSNotificationCenter.defaultCenter().addObserver(
             self,
             selector: Selector("VPNStatusDidChange:"),
@@ -64,6 +66,8 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate, LTVPN
         
         NSNotificationCenter.defaultCenter().removeObserver(self, name: "kLTPingDidUpdate", object: nil)
         NSNotificationCenter.defaultCenter().removeObserver(self, name: "kLTPingDidComplete", object: nil)
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "kLTGeoDidUpdate", object: nil)
         
         NSNotificationCenter.defaultCenter().removeObserver(
             self,
@@ -141,11 +145,15 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate, LTVPN
             cell.detailTextLabel?.text = vpn.server
             cell.IKEv2 = vpn.ikev2
             
-            if activatedVPNID == vpns[indexPath.row].ID {
-                cell.imageView!.image = UIImage(named: "CheckMark")
-            } else {
-                cell.imageView!.image = UIImage(named: "CheckMarkUnchecked")
+            cell.imageView!.image = nil
+            
+            if let cc = vpn.countryCode {
+                if let image = UIImage(named: cc) {
+                    cell.imageView!.image = image
+                }
             }
+            
+            cell.current = Bool(activatedVPNID == vpns[indexPath.row].ID)
             
             return cell
             
@@ -211,9 +219,12 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate, LTVPN
     
     // MARK: - Notifications
     
-    func reloadDataAndPopDetail(notifiation: NSNotification) {
+    func reloadDataAndPopDetail(notification: NSNotification) {
         vpns = VPNDataManager.sharedManager.allVPN()
         tableView.reloadData()
+        if let vpn = notification.object as VPN? {
+            NSNotificationCenter.defaultCenter().postNotificationName("kLTGeoDidUpdate", object: vpn)
+        }
         popDetailViewController()
     }
     

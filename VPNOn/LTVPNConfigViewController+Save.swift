@@ -27,9 +27,9 @@ extension LTVPNConfigViewController
             
             VPNDataManager.sharedManager.saveContext()
             
-            NSNotificationCenter.defaultCenter().postNotificationName(kLTVPNDidUpdate, object: nil)
+            NSNotificationCenter.defaultCenter().postNotificationName(kLTVPNDidUpdate, object: currentVPN)
         } else {
-            if let _ = VPNDataManager.sharedManager.createVPN(
+            if let lastVPN = VPNDataManager.sharedManager.createVPN(
                 titleTextField.text,
                 server: serverTextField.text,
                 account: accountTextField.text,
@@ -41,7 +41,7 @@ extension LTVPNConfigViewController
                 certificateURL: certificateURL ?? "",
                 certificate: temporaryCertificateData
                 ) {
-                    NSNotificationCenter.defaultCenter().postNotificationName(kLTVPNDidCreate, object: self)
+                    NSNotificationCenter.defaultCenter().postNotificationName(kLTVPNDidCreate, object: lastVPN)
             }
         }
     }

@@ -28,6 +28,21 @@ final public class VPNManager
         }
     }
     
+    private let kVPNOnDisplayFlags = "displayFlags"
+    
+    public var displayFlags: Bool {
+        get {
+            if let value = _defaults.objectForKey(kVPNOnDisplayFlags) as Int? {
+                return Bool(value)
+            }
+            return true
+        }
+        set {
+            _defaults.setObject(Int(newValue), forKey: kVPNOnDisplayFlags)
+            _defaults.synchronize()
+        }
+    }
+    
     public class var sharedManager : VPNManager
     {
         struct Static
@@ -50,9 +65,7 @@ final public class VPNManager
     }
     
     public func connectIPSec(title: String, server: String, account: String?, group: String?, alwaysOn: Bool = true, passwordRef: NSData?, secretRef: NSData?, certificate: NSData?) {
-        
-        // TODO: Add a tailing closure for callback.
-        
+
         let p = NEVPNProtocolIPSec()
 
         p.authenticationMethod = NEVPNIKEAuthenticationMethod.None
@@ -109,6 +122,7 @@ final public class VPNManager
     }
     
     public func connectIKEv2(title: String, server: String, account: String?, group: String?, alwaysOn: Bool = true, passwordRef: NSData?, secretRef: NSData?, certificate: NSData?) {
+        
         let p = NEVPNProtocolIKEv2()
         
         p.authenticationMethod = NEVPNIKEAuthenticationMethod.None
