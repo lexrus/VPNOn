@@ -28,6 +28,20 @@ final public class VPNManager
         }
     }
     
+    private let kVPNOnDisplayFlags = "displayFlags"
+    
+    public var displayFlags: Bool {
+        get {
+            if let value = _defaults.objectForKey(kVPNOnDisplayFlags) as Int? {
+                return Bool(value)
+            }
+            return true
+        }
+        set {
+            _defaults.setObject(Int(newValue), forKey: kVPNOnDisplayFlags)
+        }
+    }
+    
     public class var sharedManager : VPNManager
     {
         struct Static
