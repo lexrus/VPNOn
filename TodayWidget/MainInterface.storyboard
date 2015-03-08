@@ -16,6 +16,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tPH-66-mZs">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="axx-Uo-yQb">
                                 <rect key="frame" x="42" y="0.0" width="278" height="80"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -45,7 +49,7 @@
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rRn-Ek-JTc">
                                                     <rect key="frame" x="0.0" y="11" width="80" height="36"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -101,21 +105,30 @@
                             </collectionView>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="axx-Uo-yQb" firstAttribute="leading" secondItem="tPH-66-mZs" secondAttribute="trailing" id="0rb-Fm-aIM"/>
                             <constraint firstItem="axx-Uo-yQb" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" constant="42" id="744-M5-m82">
                                 <variation key="heightClass=compact" constant="32"/>
                                 <variation key="widthClass=regular" constant="50"/>
                                 <variation key="heightClass=regular-widthClass=regular" constant="80"/>
                             </constraint>
                             <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="axx-Uo-yQb" secondAttribute="bottom" id="DS2-cH-UJn"/>
+                            <constraint firstItem="tPH-66-mZs" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" id="OTc-6g-35A"/>
+                            <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="tPH-66-mZs" secondAttribute="bottom" id="Tlz-un-wdV"/>
                             <constraint firstAttribute="trailing" secondItem="axx-Uo-yQb" secondAttribute="trailing" id="agP-xY-ycM"/>
+                            <constraint firstItem="tPH-66-mZs" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" id="bzK-Bc-gnK"/>
                             <constraint firstItem="axx-Uo-yQb" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" id="nqE-KU-FUu"/>
+                            <constraint firstAttribute="trailing" secondItem="tPH-66-mZs" secondAttribute="trailing" id="rHa-GY-sjI"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="0rb-Fm-aIM"/>
+                            </mask>
+                        </variation>
                         <variation key="heightClass=compact">
                             <mask key="constraints">
                                 <include reference="744-M5-m82"/>
                             </mask>
                         </variation>
-                        <variation key="widthClass=compact"/>
                         <variation key="widthClass=regular">
                             <mask key="constraints">
                                 <include reference="744-M5-m82"/>
@@ -135,6 +148,7 @@
                     <size key="freeformSize" width="320" height="80"/>
                     <connections>
                         <outlet property="collectionView" destination="axx-Uo-yQb" id="Nas-Rs-lyZ"/>
+                        <outlet property="leftMarginView" destination="tPH-66-mZs" id="jiV-kL-cF2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>

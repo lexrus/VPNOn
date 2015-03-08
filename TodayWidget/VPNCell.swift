@@ -21,7 +21,7 @@ class VPNCell: UICollectionViewCell {
         flagImageView.layer.masksToBounds = true
         flagImageView.layer.cornerRadius = 5
         titleLabel.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 12)
-        latencyLabel.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 16)
+        latencyLabel.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 17)
     }
     
     var current: Bool = false
@@ -90,14 +90,6 @@ class VPNCell: UICollectionViewCell {
     
     func configureWithVPN(vpn: VPN, selected: Bool = false) {
         titleLabel.text = vpn.title
-        
-        if let countryCode = vpn.countryCode {
-            flagImageView.image = UIImage(named: countryCode)
-            flagImageView.hidden = false
-        } else {
-            flagImageView.image = nil
-            flagImageView.hidden = true
-        }
 
         current = selected
         if selected && VPNManager.sharedManager.status == .Connected {
@@ -107,6 +99,17 @@ class VPNCell: UICollectionViewCell {
         }
         
         updateTitleColor()
+        
+        if VPNManager.sharedManager.displayFlags {
+            if let countryCode = vpn.countryCode {
+                flagImageView.image = UIImage(named: countryCode)
+                flagImageView.hidden = false
+                return
+            }
+        }
+        
+        flagImageView.image = nil
+        flagImageView.hidden = true
     }
     
     func updateTitleColor() {

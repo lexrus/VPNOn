@@ -39,6 +39,7 @@ final public class VPNManager
         }
         set {
             _defaults.setObject(Int(newValue), forKey: kVPNOnDisplayFlags)
+            _defaults.synchronize()
         }
     }
     

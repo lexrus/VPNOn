@@ -16,6 +16,7 @@ let kVPNOnSelectedIDInToday = "kVPNOnSelectedIDInToday"
 
 class TodayViewController: UIViewController, NCWidgetProviding, UICollectionViewDelegate, UICollectionViewDataSource {
     
+    @IBOutlet weak var leftMarginView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     
     var vpns: [VPN] {
@@ -42,6 +43,13 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
         super.viewDidLoad()
         
         preferredContentSize = CGSizeMake(0, 80)
+        
+        let tapGasture = UITapGestureRecognizer(target: self, action: Selector("didTapLeftMargin:"))
+        tapGasture.numberOfTapsRequired = 1
+        tapGasture.numberOfTouchesRequired = 1
+        leftMarginView.userInteractionEnabled = true
+        leftMarginView.addGestureRecognizer(tapGasture)
+        leftMarginView.backgroundColor = UIColor(white: 1.0, alpha: 0.005)
         
         NSNotificationCenter.defaultCenter().addObserver(
             self,
@@ -189,6 +197,14 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
                 secretRef: secretRef,
                 certificate: certificate)
         }
+    }
+    
+    // MARK: - Left margin
+    
+    func didTapLeftMargin(gesture: UITapGestureRecognizer) {
+        LTPingQueue.sharedQueue.restartPing()
+        VPNManager.sharedManager.displayFlags = !VPNManager.sharedManager.displayFlags
+        collectionView.reloadData()
     }
     
     // MARK: - Open App
