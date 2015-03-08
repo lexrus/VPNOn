@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="axx-Uo-yQb">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                                <rect key="frame" x="42" y="0.0" width="278" height="80"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="5" maxX="0.0" maxY="5"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="VP4-dx-j9t">
@@ -101,11 +101,31 @@
                             </collectionView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="axx-Uo-yQb" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" id="744-M5-m82"/>
+                            <constraint firstItem="axx-Uo-yQb" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" constant="42" id="744-M5-m82">
+                                <variation key="heightClass=compact" constant="32"/>
+                                <variation key="widthClass=regular" constant="50"/>
+                                <variation key="heightClass=regular-widthClass=regular" constant="80"/>
+                            </constraint>
                             <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="axx-Uo-yQb" secondAttribute="bottom" id="DS2-cH-UJn"/>
                             <constraint firstAttribute="trailing" secondItem="axx-Uo-yQb" secondAttribute="trailing" id="agP-xY-ycM"/>
                             <constraint firstItem="axx-Uo-yQb" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" id="nqE-KU-FUu"/>
                         </constraints>
+                        <variation key="heightClass=compact">
+                            <mask key="constraints">
+                                <include reference="744-M5-m82"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact"/>
+                        <variation key="widthClass=regular">
+                            <mask key="constraints">
+                                <include reference="744-M5-m82"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="constraints">
+                                <include reference="744-M5-m82"/>
+                            </mask>
+                        </variation>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <nil key="simulatedStatusBarMetrics"/>

@@ -28,6 +28,7 @@ class VPNCell: UICollectionViewCell {
     
     var latency: Int = -1 {
         didSet {
+            latencyLabel.hidden = !flagImageView.hidden
             if latency == -1 {
                 latencyLabel.text = "--"
             } else {
@@ -102,7 +103,7 @@ class VPNCell: UICollectionViewCell {
         if selected && VPNManager.sharedManager.status == .Connected {
             flagImageView.alpha = 1.0
         } else {
-            flagImageView.alpha = 0.7
+            flagImageView.alpha = 0.5
         }
         
         updateTitleColor()
