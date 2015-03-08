@@ -92,10 +92,15 @@ class VPNCell: UICollectionViewCell {
         titleLabel.text = vpn.title
 
         current = selected
-        if selected && VPNManager.sharedManager.status == .Connected {
-            flagImageView.alpha = 1.0
+        
+        if VPNManager.sharedManager.status == .Connected {
+            if selected {
+                flagImageView.alpha = 1.0
+            } else {
+                flagImageView.alpha = 0.4
+            }
         } else {
-            flagImageView.alpha = 0.5
+            flagImageView.alpha = 1.0
         }
         
         updateTitleColor()
