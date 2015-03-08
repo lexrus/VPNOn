@@ -2,7 +2,7 @@
 
 [<img src="https://cloud.githubusercontent.com/assets/219689/5575342/963e0ee8-9013-11e4-8091-7ece67d64729.png" width="135" height="40" alt="AppStore"/>](https://itunes.apple.com/app/vpn-on/id951344279)
 
-<img src="https://cloud.githubusercontent.com/assets/219689/5629161/7472c794-95eb-11e4-8042-90469c1586cd.gif" width="375" height="375" alt="Screencast"/>
+<img src="https://cloud.githubusercontent.com/assets/219689/6545903/6e2b3ce6-c5d8-11e4-981e-a387c44dd77c.gif" width="375" height="375" alt="Screencast"/>
 
 Turning on a VPN is always a painful experience on an iOS device due to the deep nested menus. This App installs a Today Widget into Notification Center which make it possible to turn on a VPN in about 3 seconds(depends on the connection speed). Furthermore, by turning on On Demand feature, the VPN could be automatically connected when you visit any domain specified in this App. 
 
