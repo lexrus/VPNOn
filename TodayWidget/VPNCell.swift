@@ -28,6 +28,11 @@ class VPNCell: UICollectionViewCell {
     
     var latency: Int = -1 {
         didSet {
+            if latency == -1 {
+                latencyLabel.text = "--"
+            } else {
+                latencyLabel.text = "\(latency)ms"
+            }
             latencyLabel.textColor = colorOfLatency
             setNeedsDisplay()
         }
@@ -62,6 +67,10 @@ class VPNCell: UICollectionViewCell {
         }
         
         if latency == -1 {
+            return
+        }
+        
+        if flagImageView.hidden {
             return
         }
         
