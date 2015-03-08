@@ -63,7 +63,7 @@
 "Vlk-GJ-USi.text" = "Не подключено";
 
 /* Class = "IBUILabel"; text = "Use Certificate"; ObjectID = "WSx-ME-hWf"; */
-"WSx-ME-hWf.text" = "Использовать Удостоверение";
+"WSx-ME-hWf.text" = "Использовать Удостоверение(PKCS12)";
 
 /* Class = "IBUILabel"; text = "Password"; ObjectID = "XpY-Af-O6z"; */
 "XpY-Af-O6z.text" = "Пароль";

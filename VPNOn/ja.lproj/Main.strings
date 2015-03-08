@@ -70,7 +70,7 @@
 "Vlk-GJ-USi.text" = "接続されていません";
 
 /* Class = "IBUILabel"; text = "Use Certificate"; ObjectID = "WSx-ME-hWf"; */
-"WSx-ME-hWf.text" = "証明書を使用します。";
+"WSx-ME-hWf.text" = "証明書(PKCS12)を使用します。";
 
 /* Class = "IBUILabel"; text = "Password"; ObjectID = "XpY-Af-O6z"; */
 "XpY-Af-O6z.text" = "パスワード";

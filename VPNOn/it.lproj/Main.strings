@@ -60,7 +60,7 @@
 "Vlk-GJ-USi.text" = "Non Connesso";
 
 /* Class = "IBUILabel"; text = "Use Certificate"; ObjectID = "WSx-ME-hWf"; */
-"WSx-ME-hWf.text" = "Usa Certificato";
+"WSx-ME-hWf.text" = "Usa Certificato(PKCS12)";
 
 /* Class = "IBUILabel"; text = "Password"; ObjectID = "XpY-Af-O6z"; */
 "XpY-Af-O6z.text" = "Password";

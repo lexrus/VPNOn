@@ -54,7 +54,7 @@
 "Ud8-O3-Mk9.text" = "Account";
 
 /* Class = "IBUILabel"; text = "Use Certificate"; ObjectID = "WSx-ME-hWf"; */
-"WSx-ME-hWf.text" = "Use Certificate";
+"WSx-ME-hWf.text" = "Use Certificate(PKCS12)";
 
 /* Class = "IBUILabel"; text = "Password"; ObjectID = "XpY-Af-O6z"; */
 "XpY-Af-O6z.text" = "Password";

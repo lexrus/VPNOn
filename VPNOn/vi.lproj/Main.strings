@@ -70,7 +70,7 @@
 "Vlk-GJ-USi.text" = "Không được kết nối";
 
 /* Class = "IBUILabel"; text = "Use Certificate"; ObjectID = "WSx-ME-hWf"; */
-"WSx-ME-hWf.text" = "Sử dụng chứng nhận";
+"WSx-ME-hWf.text" = "Sử dụng chứng nhận(PKCS12)";
 
 /* Class = "IBUILabel"; text = "Password"; ObjectID = "XpY-Af-O6z"; */
 "XpY-Af-O6z.text" = "Mật khẩu";

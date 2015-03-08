@@ -63,7 +63,7 @@
 "Vlk-GJ-USi.text" = "연결되지 않았습니다";
 
 /* Class = "IBUILabel"; text = "Use Certificate"; ObjectID = "WSx-ME-hWf"; */
-"WSx-ME-hWf.text" = "증명서 사용";
+"WSx-ME-hWf.text" = "증명서(PKCS12) 사용";
 
 /* Class = "IBUILabel"; text = "Password"; ObjectID = "XpY-Af-O6z"; */
 "XpY-Af-O6z.text" = "비밀번호";
