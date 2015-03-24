@@ -53,6 +53,16 @@ class VPNOnKitTests: XCTestCase {
         XCTAssert(ipOfGoogleDNS! == "8.8.4.4", "IP of Google DNS must be valid.")
     }
     
+    func testInvalidDomain() {
+        let ipOfInvalidDomain = VPNManager.sharedManager.IPOfHost("q")
+        XCTAssertNil(ipOfInvalidDomain, "This domain must be invalid.")
+    }
+    
+    func testEmptyDomain() {
+        let ipOfEmptyDomain = VPNManager.sharedManager.IPOfHost("")
+        XCTAssertNil(ipOfEmptyDomain, "No domain must be invalid.")
+    }
+    
     func testAsyncResolve() {
         var expectation = self.expectationWithDescription("Async fetch GeoInfo.")
         
