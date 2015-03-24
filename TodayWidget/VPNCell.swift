@@ -13,15 +13,19 @@ import QuartzCore
 
 class VPNCell: UICollectionViewCell {
     
+    @IBOutlet weak var switchIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var switchButton: UISwitch!
     @IBOutlet weak var flagImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var latencyLabel: UILabel!
-
+    
     override func didMoveToSuperview() {
+        switchButton.onTintColor = UIColor(red: 0, green: 0.75, blue: 1, alpha: 1)
+        switchButton.tintColor = UIColor(white: 1.0, alpha: 0.05)
         flagImageView.layer.masksToBounds = true
         flagImageView.layer.cornerRadius = 5
         titleLabel.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 12)
-        latencyLabel.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 17)
+        latencyLabel.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 10)
     }
     
     var current: Bool = false
@@ -31,8 +35,14 @@ class VPNCell: UICollectionViewCell {
             latencyLabel.hidden = !flagImageView.hidden
             if latency == -1 {
                 latencyLabel.text = "--"
+                switchButton.thumbTintColor = UIColor(white: 0.35, alpha: 1.0)
+                switchButton.tintColor = UIColor(white: 1.0, alpha: 0.05)
+                flagImageView.alpha = 0.2
             } else {
-                latencyLabel.text = "\(latency)ms"
+                switchButton.thumbTintColor = UIColor(white: 1.0, alpha: 1.0)
+                latencyLabel.text = "\(latency)"
+                switchButton.tintColor = colorOfLatency
+                flagImageView.alpha = 1.0
             }
             latencyLabel.textColor = colorOfLatency
             setNeedsDisplay()
@@ -44,11 +54,11 @@ class VPNCell: UICollectionViewCell {
             var latencyColor = UIColor(red: 0.5, green: 0.8, blue: 0.19, alpha: 1)
             
             if latency > 200 {
-                latencyColor = UIColor(red: 0.7, green: 0.5, blue: 0.0, alpha: 1)
+                latencyColor = UIColor(red: 0.92, green: 0.82, blue: 0, alpha: 0.8)
             } else if latency > 500 {
-                latencyColor = UIColor(red: 1, green: 0.11, blue: 0.34, alpha: 1)
+                latencyColor = UIColor(red: 1, green: 0.11, blue: 0.34, alpha: 0.6)
             } else if latency == -1 {
-                latencyColor = UIColor(white: 0.4, alpha: 1)
+                latencyColor = UIColor(white: 1.0, alpha: 0.08)
             }
             
             return latencyColor
@@ -58,16 +68,12 @@ class VPNCell: UICollectionViewCell {
     var status: NEVPNStatus = .Disconnected {
         didSet {
             updateTitleColor()
-            animateFlagByStatus()
+            animateFlagAndSwitchByStatus()
         }
     }
     
     override func drawRect(rect: CGRect) {
         if VPNManager.sharedManager.status == .Connected {
-            return
-        }
-        
-        if latency == -1 {
             return
         }
         
@@ -90,6 +96,8 @@ class VPNCell: UICollectionViewCell {
     
     func configureWithVPN(vpn: VPN, selected: Bool = false) {
         titleLabel.text = vpn.title
+        switchIndicator.stopAnimating()
+        switchIndicator.hidden = true
 
         current = selected
         
@@ -103,14 +111,15 @@ class VPNCell: UICollectionViewCell {
             flagImageView.alpha = 1.0
         }
         
-        updateTitleColor()
-        
         if VPNManager.sharedManager.displayFlags {
+            switchButton.hidden = true
             if let countryCode = vpn.countryCode {
                 flagImageView.image = UIImage(named: countryCode)
                 flagImageView.hidden = false
                 return
             }
+        } else {
+            switchButton.hidden = false
         }
         
         flagImageView.image = nil
@@ -134,10 +143,12 @@ class VPNCell: UICollectionViewCell {
         titleLabel.textColor = statusColor
     }
     
-    func animateFlagByStatus() {
+    func animateFlagAndSwitchByStatus() {
         flagImageView.layer.removeAllAnimations()
         
-        if status == .Connecting {
+        if !current {
+            switchButton.setOn(false, animated: false)
+        } else if status == .Connecting {
             let scaleAnimation = CABasicAnimation(keyPath: "transform.scale")
             scaleAnimation.duration = 0.4
             scaleAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
@@ -146,6 +157,19 @@ class VPNCell: UICollectionViewCell {
             scaleAnimation.fromValue = 1.0
             scaleAnimation.toValue = 1.1
             flagImageView.layer.addAnimation(scaleAnimation, forKey: "scale")
+            if !switchButton.hidden {
+                switchIndicator.hidden = false
+                switchIndicator.startAnimating()
+                switchButton.setOn(true, animated: true)
+            }
+        } else {
+            switchIndicator.stopAnimating()
+            switchIndicator.hidden = true
+            if status == .Connected {
+                switchButton.setOn(true, animated: true)
+            } else {
+                switchButton.setOn(false, animated: true)
+            }
         }
     }
 }
