@@ -198,6 +198,9 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
     }
     
     func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+        if indexPath.row == vpns.count {
+            return true
+        }
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as VPNCell
         switch VPNManager.sharedManager.status {
         case .Connected, .Connecting:
