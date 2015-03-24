@@ -39,6 +39,13 @@ class VPNOnKitTests: XCTestCase {
         }
     }
     
+    func testDomainsInString() {
+        let mustBe2 = VPNManager.sharedManager.domainsInString("a")
+        XCTAssert(mustBe2.count == 2, "Must be 2 domains.")
+        let mustBe4 = VPNManager.sharedManager.domainsInString("a b")
+        XCTAssert(mustBe4.count == 4, "Must be 4 domains.")
+    }
+    
     func testGeoIP() {
         let geoInfoOfGoogleDNS = VPNManager.sharedManager.geoInfoOfIP("8.8.4.4")
         XCTAssert(geoInfoOfGoogleDNS != nil, "Google DNS must has Geo IP info.")

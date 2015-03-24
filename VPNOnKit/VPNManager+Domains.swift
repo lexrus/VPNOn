@@ -52,21 +52,29 @@ extension VPNManager
     }
     
     public func domainsInString(string: String) -> [String] {
-        let s = string.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+        let seperator = NSCharacterSet.whitespaceAndNewlineCharacterSet()
+        let s = string.stringByTrimmingCharactersInSet(seperator)
         if s.isEmpty {
             return [String]()
         }
-        var domains = s.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()) as [String]
+        var domains = s.componentsSeparatedByCharactersInSet(seperator) as [String]
         var wildCardDomains = [String]()
         if domains.count > 1 {
             if domains[domains.count - 1].isEmpty {
                 domains.removeAtIndex(domains.count - 1)
             }
-            for domain in domains {
-                wildCardDomains.append(domain)
-                if domain.rangeOfString("*.") == nil {
-                    wildCardDomains.append("*.\(domain)")
-                }
+        } else {
+            let ns = s as NSString
+            let range = ns.rangeOfCharacterFromSet(seperator)
+            if (range.location == NSNotFound) {
+                domains = [String]()
+                domains.append(s)
+            }
+        }
+        for domain in domains {
+            wildCardDomains.append(domain)
+            if domain.rangeOfString("*.") == nil {
+                wildCardDomains.append("*.\(domain)")
             }
         }
         
