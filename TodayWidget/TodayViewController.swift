@@ -16,7 +16,7 @@ let kVPNOnSelectedIDInToday = "kVPNOnSelectedIDInToday"
 
 class TodayViewController: UIViewController, NCWidgetProviding, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    @IBOutlet weak var leftMarginView: UIView!
+    @IBOutlet weak var leftMarginView: ModeButton!
     @IBOutlet weak var collectionView: UICollectionView!
     
     var vpns: [VPN] {
@@ -50,6 +50,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
         leftMarginView.userInteractionEnabled = true
         leftMarginView.addGestureRecognizer(tapGasture)
         leftMarginView.backgroundColor = UIColor(white: 1.0, alpha: 0.005)
+        leftMarginView.displayMode = VPNManager.sharedManager.displayFlags ? .FlagMode : .SwitchMode
         
         NSNotificationCenter.defaultCenter().addObserver(
             self,
@@ -216,6 +217,8 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
         LTPingQueue.sharedQueue.restartPing()
         VPNManager.sharedManager.displayFlags = !VPNManager.sharedManager.displayFlags
         collectionView.reloadData()
+        
+        leftMarginView.displayMode = VPNManager.sharedManager.displayFlags ? .FlagMode : .SwitchMode
     }
     
     // MARK: - Open App

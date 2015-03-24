@@ -73,8 +73,10 @@ class VPNCell: UICollectionViewCell {
     }
     
     override func drawRect(rect: CGRect) {
-        if VPNManager.sharedManager.status == .Connected {
+        switch VPNManager.sharedManager.status {
+        case .Connected, .Connecting:
             return
+        default: ()
         }
         
         if flagImageView.hidden {
@@ -149,14 +151,16 @@ class VPNCell: UICollectionViewCell {
         if !current {
             switchButton.setOn(false, animated: false)
         } else if status == .Connecting {
-            let scaleAnimation = CABasicAnimation(keyPath: "transform.scale")
-            scaleAnimation.duration = 0.4
-            scaleAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-            scaleAnimation.repeatCount = HUGE
-            scaleAnimation.autoreverses = true
-            scaleAnimation.fromValue = 1.0
-            scaleAnimation.toValue = 1.1
-            flagImageView.layer.addAnimation(scaleAnimation, forKey: "scale")
+            let bounce = CABasicAnimation(keyPath: "position")
+            let endPoint = CGPointMake(flagImageView.layer.position.x, flagImageView.layer.position.y - 6)
+            let currentPoint = flagImageView.layer.position
+            bounce.duration = 0.3
+            bounce.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+            bounce.repeatCount = HUGE
+            bounce.autoreverses = true
+            bounce.fromValue = NSValue(CGPoint: currentPoint)
+            bounce.toValue = NSValue(CGPoint: endPoint)
+            flagImageView.layer.addAnimation(bounce, forKey: "bounce")
             if !switchButton.hidden {
                 switchIndicator.hidden = false
                 switchIndicator.startAnimating()

@@ -13,7 +13,9 @@ class PlusMarkView: UIView
     let lineWidth: CGFloat = 0.5
     
     override func didMoveToSuperview() {
-        backgroundColor = UIColor.clearColor()
+        if superview != nil {
+            backgroundColor = UIColor.clearColor()
+        }
     }
     
     override func drawRect(rect: CGRect) {

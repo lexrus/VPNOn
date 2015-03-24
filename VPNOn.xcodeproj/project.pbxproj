@@ -13,6 +13,8 @@
 		D71A045B1AA17843006C917A /* Flags.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D71A045A1AA17843006C917A /* Flags.xcassets */; };
 		D71A045C1AA17843006C917A /* Flags.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D71A045A1AA17843006C917A /* Flags.xcassets */; };
 		D7322C7A1A6C024800B34AA0 /* LTViewControllerBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7322C791A6C024800B34AA0 /* LTViewControllerBackground.swift */; };
+		D73C19F21AC1684D00C1A824 /* SwitchIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73C19F11AC1684D00C1A824 /* SwitchIconView.swift */; };
+		D73C19F41AC168B900C1A824 /* ModeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73C19F31AC168B900C1A824 /* ModeButton.swift */; };
 		D74129A91A5CFCDA008DE603 /* SimplePing.h in Headers */ = {isa = PBXBuildFile; fileRef = D74129A71A5CFCDA008DE603 /* SimplePing.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D74129AA1A5CFCDA008DE603 /* SimplePing.m in Sources */ = {isa = PBXBuildFile; fileRef = D74129A81A5CFCDA008DE603 /* SimplePing.m */; };
 		D74129B01A5D1A91008DE603 /* LTPingQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74129AF1A5D1A91008DE603 /* LTPingQueue.swift */; };
@@ -198,6 +200,8 @@
 		D72403371A8B32A70066CA47 /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-US"; path = "en-US.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		D72403381A8B32A70066CA47 /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-US"; path = "en-US.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		D7322C791A6C024800B34AA0 /* LTViewControllerBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTViewControllerBackground.swift; sourceTree = "<group>"; };
+		D73C19F11AC1684D00C1A824 /* SwitchIconView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchIconView.swift; sourceTree = "<group>"; };
+		D73C19F31AC168B900C1A824 /* ModeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModeButton.swift; sourceTree = "<group>"; };
 		D74129A71A5CFCDA008DE603 /* SimplePing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplePing.h; sourceTree = "<group>"; };
 		D74129A81A5CFCDA008DE603 /* SimplePing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimplePing.m; sourceTree = "<group>"; };
 		D74129AF1A5D1A91008DE603 /* LTPingQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTPingQueue.swift; sourceTree = "<group>"; };
@@ -448,6 +452,8 @@
 				D7DDB5611A78A1D100BE7FB7 /* VPNTypeTag.swift */,
 				D74C91AC1A383FED00EAAAE1 /* MainInterface.storyboard */,
 				D7F64F031AA9B87300C41789 /* PlusMarkView.swift */,
+				D73C19F31AC168B900C1A824 /* ModeButton.swift */,
+				D73C19F11AC1684D00C1A824 /* SwitchIconView.swift */,
 				D74C91A81A383FED00EAAAE1 /* Supporting Files */,
 			);
 			path = TodayWidget;
@@ -871,8 +877,10 @@
 				D77110341A6D007C003D9605 /* VPNDataManager.swift in Sources */,
 				D7F0A0201A6E484B00F9C09A /* VPNDataManager+Selection.swift in Sources */,
 				D77110361A6D0095003D9605 /* VPNOn.xcdatamodeld in Sources */,
+				D73C19F41AC168B900C1A824 /* ModeButton.swift in Sources */,
 				D7B033BD1A6E5ED1009D791E /* VPNDataManager+ActivatedVPN.swift in Sources */,
 				D74C91B41A384AB800EAAAE1 /* VPN.swift in Sources */,
+				D73C19F21AC1684D00C1A824 /* SwitchIconView.swift in Sources */,
 				D7DDB5631A78AC7E00BE7FB7 /* VPNTypeTag.swift in Sources */,
 				D74C91AB1A383FED00EAAAE1 /* TodayViewController.swift in Sources */,
 				D7F64F021AA8407400C41789 /* VPNCell.swift in Sources */,
