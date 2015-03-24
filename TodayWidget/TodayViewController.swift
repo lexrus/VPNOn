@@ -161,8 +161,6 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
         let vpn = vpns[indexPath.row]
         
         if VPNManager.sharedManager.status == .Connected {
-            VPNManager.sharedManager.disconnect()
-            
             if selectedID == vpn.ID {
                 // Do not connect it again if tap the same one
                 return
@@ -197,6 +195,16 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
                 secretRef: secretRef,
                 certificate: certificate)
         }
+    }
+    
+    func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
+        let cell = collectionView.cellForItemAtIndexPath(indexPath) as VPNCell
+        switch VPNManager.sharedManager.status {
+        case .Connected, .Connecting:
+            VPNManager.sharedManager.disconnect()
+        default: ()
+        }
+        return true
     }
     
     // MARK: - Left margin
