@@ -18,6 +18,8 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
     
     @IBOutlet weak var leftMarginView: ModeButton!
     @IBOutlet weak var collectionView: UICollectionView!
+    var hasSignaled = false
+    private var _complitionHandler: (NCUpdateResult -> Void)? = nil
     
     var vpns: [VPN] {
         get {
@@ -90,9 +92,28 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
         super.viewWillAppear(animated)
 
         LTPingQueue.sharedQueue.restartPing()
+        collectionView.dataSource = nil
         updateContent()
+        collectionView.dataSource = self
         
         preferredContentSize = collectionView.contentSize
+    }
+    
+    // Note: A workaround to ensure the widget is interactable.
+    // @see: http://stackoverflow.com/questions/25961513/ios-8-today-widget-stops-working-after-a-while
+    func singalComplete(updateResult: NCUpdateResult) {
+        hasSignaled = true
+        if let handler = _complitionHandler {
+            handler(updateResult)
+        }
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        if !hasSignaled {
+            singalComplete(NCUpdateResult.Failed)
+        }
     }
     
     func updateContent() {
@@ -108,6 +129,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
         // If there's no update required, use NCUpdateResult.NoData
         // If there's an update, use NCUpdateResult.NewData
         
+        _complitionHandler = completionHandler
         completionHandler(NCUpdateResult.NewData)
     }
     
