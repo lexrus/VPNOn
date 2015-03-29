@@ -8,9 +8,9 @@ Turning on a VPN is always a painful experience on an iOS device due to the deep
 
 ## Requirements
 
-- An iPhone running iOS 8.1
+- An iPhone/iPad running iOS 8.1+
 - An IPSec IKEv1 / IKEv2 VPN(create yours with [my Ansible Playbook](https://github.com/lexrus/vpn-deploy-playbook) or [deploy on DigitalOcean](http://installer.71m.us/install?url=https://github.com/lexrus/do-ikev1))
-- Xcode 6.1.1
+- Xcode 6.2
 - An Apple iOS developer account
 
 ## Build with Xcode
@@ -21,11 +21,11 @@ To compile the project, you may temporarily modify the bundle_id after adding yo
 2. Keychain Sharing
 3. App Groups
 
-Meanwhile, provisioning profiles are required for testing on iPhone.
+Meanwhile, provisioning profiles are required for testing on iPhone/iPad.
 
 ## Usage
 
-After creating a VPN configuration you can activate the Today Widget in Notification Center, then turn on the VPN by tapping the switch. You may be asked to allow the installation of a VPN profile for the first time.
+After creating a VPN configuration you can activate the Today Widget in Notification Center, then turn on the VPN by tapping switches or flags. You may be asked to allow the installation of a VPN profile for the first time.
 
 ## Contribution
 
@@ -57,11 +57,9 @@ VPN service providers may list a link for their customers to efficiently add ser
 
 * `vpnon://jony:ive@202.96.209.5/?title=Twitter&ikev2=yes` 
 
-* `vpnon://jony:ive@202.96.209.5/?title=GitHub&ikev2=yes&certificate=https://github.com/`
-
 ## Donation
 
-Although this App is 100% open-sourced, it may takes about 20~60 minutes to configure the environment. I'd appreciate if you could [buy VPN On from App Store](https://itunes.apple.com/app/vpn-on/id951344279).
+Although this App is 100% open-sourced, it may takes about 20~60 minutes to configure the environment. I'd appreciate it if you could [buy VPN On from App Store](https://itunes.apple.com/app/vpn-on/id951344279).
 
 BTW. I'm a coffee addict, buy me a coffee via PayPal or Alipay: `lexrus@gmail.com`
 
