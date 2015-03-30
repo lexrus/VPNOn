@@ -84,7 +84,7 @@ class InterfaceController: WKInterfaceController {
         if vpns.count > 0 {
             self.tableView.setNumberOfRows(vpns.count, withRowType: "VPNRow")
             
-            for i in 0...vpns.count {
+            for i in 0...vpns.count-1 {
                 if let row = self.tableView.rowControllerAtIndex(i) as VPNRow? {
                     let vpn = vpns[i]
                     
