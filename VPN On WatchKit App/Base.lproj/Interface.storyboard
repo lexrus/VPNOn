@@ -15,7 +15,7 @@
                                 <tableRow identifier="VPNRow" id="atn-nC-J7B" customClass="VPNRow" customModule="VPNOnWatchKitExtension">
                                     <group key="rootItem" width="1" alignment="left" spacing="0.0" id="IYm-WB-ham">
                                         <items>
-                                            <imageView width="30" height="30" alignment="left" verticalAlignment="center" image="ca" contentMode="scaleAspectFit" id="zdv-tY-oNY"/>
+                                            <imageView width="30" height="30" alignment="left" verticalAlignment="center" contentMode="scaleAspectFit" id="zdv-tY-oNY"/>
                                             <switch width="100" height="1" alignment="right" verticalAlignment="center" title="--" id="Vai-ND-bB4">
                                                 <fontDescription key="font" style="UICTFontTextStyleBody"/>
                                                 <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
