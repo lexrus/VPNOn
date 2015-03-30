@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3737"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="VPNOnWatchKitExtension">
+                    <items>
+                        <table alignment="left" id="gRM-1i-Qyi">
+                            <items>
+                                <tableRow identifier="VPNRow" id="atn-nC-J7B" customClass="VPNRow" customModule="VPNOnWatchKitExtension">
+                                    <group key="rootItem" width="1" alignment="left" spacing="0.0" id="IYm-WB-ham">
+                                        <items>
+                                            <imageView width="30" height="30" alignment="left" verticalAlignment="center" image="ca" contentMode="scaleAspectFit" id="zdv-tY-oNY"/>
+                                            <switch width="100" height="1" alignment="right" verticalAlignment="center" title="--" id="Vai-ND-bB4">
+                                                <fontDescription key="font" style="UICTFontTextStyleBody"/>
+                                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="tintColor" red="0.1137254902" green="0.69803921570000005" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                <variation key="device=watch38mm" width="95"/>
+                                                <variation key="device=watch42mm" width="115"/>
+                                                <connections>
+                                                    <action selector="didTapVPNRow:" destination="atn-nC-J7B" id="Yx8-j1-GVr"/>
+                                                </connections>
+                                            </switch>
+                                        </items>
+                                        <edgeInsets key="margins" left="4" right="0.0" top="0.0" bottom="0.0"/>
+                                    </group>
+                                    <connections>
+                                        <outlet property="VPNSwitch" destination="Vai-ND-bB4" id="Lbw-UZ-UYy"/>
+                                        <outlet property="flag" destination="zdv-tY-oNY" id="iPY-4f-BVo"/>
+                                        <outlet property="group" destination="IYm-WB-ham" id="emw-kr-iST"/>
+                                    </connections>
+                                </tableRow>
+                                <tableRow identifier="HintRow" id="3ol-yG-QkY" customClass="HintRow" customModule="VPNOnWatchKitExtension">
+                                    <group key="rootItem" width="1" height="1" alignment="left" id="gkj-z7-E8u">
+                                        <items>
+                                            <label width="1" height="1" alignment="left" textAlignment="center" numberOfLines="4" id="VMs-21-nQ2">
+                                                <string key="text">Please
+add a VPN
+with your
+iPhone</string>
+                                            </label>
+                                        </items>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </group>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="tableView" destination="gRM-1i-Qyi" id="5up-Gq-QKx"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="211" y="-73"/>
+        </scene>
+        <!--Glance Interface Controller-->
+        <scene sceneID="rjY-Ar-IMT">
+            <objects>
+                <glanceController spacing="0.0" id="Sv0-Ai-Zie" customClass="GlanceController" customModule="VPNOnWatchKitApp" customModuleProvider="target">
+                    <items>
+                        <group alignment="left" id="gv7-I2-MZq"/>
+                        <group alignment="left" id="eew-Gs-W6Y"/>
+                    </items>
+                    <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="14"/>
+                </glanceController>
+            </objects>
+            <point key="canvasLocation" x="211" y="191"/>
+        </scene>
+    </scenes>
+</document>
