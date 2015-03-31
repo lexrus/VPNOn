@@ -15,7 +15,7 @@
                                 <tableRow identifier="VPNRow" id="atn-nC-J7B" customClass="VPNRow" customModule="VPNOnWatchKitExtension">
                                     <group key="rootItem" width="1" alignment="left" spacing="0.0" id="IYm-WB-ham">
                                         <items>
-                                            <imageView width="30" height="30" alignment="left" verticalAlignment="center" image="ca" contentMode="scaleAspectFit" id="zdv-tY-oNY"/>
+                                            <imageView width="30" height="30" alignment="left" verticalAlignment="center" contentMode="scaleAspectFit" id="zdv-tY-oNY"/>
                                             <switch width="100" height="1" alignment="right" verticalAlignment="center" title="--" id="Vai-ND-bB4">
                                                 <fontDescription key="font" style="UICTFontTextStyleBody"/>
                                                 <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -63,10 +63,63 @@ iPhone</string>
             <objects>
                 <glanceController spacing="0.0" id="Sv0-Ai-Zie" customClass="GlanceController" customModule="VPNOnWatchKitApp" customModuleProvider="target">
                     <items>
-                        <group alignment="left" id="gv7-I2-MZq"/>
-                        <group alignment="left" id="eew-Gs-W6Y"/>
+                        <group alignment="left" id="gv7-I2-MZq">
+                            <items>
+                                <label width="1" height="1" alignment="center" text="VPN On" textAlignment="center" id="Qku-fG-x0W">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                                </label>
+                            </items>
+                        </group>
+                        <group alignment="left" id="eew-Gs-W6Y">
+                            <items>
+                                <table alignment="left" id="FPK-rd-i79">
+                                    <items>
+                                        <tableRow identifier="VPNRow" id="SRx-QN-qDc" customClass="VPNRow" customModule="VPNOnWatchKitExtension">
+                                            <group key="rootItem" width="1" alignment="left" spacing="0.0" id="NUm-eV-vHJ">
+                                                <items>
+                                                    <imageView width="30" height="30" alignment="left" verticalAlignment="center" contentMode="scaleAspectFit" id="Ihn-jh-aXY"/>
+                                                    <switch width="100" height="1" alignment="right" verticalAlignment="center" title="--" id="kqv-V5-8un">
+                                                        <fontDescription key="font" style="UICTFontTextStyleBody"/>
+                                                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="tintColor" red="0.1137254902" green="0.69803921570000005" blue="0.97254901959999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <variation key="device=watch38mm" width="95"/>
+                                                        <variation key="device=watch42mm" width="115"/>
+                                                        <connections>
+                                                            <action selector="didTapVPNRow:" destination="SRx-QN-qDc" id="wrL-bq-vwO"/>
+                                                        </connections>
+                                                    </switch>
+                                                </items>
+                                                <edgeInsets key="margins" left="4" right="0.0" top="0.0" bottom="0.0"/>
+                                            </group>
+                                            <connections>
+                                                <outlet property="VPNSwitch" destination="kqv-V5-8un" id="DYE-Db-M5X"/>
+                                                <outlet property="flag" destination="Ihn-jh-aXY" id="7Og-II-hDk"/>
+                                                <outlet property="group" destination="NUm-eV-vHJ" id="BEI-17-oXi"/>
+                                            </connections>
+                                        </tableRow>
+                                        <tableRow identifier="HintRow" id="qpH-4R-AFH" customClass="HintRow" customModule="VPNOnWatchKitExtension">
+                                            <group key="rootItem" width="1" height="1" alignment="left" id="8aM-r4-ket">
+                                                <items>
+                                                    <label width="1" height="1" alignment="left" textAlignment="center" numberOfLines="4" id="GW3-9V-0hU">
+                                                        <string key="text">Please
+add a VPN
+with your
+iPhone</string>
+                                                    </label>
+                                                </items>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            </group>
+                                        </tableRow>
+                                    </items>
+                                </table>
+                            </items>
+                        </group>
                     </items>
                     <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="14"/>
+                    <connections>
+                        <outlet property="tableView" destination="FPK-rd-i79" id="3uD-l5-bdh"/>
+                    </connections>
                 </glanceController>
             </objects>
             <point key="canvasLocation" x="211" y="191"/>

@@ -8,24 +8,73 @@
 
 import WatchKit
 import Foundation
+import VPNOnKit
 
 
-class GlanceController: WKInterfaceController {
+class GlanceController: VPNInterfaceController {
 
-    override func awakeWithContext(context: AnyObject?) {
-        super.awakeWithContext(context)
-        
-        // Configure interface objects here.
-    }
-
+    @IBOutlet weak var tableView: WKInterfaceTable!
+    
     override func willActivate() {
-        // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+        
+        loadVPNs()
     }
-
-    override func didDeactivate() {
-        // This method is called when watch view controller is no longer visible
-        super.didDeactivate()
+    
+    func loadVPNs() {
+        if vpns.count > 0 {
+            self.tableView.setNumberOfRows(vpns.count, withRowType: "VPNRow")
+            
+            for i in 0...vpns.count-1 {
+                if let row = self.tableView.rowControllerAtIndex(i) as VPNRow? {
+                    let vpn = vpns[i]
+                    
+                    if let countryCode = vpn.countryCode {
+                        row.flag.setImageNamed(countryCode)
+                    }
+                    
+                    row.latency = LTPingQueue.sharedQueue.latencyForHostname(vpn.server)
+                    
+                    let connected = Bool(VPNManager.sharedManager.status == .Connected && vpn.ID == selectedID)
+                    row.VPNSwitch.setOn(connected)
+                }
+            }
+        } else {
+            self.tableView.setNumberOfRows(1, withRowType: "HintRow")
+        }
+    }
+    
+    func didTurnOnVPN(notifiction: NSNotification) {
+        if let userInfo = notifiction.userInfo as [String: Int]? {
+            if let index = userInfo[kVPNIndexKey] {
+                let vpn = vpns[index]
+                selectedID = vpn.ID
+                connectVPN(vpn)
+            }
+        }
+    }
+    
+    func didTurnOffVPN(notification: NSNotification) {
+        VPNManager.sharedManager.disconnect()
+        loadVPNs()
+    }
+    
+    // MARK: - Notification
+    
+    func pingDidUpdate(notification: NSNotification) {
+        loadVPNs()
+    }
+    
+    func coreDataDidSave(notification: NSNotification) {
+        VPNDataManager.sharedManager.managedObjectContext?.mergeChangesFromContextDidSaveNotification(notification)
+        loadVPNs()
+    }
+    
+    func VPNStatusDidChange(notification: NSNotification?) {
+        loadVPNs()
+        if VPNManager.sharedManager.status == .Disconnected {
+            LTPingQueue.sharedQueue.restartPing()
+        }
     }
 
 }
