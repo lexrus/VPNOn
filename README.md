@@ -4,7 +4,9 @@
 
 <img src="https://cloud.githubusercontent.com/assets/219689/6800494/f6f98af4-d259-11e4-91c8-dc9d9ded3bfd.gif" width="375" height="375" alt="Screencast"/>
 
-Turning on a VPN is always a painful experience on an iOS device due to the deep nested menus. This App installs a Today Widget into Notification Center which make it possible to turn on a VPN in about 3 seconds(depends on the connection speed). Furthermore, by turning on On Demand feature, the VPN could be automatically connected when you visit any domain specified in this App. 
+<img src="https://cloud.githubusercontent.com/assets/219689/6913597/e7849b08-d7b4-11e4-9c3d-728717b2ab96.jpg" width="400" height="300" alt="AppleWatch"/>
+
+Turning on a VPN is always a painful experience on an iOS device due to the deep nested menus. This App installs a Today Widget into Notification Center which make it possible to turn on a VPN in about 3 seconds(depends on the connection speed). Furthermore, by turning on On Demand feature, the VPN could be automatically connected when you visit any domain specified in this App. One more thing... You can even turn on a VPN with your shiny WATCH!!!
 
 ## Requirements
 
@@ -15,7 +17,7 @@ Turning on a VPN is always a painful experience on an iOS device due to the deep
 
 ## Build with Xcode
 
-To compile the project, you may temporarily modify the bundle_id after adding yours into the Apple Developer Center. And then activate the following capabilities of both the container App and the widget:
+To compile the project, you may temporarily modify the bundle_id after adding yours into the Apple Developer Center. And then activate the following capabilities of the container App and the extensions(TodayWidget and WatchKitExtension):
 
 1. Personal VPN
 2. Keychain Sharing
