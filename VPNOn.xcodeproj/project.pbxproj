@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D7033E5E1ACA54D600C36126 /* VPNManager+Wormhole.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7033E5D1ACA54D600C36126 /* VPNManager+Wormhole.swift */; };
 		D705784D1A9E103F00040279 /* VPNManager+Domains.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77593D91A79E674007161B2 /* VPNManager+Domains.swift */; };
 		D705784E1A9E104400040279 /* VPNManager+Geo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CFDDA41A9E05700057F53D /* VPNManager+Geo.swift */; };
 		D70578501AA5EFF000040279 /* LTVPNTableViewController+Geo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D705784F1AA5EFF000040279 /* LTVPNTableViewController+Geo.swift */; };
@@ -97,6 +98,8 @@
 		D7D4992F1A724B4C00B5F5ED /* LTVPNConfigViewController+Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D4992E1A724B4C00B5F5ED /* LTVPNConfigViewController+Type.swift */; };
 		D7D499311A72542400B5F5ED /* LTTableViewCellDeclosureIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D499301A72542400B5F5ED /* LTTableViewCellDeclosureIndicator.swift */; };
 		D7D8900A1AC95492000B7829 /* Flags.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7D890091AC95492000B7829 /* Flags.xcassets */; };
+		D7D8900D1ACA451E000B7829 /* MMWormhole.h in Headers */ = {isa = PBXBuildFile; fileRef = D7D8900B1ACA451E000B7829 /* MMWormhole.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D7D8900E1ACA451E000B7829 /* MMWormhole.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D8900C1ACA451E000B7829 /* MMWormhole.m */; };
 		D7DDB5631A78AC7E00BE7FB7 /* VPNTypeTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DDB5611A78A1D100BE7FB7 /* VPNTypeTag.swift */; };
 		D7DDB5651A78DA4600BE7FB7 /* LTVPNDomainsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DDB5641A78DA4600BE7FB7 /* LTVPNDomainsViewController.swift */; };
 		D7E28A7F1A680D9400507F33 /* LTThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E28A7B1A680D9400507F33 /* LTThemeManager.swift */; };
@@ -211,6 +214,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D7033E5D1ACA54D600C36126 /* VPNManager+Wormhole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VPNManager+Wormhole.swift"; sourceTree = "<group>"; };
 		D705784F1AA5EFF000040279 /* LTVPNTableViewController+Geo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LTVPNTableViewController+Geo.swift"; sourceTree = "<group>"; };
 		D706D70F1AC9355F000B8433 /* VPNRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNRow.swift; sourceTree = "<group>"; };
 		D7095DB91A81C54600BAF797 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
@@ -329,6 +333,8 @@
 		D7D4992E1A724B4C00B5F5ED /* LTVPNConfigViewController+Type.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LTVPNConfigViewController+Type.swift"; sourceTree = "<group>"; };
 		D7D499301A72542400B5F5ED /* LTTableViewCellDeclosureIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTTableViewCellDeclosureIndicator.swift; sourceTree = "<group>"; };
 		D7D890091AC95492000B7829 /* Flags.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Flags.xcassets; sourceTree = "<group>"; };
+		D7D8900B1ACA451E000B7829 /* MMWormhole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMWormhole.h; sourceTree = "<group>"; };
+		D7D8900C1ACA451E000B7829 /* MMWormhole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMWormhole.m; sourceTree = "<group>"; };
 		D7DDB5611A78A1D100BE7FB7 /* VPNTypeTag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNTypeTag.swift; sourceTree = "<group>"; };
 		D7DDB5641A78DA4600BE7FB7 /* LTVPNDomainsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTVPNDomainsViewController.swift; sourceTree = "<group>"; };
 		D7E28A7B1A680D9400507F33 /* LTThemeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTThemeManager.swift; sourceTree = "<group>"; };
@@ -530,6 +536,8 @@
 			children = (
 				D74129A71A5CFCDA008DE603 /* SimplePing.h */,
 				D74129A81A5CFCDA008DE603 /* SimplePing.m */,
+				D7D8900B1ACA451E000B7829 /* MMWormhole.h */,
+				D7D8900C1ACA451E000B7829 /* MMWormhole.m */,
 				D754E2061A3B3A7B00E8F135 /* KeychainWrapper.swift */,
 			);
 			path = Vendor;
@@ -541,6 +549,7 @@
 				D754E2011A3B3A1B00E8F135 /* VPNOnKit.h */,
 				D757AFA51A3B374200AEF3CB /* VPNKeychainWrapper.swift */,
 				D757AFA61A3B374200AEF3CB /* VPNManager.swift */,
+				D7033E5D1ACA54D600C36126 /* VPNManager+Wormhole.swift */,
 				D7F0A0251A6E520300F9C09A /* VPNManager+ActivatedVPN.swift */,
 				D77593D91A79E674007161B2 /* VPNManager+Domains.swift */,
 				D7CFDDA41A9E05700057F53D /* VPNManager+Geo.swift */,
@@ -692,6 +701,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D754E2041A3B3A1B00E8F135 /* VPNOnKit.h in Headers */,
+				D7D8900D1ACA451E000B7829 /* MMWormhole.h in Headers */,
 				D74129A91A5CFCDA008DE603 /* SimplePing.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -842,6 +852,9 @@
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
+							};
+							com.apple.BackgroundModes = {
+								enabled = 0;
 							};
 							com.apple.Keychain = {
 								enabled = 1;
@@ -1071,7 +1084,9 @@
 				D754E2071A3B3A7B00E8F135 /* KeychainWrapper.swift in Sources */,
 				D757AFA71A3B374200AEF3CB /* VPNKeychainWrapper.swift in Sources */,
 				D74129AA1A5CFCDA008DE603 /* SimplePing.m in Sources */,
+				D7D8900E1ACA451E000B7829 /* MMWormhole.m in Sources */,
 				D757AFA91A3B374200AEF3CB /* VPNManager.swift in Sources */,
+				D7033E5E1ACA54D600C36126 /* VPNManager+Wormhole.swift in Sources */,
 				D7F0A0261A6E520300F9C09A /* VPNManager+ActivatedVPN.swift in Sources */,
 				D77593DA1A79E674007161B2 /* VPNManager+Domains.swift in Sources */,
 				D7CFDDA51A9E05700057F53D /* VPNManager+Geo.swift in Sources */,

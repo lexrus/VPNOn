@@ -226,6 +226,8 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate, LTVPN
             NSNotificationCenter.defaultCenter().postNotificationName("kLTGeoDidUpdate", object: vpn)
         }
         popDetailViewController()
+        
+        VPNManager.sharedManager.seeYaInAnothaLifeBrotha()
     }
     
     // MARK: - Navigation
