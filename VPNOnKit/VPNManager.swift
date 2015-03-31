@@ -22,6 +22,10 @@ final public class VPNManager
         return NSUserDefaults(suiteName: kAppGroupIdentifier)!
         }()
     
+    public lazy var wormhole: MMWormhole = {
+        return MMWormhole(applicationGroupIdentifier: kAppGroupIdentifier, optionalDirectory: "wormhole")
+        }()
+    
     public var status: NEVPNStatus {
         get {
             return _manager.connection.status
