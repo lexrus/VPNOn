@@ -76,7 +76,7 @@ iPhone</string>
                                 <table alignment="left" id="FPK-rd-i79">
                                     <items>
                                         <tableRow identifier="VPNRow" selectable="NO" id="SRx-QN-qDc" customClass="VPNRowInGlance" customModule="VPNOnWatchKitExtension">
-                                            <group key="rootItem" width="1" alignment="left" id="NUm-eV-vHJ">
+                                            <group key="rootItem" width="1" alignment="left" spacing="4" id="NUm-eV-vHJ">
                                                 <items>
                                                     <imageView width="30" height="30" alignment="left" verticalAlignment="center" contentMode="scaleAspectFit" id="Ihn-jh-aXY"/>
                                                     <group width="100" height="1" alignment="left" layout="vertical" id="jPJ-nk-CBo">
