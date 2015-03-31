@@ -61,38 +61,35 @@ iPhone</string>
         <!--Glance Interface Controller-->
         <scene sceneID="rjY-Ar-IMT">
             <objects>
-                <glanceController spacing="0.0" id="Sv0-Ai-Zie" customClass="GlanceController" customModule="VPNOnWatchKitExtension">
+                <glanceController spacing="0.0" topTemplateType="largeBody1" id="Sv0-Ai-Zie" customClass="GlanceController" customModule="VPNOnWatchKitExtension">
                     <items>
-                        <group alignment="left" id="gv7-I2-MZq">
-                            <items>
-                                <label width="1" height="1" alignment="center" text="VPN On" textAlignment="center" id="Qku-fG-x0W">
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
-                                </label>
-                            </items>
-                        </group>
+                        <label alignment="left" text="VPN On" minimumScaleFactor="0.50000000000000011" id="YVL-ou-E3Y"/>
+                        <label alignment="left" text="Servers Status" id="bDB-1F-IUJ"/>
                         <group alignment="left" id="eew-Gs-W6Y">
                             <items>
-                                <table alignment="left" id="FPK-rd-i79">
+                                <table alignment="center" id="FPK-rd-i79">
                                     <items>
                                         <tableRow identifier="VPNRow" selectable="NO" id="SRx-QN-qDc" customClass="VPNRowInGlance" customModule="VPNOnWatchKitExtension">
-                                            <group key="rootItem" width="1" alignment="left" spacing="4" id="NUm-eV-vHJ">
+                                            <group key="rootItem" width="1" height="30" alignment="left" radius="0.0" spacing="3" id="NUm-eV-vHJ">
                                                 <items>
-                                                    <imageView width="30" height="30" alignment="left" verticalAlignment="center" contentMode="scaleAspectFit" id="Ihn-jh-aXY"/>
-                                                    <group width="100" height="1" alignment="left" layout="vertical" id="jPJ-nk-CBo">
+                                                    <imageView width="24" height="24" alignment="left" verticalAlignment="center" contentMode="scaleAspectFit" id="Ihn-jh-aXY"/>
+                                                    <group width="100" height="1" alignment="left" verticalAlignment="center" layout="vertical" spacing="0.0" id="jPJ-nk-CBo">
                                                         <items>
                                                             <label width="1" alignment="left" text="Server" minimumScaleFactor="0.50000000000000011" id="XrD-lf-QUg">
-                                                                <fontDescription key="font" style="UICTFontTextStyleCaption1"/>
+                                                                <fontDescription key="font" style="UICTFontTextStyleCaption2"/>
                                                             </label>
                                                             <label width="1" alignment="left" text="--" minimumScaleFactor="0.5" id="d3R-CF-IIm">
+                                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <fontDescription key="font" style="UICTFontTextStyleFootnote"/>
                                                             </label>
                                                         </items>
+                                                        <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
                                                         <variation key="device=watch38mm" width="100"/>
                                                         <variation key="device=watch42mm" width="120"/>
                                                     </group>
                                                 </items>
-                                                <edgeInsets key="margins" left="4" right="0.0" top="0.0" bottom="0.0"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <edgeInsets key="margins" left="3" right="0.0" top="0.0" bottom="0.0"/>
                                             </group>
                                             <connections>
                                                 <outlet property="flag" destination="Ihn-jh-aXY" id="7Og-II-hDk"/>
