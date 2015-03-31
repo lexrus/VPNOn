@@ -18,13 +18,8 @@ class VPNRow: NSObject {
     var index = 0
     @IBOutlet weak var flag: WKInterfaceImage!
     @IBOutlet weak var group: WKInterfaceGroup!
-    @IBOutlet weak var VPNSwitch: WKInterfaceSwitch!
     
-    var latency: Int = -1 {
-        didSet {
-            self.VPNSwitch.setAttributedTitle(latencyAttributedString)
-        }
-    }
+    var latency: Int = -1
     
     var latencyAttributedString: NSAttributedString {
         get {
@@ -34,19 +29,11 @@ class VPNRow: NSObject {
             }
             
             let s = NSAttributedString(string: latencyString, attributes: [
-                NSFontAttributeName: UIFont.systemFontOfSize(15),
+                NSFontAttributeName: UIFont.systemFontOfSize(10),
                 NSForegroundColorAttributeName: colorOfLatency
                 ])
             return s
         }
-    }
-    
-    @IBAction func didTapVPNRow(value: Bool) {
-        var userInfo = [kVPNIndexKey: index]
-        var notificationName = value ? kDidTurnOnVPN : kDidTurnOffVPN
-        NSNotificationCenter.defaultCenter().postNotificationName(notificationName,
-            object: nil,
-            userInfo: userInfo)
     }
     
     var colorOfLatency: UIColor {

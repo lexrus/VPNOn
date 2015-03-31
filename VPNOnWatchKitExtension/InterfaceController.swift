@@ -27,7 +27,7 @@ class InterfaceController: VPNInterfaceController {
             self.tableView.setNumberOfRows(vpns.count, withRowType: "VPNRow")
             
             for i in 0...vpns.count-1 {
-                if let row = self.tableView.rowControllerAtIndex(i) as VPNRow? {
+                if let row = self.tableView.rowControllerAtIndex(i) as VPNRowWithSwitch? {
                     let vpn = vpns[i]
                     
                     if let countryCode = vpn.countryCode {
@@ -37,6 +37,8 @@ class InterfaceController: VPNInterfaceController {
                     row.latency = LTPingQueue.sharedQueue.latencyForHostname(vpn.server)
                     
                     let connected = Bool(VPNManager.sharedManager.status == .Connected && vpn.ID == selectedID)
+                    let backgroundColor = connected ? UIColor(red:0, green:0.6, blue:1, alpha:1) : UIColor(white: 1.0, alpha: 0.2)
+                    row.group.setBackgroundColor(backgroundColor)
                     row.VPNSwitch.setOn(connected)
                 }
             }

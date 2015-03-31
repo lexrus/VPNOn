@@ -26,37 +26,23 @@ class GlanceController: VPNInterfaceController {
             self.tableView.setNumberOfRows(vpns.count, withRowType: "VPNRow")
             
             for i in 0...vpns.count-1 {
-                if let row = self.tableView.rowControllerAtIndex(i) as VPNRow? {
+                if let row = self.tableView.rowControllerAtIndex(i) as VPNRowInGlance? {
                     let vpn = vpns[i]
                     
                     if let countryCode = vpn.countryCode {
                         row.flag.setImageNamed(countryCode)
                     }
-                    
+                    row.titleLabel.setText(vpn.title)
                     row.latency = LTPingQueue.sharedQueue.latencyForHostname(vpn.server)
                     
                     let connected = Bool(VPNManager.sharedManager.status == .Connected && vpn.ID == selectedID)
-                    row.VPNSwitch.setOn(connected)
+                    let backgroundColor = connected ? UIColor(red:0, green:0.6, blue:1, alpha:1) : UIColor(white: 1.0, alpha: 0.2)
+                    row.group.setBackgroundColor(backgroundColor)
                 }
             }
         } else {
             self.tableView.setNumberOfRows(1, withRowType: "HintRow")
         }
-    }
-    
-    func didTurnOnVPN(notifiction: NSNotification) {
-        if let userInfo = notifiction.userInfo as [String: Int]? {
-            if let index = userInfo[kVPNIndexKey] {
-                let vpn = vpns[index]
-                selectedID = vpn.ID
-                connectVPN(vpn)
-            }
-        }
-    }
-    
-    func didTurnOffVPN(notification: NSNotification) {
-        VPNManager.sharedManager.disconnect()
-        loadVPNs()
     }
     
     // MARK: - Notification

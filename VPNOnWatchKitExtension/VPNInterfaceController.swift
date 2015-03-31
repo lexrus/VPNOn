@@ -12,6 +12,8 @@ import NetworkExtension
 import CoreData
 import VPNOnKit
 
+let kGreetingsFromContainer = "Greetings"
+
 
 class VPNInterfaceController: WKInterfaceController {
     
@@ -65,6 +67,11 @@ class VPNInterfaceController: WKInterfaceController {
             selector: Selector("didTurnOffVPN:"),
             name: kDidTurnOffVPN,
             object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self,
+            selector: Selector("loadVPNs"),
+            name: kGreetingsFromContainer,
+            object: nil)
     }
     
     deinit {
@@ -72,13 +79,18 @@ class VPNInterfaceController: WKInterfaceController {
     }
 
     override func willActivate() {
-        // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+        
+        VPNManager.sharedManager.wormhole.listenForMessageWithIdentifier(kGreetingsFromContainer) {
+            messageObject in
+            NSNotificationCenter.defaultCenter().postNotificationName(kGreetingsFromContainer, object: nil)
+        }
     }
 
     override func didDeactivate() {
-        // This method is called when watch view controller is no longer visible
         super.didDeactivate()
+        
+        VPNManager.sharedManager.wormhole.stopListeningForMessageWithIdentifier(kGreetingsFromContainer)
     }
     
     func connectVPN(vpn: VPN) {
