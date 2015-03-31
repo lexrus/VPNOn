@@ -83,6 +83,7 @@ class VPNInterfaceController: WKInterfaceController {
         
         VPNManager.sharedManager.wormhole.listenForMessageWithIdentifier(kGreetingsFromContainer) {
             messageObject in
+            self.updateContent()
             NSNotificationCenter.defaultCenter().postNotificationName(kGreetingsFromContainer, object: nil)
         }
     }
@@ -91,6 +92,12 @@ class VPNInterfaceController: WKInterfaceController {
         super.didDeactivate()
         
         VPNManager.sharedManager.wormhole.stopListeningForMessageWithIdentifier(kGreetingsFromContainer)
+    }
+    
+    func updateContent() {
+        // Note: In order to get the latest data.
+        // @see: http://stackoverflow.com/questions/25924223/core-data-ios-8-today-widget-issue
+        VPNDataManager.sharedManager.managedObjectContext?.reset()
     }
     
     func connectVPN(vpn: VPN) {
