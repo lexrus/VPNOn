@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="3737"/>
     </dependencies>
     <scenes>
-        <!--Interface Controller-->
+        <!--VPN On-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="VPNOnWatchKitExtension">
+                <controller title="VPN On" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="VPNOnWatchKitExtension">
                     <items>
                         <table alignment="left" id="gRM-1i-Qyi">
                             <items>
