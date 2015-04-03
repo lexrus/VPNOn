@@ -50,6 +50,7 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate, LTVPN
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pingDidComplete:"), name: "kLTPingDidComplete", object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("geoDidUpdate:"), name: "kLTGeoDidUpdate", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("selectionDidChange:"), name: "kLTSelectionDidChange", object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(
             self,
@@ -68,6 +69,7 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate, LTVPN
         NSNotificationCenter.defaultCenter().removeObserver(self, name: "kLTPingDidComplete", object: nil)
         
         NSNotificationCenter.defaultCenter().removeObserver(self, name: "kLTGeoDidUpdate", object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "kLTSelectionDidChange", object: nil)
         
         NSNotificationCenter.defaultCenter().removeObserver(
             self,
@@ -78,13 +80,18 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate, LTVPN
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
+        reloadVPNs()
+    }
+    
+    func reloadVPNs() {
         vpns = VPNDataManager.sharedManager.allVPN()
         
-        if let activatedVPN = VPNDataManager.sharedManager.activatedVPN {
-            activatedVPNID = activatedVPN.ID
+        if let selectedID = VPNDataManager.sharedManager.selectedVPNID {
+            if selectedID != activatedVPNID {
+                activatedVPNID = selectedID.URIRepresentation().absoluteString
+                tableView.reloadData()
+            }
         }
-        
-        tableView.reloadData()
     }
 
     // MARK: - Table view data source
@@ -228,6 +235,10 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate, LTVPN
         popDetailViewController()
         
         VPNManager.sharedManager.seeYaInAnothaLifeBrotha()
+    }
+    
+    func selectionDidChange(notification: NSNotification) {
+        reloadVPNs()
     }
     
     // MARK: - Navigation

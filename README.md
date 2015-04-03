@@ -43,6 +43,8 @@ Please contribute to [the Transifex project](https://www.transifex.com/projects/
 
 ## URL Scheme
 
+### Add configuration with URL
+
 VPN service providers may list a link for their customers to efficiently add server configurations in VPN On. By register the `vpnon://` protocol, it supports the following URL scheme:
 
 `vpnon://{account}:{password}@{server}/?title={title}&group={group}&secret={secret}&alwayson=[yes|no]&ikev2=[yes|no]&certificate={certificate}`
@@ -57,7 +59,12 @@ VPN service providers may list a link for their customers to efficiently add ser
 
 * `vpnon://admin@202.96.209.6/?title=Yahoo&alwayson=no`
 
-* `vpnon://jony:ive@202.96.209.5/?title=Twitter&ikev2=yes` 
+* `vpnon://jony:ive@202.96.209.5/?title=Twitter&ikev2=yes`
+
+### Establish connection with URL
+
+* `vpnon://VPNTitle/?connect`
+* `vpnon://VPNTitle/?connect&callback=https://twitter.com`
 
 ## Donation
 
