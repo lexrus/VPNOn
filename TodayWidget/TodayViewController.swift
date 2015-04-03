@@ -14,7 +14,7 @@ import CoreData
 
 let kVPNOnSelectedIDInToday = "kVPNOnSelectedIDInToday"
 let kVPNOnExpanedInToday = "kVPNOnExpanedInToday"
-let kVPNOnWidgetNormalHeight: CGFloat = 152
+let kVPNOnWidgetNormalHeight: CGFloat = 148
 
 class TodayViewController: UIViewController, NCWidgetProviding, UICollectionViewDelegate, UICollectionViewDataSource {
     

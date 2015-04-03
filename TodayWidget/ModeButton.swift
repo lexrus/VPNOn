@@ -45,12 +45,12 @@ class ModeButton: UIView
                 }
             }
             
-            let rect = CGRectMake(0, self.effectView.bounds.size.height - 40, 24, 40)
+            let rect = CGRectMake(0, self.effectView.bounds.size.height - 33, 24, 33)
             let expandIcon = UILabel(frame: rect)
             expandIcon.textColor = UIColor.whiteColor()
             expandIcon.text = "..."
             expandIcon.textAlignment = NSTextAlignment.Center
-            expandIcon.font = UIFont.systemFontOfSize(13)
+            expandIcon.font = UIFont.systemFontOfSize(12)
             expandIcon.autoresizingMask = UIViewAutoresizing.FlexibleTopMargin
             self.effectView.contentView.addSubview(expandIcon)
             return expandIcon
