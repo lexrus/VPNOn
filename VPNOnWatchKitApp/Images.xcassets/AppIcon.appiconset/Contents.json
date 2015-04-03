@@ -24,6 +24,7 @@
     {
       "size" : "29x29",
       "idiom" : "watch",
+      "filename" : "WatchIcon_29pt@3x.png",
       "role" : "companionSettings",
       "scale" : "3x"
     },
@@ -47,6 +48,7 @@
       "size" : "86x86",
       "idiom" : "watch",
       "scale" : "2x",
+      "filename" : "WatchIcon_86pt@2x.png",
       "role" : "quickLook",
       "subtype" : "38mm"
     },
@@ -54,6 +56,7 @@
       "size" : "98x98",
       "idiom" : "watch",
       "scale" : "2x",
+      "filename" : "WatchIcon_98pt@2x.png",
       "role" : "quickLook",
       "subtype" : "42mm"
     }
