@@ -13,6 +13,8 @@ import VPNOnKit
 import CoreData
 
 let kVPNOnSelectedIDInToday = "kVPNOnSelectedIDInToday"
+let kVPNOnExpanedInToday = "kVPNOnExpanedInToday"
+let kVPNOnWidgetNormalHeight: CGFloat = 152
 
 class TodayViewController: UIViewController, NCWidgetProviding, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -40,11 +42,25 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
             
         }
     }
+    
+    var expanded: Bool {
+        get {
+            return NSUserDefaults.standardUserDefaults().boolForKey(kVPNOnExpanedInToday) as Bool
+        }
+        set {
+            NSUserDefaults.standardUserDefaults().setBool(newValue, forKey: kVPNOnExpanedInToday)
+            if newValue {
+                self.preferredContentSize = self.collectionView.contentSize
+            } else {
+                self.preferredContentSize = CGSizeMake(self.view.bounds.size.width, kVPNOnWidgetNormalHeight)
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        preferredContentSize = CGSizeMake(0, 80)
+        preferredContentSize = CGSizeMake(0, 82)
         
         let tapGasture = UITapGestureRecognizer(target: self, action: Selector("didTapLeftMargin:"))
         tapGasture.numberOfTapsRequired = 1
@@ -95,8 +111,23 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
         collectionView.dataSource = nil
         updateContent()
         collectionView.dataSource = self
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         
-        preferredContentSize = collectionView.contentSize
+        if collectionView.visibleCells().count > vpns.count {
+            leftMarginView.expandIconView.hidden = true
+            self.expanded = false
+        } else {
+            leftMarginView.expandIconView.hidden = false
+        }
+        
+        if self.expanded {
+            preferredContentSize = collectionView.contentSize
+        } else {
+            preferredContentSize = CGSizeMake(collectionView.contentSize.width, min(kVPNOnWidgetNormalHeight, collectionView.contentSize.height))
+        }
     }
     
     // Note: A workaround to ensure the widget is interactable.
@@ -236,11 +267,21 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
     // MARK: - Left margin
     
     func didTapLeftMargin(gesture: UITapGestureRecognizer) {
-        LTPingQueue.sharedQueue.restartPing()
-        VPNManager.sharedManager.displayFlags = !VPNManager.sharedManager.displayFlags
-        collectionView.reloadData()
+        var tappedBottom = Bool(gesture.locationInView(leftMarginView).y > leftMarginView.frame.size.height / 3 * 2)
         
-        leftMarginView.displayMode = VPNManager.sharedManager.displayFlags ? .FlagMode : .SwitchMode
+        if !self.expanded && collectionView.contentSize.height == preferredContentSize.height {
+            tappedBottom = false
+        }
+        
+        if tappedBottom {
+            self.expanded = !self.expanded
+        } else {
+            LTPingQueue.sharedQueue.restartPing()
+            VPNManager.sharedManager.displayFlags = !VPNManager.sharedManager.displayFlags
+            collectionView.reloadData()
+            
+            leftMarginView.displayMode = VPNManager.sharedManager.displayFlags ? .FlagMode : .SwitchMode
+        }
     }
     
     // MARK: - Open App
