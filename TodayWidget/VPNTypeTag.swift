@@ -48,7 +48,7 @@ class VPNTypeTag: UIVisualEffectView
         
         //// Text Drawing
         let textRect = CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height)
-        let textStyle = NSMutableParagraphStyle.defaultParagraphStyle().mutableCopy() as NSMutableParagraphStyle
+        let textStyle = NSMutableParagraphStyle.defaultParagraphStyle().mutableCopy() as! NSMutableParagraphStyle
         textStyle.alignment = NSTextAlignment.Center
         
         let textFontAttributes = [NSFontAttributeName: UIFont.systemFontOfSize(height - 1), NSForegroundColorAttributeName: color, NSParagraphStyleAttributeName: textStyle]

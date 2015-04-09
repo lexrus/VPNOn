@@ -15,7 +15,7 @@ extension VPNManager
 {
     public var onDemand: Bool {
         get {
-            if let onDemandObject = _defaults.objectForKey(kOnDemandKey) as NSNumber? {
+            if let onDemandObject = _defaults.objectForKey(kOnDemandKey) as! NSNumber? {
                 if onDemandObject.isKindOfClass(NSNumber.self) {
                     return onDemandObject.boolValue
                 }

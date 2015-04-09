@@ -24,7 +24,7 @@ class ModeButton: UIView
     
     var effectView: UIVisualEffectView {
         get {
-            if let _effectView = self.subviews.first as UIVisualEffectView? {
+            if let _effectView = self.subviews.first as! UIVisualEffectView? {
                 if _effectView.isKindOfClass(UIVisualEffectView.self) {
                     return _effectView
                 }
@@ -41,7 +41,7 @@ class ModeButton: UIView
         get {
             for icon in self.effectView.contentView.subviews {
                 if icon.isKindOfClass(UILabel.self) {
-                    return icon as UILabel
+                    return icon as! UILabel
                 }
             }
             
@@ -61,7 +61,7 @@ class ModeButton: UIView
         get {
             for icon in self.effectView.contentView.subviews {
                 if icon.isKindOfClass(SwitchIconView.self) {
-                    return icon as SwitchIconView
+                    return icon as! SwitchIconView
                 }
             }
             

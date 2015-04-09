@@ -15,7 +15,7 @@ class LTVPNDownloader: NSObject
     func download(URL: NSURL, callback: (NSURLResponse!, NSData!, NSError!) -> Void) {
         let request = NSMutableURLRequest(URL: URL)
         var agent = "VPN On"
-        if let version = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as String? {
+        if let version = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as! String? {
             agent = "\(agent) \(version)"
         }
         request.HTTPShouldHandleCookies = false

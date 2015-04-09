@@ -62,7 +62,7 @@ class LTThemeManager
         UINavigationBar.appearance().barTintColor = theme.navigationBarColor
         UINavigationBar.appearance().tintColor = theme.tintColor
         UINavigationBar.appearance().backgroundColor = UIColor.clearColor()
-        UINavigationBar.appearance().titleTextAttributes = NSDictionary(objects: [theme.textColor], forKeys: [NSForegroundColorAttributeName])
+        UINavigationBar.appearance().titleTextAttributes = NSDictionary(objects: [theme.textColor], forKeys: [NSForegroundColorAttributeName]) as [NSObject : AnyObject]
         
         // TableView
         UITableView.appearance().backgroundColor = theme.tableViewBackgroundColor
@@ -101,7 +101,7 @@ class LTThemeManager
         for window in windows {
             for view in window.subviews {
                 view.removeFromSuperview()
-                window.addSubview(view as UIView)
+                window.addSubview(view as! UIView)
             }
         }
     }

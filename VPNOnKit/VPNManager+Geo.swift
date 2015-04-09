@@ -22,7 +22,7 @@ extension VPNManager
         if let url = NSURL(string: urlString) {
             let request = NSMutableURLRequest(URL: url)
             var agent = "VPN On"
-            if let version = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as String? {
+            if let version = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as! String? {
                 agent = "\(agent) \(version)"
             }
             request.HTTPShouldHandleCookies = false
@@ -34,13 +34,13 @@ extension VPNManager
             var response: NSURLResponse? = nil
             if let data = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: nil) {
                 var parseError: NSError? = nil
-                let json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &parseError) as NSDictionary?
+                let json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &parseError) as! NSDictionary?
                 if parseError == nil {
                     if let js = json {
-                        let countryCode = js.valueForKey("country_code") as String?
-                        let isp = js.valueForKey("isp") as String?
-                        let latitude = js.valueForKey("latitude") as Float?
-                        let longitude = js.valueForKey("longitude") as Float?
+                        let countryCode = js.valueForKey("country_code") as! String?
+                        let isp = js.valueForKey("isp") as! String?
+                        let latitude = js.valueForKey("latitude") as! Float?
+                        let longitude = js.valueForKey("longitude") as! Float?
                         if countryCode != nil && isp != nil && latitude != nil && longitude != nil {
                             var geoIP = GeoIP(
                                 countryCode: countryCode!.lowercaseString,
@@ -65,7 +65,7 @@ extension VPNManager
         if let addressing = CFHostGetAddressing(host, &success) {
             let addresses = addressing.takeUnretainedValue() as NSArray
             if addresses.count > 0 {
-                let theAddress = addresses[0] as NSData
+                let theAddress = addresses[0] as! NSData
                 var hostname = [CChar](count: Int(NI_MAXHOST), repeatedValue: 0)
                 if getnameinfo(UnsafePointer(theAddress.bytes), socklen_t(theAddress.length),
                     &hostname, socklen_t(hostname.count), nil, 0, NI_NUMERICHOST) == 0 {

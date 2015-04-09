@@ -12,10 +12,10 @@ class AddCell: UICollectionViewCell
 {
     var iconView: PlusMarkView {
         get {
-            if let effectView = self.contentView.subviews.first as UIVisualEffectView? {
+            if let effectView = self.contentView.subviews.first as! UIVisualEffectView? {
                 if effectView.isKindOfClass(UIVisualEffectView.self) {
                     if effectView.contentView.subviews.count > 0 {
-                        return effectView.contentView.subviews.first! as PlusMarkView
+                        return effectView.contentView.subviews.first! as! PlusMarkView
                     }
                 }
             }

@@ -19,7 +19,7 @@ extension VPNManager
                 self.activatedVPNID = deprecatedID
                 return deprecatedID
             }
-            return self._defaults.objectForKey(kActivatedVPNIDKey) as String?
+            return self._defaults.objectForKey(kActivatedVPNIDKey) as! String?
         }
         set {
             if let newID = newValue {
@@ -49,8 +49,8 @@ extension VPNManager
     }
     
     private func migrateTo0_3AndReturnActivatedVPNID() -> String? {
-        if let oldDict = self._defaults.objectForKey(kDeprecatedActivatedVPNDictKey) as NSDictionary? {
-            if let ID = oldDict.objectForKey("ID") as String? {
+        if let oldDict = self._defaults.objectForKey(kDeprecatedActivatedVPNDictKey) as! NSDictionary? {
+            if let ID = oldDict.objectForKey("ID") as! String? {
                 _defaults.removeObjectForKey(kDeprecatedActivatedVPNDictKey)
                 _defaults.synchronize()
                 return ID

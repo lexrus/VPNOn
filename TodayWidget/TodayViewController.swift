@@ -31,7 +31,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
     
     var selectedID: String? {
         get {
-            return NSUserDefaults.standardUserDefaults().objectForKey(kVPNOnSelectedIDInToday) as String?
+            return NSUserDefaults.standardUserDefaults().objectForKey(kVPNOnSelectedIDInToday) as! String?
         }
         set {
             if let newID = newValue {
@@ -182,11 +182,11 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
     {
         if indexPath.row == vpns.count {
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("addCell", forIndexPath: indexPath) as AddCell
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("addCell", forIndexPath: indexPath) as! AddCell
             
             return cell
         } else {
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("vpnCell", forIndexPath: indexPath) as VPNCell
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("vpnCell", forIndexPath: indexPath) as! VPNCell
             let vpn = vpns[indexPath.row]
             let selected = Bool(selectedID == vpn.ID)
             cell.configureWithVPN(vpns[indexPath.row], selected: selected)
@@ -223,7 +223,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
         
         selectedID = vpn.ID
         
-        let cell = collectionView.cellForItemAtIndexPath(indexPath)! as VPNCell
+        let cell = collectionView.cellForItemAtIndexPath(indexPath)! as! VPNCell
         
         let passwordRef = VPNKeychainWrapper.passwordForVPNID(vpn.ID)
         let secretRef = VPNKeychainWrapper.secretForVPNID(vpn.ID)
@@ -255,7 +255,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
         if indexPath.row == vpns.count {
             return true
         }
-        let cell = collectionView.cellForItemAtIndexPath(indexPath) as VPNCell
+        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! VPNCell
         switch VPNManager.sharedManager.status {
         case .Connected, .Connecting:
             VPNManager.sharedManager.disconnect()

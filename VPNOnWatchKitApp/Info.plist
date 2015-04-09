@@ -28,7 +28,7 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>WKCompanionAppBundleIdentifier</key>
-	<string>com.LexTang.VPNOn.WKApp</string>
+	<string>com.LexTang.VPNOn</string>
 	<key>WKWatchKitApp</key>
 	<true/>
 </dict>

@@ -13,7 +13,7 @@ extension LTVPNTableViewController
 {
     
     func geoDidUpdate(notification: NSNotification) {
-        if let vpn = notification.object as VPN? {
+        if let vpn = notification.object as! VPN? {
             
             VPNManager.sharedManager.geoInfoOfHost(vpn.server) {
                 geoInfo in

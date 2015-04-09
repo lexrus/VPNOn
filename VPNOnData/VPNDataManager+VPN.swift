@@ -22,7 +22,7 @@ extension VPNDataManager
         request.sortDescriptors = [sortByTitle, sortByServer, sortByType]
         
         if let moc = managedObjectContext {
-            if let results = moc.executeFetchRequest(request, error: nil) as [VPN]? {
+            if let results = moc.executeFetchRequest(request, error: nil) as! [VPN]? {
                 for vpn in results {
                     if vpn.deleted {
                         continue
@@ -48,7 +48,7 @@ extension VPNDataManager
         ) -> VPN?
     {
         let entity = NSEntityDescription.entityForName("VPN", inManagedObjectContext: managedObjectContext!)
-        let vpn = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedObjectContext!) as VPN
+        let vpn = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedObjectContext!) as! VPN
         
         vpn.title = title
         vpn.server = server
@@ -145,7 +145,7 @@ extension VPNDataManager
         request.predicate = predicate
         
         var error: NSError?
-        let fetchResults = managedObjectContext!.executeFetchRequest(request, error: &error) as [VPN]?
+        let fetchResults = managedObjectContext!.executeFetchRequest(request, error: &error) as! [VPN]?
         
         if let results = fetchResults {
             for vpn in results {

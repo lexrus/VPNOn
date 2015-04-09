@@ -27,7 +27,7 @@ class InterfaceController: VPNInterfaceController {
             self.tableView.setNumberOfRows(vpns.count, withRowType: "VPNRow")
             
             for i in 0...vpns.count-1 {
-                if let row = self.tableView.rowControllerAtIndex(i) as VPNRowWithSwitch? {
+                if let row = self.tableView.rowControllerAtIndex(i) as! VPNRowWithSwitch? {
                     let vpn = vpns[i]
                     
                     if let countryCode = vpn.countryCode {
@@ -48,7 +48,7 @@ class InterfaceController: VPNInterfaceController {
     }
     
     func didTurnOnVPN(notifiction: NSNotification) {
-        if let userInfo = notifiction.userInfo as [String: Int]? {
+        if let userInfo = notifiction.userInfo as! [String: Int]? {
             if let index = userInfo[kVPNIndexKey] {
                 let vpn = vpns[index]
                 selectedID = vpn.ID

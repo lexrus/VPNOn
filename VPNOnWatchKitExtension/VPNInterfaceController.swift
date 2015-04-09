@@ -25,7 +25,7 @@ class VPNInterfaceController: WKInterfaceController {
     
     var selectedID: String? {
         get {
-            return NSUserDefaults.standardUserDefaults().objectForKey(kVPNOnSelectedIDInToday) as String?
+            return NSUserDefaults.standardUserDefaults().objectForKey(kVPNOnSelectedIDInToday) as! String?
         }
         set {
             if let newID = newValue {

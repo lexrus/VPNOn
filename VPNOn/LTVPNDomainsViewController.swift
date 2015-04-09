@@ -50,7 +50,7 @@ class LTVPNDomainsViewController: UITableViewController
     // MARK: - Navigation
     
     func popDetailViewController() {
-        let topNavigationController = splitViewController!.viewControllers.last! as UINavigationController
+        let topNavigationController = splitViewController!.viewControllers.last! as! UINavigationController
         topNavigationController.popViewControllerAnimated(true)
     }
 }

@@ -36,7 +36,7 @@ final public class VPNManager
     
     public var displayFlags: Bool {
         get {
-            if let value = _defaults.objectForKey(kVPNOnDisplayFlags) as Int? {
+            if let value = _defaults.objectForKey(kVPNOnDisplayFlags) as! Int? {
                 return Bool(value)
             }
             return true

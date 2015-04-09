@@ -15,8 +15,8 @@ extension VPNDataManager
 {
     var selectedVPNID: NSManagedObjectID? {
         get {
-            if let URLData = NSUserDefaults.standardUserDefaults().objectForKey(kSelectedVPNIDKey) as NSData? {
-                let url = NSKeyedUnarchiver.unarchiveObjectWithData(URLData) as NSURL
+            if let URLData = NSUserDefaults.standardUserDefaults().objectForKey(kSelectedVPNIDKey) as! NSData? {
+                let url = NSKeyedUnarchiver.unarchiveObjectWithData(URLData) as! NSURL
                 if let ID = self.persistentStoreCoordinator!.managedObjectIDForURIRepresentation(url) {
                     return ID
                 }

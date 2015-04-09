@@ -15,7 +15,7 @@ class LTVPNAboutViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let version = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as String? {
+        if let version = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as! String? {
             versionLabel.text = version
         }
     }

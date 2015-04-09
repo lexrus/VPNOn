@@ -26,7 +26,7 @@ class GlanceController: VPNInterfaceController {
             self.tableView.setNumberOfRows(vpns.count, withRowType: "VPNRow")
             
             for i in 0...vpns.count-1 {
-                if let row = self.tableView.rowControllerAtIndex(i) as VPNRowInGlance? {
+                if let row = self.tableView.rowControllerAtIndex(i) as! VPNRowInGlance? {
                     let vpn = vpns[i]
                     
                     if let countryCode = vpn.countryCode {
