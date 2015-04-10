@@ -12,7 +12,7 @@ Turning on a VPN is always a painful experience on an iOS device due to the deep
 
 - An iPhone/iPad running iOS 8.1+
 - An IPSec IKEv1 / IKEv2 VPN(create yours with [my Ansible Playbook](https://github.com/lexrus/vpn-deploy-playbook) or [deploy on DigitalOcean](http://installer.71m.us/install?url=https://github.com/lexrus/do-ikev1))
-- Xcode 6.2
+- Xcode 6.3
 - An Apple iOS developer account
 
 ## Build with Xcode
