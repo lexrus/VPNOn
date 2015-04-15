@@ -1,5 +1,5 @@
 //
-//  LTVPNDownloader.swift
+//  VPNDownloader.swift
 //  VPNOn
 //
 //  Created by Lex Tang on 1/27/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LTVPNDownloader: NSObject
+class VPNDownloader: NSObject
 {
     var queue: NSOperationQueue?
     

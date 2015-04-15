@@ -1,5 +1,5 @@
 //
-//  LTVPNTableViewController.swift
+//  VPNTableViewController.swift
 //  VPN On
 //
 //  Created by Lex Tang on 12/4/14.
@@ -11,7 +11,7 @@ import CoreData
 import NetworkExtension
 import VPNOnKit
 
-let kLTVPNIDKey = "VPNID"
+let kVPNIDKey = "VPNID"
 let kVPNConnectionSection = 0
 let kVPNOnDemandSection = 1
 let kVPNListSectionIndex = 2
@@ -22,7 +22,7 @@ let kVPNCellID = "VPNCell"
 let kOnDemandCellID = "OnDemandCell"
 let kDomainsCellID = "DomainsCell"
 
-class LTVPNTableViewController: UITableViewController, SimplePingDelegate, LTVPNDomainsViewControllerDelegate
+class VPNTableViewController: UITableViewController, SimplePingDelegate, VPNDomainsViewControllerDelegate
 {
     var vpns = [VPN]()
     var activatedVPNID: String? = nil
@@ -41,16 +41,16 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate, LTVPN
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("reloadDataAndPopDetail:"), name: kLTVPNDidCreate, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("reloadDataAndPopDetail:"), name: kLTVPNDidUpdate, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("reloadDataAndPopDetail:"), name: kLTVPNDidRemove, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("reloadDataAndPopDetail:"), name: kLTVPNDidDuplicate, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("reloadDataAndPopDetail:"), name: kVPNDidCreate, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("reloadDataAndPopDetail:"), name: kVPNDidUpdate, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("reloadDataAndPopDetail:"), name: kVPNDidRemove, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("reloadDataAndPopDetail:"), name: kVPNDidDuplicate, object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pingDidUpdate:"), name: "kLTPingDidUpdate", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pingDidComplete:"), name: "kLTPingDidComplete", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pingDidUpdate:"), name: "kPingDidUpdate", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pingDidComplete:"), name: "kPingDidComplete", object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("geoDidUpdate:"), name: "kLTGeoDidUpdate", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("selectionDidChange:"), name: "kLTSelectionDidChange", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("geoDidUpdate:"), name: "kGeoDidUpdate", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("selectionDidChange:"), name: "kSelectionDidChange", object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(
             self,
@@ -60,16 +60,16 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate, LTVPN
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: kLTVPNDidCreate, object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: kLTVPNDidUpdate, object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: kLTVPNDidRemove, object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: kLTVPNDidDuplicate, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: kVPNDidCreate, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: kVPNDidUpdate, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: kVPNDidRemove, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: kVPNDidDuplicate, object: nil)
         
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: "kLTPingDidUpdate", object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: "kLTPingDidComplete", object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "kPingDidUpdate", object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "kPingDidComplete", object: nil)
         
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: "kLTGeoDidUpdate", object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: "kLTSelectionDidChange", object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "kGeoDidUpdate", object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: "kSelectionDidChange", object: nil)
         
         NSNotificationCenter.defaultCenter().removeObserver(
             self,
@@ -121,7 +121,7 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate, LTVPN
         switch indexPath.section
         {
         case kVPNConnectionSection:
-            let cell = tableView.dequeueReusableCellWithIdentifier(kConnectionCellID, forIndexPath: indexPath) as! LTVPNSwitchCell
+            let cell = tableView.dequeueReusableCellWithIdentifier(kConnectionCellID, forIndexPath: indexPath) as! VPNSwitchCell
             cell.titleLabel!.text = connectionStatus
             cell.switchButton.on = connectionOn
             cell.switchButton.enabled = vpns.count != 0
@@ -129,11 +129,11 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate, LTVPN
             
         case kVPNOnDemandSection:
             if indexPath.row == 0 {
-                let switchCell = tableView.dequeueReusableCellWithIdentifier(kOnDemandCellID) as! LTVPNSwitchCell
+                let switchCell = tableView.dequeueReusableCellWithIdentifier(kOnDemandCellID) as! VPNSwitchCell
                 switchCell.switchButton.on = VPNManager.sharedManager.onDemand
                 return switchCell
             } else {
-                let domainsCell = tableView.dequeueReusableCellWithIdentifier(kDomainsCellID) as! LTVPNTableViewCell
+                let domainsCell = tableView.dequeueReusableCellWithIdentifier(kDomainsCellID) as! VPNTableViewCell
                 var domainsCount = 0
                 for domain in VPNManager.sharedManager.onDemandDomainsArray as [String] {
                     if domain.rangeOfString("*.") == nil {
@@ -146,7 +146,7 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate, LTVPN
             }
             
         case kVPNListSectionIndex:
-            let cell = tableView.dequeueReusableCellWithIdentifier(kVPNCellID, forIndexPath: indexPath) as! LTVPNTableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier(kVPNCellID, forIndexPath: indexPath) as! VPNTableViewCell
             let vpn = vpns[indexPath.row]
             cell.textLabel?.attributedText = cellTitleForIndexPath(indexPath)
             cell.detailTextLabel?.text = vpn.server
@@ -230,7 +230,7 @@ class LTVPNTableViewController: UITableViewController, SimplePingDelegate, LTVPN
         vpns = VPNDataManager.sharedManager.allVPN()
         tableView.reloadData()
         if let vpn = notification.object as! VPN? {
-            NSNotificationCenter.defaultCenter().postNotificationName("kLTGeoDidUpdate", object: vpn)
+            NSNotificationCenter.defaultCenter().postNotificationName("kGeoDidUpdate", object: vpn)
         }
         popDetailViewController()
         

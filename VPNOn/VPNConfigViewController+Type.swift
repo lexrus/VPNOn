@@ -1,5 +1,5 @@
 //
-//  LTVPNConfigViewController+Type.swift
+//  VPNConfigViewController+Type.swift
 //  VPNOn
 //
 //  Created by Lex Tang on 1/23/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension LTVPNConfigViewController
+extension VPNConfigViewController
 {
     @IBAction func didChangeType(sender: AnyObject) {
         toggleSaveButtonByStatus()

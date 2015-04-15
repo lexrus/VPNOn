@@ -1,5 +1,5 @@
 //
-//  LTVPNConfigViewController+TextField.swift
+//  VPNConfigViewController+TextField.swift
 //  VPNOn
 //
 //  Created by Lex on 1/17/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension LTVPNConfigViewController
+extension VPNConfigViewController
 {
     
     override func viewDidLoad() {

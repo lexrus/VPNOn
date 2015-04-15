@@ -1,5 +1,5 @@
 //
-//  LTVPNConfigViewController+Certificate.swift
+//  VPNConfigViewController+Certificate.swift
 //  VPNOn
 //
 //  Created by Lex Tang on 1/23/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension LTVPNConfigViewController
+extension VPNConfigViewController
 {
     func updateCertificateOptions() {
         groupCell.hidden = certificateSwitch.on

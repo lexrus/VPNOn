@@ -8,7 +8,7 @@
 
 import UIKit
 
-let kLTCurrentThemeIndexKey = "CurrentThemeIndex"
+let kCurrentThemeIndexKey = "CurrentThemeIndex"
 
 class LTThemeManager
 {
@@ -28,7 +28,7 @@ class LTThemeManager
     
     var themeIndex: Int {
         get {
-            if let index = NSUserDefaults.standardUserDefaults().objectForKey(kLTCurrentThemeIndexKey) as? NSNumber {
+            if let index = NSUserDefaults.standardUserDefaults().objectForKey(kCurrentThemeIndexKey) as? NSNumber {
                 if index.isKindOfClass(NSNumber.self) {
                     return min(themes.count - 1, index.integerValue ?? 0)
                 }
@@ -37,7 +37,7 @@ class LTThemeManager
         }
         set {
             let newNumber = NSNumber(integer: newValue)
-            NSUserDefaults.standardUserDefaults().setObject(newNumber, forKey: kLTCurrentThemeIndexKey)
+            NSUserDefaults.standardUserDefaults().setObject(newNumber, forKey: kCurrentThemeIndexKey)
             NSUserDefaults.standardUserDefaults().synchronize()
         }
     }
@@ -73,7 +73,7 @@ class LTThemeManager
         UILabel.lt_appearanceWhenContainedIn(UITableViewHeaderFooterView.self).textColor = theme.textColor
         LTTableViewCellTitle.appearance().textColor = theme.textColor
         UILabel.lt_appearanceWhenContainedIn(LTTableViewActionCell.self).textColor = theme.tintColor
-        UILabel.lt_appearanceWhenContainedIn(LTVPNTableViewCell.self).textColor = theme.textColor
+        UILabel.lt_appearanceWhenContainedIn(VPNTableViewCell.self).textColor = theme.textColor
         UITextView.lt_appearanceWhenContainedIn(UITableViewCell.self).backgroundColor = theme.tableViewCellColor
         UITextView.lt_appearanceWhenContainedIn(UITableViewCell.self).textColor = theme.textColor
         

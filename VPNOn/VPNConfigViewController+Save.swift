@@ -1,5 +1,5 @@
 //
-//  LTVPNConfigViewController+Save.swift
+//  VPNConfigViewController+Save.swift
 //  VPNOn
 //
 //  Created by Lex on 1/23/15.
@@ -9,7 +9,7 @@
 import UIKit
 import VPNOnKit
 
-extension LTVPNConfigViewController
+extension VPNConfigViewController
 {
     @IBAction func saveVPN(sender: AnyObject) {
         if let currentVPN = vpn {
@@ -27,7 +27,7 @@ extension LTVPNConfigViewController
             
             VPNDataManager.sharedManager.saveContext()
             
-            NSNotificationCenter.defaultCenter().postNotificationName(kLTVPNDidUpdate, object: currentVPN)
+            NSNotificationCenter.defaultCenter().postNotificationName(kVPNDidUpdate, object: currentVPN)
         } else {
             if let lastVPN = VPNDataManager.sharedManager.createVPN(
                 titleTextField.text,
@@ -41,7 +41,7 @@ extension LTVPNConfigViewController
                 certificateURL: certificateURL ?? "",
                 certificate: temporaryCertificateData
                 ) {
-                    NSNotificationCenter.defaultCenter().postNotificationName(kLTVPNDidCreate, object: lastVPN)
+                    NSNotificationCenter.defaultCenter().postNotificationName(kVPNDidCreate, object: lastVPN)
             }
         }
     }

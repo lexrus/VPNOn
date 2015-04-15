@@ -1,5 +1,5 @@
 //
-//  LTVPNTableViewController+Domains.swift
+//  VPNTableViewController+Domains.swift
 //  VPNOn
 //
 //  Created by Lex Tang on 1/29/15.
@@ -9,7 +9,7 @@
 import UIKit
 import VPNOnKit
 
-extension LTVPNTableViewController
+extension VPNTableViewController
 {
     @IBAction func didTapOnDemandSwitch(sender: UISwitch?) {
         VPNManager.sharedManager.onDemand = sender!.on
@@ -21,7 +21,7 @@ extension LTVPNTableViewController
         tableView.reloadSections(indexSet, withRowAnimation: UITableViewRowAnimation.Automatic)
     }
     
-    // MARK: - LTVPNDomainsViewControllerDelegate
+    // MARK: - VPNDomainsViewControllerDelegate
     
     func didTapSaveDomainsWithText(text: String) {
         updateOnDemandCell()

@@ -13,9 +13,9 @@ public struct LTHostLatency {
     public var latency: Int
 }
 
-let kLTPingDidUpdate = "kLTPingDidUpdate"
-let kLTPingDidComplete = "kLTPingDidComplete"
-let kLTPingTimeout: NSTimeInterval = 5
+let kPingDidUpdate = "kPingDidUpdate"
+let kPingDidComplete = "kPingDidComplete"
+let kPingTimeout: NSTimeInterval = 5
 
 public class LTPingOperation: NSObject, SimplePingDelegate {
     
@@ -40,7 +40,7 @@ public class LTPingOperation: NSObject, SimplePingDelegate {
         ping = SimplePing(hostName: hostLatency.hostname)
         if let p = ping {
             p.delegate = self
-            timeoutTimer = NSTimer.scheduledTimerWithTimeInterval(kLTPingTimeout, target: self, selector: Selector("stop"), userInfo: nil, repeats: false)
+            timeoutTimer = NSTimer.scheduledTimerWithTimeInterval(kPingTimeout, target: self, selector: Selector("stop"), userInfo: nil, repeats: false)
             p.start()
         }
     }
@@ -57,7 +57,7 @@ public class LTPingOperation: NSObject, SimplePingDelegate {
         startTimeInterval = nil
         complete = true
         
-        NSNotificationCenter.defaultCenter().postNotificationName(kLTPingDidUpdate, object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName(kPingDidUpdate, object: nil)
     }
     
     // MARK: - SimplePingDelegate
@@ -133,11 +133,11 @@ public class LTPingQueue: NSObject, SimplePingDelegate {
     
     override init() {
         super.init()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pingDidUpdate:"), name: kLTPingDidUpdate, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pingDidUpdate:"), name: kPingDidUpdate, object: nil)
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: kLTPingDidUpdate, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: kPingDidUpdate, object: nil)
     }
     
     public func latencyForHostname(hostname: String) -> Int {
@@ -181,7 +181,7 @@ public class LTPingQueue: NSObject, SimplePingDelegate {
             }
         }
         
-        NSNotificationCenter.defaultCenter().postNotificationName(kLTPingDidComplete, object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName(kPingDidComplete, object: nil)
     }
     
 }

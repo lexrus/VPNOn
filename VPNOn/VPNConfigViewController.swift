@@ -1,5 +1,5 @@
 //
-//  LTVPNConfigViewController.swift
+//  VPNConfigViewController.swift
 //  VPN On
 //
 //  Created by Lex Tang on 12/4/14.
@@ -10,13 +10,13 @@ import UIKit
 import VPNOnKit
 import CoreData
 
-let kLTVPNDidCreate = "kLTVPNDidCreate"
-let kLTVPNDidUpdate = "kLTVPNDidUpdate"
-let kLTVPNDidRemove = "kLTVPNDidRemove"
-let kLTVPNDidDuplicate = "kLTVPNDidDuplicate"
+let kVPNDidCreate = "kVPNDidCreate"
+let kVPNDidUpdate = "kVPNDidUpdate"
+let kVPNDidRemove = "kVPNDidRemove"
+let kVPNDidDuplicate = "kVPNDidDuplicate"
 
-class LTVPNConfigViewController: UITableViewController, UITextFieldDelegate,
-LTVPNCertificateViewControllerDelegate
+class VPNConfigViewController: UITableViewController, UITextFieldDelegate,
+VPNCertificateViewControllerDelegate
 {
     var initializedVPNInfo: VPNInfo? = nil
     
@@ -137,7 +137,7 @@ LTVPNCertificateViewControllerDelegate
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "certificate" {
-            if let targetVC = segue.destinationViewController as? LTVPNCertificateViewController {
+            if let targetVC = segue.destinationViewController as? VPNCertificateViewController {
                 targetVC.delegate = self
                 targetVC.temporaryCertificateURL = certificateURL
                 targetVC.temporaryCertificateData = temporaryCertificateData

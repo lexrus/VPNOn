@@ -1,5 +1,5 @@
 //
-//  LTVPNTableViewCell.swift
+//  VPNTableViewCell.swift
 //  VPNOn
 //
 //  Created by Lex on 1/16/15.
@@ -8,10 +8,10 @@
 
 import UIKit
 
-let kLTTableViewCellAccessoryWidth: CGFloat = 16
-let kLTTableViewCellRightMargin: CGFloat = 36
+let kTableViewCellAccessoryWidth: CGFloat = 16
+let kTableViewCellRightMargin: CGFloat = 36
 
-class LTVPNTableViewCell: UITableViewCell
+class VPNTableViewCell: UITableViewCell
 {
     var IKEv2: Bool = false {
         didSet {
@@ -29,7 +29,7 @@ class LTVPNTableViewCell: UITableViewCell
         if IKEv2 {
             let tagWidth: CGFloat = 34
             let tagHeight: CGFloat = 14
-            let tagX = CGRectGetWidth(bounds) - tagWidth - kLTTableViewCellAccessoryWidth - kLTTableViewCellRightMargin
+            let tagX = CGRectGetWidth(bounds) - tagWidth - kTableViewCellAccessoryWidth - kTableViewCellRightMargin
             let tagY = (CGRectGetHeight(bounds) - tagHeight) / 2
             let tagRect = CGRectMake(tagX, tagY, tagWidth, tagHeight)
             drawIKEv2Tag(radius: 2, rect: tagRect, tagText: "IKEv2", color: tintColor)
@@ -76,7 +76,7 @@ class LTVPNTableViewCell: UITableViewCell
             if accessoryType == .DisclosureIndicator {
                 if accessoryView == nil {
                     accessoryView = LTTableViewCellDeclosureIndicator()
-                    accessoryView!.frame = CGRectMake(0, 0, kLTTableViewCellAccessoryWidth, kLTTableViewCellAccessoryWidth)
+                    accessoryView!.frame = CGRectMake(0, 0, kTableViewCellAccessoryWidth, kTableViewCellAccessoryWidth)
                 }
             }
         }

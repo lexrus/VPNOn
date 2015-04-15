@@ -1,5 +1,5 @@
 //
-//  LTVPNConfigViewController+Manipulation.swift
+//  VPNConfigViewController+Manipulation.swift
 //  VPNOn
 //
 //  Created by Lex Tang on 1/20/15.
@@ -9,7 +9,7 @@
 import UIKit
 import VPNOnKit
 
-extension LTVPNConfigViewController
+extension VPNConfigViewController
 {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let selectedCell = tableView.cellForRowAtIndexPath(indexPath)!
@@ -24,7 +24,7 @@ extension LTVPNConfigViewController
                     
                     VPNDataManager.sharedManager.deleteVPN(currentVPN)
                     
-                    NSNotificationCenter.defaultCenter().postNotificationName(kLTVPNDidRemove, object: nil)
+                    NSNotificationCenter.defaultCenter().postNotificationName(kVPNDidRemove, object: nil)
                 })
                 let cancelButtonTitle = NSLocalizedString("Cancel", comment: "VPN Config - Delete alert - Cancel button")
                 var cancelAction = UIAlertAction(title: cancelButtonTitle, style: UIAlertActionStyle.Cancel, handler: nil)
@@ -35,7 +35,7 @@ extension LTVPNConfigViewController
         } else if selectedCell == duplicateCell {
             if let currentVPN = vpn {
                 if let newVPN = VPNDataManager.sharedManager.duplicate(currentVPN) {
-                    NSNotificationCenter.defaultCenter().postNotificationName(kLTVPNDidDuplicate, object: nil)
+                    NSNotificationCenter.defaultCenter().postNotificationName(kVPNDidDuplicate, object: nil)
                 }
             }
         }

@@ -1,5 +1,5 @@
 //
-//  LTVPNCertificateViewController.swift
+//  VPNCertificateViewController.swift
 //  VPNOn
 //
 //  Created by Lex on 1/23/15.
@@ -9,13 +9,13 @@
 import UIKit
 import VPNOnKit
 
-@objc protocol LTVPNCertificateViewControllerDelegate {
+@objc protocol VPNCertificateViewControllerDelegate {
     optional func didTapSaveCertificateWithData(data: NSData?, URLString andURLString: String)
 }
 
-class LTVPNCertificateViewController: UITableViewController, UITextFieldDelegate
+class VPNCertificateViewController: UITableViewController, UITextFieldDelegate
 {
-    weak var delegate: LTVPNCertificateViewControllerDelegate?
+    weak var delegate: VPNCertificateViewControllerDelegate?
     var temporaryCertificateURL: String?
     var temporaryCertificateData: NSData?
     
@@ -24,7 +24,7 @@ class LTVPNCertificateViewController: UITableViewController, UITextFieldDelegate
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var certificateURLField: UITextField!
-    @IBOutlet weak var certificateSummaryCell: LTVPNTableViewCell!
+    @IBOutlet weak var certificateSummaryCell: VPNTableViewCell!
     @IBOutlet weak var deleteCell: UITableViewCell!
     @IBOutlet weak var downloadCell: LTTableViewActionCell!
     
@@ -128,7 +128,7 @@ class LTVPNCertificateViewController: UITableViewController, UITextFieldDelegate
     func downloadURL() {
         downloading = true
         if let URL = NSURL(string: certificateURLField.text) {
-            LTVPNDownloader().download(URL) {
+            VPNDownloader().download(URL) {
                 response, data, error in
                 dispatch_async(dispatch_get_main_queue(), {
                     if let err = error {

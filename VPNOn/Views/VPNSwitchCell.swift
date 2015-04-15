@@ -1,5 +1,5 @@
 //
-//  LTVPNConnectionCell.swift
+//  VPNConnectionCell.swift
 //  VPNOn
 //
 //  Created by Lex Tang on 1/26/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LTVPNSwitchCell: LTVPNTableViewCell
+class VPNSwitchCell: VPNTableViewCell
 {
     @IBOutlet weak var switchButton: UISwitch!
     @IBOutlet weak var titleLabel: LTTableViewCellTitle!

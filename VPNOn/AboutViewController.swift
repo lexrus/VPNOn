@@ -1,5 +1,5 @@
 //
-//  LTVPNAboutViewController.swift
+//  AboutViewController.swift
 //  VPNOn
 //
 //  Created by Lex Tang on 1/6/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LTVPNAboutViewController : UIViewController {
+class AboutViewController : UIViewController {
     
     @IBOutlet weak var versionLabel: UILabel!
     
