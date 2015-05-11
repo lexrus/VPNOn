@@ -1,8 +1,16 @@
 machine:
+  xcode:
+    version: "6.3.1"
   environment:
-    XCODE_SCHEME: VPNOnKit
-
-checkout:
-  post:
-    - git submodule sync
-    - git submodule update --init
+    XCODE_SCHEME: VPNOn
+    XCODE_PROJECT: VPNOn.xcodeproj
+test:
+  override:
+    - xctool
+      -reporter pretty
+      -reporter junit:$CIRCLE_TEST_REPORTS/xcode/results.xml
+      -reporter plain:$CIRCLE_ARTIFACTS/xctool.log
+      -sdk iphonesimulator
+      -project $XCODE_PROJECT
+      -scheme $XCODE_SCHEME
+      test
