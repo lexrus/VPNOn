@@ -1,8 +1,8 @@
 # VPN On
 
+[![CircleCI](https://img.shields.io/circleci/project/lexrus/VPNOn.svg)](https://github.com/lexrus/VPNOn)
 [![GitHub tag](https://img.shields.io/github/tag/lexrus/VPNOn.svg?style=flat)](https://github.com/lexrus/VPNOn)
 ![License](https://img.shields.io/github/license/lexrus/VPNOn.svg?style=flat)
-[<img src="https://circleci.com/gh/lexrus/VPNOn.svg" height="20" alt="Circle CI"/>](https://circleci.com/gh/lexrus/VPNOn.swift)
 
 [![Git](https://img.shields.io/badge/GitHub-lexrus-blue.svg?style=flat)](https://github.com/lexrus)
 [![Twitter](https://img.shields.io/badge/twitter-@lexrus-blue.svg?style=flat)](http://twitter.com/lexrus)
