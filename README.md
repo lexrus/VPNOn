@@ -1,5 +1,14 @@
 # VPN On
 
+[![GitHub tag](https://img.shields.io/github/tag/lexrus/VPNOn.svg?style=flat)](https://github.com/lexrus/VPNOn)
+![License](https://img.shields.io/github/license/lexrus/VPNOn.svg?style=flat)
+[<img src="https://circleci.com/gh/lexrus/VPNOn.svg" height="20" alt="Circle CI"/>](https://circleci.com/gh/lexrus/VPNOn.swift)
+
+[![Git](https://img.shields.io/badge/GitHub-lexrus-blue.svg?style=flat)](https://github.com/lexrus)
+[![Twitter](https://img.shields.io/badge/twitter-@lexrus-blue.svg?style=flat)](http://twitter.com/lexrus)
+[![LinkedIn](https://img.shields.io/badge/linkedin-Lex Tang-blue.svg?style=flat)](https://cn.linkedin.com/in/lexrus/en)
+[![eMail](https://img.shields.io/badge/email-lexrus@gmail.com-blue.svg?style=flat)](mailto:lexrus@gmail.com?SUBJECT=About VPN On)
+
 [<img src="https://cloud.githubusercontent.com/assets/219689/5575342/963e0ee8-9013-11e4-8091-7ece67d64729.png" width="135" height="40" alt="AppStore"/>](https://itunes.apple.com/app/vpn-on/id951344279)
 
 <img src="https://cloud.githubusercontent.com/assets/219689/6800494/f6f98af4-d259-11e4-91c8-dc9d9ded3bfd.gif" width="375" height="375" alt="Screencast"/>
@@ -83,10 +92,6 @@ BTW. I'm a coffee addict, buy me a coffee via PayPal or Alipay: `lexrus@gmail.co
 Note: I set the optimization level of VPNOnKit to `None` in order to read Keychain properly due to [an issue of Swift](http://stackoverflow.com/questions/26355630/swift-keychain-and-provisioning-profiles).
 
 Flags are rasterized from [flag-icon-css](https://github.com/lipis/flag-icon-css).
-
-## Contact
-
-[Lex Tang](https://github.com/lexrus/) ([@lexrus on Twitter](https://twitter.com/lexrus/))
 
 ## License
 
