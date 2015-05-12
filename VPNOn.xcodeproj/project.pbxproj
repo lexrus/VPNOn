@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		D7033E5E1ACA54D600C36126 /* VPNManager+Wormhole.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7033E5D1ACA54D600C36126 /* VPNManager+Wormhole.swift */; };
-		D705784D1A9E103F00040279 /* VPNManager+Domains.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77593D91A79E674007161B2 /* VPNManager+Domains.swift */; };
-		D705784E1A9E104400040279 /* VPNManager+Geo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CFDDA41A9E05700057F53D /* VPNManager+Geo.swift */; };
 		D70578501AA5EFF000040279 /* VPNTableViewController+Geo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D705784F1AA5EFF000040279 /* VPNTableViewController+Geo.swift */; };
 		D706D7121AC945CF000B8433 /* VPNOnKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D757AF851A3B370E00AEF3CB /* VPNOnKit.framework */; };
 		D716BE631ACA6004009E7493 /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7033E6F1ACA5EA800C36126 /* GlanceController.swift */; };
@@ -56,16 +54,13 @@
 		D74C91C71A399AA400EAAAE1 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7453FAE1A31A69100F7E32D /* NetworkExtension.framework */; };
 		D754E2041A3B3A1B00E8F135 /* VPNOnKit.h in Headers */ = {isa = PBXBuildFile; fileRef = D754E2011A3B3A1B00E8F135 /* VPNOnKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D754E2071A3B3A7B00E8F135 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D754E2061A3B3A7B00E8F135 /* KeychainWrapper.swift */; };
-		D754E2081A3B3A7B00E8F135 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D754E2061A3B3A7B00E8F135 /* KeychainWrapper.swift */; };
 		D754E2171A3B3DE600E8F135 /* VPNOnKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D757AF851A3B370E00AEF3CB /* VPNOnKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D754E21A1A3B3E8E00E8F135 /* VPNOnKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D757AF851A3B370E00AEF3CB /* VPNOnKit.framework */; };
 		D754E21B1A3B3E9F00E8F135 /* VPNOnKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D757AF851A3B370E00AEF3CB /* VPNOnKit.framework */; };
 		D757AF901A3B370E00AEF3CB /* VPNOnKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D757AF851A3B370E00AEF3CB /* VPNOnKit.framework */; };
 		D757AF991A3B370E00AEF3CB /* VPNOnKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D757AF981A3B370E00AEF3CB /* VPNOnKitTests.swift */; };
 		D757AFA71A3B374200AEF3CB /* VPNKeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D757AFA51A3B374200AEF3CB /* VPNKeychainWrapper.swift */; };
-		D757AFA81A3B374200AEF3CB /* VPNKeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D757AFA51A3B374200AEF3CB /* VPNKeychainWrapper.swift */; };
 		D757AFA91A3B374200AEF3CB /* VPNManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D757AFA61A3B374200AEF3CB /* VPNManager.swift */; };
-		D757AFAA1A3B374200AEF3CB /* VPNManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D757AFA61A3B374200AEF3CB /* VPNManager.swift */; };
 		D757AFB31A3B392600AEF3CB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D757AFB21A3B392600AEF3CB /* Foundation.framework */; };
 		D757AFB41A3B392D00AEF3CB /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7453FAE1A31A69100F7E32D /* NetworkExtension.framework */; };
 		D758FE0D1A5BE35000929494 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D758FE0C1A5BE35000929494 /* AboutViewController.swift */; };
@@ -118,7 +113,6 @@
 		D7F0A01F1A6E484000F9C09A /* VPNDataManager+VPN.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7453F9D1A3196E200F7E32D /* VPNDataManager+VPN.swift */; };
 		D7F0A0201A6E484B00F9C09A /* VPNDataManager+Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F0A0191A6E47EA00F9C09A /* VPNDataManager+Selection.swift */; };
 		D7F0A0261A6E520300F9C09A /* VPNManager+ActivatedVPN.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F0A0251A6E520300F9C09A /* VPNManager+ActivatedVPN.swift */; };
-		D7F0A0271A6E520300F9C09A /* VPNManager+ActivatedVPN.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F0A0251A6E520300F9C09A /* VPNManager+ActivatedVPN.swift */; };
 		D7F64F021AA8407400C41789 /* VPNCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F64F011AA8407400C41789 /* VPNCell.swift */; };
 		D7F64F041AA9B87300C41789 /* PlusMarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F64F031AA9B87300C41789 /* PlusMarkView.swift */; };
 		D7F64F061AA9B90000C41789 /* AddCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F64F051AA9B90000C41789 /* AddCell.swift */; };
@@ -1096,12 +1090,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D757AFAA1A3B374200AEF3CB /* VPNManager.swift in Sources */,
-				D7F0A0271A6E520300F9C09A /* VPNManager+ActivatedVPN.swift in Sources */,
-				D705784D1A9E103F00040279 /* VPNManager+Domains.swift in Sources */,
-				D705784E1A9E104400040279 /* VPNManager+Geo.swift in Sources */,
-				D757AFA81A3B374200AEF3CB /* VPNKeychainWrapper.swift in Sources */,
-				D754E2081A3B3A7B00E8F135 /* KeychainWrapper.swift in Sources */,
 				D757AF991A3B370E00AEF3CB /* VPNOnKitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

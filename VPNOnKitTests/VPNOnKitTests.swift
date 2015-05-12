@@ -61,7 +61,7 @@ class VPNOnKitTests: XCTestCase {
     }
     
     func testInvalidDomain() {
-        let ipOfInvalidDomain = VPNManager.sharedManager.IPOfHost("q")
+        let ipOfInvalidDomain = VPNManager.sharedManager.IPOfHost("asdfghijkl")
         XCTAssertNil(ipOfInvalidDomain, "This domain must be invalid.")
     }
     
