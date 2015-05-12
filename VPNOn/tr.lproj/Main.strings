@@ -1,0 +1,108 @@
+
+/* Class = "UILabel"; text = "VPN On"; ObjectID = "0fX-zU-loY"; */
+"0fX-zU-loY.text" = "VPN On";
+
+/* Class = "UILabel"; text = "Server"; ObjectID = "2ji-tt-sNU"; */
+"2ji-tt-sNU.text" = "Sunucu";
+
+/* Class = "UITableViewSection"; footerTitle = "Turn this option on will keep VPN connection alive even screen is locked or network is unstable."; ObjectID = "5Qn-Bw-nVD"; */
+"5Qn-Bw-nVD.footerTitle" = "Ekran kilitliyken ya da ağ kararsız olsa bile VPN bağlantısını canlı tutmak için bu seçeneği açın.";
+
+/* Class = "UINavigationItem"; title = "VPN On"; ObjectID = "96C-Eg-mId"; */
+"96C-Eg-mId.title" = "VPN On";
+
+/* Class = "UILabel"; text = "Duplicate"; ObjectID = "Ao2-Hb-0jD"; */
+"Ao2-Hb-0jD.text" = "Yinele";
+
+/* Class = "UILabel"; text = "Domains relies on VPN "; ObjectID = "C2u-J4-G5f"; */
+"C2u-J4-G5f.text" = "Etki alanları VPN ağlarına dayalıdır";
+
+/* Class = "UILabel"; text = "On Demand"; ObjectID = "FSL-Tv-Cp6"; */
+"FSL-Tv-Cp6.text" = "İsteğe Bağlı";
+
+/* Class = "UILabel"; text = "Delete VPN"; ObjectID = "Im7-xc-lxF"; */
+"Im7-xc-lxF.text" = "VPN'yi Sil";
+
+/* Class = "UITextField"; placeholder = "Ask Every Time"; ObjectID = "Jej-Iu-pn8"; */
+"Jej-Iu-pn8.placeholder" = "Her Zaman Sor";
+
+/* Class = "UILabel"; text = "Always On"; ObjectID = "KqD-kH-A4B"; */
+"KqD-kH-A4B.text" = "Her Zaman Açık";
+
+/* Class = "UITableViewSection"; headerTitle = "Certificate URL"; ObjectID = "LMw-lh-D2c"; */
+"LMw-lh-D2c.headerTitle" = "Internet Adresi Sertifikası";
+
+/* Class = "UITextField"; placeholder = "http://"; ObjectID = "Otm-uK-bXz"; */
+"Otm-uK-bXz.placeholder" = "http://";
+
+/* Class = "UILabel"; text = "Description"; ObjectID = "P5o-gM-dBq"; */
+"P5o-gM-dBq.text" = "Açıklama";
+
+/* Class = "UITableViewSection"; footerTitle = "Requesting domains specified here may turn on VPN connection automatically. Please separate domains with whitespace or newline."; ObjectID = "PP3-2a-1up"; */
+"PP3-2a-1up.footerTitle" = "VPN bağlantısının etkinleştirme işlemini otomatik olarak gerçekleştirmek için buraya etki alanlarını belirtmeniz gerekiyor. Lütfen etki alanlarını boşluk ya da yeni satır ile ayırın.";
+
+/* Class = "UITableViewSection"; headerTitle = "Domains relies on VPN"; ObjectID = "PP3-2a-1up"; */
+"PP3-2a-1up.headerTitle" = "Etki alanları VPN ağlarına dayalıdır";
+
+/* Class = "UILabel"; text = "Certificate"; ObjectID = "Rjp-ng-T6V"; */
+"Rjp-ng-T6V.text" = "Sertifika";
+
+/* Class = "UITableViewController"; title = "Certificate"; ObjectID = "RyC-km-4Av"; */
+"RyC-km-4Av.title" = "Sertifika";
+
+/* Class = "UILabel"; text = "Account"; ObjectID = "Ud8-O3-Mk9"; */
+"Ud8-O3-Mk9.text" = "Hesap";
+
+/* Class = "UILabel"; text = "Use Certificate(PKCS12)"; ObjectID = "WSx-ME-hWf"; */
+"WSx-ME-hWf.text" = "Sertifika Kullan(PKCS12)";
+
+/* Class = "UILabel"; text = "Password"; ObjectID = "XpY-Af-O6z"; */
+"XpY-Af-O6z.text" = "Parola";
+
+/* Class = "UISegmentedControl"; be7-Ah-lJc.segmentTitles[0] = "Cisco IPSec"; ObjectID = "be7-Ah-lJc"; */
+"be7-Ah-lJc.segmentTitles[0]" = "Cisco IPSec";
+
+/* Class = "UISegmentedControl"; be7-Ah-lJc.segmentTitles[1] = "IKEv2"; ObjectID = "be7-Ah-lJc"; */
+"be7-Ah-lJc.segmentTitles[1]" = "IKEv2";
+
+/* Class = "UILabel"; text = "Add VPN Configuration..."; ObjectID = "dxQ-Vo-JWP"; */
+"dxQ-Vo-JWP.text" = "VPN Yapılandırması Ekle...";
+
+/* Class = "UITextField"; placeholder = "Required"; ObjectID = "eUh-Mf-gFu"; */
+"eUh-Mf-gFu.placeholder" = "Gerekli";
+
+/* Class = "UITextField"; placeholder = "Required"; ObjectID = "iNr-tg-tO5"; */
+"iNr-tg-tO5.placeholder" = "Gerekli";
+
+/* Class = "UILabel"; text = "Download"; ObjectID = "ijT-Cj-eqv"; */
+"ijT-Cj-eqv.text" = "İndir";
+
+/* Class = "UITextField"; placeholder = "Required"; ObjectID = "lOt-LM-XMh"; */
+"lOt-LM-XMh.placeholder" = "Gerekli";
+
+/* Class = "UINavigationItem"; title = "Configuration"; ObjectID = "p5c-ZP-mHC"; */
+"p5c-ZP-mHC.title" = "Yapılandırma";
+
+/* Class = "UILabel"; text = "Secret"; ObjectID = "pXD-5j-wvs"; */
+"pXD-5j-wvs.text" = "Gizli";
+
+/* Class = "UINavigationItem"; title = "Domains"; ObjectID = "rTs-vk-ZUy"; */
+"rTs-vk-ZUy.title" = "Etki Alanları";
+
+/* Class = "UILabel"; text = "0 domains"; ObjectID = "rtd-Ll-4ML"; */
+"rtd-Ll-4ML.text" = "0 etki alanı";
+
+/* Class = "UILabel"; text = "Delete"; ObjectID = "tHf-HC-jcR"; */
+"tHf-HC-jcR.text" = "Sil";
+
+/* Class = "UILabel"; text = "Certificate will be downloaded and stored in Keychain"; ObjectID = "w42-LH-TM5"; */
+"w42-LH-TM5.text" = "Sertifika indirildi ve Anahtarlığa alındı";
+
+/* Class = "UILabel"; text = "Group"; ObjectID = "w4U-Px-gJH"; */
+"w4U-Px-gJH.text" = "Grup";
+
+/* Class = "UINavigationItem"; title = "Certificate"; ObjectID = "whE-eZ-DWz"; */
+"whE-eZ-DWz.title" = "Sertifika";
+
+/* Class = "UILabel"; text = " "; ObjectID = "yI7-6o-40u"; */
+"yI7-6o-40u.text" = " ";

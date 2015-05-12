@@ -280,6 +280,9 @@
 		D74C91C61A399A8200EAAAE1 /* TodayWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TodayWidget.entitlements; sourceTree = "<group>"; };
 		D754E2011A3B3A1B00E8F135 /* VPNOnKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VPNOnKit.h; sourceTree = "<group>"; };
 		D754E2061A3B3A7B00E8F135 /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
+		D7568ADC1B023C930017576A /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Main.strings; sourceTree = "<group>"; };
+		D7568ADD1B023C930017576A /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D7568ADE1B023C930017576A /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D757AF851A3B370E00AEF3CB /* VPNOnKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VPNOnKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D757AF881A3B370E00AEF3CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D757AF8F1A3B370E00AEF3CB /* VPNOnKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VPNOnKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -930,6 +933,7 @@
 				vi,
 				"en-US",
 				"pt-PT",
+				tr,
 			);
 			mainGroup = D7453F201A31966F00F7E32D;
 			productRefGroup = D7453F2A1A31966F00F7E32D /* Products */;
@@ -1220,6 +1224,7 @@
 				D7A0250C1A873AB800417B33 /* vi */,
 				D72403371A8B32A70066CA47 /* en-US */,
 				D7EF65C71A8D9119005A3441 /* pt-PT */,
+				D7568ADD1B023C930017576A /* tr */,
 			);
 			name = Localizable.strings;
 			path = VPNOn;
@@ -1243,6 +1248,7 @@
 				D7A0250D1A873AB900417B33 /* vi */,
 				D72403381A8B32A70066CA47 /* en-US */,
 				D7EF65C81A8D911A005A3441 /* pt-PT */,
+				D7568ADE1B023C930017576A /* tr */,
 			);
 			name = Localizable.strings;
 			path = TodayWidget;
@@ -1266,6 +1272,7 @@
 				D7A0250B1A873AB800417B33 /* vi */,
 				D72403361A8B32A70066CA47 /* en-US */,
 				D7EF65C61A8D9119005A3441 /* pt-PT */,
+				D7568ADC1B023C930017576A /* tr */,
 			);
 			name = Main.storyboard;
 			path = VPNOn;
