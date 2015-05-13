@@ -100,6 +100,7 @@ class VPNCell: UICollectionViewCell {
         titleLabel.text = vpn.title
         switchIndicator.stopAnimating()
         switchIndicator.hidden = true
+        flagImageView.image = nil
 
         current = selected
         
@@ -117,15 +118,13 @@ class VPNCell: UICollectionViewCell {
             switchButton.hidden = true
             if let countryCode = vpn.countryCode {
                 flagImageView.image = UIImage(named: countryCode)
-                flagImageView.hidden = false
-                return
+            } else {
+                flagImageView.image = UIImage(named: "unknow")
             }
+            flagImageView.hidden = false
         } else {
             switchButton.hidden = false
         }
-        
-        flagImageView.image = nil
-        flagImageView.hidden = true
     }
     
     func updateTitleColor() {

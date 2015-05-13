@@ -31,6 +31,8 @@ class GlanceController: VPNInterfaceController {
                     
                     if let countryCode = vpn.countryCode {
                         row.flag.setImageNamed(countryCode)
+                    } else {
+                        row.flag.setImageNamed("unknow")
                     }
                     row.titleLabel.setText(vpn.title)
                     row.latency = LTPingQueue.sharedQueue.latencyForHostname(vpn.server)
