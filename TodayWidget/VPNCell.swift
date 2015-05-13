@@ -21,7 +21,7 @@ class VPNCell: UICollectionViewCell {
     
     override func didMoveToSuperview() {
         switchButton.onTintColor = UIColor(red: 0, green: 0.75, blue: 1, alpha: 1)
-        switchButton.tintColor = UIColor(white: 1.0, alpha: 0.05)
+        switchButton.tintColor = UIColor(white: 1.0, alpha: 0.2)
         flagImageView.layer.masksToBounds = true
         flagImageView.layer.cornerRadius = 5
         titleLabel.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 12)
@@ -35,14 +35,12 @@ class VPNCell: UICollectionViewCell {
             latencyLabel.hidden = !flagImageView.hidden
             if latency == -1 {
                 latencyLabel.text = "--"
-                switchButton.thumbTintColor = UIColor(white: 0.35, alpha: 1.0)
-                switchButton.tintColor = UIColor(white: 1.0, alpha: 0.05)
-                flagImageView.alpha = 0.2
+                switchButton.thumbTintColor = UIColor(white: 1.0, alpha: 1.0)
+                switchButton.tintColor = UIColor(white: 0.9, alpha: 0.4)
             } else {
                 switchButton.thumbTintColor = UIColor(white: 1.0, alpha: 1.0)
                 latencyLabel.text = "\(latency)"
                 switchButton.tintColor = colorOfLatency
-                flagImageView.alpha = 1.0
             }
             latencyLabel.textColor = colorOfLatency
             setNeedsDisplay()
@@ -58,7 +56,7 @@ class VPNCell: UICollectionViewCell {
             } else if latency > 500 {
                 latencyColor = UIColor(red: 1, green: 0.11, blue: 0.34, alpha: 0.6)
             } else if latency == -1 {
-                latencyColor = UIColor(white: 1.0, alpha: 0.08)
+                latencyColor = UIColor(white: 0.8, alpha: 0.4)
             }
             
             return latencyColor
@@ -123,6 +121,7 @@ class VPNCell: UICollectionViewCell {
             }
             flagImageView.hidden = false
         } else {
+            flagImageView.hidden = true
             switchButton.hidden = false
         }
     }
