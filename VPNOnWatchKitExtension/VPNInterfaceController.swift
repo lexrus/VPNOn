@@ -81,17 +81,18 @@ class VPNInterfaceController: WKInterfaceController {
     override func willActivate() {
         super.willActivate()
         
-        VPNManager.sharedManager.wormhole.listenForMessageWithIdentifier(kGreetingsFromContainer) {
-            messageObject in
+        var greetingsListener = Wormhole.Listener(name: kGreetingsFromContainer) {
+            [unowned self] message in
             self.updateContent()
             NSNotificationCenter.defaultCenter().postNotificationName(kGreetingsFromContainer, object: nil)
         }
+        VPNManager.sharedManager.wormhole.bindListener(greetingsListener, forMessageWithIdentifier: kGreetingsFromContainer)
     }
 
     override func didDeactivate() {
         super.didDeactivate()
         
-        VPNManager.sharedManager.wormhole.stopListeningForMessageWithIdentifier(kGreetingsFromContainer)
+        VPNManager.sharedManager.wormhole.removeListenerByName(kGreetingsFromContainer, forMessageWithIdentifier: kGreetingsFromContainer)
     }
     
     func updateContent() {

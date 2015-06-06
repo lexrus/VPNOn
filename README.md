@@ -171,12 +171,12 @@ SOFTWARE.
 ```
 ---
 
-#### [MMWormhole](https://github.com/mutualmobile/MMWormhole)
+#### [Wormhole](https://github.com/nixzhu/Wormhole)
 
 ```
 The MIT License (MIT)
 
-Copyright (c) 2014 Mutual Mobile
+Copyright (c) 2015 nixzhu
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

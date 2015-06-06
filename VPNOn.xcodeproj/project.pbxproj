@@ -63,6 +63,7 @@
 		D757AFA91A3B374200AEF3CB /* VPNManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D757AFA61A3B374200AEF3CB /* VPNManager.swift */; };
 		D757AFB31A3B392600AEF3CB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D757AFB21A3B392600AEF3CB /* Foundation.framework */; };
 		D757AFB41A3B392D00AEF3CB /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7453FAE1A31A69100F7E32D /* NetworkExtension.framework */; };
+		D758A68D1B234F540027380B /* Wormhole.swift in Sources */ = {isa = PBXBuildFile; fileRef = D758A68C1B234F540027380B /* Wormhole.swift */; };
 		D758FE0D1A5BE35000929494 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D758FE0C1A5BE35000929494 /* AboutViewController.swift */; };
 		D769FE941A7A3A3500EF1A1F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D769FE961A7A3A3500EF1A1F /* Localizable.strings */; };
 		D769FE9A1A7A3ADC00EF1A1F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D769FE9C1A7A3ADC00EF1A1F /* Localizable.strings */; };
@@ -97,8 +98,6 @@
 		D7D4992D1A723F6700B5F5ED /* VPNConfigViewController+Certificate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D4992C1A723F6700B5F5ED /* VPNConfigViewController+Certificate.swift */; };
 		D7D4992F1A724B4C00B5F5ED /* VPNConfigViewController+Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D4992E1A724B4C00B5F5ED /* VPNConfigViewController+Type.swift */; };
 		D7D499311A72542400B5F5ED /* LTTableViewCellDeclosureIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D499301A72542400B5F5ED /* LTTableViewCellDeclosureIndicator.swift */; };
-		D7D8900D1ACA451E000B7829 /* MMWormhole.h in Headers */ = {isa = PBXBuildFile; fileRef = D7D8900B1ACA451E000B7829 /* MMWormhole.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D7D8900E1ACA451E000B7829 /* MMWormhole.m in Sources */ = {isa = PBXBuildFile; fileRef = D7D8900C1ACA451E000B7829 /* MMWormhole.m */; };
 		D7DDB5631A78AC7E00BE7FB7 /* VPNTypeTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DDB5611A78A1D100BE7FB7 /* VPNTypeTag.swift */; };
 		D7DDB5651A78DA4600BE7FB7 /* VPNDomainsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DDB5641A78DA4600BE7FB7 /* VPNDomainsViewController.swift */; };
 		D7E28A7F1A680D9400507F33 /* LTThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E28A7B1A680D9400507F33 /* LTThemeManager.swift */; };
@@ -285,6 +284,7 @@
 		D757AFA51A3B374200AEF3CB /* VPNKeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNKeychainWrapper.swift; sourceTree = "<group>"; };
 		D757AFA61A3B374200AEF3CB /* VPNManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNManager.swift; sourceTree = "<group>"; };
 		D757AFB21A3B392600AEF3CB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D758A68C1B234F540027380B /* Wormhole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wormhole.swift; sourceTree = "<group>"; };
 		D758FE0C1A5BE35000929494 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		D75E75841A85DAF9004130D6 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Main.strings; sourceTree = "<group>"; };
 		D75E75851A85DAF9004130D6 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -337,8 +337,6 @@
 		D7D4992C1A723F6700B5F5ED /* VPNConfigViewController+Certificate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VPNConfigViewController+Certificate.swift"; sourceTree = "<group>"; };
 		D7D4992E1A724B4C00B5F5ED /* VPNConfigViewController+Type.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VPNConfigViewController+Type.swift"; sourceTree = "<group>"; };
 		D7D499301A72542400B5F5ED /* LTTableViewCellDeclosureIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTTableViewCellDeclosureIndicator.swift; sourceTree = "<group>"; };
-		D7D8900B1ACA451E000B7829 /* MMWormhole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMWormhole.h; sourceTree = "<group>"; };
-		D7D8900C1ACA451E000B7829 /* MMWormhole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMWormhole.m; sourceTree = "<group>"; };
 		D7DDB5611A78A1D100BE7FB7 /* VPNTypeTag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNTypeTag.swift; sourceTree = "<group>"; };
 		D7DDB5641A78DA4600BE7FB7 /* VPNDomainsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNDomainsViewController.swift; sourceTree = "<group>"; };
 		D7E28A7B1A680D9400507F33 /* LTThemeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTThemeManager.swift; sourceTree = "<group>"; };
@@ -568,9 +566,8 @@
 			children = (
 				D74129A71A5CFCDA008DE603 /* SimplePing.h */,
 				D74129A81A5CFCDA008DE603 /* SimplePing.m */,
-				D7D8900B1ACA451E000B7829 /* MMWormhole.h */,
-				D7D8900C1ACA451E000B7829 /* MMWormhole.m */,
 				D754E2061A3B3A7B00E8F135 /* KeychainWrapper.swift */,
+				D758A68C1B234F540027380B /* Wormhole.swift */,
 			);
 			path = Vendor;
 			sourceTree = "<group>";
@@ -692,7 +689,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D754E2041A3B3A1B00E8F135 /* VPNOnKit.h in Headers */,
-				D7D8900D1ACA451E000B7829 /* MMWormhole.h in Headers */,
 				D74129A91A5CFCDA008DE603 /* SimplePing.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1073,11 +1069,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D758A68D1B234F540027380B /* Wormhole.swift in Sources */,
 				D74129B01A5D1A91008DE603 /* LTPingQueue.swift in Sources */,
 				D754E2071A3B3A7B00E8F135 /* KeychainWrapper.swift in Sources */,
 				D757AFA71A3B374200AEF3CB /* VPNKeychainWrapper.swift in Sources */,
 				D74129AA1A5CFCDA008DE603 /* SimplePing.m in Sources */,
-				D7D8900E1ACA451E000B7829 /* MMWormhole.m in Sources */,
 				D757AFA91A3B374200AEF3CB /* VPNManager.swift in Sources */,
 				D7033E5E1ACA54D600C36126 /* VPNManager+Wormhole.swift in Sources */,
 				D7F0A0261A6E520300F9C09A /* VPNManager+ActivatedVPN.swift in Sources */,

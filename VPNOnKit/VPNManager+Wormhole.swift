@@ -13,6 +13,6 @@ let kVPNWormholeGreetings = "Greetings"
 extension VPNManager
 {
     public func seeYaInAnothaLifeBrotha() {
-        self.wormhole.passMessageObject("Hello", identifier: kVPNWormholeGreetings)
+        self.wormhole.passMessage("Hello", withIdentifier: kVPNWormholeGreetings)
     }
 }
