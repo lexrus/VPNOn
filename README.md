@@ -19,9 +19,9 @@ Turning on a VPN is always a painful experience on an iOS device due to the deep
 
 ## Requirements
 
-- An iPhone/iPad running iOS 8.1+
+- An iPhone/iPad running iOS 8.2+
 - An IPSec IKEv1 / IKEv2 VPN(create yours with [my Ansible Playbook](https://github.com/lexrus/vpn-deploy-playbook) or [deploy on DigitalOcean](http://installer.71m.us/install?url=https://github.com/lexrus/do-ikev1))
-- Xcode 6.3
+- Xcode 6.3.2+
 - An Apple iOS developer account
 
 ## Build with Xcode
@@ -85,13 +85,15 @@ BTW. I'm a coffee addict, buy me a coffee via PayPal or Alipay: `lexrus@gmail.co
 
 * Japanese translation - [Onevcat](https://github.com/onevcat)
 * Polish translation - [Seb Kaczorowski](http://photographyservices.ie)
+* Turkish - Ozancan Karataş
+* Dutch (Netherlands) translation - [Niels Peen](https://github.com/nielspeen)
 
 ## License
 
 This code is distributed under the terms and conditions of the MIT license.
 
 ```
-Copyright (C) 2015 LexTang.com
+Copyright (C) 2015 lexrus.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
