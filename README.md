@@ -56,7 +56,7 @@ Please contribute to [the Transifex project](https://www.transifex.com/projects/
 
 VPN service providers may list a link for their customers to efficiently add server configurations in VPN On. By register the `vpnon://` protocol, it supports the following URL scheme:
 
-`vpnon://{account}:{password}@{server}/?title={title}&group={group}&secret={secret}&alwayson=[yes|no]&ikev2=[yes|no]&certificate={certificate}`
+`vpnon://{account}:{password}@{server}/?title={title}&group={group}&secret={secret}&alwayson=[yes|no]&ikev2=[yes|no]`
 
 `server` and `title` are required, other fields are optional. The following URLs are valid:
 
