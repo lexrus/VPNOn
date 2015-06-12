@@ -310,6 +310,9 @@
 		D77F34181A6F7EA000796827 /* VPNConfigViewController+Manipulation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VPNConfigViewController+Manipulation.swift"; sourceTree = "<group>"; };
 		D77F341A1A6F842C00796827 /* LTTableViewActionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTTableViewActionCell.swift; sourceTree = "<group>"; };
 		D77F341C1A6F875E00796827 /* LTTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTTextField.swift; sourceTree = "<group>"; };
+		D783CC9C1B2ADE290087FFC1 /* nl-NL */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "nl-NL"; path = "nl-NL.lproj/Main.strings"; sourceTree = "<group>"; };
+		D783CC9D1B2ADE290087FFC1 /* nl-NL */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "nl-NL"; path = "nl-NL.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		D783CC9E1B2ADE290087FFC1 /* nl-NL */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "nl-NL"; path = "nl-NL.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		D79083D91A7BBD230089DB67 /* LTDarkGreenTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTDarkGreenTheme.swift; sourceTree = "<group>"; };
 		D79083DB1A7BBEF70089DB67 /* LTHelloKittyTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTHelloKittyTheme.swift; sourceTree = "<group>"; };
 		D79F736F1A72823400EB2289 /* VPNCertificateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNCertificateViewController.swift; sourceTree = "<group>"; };
@@ -924,6 +927,7 @@
 				"en-US",
 				"pt-PT",
 				tr,
+				"nl-NL",
 			);
 			mainGroup = D7453F201A31966F00F7E32D;
 			productRefGroup = D7453F2A1A31966F00F7E32D /* Products */;
@@ -1209,6 +1213,7 @@
 				D72403371A8B32A70066CA47 /* en-US */,
 				D7EF65C71A8D9119005A3441 /* pt-PT */,
 				D7568ADD1B023C930017576A /* tr */,
+				D783CC9D1B2ADE290087FFC1 /* nl-NL */,
 			);
 			name = Localizable.strings;
 			path = VPNOn;
@@ -1233,6 +1238,7 @@
 				D72403381A8B32A70066CA47 /* en-US */,
 				D7EF65C81A8D911A005A3441 /* pt-PT */,
 				D7568ADE1B023C930017576A /* tr */,
+				D783CC9E1B2ADE290087FFC1 /* nl-NL */,
 			);
 			name = Localizable.strings;
 			path = TodayWidget;
@@ -1257,6 +1263,7 @@
 				D72403361A8B32A70066CA47 /* en-US */,
 				D7EF65C61A8D9119005A3441 /* pt-PT */,
 				D7568ADC1B023C930017576A /* tr */,
+				D783CC9C1B2ADE290087FFC1 /* nl-NL */,
 			);
 			name = Main.storyboard;
 			path = VPNOn;
