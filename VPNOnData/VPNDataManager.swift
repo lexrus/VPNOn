@@ -106,18 +106,16 @@ class VPNDataManager
         
         var srcError: NSError?
         if coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: srcURL, options: options as [NSObject : AnyObject] as [NSObject : AnyObject], error: &srcError) == nil {
-            println("Failed to add src store: \(srcError)")
+            debugPrintln("Failed to add src store: \(srcError)")
             return
         }
         
         if let oldStore = coordinator.persistentStoreForURL(srcURL) {
             var migrationError: NSError?
             if coordinator.migratePersistentStore(oldStore, toURL: dstURL, options: options as [NSObject : AnyObject], withType: NSSQLiteStoreType, error: &migrationError) == nil {
-                println("Failed to migrate CoreData: \(migrationError)")
+                debugPrintln("Failed to migrate CoreData: \(migrationError)")
             } else {
-                if NSFileManager.defaultManager().removeItemAtPath(srcURL.path!, error: nil) {
-                    println("CoreData migration complete.")
-                }
+                NSFileManager.defaultManager().removeItemAtPath(srcURL.path!, error: nil)
             }
         }
     }

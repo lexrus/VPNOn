@@ -60,7 +60,7 @@ extension VPNDataManager
         
         var error: NSError?
         if !managedObjectContext!.save(&error) {
-            println("Could not save VPN \(error), \(error?.userInfo)")
+            debugPrintln("Could not save VPN \(error), \(error?.userInfo)")
         } else {
             saveContext()
             
@@ -118,7 +118,7 @@ extension VPNDataManager
                 return vpn as? VPN
             }
         } else {
-            println("Fetch error: \(error)")
+            debugPrintln("Fetch error: \(error)")
             return .None
         }
         return .None
@@ -155,7 +155,7 @@ extension VPNDataManager
                 vpns.append(vpn)
             }
         } else {
-            println("Failed to fetch VPNs: \(error?.localizedDescription)")
+            debugPrintln("Failed to fetch VPNs: \(error?.localizedDescription)")
         }
         
         return vpns

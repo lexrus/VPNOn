@@ -56,7 +56,7 @@ final public class VPNManager
                 instance.manager.loadFromPreferencesWithCompletionHandler {
                     (error: NSError!) -> Void in
                     if let err = error {
-                        println("Failed to load preferences: \(err.localizedDescription)")
+                        debugPrintln("Failed to load preferences: \(err.localizedDescription)")
                     }
                 }
                 instance.manager.localizedDescription = "VPN On"
@@ -108,21 +108,23 @@ final public class VPNManager
         
         configOnDemand()
         
+#if (arch(i386) || arch(x86_64)) && os(iOS) // #if TARGET_IPHONE_SIMULATOR for Swift
+        println("I'm afraid you can not connect VPN in simulators.")
+#else
         manager.saveToPreferencesWithCompletionHandler {
             (error: NSError!) -> Void in
             if let err = error {
-                println("Failed to save profile: \(err.localizedDescription)")
+                debugPrintln("Failed to save profile: \(err.localizedDescription)")
             } else {
                 var connectError : NSError?
                 self.manager.connection.startVPNTunnelAndReturnError(&connectError)
                 
                 if let connectErr = connectError {
-//                    println("Failed to start tunnel: \(connectErr.localizedDescription)")
-                } else {
-//                    println("VPN tunnel started.")
+                    debugPrintln("Failed to start tunnel: \(connectErr.localizedDescription)")
                 }
             }
         }
+#endif
     }
     
     public func connectIKEv2(title: String, server: String, account: String?, group: String?, alwaysOn: Bool = true, passwordRef: NSData?, secretRef: NSData?, certificate: NSData?) {
@@ -173,17 +175,13 @@ final public class VPNManager
         manager.saveToPreferencesWithCompletionHandler {
             (error: NSError!) -> Void in
             if let err = error {
-                println("Failed to save profile: \(err.localizedDescription)")
+                debugPrintln("Failed to save profile: \(err.localizedDescription)")
             } else {
                 var connectError : NSError?
-                if self.manager.connection.startVPNTunnelAndReturnError(&connectError) {
+                if !self.manager.connection.startVPNTunnelAndReturnError(&connectError) {
                     if let connectErr = connectError {
-                        println("Failed to start IKEv2 tunnel: \(connectErr.localizedDescription)")
-                    } else {
-                        println("IKEv2 tunnel started.")
+                        debugPrintln("Failed to start IKEv2 tunnel: \(connectErr.localizedDescription)")
                     }
-                } else {
-                    println("Failed to connect: \(connectError?.localizedDescription)")
                 }
             }
         }
