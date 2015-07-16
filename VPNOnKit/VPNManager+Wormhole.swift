@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 LexTang.com. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 let kVPNWormholeGreetings = "Greetings"
 

@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 LexTang.com. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 public struct GeoIP {
     public var countryCode: String

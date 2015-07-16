@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ViW-99-x1O">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="15A216g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ViW-99-x1O">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -12,6 +12,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="AeX-ws-o1Z">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="detailButton" indentationWidth="0.0" reuseIdentifier="VPNCell" textLabel="lZH-8X-gAr" detailTextLabel="osX-Sd-Wdb" rowHeight="60" style="IBUITableViewCellStyleSubtitle" id="zWG-PH-mx8" customClass="VPNTableViewCell" customModule="VPNOn" customModuleProvider="target">
@@ -21,6 +22,7 @@
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontSizeToFit="NO" id="lZH-8X-gAr">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <animations/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
@@ -30,6 +32,7 @@
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="osX-Sd-Wdb">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
@@ -38,7 +41,9 @@
                                             </variation>
                                         </label>
                                     </subviews>
+                                    <animations/>
                                 </tableViewCellContentView>
+                                <animations/>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddCell" textLabel="dxQ-Vo-JWP" rowHeight="50" style="IBUITableViewCellStyleDefault" id="uZZ-Jy-xuB" customClass="LTTableViewActionCell" customModule="VPNOn" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -47,6 +52,7 @@
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Add VPN Configuration..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="dxQ-Vo-JWP">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <animations/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <color key="textColor" red="0.0" green="0.50196081399917603" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -55,7 +61,9 @@
                                             </variation>
                                         </label>
                                     </subviews>
+                                    <animations/>
                                 </tableViewCellContentView>
+                                <animations/>
                                 <color key="tintColor" red="0.0" green="0.58573454618453979" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ConnectionCell" rowHeight="44" id="IT1-yk-TTT" customClass="VPNSwitchCell" customModule="VPNOn" customModuleProvider="target">
@@ -63,8 +71,9 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IT1-yk-TTT" id="JcU-uF-VOo">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Vlk-GJ-USi" customClass="LTTableViewCellTitle" customModule="VPNOn" customModuleProvider="target">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Vlk-GJ-USi" customClass="LTTableViewCellTitle" customModule="VPNOn" customModuleProvider="target">
                                             <rect key="frame" x="16" y="0.0" width="511" height="44"/>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="120" id="ask-HU-ECy"/>
                                             </constraints>
@@ -79,11 +88,13 @@
                                         </label>
                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="47m-SX-NPE">
                                             <rect key="frame" x="535" y="6.5" width="51" height="31"/>
+                                            <animations/>
                                             <connections>
                                                 <action selector="toggleVPN:" destination="Pga-4R-p1I" eventType="valueChanged" id="UnJ-wh-e0Z"/>
                                             </connections>
                                         </switch>
                                     </subviews>
+                                    <animations/>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="Vlk-GJ-USi" secondAttribute="bottom" id="8eL-vO-cqf"/>
                                         <constraint firstItem="47m-SX-NPE" firstAttribute="leading" secondItem="Vlk-GJ-USi" secondAttribute="trailing" constant="8" id="IZn-rm-qeX"/>
@@ -105,6 +116,7 @@
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
+                                <animations/>
                                 <connections>
                                     <outlet property="switchButton" destination="47m-SX-NPE" id="qUe-IG-DmZ"/>
                                     <outlet property="titleLabel" destination="Vlk-GJ-USi" id="RKG-BY-vq4"/>
@@ -115,8 +127,9 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="A9V-lZ-Nsj" id="pRh-AX-cT1">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="On Demand" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="FSL-Tv-Cp6" customClass="LTTableViewCellTitle" customModule="VPNOn" customModuleProvider="target">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On Demand" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="FSL-Tv-Cp6" customClass="LTTableViewCellTitle" customModule="VPNOn" customModuleProvider="target">
                                             <rect key="frame" x="16" y="0.0" width="511" height="44"/>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="120" id="EZR-IO-w0H"/>
                                             </constraints>
@@ -131,11 +144,13 @@
                                         </label>
                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hT9-jt-Gxb">
                                             <rect key="frame" x="535" y="6.5" width="51" height="31"/>
+                                            <animations/>
                                             <connections>
                                                 <action selector="didTapOnDemandSwitch:" destination="Pga-4R-p1I" eventType="valueChanged" id="UPC-BV-mcG"/>
                                             </connections>
                                         </switch>
                                     </subviews>
+                                    <animations/>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="hT9-jt-Gxb" secondAttribute="trailing" constant="15" id="18F-nF-2Bj"/>
                                         <constraint firstItem="FSL-Tv-Cp6" firstAttribute="leading" secondItem="pRh-AX-cT1" secondAttribute="leadingMargin" constant="8" id="20m-cU-iY7">
@@ -157,6 +172,7 @@
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
+                                <animations/>
                                 <connections>
                                     <outlet property="switchButton" destination="hT9-jt-Gxb" id="wBg-wM-RLx"/>
                                     <outlet property="titleLabel" destination="FSL-Tv-Cp6" id="b9M-WF-cJb"/>
@@ -169,18 +185,22 @@
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Domains relies on VPN " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="C2u-J4-G5f">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <animations/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="0 domains" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="rtd-Ll-4ML">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <animations/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <animations/>
                                 </tableViewCellContentView>
+                                <animations/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -220,6 +240,7 @@
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VPN On" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0fX-zU-loY">
                                         <rect key="frame" x="0.0" y="30" width="600" height="70"/>
+                                        <animations/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="70" id="t5C-bE-9ij"/>
                                         </constraints>
@@ -229,6 +250,7 @@
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WWf-VW-bgE">
                                         <rect key="frame" x="0.0" y="108" width="600" height="20"/>
+                                        <animations/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="kZ6-rX-Ok1"/>
                                         </constraints>
@@ -237,6 +259,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <animations/>
                                 <constraints>
                                     <constraint firstItem="0fX-zU-loY" firstAttribute="leading" secondItem="WWf-VW-bgE" secondAttribute="leading" id="12l-ho-bCX"/>
                                     <constraint firstAttribute="trailing" secondItem="0fX-zU-loY" secondAttribute="trailing" id="3qG-Wg-Eyk"/>
@@ -249,6 +272,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="yuU-t8-dga" firstAttribute="bottom" secondItem="JFp-LK-Nhy" secondAttribute="top" id="6PY-kP-gG7"/>
@@ -273,6 +297,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="z01-o8-60b">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <inset key="scrollIndicatorInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <sections>
@@ -285,6 +310,7 @@
                                             <subviews>
                                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="be7-Ah-lJc">
                                                     <rect key="frame" x="16" y="8" width="568" height="29"/>
+                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="28" id="F9U-Fp-6Nm"/>
                                                     </constraints>
@@ -297,6 +323,7 @@
                                                     </connections>
                                                 </segmentedControl>
                                             </subviews>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="centerY" secondItem="be7-Ah-lJc" secondAttribute="centerY" id="LnK-8z-Ib4"/>
                                                 <constraint firstItem="be7-Ah-lJc" firstAttribute="leading" secondItem="6Ma-jm-Qul" secondAttribute="leadingMargin" constant="8" id="eDb-En-MNn">
@@ -307,6 +334,7 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="be7-Ah-lJc" secondAttribute="trailing" constant="8" id="yFv-GK-O4u"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <animations/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -319,6 +347,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="P5o-gM-dBq" customClass="LTTableViewCellTitle" customModule="VPNOn" customModuleProvider="target">
                                                     <rect key="frame" x="16" y="0.0" width="100" height="43.5"/>
+                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="6T6-fJ-E9x"/>
                                                     </constraints>
@@ -328,6 +357,7 @@
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Required" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="lOt-LM-XMh" customClass="LTTextField" customModule="VPNOn" customModuleProvider="target">
                                                     <rect key="frame" x="124" y="0.0" width="468" height="43.5"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="next"/>
                                                     <variation key="heightClass=regular" misplaced="YES">
@@ -341,6 +371,7 @@
                                                     </connections>
                                                 </textField>
                                             </subviews>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstItem="lOt-LM-XMh" firstAttribute="top" secondItem="ZRf-8n-ROV" secondAttribute="top" id="EDM-ZR-SKY"/>
                                                 <constraint firstItem="lOt-LM-XMh" firstAttribute="leading" secondItem="P5o-gM-dBq" secondAttribute="trailing" constant="8" id="RZ5-As-TUb"/>
@@ -355,6 +386,7 @@
                                                 </constraint>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <animations/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="44" id="Pwm-3r-gMZ">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -363,6 +395,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Server" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="2ji-tt-sNU" customClass="LTTableViewCellTitle" customModule="VPNOn" customModuleProvider="target">
                                                     <rect key="frame" x="16" y="0.0" width="100" height="43"/>
+                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="wm9-fj-gS0"/>
                                                     </constraints>
@@ -372,6 +405,7 @@
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Required" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="iNr-tg-tO5" customClass="LTTextField" customModule="VPNOn" customModuleProvider="target">
                                                     <rect key="frame" x="124" y="0.0" width="468" height="43"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL" keyboardAppearance="alert" returnKeyType="next"/>
                                                     <variation key="heightClass=regular" misplaced="YES">
@@ -382,6 +416,7 @@
                                                     </connections>
                                                 </textField>
                                             </subviews>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="iNr-tg-tO5" secondAttribute="trailing" constant="8" id="2gx-PA-13U"/>
                                                 <constraint firstAttribute="bottom" secondItem="iNr-tg-tO5" secondAttribute="bottom" id="IMA-Vw-Eo7"/>
@@ -396,6 +431,7 @@
                                                 </constraint>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <animations/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="44" id="yXp-5O-Fvi">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -404,6 +440,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ud8-O3-Mk9" customClass="LTTableViewCellTitle" customModule="VPNOn" customModuleProvider="target">
                                                     <rect key="frame" x="16" y="0.0" width="100" height="43"/>
+                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="Z4R-hP-RLL"/>
                                                     </constraints>
@@ -413,6 +450,7 @@
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Required" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="eUh-Mf-gFu" customClass="LTTextField" customModule="VPNOn" customModuleProvider="target">
                                                     <rect key="frame" x="124" y="0.0" width="468" height="43"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert" returnKeyType="next"/>
                                                     <variation key="heightClass=regular" misplaced="YES">
@@ -423,6 +461,7 @@
                                                     </connections>
                                                 </textField>
                                             </subviews>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstItem="Ud8-O3-Mk9" firstAttribute="top" secondItem="bLj-pi-8Qg" secondAttribute="top" id="Adu-Dn-FQk">
                                                     <variation key="widthClass=compact" constant="0.0"/>
@@ -439,6 +478,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="eUh-Mf-gFu" secondAttribute="trailing" constant="8" id="unn-T6-6gU"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <animations/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="44" id="ulQ-KU-wJ7">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -447,6 +487,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="XpY-Af-O6z" customClass="LTTableViewCellTitle" customModule="VPNOn" customModuleProvider="target">
                                                     <rect key="frame" x="16" y="0.0" width="100" height="43"/>
+                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="VUL-lB-9mi"/>
                                                     </constraints>
@@ -456,6 +497,7 @@
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Ask Every Time" adjustsFontSizeToFit="NO" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="Jej-Iu-pn8" customClass="LTTextField" customModule="VPNOn" customModuleProvider="target">
                                                     <rect key="frame" x="124" y="0.0" width="468" height="43"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert" returnKeyType="next" secureTextEntry="YES"/>
                                                     <variation key="heightClass=regular" misplaced="YES">
@@ -466,6 +508,7 @@
                                                     </connections>
                                                 </textField>
                                             </subviews>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="XpY-Af-O6z" secondAttribute="bottom" id="4Ld-kq-eZ2"/>
                                                 <constraint firstAttribute="trailing" secondItem="Jej-Iu-pn8" secondAttribute="trailing" constant="8" id="CUB-IV-Z52"/>
@@ -480,6 +523,7 @@
                                                 <constraint firstItem="Jej-Iu-pn8" firstAttribute="leading" secondItem="XpY-Af-O6z" secondAttribute="trailing" constant="8" id="qiq-tf-Hzh"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <animations/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="44" id="PKa-3U-rIL">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -488,17 +532,20 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use Certificate(PKCS12)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="WSx-ME-hWf" customClass="LTTableViewCellTitle" customModule="VPNOn" customModuleProvider="target">
                                                     <rect key="frame" x="16" y="0.0" width="511" height="43"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="p21-Cr-Izw">
                                                     <rect key="frame" x="535" y="6" width="51" height="31"/>
+                                                    <animations/>
                                                     <connections>
                                                         <action selector="didChangeCertificateSwitch:" destination="z7c-q3-RcX" eventType="valueChanged" id="3Ad-M0-Sg3"/>
                                                     </connections>
                                                 </switch>
                                             </subviews>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstItem="WSx-ME-hWf" firstAttribute="top" secondItem="yUi-A4-Gb9" secondAttribute="top" id="Dyd-VD-1a2"/>
                                                 <constraint firstAttribute="centerY" secondItem="p21-Cr-Izw" secondAttribute="centerY" id="RYL-qp-sbh"/>
@@ -512,6 +559,7 @@
                                                 </constraint>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <animations/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="44" id="gNQ-Oc-Xan">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -520,6 +568,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Secret" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="pXD-5j-wvs" customClass="LTTableViewCellTitle" customModule="VPNOn" customModuleProvider="target">
                                                     <rect key="frame" x="16" y="0.0" width="100" height="43"/>
+                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="cbk-wL-N0z"/>
                                                     </constraints>
@@ -529,6 +578,7 @@
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="V1B-uA-leR" customClass="LTTextField" customModule="VPNOn" customModuleProvider="target">
                                                     <rect key="frame" x="124" y="0.0" width="468" height="43"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert" returnKeyType="next" secureTextEntry="YES"/>
                                                     <variation key="heightClass=regular" misplaced="YES">
@@ -539,6 +589,7 @@
                                                     </connections>
                                                 </textField>
                                             </subviews>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstItem="V1B-uA-leR" firstAttribute="leading" secondItem="pXD-5j-wvs" secondAttribute="trailing" constant="8" id="EKn-Gr-5rT"/>
                                                 <constraint firstItem="pXD-5j-wvs" firstAttribute="leading" secondItem="L4Y-v0-bDv" secondAttribute="leadingMargin" constant="8" id="K1v-0g-LjC">
@@ -553,6 +604,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="V1B-uA-leR" secondAttribute="trailing" constant="8" id="u9X-3y-Neo"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <animations/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="44" id="S09-rd-58a">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -561,6 +613,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="w4U-Px-gJH" customClass="LTTableViewCellTitle" customModule="VPNOn" customModuleProvider="target">
                                                     <rect key="frame" x="16" y="0.0" width="100" height="43"/>
+                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="KD9-Ga-pSE"/>
                                                     </constraints>
@@ -570,6 +623,7 @@
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="5bP-9z-qLc" customClass="LTTextField" customModule="VPNOn" customModuleProvider="target">
                                                     <rect key="frame" x="124" y="0.0" width="468" height="43"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert" returnKeyType="done"/>
                                                     <variation key="heightClass=regular" misplaced="YES">
@@ -580,6 +634,7 @@
                                                     </connections>
                                                 </textField>
                                             </subviews>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstItem="5bP-9z-qLc" firstAttribute="leading" secondItem="w4U-Px-gJH" secondAttribute="trailing" constant="8" id="2ph-v3-14Q"/>
                                                 <constraint firstItem="w4U-Px-gJH" firstAttribute="top" secondItem="tm2-hd-zBa" secondAttribute="top" id="3tv-Hd-hg7"/>
@@ -594,6 +649,7 @@
                                                 <constraint firstItem="5bP-9z-qLc" firstAttribute="top" secondItem="tm2-hd-zBa" secondAttribute="top" id="l6f-VF-oFZ"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <animations/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="Rjp-ng-T6V" detailTextLabel="yI7-6o-40u" rowHeight="44" style="IBUITableViewCellStyleValue1" id="UD8-VF-g5N" customClass="VPNTableViewCell" customModule="VPNOn" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -602,18 +658,22 @@
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Certificate" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="Rjp-ng-T6V">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text=" " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="yI7-6o-40u">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <animations/>
                                         </tableViewCellContentView>
+                                        <animations/>
                                         <connections>
                                             <segue destination="RyC-km-4Av" kind="show" identifier="certificate" id="gIr-LN-cWL"/>
                                         </connections>
@@ -629,6 +689,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Always On" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="KqD-kH-A4B" customClass="LTTableViewCellTitle" customModule="VPNOn" customModuleProvider="target">
                                                     <rect key="frame" x="16" y="0.0" width="511" height="43"/>
+                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="120" id="Po1-bX-0S9"/>
                                                     </constraints>
@@ -643,11 +704,13 @@
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Bg-cZ-sYk">
                                                     <rect key="frame" x="535" y="6" width="51" height="31"/>
+                                                    <animations/>
                                                     <connections>
                                                         <action selector="didChangeAlwaysOn:" destination="z7c-q3-RcX" eventType="valueChanged" id="92k-Bu-rjO"/>
                                                     </connections>
                                                 </switch>
                                             </subviews>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="KqD-kH-A4B" secondAttribute="bottom" id="2OK-4d-kXm"/>
                                                 <constraint firstItem="KqD-kH-A4B" firstAttribute="leading" secondItem="eYt-5e-o4t" secondAttribute="leadingMargin" constant="8" id="6lb-LZ-eSt">
@@ -669,6 +732,7 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
+                                        <animations/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -681,6 +745,7 @@
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Duplicate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="Ao2-Hb-0jD">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="heightClass=regular-widthClass=compact">
@@ -688,7 +753,9 @@
                                                     </variation>
                                                 </label>
                                             </subviews>
+                                            <animations/>
                                         </tableViewCellContentView>
+                                        <animations/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -701,6 +768,7 @@
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Delete VPN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="Im7-xc-lxF">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -709,7 +777,9 @@
                                                     </variation>
                                                 </label>
                                             </subviews>
+                                            <animations/>
                                         </tableViewCellContentView>
+                                        <animations/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -755,6 +825,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="1gR-8s-pXN">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
                             <tableViewSection headerTitle="Certificate URL" footerTitle="" id="LMw-lh-D2c">
@@ -764,8 +835,9 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7pf-yf-nZx" id="q7L-dn-abJ">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="http://" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Otm-uK-bXz" customClass="LTTextField" customModule="VPNOn" customModuleProvider="target">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="http://" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Otm-uK-bXz" customClass="LTTextField" customModule="VPNOn" customModuleProvider="target">
                                                     <rect key="frame" x="16" y="0.0" width="576" height="44"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL" keyboardAppearance="alert" returnKeyType="done"/>
                                                     <connections>
@@ -773,6 +845,7 @@
                                                     </connections>
                                                 </textField>
                                             </subviews>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Otm-uK-bXz" secondAttribute="trailing" id="5TI-FU-t1Q"/>
                                                 <constraint firstAttribute="bottom" secondItem="Otm-uK-bXz" secondAttribute="bottom" id="gVA-LL-3sQ"/>
@@ -784,6 +857,7 @@
                                                 <constraint firstItem="Otm-uK-bXz" firstAttribute="top" secondItem="q7L-dn-abJ" secondAttribute="top" id="t58-9C-xg9"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <animations/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="w42-LH-TM5" rowHeight="30" style="IBUITableViewCellStyleDefault" id="jPY-f3-KFc" customClass="VPNTableViewCell" customModule="VPNOn" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -792,12 +866,15 @@
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="left" text="Certificate will be downloaded and stored in Keychain" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="w42-LH-TM5">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <animations/>
                                         </tableViewCellContentView>
+                                        <animations/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="ijT-Cj-eqv" style="IBUITableViewCellStyleDefault" id="B6o-C5-KyU" customClass="LTTableViewActionCell" customModule="VPNOn" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -806,12 +883,15 @@
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Download" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="ijT-Cj-eqv">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <animations/>
                                         </tableViewCellContentView>
+                                        <animations/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -824,12 +904,15 @@
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Delete" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="tHf-HC-jcR">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <animations/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <animations/>
                                         </tableViewCellContentView>
+                                        <animations/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -865,6 +948,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="vZ7-kQ-XD7">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
                             <tableViewSection headerTitle="Domains relies on VPN" footerTitle="Requesting domains specified here may turn on VPN connection automatically. Please separate domains with whitespace or newline." id="PP3-2a-1up">
@@ -876,6 +960,7 @@
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Fl-Y2-HnO">
                                                     <rect key="frame" x="11" y="8" width="581" height="183.5"/>
+                                                    <animations/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL" keyboardAppearance="alert"/>
@@ -884,6 +969,7 @@
                                                     </connections>
                                                 </textView>
                                             </subviews>
+                                            <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="trailingMargin" secondItem="8Fl-Y2-HnO" secondAttribute="trailing" id="a1p-0U-ztu"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="8Fl-Y2-HnO" secondAttribute="bottom" id="bGB-sX-DoF"/>
@@ -891,6 +977,7 @@
                                                 <constraint firstItem="8Fl-Y2-HnO" firstAttribute="leading" secondItem="Gc1-pe-asp" secondAttribute="leadingMargin" constant="3" id="hHH-bX-bSZ"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <animations/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -924,6 +1011,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="c8K-CS-sGW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -957,6 +1045,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="TDU-pb-GJr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
