@@ -55,7 +55,7 @@ class VPNInterfaceController: WKInterfaceController {
         NSNotificationCenter.defaultCenter().addObserver(
             self,
             selector: Selector("pingDidUpdate:"),
-            name: "kPingDidUpdate",
+            name: kPingDidUpdate,
             object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self,

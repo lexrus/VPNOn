@@ -85,7 +85,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
         NSNotificationCenter.defaultCenter().addObserver(
             self,
             selector: Selector("pingDidUpdate:"),
-            name: "kPingDidUpdate",
+            name: kPingDidUpdate,
             object: nil)
     }
     
@@ -100,7 +100,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
             object: nil)
         NSNotificationCenter.defaultCenter().removeObserver(
             self,
-            name: "kPingDidUpdate",
+            name: kPingDidUpdate,
             object: nil)
     }
     

@@ -11,6 +11,9 @@ import CoreData
 import NetworkExtension
 import VPNOnKit
 
+let kGeoDidUpdate = "kGeoDidUpdate"
+let kSelectionDidChange = "kSelectionDidChange"
+
 let kVPNIDKey = "VPNID"
 let kVPNConnectionSection = 0
 let kVPNOnDemandSection = 1
@@ -46,11 +49,11 @@ class VPNTableViewController: UITableViewController, SimplePingDelegate, VPNDoma
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("reloadDataAndPopDetail:"), name: kVPNDidRemove, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("reloadDataAndPopDetail:"), name: kVPNDidDuplicate, object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pingDidUpdate:"), name: "kPingDidUpdate", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pingDidComplete:"), name: "kPingDidComplete", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pingDidUpdate:"), name: kPingDidUpdate, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pingDidComplete:"), name: kPingDidComplete, object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("geoDidUpdate:"), name: "kGeoDidUpdate", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("selectionDidChange:"), name: "kSelectionDidChange", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("geoDidUpdate:"), name: kGeoDidUpdate, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("selectionDidChange:"), name: kSelectionDidChange, object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(
             self,
@@ -65,11 +68,11 @@ class VPNTableViewController: UITableViewController, SimplePingDelegate, VPNDoma
         NSNotificationCenter.defaultCenter().removeObserver(self, name: kVPNDidRemove, object: nil)
         NSNotificationCenter.defaultCenter().removeObserver(self, name: kVPNDidDuplicate, object: nil)
         
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: "kPingDidUpdate", object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: "kPingDidComplete", object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: kPingDidUpdate, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: kPingDidComplete, object: nil)
         
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: "kGeoDidUpdate", object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: "kSelectionDidChange", object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: kGeoDidUpdate, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: kSelectionDidChange, object: nil)
         
         NSNotificationCenter.defaultCenter().removeObserver(
             self,
@@ -230,7 +233,7 @@ class VPNTableViewController: UITableViewController, SimplePingDelegate, VPNDoma
         vpns = VPNDataManager.sharedManager.allVPN()
         tableView.reloadData()
         if let vpn = notification.object as! VPN? {
-            NSNotificationCenter.defaultCenter().postNotificationName("kGeoDidUpdate", object: vpn)
+            NSNotificationCenter.defaultCenter().postNotificationName(kGeoDidUpdate, object: vpn)
         }
         popDetailViewController()
         
