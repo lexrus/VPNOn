@@ -15,7 +15,7 @@ extension VPNManager
 {
     public var onDemand: Bool {
         get {
-            if let onDemandObject = _defaults.objectForKey(kOnDemandKey) as! NSNumber? {
+            if let onDemandObject = defaults.objectForKey(kOnDemandKey) as! NSNumber? {
                 if onDemandObject.isKindOfClass(NSNumber.self) {
                     return onDemandObject.boolValue
                 }
@@ -23,25 +23,25 @@ extension VPNManager
             return false
         }
         set {
-            _defaults.setObject(NSNumber(bool: newValue), forKey: kOnDemandKey)
-            _defaults.synchronize()
+            defaults.setObject(NSNumber(bool: newValue), forKey: kOnDemandKey)
+            defaults.synchronize()
         }
     }
     
     public var onDemandDomains: String? {
         get {
-            if let domainsObject = _defaults.stringForKey(kOnDemandDomainsKey) {
+            if let domainsObject = defaults.stringForKey(kOnDemandDomainsKey) {
                 return domainsObject
             }
             return .None
         }
         set {
             if newValue == nil {
-                _defaults.removeObjectForKey(kOnDemandDomainsKey)
+                defaults.removeObjectForKey(kOnDemandDomainsKey)
             } else {
-                _defaults.setObject(newValue, forKey: kOnDemandDomainsKey)
+                defaults.setObject(newValue, forKey: kOnDemandDomainsKey)
             }
-            _defaults.synchronize()
+            defaults.synchronize()
         }
     }
     
