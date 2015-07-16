@@ -14,11 +14,11 @@ let kAppGroupIdentifier = "group.VPNOn"
 
 final public class VPNManager
 {
-    lazy var _manager: NEVPNManager = {
+    lazy var manager: NEVPNManager = {
         return NEVPNManager.sharedManager()!
         }()
     
-    lazy var _defaults: NSUserDefaults = {
+    lazy var defaults: NSUserDefaults = {
         return NSUserDefaults(suiteName: kAppGroupIdentifier)!
         }()
     
@@ -28,7 +28,7 @@ final public class VPNManager
     
     public var status: NEVPNStatus {
         get {
-            return _manager.connection.status
+            return manager.connection.status
         }
     }
     
@@ -36,14 +36,14 @@ final public class VPNManager
     
     public var displayFlags: Bool {
         get {
-            if let value = _defaults.objectForKey(kVPNOnDisplayFlags) as! Int? {
+            if let value = defaults.objectForKey(kVPNOnDisplayFlags) as! Int? {
                 return Bool(value)
             }
             return true
         }
         set {
-            _defaults.setObject(Int(newValue), forKey: kVPNOnDisplayFlags)
-            _defaults.synchronize()
+            defaults.setObject(Int(newValue), forKey: kVPNOnDisplayFlags)
+            defaults.synchronize()
         }
     }
     
@@ -53,14 +53,14 @@ final public class VPNManager
         {
             static let sharedInstance : VPNManager = {
                 let instance = VPNManager()
-                instance._manager.loadFromPreferencesWithCompletionHandler {
+                instance.manager.loadFromPreferencesWithCompletionHandler {
                     (error: NSError!) -> Void in
                     if let err = error {
                         println("Failed to load preferences: \(err.localizedDescription)")
                     }
                 }
-                instance._manager.localizedDescription = "VPN On"
-                instance._manager.enabled = true
+                instance.manager.localizedDescription = "VPN On"
+                instance.manager.enabled = true
                 return instance
             }()
         }
@@ -77,7 +77,7 @@ final public class VPNManager
         p.serverAddress = server
         p.disconnectOnSleep = !alwaysOn
         
-        _manager.localizedDescription = "VPN On - \(title)"
+        manager.localizedDescription = "VPN On - \(title)"
         
         if let grp = group {
             p.localIdentifier = grp
@@ -103,18 +103,18 @@ final public class VPNManager
             p.identityData = certficiateData
         }
     
-        _manager.enabled = true
-        _manager.`protocol` = p
+        manager.enabled = true
+        manager.`protocol` = p
         
         configOnDemand()
         
-        _manager.saveToPreferencesWithCompletionHandler {
+        manager.saveToPreferencesWithCompletionHandler {
             (error: NSError!) -> Void in
             if let err = error {
                 println("Failed to save profile: \(err.localizedDescription)")
             } else {
                 var connectError : NSError?
-                self._manager.connection.startVPNTunnelAndReturnError(&connectError)
+                self.manager.connection.startVPNTunnelAndReturnError(&connectError)
                 
                 if let connectErr = connectError {
 //                    println("Failed to start tunnel: \(connectErr.localizedDescription)")
@@ -137,7 +137,7 @@ final public class VPNManager
         p.deadPeerDetectionRate = NEVPNIKEv2DeadPeerDetectionRate.Medium
         // TODO: Add an option into config page
         
-        _manager.localizedDescription = "VPN On - \(title)"
+        manager.localizedDescription = "VPN On - \(title)"
         
         if let grp = group {
             p.localIdentifier = grp
@@ -165,18 +165,18 @@ final public class VPNManager
             p.identityData = certficiateData
         }
         
-        _manager.enabled = true
-        _manager.`protocol` = p
+        manager.enabled = true
+        manager.`protocol` = p
         
         configOnDemand()
         
-        _manager.saveToPreferencesWithCompletionHandler {
+        manager.saveToPreferencesWithCompletionHandler {
             (error: NSError!) -> Void in
             if let err = error {
                 println("Failed to save profile: \(err.localizedDescription)")
             } else {
                 var connectError : NSError?
-                if self._manager.connection.startVPNTunnelAndReturnError(&connectError) {
+                if self.manager.connection.startVPNTunnelAndReturnError(&connectError) {
                     if let connectErr = connectError {
                         println("Failed to start IKEv2 tunnel: \(connectErr.localizedDescription)")
                     } else {
@@ -197,20 +197,20 @@ final public class VPNManager
             )
             let ruleEvaluateConnection = NEOnDemandRuleEvaluateConnection()
             ruleEvaluateConnection.connectionRules = [connectionRule]
-            _manager.onDemandRules = [ruleEvaluateConnection]
-            _manager.onDemandEnabled = true
+            manager.onDemandRules = [ruleEvaluateConnection]
+            manager.onDemandEnabled = true
         } else {
-            _manager.onDemandRules = [AnyObject]()
-            _manager.onDemandEnabled = false
+            manager.onDemandRules = [AnyObject]()
+            manager.onDemandEnabled = false
         }
     }
     
     public func disconnect() {
-        _manager.connection.stopVPNTunnel()
+        manager.connection.stopVPNTunnel()
     }
     
     public func removeProfile() {
-        _manager.removeFromPreferencesWithCompletionHandler {
+        manager.removeFromPreferencesWithCompletionHandler {
             (error: NSError!) -> Void in
             
         }
