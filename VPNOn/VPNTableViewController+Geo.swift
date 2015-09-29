@@ -22,7 +22,10 @@ extension VPNTableViewController
                 vpn.isp = geoInfo.isp
                 vpn.latitude = geoInfo.latitude
                 vpn.longitude = geoInfo.longitude
-                vpn.managedObjectContext!.save(nil)
+                do {
+                    try vpn.managedObjectContext!.save()
+                } catch _ {
+                }
                 
                 self.tableView.reloadData()
             }

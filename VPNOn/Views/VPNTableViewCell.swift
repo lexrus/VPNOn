@@ -43,7 +43,7 @@ class VPNTableViewCell: UITableViewCell
         }
     }
     
-    func drawIKEv2Tag(#radius: CGFloat, rect: CGRect, tagText: String, color: UIColor) {
+    func drawIKEv2Tag(radius radius: CGFloat, rect: CGRect, tagText: String, color: UIColor) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()
         

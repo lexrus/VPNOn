@@ -168,7 +168,7 @@ class VPNTableViewController: UITableViewController, SimplePingDelegate, VPNDoma
             return cell
             
         default:
-            return tableView.dequeueReusableCellWithIdentifier(kAddCellID, forIndexPath: indexPath) as! UITableViewCell
+            return tableView.dequeueReusableCellWithIdentifier(kAddCellID, forIndexPath: indexPath) 
         }
     }
     

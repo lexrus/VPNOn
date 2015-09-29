@@ -23,7 +23,7 @@ class AddCell: UICollectionViewCell
             let effectView = UIVisualEffectView(effect: UIVibrancyEffect.notificationCenterVibrancyEffect())
             let plusMark = PlusMarkView()
             effectView.frame = self.bounds
-            effectView.autoresizingMask = .FlexibleWidth | .FlexibleHeight
+            effectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
             effectView.contentView.addSubview(plusMark)
             addSubview(effectView)
             return plusMark

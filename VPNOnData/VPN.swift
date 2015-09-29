@@ -17,7 +17,6 @@ public class VPNInfo {
     var countryCode:    String = ""
     var isp:            String = ""
     var ikev2:          Bool   = false
-    var certificateURL: String = ""
 }
 
 @objc(VPN)
@@ -35,13 +34,9 @@ public class VPN : NSManagedObject{
     @NSManaged var countryCode:    String?
     @NSManaged var isp:            String?
     @NSManaged var ikev2:          Bool
-    @NSManaged var certificateURL: String?
     
     var ID : String {
-        if let id = objectID.URIRepresentation().absoluteString {
-            return id
-        }
-        return ""
+        return objectID.URIRepresentation().absoluteString
     }
     
     override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
@@ -58,7 +53,6 @@ public class VPN : NSManagedObject{
         setValue(countryCode,    forKey: "countryCode")
         setValue(isp,            forKey: "isp")
         setValue(ikev2,          forKey: "ikev2")
-        setValue(certificateURL, forKey: "certificateURL")
     }
 
 	/**
@@ -103,9 +97,6 @@ public class VPN : NSManagedObject{
         if let ikev2Value = dictionary["ikev2"] as? NSNumber {
             ikev2 = ikev2Value.boolValue
         }
-        if let certificateURLValue = dictionary["certificateURL"] as? String{
-            certificateURL = certificateURLValue
-        }
 	}
 
 	/**
@@ -113,7 +104,7 @@ public class VPN : NSManagedObject{
 	 */
 	func toDictionary() -> NSDictionary
 	{
-		var dictionary = NSMutableDictionary()
+		let dictionary = NSMutableDictionary()
         dictionary["ID"] = ID
 		if account != nil {
 			dictionary["account"] = account
@@ -138,9 +129,6 @@ public class VPN : NSManagedObject{
         }
         if isp != nil {
             dictionary["isp"] = isp
-        }
-        if certificateURL != nil {
-            dictionary["certificateURL"]  = certificateURL
         }
 		return dictionary
 	}

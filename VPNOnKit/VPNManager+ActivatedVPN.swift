@@ -22,7 +22,7 @@ extension VPNManager
             return defaults.objectForKey(kActivatedVPNIDKey) as! String?
         }
         set {
-            if let newID = newValue {
+            if let _ = newValue {
                 defaults.setObject(newValue, forKey: kActivatedVPNIDKey)
             } else {
                 defaults.removeObjectForKey(kActivatedVPNIDKey)
@@ -32,20 +32,10 @@ extension VPNManager
     }
 
     public var isActivatedVPNIDDeprecated: Bool {
-        get {
-            if let ID = self.activatedVPNID {
-                if let URL = NSURL(string: ID) {
-                    if let scheme = URL.scheme {
-                        if scheme.isEmpty {
-                            return true
-                        }
-                    } else {
-                        return true
-                    }
-                }
-            }
-            return false
+        if let ID = activatedVPNID, _ = NSURL(string: ID) {
+            return true
         }
+        return false
     }
     
     private func migrateTo0_3AndReturnActivatedVPNID() -> String? {

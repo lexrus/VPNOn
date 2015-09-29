@@ -71,7 +71,7 @@ extension VPNConfigViewController
         var bottom: CGFloat = 216
         if let userInfo: NSDictionary = notification.userInfo {
             if let boundsObject: AnyObject = userInfo.valueForKey("UIKeyboardBoundsUserInfoKey") {
-                let bounds = boundsObject.CGRectValue()
+                let bounds = boundsObject.CGRectValue
                 bottom = bounds.size.height
             }
         }

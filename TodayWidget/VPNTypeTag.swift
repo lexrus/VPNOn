@@ -33,7 +33,7 @@ class VPNTypeTag: UIVisualEffectView
         drawIKEv2Tag(radius: 3, rect: CGRectInset(rect, 1, 1), tagText: type.simpleDescription(), color: UIColor.whiteColor())
     }
     
-    func drawIKEv2Tag(#radius: CGFloat, rect: CGRect, tagText: String, color: UIColor) {
+    func drawIKEv2Tag(radius radius: CGFloat, rect: CGRect, tagText: String, color: UIColor) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()
         

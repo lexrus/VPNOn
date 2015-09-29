@@ -101,7 +101,7 @@ class LTThemeManager
         for window in windows {
             for view in window.subviews {
                 view.removeFromSuperview()
-                window.addSubview(view as! UIView)
+                window.addSubview(view )
             }
         }
     }

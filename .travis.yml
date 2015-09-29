@@ -1,5 +1,6 @@
 language: objective-c
+osx_image: xcode7
 before_script:
-    - brew update && brew upgrade xctool
+    - pod install
 script:
     - xctool test -project VPNOn.xcodeproj -scheme VPNOn -sdk iphonesimulator

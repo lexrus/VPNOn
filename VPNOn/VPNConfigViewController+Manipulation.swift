@@ -17,9 +17,9 @@ extension VPNConfigViewController
             if let currentVPN = vpn {
                 let title = NSLocalizedString("Delete VPN?", comment: "VPN Config - Delete alert title")
                 let deleteButtonTitle = NSLocalizedString("Delete", comment: "VPN Config - Delete alert - Delete button")
-                var alert = UIAlertController(title: title, message: nil, preferredStyle: UIAlertControllerStyle.Alert)
-                var deleteAction = UIAlertAction(title: deleteButtonTitle, style: UIAlertActionStyle.Destructive, handler: {
-                    (action: UIAlertAction!) -> Void in
+                let alert = UIAlertController(title: title, message: nil, preferredStyle: UIAlertControllerStyle.Alert)
+                let deleteAction = UIAlertAction(title: deleteButtonTitle, style: UIAlertActionStyle.Destructive, handler: {
+                    (action: UIAlertAction) -> Void in
                     let deletedVPNID = currentVPN.ID
                     
                     VPNDataManager.sharedManager.deleteVPN(currentVPN)
@@ -27,7 +27,7 @@ extension VPNConfigViewController
                     NSNotificationCenter.defaultCenter().postNotificationName(kVPNDidRemove, object: nil)
                 })
                 let cancelButtonTitle = NSLocalizedString("Cancel", comment: "VPN Config - Delete alert - Cancel button")
-                var cancelAction = UIAlertAction(title: cancelButtonTitle, style: UIAlertActionStyle.Cancel, handler: nil)
+                let cancelAction = UIAlertAction(title: cancelButtonTitle, style: UIAlertActionStyle.Cancel, handler: nil)
                 alert.addAction(deleteAction)
                 alert.addAction(cancelAction)
                 presentViewController(alert, animated: true, completion: nil)

@@ -24,9 +24,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
     private var _complitionHandler: (NCUpdateResult -> Void)? = nil
     
     var vpns: [VPN] {
-        get {
-            return VPNDataManager.sharedManager.allVPN()
-        }
+        return VPNDataManager.sharedManager.allVPN()
     }
     
     var selectedID: String? {
@@ -62,7 +60,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
         
         preferredContentSize = CGSizeMake(0, 82)
         
-        let tapGasture = UITapGestureRecognizer(target: self, action: Selector("didTapLeftMargin:"))
+        let tapGasture = UITapGestureRecognizer(target: self, action: "didTapLeftMargin:")
         tapGasture.numberOfTapsRequired = 1
         tapGasture.numberOfTouchesRequired = 1
         leftMarginView.userInteractionEnabled = true
@@ -118,12 +116,12 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
         
         if collectionView.visibleCells().count > vpns.count {
             leftMarginView.expandIconView.hidden = true
-            self.expanded = false
+            expanded = false
         } else {
             leftMarginView.expandIconView.hidden = false
         }
         
-        if self.expanded {
+        if expanded {
             preferredContentSize = collectionView.contentSize
         } else {
             preferredContentSize = CGSizeMake(collectionView.contentSize.width, min(kVPNOnWidgetNormalHeight, collectionView.contentSize.height))
@@ -153,7 +151,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
         VPNDataManager.sharedManager.managedObjectContext?.reset()
     }
     
-    func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)!) {
+    func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)) {
         // Perform any setup necessary in order to update the view.
 
         // If an error is encountered, use NCUpdateResult.Failed
@@ -166,21 +164,18 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
     
     // MARK: - Layout
     
-    func widgetMarginInsetsForProposedMarginInsets(defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets
-    {
+    func widgetMarginInsetsForProposedMarginInsets(defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets {
         return UIEdgeInsetsZero
     }
     
     // MARK: - Collection View Data source
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
-    {
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return vpns.count + 1
     }
     
     // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
-    {
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         if indexPath.row == vpns.count {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("addCell", forIndexPath: indexPath) as! AddCell
             
@@ -204,8 +199,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
     
     // MARK: - Collection View Delegate
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)
-    {
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         if indexPath.row == vpns.count {
             didTapAdd()
             
@@ -255,7 +249,6 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
         if indexPath.row == vpns.count {
             return true
         }
-        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! VPNCell
         switch VPNManager.sharedManager.status {
         case .Connected, .Connecting:
             VPNManager.sharedManager.disconnect()
@@ -269,12 +262,12 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
     func didTapLeftMargin(gesture: UITapGestureRecognizer) {
         var tappedBottom = Bool(gesture.locationInView(leftMarginView).y > leftMarginView.frame.size.height / 3 * 2)
         
-        if !self.expanded && collectionView.contentSize.height == preferredContentSize.height {
+        if !expanded && collectionView.contentSize.height == preferredContentSize.height {
             tappedBottom = false
         }
         
         if tappedBottom {
-            self.expanded = !self.expanded
+            expanded = !expanded
         } else {
             LTPingQueue.sharedQueue.restartPing()
             VPNManager.sharedManager.displayFlags = !VPNManager.sharedManager.displayFlags

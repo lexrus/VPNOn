@@ -3,7 +3,7 @@
 //  VPNOn
 //
 //  Created by Lex Tang on 1/7/15.
-//  Copyright (c) 2015 LexTang.com. All rights reserved.
+//  Copyright (c) 2015 lexrus.com. All rights reserved.
 //
 
 import Foundation
@@ -16,13 +16,13 @@ public struct LTHostLatency {
 public let kPingDidUpdate = "kPingDidUpdate"
 public let kPingDidComplete = "kPingDidComplete"
 
-let kPingTimeout: NSTimeInterval = 5
+let kPingTimeout: NSTimeInterval = 7
 
-public class LTPingOperation: NSObject, SimplePingDelegate {
+public class LTPingOperation : NSObject, SimplePingDelegate {
     
     public var hostLatency: LTHostLatency
     public var ping: SimplePing?
-    public var complete = false
+    public var completed = false
     
     var timeoutTimer: NSTimer?
     var startTimeInterval: NSTimeInterval?
@@ -32,32 +32,27 @@ public class LTPingOperation: NSObject, SimplePingDelegate {
     }
     
     deinit {
-        if let _ping = ping {
-            _ping.delegate = nil
-        }
+        ping?.delegate = nil
     }
     
     public func start() {
-        complete = false
+        completed = false
         ping = SimplePing(hostName: hostLatency.hostname)
         if let p = ping {
             p.delegate = self
-            timeoutTimer = NSTimer.scheduledTimerWithTimeInterval(kPingTimeout, target: self, selector: Selector("stop"), userInfo: nil, repeats: false)
+            timeoutTimer = NSTimer.scheduledTimerWithTimeInterval(kPingTimeout,
+                target: self, selector: "stop", userInfo: nil, repeats: false)
             p.start()
         }
     }
     
     public func stop() {
-        if let p = ping {
-            p.stop()
-            ping = nil
-        }
-        if let t = timeoutTimer {
-            t.invalidate()
-            timeoutTimer = nil
-        }
+        ping?.stop()
+        ping = nil
+        timeoutTimer?.invalidate()
+        timeoutTimer = nil
         startTimeInterval = nil
-        complete = true
+        completed = true
         
         NSNotificationCenter.defaultCenter().postNotificationName(kPingDidUpdate, object: nil)
     }
@@ -118,23 +113,21 @@ public class LTPingOperation: NSObject, SimplePingDelegate {
     }
 }
 
-public class LTPingQueue: NSObject, SimplePingDelegate {
+private let LTPingQueueInstance = LTPingQueue()
+
+public class LTPingQueue : NSObject, SimplePingDelegate {
     
-    public class var sharedQueue : LTPingQueue
-    {
-        struct Static
-        {
-            static let sharedInstance = LTPingQueue()
-        }
-        
-        return Static.sharedInstance
+    public class var sharedQueue : LTPingQueue {
+        return LTPingQueueInstance
     }
     
-    public var operations = [LTPingOperation]()
+    public lazy var operations: [LTPingOperation] = {
+        return [LTPingOperation]()
+        }()
     
     override init() {
         super.init()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pingDidUpdate:"), name: kPingDidUpdate, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "pingDidUpdate:", name: kPingDidUpdate, object: nil)
     }
     
     deinit {
@@ -142,13 +135,8 @@ public class LTPingQueue: NSObject, SimplePingDelegate {
     }
     
     public func latencyForHostname(hostname: String) -> Int {
-        for pingOperation in operations {
-            let pinger = pingOperation as LTPingOperation
-            if pinger.hostLatency.hostname != hostname {
-                continue
-            } else {
-                return pinger.hostLatency.latency
-            }
+        if let pinger = (operations.filter { $0.hostLatency.hostname == hostname }.first) {
+            return pinger.hostLatency.latency
         }
         
         let pingOperation = LTPingOperation(hostname: hostname)
@@ -158,16 +146,14 @@ public class LTPingQueue: NSObject, SimplePingDelegate {
     }
     
     public func restartPing() {
-        for pingOperation in operations {
-            pingOperation.hostLatency.latency = -1
-            pingOperation.start()
+        operations.forEach {
+            $0.hostLatency.latency = -1
+            $0.start()
         }
     }
     
     public func clean() {
-        for pingOperation in operations {
-            pingOperation.stop()
-        }
+        operations.forEach { $0.stop() }
         operations.removeAll(keepCapacity: false)
     }
     
@@ -177,7 +163,7 @@ public class LTPingQueue: NSObject, SimplePingDelegate {
         }
         
         for pingOperation in operations {
-            if !pingOperation.complete {
+            if !pingOperation.completed {
                 return
             }
         }

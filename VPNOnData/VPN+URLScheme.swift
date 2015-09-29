@@ -12,9 +12,9 @@ extension VPN
 {
     public class func parseURL(url: NSURL) -> VPNInfo? {
         var title = ""
-        var server = url.host ?? ""
-        var account = url.user ?? ""
-        var password = url.password ?? ""
+        let server = url.host ?? ""
+        let account = url.user ?? ""
+        let password = url.password ?? ""
         var group = ""
         var secret = ""
         var alwaysOn = true
