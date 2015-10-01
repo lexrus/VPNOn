@@ -19,7 +19,6 @@ extension VPN
         var secret = ""
         var alwaysOn = true
         var ikev2 = false
-        var certificateURL = ""
         
         // The server is required, otherwise we just open the container app.
         if server.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) == 0 {
@@ -51,9 +50,6 @@ extension VPN
                 case "ikev2":
                     ikev2 = Bool(value == "1" || value == "true" || value == "yes")
                     break
-                case "certificate":
-                    certificateURL = value
-                    break
                 default:
                     ()
                 }
@@ -69,7 +65,6 @@ extension VPN
         info.secret = secret
         info.alwaysOn = alwaysOn
         info.ikev2 = ikev2
-        info.certificateURL = certificateURL
         
         return info
     }

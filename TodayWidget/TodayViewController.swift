@@ -217,11 +217,8 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
         
         selectedID = vpn.ID
         
-        let cell = collectionView.cellForItemAtIndexPath(indexPath)! as! VPNCell
-        
         let passwordRef = VPNKeychainWrapper.passwordForVPNID(vpn.ID)
         let secretRef = VPNKeychainWrapper.secretForVPNID(vpn.ID)
-        let certificate = VPNKeychainWrapper.certificateForVPNID(vpn.ID)
         let titleWithSubfix = "Widget - \(vpn.title)"
         
         if vpn.ikev2 {
@@ -231,8 +228,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
                 group: vpn.group,
                 alwaysOn: vpn.alwaysOn,
                 passwordRef: passwordRef,
-                secretRef: secretRef,
-                certificate: certificate)
+                secretRef: secretRef)
         } else {
             VPNManager.sharedManager.connectIPSec(titleWithSubfix,
                 server: vpn.server,
@@ -240,8 +236,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
                 group: vpn.group,
                 alwaysOn: vpn.alwaysOn,
                 passwordRef: passwordRef,
-                secretRef: secretRef,
-                certificate: certificate)
+                secretRef: secretRef)
         }
     }
     

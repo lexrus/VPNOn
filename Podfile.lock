@@ -23,8 +23,17 @@ DEPENDENCIES:
   - RxQueryKit (~> 0.2)
   - RxSwift (= 2.0.0-alpha.3)
   - SnapKit (~> 0.15)
-  - SwiftKeychainWrapper (~> 1.0)
+  - SwiftKeychainWrapper (from `https://github.com/lexrus/SwiftKeychainWrapper.git`)
   - VTAcknowledgementsViewController (~> 0.15)
+
+EXTERNAL SOURCES:
+  SwiftKeychainWrapper:
+    :git: https://github.com/lexrus/SwiftKeychainWrapper.git
+
+CHECKOUT OPTIONS:
+  SwiftKeychainWrapper:
+    :commit: 3676f3263df891b3ad8b7ace3e5384e70ac838f3
+    :git: https://github.com/lexrus/SwiftKeychainWrapper.git
 
 SPEC CHECKSUMS:
   FileKit: 18bc18fa0a66b3718960dc5105a7f99a14b83caf

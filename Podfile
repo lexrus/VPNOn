@@ -15,7 +15,7 @@ end
 
 def security
 #  pod 'Locksmith', '~> 2.0'
-  pod 'SwiftKeychainWrapper', '~> 1.0'
+pod 'SwiftKeychainWrapper', :git => 'https://github.com/lexrus/SwiftKeychainWrapper.git'
 end
 
 def ui

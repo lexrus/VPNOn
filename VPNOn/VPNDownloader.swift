@@ -12,7 +12,7 @@ class VPNDownloader: NSObject
 {
     var queue: NSOperationQueue?
     
-    func download(URL: NSURL, callback: (NSURLResponse!, NSData!, NSError!) -> Void) {
+    func download(URL: NSURL, callback: (NSURLResponse?, NSData?, NSError?) -> Void) {
         let request = NSMutableURLRequest(URL: URL)
         var agent = "VPN On"
         if let version = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as! String? {
@@ -31,7 +31,7 @@ class VPNDownloader: NSObject
         
         queue = NSOperationQueue()
         
-        NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler: callback)
+        NSURLConnection.sendAsynchronousRequest(request, queue: queue!, completionHandler: callback)
     }
     
     func cancel() {

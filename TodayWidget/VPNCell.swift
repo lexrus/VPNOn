@@ -88,7 +88,7 @@ class VPNCell: UICollectionViewCell {
         lineRect.origin.x += dotSpacing
         lineRect.size.width -= dotSpacing * 2
         
-        var rectanglePath = UIBezierPath(roundedRect: lineRect, cornerRadius: 2)
+        let rectanglePath = UIBezierPath(roundedRect: lineRect, cornerRadius: 2)
         
         colorOfLatency.setFill()
         rectanglePath.fill()

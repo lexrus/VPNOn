@@ -19,27 +19,24 @@ extension VPNConfigViewController
             currentVPN.group = groupTextField.text
             currentVPN.alwaysOn = alwaysOnSwitch.on
             currentVPN.ikev2 = typeSegment.selectedSegmentIndex == 1
-            currentVPN.certificateURL = certificateURL
             
-            VPNKeychainWrapper.setPassword(passwordTextField.text, forVPNID: currentVPN.ID)
+            VPNKeychainWrapper.setPassword(passwordTextField.text ?? "", forVPNID: currentVPN.ID)
             
-            VPNKeychainWrapper.setSecret(secretTextField.text, forVPNID: currentVPN.ID)
+            VPNKeychainWrapper.setSecret(secretTextField.text ?? "", forVPNID: currentVPN.ID)
             
             VPNDataManager.sharedManager.saveContext()
             
             NSNotificationCenter.defaultCenter().postNotificationName(kVPNDidUpdate, object: currentVPN)
         } else {
             if let lastVPN = VPNDataManager.sharedManager.createVPN(
-                titleTextField.text,
-                server: serverTextField.text,
-                account: accountTextField.text,
-                password: passwordTextField.text,
-                group: groupTextField.text,
-                secret: secretTextField.text,
+                titleTextField.text ?? "",
+                server: serverTextField.text ?? "",
+                account: accountTextField.text ?? "",
+                password: passwordTextField.text ?? "",
+                group: groupTextField.text ?? "",
+                secret: secretTextField.text ?? "",
                 alwaysOn: alwaysOnSwitch.on,
-                ikev2: typeSegment.selectedSegmentIndex == 1,
-                certificateURL: certificateURL ?? "",
-                certificate: temporaryCertificateData
+                ikev2: typeSegment.selectedSegmentIndex == 1
                 ) {
                     NSNotificationCenter.defaultCenter().postNotificationName(kVPNDidCreate, object: lastVPN)
             }
@@ -47,12 +44,11 @@ extension VPNConfigViewController
     }
     
     func toggleSaveButtonByStatus() {
-        if self.titleTextField.text.isEmpty
-            || self.accountTextField.text.isEmpty
-            || self.serverTextField.text.isEmpty {
-                self.saveButton?.enabled = false
-        } else {
-            self.saveButton?.enabled = true
+        saveButton?.enabled = false
+        if let title = titleTextField.text, account = accountTextField.text, server = serverTextField.text {
+            if !title.isEmpty && !account.isEmpty && !server.isEmpty {
+                saveButton?.enabled = true
+            }
         }
     }
 }

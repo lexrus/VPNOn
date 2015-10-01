@@ -45,11 +45,7 @@ extension VPNConfigViewController
             passwordTextField.becomeFirstResponder()
             break
         case passwordTextField:
-            if certificateSwitch.on {
-                passwordTextField.resignFirstResponder()
-            } else {
-                secretTextField.becomeFirstResponder()
-            }
+            secretTextField.becomeFirstResponder()
             break
         case secretTextField:
             groupTextField.becomeFirstResponder()

@@ -68,7 +68,7 @@ extension VPNDataManager
                 }
                 return vpn
             }
-        } catch var error1 as NSError {
+        } catch let error1 as NSError {
             error = error1
             debugPrint("Could not save VPN \(error), \(error?.userInfo)")
         }
@@ -77,25 +77,21 @@ extension VPNDataManager
     }
     
     func deleteVPN(vpn:VPN) {
-        let objectID = vpn.objectID
         let ID = "\(vpn.ID)"
         
         VPNKeychainWrapper.destoryKeyForVPNID(ID)
         managedObjectContext!.deleteObject(vpn)
         
-        var saveError: NSError?
         do {
             try managedObjectContext!.save()
-        } catch var error as NSError {
-            saveError = error
-        }
+        } catch { }
         saveContext()
         
         if let activatedVPNID = VPNManager.sharedManager.activatedVPNID {
             if activatedVPNID == ID {
                 VPNManager.sharedManager.activatedVPNID = nil
                 
-                var vpns = allVPN()
+                let vpns = allVPN()
                 
                 if let firstVPN = vpns.first {
                     VPNManager.sharedManager.activatedVPNID = firstVPN.ID

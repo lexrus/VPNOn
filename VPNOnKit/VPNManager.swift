@@ -63,7 +63,7 @@ final public class VPNManager
         return Static.sharedInstance
     }
     
-    public func connectIPSec(title: String, server: String, account: String?, group: String?, alwaysOn: Bool = true, passwordRef: NSData?, secretRef: NSData?, certificate: NSData?) {
+    public func connectIPSec(title: String, server: String, account: String?, group: String?, alwaysOn: Bool = true, passwordRef: NSData?, secretRef: NSData?) {
 
         let p = NEVPNProtocolIPSec()
 
@@ -91,11 +91,6 @@ final public class VPNManager
         if let secret = secretRef {
             p.authenticationMethod = NEVPNIKEAuthenticationMethod.SharedSecret
             p.sharedSecretReference = secret
-        }
-        
-        if let certficiateData = certificate {
-            p.authenticationMethod = NEVPNIKEAuthenticationMethod.Certificate
-            p.identityData = certficiateData
         }
     
         manager.enabled = true
