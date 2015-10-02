@@ -8,8 +8,8 @@
 
 import Foundation
 
-extension VPN
-{
+extension VPN {
+
     public class func parseURL(url: NSURL) -> VPNInfo? {
         var title = ""
         let server = url.host ?? ""

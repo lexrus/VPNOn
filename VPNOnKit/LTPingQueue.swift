@@ -16,7 +16,7 @@ public struct LTHostLatency {
 public let kPingDidUpdate = "kPingDidUpdate"
 public let kPingDidComplete = "kPingDidComplete"
 
-let kPingTimeout: NSTimeInterval = 7
+private let kPingTimeout: NSTimeInterval = 7
 
 public class LTPingOperation : NSObject, SimplePingDelegate {
     
@@ -24,8 +24,8 @@ public class LTPingOperation : NSObject, SimplePingDelegate {
     public var ping: SimplePing?
     public var completed = false
     
-    var timeoutTimer: NSTimer?
-    var startTimeInterval: NSTimeInterval?
+    private var timeoutTimer: NSTimer?
+    private var startTimeInterval: NSTimeInterval?
     
     init(hostname: String) {
         hostLatency = LTHostLatency(hostname: hostname, latency: -1)

@@ -49,8 +49,6 @@ class VPNConfigViewController: UITableViewController, UITextFieldDelegate {
         return nil
         }()
     
-    var certificateURL: String?
-    
     override func loadView() {
         super.loadView()
         

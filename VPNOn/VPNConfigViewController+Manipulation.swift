@@ -9,8 +9,8 @@
 import UIKit
 import VPNOnKit
 
-extension VPNConfigViewController
-{
+extension VPNConfigViewController {
+
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let selectedCell = tableView.cellForRowAtIndexPath(indexPath)!
         if selectedCell == deleteCell {
@@ -20,8 +20,6 @@ extension VPNConfigViewController
                 let alert = UIAlertController(title: title, message: nil, preferredStyle: UIAlertControllerStyle.Alert)
                 let deleteAction = UIAlertAction(title: deleteButtonTitle, style: UIAlertActionStyle.Destructive, handler: {
                     (action: UIAlertAction) -> Void in
-                    let deletedVPNID = currentVPN.ID
-                    
                     VPNDataManager.sharedManager.deleteVPN(currentVPN)
                     
                     NSNotificationCenter.defaultCenter().postNotificationName(kVPNDidRemove, object: nil)
@@ -34,7 +32,7 @@ extension VPNConfigViewController
             }
         } else if selectedCell == duplicateCell {
             if let currentVPN = vpn {
-                if let newVPN = VPNDataManager.sharedManager.duplicate(currentVPN) {
+                if let _ = VPNDataManager.sharedManager.duplicate(currentVPN) {
                     NSNotificationCenter.defaultCenter().postNotificationName(kVPNDidDuplicate, object: nil)
                 }
             }

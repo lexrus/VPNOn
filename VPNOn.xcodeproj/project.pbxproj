@@ -66,7 +66,6 @@
 		D7B033BB1A6E5ED1009D791E /* VPNDataManager+ActivatedVPN.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B033BA1A6E5ED1009D791E /* VPNDataManager+ActivatedVPN.swift */; };
 		D7B033BC1A6E5ED1009D791E /* VPNDataManager+ActivatedVPN.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B033BA1A6E5ED1009D791E /* VPNDataManager+ActivatedVPN.swift */; };
 		D7B033BD1A6E5ED1009D791E /* VPNDataManager+ActivatedVPN.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B033BA1A6E5ED1009D791E /* VPNDataManager+ActivatedVPN.swift */; };
-		D7B7065E1A77435200D35809 /* VPNDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B7065D1A77435200D35809 /* VPNDownloader.swift */; };
 		D7BB2DCE1A6C066B00D8D581 /* LTTableViewCellTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB2DCD1A6C066B00D8D581 /* LTTableViewCellTitle.swift */; };
 		D7BB2DD01A6C08BB00D8D581 /* LTSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7BB2DCF1A6C08BB00D8D581 /* LTSplitViewController.swift */; };
 		D7BB2DD11A6E8F3600D8D581 /* VPNOn.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D7453F9F1A3196E200F7E32D /* VPNOn.xcdatamodeld */; };
@@ -84,6 +83,10 @@
 		D7E28A831A680DBD00507F33 /* LTTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E28A821A680DBD00507F33 /* LTTheme.swift */; };
 		D7E28A851A68118A00507F33 /* LTDarkTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E28A841A68118A00507F33 /* LTDarkTheme.swift */; };
 		D7E28A8D1A6A3C2B00507F33 /* VPNConfigViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E28A8C1A6A3C2B00507F33 /* VPNConfigViewController+TextField.swift */; };
+		D7EB524C1BBED5500021D93D /* VPNManager+Flags.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EB524B1BBED5500021D93D /* VPNManager+Flags.swift */; settings = {ASSET_TAGS = (); }; };
+		D7EB524E1BBED6D70021D93D /* VPNManager+SelectedVPN.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EB524D1BBED6D70021D93D /* VPNManager+SelectedVPN.swift */; settings = {ASSET_TAGS = (); }; };
+		D7EB52521BBEE3960021D93D /* AppDelegate+URLSchemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EB52511BBEE3960021D93D /* AppDelegate+URLSchemes.swift */; settings = {ASSET_TAGS = (); }; };
+		D7EB525A1BBEE7A10021D93D /* VPNOnUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EB52591BBEE7A10021D93D /* VPNOnUITests.swift */; };
 		D7F0A0131A6E46F600F9C09A /* VPNOnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F0A0121A6E46F600F9C09A /* VPNOnTests.swift */; };
 		D7F0A01A1A6E47EA00F9C09A /* VPNDataManager+Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F0A0191A6E47EA00F9C09A /* VPNDataManager+Selection.swift */; };
 		D7F0A01B1A6E47EA00F9C09A /* VPNDataManager+Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F0A0191A6E47EA00F9C09A /* VPNDataManager+Selection.swift */; };
@@ -139,6 +142,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = D757AF841A3B370E00AEF3CB;
 			remoteInfo = VPNOnKit;
+		};
+		D7EB525C1BBEE7A10021D93D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D7453F211A31966F00F7E32D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D7453F281A31966F00F7E32D;
+			remoteInfo = VPNOn;
 		};
 		D7F0A0141A6E46F600F9C09A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -285,7 +295,6 @@
 		D7A0250C1A873AB800417B33 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D7A0250D1A873AB900417B33 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D7B033BA1A6E5ED1009D791E /* VPNDataManager+ActivatedVPN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VPNDataManager+ActivatedVPN.swift"; sourceTree = "<group>"; };
-		D7B7065D1A77435200D35809 /* VPNDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNDownloader.swift; sourceTree = "<group>"; };
 		D7BB2DCD1A6C066B00D8D581 /* LTTableViewCellTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTTableViewCellTitle.swift; sourceTree = "<group>"; };
 		D7BB2DCF1A6C08BB00D8D581 /* LTSplitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTSplitViewController.swift; sourceTree = "<group>"; };
 		D7C7659E1A6CB0500010C170 /* VPN On 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "VPN On 2.xcdatamodel"; sourceTree = "<group>"; };
@@ -305,6 +314,12 @@
 		D7E28A821A680DBD00507F33 /* LTTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTTheme.swift; sourceTree = "<group>"; };
 		D7E28A841A68118A00507F33 /* LTDarkTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTDarkTheme.swift; sourceTree = "<group>"; };
 		D7E28A8C1A6A3C2B00507F33 /* VPNConfigViewController+TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VPNConfigViewController+TextField.swift"; sourceTree = "<group>"; };
+		D7EB524B1BBED5500021D93D /* VPNManager+Flags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VPNManager+Flags.swift"; sourceTree = "<group>"; };
+		D7EB524D1BBED6D70021D93D /* VPNManager+SelectedVPN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VPNManager+SelectedVPN.swift"; sourceTree = "<group>"; };
+		D7EB52511BBEE3960021D93D /* AppDelegate+URLSchemes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+URLSchemes.swift"; sourceTree = "<group>"; };
+		D7EB52571BBEE7A10021D93D /* VPNOnUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VPNOnUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D7EB52591BBEE7A10021D93D /* VPNOnUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNOnUITests.swift; sourceTree = "<group>"; };
+		D7EB525B1BBEE7A10021D93D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D7EF65C61A8D9119005A3441 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Main.strings"; sourceTree = "<group>"; };
 		D7EF65C71A8D9119005A3441 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		D7EF65C81A8D911A005A3441 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -362,6 +377,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D7EB52541BBEE7A10021D93D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D7F0A00B1A6E46F600F9C09A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -400,6 +422,7 @@
 				D74C91A71A383FED00EAAAE1 /* TodayWidget */,
 				D757AF861A3B370E00AEF3CB /* VPNOnKit */,
 				D757AF951A3B370E00AEF3CB /* VPNOnKitTests */,
+				D7EB52581BBEE7A10021D93D /* VPNOnUITests */,
 				D7453FB51A31A72600F7E32D /* Frameworks */,
 				D7453F2A1A31966F00F7E32D /* Products */,
 				5AAA273FCFD7CD774192E06C /* Pods */,
@@ -414,6 +437,7 @@
 				D757AF851A3B370E00AEF3CB /* VPNOnKit.framework */,
 				D757AF8F1A3B370E00AEF3CB /* VPNOnKitTests.xctest */,
 				D7F0A00E1A6E46F600F9C09A /* VPNOnTests.xctest */,
+				D7EB52571BBEE7A10021D93D /* VPNOnUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -423,7 +447,7 @@
 			children = (
 				D7453FAD1A31A68300F7E32D /* VPNOn.entitlements */,
 				D7453F2E1A31966F00F7E32D /* AppDelegate.swift */,
-				D758FE0C1A5BE35000929494 /* AboutViewController.swift */,
+				D7EB52511BBEE3960021D93D /* AppDelegate+URLSchemes.swift */,
 				D7453FA71A31975D00F7E32D /* VPNTableViewController.swift */,
 				D705784F1AA5EFF000040279 /* VPNTableViewController+Geo.swift */,
 				D77593D71A79E53C007161B2 /* VPNTableViewController+OnDemand.swift */,
@@ -434,7 +458,7 @@
 				D7D4992E1A724B4C00B5F5ED /* VPNConfigViewController+Type.swift */,
 				D7DDB5641A78DA4600BE7FB7 /* VPNDomainsViewController.swift */,
 				D7E28A811A680DAC00507F33 /* VPNOn-Bridging-Header.h */,
-				D7B7065D1A77435200D35809 /* VPNDownloader.swift */,
+				D758FE0C1A5BE35000929494 /* AboutViewController.swift */,
 				D7784F9D1A75F311009360CE /* Views */,
 				D7E28A7A1A680D9400507F33 /* Theme */,
 				D7453F381A31966F00F7E32D /* Images.xcassets */,
@@ -521,6 +545,8 @@
 			children = (
 				D754E2011A3B3A1B00E8F135 /* VPNOnKit.h */,
 				D757AFA61A3B374200AEF3CB /* VPNManager.swift */,
+				D7EB524B1BBED5500021D93D /* VPNManager+Flags.swift */,
+				D7EB524D1BBED6D70021D93D /* VPNManager+SelectedVPN.swift */,
 				D7F0A0251A6E520300F9C09A /* VPNManager+ActivatedVPN.swift */,
 				D77593D91A79E674007161B2 /* VPNManager+Domains.swift */,
 				D7CFDDA41A9E05700057F53D /* VPNManager+Geo.swift */,
@@ -605,6 +631,15 @@
 				D7D499301A72542400B5F5ED /* LTTableViewCellDeclosureIndicator.swift */,
 			);
 			path = Theme;
+			sourceTree = "<group>";
+		};
+		D7EB52581BBEE7A10021D93D /* VPNOnUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D7EB52591BBEE7A10021D93D /* VPNOnUITests.swift */,
+				D7EB525B1BBEE7A10021D93D /* Info.plist */,
+			);
+			path = VPNOnUITests;
 			sourceTree = "<group>";
 		};
 		D7F0A00F1A6E46F600F9C09A /* VPNOnTests */ = {
@@ -725,6 +760,24 @@
 			productReference = D757AF8F1A3B370E00AEF3CB /* VPNOnKitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		D7EB52561BBEE7A10021D93D /* VPNOnUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D7EB52601BBEE7A10021D93D /* Build configuration list for PBXNativeTarget "VPNOnUITests" */;
+			buildPhases = (
+				D7EB52531BBEE7A10021D93D /* Sources */,
+				D7EB52541BBEE7A10021D93D /* Frameworks */,
+				D7EB52551BBEE7A10021D93D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D7EB525D1BBEE7A10021D93D /* PBXTargetDependency */,
+			);
+			name = VPNOnUITests;
+			productName = VPNOnUITests;
+			productReference = D7EB52571BBEE7A10021D93D /* VPNOnUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		D7F0A00D1A6E46F600F9C09A /* VPNOnTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D7F0A0161A6E46F600F9C09A /* Build configuration list for PBXNativeTarget "VPNOnTests" */;
@@ -802,6 +855,10 @@
 						CreatedOnToolsVersion = 6.1.1;
 						TestTargetID = D7453F281A31966F00F7E32D;
 					};
+					D7EB52561BBEE7A10021D93D = {
+						CreatedOnToolsVersion = 7.0.1;
+						TestTargetID = D7453F281A31966F00F7E32D;
+					};
 					D7F0A00D1A6E46F600F9C09A = {
 						CreatedOnToolsVersion = 6.1.1;
 						TestTargetID = D7453F281A31966F00F7E32D;
@@ -842,6 +899,7 @@
 				D74C91A41A383FEC00EAAAE1 /* TodayWidget */,
 				D757AF841A3B370E00AEF3CB /* VPNOnKit */,
 				D757AF8E1A3B370E00AEF3CB /* VPNOnKitTests */,
+				D7EB52561BBEE7A10021D93D /* VPNOnUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -870,6 +928,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D757AF8D1A3B370E00AEF3CB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D7EB52551BBEE7A10021D93D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1104,6 +1169,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7453FA21A3196E200F7E32D /* VPNDataManager+VPN.swift in Sources */,
+				D7EB52521BBEE3960021D93D /* AppDelegate+URLSchemes.swift in Sources */,
 				D79F73731A728EC900EB2289 /* VPN+URLScheme.swift in Sources */,
 				D7FEC8D01A7897310004E7FA /* VPNTableViewCell.swift in Sources */,
 				D77F34191A6F7EA000796827 /* VPNConfigViewController+Manipulation.swift in Sources */,
@@ -1118,7 +1184,6 @@
 				D7D499311A72542400B5F5ED /* LTTableViewCellDeclosureIndicator.swift in Sources */,
 				D7453FA41A3196E200F7E32D /* VPNOn.xcdatamodeld in Sources */,
 				D7453F2F1A31966F00F7E32D /* AppDelegate.swift in Sources */,
-				D7B7065E1A77435200D35809 /* VPNDownloader.swift in Sources */,
 				D7784F9F1A75F330009360CE /* VPNSwitchCell.swift in Sources */,
 				D79F73751A72923E00EB2289 /* VPNConfigViewController+Save.swift in Sources */,
 				D7F0A01A1A6E47EA00F9C09A /* VPNDataManager+Selection.swift in Sources */,
@@ -1170,7 +1235,9 @@
 				D74129AA1A5CFCDA008DE603 /* SimplePing.m in Sources */,
 				D757AFA91A3B374200AEF3CB /* VPNManager.swift in Sources */,
 				D7F0A0261A6E520300F9C09A /* VPNManager+ActivatedVPN.swift in Sources */,
+				D7EB524E1BBED6D70021D93D /* VPNManager+SelectedVPN.swift in Sources */,
 				D77593DA1A79E674007161B2 /* VPNManager+Domains.swift in Sources */,
+				D7EB524C1BBED5500021D93D /* VPNManager+Flags.swift in Sources */,
 				D7CFDDA51A9E05700057F53D /* VPNManager+Geo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1180,6 +1247,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D757AF991A3B370E00AEF3CB /* VPNOnKitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D7EB52531BBEE7A10021D93D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D7EB525A1BBEE7A10021D93D /* VPNOnUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1229,6 +1304,11 @@
 			isa = PBXTargetDependency;
 			target = D757AF841A3B370E00AEF3CB /* VPNOnKit */;
 			targetProxy = D7BB2DD21A6E901500D8D581 /* PBXContainerItemProxy */;
+		};
+		D7EB525D1BBEE7A10021D93D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D7453F281A31966F00F7E32D /* VPNOn */;
+			targetProxy = D7EB525C1BBEE7A10021D93D /* PBXContainerItemProxy */;
 		};
 		D7F0A0151A6E46F600F9C09A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1411,7 +1491,7 @@
 				CODE_SIGN_ENTITLEMENTS = VPNOn/VPNOn.entitlements;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = VPNOn/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.LexTang.VPNOn;
 				PRODUCT_MODULE_NAME = VPNOn;
@@ -1432,7 +1512,7 @@
 				CODE_SIGN_ENTITLEMENTS = VPNOn/VPNOn.entitlements;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = VPNOn/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.LexTang.VPNOn;
 				PRODUCT_MODULE_NAME = VPNOn;
@@ -1454,7 +1534,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = TodayWidget/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LexTang.VPNOn.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1471,7 +1551,7 @@
 				CODE_SIGN_ENTITLEMENTS = TodayWidget/TodayWidget.entitlements;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				INFOPLIST_FILE = TodayWidget/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LexTang.VPNOn.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1499,7 +1579,7 @@
 				);
 				INFOPLIST_FILE = VPNOnKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LexTang.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1525,7 +1605,7 @@
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				INFOPLIST_FILE = VPNOnKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LexTang.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1570,6 +1650,37 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LexTang.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VPN On.app/VPN On";
+			};
+			name = Release;
+		};
+		D7EB525E1BBEE7A10021D93D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = VPNOnUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.LexTang.VPNOnUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = VPNOn;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		D7EB525F1BBEE7A10021D93D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_NO_COMMON_BLOCKS = YES;
+				INFOPLIST_FILE = VPNOnUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.LexTang.VPNOnUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = VPNOn;
+				USES_XCTRUNNER = YES;
 			};
 			name = Release;
 		};
@@ -1658,6 +1769,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		D7EB52601BBEE7A10021D93D /* Build configuration list for PBXNativeTarget "VPNOnUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D7EB525E1BBEE7A10021D93D /* Debug */,
+				D7EB525F1BBEE7A10021D93D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		D7F0A0161A6E46F600F9C09A /* Build configuration list for PBXNativeTarget "VPNOnTests" */ = {
 			isa = XCConfigurationList;

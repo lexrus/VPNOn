@@ -19,7 +19,6 @@ public class VPNInfo {
     var ikev2:          Bool   = false
 }
 
-@objc(VPN)
 public class VPN : NSManagedObject{
     
 	@NSManaged var account:        String!

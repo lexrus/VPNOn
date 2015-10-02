@@ -10,61 +10,42 @@ import Foundation
 import NetworkExtension
 import CoreData
 
-let kAppGroupIdentifier = "group.VPNOn"
+private let kAppGroupIdentifier = "group.VPNOn"
+private let VPNManagerInstance: VPNManager = {
+    let instance = VPNManager()
+    instance.manager.loadFromPreferencesWithCompletionHandler { error in
+        if let err = error {
+            debugPrint("Failed to load preferences: \(err.localizedDescription)")
+        }
+    }
+    instance.manager.localizedDescription = "VPN On"
+    instance.manager.enabled = true
+    return instance
+    }()
 
-final public class VPNManager
-{
-    lazy var manager: NEVPNManager = {
+final public class VPNManager {
+
+    private lazy var manager: NEVPNManager = {
         return NEVPNManager.sharedManager()
         }()
     
-    lazy var defaults: NSUserDefaults = {
+    public lazy var defaults: NSUserDefaults = {
         return NSUserDefaults(suiteName: kAppGroupIdentifier)!
         }()
     
     public var status: NEVPNStatus {
-        get {
-            return manager.connection.status
-        }
+        return manager.connection.status
     }
     
-    private let kVPNOnDisplayFlags = "displayFlags"
-    
-    public var displayFlags: Bool {
-        get {
-            if let value = defaults.objectForKey(kVPNOnDisplayFlags) as! Int? {
-                return Bool(value)
-            }
-            return true
-        }
-        set {
-            defaults.setObject(Int(newValue), forKey: kVPNOnDisplayFlags)
-            defaults.synchronize()
-        }
-    }
-    
-    public class var sharedManager : VPNManager
-    {
-        struct Static
-        {
-            static let sharedInstance : VPNManager = {
-                let instance = VPNManager()
-                instance.manager.loadFromPreferencesWithCompletionHandler { error in
-                    if let err = error {
-                        debugPrint("Failed to load preferences: \(err.localizedDescription)")
-                    }
-                }
-                instance.manager.localizedDescription = "VPN On"
-                instance.manager.enabled = true
-                return instance
-            }()
-        }
-        
-        return Static.sharedInstance
+    public class var sharedManager: VPNManager {
+        return VPNManagerInstance
     }
     
     public func connectIPSec(title: String, server: String, account: String?, group: String?, alwaysOn: Bool = true, passwordRef: NSData?, secretRef: NSData?) {
-
+        #if (arch(i386) || arch(x86_64)) && os(iOS) // #if TARGET_IPHONE_SIMULATOR for Swift
+        assert(false, "I'm afraid you can not connect VPN in simulators.")
+        #endif
+            
         let p = NEVPNProtocolIPSec()
 
         p.authenticationMethod = NEVPNIKEAuthenticationMethod.None
@@ -74,11 +55,7 @@ final public class VPNManager
         
         manager.localizedDescription = "VPN On - \(title)"
         
-        if let grp = group {
-            p.localIdentifier = grp
-        } else {
-            p.localIdentifier = "VPN"
-        }
+        p.localIdentifier = group ?? "VPN"
 
         if let username = account {
             p.username = username
@@ -98,26 +75,23 @@ final public class VPNManager
         
         configOnDemand()
         
-#if (arch(i386) || arch(x86_64)) && os(iOS) // #if TARGET_IPHONE_SIMULATOR for Swift
-        print("I'm afraid you can not connect VPN in simulators.")
-#else
-        manager.saveToPreferencesWithCompletionHandler {
-            (error: NSError!) -> Void in
-            if let err = error {
-                debugPrintln("Failed to save profile: \(err.localizedDescription)")
-            } else {
-                var connectError : NSError?
-                self.manager.connection.startVPNTunnelAndReturnError(&connectError)
-                
-                if let connectErr = connectError {
-                    debugPrintln("Failed to start tunnel: \(connectErr.localizedDescription)")
-                }
+        manager.saveToPreferencesWithCompletionHandler { error in
+            if let error = error {
+                print("Failed to save profile: \(error.localizedDescription)")
+                return
+            }
+            do {
+                try self.manager.connection.startVPNTunnel()
+            } catch {
+                print("Failed to start tunnel")
             }
         }
-#endif
     }
     
     public func connectIKEv2(title: String, server: String, account: String?, group: String?, alwaysOn: Bool = true, passwordRef: NSData?, secretRef: NSData?) {
+        #if (arch(i386) || arch(x86_64)) && os(iOS) // #if TARGET_IPHONE_SIMULATOR for Swift
+        assert(false, "I'm afraid you can not connect VPN in simulators.")
+        #endif
         
         let p = NEVPNProtocolIKEv2()
         
@@ -131,11 +105,7 @@ final public class VPNManager
         
         manager.localizedDescription = "VPN On - \(title)"
         
-        if let grp = group {
-            p.localIdentifier = grp
-        } else {
-            p.localIdentifier = "VPN"
-        }
+        p.localIdentifier = group ?? "VPN"
         
         if let username = account {
             p.username = username

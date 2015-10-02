@@ -1,17 +1,5 @@
 PODS:
   - FileKit (1.6.0)
-  - QueryKit (0.11.0):
-    - QueryKit/Bridge (= 0.11.0)
-    - QueryKit/ObjectiveC (= 0.11.0)
-    - QueryKit/Swift (= 0.11.0)
-  - QueryKit/Bridge (0.11.0):
-    - QueryKit/ObjectiveC
-    - QueryKit/Swift
-  - QueryKit/ObjectiveC (0.11.0)
-  - QueryKit/Swift (0.11.0)
-  - RxQueryKit (0.2.2):
-    - QueryKit (~> 0.11.0)
-    - RxSwift (= 2.0.0-alpha.3)
   - RxSwift (2.0.0-alpha.3)
   - SnapKit (0.15.0)
   - SwiftKeychainWrapper (1.0.11)
@@ -19,8 +7,6 @@ PODS:
 
 DEPENDENCIES:
   - FileKit (~> 1.6)
-  - QueryKit (~> 0.11)
-  - RxQueryKit (~> 0.2)
   - RxSwift (= 2.0.0-alpha.3)
   - SnapKit (~> 0.15)
   - SwiftKeychainWrapper (from `https://github.com/lexrus/SwiftKeychainWrapper.git`)
@@ -37,8 +23,6 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   FileKit: 18bc18fa0a66b3718960dc5105a7f99a14b83caf
-  QueryKit: d74ded2c1345fd7d1479ea84bd6c9d14ab486e74
-  RxQueryKit: d5cee7c276cb5dc6ac0cf0af15368aace4b20d7e
   RxSwift: c66f7956b2e5fb397a62bf4a3ec6072749a816a7
   SnapKit: 4962eed2ee18e48cbd2b2292fffc57efe7235f87
   SwiftKeychainWrapper: 011a6946923948ffa49708014dd691164d7621d1

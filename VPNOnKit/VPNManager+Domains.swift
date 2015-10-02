@@ -8,11 +8,11 @@
 
 import Foundation
 
-let kOnDemandKey = "onDemand"
-let kOnDemandDomainsKey = "onDemandDomains"
+private let kOnDemandKey = "onDemand"
+private let kOnDemandDomainsKey = "onDemandDomains"
 
-extension VPNManager
-{
+extension VPNManager {
+
     public var onDemand: Bool {
         get {
             if let onDemandObject = defaults.objectForKey(kOnDemandKey) as! NSNumber? {
@@ -33,7 +33,7 @@ extension VPNManager
             if let domainsObject = defaults.stringForKey(kOnDemandDomainsKey) {
                 return domainsObject
             }
-            return .None
+            return nil
         }
         set {
             if newValue == nil {
@@ -46,9 +46,7 @@ extension VPNManager
     }
     
     public var onDemandDomainsArray: [String] {
-        get {
-            return self.domainsInString(onDemandDomains ?? "")
-        }
+        return domainsInString(onDemandDomains ?? "")
     }
     
     public func domainsInString(string: String) -> [String] {
@@ -71,10 +69,10 @@ extension VPNManager
                 domains.append(s)
             }
         }
-        for domain in domains {
-            wildCardDomains.append(domain)
-            if domain.rangeOfString("*.") == nil {
-                wildCardDomains.append("*.\(domain)")
+        domains.forEach {
+            wildCardDomains.append($0)
+            if $0.rangeOfString("*.") == nil {
+                wildCardDomains.append("*.\($0)")
             }
         }
         

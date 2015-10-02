@@ -9,8 +9,8 @@
 import UIKit
 import VPNOnKit
 
-extension VPNTableViewController
-{
+extension VPNTableViewController {
+
     @IBAction func didTapOnDemandSwitch(sender: UISwitch?) {
         VPNManager.sharedManager.onDemand = sender!.on
         updateOnDemandCell()

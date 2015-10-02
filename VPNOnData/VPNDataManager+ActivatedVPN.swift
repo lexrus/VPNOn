@@ -9,25 +9,12 @@
 import UIKit
 import VPNOnKit
 
-extension VPNDataManager
-{
+extension VPNDataManager {
+    
     var activatedVPN: VPN? {
-        if VPNManager.sharedManager.isActivatedVPNIDDeprecated {
-            let vpns = allVPN()
-            for vpn in vpns {
-                if let shortID = vpn.objectID.URIRepresentation().lastPathComponent {
-                    if shortID == VPNManager.sharedManager.activatedVPNID {
-                        VPNManager.sharedManager.activatedVPNID = vpn.ID
-                    }
-                }
-            }
-        }
-        
         if let activatedVPNID = VPNManager.sharedManager.activatedVPNID {
             return VPNByIDString(activatedVPNID)
         }
-        return .None
+        return nil
     }
-    
-    
 }

@@ -8,8 +8,7 @@
 
 import UIKit
 
-extension VPNConfigViewController
-{
+extension VPNConfigViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

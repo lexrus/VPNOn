@@ -7,15 +7,8 @@ def io
   pod 'FileKit', '~> 1.6'
 end
 
-def db
-  # pod 'Seam',       '~> 0.6'
-  pod 'QueryKit',   '~> 0.11'
-  pod 'RxQueryKit', '~> 0.2'
-end
-
 def security
-#  pod 'Locksmith', '~> 2.0'
-pod 'SwiftKeychainWrapper', :git => 'https://github.com/lexrus/SwiftKeychainWrapper.git'
+  pod 'SwiftKeychainWrapper', :git => 'https://github.com/lexrus/SwiftKeychainWrapper.git'
 end
 
 def ui
@@ -32,7 +25,6 @@ end
 
 target 'VPNOnTests' do
   io
-  db
   security
 end
 
@@ -40,11 +32,10 @@ end
 #
 # end
 
- target 'TodayWidget' do
-   io
-   db
-   security
- end
+target 'TodayWidget' do
+  io
+  security
+end
 
 target 'VPNOnKit' do
   security

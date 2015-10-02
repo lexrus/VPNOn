@@ -12,45 +12,30 @@ import NetworkExtension
 import VPNOnKit
 import CoreData
 
-let kVPNOnSelectedIDInToday = "kVPNOnSelectedIDInToday"
-let kVPNOnExpanedInToday = "kVPNOnExpanedInToday"
-let kVPNOnWidgetNormalHeight: CGFloat = 148
+private let kExpanedInToday = "kVPNOnExpanedInToday"
+private let kWidgetNormalHeight: CGFloat = 148
 
 class TodayViewController: UIViewController, NCWidgetProviding, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var leftMarginView: ModeButton!
     @IBOutlet weak var collectionView: UICollectionView!
-    var hasSignaled = false
+    private var hasSignaled = false
     private var _complitionHandler: (NCUpdateResult -> Void)? = nil
     
     var vpns: [VPN] {
         return VPNDataManager.sharedManager.allVPN()
     }
     
-    var selectedID: String? {
-        get {
-            return NSUserDefaults.standardUserDefaults().objectForKey(kVPNOnSelectedIDInToday) as! String?
-        }
-        set {
-            if let newID = newValue {
-                NSUserDefaults.standardUserDefaults().setObject(newID, forKey: kVPNOnSelectedIDInToday)
-            } else {
-                NSUserDefaults.standardUserDefaults().removeObjectForKey(kVPNOnSelectedIDInToday)
-            }
-            
-        }
-    }
-    
     var expanded: Bool {
         get {
-            return NSUserDefaults.standardUserDefaults().boolForKey(kVPNOnExpanedInToday) as Bool
+            return NSUserDefaults.standardUserDefaults().boolForKey(kExpanedInToday) as Bool
         }
         set {
-            NSUserDefaults.standardUserDefaults().setBool(newValue, forKey: kVPNOnExpanedInToday)
+            NSUserDefaults.standardUserDefaults().setBool(newValue, forKey: kExpanedInToday)
             if newValue {
                 self.preferredContentSize = self.collectionView.contentSize
             } else {
-                self.preferredContentSize = CGSizeMake(self.view.bounds.size.width, kVPNOnWidgetNormalHeight)
+                self.preferredContentSize = CGSizeMake(self.view.bounds.size.width, kWidgetNormalHeight)
             }
         }
     }
@@ -124,7 +109,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
         if expanded {
             preferredContentSize = collectionView.contentSize
         } else {
-            preferredContentSize = CGSizeMake(collectionView.contentSize.width, min(kVPNOnWidgetNormalHeight, collectionView.contentSize.height))
+            preferredContentSize = CGSizeMake(collectionView.contentSize.width, min(kWidgetNormalHeight, collectionView.contentSize.height))
         }
     }
     
@@ -183,7 +168,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
         } else {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("vpnCell", forIndexPath: indexPath) as! VPNCell
             let vpn = vpns[indexPath.row]
-            let selected = Bool(selectedID == vpn.ID)
+            let selected = Bool(VPNManager.sharedManager.selectedVPNID == vpn.ID)
             cell.configureWithVPN(vpns[indexPath.row], selected: selected)
             if selected {
                 cell.status = VPNManager.sharedManager.status
@@ -209,13 +194,13 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
         let vpn = vpns[indexPath.row]
         
         if VPNManager.sharedManager.status == .Connected {
-            if selectedID == vpn.ID {
+            if VPNManager.sharedManager.selectedVPNID == vpn.ID {
                 // Do not connect it again if tap the same one
                 return
             }
         }
         
-        selectedID = vpn.ID
+        VPNManager.sharedManager.selectedVPNID = vpn.ID
         
         let passwordRef = VPNKeychainWrapper.passwordForVPNID(vpn.ID)
         let secretRef = VPNKeychainWrapper.secretForVPNID(vpn.ID)

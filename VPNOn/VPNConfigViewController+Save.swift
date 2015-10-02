@@ -9,8 +9,8 @@
 import UIKit
 import VPNOnKit
 
-extension VPNConfigViewController
-{
+extension VPNConfigViewController {
+
     @IBAction func saveVPN(sender: AnyObject) {
         if let currentVPN = vpn {
             currentVPN.title = titleTextField.text

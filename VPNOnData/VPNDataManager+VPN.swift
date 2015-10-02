@@ -9,8 +9,8 @@
 import CoreData
 import VPNOnKit
 
-extension VPNDataManager
-{
+extension VPNDataManager {
+
     func allVPN() -> [VPN] {
         var vpns = [VPN]()
         

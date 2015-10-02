@@ -14,6 +14,7 @@ let kAppGroupIdentifier = "group.VPNOn"
 private let VPNDataManagerInstance = VPNDataManager()
 
 class VPNDataManager {
+    
     class var sharedManager : VPNDataManager {
         return VPNDataManagerInstance
     }
@@ -47,14 +48,16 @@ class VPNDataManager {
         let url = self.dataDirectory.URLByAppendingPathComponent("VPNOn.sqlite")
         var failureReason = "There was an error creating or loading the application's saved data."
         
-        let options = NSDictionary(
-            objects: [NSNumber(bool: true), NSNumber(bool: true), "WAL"],
-            forKeys: [NSMigratePersistentStoresAutomaticallyOption, NSInferMappingModelAutomaticallyOption, "journal_mode"])
+        let options = [
+            NSMigratePersistentStoresAutomaticallyOption: NSNumber(bool: true),
+            NSInferMappingModelAutomaticallyOption: NSNumber(bool: true),
+            "journal_mode": "WAL"
+        ]
         
         if let store = coordinator!.persistentStoreForURL(url) { }
         else {
             do {
-                try coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: options as! [NSObject : AnyObject] as [NSObject : AnyObject])
+                try coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: options)
             } catch let error as NSError {
                 coordinator = nil
                 NSLog("Unresolved error \(error), \(error.userInfo)")

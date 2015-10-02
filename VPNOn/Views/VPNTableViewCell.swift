@@ -35,7 +35,6 @@ class VPNTableViewCell: UITableViewCell
             drawIKEv2Tag(radius: 2, rect: tagRect, tagText: "IKEv2", color: tintColor)
         }
         if current {
-            let context = UIGraphicsGetCurrentContext()
             let currentIndicatorRect = CGRect(x: 0, y: 0, width: 7, height: rect.size.height)
             let rectanglePath = UIBezierPath(rect: currentIndicatorRect)
             LTThemeManager.sharedManager.currentTheme!.tintColor.setFill()
