@@ -168,7 +168,7 @@ class VPNTableViewController: UITableViewController, SimplePingDelegate, VPNDoma
             return cell
             
         default:
-            return tableView.dequeueReusableCellWithIdentifier(kAddCellID, forIndexPath: indexPath) as! UITableViewCell
+            return tableView.dequeueReusableCellWithIdentifier(kAddCellID, forIndexPath: indexPath) 
         }
     }
     
@@ -236,8 +236,6 @@ class VPNTableViewController: UITableViewController, SimplePingDelegate, VPNDoma
             NSNotificationCenter.defaultCenter().postNotificationName(kGeoDidUpdate, object: vpn)
         }
         popDetailViewController()
-        
-        VPNManager.sharedManager.seeYaInAnothaLifeBrotha()
     }
     
     func selectionDidChange(notification: NSNotification) {
@@ -272,8 +270,7 @@ class VPNTableViewController: UITableViewController, SimplePingDelegate, VPNDoma
             NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
         ]
 
-        var attributedTitle = NSMutableAttributedString(string: vpn.title, attributes: titleAttributes)
-        
+        let attributedTitle = NSMutableAttributedString(string: vpn.title, attributes: titleAttributes)
         
         if latency != -1 {
             var latencyColor = UIColor(red:0.39, green:0.68, blue:0.19, alpha:1)
@@ -287,7 +284,7 @@ class VPNTableViewController: UITableViewController, SimplePingDelegate, VPNDoma
                 NSFontAttributeName: UIFont.preferredFontForTextStyle(UIFontTextStyleFootnote),
                 NSForegroundColorAttributeName: latencyColor
             ]
-            var attributedLatency = NSMutableAttributedString(string: " \(latency)ms", attributes: latencyAttributes)
+            let attributedLatency = NSMutableAttributedString(string: " \(latency)ms", attributes: latencyAttributes)
             attributedTitle.appendAttributedString(attributedLatency)
         }
         
@@ -316,12 +313,11 @@ class VPNTableViewController: UITableViewController, SimplePingDelegate, VPNDoma
             if let vpn = VPNDataManager.sharedManager.activatedVPN {
                 let passwordRef = VPNKeychainWrapper.passwordForVPNID(vpn.ID)
                 let secretRef = VPNKeychainWrapper.secretForVPNID(vpn.ID)
-                let certificate = VPNKeychainWrapper.certificateForVPNID(vpn.ID)
                 
                 if vpn.ikev2 {
-                    VPNManager.sharedManager.connectIKEv2(vpn.title, server: vpn.server, account: vpn.account, group: vpn.group, alwaysOn: vpn.alwaysOn, passwordRef: passwordRef, secretRef: secretRef, certificate: certificate)
+                    VPNManager.sharedManager.connectIKEv2(vpn.title, server: vpn.server, account: vpn.account, group: vpn.group, alwaysOn: vpn.alwaysOn, passwordRef: passwordRef, secretRef: secretRef)
                 } else {
-                    VPNManager.sharedManager.connectIPSec(vpn.title, server: vpn.server, account: vpn.account, group: vpn.group, alwaysOn: vpn.alwaysOn, passwordRef: passwordRef, secretRef: secretRef, certificate: certificate)
+                    VPNManager.sharedManager.connectIPSec(vpn.title, server: vpn.server, account: vpn.account, group: vpn.group, alwaysOn: vpn.alwaysOn, passwordRef: passwordRef, secretRef: secretRef)
                 }
             }
         } else {

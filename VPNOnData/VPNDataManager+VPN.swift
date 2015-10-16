@@ -9,20 +9,19 @@
 import CoreData
 import VPNOnKit
 
-extension VPNDataManager
-{
-    func allVPN() -> [VPN]
-    {
+extension VPNDataManager {
+
+    func allVPN() -> [VPN] {
         var vpns = [VPN]()
         
-        var request = NSFetchRequest(entityName: "VPN")
+        let request = NSFetchRequest(entityName: "VPN")
         let sortByTitle = NSSortDescriptor(key: "title", ascending: true)
         let sortByServer = NSSortDescriptor(key: "server", ascending: true)
         let sortByType = NSSortDescriptor(key: "ikev2", ascending: false)
         request.sortDescriptors = [sortByTitle, sortByServer, sortByType]
         
         if let moc = managedObjectContext {
-            if let results = moc.executeFetchRequest(request, error: nil) as! [VPN]? {
+            if let results = (try? moc.executeFetchRequest(request)) as! [VPN]? {
                 for vpn in results {
                     if vpn.deleted {
                         continue
@@ -42,9 +41,7 @@ extension VPNDataManager
         group: String,
         secret: String,
         alwaysOn: Bool = true,
-        ikev2: Bool = false,
-        certificateURL: String?,
-        certificate: NSData?
+        ikev2: Bool = false
         ) -> VPN?
     {
         let entity = NSEntityDescription.entityForName("VPN", inManagedObjectContext: managedObjectContext!)
@@ -56,46 +53,45 @@ extension VPNDataManager
         vpn.group = group
         vpn.alwaysOn = alwaysOn
         vpn.ikev2 = ikev2
-        vpn.certificateURL = certificateURL
         
         var error: NSError?
-        if !managedObjectContext!.save(&error) {
-            debugPrintln("Could not save VPN \(error), \(error?.userInfo)")
-        } else {
+        do {
+            try managedObjectContext!.save()
             saveContext()
             
             if !vpn.objectID.temporaryID {
                 VPNKeychainWrapper.setPassword(password, forVPNID: vpn.ID)
                 VPNKeychainWrapper.setSecret(secret, forVPNID: vpn.ID)
-                VPNKeychainWrapper.setCertificate(certificate, forVPNID: vpn.ID)
                 
                 if allVPN().count == 1 {
                     VPNManager.sharedManager.activatedVPNID = vpn.ID
                 }
                 return vpn
             }
+        } catch let error1 as NSError {
+            error = error1
+            debugPrint("Could not save VPN \(error), \(error?.userInfo)")
         }
         
         return .None
     }
     
-    func deleteVPN(vpn:VPN)
-    {
-        let objectID = vpn.objectID
+    func deleteVPN(vpn:VPN) {
         let ID = "\(vpn.ID)"
         
         VPNKeychainWrapper.destoryKeyForVPNID(ID)
         managedObjectContext!.deleteObject(vpn)
         
-        var saveError: NSError?
-        managedObjectContext!.save(&saveError)
+        do {
+            try managedObjectContext!.save()
+        } catch { }
         saveContext()
         
         if let activatedVPNID = VPNManager.sharedManager.activatedVPNID {
             if activatedVPNID == ID {
                 VPNManager.sharedManager.activatedVPNID = nil
                 
-                var vpns = allVPN()
+                let vpns = allVPN()
                 
                 if let firstVPN = vpns.first {
                     VPNManager.sharedManager.activatedVPNID = firstVPN.ID
@@ -104,77 +100,64 @@ extension VPNDataManager
         }
     }
     
-    func VPNByID(ID: NSManagedObjectID) -> VPN?
-    {
+    func VPNByID(ID: NSManagedObjectID) -> VPN? {
         var error: NSError?
         if ID.temporaryID {
             return .None
         }
         
-        var result = managedObjectContext?.existingObjectWithID(ID, error: &error)
+        var result: NSManagedObject?
+        do {
+            result = try managedObjectContext?.existingObjectWithID(ID)
+        } catch let error1 as NSError {
+            error = error1
+            result = nil
+        }
         if let vpn = result {
             if !vpn.deleted {
                 managedObjectContext?.refreshObject(vpn, mergeChanges: true)
                 return vpn as? VPN
             }
         } else {
-            debugPrintln("Fetch error: \(error)")
+            debugPrint("Fetch error: \(error)")
             return .None
         }
         return .None
     }
     
-    func VPNByIDString(ID: String) -> VPN?
-    {
-        if let URL = NSURL(string: ID) {
-            if let scheme = URL.scheme {
-                if scheme.lowercaseString == "x-coredata" {
-                    if let moid = persistentStoreCoordinator!.managedObjectIDForURIRepresentation(URL) {
-                        return VPNByID(moid)
-                    }
-                }
+    func VPNByIDString(ID: String) -> VPN? {
+        guard let URL = NSURL(string: ID) else { return nil }
+        if URL.scheme.lowercaseString == "x-coredata" {
+            if let moid = persistentStoreCoordinator!.managedObjectIDForURIRepresentation(URL) {
+                return VPNByID(moid)
             }
         }
-        return .None
+        return nil
     }
     
-    func VPNByPredicate(predicate: NSPredicate) -> [VPN]
-    {
+    func VPNByPredicate(predicate: NSPredicate) -> [VPN] {
         var vpns = [VPN]()
-        var request = NSFetchRequest(entityName: "VPN")
+        let request = NSFetchRequest(entityName: "VPN")
         request.predicate = predicate
         
-        var error: NSError?
-        let fetchResults = managedObjectContext!.executeFetchRequest(request, error: &error) as! [VPN]?
+        guard let results = try? managedObjectContext!.executeFetchRequest(request) as! [VPN] else { return vpns }
         
-        if let results = fetchResults {
-            for vpn in results {
-                if vpn.deleted {
-                    continue
-                }
-                vpns.append(vpn)
-            }
-        } else {
-            debugPrintln("Failed to fetch VPNs: \(error?.localizedDescription)")
-        }
+        results.filter { !$0.deleted }.forEach { vpns.append($0) }
         
         return vpns
     }
     
-    func VPNBeginsWithTitle(title: String) -> [VPN]
-    {
+    func VPNBeginsWithTitle(title: String) -> [VPN] {
         let titleBeginsWithPredicate = NSPredicate(format: "title beginswith[cd] %@", argumentArray: [title])
         return VPNByPredicate(titleBeginsWithPredicate)
     }
     
-    func VPNHasTitle(title: String) -> [VPN]
-    {
+    func VPNHasTitle(title: String) -> [VPN] {
         let titleBeginsWithPredicate = NSPredicate(format: "title == %@", argumentArray: [title])
         return VPNByPredicate(titleBeginsWithPredicate)
     }
     
-    func duplicate(vpn: VPN) -> VPN?
-    {
+    func duplicate(vpn: VPN) -> VPN? {
         let duplicatedVPNs = VPNDataManager.sharedManager.VPNBeginsWithTitle(vpn.title)
         if duplicatedVPNs.count > 0 {
             let newTitle = "\(vpn.title) \(duplicatedVPNs.count)"
@@ -189,12 +172,10 @@ extension VPNDataManager
                 group: vpn.group,
                 secret: VPNKeychainWrapper.secretStringForVPNID(vpn.ID) ?? "",
                 alwaysOn: vpn.alwaysOn,
-                ikev2: vpn.ikev2,
-                certificateURL: vpn.certificateURL,
-                certificate: VPNKeychainWrapper.certificateForVPNID(vpn.ID)
+                ikev2: vpn.ikev2
             )
         }
         
-        return .None
+        return nil
     }
 }

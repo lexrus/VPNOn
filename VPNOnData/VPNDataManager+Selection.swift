@@ -9,10 +9,10 @@
 import UIKit
 import CoreData
 
-let kSelectedVPNIDKey = "lastVPNID"
+private let kSelectedVPNIDKey = "lastVPNID"
 
-extension VPNDataManager
-{
+extension VPNDataManager {
+
     var selectedVPNID: NSManagedObjectID? {
         get {
             if let URLData = NSUserDefaults.standardUserDefaults().objectForKey(kSelectedVPNIDKey) as! NSData? {

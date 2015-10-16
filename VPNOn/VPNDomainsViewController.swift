@@ -9,12 +9,12 @@
 import UIKit
 import VPNOnKit
 
-@objc protocol VPNDomainsViewControllerDelegate {
-    optional func didTapSaveDomainsWithText(text: String)
+protocol VPNDomainsViewControllerDelegate : NSObjectProtocol {
+    func didTapSaveDomainsWithText(text: String)
 }
 
-class VPNDomainsViewController: UITableViewController
-{
+class VPNDomainsViewController : UITableViewController {
+    
     weak var delegate: VPNDomainsViewControllerDelegate?
 
     @IBOutlet weak var saveButton: UIBarButtonItem!
@@ -23,9 +23,7 @@ class VPNDomainsViewController: UITableViewController
     @IBAction func save(sender: AnyObject?) {
         VPNManager.sharedManager.onDemandDomains = textView.text
         
-        if let d = delegate {
-            d.didTapSaveDomainsWithText?(textView.text)
-        }
+        delegate?.didTapSaveDomainsWithText(textView.text)
         popDetailViewController()
     }
     

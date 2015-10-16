@@ -48,19 +48,17 @@ class VPNCell: UICollectionViewCell {
     }
     
     var colorOfLatency: UIColor {
-        get {
-            var latencyColor = UIColor(red: 0.5, green: 0.8, blue: 0.19, alpha: 1)
-            
-            if latency > 200 {
-                latencyColor = UIColor(red: 0.92, green: 0.82, blue: 0, alpha: 0.8)
-            } else if latency > 500 {
-                latencyColor = UIColor(red: 1, green: 0.11, blue: 0.34, alpha: 0.6)
-            } else if latency == -1 {
-                latencyColor = UIColor(white: 0.8, alpha: 0.4)
-            }
-            
-            return latencyColor
+        var latencyColor = UIColor(red: 0.5, green: 0.8, blue: 0.19, alpha: 1)
+        
+        if latency > 200 {
+            latencyColor = UIColor(red: 0.92, green: 0.82, blue: 0, alpha: 0.8)
+        } else if latency > 500 {
+            latencyColor = UIColor(red: 1, green: 0.11, blue: 0.34, alpha: 0.6)
+        } else if latency == -1 {
+            latencyColor = UIColor(white: 0.8, alpha: 0.4)
         }
+        
+        return latencyColor
     }
     
     var status: NEVPNStatus = .Disconnected {
@@ -88,29 +86,16 @@ class VPNCell: UICollectionViewCell {
         lineRect.origin.x += dotSpacing
         lineRect.size.width -= dotSpacing * 2
         
-        var rectanglePath = UIBezierPath(roundedRect: lineRect, cornerRadius: 2)
+        let rectanglePath = UIBezierPath(roundedRect: lineRect, cornerRadius: 2)
         
         colorOfLatency.setFill()
         rectanglePath.fill()
     }
     
     func configureWithVPN(vpn: VPN, selected: Bool = false) {
+        current = selected
         titleLabel.text = vpn.title
         switchIndicator.stopAnimating()
-        switchIndicator.hidden = true
-        flagImageView.image = nil
-
-        current = selected
-        
-        if VPNManager.sharedManager.status == .Connected {
-            if selected {
-                flagImageView.alpha = 1.0
-            } else {
-                flagImageView.alpha = 0.4
-            }
-        } else {
-            flagImageView.alpha = 1.0
-        }
         
         if VPNManager.sharedManager.displayFlags {
             switchButton.hidden = true
@@ -120,14 +105,16 @@ class VPNCell: UICollectionViewCell {
                 flagImageView.image = UIImage(named: "unknow")
             }
             flagImageView.hidden = false
+            flagImageView.alpha = VPNManager.sharedManager.status == .Connected || selected ? 1.0 : 0.4
         } else {
+            flagImageView.image = nil
             flagImageView.hidden = true
             switchButton.hidden = false
         }
     }
     
     func updateTitleColor() {
-        var statusColor = UIColor(white: 1, alpha: 0.5)
+        let statusColor: UIColor
         
         switch status {
         case .Connected:
@@ -137,7 +124,7 @@ class VPNCell: UICollectionViewCell {
             statusColor = UIColor.yellowColor()
             break
         default:
-            ()
+            statusColor = UIColor(white: 1, alpha: 0.5)
         }
         
         titleLabel.textColor = statusColor

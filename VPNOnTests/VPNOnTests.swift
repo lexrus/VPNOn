@@ -24,12 +24,20 @@ class VPNOnTests: XCTestCase {
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
     
     func testCreateVPN() {
-        (XCTAssert(dataManager.createVPN("hello", server: "world", account: "aaa", password: "asdf", group: "asdf", secret: "asdf", alwaysOn: true, certificateURL: "", certificate: nil) != nil, "VPN must be created."))
+        let VPN = dataManager.createVPN(
+            "hello",
+            server: "world",
+            account: "aaa",
+            password: "asdf",
+            group: "asdf",
+            secret: "asdf",
+            alwaysOn: true
+        )
+        XCTAssert(VPN != nil, "VPN must be created.")
     }
     
     func testActivatedVPN() {

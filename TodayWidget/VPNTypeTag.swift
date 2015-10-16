@@ -21,8 +21,8 @@ enum VPNType {
     }
 }
 
-class VPNTypeTag: UIVisualEffectView
-{
+class VPNTypeTag : UIVisualEffectView {
+    
     var type: VPNType = .IKEv1
     
     override func willMoveToSuperview(newSuperview: UIView?) {
@@ -30,10 +30,14 @@ class VPNTypeTag: UIVisualEffectView
     }
     
     override func drawRect(rect: CGRect) {
-        drawIKEv2Tag(radius: 3, rect: CGRectInset(rect, 1, 1), tagText: type.simpleDescription(), color: UIColor.whiteColor())
+        drawIKEv2Tag(
+            radius: 3,
+            rect: CGRectInset(rect, 1, 1),
+            tagText: type.simpleDescription(),
+            color: UIColor.whiteColor())
     }
     
-    func drawIKEv2Tag(#radius: CGFloat, rect: CGRect, tagText: String, color: UIColor) {
+    func drawIKEv2Tag(radius radius: CGFloat, rect: CGRect, tagText: String, color: UIColor) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()
         
@@ -47,16 +51,37 @@ class VPNTypeTag: UIVisualEffectView
         rectanglePath.stroke()
         
         //// Text Drawing
-        let textRect = CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height)
+        let textRect = CGRectMake(rect.minX, rect.minY, rect.width, rect.height)
         let textStyle = NSMutableParagraphStyle.defaultParagraphStyle().mutableCopy() as! NSMutableParagraphStyle
         textStyle.alignment = NSTextAlignment.Center
         
-        let textFontAttributes = [NSFontAttributeName: UIFont.systemFontOfSize(height - 1), NSForegroundColorAttributeName: color, NSParagraphStyleAttributeName: textStyle]
+        let textFontAttributes = [
+            NSFontAttributeName: UIFont.systemFontOfSize(height - 1),
+            NSForegroundColorAttributeName: color,
+            NSParagraphStyleAttributeName: textStyle
+        ]
         
-        let textTextHeight: CGFloat = NSString(string: tagText).boundingRectWithSize(CGSizeMake(textRect.width, CGFloat.infinity), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: textFontAttributes, context: nil).size.height
+        let textSize = CGSizeMake(CGRectGetWidth(textRect), CGFloat.infinity)
+        let textTextHeight: CGFloat = {
+            let properRect = NSString(string: tagText)
+                .boundingRectWithSize(
+                    textSize,
+                    options: .UsesLineFragmentOrigin,
+                    attributes: textFontAttributes,
+                    context: nil)
+            return properRect.size.height
+        }()
+        
         CGContextSaveGState(context)
         CGContextClipToRect(context, textRect);
-        NSString(string: tagText).drawInRect(CGRectMake(textRect.minX, textRect.minY + (textRect.height - textTextHeight) / 2, textRect.width, textTextHeight), withAttributes: textFontAttributes)
+        
+        let drawringRect = CGRectMake(
+            textRect.minX,
+            textRect.minY + (textRect.height - textTextHeight) / 2,
+            textRect.width,
+            textTextHeight
+        )
+        NSString(string: tagText).drawInRect(drawringRect, withAttributes: textFontAttributes)
         CGContextRestoreGState(context)
     }
 }

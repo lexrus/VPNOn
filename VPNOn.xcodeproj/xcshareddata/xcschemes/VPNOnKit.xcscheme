@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D7453F281A31966F00F7E32D"
-               BuildableName = "VPN On.app"
-               BlueprintName = "VPNOn"
+               BlueprintIdentifier = "D757AF841A3B370E00AEF3CB"
+               BuildableName = "VPNOnKit.framework"
+               BlueprintName = "VPNOnKit"
                ReferencedContainer = "container:VPNOn.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,46 +28,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D7F0A00D1A6E46F600F9C09A"
-               BuildableName = "VPNOnTests.xctest"
-               BlueprintName = "VPNOnTests"
-               ReferencedContainer = "container:VPNOn.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D7EB52561BBEE7A10021D93D"
-               BuildableName = "VPNOnUITests.xctest"
-               BlueprintName = "VPNOnUITests"
-               ReferencedContainer = "container:VPNOn.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D757AF8E1A3B370E00AEF3CB"
-               BuildableName = "VPNOnKitTests.xctest"
-               BlueprintName = "VPNOnKitTests"
-               ReferencedContainer = "container:VPNOn.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D7453F281A31966F00F7E32D"
-            BuildableName = "VPN On.app"
-            BlueprintName = "VPNOn"
-            ReferencedContainer = "container:VPNOn.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -81,16 +42,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D7453F281A31966F00F7E32D"
-            BuildableName = "VPN On.app"
-            BlueprintName = "VPNOn"
+            BlueprintIdentifier = "D757AF841A3B370E00AEF3CB"
+            BuildableName = "VPNOnKit.framework"
+            BlueprintName = "VPNOnKit"
             ReferencedContainer = "container:VPNOn.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -100,16 +60,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D7453F281A31966F00F7E32D"
-            BuildableName = "VPN On.app"
-            BlueprintName = "VPNOn"
+            BlueprintIdentifier = "D757AF841A3B370E00AEF3CB"
+            BuildableName = "VPNOnKit.framework"
+            BlueprintName = "VPNOnKit"
             ReferencedContainer = "container:VPNOn.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

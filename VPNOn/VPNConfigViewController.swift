@@ -15,9 +15,7 @@ let kVPNDidUpdate = "kVPNDidUpdate"
 let kVPNDidRemove = "kVPNDidRemove"
 let kVPNDidDuplicate = "kVPNDidDuplicate"
 
-class VPNConfigViewController: UITableViewController, UITextFieldDelegate,
-VPNCertificateViewControllerDelegate
-{
+class VPNConfigViewController: UITableViewController, UITextFieldDelegate {
     var initializedVPNInfo: VPNInfo? = nil
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
@@ -31,11 +29,8 @@ VPNCertificateViewControllerDelegate
     @IBOutlet weak var secretTextField: UITextField!
     @IBOutlet weak var alwaysOnSwitch: UISwitch!
     
-    @IBOutlet weak var certificateSwitch: UISwitch!
-    
     @IBOutlet weak var secretCell: UITableViewCell!
     @IBOutlet weak var groupCell: UITableViewCell!
-    @IBOutlet weak var certificateCell: UITableViewCell!
 
     @IBOutlet weak var deleteCell: UITableViewCell!
     @IBOutlet weak var duplicateCell: UITableViewCell!
@@ -51,28 +46,8 @@ VPNCertificateViewControllerDelegate
                 return vpn
             }
         }
-        return Optional.None
+        return nil
         }()
-    
-    var certificateURL: String?
-    
-    var temporaryCertificateData: NSData? {
-        didSet {
-            if let d = self.temporaryCertificateData {
-                let bytesFormatter = NSByteCountFormatter()
-                bytesFormatter.countStyle = .File
-                let bytesString = bytesFormatter.stringFromByteCount(Int64(d.length))
-                
-                if let certCell = certificateCell {
-                    certCell.detailTextLabel?.text = bytesString
-                }
-            } else {
-                if let certCell = certificateCell {
-                    certCell.detailTextLabel?.text = " "
-                }
-            }
-        }
-    }
     
     override func loadView() {
         super.loadView()
@@ -94,10 +69,6 @@ VPNCertificateViewControllerDelegate
                 secretTextField.text = info.secret
                 alwaysOnSwitch.on = info.alwaysOn
                 typeSegment.selectedSegmentIndex = info.ikev2 ? 1 : 0
-                certificateURL = info.certificateURL
-                if certificateURL != nil {
-                    certificateSwitch.on = true
-                }
             }
             
             deleteCell.hidden = true
@@ -109,19 +80,13 @@ VPNCertificateViewControllerDelegate
             groupTextField.text = currentVPN.group
             alwaysOnSwitch.on = currentVPN.alwaysOn
             typeSegment.selectedSegmentIndex = currentVPN.ikev2 ? 1 : 0
-            certificateURL = currentVPN.certificateURL
             passwordTextField.text = VPNKeychainWrapper.passwordStringForVPNID(currentVPN.ID)
             secretTextField.text = VPNKeychainWrapper.secretStringForVPNID(currentVPN.ID)
             deleteCell.hidden = false
             duplicateCell.hidden = false
-            temporaryCertificateData = VPNKeychainWrapper.certificateForVPNID(currentVPN.ID)
-            if temporaryCertificateData != nil {
-                certificateSwitch.on = true
-            }
         }
         
         toggleSaveButtonByStatus()
-        updateCertificateOptions()
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -129,19 +94,7 @@ VPNCertificateViewControllerDelegate
     }
     
     deinit {
-        temporaryCertificateData = nil
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
-    // MARK: - Navigation
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "certificate" {
-            if let targetVC = segue.destinationViewController as? VPNCertificateViewController {
-                targetVC.delegate = self
-                targetVC.temporaryCertificateURL = certificateURL
-                targetVC.temporaryCertificateData = temporaryCertificateData
-            }
-        }
-    }
 }

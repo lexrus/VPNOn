@@ -8,8 +8,8 @@
 
 import UIKit
 
-extension VPNConfigViewController
-{
+extension VPNConfigViewController {
+
     @IBAction func didChangeType(sender: AnyObject) {
         toggleSaveButtonByStatus()
         

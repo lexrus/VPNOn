@@ -1,0 +1,31 @@
+PODS:
+  - FileKit (1.6.0)
+  - RxSwift (2.0.0-alpha.3)
+  - SnapKit (0.15.0)
+  - SwiftKeychainWrapper (1.0.11)
+  - VTAcknowledgementsViewController (0.15)
+
+DEPENDENCIES:
+  - FileKit (~> 1.6)
+  - RxSwift (= 2.0.0-alpha.3)
+  - SnapKit (~> 0.15)
+  - SwiftKeychainWrapper (from `https://github.com/lexrus/SwiftKeychainWrapper.git`)
+  - VTAcknowledgementsViewController (~> 0.15)
+
+EXTERNAL SOURCES:
+  SwiftKeychainWrapper:
+    :git: https://github.com/lexrus/SwiftKeychainWrapper.git
+
+CHECKOUT OPTIONS:
+  SwiftKeychainWrapper:
+    :commit: 3676f3263df891b3ad8b7ace3e5384e70ac838f3
+    :git: https://github.com/lexrus/SwiftKeychainWrapper.git
+
+SPEC CHECKSUMS:
+  FileKit: 18bc18fa0a66b3718960dc5105a7f99a14b83caf
+  RxSwift: c66f7956b2e5fb397a62bf4a3ec6072749a816a7
+  SnapKit: 4962eed2ee18e48cbd2b2292fffc57efe7235f87
+  SwiftKeychainWrapper: 011a6946923948ffa49708014dd691164d7621d1
+  VTAcknowledgementsViewController: 575f5841fb47b7d9c852ccb406104ea68de07b21
+
+COCOAPODS: 0.39.0.beta.4

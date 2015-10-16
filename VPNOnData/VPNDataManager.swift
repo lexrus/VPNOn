@@ -11,23 +11,19 @@ import CoreData
 
 let kAppGroupIdentifier = "group.VPNOn"
 
-class VPNDataManager
-{
-    class var sharedManager : VPNDataManager
-    {
-        struct Static
-        {
-            static let sharedInstance = VPNDataManager()
-        }
-        
-        return Static.sharedInstance
+private let VPNDataManagerInstance = VPNDataManager()
+
+class VPNDataManager {
+    
+    class var sharedManager : VPNDataManager {
+        return VPNDataManagerInstance
     }
     
     // MARK: - Core Data stack
     
     private lazy var _oldDataDirectory: NSURL = {
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
-        let url = urls[urls.count-1] as! NSURL
+        let url = urls[urls.count-1] 
         return url
     }()
     
@@ -52,24 +48,23 @@ class VPNDataManager
         let url = self.dataDirectory.URLByAppendingPathComponent("VPNOn.sqlite")
         var failureReason = "There was an error creating or loading the application's saved data."
         
-        let options = NSDictionary(
-            objects: [NSNumber(bool: true), NSNumber(bool: true), "WAL"],
-            forKeys: [NSMigratePersistentStoresAutomaticallyOption, NSInferMappingModelAutomaticallyOption, "journal_mode"])
+        let options = [
+            NSMigratePersistentStoresAutomaticallyOption: NSNumber(bool: true),
+            NSInferMappingModelAutomaticallyOption: NSNumber(bool: true),
+            "journal_mode": "WAL"
+        ]
         
-        var error: NSError? = nil
         if let store = coordinator!.persistentStoreForURL(url) { }
-        else if coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: options as [NSObject : AnyObject] as [NSObject : AnyObject], error: &error) == nil {
-            coordinator = nil
-            // Report any error we got.
-            let dict = NSMutableDictionary()
-            dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
-            dict[NSLocalizedFailureReasonErrorKey] = failureReason
-            dict[NSUnderlyingErrorKey] = error
-            error = NSError(domain: "com.LexTang.VPNOn", code: 9999, userInfo: dict as [NSObject : AnyObject])
-            // Replace this with code to handle the error appropriately.
-            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            NSLog("Unresolved error \(error), \(error!.userInfo)")
-            abort()
+        else {
+            do {
+                try coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: options)
+            } catch let error as NSError {
+                coordinator = nil
+                NSLog("Unresolved error \(error), \(error.userInfo)")
+                exit(1)
+            } catch {
+                fatalError()
+            }
         }
         
         return coordinator
@@ -105,18 +100,23 @@ class VPNDataManager
             forKeys: [NSMigratePersistentStoresAutomaticallyOption, NSInferMappingModelAutomaticallyOption, "journal_mode"])
         
         var srcError: NSError?
-        if coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: srcURL, options: options as [NSObject : AnyObject] as [NSObject : AnyObject], error: &srcError) == nil {
-            debugPrintln("Failed to add src store: \(srcError)")
+        do {
+            try coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: srcURL, options: options as! [NSObject : AnyObject] as [NSObject : AnyObject])
+        } catch let error as NSError {
+            srcError = error
+            debugPrint("Failed to add src store: \(srcError)")
             return
         }
         
-        if let oldStore = coordinator.persistentStoreForURL(srcURL) {
-            var migrationError: NSError?
-            if coordinator.migratePersistentStore(oldStore, toURL: dstURL, options: options as [NSObject : AnyObject], withType: NSSQLiteStoreType, error: &migrationError) == nil {
-                debugPrintln("Failed to migrate CoreData: \(migrationError)")
-            } else {
-                NSFileManager.defaultManager().removeItemAtPath(srcURL.path!, error: nil)
+        guard let oldStore = coordinator.persistentStoreForURL(srcURL) else { return }
+        do {
+            try coordinator.migratePersistentStore(oldStore, toURL: dstURL, options: options as? [NSObject : AnyObject], withType: NSSQLiteStoreType)
+            do {
+                try NSFileManager.defaultManager().removeItemAtPath(srcURL.path!)
+            } catch _ {
             }
+        } catch let error as NSError {
+            debugPrint("Failed to migrate CoreData: \(error)")
         }
     }
     
@@ -125,11 +125,16 @@ class VPNDataManager
     func saveContext () {
         if let moc = self.managedObjectContext {
             var error: NSError? = nil
-            if moc.hasChanges && !moc.save(&error) {
-                // Replace this implementation with code to handle the error appropriately.
-                // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                NSLog("Unresolved error \(error), \(error!.userInfo)")
-                abort()
+            if moc.hasChanges {
+                do {
+                    try moc.save()
+                } catch let error1 as NSError {
+                    error = error1
+                    // Replace this implementation with code to handle the error appropriately.
+                    // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                    NSLog("Unresolved error \(error), \(error!.userInfo)")
+                    abort()
+                }
             }
         }
     }

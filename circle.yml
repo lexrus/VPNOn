@@ -1,6 +1,6 @@
 machine:
   xcode:
-    version: "6.3.1"
+    version: "7.0"
   environment:
     XCODE_SCHEME: VPNOn
     XCODE_PROJECT: VPNOn.xcodeproj

@@ -12,8 +12,8 @@ enum WidgetDisplayMode {
     case SwitchMode, FlagMode
 }
 
-class ModeButton: UIView
-{
+class ModeButton : UIView {
+    
     var displayMode: WidgetDisplayMode = .FlagMode {
         didSet {
             let displayFlags = (displayMode == .FlagMode)
@@ -23,52 +23,46 @@ class ModeButton: UIView
     }
     
     var effectView: UIVisualEffectView {
-        get {
-            if let _effectView = self.subviews.first as! UIVisualEffectView? {
-                if _effectView.isKindOfClass(UIVisualEffectView.self) {
-                    return _effectView
-                }
+        if let view = subviews.first as! UIVisualEffectView? {
+            if view.isKindOfClass(UIVisualEffectView.self) {
+                return view
             }
-            let _effectView = UIVisualEffectView(effect: UIVibrancyEffect.notificationCenterVibrancyEffect())
-            _effectView.frame = CGRectMake(14, 14, 24, self.bounds.size.height - 14)
-            _effectView.autoresizingMask = UIViewAutoresizing.FlexibleHeight
-            addSubview(_effectView)
-            return _effectView
         }
+        let view = UIVisualEffectView(effect: UIVibrancyEffect.notificationCenterVibrancyEffect())
+        view.frame = CGRectMake(14, 14, 24, self.bounds.height - 14)
+        view.autoresizingMask = UIViewAutoresizing.FlexibleHeight
+        addSubview(view)
+        return view
     }
     
     var expandIconView: UILabel {
-        get {
-            for icon in self.effectView.contentView.subviews {
-                if icon.isKindOfClass(UILabel.self) {
-                    return icon as! UILabel
-                }
+        for icon in effectView.contentView.subviews {
+            if icon.isKindOfClass(UILabel.self) {
+                return icon as! UILabel
             }
-            
-            let rect = CGRectMake(0, self.effectView.bounds.size.height - 33, 24, 33)
-            let expandIcon = UILabel(frame: rect)
-            expandIcon.textColor = UIColor.whiteColor()
-            expandIcon.text = "..."
-            expandIcon.textAlignment = NSTextAlignment.Center
-            expandIcon.font = UIFont.systemFontOfSize(12)
-            expandIcon.autoresizingMask = UIViewAutoresizing.FlexibleTopMargin
-            self.effectView.contentView.addSubview(expandIcon)
-            return expandIcon
         }
+        
+        let rect = CGRectMake(0, effectView.bounds.height - 33, 24, 33)
+        let expandIcon = UILabel(frame: rect)
+        expandIcon.textColor = UIColor.whiteColor()
+        expandIcon.text = "..."
+        expandIcon.textAlignment = NSTextAlignment.Center
+        expandIcon.font = UIFont.systemFontOfSize(12)
+        expandIcon.autoresizingMask = .FlexibleTopMargin
+        effectView.contentView.addSubview(expandIcon)
+        return expandIcon
     }
     
     var switchIconView: SwitchIconView {
-        get {
-            for icon in self.effectView.contentView.subviews {
-                if icon.isKindOfClass(SwitchIconView.self) {
-                    return icon as! SwitchIconView
-                }
+        for icon in effectView.contentView.subviews {
+            if icon.isKindOfClass(SwitchIconView.self) {
+                return icon as! SwitchIconView
             }
-            
-            let switchIcon = SwitchIconView()
-            switchIcon.frame = CGRectMake(2, 2, 20, 12)
-            self.effectView.contentView.addSubview(switchIcon)
-            return switchIcon
         }
+        
+        let switchIcon = SwitchIconView()
+        switchIcon.frame = CGRectMake(2, 2, 20, 12)
+        effectView.contentView.addSubview(switchIcon)
+        return switchIcon
     }
 }

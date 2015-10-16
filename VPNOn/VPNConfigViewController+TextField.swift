@@ -8,8 +8,7 @@
 
 import UIKit
 
-extension VPNConfigViewController
-{
+extension VPNConfigViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,11 +44,7 @@ extension VPNConfigViewController
             passwordTextField.becomeFirstResponder()
             break
         case passwordTextField:
-            if certificateSwitch.on {
-                passwordTextField.resignFirstResponder()
-            } else {
-                secretTextField.becomeFirstResponder()
-            }
+            secretTextField.becomeFirstResponder()
             break
         case secretTextField:
             groupTextField.becomeFirstResponder()
@@ -71,7 +66,7 @@ extension VPNConfigViewController
         var bottom: CGFloat = 216
         if let userInfo: NSDictionary = notification.userInfo {
             if let boundsObject: AnyObject = userInfo.valueForKey("UIKeyboardBoundsUserInfoKey") {
-                let bounds = boundsObject.CGRectValue()
+                let bounds = boundsObject.CGRectValue
                 bottom = bounds.size.height
             }
         }
