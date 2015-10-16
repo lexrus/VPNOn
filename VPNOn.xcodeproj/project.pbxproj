@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6D11E2AEC09B03E902183C70 /* Pods_VPNOnKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCF9F638626886253E3D5DBE /* Pods_VPNOnKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		90F2A1DBAF82D939A4C187C0 /* Pods_VPNOnKitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DD6EE39907862B78B9E8A76 /* Pods_VPNOnKitTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		C107087893CAB9B714EE5EEE /* Pods_TodayWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DD111959C2D6DC90F3DDEB5 /* Pods_TodayWidget.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		C3A8CAAECE4A59F53B07B06A /* Pods_VPNOn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C5D945F21A6DE69BA752AD6 /* Pods_VPNOn.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		C62D1295A10E2FA8389D398F /* Pods_VPNOnTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C4118B64BFDEF59BE8BD76F /* Pods_VPNOnTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		6D11E2AEC09B03E902183C70 /* Pods_VPNOnKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCF9F638626886253E3D5DBE /* Pods_VPNOnKit.framework */; };
+		90F2A1DBAF82D939A4C187C0 /* Pods_VPNOnKitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DD6EE39907862B78B9E8A76 /* Pods_VPNOnKitTests.framework */; };
+		C107087893CAB9B714EE5EEE /* Pods_TodayWidget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DD111959C2D6DC90F3DDEB5 /* Pods_TodayWidget.framework */; };
+		C3A8CAAECE4A59F53B07B06A /* Pods_VPNOn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C5D945F21A6DE69BA752AD6 /* Pods_VPNOn.framework */; };
+		C62D1295A10E2FA8389D398F /* Pods_VPNOnTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C4118B64BFDEF59BE8BD76F /* Pods_VPNOnTests.framework */; };
 		D70578501AA5EFF000040279 /* VPNTableViewController+Geo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D705784F1AA5EFF000040279 /* VPNTableViewController+Geo.swift */; };
 		D71A045B1AA17843006C917A /* Flags.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D71A045A1AA17843006C917A /* Flags.xcassets */; };
 		D71A045C1AA17843006C917A /* Flags.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D71A045A1AA17843006C917A /* Flags.xcassets */; };
@@ -1489,7 +1489,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = VPNOn/VPNOn.entitlements;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = VPNOn/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1510,7 +1509,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = VPNOn/VPNOn.entitlements;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = VPNOn/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1528,7 +1526,6 @@
 			baseConfigurationReference = B049947EF6748F9B90FCA3FF /* Pods-TodayWidget.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = TodayWidget/TodayWidget.entitlements;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1549,7 +1546,6 @@
 			baseConfigurationReference = 9BF64EC5788BBAB4EE75C1D7 /* Pods-TodayWidget.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = TodayWidget/TodayWidget.entitlements;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				INFOPLIST_FILE = TodayWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -1572,7 +1568,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1602,7 +1597,6 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				INFOPLIST_FILE = VPNOnKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1777,6 +1771,7 @@
 				D7EB525F1BBEE7A10021D93D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D7F0A0161A6E46F600F9C09A /* Build configuration list for PBXNativeTarget "VPNOnTests" */ = {
 			isa = XCConfigurationList;
