@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="8195" systemVersion="15B22c" minimumToolsVersion="Xcode 4.3">
+    <entity name="VPN" representedClassName=".VPN" syncable="YES">
+        <attribute name="account" optional="YES" attributeType="String" maxValueString="256" syncable="YES"/>
+        <attribute name="alwaysOn" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="certificateURL" optional="YES" attributeType="String" maxValueString="2048" syncable="YES"/>
+        <attribute name="countryCode" optional="YES" attributeType="String" maxValueString="10" syncable="YES"/>
+        <attribute name="enabled" attributeType="Boolean" defaultValueString="YES" syncable="YES"/>
+        <attribute name="group" optional="YES" attributeType="String" maxValueString="256" syncable="YES"/>
+        <attribute name="ikev2" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="isp" optional="YES" attributeType="String" maxValueString="256" syncable="YES"/>
+        <attribute name="latency" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="server" attributeType="String" minValueString="1" maxValueString="256" defaultValueString="vpn" spotlightIndexingEnabled="YES" syncable="YES"/>
+        <attribute name="title" attributeType="String" minValueString="1" maxValueString="256" defaultValueString="vpn" spotlightIndexingEnabled="YES" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="VPN" positionX="-3951" positionY="-1827" width="128" height="240"/>
+    </elements>
+</model>

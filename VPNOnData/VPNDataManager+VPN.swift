@@ -20,13 +20,10 @@ extension VPNDataManager {
         let sortByType = NSSortDescriptor(key: "ikev2", ascending: false)
         request.sortDescriptors = [sortByTitle, sortByServer, sortByType]
         
-        if let moc = managedObjectContext {
-            if let results = (try? moc.executeFetchRequest(request)) as! [VPN]? {
-                for vpn in results {
-                    if vpn.deleted {
-                        continue
-                    }
-                    vpns.append(vpn)
+        if let moc = managedObjectContext, results = (try? moc.executeFetchRequest(request)) as? [VPN] {
+            results.forEach {
+                if !$0.deleted {
+                    vpns.append($0)
                 }
             }
         }
@@ -44,8 +41,14 @@ extension VPNDataManager {
         ikev2: Bool = false
         ) -> VPN?
     {
-        let entity = NSEntityDescription.entityForName("VPN", inManagedObjectContext: managedObjectContext!)
-        let vpn = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedObjectContext!) as! VPN
+        guard let entity = NSEntityDescription.entityForName("VPN", inManagedObjectContext: managedObjectContext!) else {
+            debugPrint("No entity.")
+            return nil
+        }
+        guard let vpn = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedObjectContext!) as? VPN else {
+            debugPrint("Failed to insert")
+            return nil
+        }
         
         vpn.title = title
         vpn.server = server
@@ -54,7 +57,6 @@ extension VPNDataManager {
         vpn.alwaysOn = alwaysOn
         vpn.ikev2 = ikev2
         
-        var error: NSError?
         do {
             try managedObjectContext!.save()
             saveContext()
@@ -68,9 +70,8 @@ extension VPNDataManager {
                 }
                 return vpn
             }
-        } catch let error1 as NSError {
-            error = error1
-            debugPrint("Could not save VPN \(error), \(error?.userInfo)")
+        } catch let error as NSError {
+            debugPrint("Could not save VPN \(error), \(error.userInfo)")
         }
         
         return .None
@@ -87,15 +88,13 @@ extension VPNDataManager {
         } catch { }
         saveContext()
         
-        if let activatedVPNID = VPNManager.sharedManager.activatedVPNID {
-            if activatedVPNID == ID {
-                VPNManager.sharedManager.activatedVPNID = nil
-                
-                let vpns = allVPN()
-                
-                if let firstVPN = vpns.first {
-                    VPNManager.sharedManager.activatedVPNID = firstVPN.ID
-                }
+        if VPNManager.sharedManager.activatedVPNID == ID {
+            VPNManager.sharedManager.activatedVPNID = nil
+            
+            let vpns = allVPN()
+            
+            if let firstVPN = vpns.first {
+                VPNManager.sharedManager.activatedVPNID = firstVPN.ID
             }
         }
     }

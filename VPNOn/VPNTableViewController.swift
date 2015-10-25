@@ -19,14 +19,9 @@ let kVPNConnectionSection = 0
 let kVPNOnDemandSection = 1
 let kVPNListSectionIndex = 2
 let kVPNAddSection = 3
-let kConnectionCellID = "ConnectionCell"
-let kAddCellID = "AddCell"
-let kVPNCellID = "VPNCell"
-let kOnDemandCellID = "OnDemandCell"
-let kDomainsCellID = "DomainsCell"
 
-class VPNTableViewController: UITableViewController, SimplePingDelegate, VPNDomainsViewControllerDelegate
-{
+class VPNTableViewController : UITableViewController, SimplePingDelegate, VPNDomainsViewControllerDelegate {
+    
     var vpns = [VPN]()
     var activatedVPNID: String? = nil
     var connectionStatus = NSLocalizedString("Not Connected", comment: "VPN Table - Connection Status")
@@ -124,7 +119,8 @@ class VPNTableViewController: UITableViewController, SimplePingDelegate, VPNDoma
         switch indexPath.section
         {
         case kVPNConnectionSection:
-            let cell = tableView.dequeueReusableCellWithIdentifier(kConnectionCellID, forIndexPath: indexPath) as! VPNSwitchCell
+            let cell = tableView.dequeueReusableCellWithIdentifier(
+                R.reuseIdentifier.connectionCell, forIndexPath: indexPath)!
             cell.titleLabel!.text = connectionStatus
             cell.switchButton.on = connectionOn
             cell.switchButton.enabled = vpns.count != 0
@@ -132,11 +128,11 @@ class VPNTableViewController: UITableViewController, SimplePingDelegate, VPNDoma
             
         case kVPNOnDemandSection:
             if indexPath.row == 0 {
-                let switchCell = tableView.dequeueReusableCellWithIdentifier(kOnDemandCellID) as! VPNSwitchCell
+                let switchCell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.onDemandCell)!
                 switchCell.switchButton.on = VPNManager.sharedManager.onDemand
                 return switchCell
             } else {
-                let domainsCell = tableView.dequeueReusableCellWithIdentifier(kDomainsCellID) as! VPNTableViewCell
+                let domainsCell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.domainsCell)!
                 var domainsCount = 0
                 for domain in VPNManager.sharedManager.onDemandDomainsArray as [String] {
                     if domain.rangeOfString("*.") == nil {
@@ -149,7 +145,7 @@ class VPNTableViewController: UITableViewController, SimplePingDelegate, VPNDoma
             }
             
         case kVPNListSectionIndex:
-            let cell = tableView.dequeueReusableCellWithIdentifier(kVPNCellID, forIndexPath: indexPath) as! VPNTableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.vPNCell, forIndexPath: indexPath)!
             let vpn = vpns[indexPath.row]
             cell.textLabel?.attributedText = cellTitleForIndexPath(indexPath)
             cell.detailTextLabel?.text = vpn.server
@@ -168,7 +164,7 @@ class VPNTableViewController: UITableViewController, SimplePingDelegate, VPNDoma
             return cell
             
         default:
-            return tableView.dequeueReusableCellWithIdentifier(kAddCellID, forIndexPath: indexPath) 
+            return tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.addCell, forIndexPath: indexPath)!
         }
     }
     
@@ -179,14 +175,14 @@ class VPNTableViewController: UITableViewController, SimplePingDelegate, VPNDoma
             VPNDataManager.sharedManager.selectedVPNID = nil
             let detailNavigationController = splitViewController!.viewControllers.last! as! UINavigationController
             detailNavigationController.popToRootViewControllerAnimated(false)
-            splitViewController!.viewControllers.last!.performSegueWithIdentifier("config", sender: nil)
+            splitViewController!.viewControllers.last!.performSegueWithIdentifier(R.segue.config, sender: nil)
             break
             
         case kVPNOnDemandSection:
             if indexPath.row == 1 {
                 let detailNavigationController = splitViewController!.viewControllers.last! as! UINavigationController
                 detailNavigationController.popToRootViewControllerAnimated(false)
-                splitViewController!.viewControllers.last!.performSegueWithIdentifier("domains", sender: nil)
+                splitViewController!.viewControllers.last!.performSegueWithIdentifier(R.segue.domains, sender: nil)
             }
             break
             
@@ -256,7 +252,7 @@ class VPNTableViewController: UITableViewController, SimplePingDelegate, VPNDoma
             
             let detailNavigationController = splitViewController!.viewControllers.last! as! UINavigationController
             detailNavigationController.popToRootViewControllerAnimated(false)
-            detailNavigationController.performSegueWithIdentifier("config", sender: self)
+            detailNavigationController.performSegueWithIdentifier(R.segue.config, sender: self)
         }
     }
     
@@ -310,15 +306,28 @@ class VPNTableViewController: UITableViewController, SimplePingDelegate, VPNDoma
     
     @IBAction func toggleVPN(sender: UISwitch) {
         if sender.on {
-            if let vpn = VPNDataManager.sharedManager.activatedVPN {
-                let passwordRef = VPNKeychainWrapper.passwordForVPNID(vpn.ID)
-                let secretRef = VPNKeychainWrapper.secretForVPNID(vpn.ID)
-                
-                if vpn.ikev2 {
-                    VPNManager.sharedManager.connectIKEv2(vpn.title, server: vpn.server, account: vpn.account, group: vpn.group, alwaysOn: vpn.alwaysOn, passwordRef: passwordRef, secretRef: secretRef)
-                } else {
-                    VPNManager.sharedManager.connectIPSec(vpn.title, server: vpn.server, account: vpn.account, group: vpn.group, alwaysOn: vpn.alwaysOn, passwordRef: passwordRef, secretRef: secretRef)
-                }
+            guard let vpn = VPNDataManager.sharedManager.activatedVPN else { return }
+            let passwordRef = VPNKeychainWrapper.passwordForVPNID(vpn.ID)
+            let secretRef = VPNKeychainWrapper.secretForVPNID(vpn.ID)
+            
+            if vpn.ikev2 {
+                VPNManager.sharedManager.connectIKEv2(
+                    vpn.title,
+                    server: vpn.server,
+                    account: vpn.account,
+                    group: vpn.group,
+                    alwaysOn: vpn.alwaysOn,
+                    passwordRef: passwordRef,
+                    secretRef: secretRef)
+            } else {
+                VPNManager.sharedManager.connectIPSec(
+                    vpn.title,
+                    server: vpn.server,
+                    account: vpn.account,
+                    group: vpn.group,
+                    alwaysOn: vpn.alwaysOn,
+                    passwordRef: passwordRef,
+                    secretRef: secretRef)
             }
         } else {
             VPNManager.sharedManager.disconnect()

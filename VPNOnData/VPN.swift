@@ -19,7 +19,7 @@ public class VPNInfo {
     var ikev2:          Bool   = false
 }
 
-public class VPN : NSManagedObject{
+public class VPN : NSManagedObject {
     
 	@NSManaged var account:        String!
 	@NSManaged var group:          String!
@@ -101,8 +101,7 @@ public class VPN : NSManagedObject{
 	/**
 	 * Returns all the available property values in the form of NSDictionary object where the key is the approperiate json key and the value is the value of the corresponding property
 	 */
-	func toDictionary() -> NSDictionary
-	{
+	func toDictionary() -> NSDictionary {
 		let dictionary = NSMutableDictionary()
         dictionary["ID"] = ID
 		if account != nil {

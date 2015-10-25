@@ -54,7 +54,7 @@ class VPNOnKitTests: XCTestCase {
     }
     
     func testAsyncResolve() {
-        var expectation = self.expectationWithDescription("Async fetch GeoInfo.")
+        let expectation = self.expectationWithDescription("Async fetch GeoInfo.")
         
         VPNManager.sharedManager.geoInfoOfHost("google.com") {
             geoInfo in
@@ -63,6 +63,6 @@ class VPNOnKitTests: XCTestCase {
             expectation.fulfill()
         }
         
-        self.waitForExpectationsWithTimeout(3.0, handler: nil)
+        self.waitForExpectationsWithTimeout(5.0, handler: nil)
     }
 }
