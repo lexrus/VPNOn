@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import NetworkExtension
 import VPNOnKit
+import FlagKit
 
 let kGeoDidUpdate = "kGeoDidUpdate"
 let kSelectionDidChange = "kSelectionDidChange"
@@ -151,12 +152,10 @@ class VPNTableViewController : UITableViewController, SimplePingDelegate, VPNDom
             cell.detailTextLabel?.text = vpn.server
             cell.IKEv2 = vpn.ikev2
             
-            cell.imageView!.image = nil
+            cell.imageView?.image = nil
             
-            if let cc = vpn.countryCode {
-                if let image = UIImage(named: cc) {
-                    cell.imageView!.image = image
-                }
+            if let countryCode = vpn.countryCode {
+                cell.imageView?.image = UIImage(flagImageWithCountryCode: countryCode.uppercaseString)
             }
             
             cell.current = Bool(activatedVPNID == vpns[indexPath.row].ID)

@@ -1,4 +1,4 @@
 github "xmartlabs/Eureka" "1.1.0"
-github "madebybowtie/FlagKit" "v1.0.4"
+github "madebybowtie/FlagKit" "v1.0.5"
 github "jrendel/SwiftKeychainWrapper" "bc1b40f52fee59adae65470a02a4b7ca6d3f18ba"
 github "mathiasnagler/SwiftyAcknowledgements" "v0.1"

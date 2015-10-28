@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		D70578501AA5EFF000040279 /* VPNTableViewController+Geo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D705784F1AA5EFF000040279 /* VPNTableViewController+Geo.swift */; };
-		D71A045B1AA17843006C917A /* Flags.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D71A045A1AA17843006C917A /* Flags.xcassets */; };
-		D71A045C1AA17843006C917A /* Flags.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D71A045A1AA17843006C917A /* Flags.xcassets */; };
 		D7322C7A1A6C024800B34AA0 /* LTViewControllerBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7322C791A6C024800B34AA0 /* LTViewControllerBackground.swift */; };
 		D73C19F21AC1684D00C1A824 /* SwitchIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73C19F11AC1684D00C1A824 /* SwitchIconView.swift */; };
 		D73C19F41AC168B900C1A824 /* ModeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73C19F31AC168B900C1A824 /* ModeButton.swift */; };
@@ -65,10 +63,10 @@
 		D7A9C4E71BDD245300F06570 /* Eureka.framework.dSYM in dSYM */ = {isa = PBXBuildFile; fileRef = D7A9C4E41BDD245300F06570 /* Eureka.framework.dSYM */; };
 		D7A9C4E81BDD245300F06570 /* SwiftKeychainWrapper.framework.dSYM in dSYM */ = {isa = PBXBuildFile; fileRef = D7A9C4E51BDD245300F06570 /* SwiftKeychainWrapper.framework.dSYM */; };
 		D7A9C4E91BDD245300F06570 /* SwiftyAcknowledgements.framework.dSYM in dSYM */ = {isa = PBXBuildFile; fileRef = D7A9C4E61BDD245300F06570 /* SwiftyAcknowledgements.framework.dSYM */; };
-		D7A9C4EB1BDD262000F06570 /* Eureka.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D7A9C4DB1BDD189400F06570 /* Eureka.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D7A9C4EC1BDD262100F06570 /* SwiftKeychainWrapper.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D7A9C4DC1BDD189400F06570 /* SwiftKeychainWrapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D7A9C4ED1BDD262300F06570 /* SwiftyAcknowledgements.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D7A9C4DD1BDD189400F06570 /* SwiftyAcknowledgements.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D7A9C4EF1BDD267600F06570 /* SwiftKeychainWrapper.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D7A9C4DC1BDD189400F06570 /* SwiftKeychainWrapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D7A9C4EB1BDD262000F06570 /* Eureka.framework in Carthage Frameworks */ = {isa = PBXBuildFile; fileRef = D7A9C4DB1BDD189400F06570 /* Eureka.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D7A9C4EC1BDD262100F06570 /* SwiftKeychainWrapper.framework in Carthage Frameworks */ = {isa = PBXBuildFile; fileRef = D7A9C4DC1BDD189400F06570 /* SwiftKeychainWrapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D7A9C4ED1BDD262300F06570 /* SwiftyAcknowledgements.framework in Carthage Frameworks */ = {isa = PBXBuildFile; fileRef = D7A9C4DD1BDD189400F06570 /* SwiftyAcknowledgements.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D7A9C4EF1BDD267600F06570 /* SwiftKeychainWrapper.framework in Carthage Frameworks */ = {isa = PBXBuildFile; fileRef = D7A9C4DC1BDD189400F06570 /* SwiftKeychainWrapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D7A9C4F11BDD268200F06570 /* SwiftKeychainWrapper.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D7A9C4DC1BDD189400F06570 /* SwiftKeychainWrapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D7A9C4F31BDD26AF00F06570 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A9C4F21BDD26AF00F06570 /* R.generated.swift */; };
 		D7B033BB1A6E5ED1009D791E /* VPNDataManager+ActivatedVPN.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B033BA1A6E5ED1009D791E /* VPNDataManager+ActivatedVPN.swift */; };
@@ -83,6 +81,11 @@
 		D7DBC12C1BBAEFDE004E2F3E /* VPNKeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DBC12B1BBAEFDE004E2F3E /* VPNKeychainWrapper.swift */; };
 		D7DDB5631A78AC7E00BE7FB7 /* VPNTypeTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DDB5611A78A1D100BE7FB7 /* VPNTypeTag.swift */; };
 		D7DDB5651A78DA4600BE7FB7 /* VPNDomainsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DDB5641A78DA4600BE7FB7 /* VPNDomainsViewController.swift */; };
+		D7E0A8211BE1140000414450 /* FlagKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7E0A8201BE1140000414450 /* FlagKit.framework */; };
+		D7E0A8221BE1140000414450 /* FlagKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7E0A8201BE1140000414450 /* FlagKit.framework */; };
+		D7E0A8251BE1141B00414450 /* FlagKit.framework.dSYM in dSYM */ = {isa = PBXBuildFile; fileRef = D7E0A8231BE1140900414450 /* FlagKit.framework.dSYM */; };
+		D7E0A8261BE114E000414450 /* FlagKit.framework in Carthage Frameworks */ = {isa = PBXBuildFile; fileRef = D7E0A8201BE1140000414450 /* FlagKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D7E0A8271BE114E500414450 /* FlagKit.framework in Carthage Frameworks */ = {isa = PBXBuildFile; fileRef = D7E0A8201BE1140000414450 /* FlagKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D7E28A7F1A680D9400507F33 /* LTThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E28A7B1A680D9400507F33 /* LTThemeManager.swift */; };
 		D7E28A801A680D9400507F33 /* UIAppearance+Swift.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E28A7D1A680D9400507F33 /* UIAppearance+Swift.m */; };
 		D7E28A831A680DBD00507F33 /* LTTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E28A821A680DBD00507F33 /* LTTheme.swift */; };
@@ -178,30 +181,35 @@
 				D7A9C4E71BDD245300F06570 /* Eureka.framework.dSYM in dSYM */,
 				D7A9C4E81BDD245300F06570 /* SwiftKeychainWrapper.framework.dSYM in dSYM */,
 				D7A9C4E91BDD245300F06570 /* SwiftyAcknowledgements.framework.dSYM in dSYM */,
+				D7E0A8251BE1141B00414450 /* FlagKit.framework.dSYM in dSYM */,
 			);
 			name = dSYM;
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D7A9C4EA1BDD261800F06570 /* CopyFiles */ = {
+		D7A9C4EA1BDD261800F06570 /* Carthage Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D7A9C4EB1BDD262000F06570 /* Eureka.framework in CopyFiles */,
-				D7A9C4EC1BDD262100F06570 /* SwiftKeychainWrapper.framework in CopyFiles */,
-				D7A9C4ED1BDD262300F06570 /* SwiftyAcknowledgements.framework in CopyFiles */,
+				D7A9C4EB1BDD262000F06570 /* Eureka.framework in Carthage Frameworks */,
+				D7A9C4EC1BDD262100F06570 /* SwiftKeychainWrapper.framework in Carthage Frameworks */,
+				D7A9C4ED1BDD262300F06570 /* SwiftyAcknowledgements.framework in Carthage Frameworks */,
+				D7E0A8261BE114E000414450 /* FlagKit.framework in Carthage Frameworks */,
 			);
+			name = "Carthage Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D7A9C4EE1BDD264500F06570 /* CopyFiles */ = {
+		D7A9C4EE1BDD264500F06570 /* Carthage Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D7A9C4EF1BDD267600F06570 /* SwiftKeychainWrapper.framework in CopyFiles */,
+				D7A9C4EF1BDD267600F06570 /* SwiftKeychainWrapper.framework in Carthage Frameworks */,
+				D7E0A8271BE114E500414450 /* FlagKit.framework in Carthage Frameworks */,
 			);
+			name = "Carthage Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D7A9C4F01BDD267E00F06570 /* CopyFiles */ = {
@@ -243,7 +251,6 @@
 		D7095DD01A84923A00BAF797 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		D7095DD11A84923A00BAF797 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D7095DD21A84923A00BAF797 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
-		D71A045A1AA17843006C917A /* Flags.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Flags.xcassets; sourceTree = "<group>"; };
 		D72403361A8B32A70066CA47 /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-US"; path = "en-US.lproj/Main.strings"; sourceTree = "<group>"; };
 		D72403371A8B32A70066CA47 /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-US"; path = "en-US.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		D72403381A8B32A70066CA47 /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-US"; path = "en-US.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -343,6 +350,8 @@
 		D7DBC12B1BBAEFDE004E2F3E /* VPNKeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNKeychainWrapper.swift; sourceTree = "<group>"; };
 		D7DDB5611A78A1D100BE7FB7 /* VPNTypeTag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNTypeTag.swift; sourceTree = "<group>"; };
 		D7DDB5641A78DA4600BE7FB7 /* VPNDomainsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNDomainsViewController.swift; sourceTree = "<group>"; };
+		D7E0A8201BE1140000414450 /* FlagKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FlagKit.framework; path = Carthage/Build/iOS/FlagKit.framework; sourceTree = "<group>"; };
+		D7E0A8231BE1140900414450 /* FlagKit.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = FlagKit.framework.dSYM; path = Carthage/Build/iOS/FlagKit.framework.dSYM; sourceTree = "<group>"; };
 		D7E28A7B1A680D9400507F33 /* LTThemeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTThemeManager.swift; sourceTree = "<group>"; };
 		D7E28A7C1A680D9400507F33 /* UIAppearance+Swift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAppearance+Swift.h"; sourceTree = "<group>"; };
 		D7E28A7D1A680D9400507F33 /* UIAppearance+Swift.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAppearance+Swift.m"; sourceTree = "<group>"; };
@@ -375,6 +384,7 @@
 			files = (
 				D754E21A1A3B3E8E00E8F135 /* VPNOnKit.framework in Frameworks */,
 				D7A9C4DE1BDD189400F06570 /* Eureka.framework in Frameworks */,
+				D7E0A8211BE1140000414450 /* FlagKit.framework in Frameworks */,
 				D7A9C4DF1BDD189400F06570 /* SwiftKeychainWrapper.framework in Frameworks */,
 				D7A9C4E01BDD189400F06570 /* SwiftyAcknowledgements.framework in Frameworks */,
 			);
@@ -386,6 +396,7 @@
 			files = (
 				D74C91A61A383FED00EAAAE1 /* NotificationCenter.framework in Frameworks */,
 				D74C91C71A399AA400EAAAE1 /* NetworkExtension.framework in Frameworks */,
+				D7E0A8221BE1140000414450 /* FlagKit.framework in Frameworks */,
 				D754E21B1A3B3E9F00E8F135 /* VPNOnKit.framework in Frameworks */,
 				D7A9C4E21BDD215400F06570 /* SwiftKeychainWrapper.framework in Frameworks */,
 			);
@@ -484,7 +495,6 @@
 				D7784F9D1A75F311009360CE /* Views */,
 				D7E28A7A1A680D9400507F33 /* Theme */,
 				D7453F381A31966F00F7E32D /* Images.xcassets */,
-				D71A045A1AA17843006C917A /* Flags.xcassets */,
 				D7453F3A1A31966F00F7E32D /* LaunchScreen.xib */,
 				D7453F2C1A31966F00F7E32D /* Supporting Files */,
 			);
@@ -520,6 +530,8 @@
 				D7A9C4E41BDD245300F06570 /* Eureka.framework.dSYM */,
 				D7A9C4E51BDD245300F06570 /* SwiftKeychainWrapper.framework.dSYM */,
 				D7A9C4E61BDD245300F06570 /* SwiftyAcknowledgements.framework.dSYM */,
+				D7E0A8231BE1140900414450 /* FlagKit.framework.dSYM */,
+				D7E0A8201BE1140000414450 /* FlagKit.framework */,
 				D7A9C4DB1BDD189400F06570 /* Eureka.framework */,
 				D7A9C4DC1BDD189400F06570 /* SwiftKeychainWrapper.framework */,
 				D7A9C4DD1BDD189400F06570 /* SwiftyAcknowledgements.framework */,
@@ -692,7 +704,7 @@
 				D754E2161A3B3DDE00E8F135 /* Embed Frameworks */,
 				D7453FC51A31A72600F7E32D /* Embed App Extensions */,
 				D7A9C4E31BDD242C00F06570 /* dSYM */,
-				D7A9C4EA1BDD261800F06570 /* CopyFiles */,
+				D7A9C4EA1BDD261800F06570 /* Carthage Frameworks */,
 			);
 			buildRules = (
 			);
@@ -712,7 +724,7 @@
 				D74C91A11A383FEC00EAAAE1 /* Sources */,
 				D74C91A21A383FEC00EAAAE1 /* Frameworks */,
 				D74C91A31A383FEC00EAAAE1 /* Resources */,
-				D7A9C4EE1BDD264500F06570 /* CopyFiles */,
+				D7A9C4EE1BDD264500F06570 /* Carthage Frameworks */,
 			);
 			buildRules = (
 			);
@@ -883,7 +895,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D71A045B1AA17843006C917A /* Flags.xcassets in Resources */,
 				D77593DB1A7A2E5A007161B2 /* Main.storyboard in Resources */,
 				D769FE941A7A3A3500EF1A1F /* Localizable.strings in Resources */,
 				D7453F3C1A31966F00F7E32D /* LaunchScreen.xib in Resources */,
@@ -896,7 +907,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D74C91AD1A383FED00EAAAE1 /* MainInterface.storyboard in Resources */,
-				D71A045C1AA17843006C917A /* Flags.xcassets in Resources */,
 				D769FE9A1A7A3ADC00EF1A1F /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

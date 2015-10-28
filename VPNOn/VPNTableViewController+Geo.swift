@@ -12,22 +12,24 @@ import VPNOnKit
 extension VPNTableViewController {
     
     func geoDidUpdate(notification: NSNotification) {
-        if let vpn = notification.object as? VPN {
+        guard let VPN = notification.object as? VPN else {
+            return
+        }
+        
+        VPNManager.sharedManager.geoInfoOfHost(VPN.server) {
+            [weak self]
+            geoInfo in
             
-            VPNManager.sharedManager.geoInfoOfHost(vpn.server) {
-                geoInfo in
-                
-                vpn.countryCode = geoInfo.countryCode
-                vpn.isp = geoInfo.isp
-                vpn.latitude = geoInfo.latitude
-                vpn.longitude = geoInfo.longitude
-                do {
-                    try vpn.managedObjectContext!.save()
-                } catch _ {
-                }
-                
-                self.tableView.reloadData()
+            VPN.countryCode = geoInfo.countryCode
+            VPN.isp = geoInfo.isp
+            VPN.latitude = geoInfo.latitude
+            VPN.longitude = geoInfo.longitude
+            do {
+                try VPN.managedObjectContext!.save()
+            } catch _ {
             }
+            
+            self?.tableView.reloadData()
         }
     }
 

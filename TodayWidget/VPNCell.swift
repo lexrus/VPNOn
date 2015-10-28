@@ -10,6 +10,7 @@ import UIKit
 import VPNOnKit
 import NetworkExtension
 import QuartzCore
+import FlagKit
 
 class VPNCell: UICollectionViewCell {
     
@@ -100,9 +101,9 @@ class VPNCell: UICollectionViewCell {
         if VPNManager.sharedManager.displayFlags {
             switchButton.hidden = true
             if let countryCode = vpn.countryCode {
-                flagImageView.image = UIImage(named: countryCode)
+                flagImageView.image = UIImage(flagImageWithCountryCode: countryCode)
             } else {
-                flagImageView.image = UIImage(named: "unknow")
+                flagImageView.image = UIImage(flagImageForSpecialFlag: .World)
             }
             flagImageView.hidden = false
             flagImageView.alpha = VPNManager.sharedManager.status == .Connected || selected ? 1.0 : 0.4

@@ -15,40 +15,43 @@ public struct GeoIP {
     public var longitude: Float
 }
 
-extension VPNManager
-{
+private let kGeoIPQueryURI = "https://www.telize.com/geoip/%@"
+
+extension VPNManager {
+    
     public func geoInfoOfIP(IP: String) -> GeoIP? {
-        let URLString = String(format: "http://www.telize.com/geoip/%@", IP)
+        let URLString = String(format: kGeoIPQueryURI, IP)
         guard let URL = NSURL(string: URLString) else { return nil }
+        
         let request = NSMutableURLRequest(URL: URL)
-        var agent = "VPN On"
-        if let version = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as! String? {
-            agent = "\(agent) \(version)"
+        
+        if let version = NSBundle.mainBundle()
+                         .objectForInfoDictionaryKey("CFBundleShortVersionString") as? String {
+            request.addValue("VPN On \(version)", forHTTPHeaderField: "User-Agent")
         }
+
         request.HTTPShouldHandleCookies = false
         request.HTTPShouldUsePipelining = true
         request.cachePolicy = NSURLRequestCachePolicy.ReloadRevalidatingCacheData
-        request.addValue(agent, forHTTPHeaderField: "User-Agent")
-        request.timeoutInterval = 10
+        request.timeoutInterval = 6
         
         var response: NSURLResponse? = nil
-        guard let data = try? NSURLConnection.sendSynchronousRequest(request, returningResponse: &response) else { return nil }
-        guard let json = try? NSJSONSerialization.JSONObjectWithData(data, options: []) else { return nil }
-        guard let js = json as? NSDictionary else { return nil }
-        let countryCode = js.valueForKey("country_code") as! String?
-        let isp = js.valueForKey("isp") as! String?
-        let latitude = js.valueForKey("latitude") as! Float?
-        let longitude = js.valueForKey("longitude") as! Float?
-        if countryCode != nil && isp != nil && latitude != nil && longitude != nil {
-            let geoIP = GeoIP(
-                countryCode: countryCode!.lowercaseString,
-                isp: isp!,
-                latitude: latitude!,
-                longitude: longitude!)
-            return geoIP
-        }
+        guard let data = try? NSURLConnection.sendSynchronousRequest(request, returningResponse: &response)
+              else { return nil }
+        guard let JSON = (try? NSJSONSerialization.JSONObjectWithData(data, options: [])) as? NSDictionary
+              else { return nil }
         
-        return nil
+        guard let countryCode = JSON.valueForKey("country_code") as? String else { return nil }
+        let ISP = JSON.valueForKey("isp") as? String ?? ""
+        let latitude = JSON.valueForKey("latitude") as? Float ?? 0
+        let longitude = JSON.valueForKey("longitude") as? Float ?? 0
+        
+        let geoIP = GeoIP(
+            countryCode: countryCode.uppercaseString,
+            isp: ISP,
+            latitude: latitude,
+            longitude: longitude)
+        return geoIP
     }
     
     // See http://stackoverflow.com/questions/25890533/how-can-i-get-a-real-ip-address-from-dns-query-in-swift
