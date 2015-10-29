@@ -23,9 +23,7 @@ class VPNCell: UICollectionViewCell {
     override func didMoveToSuperview() {
         switchButton.onTintColor = UIColor(red: 0, green: 0.75, blue: 1, alpha: 1)
         switchButton.tintColor = UIColor(white: 1.0, alpha: 0.2)
-        flagImageView.layer.masksToBounds = true
-        flagImageView.layer.cornerRadius = 5
-        titleLabel.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 12)
+//        titleLabel.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 12)
         latencyLabel.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 10)
     }
     
@@ -101,7 +99,7 @@ class VPNCell: UICollectionViewCell {
         if VPNManager.sharedManager.displayFlags {
             switchButton.hidden = true
             if let countryCode = vpn.countryCode {
-                flagImageView.image = UIImage(flagImageWithCountryCode: countryCode)
+                flagImageView.image = UIImage(flagImageWithCountryCode: countryCode.uppercaseString)
             } else {
                 flagImageView.image = UIImage(flagImageForSpecialFlag: .World)
             }
