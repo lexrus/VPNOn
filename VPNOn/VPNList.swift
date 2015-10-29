@@ -21,7 +21,7 @@ let kVPNOnDemandSection = 1
 let kVPNListSectionIndex = 2
 let kVPNAddSection = 3
 
-class VPNTableViewController : UITableViewController, SimplePingDelegate, VPNDomainsViewControllerDelegate {
+class VPNList : UITableViewController, SimplePingDelegate, VPNDomainsDelegate {
     
     var vpns = [VPN]()
     var activatedVPNID: String? = nil
@@ -40,20 +40,20 @@ class VPNTableViewController : UITableViewController, SimplePingDelegate, VPNDom
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("reloadDataAndPopDetail:"), name: kVPNDidCreate, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("reloadDataAndPopDetail:"), name: kVPNDidUpdate, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("reloadDataAndPopDetail:"), name: kVPNDidRemove, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("reloadDataAndPopDetail:"), name: kVPNDidDuplicate, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadDataAndPopDetail:", name: kVPNDidCreate, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadDataAndPopDetail:", name: kVPNDidUpdate, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadDataAndPopDetail:", name: kVPNDidRemove, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadDataAndPopDetail:", name: kVPNDidDuplicate, object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pingDidUpdate:"), name: kPingDidUpdate, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("pingDidComplete:"), name: kPingDidComplete, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "pingDidUpdate:", name: kPingDidUpdate, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "pingDidComplete:", name: kPingDidComplete, object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("geoDidUpdate:"), name: kGeoDidUpdate, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("selectionDidChange:"), name: kSelectionDidChange, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "geoDidUpdate:", name: kGeoDidUpdate, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "selectionDidChange:", name: kSelectionDidChange, object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(
             self,
-            selector: Selector("VPNStatusDidChange:"),
+            selector: "VPNStatusDidChange:",
             name: NEVPNStatusDidChangeNotification,
             object: nil)
     }

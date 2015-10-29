@@ -8,28 +8,24 @@
 
 import UIKit
 
-let kTableViewCellAccessoryWidth: CGFloat = 16
-let kTableViewCellRightMargin: CGFloat = 36
+private let kAccessoryWidth: CGFloat = 16
+private let kRightMargin: CGFloat = 36
 
-class VPNTableViewCell: UITableViewCell
-{
+class VPNTableViewCell : UITableViewCell {
+    
     var IKEv2: Bool = false {
-        didSet {
-            self.setNeedsDisplay()
-        }
+        didSet { setNeedsDisplay() }
     }
     
     var current: Bool = false {
-        didSet {
-            self.setNeedsDisplay()
-        }
+        didSet { setNeedsDisplay() }
     }
     
     override func drawRect(rect: CGRect) {
         if IKEv2 {
             let tagWidth: CGFloat = 34
             let tagHeight: CGFloat = 14
-            let tagX = CGRectGetWidth(bounds) - tagWidth - kTableViewCellAccessoryWidth - kTableViewCellRightMargin
+            let tagX = CGRectGetWidth(bounds) - tagWidth - kAccessoryWidth - kRightMargin
             let tagY = (CGRectGetHeight(bounds) - tagHeight) / 2
             let tagRect = CGRectMake(tagX, tagY, tagWidth, tagHeight)
             drawIKEv2Tag(radius: 2, rect: tagRect, tagText: "IKEv2", color: tintColor)
@@ -55,7 +51,6 @@ class VPNTableViewCell: UITableViewCell
         rectanglePath.lineWidth = 1
         rectanglePath.stroke()
         
-        
         //// Text Drawing
         let textRect = CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, rect.size.height)
         let textStyle = NSMutableParagraphStyle.defaultParagraphStyle().mutableCopy() as! NSMutableParagraphStyle
@@ -71,13 +66,12 @@ class VPNTableViewCell: UITableViewCell
     }
 
     override func willMoveToSuperview(newSuperview: UIView?) {
-        if newSuperview != nil {
-            if accessoryType == .DisclosureIndicator {
-                if accessoryView == nil {
-                    accessoryView = LTTableViewCellDeclosureIndicator()
-                    accessoryView!.frame = CGRectMake(0, 0, kTableViewCellAccessoryWidth, kTableViewCellAccessoryWidth)
-                }
-            }
+        if newSuperview == nil || accessoryType != .DisclosureIndicator {
+            return
+        }
+        if accessoryView == nil {
+            accessoryView = LTTableViewCellDeclosureIndicator()
+            accessoryView!.frame = CGRectMake(0, 0, kAccessoryWidth, kAccessoryWidth)
         }
     }
 }

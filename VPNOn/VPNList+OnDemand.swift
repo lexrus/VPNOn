@@ -1,5 +1,5 @@
 //
-//  VPNTableViewController+Domains.swift
+//  VPNList+Domains.swift
 //  VPNOn
 //
 //  Created by Lex Tang on 1/29/15.
@@ -9,7 +9,7 @@
 import UIKit
 import VPNOnKit
 
-extension VPNTableViewController {
+extension VPNList {
 
     @IBAction func didTapOnDemandSwitch(sender: UISwitch?) {
         VPNManager.sharedManager.onDemand = sender!.on
@@ -21,9 +21,10 @@ extension VPNTableViewController {
         tableView.reloadSections(indexSet, withRowAnimation: UITableViewRowAnimation.Automatic)
     }
     
-    // MARK: - VPNDomainsViewControllerDelegate
+    // MARK: - VPNDomainsDelegate
     
     func didTapSaveDomainsWithText(text: String) {
         updateOnDemandCell()
     }
+
 }

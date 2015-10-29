@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15B17c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ViW-99-x1O">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ViW-99-x1O">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--VPN On-->
         <scene sceneID="KMS-Ck-Nbz">
             <objects>
-                <tableViewController id="Pga-4R-p1I" customClass="VPNTableViewController" customModule="VPNOn" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="VPNList" id="Pga-4R-p1I" customClass="VPNList" customModule="VPNOn" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="AeX-ws-o1Z">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -243,7 +243,7 @@
         <!--About View Controller-->
         <scene sceneID="KTK-8I-OlK">
             <objects>
-                <viewController id="fli-in-qer" customClass="AboutViewController" customModule="VPNOn" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AboutViewController" id="fli-in-qer" customClass="AboutViewController" customModule="VPNOn" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="YFR-5g-dj1"/>
                         <viewControllerLayoutGuide type="bottom" id="JFp-LK-Nhy"/>
@@ -311,7 +311,7 @@
         <!--Configuration-->
         <scene sceneID="rNb-dC-oga">
             <objects>
-                <tableViewController storyboardIdentifier="VPNOn.VPNConfigViewController" id="z7c-q3-RcX" customClass="VPNConfigViewController" customModule="VPNOn" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="VPNEditor" id="z7c-q3-RcX" customClass="VPNEditor" customModule="VPNOn" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="z01-o8-60b">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="700"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -798,7 +798,7 @@
         <!--Domains-->
         <scene sceneID="Jq9-0t-dxT">
             <objects>
-                <tableViewController id="IFb-GO-E2U" customClass="VPNDomainsViewController" customModule="VPNOn" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="VPNDomains" id="IFb-GO-E2U" customClass="VPNDomains" customModule="VPNOn" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="vZ7-kQ-XD7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -923,7 +923,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Zrc-rj-vHJ"/>
         <segue reference="g71-fB-Wil"/>
+        <segue reference="cq7-47-Gdk"/>
     </inferredMetricsTieBreakers>
 </document>

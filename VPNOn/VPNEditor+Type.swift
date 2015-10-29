@@ -1,5 +1,5 @@
 //
-//  VPNConfigViewController+Type.swift
+//  VPNEditor+Type.swift
 //  VPNOn
 //
 //  Created by Lex Tang on 1/23/15.
@@ -8,11 +8,10 @@
 
 import UIKit
 
-extension VPNConfigViewController {
+extension VPNEditor {
 
     @IBAction func didChangeType(sender: AnyObject) {
         toggleSaveButtonByStatus()
-        
-        
     }
+
 }

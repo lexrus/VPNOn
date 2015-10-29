@@ -1,5 +1,5 @@
 //
-//  VPNTableViewController+Geo.swift
+//  VPNList+Geo.swift
 //  VPNOn
 //
 //  Created by Lex on 3/3/15.
@@ -9,7 +9,7 @@
 import UIKit
 import VPNOnKit
 
-extension VPNTableViewController {
+extension VPNList {
     
     func geoDidUpdate(notification: NSNotification) {
         guard let VPN = notification.object as? VPN else {

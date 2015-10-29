@@ -1,5 +1,5 @@
 //
-//  VPNDomainsViewController.swift
+//  VPNDomains.swift
 //  VPNOn
 //
 //  Created by Lex Tang on 1/28/15.
@@ -9,13 +9,13 @@
 import UIKit
 import VPNOnKit
 
-protocol VPNDomainsViewControllerDelegate : NSObjectProtocol {
+protocol VPNDomainsDelegate : NSObjectProtocol {
     func didTapSaveDomainsWithText(text: String)
 }
 
-class VPNDomainsViewController : UITableViewController {
+class VPNDomains : UITableViewController {
     
-    weak var delegate: VPNDomainsViewControllerDelegate?
+    weak var delegate: VPNDomainsDelegate?
 
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var textView: UITextView!

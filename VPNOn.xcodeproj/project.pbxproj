@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D70578501AA5EFF000040279 /* VPNTableViewController+Geo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D705784F1AA5EFF000040279 /* VPNTableViewController+Geo.swift */; };
+		D70578501AA5EFF000040279 /* VPNList+Geo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D705784F1AA5EFF000040279 /* VPNList+Geo.swift */; };
 		D7322C7A1A6C024800B34AA0 /* LTViewControllerBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7322C791A6C024800B34AA0 /* LTViewControllerBackground.swift */; };
 		D73C19F21AC1684D00C1A824 /* SwitchIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73C19F11AC1684D00C1A824 /* SwitchIconView.swift */; };
 		D73C19F41AC168B900C1A824 /* ModeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73C19F31AC168B900C1A824 /* ModeButton.swift */; };
@@ -21,8 +21,8 @@
 		D7453FA21A3196E200F7E32D /* VPNDataManager+VPN.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7453F9D1A3196E200F7E32D /* VPNDataManager+VPN.swift */; };
 		D7453FA31A3196E200F7E32D /* VPNDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7453F9E1A3196E200F7E32D /* VPNDataManager.swift */; };
 		D7453FA41A3196E200F7E32D /* VPNOn.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D7453F9F1A3196E200F7E32D /* VPNOn.xcdatamodeld */; };
-		D7453FA81A31975D00F7E32D /* VPNConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7453FA51A31975D00F7E32D /* VPNConfigViewController.swift */; };
-		D7453FAA1A31975D00F7E32D /* VPNTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7453FA71A31975D00F7E32D /* VPNTableViewController.swift */; };
+		D7453FA81A31975D00F7E32D /* VPNEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7453FA51A31975D00F7E32D /* VPNEditor.swift */; };
+		D7453FAA1A31975D00F7E32D /* VPNList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7453FA71A31975D00F7E32D /* VPNList.swift */; };
 		D74C91A61A383FED00EAAAE1 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7453FB61A31A72600F7E32D /* NotificationCenter.framework */; };
 		D74C91AB1A383FED00EAAAE1 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C91AA1A383FED00EAAAE1 /* TodayViewController.swift */; };
 		D74C91AD1A383FED00EAAAE1 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D74C91AC1A383FED00EAAAE1 /* MainInterface.storyboard */; };
@@ -44,17 +44,17 @@
 		D77110341A6D007C003D9605 /* VPNDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7453F9E1A3196E200F7E32D /* VPNDataManager.swift */; };
 		D77110351A6D0080003D9605 /* VPNDataManager+VPN.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7453F9D1A3196E200F7E32D /* VPNDataManager+VPN.swift */; };
 		D77110361A6D0095003D9605 /* VPNOn.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D7453F9F1A3196E200F7E32D /* VPNOn.xcdatamodeld */; };
-		D77593D81A79E53C007161B2 /* VPNTableViewController+OnDemand.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77593D71A79E53C007161B2 /* VPNTableViewController+OnDemand.swift */; };
+		D77593D81A79E53C007161B2 /* VPNList+OnDemand.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77593D71A79E53C007161B2 /* VPNList+OnDemand.swift */; };
 		D77593DA1A79E674007161B2 /* VPNManager+Domains.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77593D91A79E674007161B2 /* VPNManager+Domains.swift */; };
 		D77593DB1A7A2E5A007161B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D77593DD1A7A2E5A007161B2 /* Main.storyboard */; };
 		D7784F9F1A75F330009360CE /* VPNSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7784F9E1A75F330009360CE /* VPNSwitchCell.swift */; };
-		D77F34191A6F7EA000796827 /* VPNConfigViewController+Manipulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77F34181A6F7EA000796827 /* VPNConfigViewController+Manipulation.swift */; };
+		D77F34191A6F7EA000796827 /* VPNEditor+Manipulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77F34181A6F7EA000796827 /* VPNEditor+Manipulation.swift */; };
 		D77F341B1A6F842C00796827 /* LTTableViewActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77F341A1A6F842C00796827 /* LTTableViewActionCell.swift */; };
 		D77F341D1A6F875E00796827 /* LTTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77F341C1A6F875E00796827 /* LTTextField.swift */; };
 		D79083DA1A7BBD230089DB67 /* LTDarkGreenTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79083D91A7BBD230089DB67 /* LTDarkGreenTheme.swift */; };
 		D79083DC1A7BBEF70089DB67 /* LTHelloKittyTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79083DB1A7BBEF70089DB67 /* LTHelloKittyTheme.swift */; };
 		D79F73731A728EC900EB2289 /* VPN+URLScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79F73721A728EC900EB2289 /* VPN+URLScheme.swift */; };
-		D79F73751A72923E00EB2289 /* VPNConfigViewController+Save.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79F73741A72923E00EB2289 /* VPNConfigViewController+Save.swift */; };
+		D79F73751A72923E00EB2289 /* VPNEditor+Save.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79F73741A72923E00EB2289 /* VPNEditor+Save.swift */; };
 		D7A9C4DE1BDD189400F06570 /* Eureka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7A9C4DB1BDD189400F06570 /* Eureka.framework */; };
 		D7A9C4DF1BDD189400F06570 /* SwiftKeychainWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7A9C4DC1BDD189400F06570 /* SwiftKeychainWrapper.framework */; };
 		D7A9C4E01BDD189400F06570 /* SwiftyAcknowledgements.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7A9C4DD1BDD189400F06570 /* SwiftyAcknowledgements.framework */; };
@@ -76,11 +76,11 @@
 		D7CB6A321A7B8FA500B8B568 /* LTLightTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CB6A311A7B8FA500B8B568 /* LTLightTheme.swift */; };
 		D7CB6A341A7B92CA00B8B568 /* LTDarkPurpleTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CB6A331A7B92CA00B8B568 /* LTDarkPurpleTheme.swift */; };
 		D7CFDDA51A9E05700057F53D /* VPNManager+Geo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CFDDA41A9E05700057F53D /* VPNManager+Geo.swift */; };
-		D7D4992F1A724B4C00B5F5ED /* VPNConfigViewController+Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D4992E1A724B4C00B5F5ED /* VPNConfigViewController+Type.swift */; };
+		D7D4992F1A724B4C00B5F5ED /* VPNEditor+Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D4992E1A724B4C00B5F5ED /* VPNEditor+Type.swift */; };
 		D7D499311A72542400B5F5ED /* LTTableViewCellDeclosureIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D499301A72542400B5F5ED /* LTTableViewCellDeclosureIndicator.swift */; };
 		D7DBC12C1BBAEFDE004E2F3E /* VPNKeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DBC12B1BBAEFDE004E2F3E /* VPNKeychainWrapper.swift */; };
 		D7DDB5631A78AC7E00BE7FB7 /* VPNTypeTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DDB5611A78A1D100BE7FB7 /* VPNTypeTag.swift */; };
-		D7DDB5651A78DA4600BE7FB7 /* VPNDomainsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DDB5641A78DA4600BE7FB7 /* VPNDomainsViewController.swift */; };
+		D7DDB5651A78DA4600BE7FB7 /* VPNDomains.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DDB5641A78DA4600BE7FB7 /* VPNDomains.swift */; };
 		D7E0A8211BE1140000414450 /* FlagKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7E0A8201BE1140000414450 /* FlagKit.framework */; };
 		D7E0A8221BE1140000414450 /* FlagKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7E0A8201BE1140000414450 /* FlagKit.framework */; };
 		D7E0A8251BE1141B00414450 /* FlagKit.framework.dSYM in dSYM */ = {isa = PBXBuildFile; fileRef = D7E0A8231BE1140900414450 /* FlagKit.framework.dSYM */; };
@@ -90,7 +90,7 @@
 		D7E28A801A680D9400507F33 /* UIAppearance+Swift.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E28A7D1A680D9400507F33 /* UIAppearance+Swift.m */; };
 		D7E28A831A680DBD00507F33 /* LTTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E28A821A680DBD00507F33 /* LTTheme.swift */; };
 		D7E28A851A68118A00507F33 /* LTDarkTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E28A841A68118A00507F33 /* LTDarkTheme.swift */; };
-		D7E28A8D1A6A3C2B00507F33 /* VPNConfigViewController+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E28A8C1A6A3C2B00507F33 /* VPNConfigViewController+TextField.swift */; };
+		D7E28A8D1A6A3C2B00507F33 /* VPNEditor+TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E28A8C1A6A3C2B00507F33 /* VPNEditor+TextField.swift */; };
 		D7EB524C1BBED5500021D93D /* VPNManager+Flags.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EB524B1BBED5500021D93D /* VPNManager+Flags.swift */; };
 		D7EB524E1BBED6D70021D93D /* VPNManager+SelectedVPN.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EB524D1BBED6D70021D93D /* VPNManager+SelectedVPN.swift */; };
 		D7EB52521BBEE3960021D93D /* AppDelegate+URLSchemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EB52511BBEE3960021D93D /* AppDelegate+URLSchemes.swift */; };
@@ -234,7 +234,7 @@
 		ADAE1015513E5D274186BA78 /* Pods-VPNOnKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VPNOnKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-VPNOnKit/Pods-VPNOnKit.release.xcconfig"; sourceTree = "<group>"; };
 		B049947EF6748F9B90FCA3FF /* Pods-TodayWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodayWidget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TodayWidget/Pods-TodayWidget.debug.xcconfig"; sourceTree = "<group>"; };
 		D70187501BD37B1E00A78112 /* VPN On 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "VPN On 5.xcdatamodel"; sourceTree = "<group>"; };
-		D705784F1AA5EFF000040279 /* VPNTableViewController+Geo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VPNTableViewController+Geo.swift"; sourceTree = "<group>"; };
+		D705784F1AA5EFF000040279 /* VPNList+Geo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VPNList+Geo.swift"; sourceTree = "<group>"; };
 		D7095DB91A81C54600BAF797 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
 		D7095DBA1A81C54600BAF797 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D7095DBB1A81C54600BAF797 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -268,8 +268,8 @@
 		D7453F9D1A3196E200F7E32D /* VPNDataManager+VPN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VPNDataManager+VPN.swift"; sourceTree = "<group>"; };
 		D7453F9E1A3196E200F7E32D /* VPNDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNDataManager.swift; sourceTree = "<group>"; };
 		D7453FA01A3196E200F7E32D /* VPN On.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "VPN On.xcdatamodel"; sourceTree = "<group>"; };
-		D7453FA51A31975D00F7E32D /* VPNConfigViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNConfigViewController.swift; sourceTree = "<group>"; };
-		D7453FA71A31975D00F7E32D /* VPNTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNTableViewController.swift; sourceTree = "<group>"; };
+		D7453FA51A31975D00F7E32D /* VPNEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNEditor.swift; sourceTree = "<group>"; };
+		D7453FA71A31975D00F7E32D /* VPNList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNList.swift; sourceTree = "<group>"; };
 		D7453FAD1A31A68300F7E32D /* VPNOn.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = VPNOn.entitlements; sourceTree = "<group>"; };
 		D7453FAE1A31A69100F7E32D /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		D7453FB61A31A72600F7E32D /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
@@ -306,12 +306,12 @@
 		D769FEA11A7A3F1900EF1A1F /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/Main.strings"; sourceTree = "<group>"; };
 		D769FEA21A7A3F1900EF1A1F /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		D769FEA31A7A3F1900EF1A1F /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		D77593D71A79E53C007161B2 /* VPNTableViewController+OnDemand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VPNTableViewController+OnDemand.swift"; sourceTree = "<group>"; };
+		D77593D71A79E53C007161B2 /* VPNList+OnDemand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VPNList+OnDemand.swift"; sourceTree = "<group>"; };
 		D77593D91A79E674007161B2 /* VPNManager+Domains.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VPNManager+Domains.swift"; sourceTree = "<group>"; };
 		D77593DC1A7A2E5A007161B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D77593E21A7A2F12007161B2 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		D7784F9E1A75F330009360CE /* VPNSwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNSwitchCell.swift; sourceTree = "<group>"; };
-		D77F34181A6F7EA000796827 /* VPNConfigViewController+Manipulation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VPNConfigViewController+Manipulation.swift"; sourceTree = "<group>"; };
+		D77F34181A6F7EA000796827 /* VPNEditor+Manipulation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VPNEditor+Manipulation.swift"; sourceTree = "<group>"; };
 		D77F341A1A6F842C00796827 /* LTTableViewActionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTTableViewActionCell.swift; sourceTree = "<group>"; };
 		D77F341C1A6F875E00796827 /* LTTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTTextField.swift; sourceTree = "<group>"; };
 		D783CC9C1B2ADE290087FFC1 /* nl-NL */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "nl-NL"; path = "nl-NL.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -321,7 +321,7 @@
 		D79083DB1A7BBEF70089DB67 /* LTHelloKittyTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTHelloKittyTheme.swift; sourceTree = "<group>"; };
 		D79F73711A728C7D00EB2289 /* VPN On 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "VPN On 3.xcdatamodel"; sourceTree = "<group>"; };
 		D79F73721A728EC900EB2289 /* VPN+URLScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VPN+URLScheme.swift"; sourceTree = "<group>"; };
-		D79F73741A72923E00EB2289 /* VPNConfigViewController+Save.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VPNConfigViewController+Save.swift"; sourceTree = "<group>"; };
+		D79F73741A72923E00EB2289 /* VPNEditor+Save.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VPNEditor+Save.swift"; sourceTree = "<group>"; };
 		D7A025071A873A1300417B33 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		D7A025081A873A1300417B33 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D7A025091A873A1300417B33 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -344,11 +344,11 @@
 		D7CB6A311A7B8FA500B8B568 /* LTLightTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTLightTheme.swift; sourceTree = "<group>"; };
 		D7CB6A331A7B92CA00B8B568 /* LTDarkPurpleTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTDarkPurpleTheme.swift; sourceTree = "<group>"; };
 		D7CFDDA41A9E05700057F53D /* VPNManager+Geo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VPNManager+Geo.swift"; sourceTree = "<group>"; };
-		D7D4992E1A724B4C00B5F5ED /* VPNConfigViewController+Type.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VPNConfigViewController+Type.swift"; sourceTree = "<group>"; };
+		D7D4992E1A724B4C00B5F5ED /* VPNEditor+Type.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VPNEditor+Type.swift"; sourceTree = "<group>"; };
 		D7D499301A72542400B5F5ED /* LTTableViewCellDeclosureIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTTableViewCellDeclosureIndicator.swift; sourceTree = "<group>"; };
 		D7DBC12B1BBAEFDE004E2F3E /* VPNKeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNKeychainWrapper.swift; sourceTree = "<group>"; };
 		D7DDB5611A78A1D100BE7FB7 /* VPNTypeTag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNTypeTag.swift; sourceTree = "<group>"; };
-		D7DDB5641A78DA4600BE7FB7 /* VPNDomainsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNDomainsViewController.swift; sourceTree = "<group>"; };
+		D7DDB5641A78DA4600BE7FB7 /* VPNDomains.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNDomains.swift; sourceTree = "<group>"; };
 		D7E0A8201BE1140000414450 /* FlagKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FlagKit.framework; path = Carthage/Build/iOS/FlagKit.framework; sourceTree = "<group>"; };
 		D7E0A8231BE1140900414450 /* FlagKit.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = FlagKit.framework.dSYM; path = Carthage/Build/iOS/FlagKit.framework.dSYM; sourceTree = "<group>"; };
 		D7E28A7B1A680D9400507F33 /* LTThemeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTThemeManager.swift; sourceTree = "<group>"; };
@@ -357,7 +357,7 @@
 		D7E28A811A680DAC00507F33 /* VPNOn-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VPNOn-Bridging-Header.h"; sourceTree = "<group>"; };
 		D7E28A821A680DBD00507F33 /* LTTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTTheme.swift; sourceTree = "<group>"; };
 		D7E28A841A68118A00507F33 /* LTDarkTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTDarkTheme.swift; sourceTree = "<group>"; };
-		D7E28A8C1A6A3C2B00507F33 /* VPNConfigViewController+TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VPNConfigViewController+TextField.swift"; sourceTree = "<group>"; };
+		D7E28A8C1A6A3C2B00507F33 /* VPNEditor+TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VPNEditor+TextField.swift"; sourceTree = "<group>"; };
 		D7EB524B1BBED5500021D93D /* VPNManager+Flags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VPNManager+Flags.swift"; sourceTree = "<group>"; };
 		D7EB524D1BBED6D70021D93D /* VPNManager+SelectedVPN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VPNManager+SelectedVPN.swift"; sourceTree = "<group>"; };
 		D7EB52511BBEE3960021D93D /* AppDelegate+URLSchemes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+URLSchemes.swift"; sourceTree = "<group>"; };
@@ -479,16 +479,15 @@
 				D7453FAD1A31A68300F7E32D /* VPNOn.entitlements */,
 				D7453F2E1A31966F00F7E32D /* AppDelegate.swift */,
 				D7EB52511BBEE3960021D93D /* AppDelegate+URLSchemes.swift */,
-				D7453FA71A31975D00F7E32D /* VPNTableViewController.swift */,
-				D705784F1AA5EFF000040279 /* VPNTableViewController+Geo.swift */,
-				D77593D71A79E53C007161B2 /* VPNTableViewController+OnDemand.swift */,
-				D7453FA51A31975D00F7E32D /* VPNConfigViewController.swift */,
-				D79F73741A72923E00EB2289 /* VPNConfigViewController+Save.swift */,
-				D77F34181A6F7EA000796827 /* VPNConfigViewController+Manipulation.swift */,
-				D7E28A8C1A6A3C2B00507F33 /* VPNConfigViewController+TextField.swift */,
-				D7D4992E1A724B4C00B5F5ED /* VPNConfigViewController+Type.swift */,
-				D7DDB5641A78DA4600BE7FB7 /* VPNDomainsViewController.swift */,
-				D7E28A811A680DAC00507F33 /* VPNOn-Bridging-Header.h */,
+				D7453FA71A31975D00F7E32D /* VPNList.swift */,
+				D705784F1AA5EFF000040279 /* VPNList+Geo.swift */,
+				D77593D71A79E53C007161B2 /* VPNList+OnDemand.swift */,
+				D7453FA51A31975D00F7E32D /* VPNEditor.swift */,
+				D79F73741A72923E00EB2289 /* VPNEditor+Save.swift */,
+				D77F34181A6F7EA000796827 /* VPNEditor+Manipulation.swift */,
+				D7E28A8C1A6A3C2B00507F33 /* VPNEditor+TextField.swift */,
+				D7D4992E1A724B4C00B5F5ED /* VPNEditor+Type.swift */,
+				D7DDB5641A78DA4600BE7FB7 /* VPNDomains.swift */,
 				D758FE0C1A5BE35000929494 /* AboutViewController.swift */,
 				D7784F9D1A75F311009360CE /* Views */,
 				D7E28A7A1A680D9400507F33 /* Theme */,
@@ -502,6 +501,7 @@
 		D7453F2C1A31966F00F7E32D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D7E28A811A680DAC00507F33 /* VPNOn-Bridging-Header.h */,
 				D7A9C4F21BDD26AF00F06570 /* R.generated.swift */,
 				D7453F2D1A31966F00F7E32D /* Info.plist */,
 			);
@@ -544,11 +544,11 @@
 			isa = PBXGroup;
 			children = (
 				D74C91C61A399A8200EAAAE1 /* TodayWidget.entitlements */,
+				D74C91AC1A383FED00EAAAE1 /* MainInterface.storyboard */,
 				D74C91AA1A383FED00EAAAE1 /* TodayViewController.swift */,
 				D7F64F011AA8407400C41789 /* VPNCell.swift */,
 				D7F64F051AA9B90000C41789 /* AddCell.swift */,
 				D7DDB5611A78A1D100BE7FB7 /* VPNTypeTag.swift */,
-				D74C91AC1A383FED00EAAAE1 /* MainInterface.storyboard */,
 				D73C19F31AC168B900C1A824 /* ModeButton.swift */,
 				D73C19F11AC1684D00C1A824 /* SwitchIconView.swift */,
 				D74C91A81A383FED00EAAAE1 /* Supporting Files */,
@@ -950,34 +950,34 @@
 				D7EB52521BBEE3960021D93D /* AppDelegate+URLSchemes.swift in Sources */,
 				D79F73731A728EC900EB2289 /* VPN+URLScheme.swift in Sources */,
 				D7FEC8D01A7897310004E7FA /* VPNTableViewCell.swift in Sources */,
-				D77F34191A6F7EA000796827 /* VPNConfigViewController+Manipulation.swift in Sources */,
+				D77F34191A6F7EA000796827 /* VPNEditor+Manipulation.swift in Sources */,
 				D77F341B1A6F842C00796827 /* LTTableViewActionCell.swift in Sources */,
-				D7E28A8D1A6A3C2B00507F33 /* VPNConfigViewController+TextField.swift in Sources */,
+				D7E28A8D1A6A3C2B00507F33 /* VPNEditor+TextField.swift in Sources */,
 				D7BB2DD01A6C08BB00D8D581 /* LTSplitViewController.swift in Sources */,
-				D7D4992F1A724B4C00B5F5ED /* VPNConfigViewController+Type.swift in Sources */,
+				D7D4992F1A724B4C00B5F5ED /* VPNEditor+Type.swift in Sources */,
 				D7E28A7F1A680D9400507F33 /* LTThemeManager.swift in Sources */,
 				D7E28A801A680D9400507F33 /* UIAppearance+Swift.m in Sources */,
 				D7A9C4F31BDD26AF00F06570 /* R.generated.swift in Sources */,
 				D7322C7A1A6C024800B34AA0 /* LTViewControllerBackground.swift in Sources */,
-				D70578501AA5EFF000040279 /* VPNTableViewController+Geo.swift in Sources */,
+				D70578501AA5EFF000040279 /* VPNList+Geo.swift in Sources */,
 				D7D499311A72542400B5F5ED /* LTTableViewCellDeclosureIndicator.swift in Sources */,
 				D7453FA41A3196E200F7E32D /* VPNOn.xcdatamodeld in Sources */,
 				D7453F2F1A31966F00F7E32D /* AppDelegate.swift in Sources */,
 				D7784F9F1A75F330009360CE /* VPNSwitchCell.swift in Sources */,
-				D79F73751A72923E00EB2289 /* VPNConfigViewController+Save.swift in Sources */,
+				D79F73751A72923E00EB2289 /* VPNEditor+Save.swift in Sources */,
 				D7F0A01A1A6E47EA00F9C09A /* VPNDataManager+Selection.swift in Sources */,
 				D77F341D1A6F875E00796827 /* LTTextField.swift in Sources */,
 				D7E28A851A68118A00507F33 /* LTDarkTheme.swift in Sources */,
 				D7CB6A321A7B8FA500B8B568 /* LTLightTheme.swift in Sources */,
-				D77593D81A79E53C007161B2 /* VPNTableViewController+OnDemand.swift in Sources */,
-				D7453FAA1A31975D00F7E32D /* VPNTableViewController.swift in Sources */,
+				D77593D81A79E53C007161B2 /* VPNList+OnDemand.swift in Sources */,
+				D7453FAA1A31975D00F7E32D /* VPNList.swift in Sources */,
 				D7BB2DCE1A6C066B00D8D581 /* LTTableViewCellTitle.swift in Sources */,
 				D758FE0D1A5BE35000929494 /* AboutViewController.swift in Sources */,
-				D7453FA81A31975D00F7E32D /* VPNConfigViewController.swift in Sources */,
+				D7453FA81A31975D00F7E32D /* VPNEditor.swift in Sources */,
 				D7B033BB1A6E5ED1009D791E /* VPNDataManager+ActivatedVPN.swift in Sources */,
 				D7453FA31A3196E200F7E32D /* VPNDataManager.swift in Sources */,
 				D79083DC1A7BBEF70089DB67 /* LTHelloKittyTheme.swift in Sources */,
-				D7DDB5651A78DA4600BE7FB7 /* VPNDomainsViewController.swift in Sources */,
+				D7DDB5651A78DA4600BE7FB7 /* VPNDomains.swift in Sources */,
 				D7453FA11A3196E200F7E32D /* VPN.swift in Sources */,
 				D7E28A831A680DBD00507F33 /* LTTheme.swift in Sources */,
 				D79083DA1A7BBD230089DB67 /* LTDarkGreenTheme.swift in Sources */,

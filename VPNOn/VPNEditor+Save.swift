@@ -1,5 +1,5 @@
 //
-//  VPNConfigViewController+Save.swift
+//  VPNEditor+Save.swift
 //  VPNOn
 //
 //  Created by Lex on 1/23/15.
@@ -9,7 +9,7 @@
 import UIKit
 import VPNOnKit
 
-extension VPNConfigViewController {
+extension VPNEditor {
 
     @IBAction func saveVPN(sender: AnyObject) {
         if let currentVPN = vpn {
@@ -51,4 +51,5 @@ extension VPNConfigViewController {
             }
         }
     }
+
 }

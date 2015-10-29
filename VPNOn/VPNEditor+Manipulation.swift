@@ -1,5 +1,5 @@
 //
-//  VPNConfigViewController+Manipulation.swift
+//  VPNEditor+Manipulation.swift
 //  VPNOn
 //
 //  Created by Lex Tang on 1/20/15.
@@ -9,7 +9,7 @@
 import UIKit
 import VPNOnKit
 
-extension VPNConfigViewController {
+extension VPNEditor {
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let selectedCell = tableView.cellForRowAtIndexPath(indexPath)!
@@ -40,4 +40,5 @@ extension VPNConfigViewController {
         
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
     }
+
 }

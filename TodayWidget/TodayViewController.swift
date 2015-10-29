@@ -55,19 +55,19 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
         
         NSNotificationCenter.defaultCenter().addObserver(
             self,
-            selector: Selector("coreDataDidSave:"),
+            selector: "coreDataDidSave:",
             name: NSManagedObjectContextDidSaveNotification,
             object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(
             self,
-            selector: Selector("VPNStatusDidChange:"),
+            selector: "VPNStatusDidChange:",
             name: NEVPNStatusDidChangeNotification,
             object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(
             self,
-            selector: Selector("pingDidUpdate:"),
+            selector: "pingDidUpdate:",
             name: kPingDidUpdate,
             object: nil)
     }
@@ -159,7 +159,6 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
         return vpns.count + 1
     }
     
-    // The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         if indexPath.row == vpns.count {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("addCell", forIndexPath: indexPath) as! AddCell

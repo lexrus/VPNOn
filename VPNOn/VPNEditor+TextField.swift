@@ -1,5 +1,5 @@
 //
-//  VPNConfigViewController+TextField.swift
+//  VPNEditor+TextField.swift
 //  VPNOn
 //
 //  Created by Lex on 1/17/15.
@@ -8,26 +8,26 @@
 
 import UIKit
 
-extension VPNConfigViewController {
+extension VPNEditor {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         NSNotificationCenter.defaultCenter().addObserver(
             self,
-            selector: Selector("textDidChange:"),
+            selector: "textDidChange:",
             name: UITextFieldTextDidChangeNotification,
             object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(
             self,
-            selector: Selector("keyboardWillShow:"),
+            selector: "keyboardWillShow:",
             name: UIKeyboardWillShowNotification,
             object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(
             self,
-            selector: Selector("keyboardWillHide:"),
+            selector: "keyboardWillHide:",
             name: UIKeyboardWillHideNotification,
             object: nil)
     }
@@ -81,4 +81,5 @@ extension VPNConfigViewController {
         edgeInsets.bottom = 0
         self.tableView.contentInset = edgeInsets
     }
+
 }

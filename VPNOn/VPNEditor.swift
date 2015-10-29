@@ -1,5 +1,5 @@
 //
-//  VPNConfigViewController.swift
+//  VPNEditor.swift
 //  VPN On
 //
 //  Created by Lex Tang on 12/4/14.
@@ -15,8 +15,9 @@ let kVPNDidUpdate = "kVPNDidUpdate"
 let kVPNDidRemove = "kVPNDidRemove"
 let kVPNDidDuplicate = "kVPNDidDuplicate"
 
-class VPNConfigViewController: UITableViewController, UITextFieldDelegate {
-    var initializedVPNInfo: VPNInfo? = nil
+class VPNEditor : UITableViewController, UITextFieldDelegate {
+
+    var initializedVPNInfo: VPNInfo?
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var typeSegment: UISegmentedControl!
@@ -41,13 +42,10 @@ class VPNConfigViewController: UITableViewController, UITextFieldDelegate {
     
     lazy var vpn: VPN? = {
         if let ID = VPNDataManager.sharedManager.selectedVPNID {
-            if let result = VPNDataManager.sharedManager.VPNByID(ID) {
-                let vpn = result
-                return vpn
-            }
+            return VPNDataManager.sharedManager.VPNByID(ID)
         }
         return nil
-        }()
+    }()
     
     override func loadView() {
         super.loadView()

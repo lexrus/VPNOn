@@ -19,4 +19,5 @@ class AboutViewController : UIViewController {
             versionLabel.text = version
         }
     }
+
 }

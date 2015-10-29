@@ -23,8 +23,7 @@ class VPNCell: UICollectionViewCell {
     override func didMoveToSuperview() {
         switchButton.onTintColor = UIColor(red: 0, green: 0.75, blue: 1, alpha: 1)
         switchButton.tintColor = UIColor(white: 1.0, alpha: 0.2)
-//        titleLabel.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 12)
-        latencyLabel.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 10)
+        latencyLabel.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 12)
     }
     
     var current: Bool = false
@@ -33,7 +32,7 @@ class VPNCell: UICollectionViewCell {
         didSet {
             latencyLabel.hidden = !flagImageView.hidden
             if latency == -1 {
-                latencyLabel.text = "--"
+                latencyLabel.text = ""
                 switchButton.thumbTintColor = UIColor(white: 1.0, alpha: 1.0)
                 switchButton.tintColor = UIColor(white: 0.9, alpha: 0.4)
             } else {
@@ -42,6 +41,7 @@ class VPNCell: UICollectionViewCell {
                 switchButton.tintColor = colorOfLatency
             }
             latencyLabel.textColor = colorOfLatency
+            titleLabel.textColor = colorOfLatency
             setNeedsDisplay()
         }
     }
@@ -49,10 +49,10 @@ class VPNCell: UICollectionViewCell {
     var colorOfLatency: UIColor {
         var latencyColor = UIColor(red: 0.5, green: 0.8, blue: 0.19, alpha: 1)
         
-        if latency > 200 {
-            latencyColor = UIColor(red: 0.92, green: 0.82, blue: 0, alpha: 0.8)
-        } else if latency > 500 {
+        if latency > 500 {
             latencyColor = UIColor(red: 1, green: 0.11, blue: 0.34, alpha: 0.6)
+        } else if latency > 200 {
+            latencyColor = UIColor(red: 0.8184, green: 0.5066, blue: 0.0, alpha: 0.8)
         } else if latency == -1 {
             latencyColor = UIColor(white: 0.8, alpha: 0.4)
         }
@@ -65,30 +65,6 @@ class VPNCell: UICollectionViewCell {
             updateTitleColor()
             animateFlagAndSwitchByStatus()
         }
-    }
-    
-    override func drawRect(rect: CGRect) {
-        switch VPNManager.sharedManager.status {
-        case .Connected, .Connecting:
-            return
-        default: ()
-        }
-        
-        if flagImageView.hidden {
-            return
-        }
-        
-        var lineRect = flagImageView.frame
-        lineRect.origin.y = lineRect.origin.y - 6
-        lineRect.size.height = 2
-        let dotSpacing: CGFloat = 3
-        lineRect.origin.x += dotSpacing
-        lineRect.size.width -= dotSpacing * 2
-        
-        let rectanglePath = UIBezierPath(roundedRect: lineRect, cornerRadius: 2)
-        
-        colorOfLatency.setFill()
-        rectanglePath.fill()
     }
     
     func configureWithVPN(vpn: VPN, selected: Bool = false) {
