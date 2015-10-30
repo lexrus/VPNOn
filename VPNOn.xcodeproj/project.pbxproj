@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		D70578501AA5EFF000040279 /* VPNList+Geo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D705784F1AA5EFF000040279 /* VPNList+Geo.swift */; };
+		D7139BE01BE3BD4000F20D96 /* Acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = D7139BDF1BE3BD4000F20D96 /* Acknowledgements.plist */; };
+		D7139BE21BE3C11B00F20D96 /* VPNList+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7139BE11BE3C11B00F20D96 /* VPNList+TableView.swift */; };
 		D7322C7A1A6C024800B34AA0 /* LTViewControllerBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7322C791A6C024800B34AA0 /* LTViewControllerBackground.swift */; };
 		D73C19F21AC1684D00C1A824 /* SwitchIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73C19F11AC1684D00C1A824 /* SwitchIconView.swift */; };
 		D73C19F41AC168B900C1A824 /* ModeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73C19F31AC168B900C1A824 /* ModeButton.swift */; };
@@ -55,17 +57,11 @@
 		D79083DC1A7BBEF70089DB67 /* LTHelloKittyTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79083DB1A7BBEF70089DB67 /* LTHelloKittyTheme.swift */; };
 		D79F73731A728EC900EB2289 /* VPN+URLScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79F73721A728EC900EB2289 /* VPN+URLScheme.swift */; };
 		D79F73751A72923E00EB2289 /* VPNEditor+Save.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79F73741A72923E00EB2289 /* VPNEditor+Save.swift */; };
-		D7A9C4DE1BDD189400F06570 /* Eureka.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7A9C4DB1BDD189400F06570 /* Eureka.framework */; };
 		D7A9C4DF1BDD189400F06570 /* SwiftKeychainWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7A9C4DC1BDD189400F06570 /* SwiftKeychainWrapper.framework */; };
-		D7A9C4E01BDD189400F06570 /* SwiftyAcknowledgements.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7A9C4DD1BDD189400F06570 /* SwiftyAcknowledgements.framework */; };
 		D7A9C4E11BDD214C00F06570 /* SwiftKeychainWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7A9C4DC1BDD189400F06570 /* SwiftKeychainWrapper.framework */; };
 		D7A9C4E21BDD215400F06570 /* SwiftKeychainWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7A9C4DC1BDD189400F06570 /* SwiftKeychainWrapper.framework */; };
-		D7A9C4E71BDD245300F06570 /* Eureka.framework.dSYM in dSYM */ = {isa = PBXBuildFile; fileRef = D7A9C4E41BDD245300F06570 /* Eureka.framework.dSYM */; };
 		D7A9C4E81BDD245300F06570 /* SwiftKeychainWrapper.framework.dSYM in dSYM */ = {isa = PBXBuildFile; fileRef = D7A9C4E51BDD245300F06570 /* SwiftKeychainWrapper.framework.dSYM */; };
-		D7A9C4E91BDD245300F06570 /* SwiftyAcknowledgements.framework.dSYM in dSYM */ = {isa = PBXBuildFile; fileRef = D7A9C4E61BDD245300F06570 /* SwiftyAcknowledgements.framework.dSYM */; };
-		D7A9C4EB1BDD262000F06570 /* Eureka.framework in Carthage Frameworks */ = {isa = PBXBuildFile; fileRef = D7A9C4DB1BDD189400F06570 /* Eureka.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D7A9C4EC1BDD262100F06570 /* SwiftKeychainWrapper.framework in Carthage Frameworks */ = {isa = PBXBuildFile; fileRef = D7A9C4DC1BDD189400F06570 /* SwiftKeychainWrapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D7A9C4ED1BDD262300F06570 /* SwiftyAcknowledgements.framework in Carthage Frameworks */ = {isa = PBXBuildFile; fileRef = D7A9C4DD1BDD189400F06570 /* SwiftyAcknowledgements.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D7A9C4EF1BDD267600F06570 /* SwiftKeychainWrapper.framework in Carthage Frameworks */ = {isa = PBXBuildFile; fileRef = D7A9C4DC1BDD189400F06570 /* SwiftKeychainWrapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D7A9C4F11BDD268200F06570 /* SwiftKeychainWrapper.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D7A9C4DC1BDD189400F06570 /* SwiftKeychainWrapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D7A9C4F31BDD26AF00F06570 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A9C4F21BDD26AF00F06570 /* R.generated.swift */; };
@@ -177,9 +173,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
-				D7A9C4E71BDD245300F06570 /* Eureka.framework.dSYM in dSYM */,
 				D7A9C4E81BDD245300F06570 /* SwiftKeychainWrapper.framework.dSYM in dSYM */,
-				D7A9C4E91BDD245300F06570 /* SwiftyAcknowledgements.framework.dSYM in dSYM */,
 				D7E0A8251BE1141B00414450 /* FlagKit.framework.dSYM in dSYM */,
 			);
 			name = dSYM;
@@ -191,9 +185,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D7A9C4EB1BDD262000F06570 /* Eureka.framework in Carthage Frameworks */,
 				D7A9C4EC1BDD262100F06570 /* SwiftKeychainWrapper.framework in Carthage Frameworks */,
-				D7A9C4ED1BDD262300F06570 /* SwiftyAcknowledgements.framework in Carthage Frameworks */,
 				D7E0A8261BE114E000414450 /* FlagKit.framework in Carthage Frameworks */,
 			);
 			name = "Carthage Frameworks";
@@ -250,6 +242,8 @@
 		D7095DD01A84923A00BAF797 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		D7095DD11A84923A00BAF797 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D7095DD21A84923A00BAF797 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D7139BDF1BE3BD4000F20D96 /* Acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Acknowledgements.plist; sourceTree = "<group>"; };
+		D7139BE11BE3C11B00F20D96 /* VPNList+TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VPNList+TableView.swift"; sourceTree = "<group>"; };
 		D72403361A8B32A70066CA47 /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-US"; path = "en-US.lproj/Main.strings"; sourceTree = "<group>"; };
 		D72403371A8B32A70066CA47 /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-US"; path = "en-US.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		D72403381A8B32A70066CA47 /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-US"; path = "en-US.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -329,12 +323,8 @@
 		D7A0250B1A873AB800417B33 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Main.strings; sourceTree = "<group>"; };
 		D7A0250C1A873AB800417B33 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D7A0250D1A873AB900417B33 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
-		D7A9C4DB1BDD189400F06570 /* Eureka.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Eureka.framework; path = Carthage/Build/iOS/Eureka.framework; sourceTree = "<group>"; };
 		D7A9C4DC1BDD189400F06570 /* SwiftKeychainWrapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftKeychainWrapper.framework; path = Carthage/Build/iOS/SwiftKeychainWrapper.framework; sourceTree = "<group>"; };
-		D7A9C4DD1BDD189400F06570 /* SwiftyAcknowledgements.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyAcknowledgements.framework; path = Carthage/Build/iOS/SwiftyAcknowledgements.framework; sourceTree = "<group>"; };
-		D7A9C4E41BDD245300F06570 /* Eureka.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Eureka.framework.dSYM; path = Carthage/Build/iOS/Eureka.framework.dSYM; sourceTree = "<group>"; };
 		D7A9C4E51BDD245300F06570 /* SwiftKeychainWrapper.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = SwiftKeychainWrapper.framework.dSYM; path = Carthage/Build/iOS/SwiftKeychainWrapper.framework.dSYM; sourceTree = "<group>"; };
-		D7A9C4E61BDD245300F06570 /* SwiftyAcknowledgements.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = SwiftyAcknowledgements.framework.dSYM; path = Carthage/Build/iOS/SwiftyAcknowledgements.framework.dSYM; sourceTree = "<group>"; };
 		D7A9C4F21BDD26AF00F06570 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		D7B033BA1A6E5ED1009D791E /* VPNDataManager+ActivatedVPN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VPNDataManager+ActivatedVPN.swift"; sourceTree = "<group>"; };
 		D7BB2DCD1A6C066B00D8D581 /* LTTableViewCellTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTTableViewCellTitle.swift; sourceTree = "<group>"; };
@@ -381,10 +371,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				D754E21A1A3B3E8E00E8F135 /* VPNOnKit.framework in Frameworks */,
-				D7A9C4DE1BDD189400F06570 /* Eureka.framework in Frameworks */,
 				D7E0A8211BE1140000414450 /* FlagKit.framework in Frameworks */,
 				D7A9C4DF1BDD189400F06570 /* SwiftKeychainWrapper.framework in Frameworks */,
-				D7A9C4E01BDD189400F06570 /* SwiftyAcknowledgements.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,6 +468,7 @@
 				D7453F2E1A31966F00F7E32D /* AppDelegate.swift */,
 				D7EB52511BBEE3960021D93D /* AppDelegate+URLSchemes.swift */,
 				D7453FA71A31975D00F7E32D /* VPNList.swift */,
+				D7139BE11BE3C11B00F20D96 /* VPNList+TableView.swift */,
 				D705784F1AA5EFF000040279 /* VPNList+Geo.swift */,
 				D77593D71A79E53C007161B2 /* VPNList+OnDemand.swift */,
 				D7453FA51A31975D00F7E32D /* VPNEditor.swift */,
@@ -502,6 +491,7 @@
 			isa = PBXGroup;
 			children = (
 				D7E28A811A680DAC00507F33 /* VPNOn-Bridging-Header.h */,
+				D7139BDF1BE3BD4000F20D96 /* Acknowledgements.plist */,
 				D7A9C4F21BDD26AF00F06570 /* R.generated.swift */,
 				D7453F2D1A31966F00F7E32D /* Info.plist */,
 			);
@@ -525,14 +515,10 @@
 		D7453FB51A31A72600F7E32D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D7A9C4E41BDD245300F06570 /* Eureka.framework.dSYM */,
 				D7A9C4E51BDD245300F06570 /* SwiftKeychainWrapper.framework.dSYM */,
-				D7A9C4E61BDD245300F06570 /* SwiftyAcknowledgements.framework.dSYM */,
 				D7E0A8231BE1140900414450 /* FlagKit.framework.dSYM */,
 				D7E0A8201BE1140000414450 /* FlagKit.framework */,
-				D7A9C4DB1BDD189400F06570 /* Eureka.framework */,
 				D7A9C4DC1BDD189400F06570 /* SwiftKeychainWrapper.framework */,
-				D7A9C4DD1BDD189400F06570 /* SwiftyAcknowledgements.framework */,
 				D757AFB21A3B392600AEF3CB /* Foundation.framework */,
 				D7453FAE1A31A69100F7E32D /* NetworkExtension.framework */,
 				D7453FB61A31A72600F7E32D /* NotificationCenter.framework */,
@@ -892,6 +878,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7139BE01BE3BD4000F20D96 /* Acknowledgements.plist in Resources */,
 				D77593DB1A7A2E5A007161B2 /* Main.storyboard in Resources */,
 				D769FE941A7A3A3500EF1A1F /* Localizable.strings in Resources */,
 				D7453F3C1A31966F00F7E32D /* LaunchScreen.xib in Resources */,
@@ -954,6 +941,7 @@
 				D77F341B1A6F842C00796827 /* LTTableViewActionCell.swift in Sources */,
 				D7E28A8D1A6A3C2B00507F33 /* VPNEditor+TextField.swift in Sources */,
 				D7BB2DD01A6C08BB00D8D581 /* LTSplitViewController.swift in Sources */,
+				D7139BE21BE3C11B00F20D96 /* VPNList+TableView.swift in Sources */,
 				D7D4992F1A724B4C00B5F5ED /* VPNEditor+Type.swift in Sources */,
 				D7E28A7F1A680D9400507F33 /* LTThemeManager.swift in Sources */,
 				D7E28A801A680D9400507F33 /* UIAppearance+Swift.m in Sources */,
