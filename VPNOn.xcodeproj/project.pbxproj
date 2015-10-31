@@ -250,6 +250,7 @@
 		D7139BE31BE4F73800F20D96 /* NormalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NormalTableViewCell.swift; sourceTree = "<group>"; };
 		D7139BE51BE4FF7F00F20D96 /* Acknowledgements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Acknowledgements.swift; sourceTree = "<group>"; };
 		D7139BE71BE5054600F20D96 /* AcknowledgementCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcknowledgementCell.swift; sourceTree = "<group>"; };
+		D7139BE91BE50E5F00F20D96 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		D72403361A8B32A70066CA47 /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-US"; path = "en-US.lproj/Main.strings"; sourceTree = "<group>"; };
 		D72403371A8B32A70066CA47 /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-US"; path = "en-US.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		D72403381A8B32A70066CA47 /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-US"; path = "en-US.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -522,6 +523,7 @@
 		D7453FB51A31A72600F7E32D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D7139BE91BE50E5F00F20D96 /* StoreKit.framework */,
 				D7A9C4E51BDD245300F06570 /* SwiftKeychainWrapper.framework.dSYM */,
 				D7E0A8231BE1140900414450 /* FlagKit.framework.dSYM */,
 				D7E0A8201BE1140000414450 /* FlagKit.framework */,

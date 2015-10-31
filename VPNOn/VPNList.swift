@@ -164,7 +164,7 @@ class VPNList : UITableViewController, SimplePingDelegate, VPNDomainsDelegate {
     
     @IBAction func presentAbout(sender: UIBarButtonItem) {
         let about = R.storyboard.main.about!
-        if let detailNavigationController = splitViewController!.viewControllers.last as? UINavigationController {
+        if let detailNavigationController = splitViewController?.viewControllers.last as? UINavigationController {
             detailNavigationController.pushViewController(about, animated: true)
         }
         

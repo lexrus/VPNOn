@@ -647,7 +647,7 @@
                             <tableViewSection id="mBf-Hr-GPe">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="duplicateButton" textLabel="Ao2-Hb-0jD" style="IBUITableViewCellStyleDefault" id="663-D6-n2X" customClass="LTTableViewActionCell" customModule="VPNOn" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="541.5" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="544" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="663-D6-n2X" id="fNl-8X-cbk">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -673,7 +673,7 @@
                             <tableViewSection id="prJ-9D-aJO">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="deleteButton" textLabel="Im7-xc-lxF" style="IBUITableViewCellStyleDefault" id="aVU-jp-9tN">
-                                        <rect key="frame" x="0.0" y="605.5" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="608" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aVU-jp-9tN" id="oav-Hw-u7I">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -991,6 +991,7 @@
                         <segue destination="Pga-4R-p1I" kind="relationship" relationship="rootViewController" id="vDb-gh-fm7"/>
                         <segue destination="z7c-q3-RcX" kind="show" identifier="config" id="g71-fB-Wil"/>
                         <segue destination="IFb-GO-E2U" kind="show" identifier="domains" id="Zrc-rj-vHJ"/>
+                        <segue destination="QSj-8c-UIf" kind="show" identifier="about" id="1b4-Oq-imL"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6DB-pG-GXV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1028,7 +1029,7 @@
                     <connections>
                         <segue destination="z7c-q3-RcX" kind="show" identifier="config" id="XEb-Ca-Dh2"/>
                         <segue destination="IFb-GO-E2U" kind="show" identifier="domains" id="cq7-47-Gdk"/>
-                        <segue destination="QSj-8c-UIf" kind="showDetail" identifier="about" id="6Xn-l8-Hbo"/>
+                        <segue destination="QSj-8c-UIf" kind="show" identifier="about" action="showDetailViewController:sender:" id="6Xn-l8-Hbo"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GYC-Dz-OKH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1037,7 +1038,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="XEb-Ca-Dh2"/>
-        <segue reference="cq7-47-Gdk"/>
+        <segue reference="1b4-Oq-imL"/>
+        <segue reference="g71-fB-Wil"/>
+        <segue reference="Zrc-rj-vHJ"/>
     </inferredMetricsTieBreakers>
 </document>
