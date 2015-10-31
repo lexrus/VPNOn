@@ -11,7 +11,7 @@ import UIKit
 private let kAccessoryWidth: CGFloat = 16
 private let kRightMargin: CGFloat = 36
 
-class VPNTableViewCell : UITableViewCell {
+class VPNTableViewCell : NormalTableViewCell {
     
     var IKEv2: Bool = false {
         didSet { setNeedsDisplay() }
@@ -64,14 +64,5 @@ class VPNTableViewCell : UITableViewCell {
         NSString(string: tagText).drawInRect(CGRectMake(textRect.minX, textRect.minY + (textRect.height - textTextHeight) / 2, textRect.width, textTextHeight), withAttributes: textFontAttributes)
         CGContextRestoreGState(context)
     }
-
-    override func willMoveToSuperview(newSuperview: UIView?) {
-        if newSuperview == nil || accessoryType != .DisclosureIndicator {
-            return
-        }
-        if accessoryView == nil {
-            accessoryView = LTTableViewCellDeclosureIndicator()
-            accessoryView!.frame = CGRectMake(0, 0, kAccessoryWidth, kAccessoryWidth)
-        }
-    }
+    
 }

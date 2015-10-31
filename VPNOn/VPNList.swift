@@ -32,9 +32,7 @@ class VPNList : UITableViewController, SimplePingDelegate, VPNDomainsDelegate {
     
     override func loadView() {
         super.loadView()
-        
-        let backgroundView = LTViewControllerBackground()
-        tableView.backgroundView = backgroundView
+        tableView.backgroundView = LTViewControllerBackground()
     }
     
     override func viewDidLoad() {
@@ -165,7 +163,7 @@ class VPNList : UITableViewController, SimplePingDelegate, VPNDomainsDelegate {
     // MARK: - Info
     
     @IBAction func presentAbout(sender: UIBarButtonItem) {
-        let about = R.storyboard.main.aboutViewController!
+        let about = R.storyboard.main.about!
         if let detailNavigationController = splitViewController!.viewControllers.last as? UINavigationController {
             detailNavigationController.pushViewController(about, animated: true)
         }

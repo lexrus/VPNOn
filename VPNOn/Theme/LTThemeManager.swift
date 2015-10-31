@@ -74,6 +74,8 @@ class LTThemeManager
         LTTableViewCellTitle.appearance().textColor = theme.textColor
         UILabel.lt_appearanceWhenContainedIn(LTTableViewActionCell.self).textColor = theme.tintColor
         UILabel.lt_appearanceWhenContainedIn(VPNTableViewCell.self).textColor = theme.textColor
+        UILabel.lt_appearanceWhenContainedIn(NormalTableViewCell.self).textColor = theme.textColor
+        UILabel.lt_appearanceWhenContainedIn(AcknowledgementCell.self).textColor = theme.textColor
         UITextView.lt_appearanceWhenContainedIn(UITableViewCell.self).backgroundColor = theme.tableViewCellColor
         UITextView.lt_appearanceWhenContainedIn(UITableViewCell.self).textColor = theme.textColor
         
