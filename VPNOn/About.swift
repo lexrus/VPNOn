@@ -13,7 +13,7 @@ import MessageUI
 private let kReviewCellIndex = 2
 private let kFeedbackCellIndex = 3
 
-class About : UITableViewController, MFMailComposeViewControllerDelegate {
+class About : UITableViewController, MFMailComposeViewControllerDelegate, SKStoreProductViewControllerDelegate {
     
     override func loadView() {
         super.loadView()
@@ -22,17 +22,6 @@ class About : UITableViewController, MFMailComposeViewControllerDelegate {
     
     override func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         return appVersion()
-    }
-    
-    private func appVersion() -> String {
-        if let version = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as? String {
-            return version
-        }
-        return ""
-    }
-    
-    private func osVersion() -> String {
-        return NSProcessInfo().operatingSystemVersionString
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -48,7 +37,18 @@ class About : UITableViewController, MFMailComposeViewControllerDelegate {
         }
     }
     
+    private func appVersion() -> String {
+        if let version = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as? String {
+            return version
+        }
+        return ""
+    }
+    
     // MARK: - Feedback
+    
+    private func osVersion() -> String {
+        return NSProcessInfo().operatingSystemVersionString
+    }
     
     private func device() -> String {
         var sysInfo: [CChar] = Array(count: sizeof(utsname), repeatedValue: 0)
@@ -99,12 +99,17 @@ class About : UITableViewController, MFMailComposeViewControllerDelegate {
     
     func presentAppStore() {
         let productControlelr = SKStoreProductViewController()
+        productControlelr.delegate = self
         
         let parameters = [SKStoreProductParameterITunesItemIdentifier :
             NSNumber(integer: 951344279)]
         productControlelr.loadProductWithParameters(parameters, completionBlock: nil)
         
-        navigationController?.presentViewController(productControlelr, animated: true) { () -> Void in }
+        presentViewController(productControlelr, animated: true, completion: nil)
+    }
+    
+    func productViewControllerDidFinish(viewController: SKStoreProductViewController) {
+        viewController.dismissViewControllerAnimated(true, completion: nil)
     }
 
 }
