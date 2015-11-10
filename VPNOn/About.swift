@@ -12,7 +12,7 @@ import MessageUI
 private let kReviewCellIndex = 2
 private let kFeedbackCellIndex = 3
 
-class About : UITableViewController, MFMailComposeViewControllerDelegate, SKStoreProductViewControllerDelegate {
+class About : UITableViewController, MFMailComposeViewControllerDelegate {
     
     override func loadView() {
         super.loadView()
@@ -99,10 +99,6 @@ class About : UITableViewController, MFMailComposeViewControllerDelegate, SKStor
     func presentAppStore() {
         let appStoreURL = NSURL(string: "https://itunes.apple.com/app/vpn-on/id951344279")!
         UIApplication.sharedApplication().openURL(appStoreURL)
-    }
-    
-    func productViewControllerDidFinish(viewController: SKStoreProductViewController) {
-        viewController.dismissViewControllerAnimated(true, completion: nil)
     }
 
 }

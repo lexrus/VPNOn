@@ -116,10 +116,6 @@ extension VPNList {
         if indexPath.section == kVPNListSection {
             let VPNID = vpns[indexPath.row].objectID
             VPNDataManager.sharedManager.selectedVPNID = VPNID
-            
-            let detailNavigationController = splitViewController!.viewControllers.last! as! UINavigationController
-            detailNavigationController.popToRootViewControllerAnimated(false)
-            detailNavigationController.performSegueWithIdentifier(R.segue.config, sender: self)
         }
     }
     
