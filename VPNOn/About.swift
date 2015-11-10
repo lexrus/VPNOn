@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import StoreKit
 import MessageUI
 
 private let kReviewCellIndex = 2
@@ -98,14 +97,8 @@ class About : UITableViewController, MFMailComposeViewControllerDelegate, SKStor
     // MARK: - Review
     
     func presentAppStore() {
-        let productControlelr = SKStoreProductViewController()
-        productControlelr.delegate = self
-        
-        let parameters = [SKStoreProductParameterITunesItemIdentifier :
-            NSNumber(integer: 951344279)]
-        productControlelr.loadProductWithParameters(parameters, completionBlock: nil)
-        
-        presentViewController(productControlelr, animated: true, completion: nil)
+        let appStoreURL = NSURL(string: "https://itunes.apple.com/app/vpn-on/id951344279")!
+        UIApplication.sharedApplication().openURL(appStoreURL)
     }
     
     func productViewControllerDidFinish(viewController: SKStoreProductViewController) {

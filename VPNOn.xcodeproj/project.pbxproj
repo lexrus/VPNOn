@@ -52,6 +52,27 @@
 		D77593D81A79E53C007161B2 /* VPNList+OnDemand.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77593D71A79E53C007161B2 /* VPNList+OnDemand.swift */; };
 		D77593DA1A79E674007161B2 /* VPNManager+Domains.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77593D91A79E674007161B2 /* VPNManager+Domains.swift */; };
 		D77593DB1A7A2E5A007161B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D77593DD1A7A2E5A007161B2 /* Main.storyboard */; };
+		D7764EFD1BF228A8000ACA4C /* FlagKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7764EFB1BF228A8000ACA4C /* FlagKit.swift */; };
+		D7764EFE1BF228A8000ACA4C /* FlagKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7764EFB1BF228A8000ACA4C /* FlagKit.swift */; };
+		D7764EFF1BF228A8000ACA4C /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7764EFC1BF228A8000ACA4C /* UIImage.swift */; };
+		D7764F001BF228A8000ACA4C /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7764EFC1BF228A8000ACA4C /* UIImage.swift */; };
+		D7764F021BF228C9000ACA4C /* FlagKit.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7764F011BF228C9000ACA4C /* FlagKit.xcassets */; };
+		D7764F031BF228C9000ACA4C /* FlagKit.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7764F011BF228C9000ACA4C /* FlagKit.xcassets */; };
+		D7764F071BF2298F000ACA4C /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7764F041BF2298F000ACA4C /* RxBlocking.framework */; };
+		D7764F081BF2298F000ACA4C /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7764F041BF2298F000ACA4C /* RxBlocking.framework */; };
+		D7764F091BF2298F000ACA4C /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7764F051BF2298F000ACA4C /* RxCocoa.framework */; };
+		D7764F0A1BF2298F000ACA4C /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7764F051BF2298F000ACA4C /* RxCocoa.framework */; };
+		D7764F0B1BF2298F000ACA4C /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7764F061BF2298F000ACA4C /* RxSwift.framework */; };
+		D7764F0C1BF2298F000ACA4C /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7764F061BF2298F000ACA4C /* RxSwift.framework */; };
+		D7764F161BF229DB000ACA4C /* RxBlocking.framework.dSYM in dSYM */ = {isa = PBXBuildFile; fileRef = D7764F131BF229DB000ACA4C /* RxBlocking.framework.dSYM */; };
+		D7764F171BF229DB000ACA4C /* RxCocoa.framework.dSYM in dSYM */ = {isa = PBXBuildFile; fileRef = D7764F141BF229DB000ACA4C /* RxCocoa.framework.dSYM */; };
+		D7764F181BF229DB000ACA4C /* RxSwift.framework.dSYM in dSYM */ = {isa = PBXBuildFile; fileRef = D7764F151BF229DB000ACA4C /* RxSwift.framework.dSYM */; };
+		D7764F191BF22A25000ACA4C /* RxBlocking.framework in Carthage Frameworks */ = {isa = PBXBuildFile; fileRef = D7764F041BF2298F000ACA4C /* RxBlocking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D7764F1A1BF22A25000ACA4C /* RxCocoa.framework in Carthage Frameworks */ = {isa = PBXBuildFile; fileRef = D7764F051BF2298F000ACA4C /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D7764F1B1BF22A25000ACA4C /* RxSwift.framework in Carthage Frameworks */ = {isa = PBXBuildFile; fileRef = D7764F061BF2298F000ACA4C /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D7764F1C1BF22A2D000ACA4C /* RxBlocking.framework in Carthage Frameworks */ = {isa = PBXBuildFile; fileRef = D7764F041BF2298F000ACA4C /* RxBlocking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D7764F1D1BF22A2D000ACA4C /* RxCocoa.framework in Carthage Frameworks */ = {isa = PBXBuildFile; fileRef = D7764F051BF2298F000ACA4C /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D7764F1E1BF22A2D000ACA4C /* RxSwift.framework in Carthage Frameworks */ = {isa = PBXBuildFile; fileRef = D7764F061BF2298F000ACA4C /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D7784F9F1A75F330009360CE /* VPNSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7784F9E1A75F330009360CE /* VPNSwitchCell.swift */; };
 		D77F34191A6F7EA000796827 /* VPNEditor+Manipulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77F34181A6F7EA000796827 /* VPNEditor+Manipulation.swift */; };
 		D77F341B1A6F842C00796827 /* LTTableViewActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77F341A1A6F842C00796827 /* LTTableViewActionCell.swift */; };
@@ -80,11 +101,6 @@
 		D7DBC12C1BBAEFDE004E2F3E /* VPNKeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DBC12B1BBAEFDE004E2F3E /* VPNKeychainWrapper.swift */; };
 		D7DDB5631A78AC7E00BE7FB7 /* VPNTypeTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DDB5611A78A1D100BE7FB7 /* VPNTypeTag.swift */; };
 		D7DDB5651A78DA4600BE7FB7 /* VPNDomains.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DDB5641A78DA4600BE7FB7 /* VPNDomains.swift */; };
-		D7E0A8211BE1140000414450 /* FlagKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7E0A8201BE1140000414450 /* FlagKit.framework */; };
-		D7E0A8221BE1140000414450 /* FlagKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7E0A8201BE1140000414450 /* FlagKit.framework */; };
-		D7E0A8251BE1141B00414450 /* FlagKit.framework.dSYM in dSYM */ = {isa = PBXBuildFile; fileRef = D7E0A8231BE1140900414450 /* FlagKit.framework.dSYM */; };
-		D7E0A8261BE114E000414450 /* FlagKit.framework in Carthage Frameworks */ = {isa = PBXBuildFile; fileRef = D7E0A8201BE1140000414450 /* FlagKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D7E0A8271BE114E500414450 /* FlagKit.framework in Carthage Frameworks */ = {isa = PBXBuildFile; fileRef = D7E0A8201BE1140000414450 /* FlagKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D7E28A7F1A680D9400507F33 /* LTThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E28A7B1A680D9400507F33 /* LTThemeManager.swift */; };
 		D7E28A801A680D9400507F33 /* UIAppearance+Swift.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E28A7D1A680D9400507F33 /* UIAppearance+Swift.m */; };
 		D7E28A831A680DBD00507F33 /* LTTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E28A821A680DBD00507F33 /* LTTheme.swift */; };
@@ -177,7 +193,9 @@
 			dstSubfolderSpec = 16;
 			files = (
 				D7A9C4E81BDD245300F06570 /* SwiftKeychainWrapper.framework.dSYM in dSYM */,
-				D7E0A8251BE1141B00414450 /* FlagKit.framework.dSYM in dSYM */,
+				D7764F161BF229DB000ACA4C /* RxBlocking.framework.dSYM in dSYM */,
+				D7764F171BF229DB000ACA4C /* RxCocoa.framework.dSYM in dSYM */,
+				D7764F181BF229DB000ACA4C /* RxSwift.framework.dSYM in dSYM */,
 			);
 			name = dSYM;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -189,7 +207,9 @@
 			dstSubfolderSpec = 10;
 			files = (
 				D7A9C4EC1BDD262100F06570 /* SwiftKeychainWrapper.framework in Carthage Frameworks */,
-				D7E0A8261BE114E000414450 /* FlagKit.framework in Carthage Frameworks */,
+				D7764F191BF22A25000ACA4C /* RxBlocking.framework in Carthage Frameworks */,
+				D7764F1A1BF22A25000ACA4C /* RxCocoa.framework in Carthage Frameworks */,
+				D7764F1B1BF22A25000ACA4C /* RxSwift.framework in Carthage Frameworks */,
 			);
 			name = "Carthage Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -201,7 +221,9 @@
 			dstSubfolderSpec = 10;
 			files = (
 				D7A9C4EF1BDD267600F06570 /* SwiftKeychainWrapper.framework in Carthage Frameworks */,
-				D7E0A8271BE114E500414450 /* FlagKit.framework in Carthage Frameworks */,
+				D7764F1C1BF22A2D000ACA4C /* RxBlocking.framework in Carthage Frameworks */,
+				D7764F1D1BF22A2D000ACA4C /* RxCocoa.framework in Carthage Frameworks */,
+				D7764F1E1BF22A2D000ACA4C /* RxSwift.framework in Carthage Frameworks */,
 			);
 			name = "Carthage Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -250,7 +272,6 @@
 		D7139BE31BE4F73800F20D96 /* NormalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NormalTableViewCell.swift; sourceTree = "<group>"; };
 		D7139BE51BE4FF7F00F20D96 /* Acknowledgements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Acknowledgements.swift; sourceTree = "<group>"; };
 		D7139BE71BE5054600F20D96 /* AcknowledgementCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcknowledgementCell.swift; sourceTree = "<group>"; };
-		D7139BE91BE50E5F00F20D96 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		D72403361A8B32A70066CA47 /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-US"; path = "en-US.lproj/Main.strings"; sourceTree = "<group>"; };
 		D72403371A8B32A70066CA47 /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-US"; path = "en-US.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		D72403381A8B32A70066CA47 /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-US"; path = "en-US.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -311,6 +332,15 @@
 		D77593D91A79E674007161B2 /* VPNManager+Domains.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VPNManager+Domains.swift"; sourceTree = "<group>"; };
 		D77593DC1A7A2E5A007161B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D77593E21A7A2F12007161B2 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		D7764EFB1BF228A8000ACA4C /* FlagKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlagKit.swift; sourceTree = "<group>"; };
+		D7764EFC1BF228A8000ACA4C /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		D7764F011BF228C9000ACA4C /* FlagKit.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = FlagKit.xcassets; sourceTree = "<group>"; };
+		D7764F041BF2298F000ACA4C /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = Carthage/Build/iOS/RxBlocking.framework; sourceTree = "<group>"; };
+		D7764F051BF2298F000ACA4C /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		D7764F061BF2298F000ACA4C /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		D7764F131BF229DB000ACA4C /* RxBlocking.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = RxBlocking.framework.dSYM; path = Carthage/Build/iOS/RxBlocking.framework.dSYM; sourceTree = "<group>"; };
+		D7764F141BF229DB000ACA4C /* RxCocoa.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = RxCocoa.framework.dSYM; path = Carthage/Build/iOS/RxCocoa.framework.dSYM; sourceTree = "<group>"; };
+		D7764F151BF229DB000ACA4C /* RxSwift.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = RxSwift.framework.dSYM; path = Carthage/Build/iOS/RxSwift.framework.dSYM; sourceTree = "<group>"; };
 		D7784F9E1A75F330009360CE /* VPNSwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNSwitchCell.swift; sourceTree = "<group>"; };
 		D77F34181A6F7EA000796827 /* VPNEditor+Manipulation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VPNEditor+Manipulation.swift"; sourceTree = "<group>"; };
 		D77F341A1A6F842C00796827 /* LTTableViewActionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTTableViewActionCell.swift; sourceTree = "<group>"; };
@@ -346,8 +376,6 @@
 		D7DBC12B1BBAEFDE004E2F3E /* VPNKeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNKeychainWrapper.swift; sourceTree = "<group>"; };
 		D7DDB5611A78A1D100BE7FB7 /* VPNTypeTag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNTypeTag.swift; sourceTree = "<group>"; };
 		D7DDB5641A78DA4600BE7FB7 /* VPNDomains.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNDomains.swift; sourceTree = "<group>"; };
-		D7E0A8201BE1140000414450 /* FlagKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FlagKit.framework; path = Carthage/Build/iOS/FlagKit.framework; sourceTree = "<group>"; };
-		D7E0A8231BE1140900414450 /* FlagKit.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = FlagKit.framework.dSYM; path = Carthage/Build/iOS/FlagKit.framework.dSYM; sourceTree = "<group>"; };
 		D7E28A7B1A680D9400507F33 /* LTThemeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTThemeManager.swift; sourceTree = "<group>"; };
 		D7E28A7C1A680D9400507F33 /* UIAppearance+Swift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAppearance+Swift.h"; sourceTree = "<group>"; };
 		D7E28A7D1A680D9400507F33 /* UIAppearance+Swift.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAppearance+Swift.m"; sourceTree = "<group>"; };
@@ -377,9 +405,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7764F0B1BF2298F000ACA4C /* RxSwift.framework in Frameworks */,
+				D7764F091BF2298F000ACA4C /* RxCocoa.framework in Frameworks */,
 				D754E21A1A3B3E8E00E8F135 /* VPNOnKit.framework in Frameworks */,
-				D7E0A8211BE1140000414450 /* FlagKit.framework in Frameworks */,
 				D7A9C4DF1BDD189400F06570 /* SwiftKeychainWrapper.framework in Frameworks */,
+				D7764F071BF2298F000ACA4C /* RxBlocking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,9 +417,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7764F0A1BF2298F000ACA4C /* RxCocoa.framework in Frameworks */,
 				D74C91A61A383FED00EAAAE1 /* NotificationCenter.framework in Frameworks */,
+				D7764F0C1BF2298F000ACA4C /* RxSwift.framework in Frameworks */,
+				D7764F081BF2298F000ACA4C /* RxBlocking.framework in Frameworks */,
 				D74C91C71A399AA400EAAAE1 /* NetworkExtension.framework in Frameworks */,
-				D7E0A8221BE1140000414450 /* FlagKit.framework in Frameworks */,
 				D754E21B1A3B3E9F00E8F135 /* VPNOnKit.framework in Frameworks */,
 				D7A9C4E21BDD215400F06570 /* SwiftKeychainWrapper.framework in Frameworks */,
 			);
@@ -450,6 +482,7 @@
 				D757AF861A3B370E00AEF3CB /* VPNOnKit */,
 				D757AF951A3B370E00AEF3CB /* VPNOnKitTests */,
 				D7EB52581BBEE7A10021D93D /* VPNOnUITests */,
+				D7764EF91BF228A8000ACA4C /* Vendors */,
 				D7453FB51A31A72600F7E32D /* Frameworks */,
 				D7453F2A1A31966F00F7E32D /* Products */,
 				5AAA273FCFD7CD774192E06C /* Pods */,
@@ -523,11 +556,14 @@
 		D7453FB51A31A72600F7E32D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D7139BE91BE50E5F00F20D96 /* StoreKit.framework */,
 				D7A9C4E51BDD245300F06570 /* SwiftKeychainWrapper.framework.dSYM */,
-				D7E0A8231BE1140900414450 /* FlagKit.framework.dSYM */,
-				D7E0A8201BE1140000414450 /* FlagKit.framework */,
+				D7764F131BF229DB000ACA4C /* RxBlocking.framework.dSYM */,
+				D7764F141BF229DB000ACA4C /* RxCocoa.framework.dSYM */,
+				D7764F151BF229DB000ACA4C /* RxSwift.framework.dSYM */,
 				D7A9C4DC1BDD189400F06570 /* SwiftKeychainWrapper.framework */,
+				D7764F041BF2298F000ACA4C /* RxBlocking.framework */,
+				D7764F051BF2298F000ACA4C /* RxCocoa.framework */,
+				D7764F061BF2298F000ACA4C /* RxSwift.framework */,
 				D757AFB21A3B392600AEF3CB /* Foundation.framework */,
 				D7453FAE1A31A69100F7E32D /* NetworkExtension.framework */,
 				D7453FB61A31A72600F7E32D /* NotificationCenter.framework */,
@@ -620,6 +656,24 @@
 				D769FE9C1A7A3ADC00EF1A1F /* Localizable.strings */,
 			);
 			name = I18n;
+			sourceTree = "<group>";
+		};
+		D7764EF91BF228A8000ACA4C /* Vendors */ = {
+			isa = PBXGroup;
+			children = (
+				D7764EFA1BF228A8000ACA4C /* FlagKit */,
+			);
+			path = Vendors;
+			sourceTree = "<group>";
+		};
+		D7764EFA1BF228A8000ACA4C /* FlagKit */ = {
+			isa = PBXGroup;
+			children = (
+				D7764EFB1BF228A8000ACA4C /* FlagKit.swift */,
+				D7764EFC1BF228A8000ACA4C /* UIImage.swift */,
+				D7764F011BF228C9000ACA4C /* FlagKit.xcassets */,
+			);
+			path = FlagKit;
 			sourceTree = "<group>";
 		};
 		D7784F9D1A75F311009360CE /* Views */ = {
@@ -891,6 +945,7 @@
 			files = (
 				D7139BE01BE3BD4000F20D96 /* Acknowledgements.plist in Resources */,
 				D77593DB1A7A2E5A007161B2 /* Main.storyboard in Resources */,
+				D7764F021BF228C9000ACA4C /* FlagKit.xcassets in Resources */,
 				D769FE941A7A3A3500EF1A1F /* Localizable.strings in Resources */,
 				D7453F3C1A31966F00F7E32D /* LaunchScreen.xib in Resources */,
 				D7453F391A31966F00F7E32D /* Images.xcassets in Resources */,
@@ -903,6 +958,7 @@
 			files = (
 				D74C91AD1A383FED00EAAAE1 /* MainInterface.storyboard in Resources */,
 				D769FE9A1A7A3ADC00EF1A1F /* Localizable.strings in Resources */,
+				D7764F031BF228C9000ACA4C /* FlagKit.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -961,6 +1017,7 @@
 				D7322C7A1A6C024800B34AA0 /* LTViewControllerBackground.swift in Sources */,
 				D70578501AA5EFF000040279 /* VPNList+Geo.swift in Sources */,
 				D7D499311A72542400B5F5ED /* LTTableViewCellDeclosureIndicator.swift in Sources */,
+				D7764EFD1BF228A8000ACA4C /* FlagKit.swift in Sources */,
 				D7453FA41A3196E200F7E32D /* VPNOn.xcdatamodeld in Sources */,
 				D7453F2F1A31966F00F7E32D /* AppDelegate.swift in Sources */,
 				D7784F9F1A75F330009360CE /* VPNSwitchCell.swift in Sources */,
@@ -970,6 +1027,7 @@
 				D77F341D1A6F875E00796827 /* LTTextField.swift in Sources */,
 				D7E28A851A68118A00507F33 /* LTDarkTheme.swift in Sources */,
 				D7CB6A321A7B8FA500B8B568 /* LTLightTheme.swift in Sources */,
+				D7764EFF1BF228A8000ACA4C /* UIImage.swift in Sources */,
 				D77593D81A79E53C007161B2 /* VPNList+OnDemand.swift in Sources */,
 				D7453FAA1A31975D00F7E32D /* VPNList.swift in Sources */,
 				D7BB2DCE1A6C066B00D8D581 /* LTTableViewCellTitle.swift in Sources */,
@@ -1003,6 +1061,8 @@
 				D7F64F021AA8407400C41789 /* VPNCell.swift in Sources */,
 				D7F64F061AA9B90000C41789 /* AddCell.swift in Sources */,
 				D77110351A6D0080003D9605 /* VPNDataManager+VPN.swift in Sources */,
+				D7764EFE1BF228A8000ACA4C /* FlagKit.swift in Sources */,
+				D7764F001BF228A8000ACA4C /* UIImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

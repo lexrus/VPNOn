@@ -10,7 +10,6 @@ import UIKit
 import VPNOnKit
 import NetworkExtension
 import QuartzCore
-import FlagKit
 
 class VPNCell: UICollectionViewCell {
     

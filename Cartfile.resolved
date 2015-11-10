@@ -1,2 +1,2 @@
-github "lexrus/FlagKit" "v1.0.6"
+git "git@github.com:ReactiveX/RxSwift.git" "2.0.0-beta.2"
 github "jrendel/SwiftKeychainWrapper" "bc1b40f52fee59adae65470a02a4b7ca6d3f18ba"

@@ -10,7 +10,6 @@ import UIKit
 import CoreData
 import NetworkExtension
 import VPNOnKit
-import FlagKit
 
 private let kGeoDidUpdate = "GeoDidUpdate"
 private let kSelectionDidChange = "SelectionDidChange"
@@ -24,7 +23,7 @@ let kVPNAddSection = 3
 class VPNList : UITableViewController, SimplePingDelegate, VPNDomainsDelegate {
     
     var vpns = [VPN]()
-    var activatedVPNID: String? = nil
+    var activatedVPNID: String?
     var connectionStatus = NSLocalizedString("Not Connected", comment: "VPN Table - Connection Status")
     var connectionOn = false
     
