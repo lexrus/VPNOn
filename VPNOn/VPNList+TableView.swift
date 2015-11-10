@@ -88,17 +88,6 @@ extension VPNList {
         {
         case kVPNAddSection:
             VPNDataManager.sharedManager.selectedVPNID = nil
-            let detailNavigationController = splitViewController!.viewControllers.last! as! UINavigationController
-            detailNavigationController.popToRootViewControllerAnimated(false)
-            splitViewController!.viewControllers.last!.performSegueWithIdentifier(R.segue.config, sender: nil)
-            break
-            
-        case kVPNOnDemandSection:
-            if indexPath.row == 1 {
-                let detailNavigationController = splitViewController!.viewControllers.last! as! UINavigationController
-                detailNavigationController.popToRootViewControllerAnimated(false)
-                splitViewController!.viewControllers.last!.performSegueWithIdentifier(R.segue.domains, sender: nil)
-            }
             break
             
         case kVPNListSection:

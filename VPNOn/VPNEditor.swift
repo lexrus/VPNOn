@@ -55,7 +55,9 @@ class VPNEditor : UITableViewController, UITextFieldDelegate {
     }
     
     override func viewWillAppear(animated: Bool) {
-        saveButton?.enabled = false
+        saveButton.enabled = false
+        deleteCell.hidden = true
+        duplicateCell.hidden = true
         
         if let info = initializedVPNInfo {
             if info.title != "" {
@@ -68,9 +70,6 @@ class VPNEditor : UITableViewController, UITextFieldDelegate {
                 alwaysOnSwitch.on = info.alwaysOn
                 typeSegment.selectedSegmentIndex = info.ikev2 ? 1 : 0
             }
-            
-            deleteCell.hidden = true
-            duplicateCell.hidden = true
         } else if let currentVPN = vpn {
             titleTextField.text = currentVPN.title
             serverTextField.text = currentVPN.server

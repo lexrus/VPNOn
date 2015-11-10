@@ -80,6 +80,9 @@
                                 </tableViewCellContentView>
                                 <animations/>
                                 <color key="tintColor" red="0.0" green="0.58573454618453979" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <segue destination="hvy-Bu-GX1" kind="showDetail" id="uPG-6B-Rqn"/>
+                                </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ConnectionCell" rowHeight="44" id="IT1-yk-TTT" customClass="VPNSwitchCell" customModule="VPNOn" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="203.5" width="320" height="44"/>
