@@ -10,9 +10,10 @@ import UIKit
 import CoreData
 import NetworkExtension
 import VPNOnKit
+import RxSwift
+import RxCocoa
 
-private let kGeoDidUpdate = "GeoDidUpdate"
-private let kSelectionDidChange = "SelectionDidChange"
+let kSelectionDidChange = "SelectionDidChange"
 private let kVPNIDKey = "VPNID"
 
 let kVPNConnectionSection = 0
@@ -20,57 +21,119 @@ let kVPNOnDemandSection = 1
 let kVPNListSection = 2
 let kVPNAddSection = 3
 
-class VPNList : UITableViewController, SimplePingDelegate, VPNDomainsDelegate {
+class VPNList
+    : UITableViewController, SimplePingDelegate, VPNDomainsDelegate {
     
-    var vpns = [VPN]()
-    var activatedVPNID: String?
-    var connectionStatus = NSLocalizedString("Not Connected", comment: "VPN Table - Connection Status")
-    var connectionOn = false
-    
+    @IBOutlet weak var aboutButton: UIBarButtonItem!
     @IBOutlet weak var restartPingButton: UIBarButtonItem!
     
-    override func loadView() {
-        super.loadView()
-        tableView.backgroundView = LTViewControllerBackground()
-    }
+    var vpns: [VPN]?
+    var activatedVPNID: String?
+    var connectionStatus =
+    NSLocalizedString("Not Connected", comment: "Connection Status")
+    var connectionOn = false
+    
+    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadDataAndPopDetail:", name: kVPNDidCreate, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadDataAndPopDetail:", name: kVPNDidUpdate, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadDataAndPopDetail:", name: kVPNDidRemove, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadDataAndPopDetail:", name: kVPNDidDuplicate, object: nil)
+        tableView.backgroundView = LTViewControllerBackground()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "pingDidUpdate:", name: kPingDidUpdate, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "pingDidComplete:", name: kPingDidComplete, object: nil)
+        // MARK: - Ping button
+        restartPingButton.rx_tap.subscribeNext {
+            self.restartPingButton.enabled = false
+            LTPingQueue.sharedQueue.restartPing()
+            }.addDisposableTo(disposeBag)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "geoDidUpdate:", name: kGeoDidUpdate, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "selectionDidChange:", name: kSelectionDidChange, object: nil)
+        // MARK: - About
+        aboutButton.rx_tap.subscribeNext { _ in
+            let about = R.storyboard.main.about!
+            if let nav = self.splitViewController?.viewControllers.last
+                as? UINavigationController {
+                    nav.pushViewController(about, animated: true)
+            }
+            }.addDisposableTo(disposeBag)
         
-        NSNotificationCenter.defaultCenter().addObserver(
-            self,
-            selector: "VPNStatusDidChange:",
-            name: NEVPNStatusDidChangeNotification,
-            object: nil)
-    }
-    
-    deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: kVPNDidCreate, object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: kVPNDidUpdate, object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: kVPNDidRemove, object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: kVPNDidDuplicate, object: nil)
+        // MARK: - Notifications
+        let NC = NSNotificationCenter.defaultCenter()
         
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: kPingDidUpdate, object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: kPingDidComplete, object: nil)
+        [kVPNDidUpdate, kVPNDidCreate, kVPNDidRemove, kVPNDidDuplicate]
+            .forEach { NC.rx_notification($0)
+                .subscribeNext { [weak self] n in
+                    self?.vpns = VPNDataManager.sharedManager.allVPN()
+                    self?.tableView.reloadData()
+                    guard let vpn = n.object as? VPN else { return }
+                    
+                    VPNManager.sharedManager.geoInfoOfHost(vpn.server) {
+                        [weak self] geoInfo in
+                        vpn.countryCode = geoInfo.countryCode
+                        vpn.isp = geoInfo.isp
+                        vpn.latitude = geoInfo.latitude
+                        vpn.longitude = geoInfo.longitude
+                        do {
+                            try vpn.managedObjectContext!.save()
+                        } catch _ {
+                        }
+                        self?.tableView.reloadData()
+                    }
+                    
+                    if let nav = self?.splitViewController?.viewControllers.last
+                        as? UINavigationController {
+                            nav.popViewControllerAnimated(true)
+                    }
+                }
+                .addDisposableTo(disposeBag)
+        }
         
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: kGeoDidUpdate, object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: kSelectionDidChange, object: nil)
+        NC.rx_notification(kSelectionDidChange).subscribeNext{ [weak self] _ in
+            self?.reloadVPNs()
+            }.addDisposableTo(disposeBag)
         
-        NSNotificationCenter.defaultCenter().removeObserver(
-            self,
-            name: NEVPNStatusDidChangeNotification,
-            object: nil)
+        NC.rx_notification(kPingDidUpdate).subscribeNext { [weak self] _ in
+            self?.tableView?.reloadData()
+            }.addDisposableTo(disposeBag)
+        
+        NC.rx_notification(kPingDidComplete).subscribeNext { [weak self] _ in
+            self?.restartPingButton?.enabled = true
+            }.addDisposableTo(disposeBag)
+        
+        NC.rx_notification(NEVPNStatusDidChangeNotification).subscribeNext {
+            [weak self] n in
+            
+            switch VPNManager.sharedManager.status {
+            case .Connecting:
+                self?.connectionStatus =
+                    NSLocalizedString("Connecting...", comment: "")
+                self?.connectionOn = true
+                break
+                
+            case .Connected:
+                self?.connectionStatus =
+                    NSLocalizedString("Connected", comment: "")
+                self?.connectionOn = true
+                break
+                
+            case .Disconnecting:
+                self?.connectionStatus =
+                    NSLocalizedString("Disconnecting...", comment: "")
+                self?.connectionOn = false
+                break
+                
+            default:
+                self?.connectionStatus =
+                    NSLocalizedString("Not Connected", comment: "")
+                self?.connectionOn = false
+            }
+            
+            if self?.vpns?.count > 0 {
+                let connectionIndexPath =
+                    NSIndexPath(forRow: 0, inSection: kVPNConnectionSection)
+                self?.tableView.reloadRowsAtIndexPaths([connectionIndexPath],
+                    withRowAnimation: .None)
+            }
+            }.addDisposableTo(disposeBag)
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -85,53 +148,16 @@ class VPNList : UITableViewController, SimplePingDelegate, VPNDomainsDelegate {
         if let selectedID = VPNDataManager.sharedManager.selectedVPNID {
             if selectedID != activatedVPNID {
                 activatedVPNID = selectedID.URIRepresentation().absoluteString
-                tableView.reloadData()
+                tableView?.reloadData()
             }
         }
     }
     
-    // MARK: - Notifications
-    
-    func reloadDataAndPopDetail(notification: NSNotification) {
-        vpns = VPNDataManager.sharedManager.allVPN()
-        tableView.reloadData()
-        if let vpn = notification.object as! VPN? {
-            NSNotificationCenter.defaultCenter().postNotificationName(kGeoDidUpdate, object: vpn)
-        }
-        popDetailViewController()
-    }
-    
-    func selectionDidChange(notification: NSNotification) {
-        reloadVPNs()
-    }
-    
-    // MARK: - Navigation
-    
-    func popDetailViewController() {
-        let topNavigationController = splitViewController!.viewControllers.last! as! UINavigationController
-        topNavigationController.popViewControllerAnimated(true)
-    }
-    
-    // MARK: - Ping
-    
-    @IBAction func pingServers() {
-        restartPingButton.enabled = false
-        LTPingQueue.sharedQueue.restartPing()
-    }
-    
-    func pingDidUpdate(notification: NSNotification) {
-        tableView.reloadData()
-    }
-    
-    func pingDidComplete(notification: NSNotification) {
-        restartPingButton.enabled = true
-    }
-    
-    // MARK: - Connection
-    
     @IBAction func toggleVPN(sender: UISwitch) {
         if sender.on {
-            guard let vpn = VPNDataManager.sharedManager.activatedVPN else { return }
+            guard let vpn = VPNDataManager.sharedManager.activatedVPN else {
+                return
+            }
             let passwordRef = VPNKeychainWrapper.passwordForVPNID(vpn.ID)
             let secretRef = VPNKeychainWrapper.secretForVPNID(vpn.ID)
             
@@ -159,43 +185,23 @@ class VPNList : UITableViewController, SimplePingDelegate, VPNDomainsDelegate {
         }
     }
     
-    // MARK: - Info
+    // MARK: - Update On Demand
     
-    @IBAction func presentAbout(sender: UIBarButtonItem) {
-        let about = R.storyboard.main.about!
-        if let detailNavigationController = splitViewController?.viewControllers.last as? UINavigationController {
-            detailNavigationController.pushViewController(about, animated: true)
-        }
-        
+    @IBAction func didTapOnDemandSwitch(sender: UISwitch?) {
+        VPNManager.sharedManager.onDemand = sender!.on
+        updateOnDemandCell()
     }
     
-    func VPNStatusDidChange(notification: NSNotification?) {
-        switch VPNManager.sharedManager.status
-        {
-        case NEVPNStatus.Connecting:
-            connectionStatus = NSLocalizedString("Connecting...", comment: "VPN Table - Connection Status")
-            connectionOn = true
-            break
-            
-        case NEVPNStatus.Connected:
-            connectionStatus = NSLocalizedString("Connected", comment: "VPN Table - Connection Status")
-            connectionOn = true
-            break
-            
-        case NEVPNStatus.Disconnecting:
-            connectionStatus = NSLocalizedString("Disconnecting...", comment: "VPN Table - Connection Status")
-            connectionOn = false
-            break
-            
-        default:
-            connectionStatus = NSLocalizedString("Not Connected", comment: "VPN Table - Connection Status")
-            connectionOn = false
-        }
-        
-        if vpns.count > 0 {
-            let connectionIndexPath = NSIndexPath(forRow: 0, inSection: kVPNConnectionSection)
-            tableView.reloadRowsAtIndexPaths([connectionIndexPath], withRowAnimation: .None)
-        }
+    func updateOnDemandCell() {
+        let indexSet = NSIndexSet(index: kVPNOnDemandSection)
+        tableView.reloadSections(indexSet,
+            withRowAnimation: UITableViewRowAnimation.Automatic)
     }
-
+    
+    // MARK: - VPNDomainsDelegate
+    
+    func didTapSaveDomainsWithText(text: String) {
+        updateOnDemandCell()
+    }
+    
 }

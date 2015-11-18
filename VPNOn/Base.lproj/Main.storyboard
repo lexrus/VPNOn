@@ -110,7 +110,7 @@
                                             <rect key="frame" x="255" y="6" width="51" height="31"/>
                                             <animations/>
                                             <connections>
-                                                <action selector="toggleVPN:" destination="Pga-4R-p1I" eventType="valueChanged" id="UnJ-wh-e0Z"/>
+                                                <action selector="toggleVPN:" destination="Pga-4R-p1I" eventType="valueChanged" id="6sy-oA-7eq"/>
                                             </connections>
                                         </switch>
                                     </subviews>
@@ -168,7 +168,7 @@
                                             <rect key="frame" x="255" y="6.5" width="51" height="31"/>
                                             <animations/>
                                             <connections>
-                                                <action selector="didTapOnDemandSwitch:" destination="Pga-4R-p1I" eventType="valueChanged" id="UPC-BV-mcG"/>
+                                                <action selector="didTapOnDemandSwitch:" destination="Pga-4R-p1I" eventType="valueChanged" id="hT1-A0-FbX"/>
                                             </connections>
                                         </switch>
                                     </subviews>
@@ -243,19 +243,15 @@
                     <navigationItem key="navigationItem" title="VPN On" id="96C-Eg-mId">
                         <barButtonItem key="leftBarButtonItem" title="⌥" id="AHk-hk-dlk">
                             <connections>
-                                <action selector="presentAbout:" destination="Pga-4R-p1I" id="dcy-RK-uTc"/>
                                 <segue destination="aiw-IB-1f2" kind="showDetail" id="W0B-6i-R9D"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="refresh" id="6nU-ro-zkI">
-                            <connections>
-                                <action selector="pingServers" destination="Pga-4R-p1I" id="OXb-WX-Gz2"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="refresh" id="6nU-ro-zkI"/>
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="380"/>
                     <connections>
+                        <outlet property="aboutButton" destination="AHk-hk-dlk" id="Lw1-JM-iyY"/>
                         <outlet property="restartPingButton" destination="6nU-ro-zkI" id="oQO-jB-ghb"/>
                     </connections>
                 </tableViewController>
@@ -665,7 +661,7 @@
                             <tableViewSection id="mBf-Hr-GPe">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="duplicateButton" textLabel="Ao2-Hb-0jD" style="IBUITableViewCellStyleDefault" id="663-D6-n2X" customClass="LTTableViewActionCell" customModule="VPNOn" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="523.5" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="663-D6-n2X" id="fNl-8X-cbk">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
@@ -691,7 +687,7 @@
                             <tableViewSection id="prJ-9D-aJO">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="deleteButton" textLabel="Im7-xc-lxF" style="IBUITableViewCellStyleDefault" id="aVU-jp-9tN">
-                                        <rect key="frame" x="0.0" y="587.5" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="588" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aVU-jp-9tN" id="oav-Hw-u7I">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>

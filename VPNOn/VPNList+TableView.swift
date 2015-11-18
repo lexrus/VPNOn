@@ -25,7 +25,7 @@ extension VPNList {
             return 1
             
         case kVPNListSection:
-            return vpns.count
+            return vpns?.count ?? 0
             
         default:
             return 1
@@ -40,7 +40,7 @@ extension VPNList {
                 R.reuseIdentifier.connectionCell, forIndexPath: indexPath)!
             cell.titleLabel!.text = connectionStatus
             cell.switchButton.on = connectionOn
-            cell.switchButton.enabled = vpns.count != 0
+            cell.switchButton.enabled = vpns != nil && vpns!.count > 0
             return cell
             
         case kVPNOnDemandSection:
@@ -63,7 +63,7 @@ extension VPNList {
             
         case kVPNListSection:
             let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.vPNCell, forIndexPath: indexPath)!
-            let vpn = vpns[indexPath.row]
+            guard let vpn = vpns?[indexPath.row] else { return cell }
             cell.textLabel?.attributedText = cellTitleForIndexPath(indexPath)
             cell.detailTextLabel?.text = vpn.server
             cell.IKEv2 = vpn.ikev2
@@ -74,7 +74,7 @@ extension VPNList {
                 cell.imageView?.image = UIImage(flagImageWithCountryCode: countryCode.uppercaseString)
             }
             
-            cell.current = Bool(activatedVPNID == vpns[indexPath.row].ID)
+            cell.current = Bool(activatedVPNID == vpn.ID)
             
             return cell
             
@@ -91,7 +91,7 @@ extension VPNList {
             break
             
         case kVPNListSection:
-            activatedVPNID = vpns[indexPath.row].ID
+            activatedVPNID = vpns?[indexPath.row].ID
             VPNManager.sharedManager.activatedVPNID = activatedVPNID
             tableView.reloadData()
             break
@@ -103,7 +103,7 @@ extension VPNList {
     
     override func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
         if indexPath.section == kVPNListSection {
-            let VPNID = vpns[indexPath.row].objectID
+            let VPNID = vpns?[indexPath.row].objectID
             VPNDataManager.sharedManager.selectedVPNID = VPNID
         }
     }
@@ -127,7 +127,7 @@ extension VPNList {
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == kVPNListSection && vpns.count > 0 {
+        if section == kVPNListSection && vpns?.count > 0 {
             return NSLocalizedString("VPN CONFIGURATIONS", comment: "VPN Table - List Section Header")
         }
         
@@ -137,7 +137,7 @@ extension VPNList {
     // MARK: - Cell title
     
     func cellTitleForIndexPath(indexPath: NSIndexPath) -> NSAttributedString {
-        let vpn = vpns[indexPath.row]
+        guard let vpn = vpns?[indexPath.row] else { return NSAttributedString(string: "") }
         let latency = LTPingQueue.sharedQueue.latencyForHostname(vpn.server)
         
         let titleAttributes = [

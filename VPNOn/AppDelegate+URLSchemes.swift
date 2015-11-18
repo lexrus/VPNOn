@@ -50,7 +50,7 @@ extension AppDelegate {
         let secretRef = VPNKeychainWrapper.secretForVPNID(vpn.ID)
         
         VPNDataManager.sharedManager.selectedVPNID = vpn.objectID
-        NSNotificationCenter.defaultCenter().postNotificationName("kSelectionDidChange", object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName(kSelectionDidChange, object: nil)
         
         if vpn.ikev2 {
             VPNManager.sharedManager.connectIKEv2(

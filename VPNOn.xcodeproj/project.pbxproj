@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D70578501AA5EFF000040279 /* VPNList+Geo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D705784F1AA5EFF000040279 /* VPNList+Geo.swift */; };
 		D7139BE01BE3BD4000F20D96 /* Acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = D7139BDF1BE3BD4000F20D96 /* Acknowledgements.plist */; };
 		D7139BE21BE3C11B00F20D96 /* VPNList+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7139BE11BE3C11B00F20D96 /* VPNList+TableView.swift */; };
 		D7139BE41BE4F73800F20D96 /* NormalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7139BE31BE4F73800F20D96 /* NormalTableViewCell.swift */; };
@@ -49,7 +48,6 @@
 		D77110341A6D007C003D9605 /* VPNDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7453F9E1A3196E200F7E32D /* VPNDataManager.swift */; };
 		D77110351A6D0080003D9605 /* VPNDataManager+VPN.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7453F9D1A3196E200F7E32D /* VPNDataManager+VPN.swift */; };
 		D77110361A6D0095003D9605 /* VPNOn.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D7453F9F1A3196E200F7E32D /* VPNOn.xcdatamodeld */; };
-		D77593D81A79E53C007161B2 /* VPNList+OnDemand.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77593D71A79E53C007161B2 /* VPNList+OnDemand.swift */; };
 		D77593DA1A79E674007161B2 /* VPNManager+Domains.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77593D91A79E674007161B2 /* VPNManager+Domains.swift */; };
 		D77593DB1A7A2E5A007161B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D77593DD1A7A2E5A007161B2 /* Main.storyboard */; };
 		D7764EFD1BF228A8000ACA4C /* FlagKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7764EFB1BF228A8000ACA4C /* FlagKit.swift */; };
@@ -251,7 +249,6 @@
 		ADAE1015513E5D274186BA78 /* Pods-VPNOnKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VPNOnKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-VPNOnKit/Pods-VPNOnKit.release.xcconfig"; sourceTree = "<group>"; };
 		B049947EF6748F9B90FCA3FF /* Pods-TodayWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodayWidget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TodayWidget/Pods-TodayWidget.debug.xcconfig"; sourceTree = "<group>"; };
 		D70187501BD37B1E00A78112 /* VPN On 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "VPN On 5.xcdatamodel"; sourceTree = "<group>"; };
-		D705784F1AA5EFF000040279 /* VPNList+Geo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VPNList+Geo.swift"; sourceTree = "<group>"; };
 		D7095DB91A81C54600BAF797 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Main.strings; sourceTree = "<group>"; };
 		D7095DBA1A81C54600BAF797 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D7095DBB1A81C54600BAF797 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -328,7 +325,6 @@
 		D769FEA11A7A3F1900EF1A1F /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/Main.strings"; sourceTree = "<group>"; };
 		D769FEA21A7A3F1900EF1A1F /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		D769FEA31A7A3F1900EF1A1F /* zh-Hant-HK */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant-HK"; path = "zh-Hant-HK.lproj/Localizable.strings"; sourceTree = "<group>"; };
-		D77593D71A79E53C007161B2 /* VPNList+OnDemand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VPNList+OnDemand.swift"; sourceTree = "<group>"; };
 		D77593D91A79E674007161B2 /* VPNManager+Domains.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VPNManager+Domains.swift"; sourceTree = "<group>"; };
 		D77593DC1A7A2E5A007161B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D77593E21A7A2F12007161B2 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -509,8 +505,6 @@
 				D7EB52511BBEE3960021D93D /* AppDelegate+URLSchemes.swift */,
 				D7453FA71A31975D00F7E32D /* VPNList.swift */,
 				D7139BE11BE3C11B00F20D96 /* VPNList+TableView.swift */,
-				D705784F1AA5EFF000040279 /* VPNList+Geo.swift */,
-				D77593D71A79E53C007161B2 /* VPNList+OnDemand.swift */,
 				D7453FA51A31975D00F7E32D /* VPNEditor.swift */,
 				D79F73741A72923E00EB2289 /* VPNEditor+Save.swift */,
 				D77F34181A6F7EA000796827 /* VPNEditor+Manipulation.swift */,
@@ -1015,7 +1009,6 @@
 				D7E28A801A680D9400507F33 /* UIAppearance+Swift.m in Sources */,
 				D7A9C4F31BDD26AF00F06570 /* R.generated.swift in Sources */,
 				D7322C7A1A6C024800B34AA0 /* LTViewControllerBackground.swift in Sources */,
-				D70578501AA5EFF000040279 /* VPNList+Geo.swift in Sources */,
 				D7D499311A72542400B5F5ED /* LTTableViewCellDeclosureIndicator.swift in Sources */,
 				D7764EFD1BF228A8000ACA4C /* FlagKit.swift in Sources */,
 				D7453FA41A3196E200F7E32D /* VPNOn.xcdatamodeld in Sources */,
@@ -1028,7 +1021,6 @@
 				D7E28A851A68118A00507F33 /* LTDarkTheme.swift in Sources */,
 				D7CB6A321A7B8FA500B8B568 /* LTLightTheme.swift in Sources */,
 				D7764EFF1BF228A8000ACA4C /* UIImage.swift in Sources */,
-				D77593D81A79E53C007161B2 /* VPNList+OnDemand.swift in Sources */,
 				D7453FAA1A31975D00F7E32D /* VPNList.swift in Sources */,
 				D7BB2DCE1A6C066B00D8D581 /* LTTableViewCellTitle.swift in Sources */,
 				D758FE0D1A5BE35000929494 /* About.swift in Sources */,
