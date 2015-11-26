@@ -1,7 +1,9 @@
 # VPN On
 
 [![Travis](https://img.shields.io/travis/lexrus/VPNOn.svg)](https://travis-ci.org/lexrus/VPNOn)
-![Language](https://img.shields.io/badge/language-Swift%202-orange.svg)
+
+![Language](https://img.shields.io/badge/language-Swift%202.1-orange.svg)
+
 ![License](https://img.shields.io/github/license/lexrus/VPNOn.svg?style=flat)
 
 [<img src="https://cloud.githubusercontent.com/assets/219689/5575342/963e0ee8-9013-11e4-8091-7ece67d64729.png" width="135" height="40" alt="AppStore"/>](https://itunes.apple.com/app/vpn-on/id951344279)
@@ -39,7 +41,7 @@ This project follows the [gitflow](https://github.com/nvie/gitflow) workflow. Yo
 
 ## Localization
 
-Please contribute to [the Transifex project](https://www.transifex.com/projects/p/vpnon/).
+Please contribute to [the Transifex project](https://www.transifex.com/lexrus/vpnon/).
 
 ![Transifex Progress](https://www.transifex.com/projects/p/vpnon/resource/vpnonxliff/chart/image_png)
 
@@ -54,24 +56,15 @@ VPN service providers may list a link for their customers to efficiently add ser
 `server` and `title` are required, other fields are optional. The following URLs are valid:
 
 * `vpnon://jony:ive@apple.com/?title=Apple&group=Design&secret=iPhone`
-
 * `vpnon://apple.com/?title=Apple`
-
 * `vpnon://admin@192.168.0.123/?title=Google&group=devops`
-
 * `vpnon://admin@202.96.209.6/?title=Yahoo&alwayson=no`
-
 * `vpnon://jony:ive@202.96.209.5/?title=Twitter&ikev2=yes`
 
 ### Establish connection with URL
 
 * `vpnon://VPNTitle/?connect`
 * `vpnon://VPNTitle/?connect&callback=https://twitter.com`
-
-## Donation
-
-Although this App is 100% open-sourced, it may takes about 20~60 minutes to configure the environment. I'd appreciate it if you could [buy VPN On from App Store](https://itunes.apple.com/app/vpn-on/id951344279).
-
 
 ## Credits
 
@@ -84,7 +77,7 @@ Although this App is 100% open-sourced, it may takes about 20~60 minutes to conf
 
 This code is distributed under the terms and conditions of the MIT license.
 
-```
+``` 
 Copyright (C) 2015 lexrus.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
