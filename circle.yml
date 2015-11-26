@@ -1,11 +1,12 @@
 machine:
   xcode:
-    version: "7.0"
+    version: "7.1"
   environment:
     XCODE_SCHEME: VPNOn
     XCODE_PROJECT: VPNOn.xcodeproj
 test:
   override:
+    - carthage update --platform=ios
     - xctool
       -reporter pretty
       -reporter junit:$CIRCLE_TEST_REPORTS/xcode/results.xml
