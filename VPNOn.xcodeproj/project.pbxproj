@@ -13,6 +13,8 @@
 		D7139BE61BE4FF7F00F20D96 /* Acknowledgements.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7139BE51BE4FF7F00F20D96 /* Acknowledgements.swift */; };
 		D7139BE81BE5054600F20D96 /* AcknowledgementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7139BE71BE5054600F20D96 /* AcknowledgementCell.swift */; };
 		D7322C7A1A6C024800B34AA0 /* LTViewControllerBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7322C791A6C024800B34AA0 /* LTViewControllerBackground.swift */; };
+		D737D2021C09F9CD0073E7BE /* FlagKit.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D737D2011C09F9CD0073E7BE /* FlagKit.xcassets */; };
+		D737D2031C09F9D40073E7BE /* FlagKit.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D737D2011C09F9CD0073E7BE /* FlagKit.xcassets */; };
 		D73C19F21AC1684D00C1A824 /* SwitchIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73C19F11AC1684D00C1A824 /* SwitchIconView.swift */; };
 		D73C19F41AC168B900C1A824 /* ModeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73C19F31AC168B900C1A824 /* ModeButton.swift */; };
 		D74129A91A5CFCDA008DE603 /* SimplePing.h in Headers */ = {isa = PBXBuildFile; fileRef = D74129A71A5CFCDA008DE603 /* SimplePing.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -54,8 +56,6 @@
 		D7764EFE1BF228A8000ACA4C /* FlagKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7764EFB1BF228A8000ACA4C /* FlagKit.swift */; };
 		D7764EFF1BF228A8000ACA4C /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7764EFC1BF228A8000ACA4C /* UIImage.swift */; };
 		D7764F001BF228A8000ACA4C /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7764EFC1BF228A8000ACA4C /* UIImage.swift */; };
-		D7764F021BF228C9000ACA4C /* FlagKit.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7764F011BF228C9000ACA4C /* FlagKit.xcassets */; };
-		D7764F031BF228C9000ACA4C /* FlagKit.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7764F011BF228C9000ACA4C /* FlagKit.xcassets */; };
 		D7764F071BF2298F000ACA4C /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7764F041BF2298F000ACA4C /* RxBlocking.framework */; };
 		D7764F081BF2298F000ACA4C /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7764F041BF2298F000ACA4C /* RxBlocking.framework */; };
 		D7764F091BF2298F000ACA4C /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7764F051BF2298F000ACA4C /* RxCocoa.framework */; };
@@ -273,6 +273,7 @@
 		D72403371A8B32A70066CA47 /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-US"; path = "en-US.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		D72403381A8B32A70066CA47 /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-US"; path = "en-US.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		D7322C791A6C024800B34AA0 /* LTViewControllerBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTViewControllerBackground.swift; sourceTree = "<group>"; };
+		D737D2011C09F9CD0073E7BE /* FlagKit.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = FlagKit.xcassets; sourceTree = "<group>"; };
 		D73C19F11AC1684D00C1A824 /* SwitchIconView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchIconView.swift; sourceTree = "<group>"; };
 		D73C19F31AC168B900C1A824 /* ModeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModeButton.swift; sourceTree = "<group>"; };
 		D74129A71A5CFCDA008DE603 /* SimplePing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplePing.h; sourceTree = "<group>"; };
@@ -330,7 +331,6 @@
 		D77593E21A7A2F12007161B2 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		D7764EFB1BF228A8000ACA4C /* FlagKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlagKit.swift; sourceTree = "<group>"; };
 		D7764EFC1BF228A8000ACA4C /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
-		D7764F011BF228C9000ACA4C /* FlagKit.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = FlagKit.xcassets; sourceTree = "<group>"; };
 		D7764F041BF2298F000ACA4C /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = Carthage/Build/iOS/RxBlocking.framework; sourceTree = "<group>"; };
 		D7764F051BF2298F000ACA4C /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
 		D7764F061BF2298F000ACA4C /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
@@ -665,7 +665,7 @@
 			children = (
 				D7764EFB1BF228A8000ACA4C /* FlagKit.swift */,
 				D7764EFC1BF228A8000ACA4C /* UIImage.swift */,
-				D7764F011BF228C9000ACA4C /* FlagKit.xcassets */,
+				D737D2011C09F9CD0073E7BE /* FlagKit.xcassets */,
 			);
 			path = FlagKit;
 			sourceTree = "<group>";
@@ -939,7 +939,7 @@
 			files = (
 				D7139BE01BE3BD4000F20D96 /* Acknowledgements.plist in Resources */,
 				D77593DB1A7A2E5A007161B2 /* Main.storyboard in Resources */,
-				D7764F021BF228C9000ACA4C /* FlagKit.xcassets in Resources */,
+				D737D2021C09F9CD0073E7BE /* FlagKit.xcassets in Resources */,
 				D769FE941A7A3A3500EF1A1F /* Localizable.strings in Resources */,
 				D7453F3C1A31966F00F7E32D /* LaunchScreen.xib in Resources */,
 				D7453F391A31966F00F7E32D /* Images.xcassets in Resources */,
@@ -952,7 +952,7 @@
 			files = (
 				D74C91AD1A383FED00EAAAE1 /* MainInterface.storyboard in Resources */,
 				D769FE9A1A7A3ADC00EF1A1F /* Localizable.strings in Resources */,
-				D7764F031BF228C9000ACA4C /* FlagKit.xcassets in Resources */,
+				D737D2031C09F9D40073E7BE /* FlagKit.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
