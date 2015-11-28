@@ -1,7 +1,9 @@
 language: objective-c
-osx_image: xcode7
+osx_image: xcode7.1
+before_install:
+  - brew update
+  - brew install carthage
 before_script:
-    - brew install carthage
-    - carthage update --platform=ios
+  - carthage update --platform=ios
 script:
-    - xctool test -project VPNOn.xcodeproj -scheme VPNOn -sdk iphonesimulator
+  - xctool test -project VPNOn.xcodeproj -scheme VPNOn -sdk iphonesimulator
