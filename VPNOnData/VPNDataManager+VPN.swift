@@ -62,8 +62,8 @@ extension VPNDataManager {
             saveContext()
             
             if !vpn.objectID.temporaryID {
-                VPNKeychainWrapper.setPassword(password, forVPNID: vpn.ID)
-                VPNKeychainWrapper.setSecret(secret, forVPNID: vpn.ID)
+                Keychain.setPassword(password, forVPNID: vpn.ID)
+                Keychain.setSecret(secret, forVPNID: vpn.ID)
                 
                 if allVPN().count == 1 {
                     VPNManager.sharedManager.activatedVPNID = vpn.ID
@@ -80,7 +80,7 @@ extension VPNDataManager {
     func deleteVPN(vpn:VPN) {
         let ID = "\(vpn.ID)"
         
-        VPNKeychainWrapper.destoryKeyForVPNID(ID)
+        Keychain.destoryKeyForVPNID(ID)
         managedObjectContext!.deleteObject(vpn)
         
         do {
@@ -161,15 +161,15 @@ extension VPNDataManager {
         if duplicatedVPNs.count > 0 {
             let newTitle = "\(vpn.title) \(duplicatedVPNs.count)"
             
-            VPNKeychainWrapper.passwordForVPNID(vpn.ID)
+            Keychain.passwordForVPNID(vpn.ID)
             
             return createVPN(
                 newTitle,
                 server: vpn.server,
                 account: vpn.account,
-                password: VPNKeychainWrapper.passwordStringForVPNID(vpn.ID) ?? "",
+                password: Keychain.passwordStringForVPNID(vpn.ID) ?? "",
                 group: vpn.group,
-                secret: VPNKeychainWrapper.secretStringForVPNID(vpn.ID) ?? "",
+                secret: Keychain.secretStringForVPNID(vpn.ID) ?? "",
                 alwaysOn: vpn.alwaysOn,
                 ikev2: vpn.ikev2
             )

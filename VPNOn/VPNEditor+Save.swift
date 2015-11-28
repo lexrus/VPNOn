@@ -20,9 +20,9 @@ extension VPNEditor {
             currentVPN.alwaysOn = alwaysOnSwitch.on
             currentVPN.ikev2 = typeSegment.selectedSegmentIndex == 1
             
-            VPNKeychainWrapper.setPassword(passwordTextField.text ?? "", forVPNID: currentVPN.ID)
+            Keychain.setPassword(passwordTextField.text ?? "", forVPNID: currentVPN.ID)
             
-            VPNKeychainWrapper.setSecret(secretTextField.text ?? "", forVPNID: currentVPN.ID)
+            Keychain.setSecret(secretTextField.text ?? "", forVPNID: currentVPN.ID)
             
             VPNDataManager.sharedManager.saveContext()
             

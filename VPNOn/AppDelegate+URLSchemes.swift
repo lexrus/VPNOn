@@ -46,8 +46,8 @@ extension AppDelegate {
         let vpns = VPNDataManager.sharedManager.VPNHasTitle(title)
         guard let vpn = vpns.first else { return }
         
-        let passwordRef = VPNKeychainWrapper.passwordForVPNID(vpn.ID)
-        let secretRef = VPNKeychainWrapper.secretForVPNID(vpn.ID)
+        let passwordRef = Keychain.passwordForVPNID(vpn.ID)
+        let secretRef = Keychain.secretForVPNID(vpn.ID)
         
         VPNDataManager.sharedManager.selectedVPNID = vpn.objectID
         NSNotificationCenter.defaultCenter().postNotificationName(kSelectionDidChange, object: nil)

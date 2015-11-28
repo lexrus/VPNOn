@@ -158,8 +158,8 @@ class VPNList
             guard let vpn = VPNDataManager.sharedManager.activatedVPN else {
                 return
             }
-            let passwordRef = VPNKeychainWrapper.passwordForVPNID(vpn.ID)
-            let secretRef = VPNKeychainWrapper.secretForVPNID(vpn.ID)
+            let passwordRef = Keychain.passwordForVPNID(vpn.ID)
+            let secretRef = Keychain.secretForVPNID(vpn.ID)
             
             if vpn.ikev2 {
                 VPNManager.sharedManager.connectIKEv2(

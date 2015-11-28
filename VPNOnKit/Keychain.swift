@@ -1,5 +1,5 @@
 //
-//  VPNKeychainWrapper.swift
+//  Keychain.swift
 //  VPNOn
 //
 //  Created by Lex Tang on 12/12/14.
@@ -11,7 +11,7 @@ import SwiftKeychainWrapper
 
 private let kKeychainServiceName = "com.LexTang.VPNOn"
 
-public struct VPNKeychainWrapper {
+public struct Keychain {
     
     public static func setPassword(password: String, forVPNID VPNID: String) -> Bool {
         let key = NSURL(string: VPNID)!.lastPathComponent!

@@ -201,8 +201,8 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
         
         VPNManager.sharedManager.selectedVPNID = vpn.ID
         
-        let passwordRef = VPNKeychainWrapper.passwordForVPNID(vpn.ID)
-        let secretRef = VPNKeychainWrapper.secretForVPNID(vpn.ID)
+        let passwordRef = Keychain.passwordForVPNID(vpn.ID)
+        let secretRef = Keychain.secretForVPNID(vpn.ID)
         let titleWithSubfix = "Widget - \(vpn.title)"
         
         if vpn.ikev2 {
