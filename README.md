@@ -17,9 +17,12 @@ Turning on a VPN is always a painful experience on an iOS device due to the deep
 - An iPhone/iPad running iOS 8.0+
 - An IPSec IKEv1 / IKEv2 VPN(create yours with [my Ansible Playbook](https://github.com/lexrus/vpn-deploy-playbook) or [deploy on DigitalOcean](http://installer.71m.us/install?url=https://github.com/lexrus/do-ikev1))
 - Xcode 7+
+- [Carthage](https://github.com/carthage/carthage)
 - An Apple iOS developer account
 
 ## Build with Xcode
+
+Install dependencies with `carthage update --platform ios`.
 
 To compile the project, you may temporarily modify the bundle_id after adding yours into the Apple Developer Center. And then activate the following capabilities of the container App and the Today extension:
 
@@ -77,7 +80,7 @@ VPN service providers may list a link for their customers to efficiently add ser
 
 This code is distributed under the terms and conditions of the MIT license.
 
-``` 
+```
 Copyright (C) 2015 lexrus.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
