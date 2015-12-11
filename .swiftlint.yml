@@ -1,0 +1,11 @@
+excluded:
+  - Carthage
+  - Pods
+  - Vendor
+line_length: 100
+type_body_length:
+  - 300
+  - 600
+variable_name_max_length:
+  - 40
+  - 60
