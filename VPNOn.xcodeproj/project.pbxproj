@@ -57,20 +57,14 @@
 		D7764EFF1BF228A8000ACA4C /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7764EFC1BF228A8000ACA4C /* UIImage.swift */; };
 		D7764F001BF228A8000ACA4C /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7764EFC1BF228A8000ACA4C /* UIImage.swift */; };
 		D7764F071BF2298F000ACA4C /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7764F041BF2298F000ACA4C /* RxBlocking.framework */; };
-		D7764F081BF2298F000ACA4C /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7764F041BF2298F000ACA4C /* RxBlocking.framework */; };
 		D7764F091BF2298F000ACA4C /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7764F051BF2298F000ACA4C /* RxCocoa.framework */; };
-		D7764F0A1BF2298F000ACA4C /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7764F051BF2298F000ACA4C /* RxCocoa.framework */; };
 		D7764F0B1BF2298F000ACA4C /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7764F061BF2298F000ACA4C /* RxSwift.framework */; };
-		D7764F0C1BF2298F000ACA4C /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7764F061BF2298F000ACA4C /* RxSwift.framework */; };
 		D7764F161BF229DB000ACA4C /* RxBlocking.framework.dSYM in dSYM */ = {isa = PBXBuildFile; fileRef = D7764F131BF229DB000ACA4C /* RxBlocking.framework.dSYM */; };
 		D7764F171BF229DB000ACA4C /* RxCocoa.framework.dSYM in dSYM */ = {isa = PBXBuildFile; fileRef = D7764F141BF229DB000ACA4C /* RxCocoa.framework.dSYM */; };
 		D7764F181BF229DB000ACA4C /* RxSwift.framework.dSYM in dSYM */ = {isa = PBXBuildFile; fileRef = D7764F151BF229DB000ACA4C /* RxSwift.framework.dSYM */; };
 		D7764F191BF22A25000ACA4C /* RxBlocking.framework in Carthage Frameworks */ = {isa = PBXBuildFile; fileRef = D7764F041BF2298F000ACA4C /* RxBlocking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D7764F1A1BF22A25000ACA4C /* RxCocoa.framework in Carthage Frameworks */ = {isa = PBXBuildFile; fileRef = D7764F051BF2298F000ACA4C /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D7764F1B1BF22A25000ACA4C /* RxSwift.framework in Carthage Frameworks */ = {isa = PBXBuildFile; fileRef = D7764F061BF2298F000ACA4C /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D7764F1C1BF22A2D000ACA4C /* RxBlocking.framework in Carthage Frameworks */ = {isa = PBXBuildFile; fileRef = D7764F041BF2298F000ACA4C /* RxBlocking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D7764F1D1BF22A2D000ACA4C /* RxCocoa.framework in Carthage Frameworks */ = {isa = PBXBuildFile; fileRef = D7764F051BF2298F000ACA4C /* RxCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D7764F1E1BF22A2D000ACA4C /* RxSwift.framework in Carthage Frameworks */ = {isa = PBXBuildFile; fileRef = D7764F061BF2298F000ACA4C /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D7784F9F1A75F330009360CE /* VPNSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7784F9E1A75F330009360CE /* VPNSwitchCell.swift */; };
 		D77F34191A6F7EA000796827 /* VPNEditor+Manipulation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77F34181A6F7EA000796827 /* VPNEditor+Manipulation.swift */; };
 		D77F341B1A6F842C00796827 /* LTTableViewActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77F341A1A6F842C00796827 /* LTTableViewActionCell.swift */; };
@@ -219,9 +213,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				D7A9C4EF1BDD267600F06570 /* SwiftKeychainWrapper.framework in Carthage Frameworks */,
-				D7764F1C1BF22A2D000ACA4C /* RxBlocking.framework in Carthage Frameworks */,
-				D7764F1D1BF22A2D000ACA4C /* RxCocoa.framework in Carthage Frameworks */,
-				D7764F1E1BF22A2D000ACA4C /* RxSwift.framework in Carthage Frameworks */,
 			);
 			name = "Carthage Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -413,10 +404,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7764F0A1BF2298F000ACA4C /* RxCocoa.framework in Frameworks */,
 				D74C91A61A383FED00EAAAE1 /* NotificationCenter.framework in Frameworks */,
-				D7764F0C1BF2298F000ACA4C /* RxSwift.framework in Frameworks */,
-				D7764F081BF2298F000ACA4C /* RxBlocking.framework in Frameworks */,
 				D74C91C71A399AA400EAAAE1 /* NetworkExtension.framework in Frameworks */,
 				D754E21B1A3B3E9F00E8F135 /* VPNOnKit.framework in Frameworks */,
 				D7A9C4E21BDD215400F06570 /* SwiftKeychainWrapper.framework in Frameworks */,
