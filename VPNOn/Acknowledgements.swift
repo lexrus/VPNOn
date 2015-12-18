@@ -20,9 +20,12 @@ class Acknowledgements : UITableViewController {
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        guard let plistURL = NSBundle.mainBundle().URLForResource("Acknowledgements", withExtension: "plist") else {
-            assert(true, "Failed to load Acknowledgements.plist")
-            return
+        guard let plistURL = NSBundle.mainBundle().URLForResource(
+            "Acknowledgements",
+            withExtension: "plist"
+            ) else {
+                assert(true, "Failed to load Acknowledgements.plist")
+                return
         }
         
         if let array = NSArray(contentsOfURL: plistURL) as? [NSDictionary] {
@@ -30,22 +33,33 @@ class Acknowledgements : UITableViewController {
         }
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+    override func tableView(
+        tableView: UITableView,
+        numberOfRowsInSection section: Int
+        ) -> Int {
+            return 1
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return acknowledgements?.count ?? 0
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(R.reuseIdentifier.acknowledgementCell, forIndexPath: indexPath)!
-        let acknowledgement = acknowledgements![indexPath.section]
-        
-        cell.titleLabel.text = acknowledgement.objectForKey("title") as? String
-        cell.contentLabel.text = acknowledgement.objectForKey("text") as? String
-        
-        return cell
+    override func tableView(
+        tableView: UITableView,
+        cellForRowAtIndexPath indexPath: NSIndexPath
+        ) -> UITableViewCell {
+            let cell = tableView.dequeueReusableCellWithIdentifier(
+                R.reuseIdentifier.acknowledgementCell,
+                forIndexPath: indexPath
+                )!
+            let acknowledgement = acknowledgements![indexPath.section]
+            
+            cell.titleLabel.text
+                = acknowledgement.objectForKey("title") as? String
+            cell.contentLabel.text
+                = acknowledgement.objectForKey("text") as? String
+            
+            return cell
     }
     
 }
