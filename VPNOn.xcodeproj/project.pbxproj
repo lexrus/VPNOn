@@ -94,6 +94,9 @@
 		D7D4992F1A724B4C00B5F5ED /* VPNEditor+Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D4992E1A724B4C00B5F5ED /* VPNEditor+Type.swift */; };
 		D7D499311A72542400B5F5ED /* LTTableViewCellDeclosureIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D499301A72542400B5F5ED /* LTTableViewCellDeclosureIndicator.swift */; };
 		D7DAACBA1C243E80008FB091 /* MMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D736A98C1C23F4270070EAA3 /* MMDB.framework */; };
+		D7DAACBB1C245C72008FB091 /* MMDB.framework in Carthage Frameworks */ = {isa = PBXBuildFile; fileRef = D736A98C1C23F4270070EAA3 /* MMDB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D7DAACBC1C245C95008FB091 /* MMDB.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D736A98C1C23F4270070EAA3 /* MMDB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D7DAACBD1C245C9D008FB091 /* MMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D736A98C1C23F4270070EAA3 /* MMDB.framework */; };
 		D7DBC12C1BBAEFDE004E2F3E /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DBC12B1BBAEFDE004E2F3E /* Keychain.swift */; };
 		D7DDB5631A78AC7E00BE7FB7 /* VPNTypeTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DDB5611A78A1D100BE7FB7 /* VPNTypeTag.swift */; };
 		D7DDB5651A78DA4600BE7FB7 /* VPNDomains.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DDB5641A78DA4600BE7FB7 /* VPNDomains.swift */; };
@@ -208,6 +211,7 @@
 				D7764F191BF22A25000ACA4C /* RxBlocking.framework in Carthage Frameworks */,
 				D7764F1A1BF22A25000ACA4C /* RxCocoa.framework in Carthage Frameworks */,
 				D7764F1B1BF22A25000ACA4C /* RxSwift.framework in Carthage Frameworks */,
+				D7DAACBB1C245C72008FB091 /* MMDB.framework in Carthage Frameworks */,
 			);
 			name = "Carthage Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -230,6 +234,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				D7A9C4F11BDD268200F06570 /* SwiftKeychainWrapper.framework in CopyFiles */,
+				D7DAACBC1C245C95008FB091 /* MMDB.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,6 +441,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D757AF901A3B370E00AEF3CB /* VPNOnKit.framework in Frameworks */,
+				D7DAACBD1C245C9D008FB091 /* MMDB.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1433,6 +1439,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = VPNOnKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1448,6 +1455,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = VPNOnKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
