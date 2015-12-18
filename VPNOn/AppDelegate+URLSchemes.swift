@@ -14,7 +14,13 @@ extension AppDelegate {
     
     func application(application: UIApplication, handleOpenURL URL: NSURL) -> Bool {
         var willConnect = false
-        var callback: String?
+        var callback: String = ""
+        
+        // Ignore query while the host is equal to "disconnect"
+        if URL.host == "disconnect" {
+            VPNManager.sharedManager.disconnect()
+            return true
+        }
         
         if let query = URL.query {
             let comps = query.componentsSeparatedByString("&")
@@ -32,7 +38,7 @@ extension AppDelegate {
         }
         
         if willConnect {
-            connectVPNWithURL(URL, callback: callback ?? "")
+            connectVPNWithURL(URL, callback: callback)
         } else {
             initialCreateViewWithURL(URL)
         }
@@ -50,7 +56,9 @@ extension AppDelegate {
         let secretRef = Keychain.secretForVPNID(vpn.ID)
         
         VPNDataManager.sharedManager.selectedVPNID = vpn.objectID
-        NSNotificationCenter.defaultCenter().postNotificationName(kSelectionDidChange, object: nil)
+        
+        NSNotificationCenter.defaultCenter()
+            .postNotificationName(kSelectionDidChange, object: nil)
         
         if vpn.ikev2 {
             VPNManager.sharedManager.connectIKEv2(
@@ -80,12 +88,16 @@ extension AppDelegate {
     }
     
     private func initialCreateViewWithURL(URL: NSURL) {
+        // If the host is empty, do nothing
         guard let _ = URL.host, info = VPN.parseURL(URL) else { return }
-        guard let splitVC = window?.rootViewController as? UISplitViewController else { return }
-        guard let detailNC = splitVC.viewControllers.last as? UINavigationController else { return }
-        guard let editor = R.storyboard.main.vPNEditor else { return }
         
-        editor.initializedVPNInfo = info
-        detailNC.pushViewController(editor, animated: false)
+        if let splitVC = window?.rootViewController as? UISplitViewController,
+            detailNC = splitVC.viewControllers.last as? UINavigationController,
+            editor = R.storyboard.main.vPNEditor
+        {
+            editor.initializedVPNInfo = info
+            detailNC.pushViewController(editor, animated: false)
+        }
     }
+
 }
