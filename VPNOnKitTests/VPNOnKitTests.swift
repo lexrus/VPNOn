@@ -9,6 +9,7 @@
 import UIKit
 import XCTest
 import VPNOnKit
+import MMDB
 
 class VPNOnKitTests: XCTestCase {
     
@@ -30,9 +31,9 @@ class VPNOnKitTests: XCTestCase {
     }
     
     func testGeoIP() {
-        let geoInfoOfGoogleDNS = VPNManager.sharedManager.geoInfoOfIP("8.8.4.4")
-        XCTAssert(geoInfoOfGoogleDNS != nil, "Google DNS must has Geo IP info.")
-        XCTAssert(geoInfoOfGoogleDNS!.isp == "Google Inc.", "Google DNS must be hosted by Google Inc.")
+        let countryOfGoogleDNS = VPNManager.sharedManager.countryOfIP("8.8.4.4")
+        XCTAssert(countryOfGoogleDNS != nil, "Google DNS must has Geo IP info.")
+        XCTAssert(countryOfGoogleDNS!.isoCode == "US", "Google DNS must be hosted in USA.")
     }
     
     func testResolve() {
@@ -56,10 +57,10 @@ class VPNOnKitTests: XCTestCase {
     func testAsyncResolve() {
         let expectation = self.expectationWithDescription("Async fetch GeoInfo.")
         
-        VPNManager.sharedManager.geoInfoOfHost("google.com") {
-            geoInfo in
+        VPNManager.sharedManager.countryOfHost("google.com") {
+            country in
             
-            XCTAssert(geoInfo.countryCode != "", "Country code must not be empty.")
+            XCTAssert(country!.isoCode != "", "Country code must not be empty.")
             expectation.fulfill()
         }
         
