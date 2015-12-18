@@ -93,6 +93,7 @@
 		D7CFDDA51A9E05700057F53D /* VPNManager+Geo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CFDDA41A9E05700057F53D /* VPNManager+Geo.swift */; };
 		D7D4992F1A724B4C00B5F5ED /* VPNEditor+Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D4992E1A724B4C00B5F5ED /* VPNEditor+Type.swift */; };
 		D7D499311A72542400B5F5ED /* LTTableViewCellDeclosureIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D499301A72542400B5F5ED /* LTTableViewCellDeclosureIndicator.swift */; };
+		D7DAACBA1C243E80008FB091 /* MMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D736A98C1C23F4270070EAA3 /* MMDB.framework */; };
 		D7DBC12C1BBAEFDE004E2F3E /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DBC12B1BBAEFDE004E2F3E /* Keychain.swift */; };
 		D7DDB5631A78AC7E00BE7FB7 /* VPNTypeTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DDB5611A78A1D100BE7FB7 /* VPNTypeTag.swift */; };
 		D7DDB5651A78DA4600BE7FB7 /* VPNDomains.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DDB5641A78DA4600BE7FB7 /* VPNDomains.swift */; };
@@ -426,6 +427,7 @@
 				D757AFB41A3B392D00AEF3CB /* NetworkExtension.framework in Frameworks */,
 				D757AFB31A3B392600AEF3CB /* Foundation.framework in Frameworks */,
 				D7A9C4E11BDD214C00F06570 /* SwiftKeychainWrapper.framework in Frameworks */,
+				D7DAACBA1C243E80008FB091 /* MMDB.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

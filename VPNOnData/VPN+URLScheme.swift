@@ -21,8 +21,8 @@ extension VPN {
         var ikev2 = false
         
         // The server is required, otherwise we just open the container app.
-        if server.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) == 0 {
-            return .None
+        if server.characters.count == 0 {
+            return nil
         }
         
         // Parse the query string.
@@ -45,10 +45,18 @@ extension VPN {
                     secret = value
                     break
                 case "alwayson":
-                    alwaysOn = Bool(value == "1" || value == "true" || value == "yes")
+                    alwaysOn =
+                        value == "1"
+                        || value == "true"
+                        || value == "yes"
+                        || value == "on"
                     break
                 case "ikev2":
-                    ikev2 = Bool(value == "1" || value == "true" || value == "yes")
+                    ikev2 =
+                        value == "1"
+                        || value == "true"
+                        || value == "yes"
+                        || value == "on"
                     break
                 default:
                     ()
@@ -68,4 +76,5 @@ extension VPN {
         
         return info
     }
+
 }
