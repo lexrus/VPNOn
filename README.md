@@ -1,9 +1,7 @@
 # VPN On
 
 [![Travis](https://img.shields.io/travis/lexrus/VPNOn.svg)](https://travis-ci.org/lexrus/VPNOn)
-
 ![Language](https://img.shields.io/badge/language-Swift%202.1-orange.svg)
-
 ![License](https://img.shields.io/github/license/lexrus/VPNOn.svg?style=flat)
 
 [<img src="https://cloud.githubusercontent.com/assets/219689/5575342/963e0ee8-9013-11e4-8091-7ece67d64729.png" width="135" height="40" alt="AppStore"/>](https://itunes.apple.com/app/vpn-on/id951344279)
@@ -48,7 +46,7 @@ Please contribute to [the Transifex project](https://www.transifex.com/lexrus/vp
 
 ![Transifex Progress](https://www.transifex.com/projects/p/vpnon/resource/vpnonxliff/chart/image_png)
 
-## URL Scheme
+## URL Schemes
 
 ### Add configuration with URL
 
@@ -75,6 +73,10 @@ VPN service providers may list a link for their customers to efficiently add ser
 * Polish translation - [Seb Kaczorowski](http://photographyservices.ie)
 * Turkish - Ozancan Karataş
 * Dutch (Netherlands) translation - [Niels Peen](https://github.com/nielspeen)
+
+This product includes [GeoLite2 data](http://dev.maxmind.com/geoip/geoip2/geolite2/) created by MaxMind, available from [http://www.maxmind.com](http://www.maxmind.com).
+The GeoLite2 databases are distributed under the [Creative Commons Attribution-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-sa/3.0/).
+In order to query the database, I created a wrapper for [libmaxminddb](https://github.com/maxmind/libmaxminddb) called [MMDB-Swift](https://github.com/lexrus/MMDB-Swift).
 
 ## License
 
