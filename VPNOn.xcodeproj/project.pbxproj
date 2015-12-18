@@ -13,6 +13,9 @@
 		D7139BE61BE4FF7F00F20D96 /* Acknowledgements.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7139BE51BE4FF7F00F20D96 /* Acknowledgements.swift */; };
 		D7139BE81BE5054600F20D96 /* AcknowledgementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7139BE71BE5054600F20D96 /* AcknowledgementCell.swift */; };
 		D7322C7A1A6C024800B34AA0 /* LTViewControllerBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7322C791A6C024800B34AA0 /* LTViewControllerBackground.swift */; };
+		D736A98D1C23F4270070EAA3 /* MMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D736A98C1C23F4270070EAA3 /* MMDB.framework */; };
+		D736A98E1C23F4270070EAA3 /* MMDB.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D736A98C1C23F4270070EAA3 /* MMDB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D736A9901C23F4410070EAA3 /* MMDB.framework.dSYM in dSYM */ = {isa = PBXBuildFile; fileRef = D736A98F1C23F43A0070EAA3 /* MMDB.framework.dSYM */; };
 		D737D2021C09F9CD0073E7BE /* FlagKit.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D737D2011C09F9CD0073E7BE /* FlagKit.xcassets */; };
 		D737D2031C09F9D40073E7BE /* FlagKit.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D737D2011C09F9CD0073E7BE /* FlagKit.xcassets */; };
 		D73C19F21AC1684D00C1A824 /* SwitchIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73C19F11AC1684D00C1A824 /* SwitchIconView.swift */; };
@@ -173,6 +176,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				D736A98E1C23F4270070EAA3 /* MMDB.framework in Embed Frameworks */,
 				D754E2171A3B3DE600E8F135 /* VPNOnKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -184,6 +188,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				D736A9901C23F4410070EAA3 /* MMDB.framework.dSYM in dSYM */,
 				D7A9C4E81BDD245300F06570 /* SwiftKeychainWrapper.framework.dSYM in dSYM */,
 				D7764F161BF229DB000ACA4C /* RxBlocking.framework.dSYM in dSYM */,
 				D7764F171BF229DB000ACA4C /* RxCocoa.framework.dSYM in dSYM */,
@@ -264,6 +269,8 @@
 		D72403371A8B32A70066CA47 /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-US"; path = "en-US.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		D72403381A8B32A70066CA47 /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-US"; path = "en-US.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		D7322C791A6C024800B34AA0 /* LTViewControllerBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTViewControllerBackground.swift; sourceTree = "<group>"; };
+		D736A98C1C23F4270070EAA3 /* MMDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MMDB.framework; path = Carthage/Build/iOS/MMDB.framework; sourceTree = "<group>"; };
+		D736A98F1C23F43A0070EAA3 /* MMDB.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = MMDB.framework.dSYM; path = Carthage/Build/iOS/MMDB.framework.dSYM; sourceTree = "<group>"; };
 		D737D2011C09F9CD0073E7BE /* FlagKit.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = FlagKit.xcassets; sourceTree = "<group>"; };
 		D73C19F11AC1684D00C1A824 /* SwitchIconView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchIconView.swift; sourceTree = "<group>"; };
 		D73C19F31AC168B900C1A824 /* ModeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModeButton.swift; sourceTree = "<group>"; };
@@ -396,6 +403,7 @@
 				D7764F091BF2298F000ACA4C /* RxCocoa.framework in Frameworks */,
 				D754E21A1A3B3E8E00E8F135 /* VPNOnKit.framework in Frameworks */,
 				D7A9C4DF1BDD189400F06570 /* SwiftKeychainWrapper.framework in Frameworks */,
+				D736A98D1C23F4270070EAA3 /* MMDB.framework in Frameworks */,
 				D7764F071BF2298F000ACA4C /* RxBlocking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -538,10 +546,12 @@
 		D7453FB51A31A72600F7E32D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D736A98F1C23F43A0070EAA3 /* MMDB.framework.dSYM */,
 				D7A9C4E51BDD245300F06570 /* SwiftKeychainWrapper.framework.dSYM */,
 				D7764F131BF229DB000ACA4C /* RxBlocking.framework.dSYM */,
 				D7764F141BF229DB000ACA4C /* RxCocoa.framework.dSYM */,
 				D7764F151BF229DB000ACA4C /* RxSwift.framework.dSYM */,
+				D736A98C1C23F4270070EAA3 /* MMDB.framework */,
 				D7A9C4DC1BDD189400F06570 /* SwiftKeychainWrapper.framework */,
 				D7764F041BF2298F000ACA4C /* RxBlocking.framework */,
 				D7764F051BF2298F000ACA4C /* RxCocoa.framework */,

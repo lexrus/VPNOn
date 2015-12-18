@@ -12,6 +12,7 @@ import NetworkExtension
 import VPNOnKit
 import RxSwift
 import RxCocoa
+import MMDB
 
 let kSelectionDidChange = "SelectionDidChange"
 private let kVPNIDKey = "VPNID"
@@ -65,12 +66,12 @@ class VPNList
                     self?.tableView.reloadData()
                     guard let vpn = n.object as? VPN else { return }
                     
-                    VPNManager.sharedManager.geoInfoOfHost(vpn.server) {
-                        [weak self] geoInfo in
-                        vpn.countryCode = geoInfo.countryCode
-                        vpn.isp = geoInfo.isp
-                        vpn.latitude = geoInfo.latitude
-                        vpn.longitude = geoInfo.longitude
+                    VPNManager.sharedManager.countryOfHost(vpn.server) {
+                        [weak self] country in
+                        guard let country = country else {
+                            return
+                        }
+                        vpn.countryCode = country.isoCode
                         do {
                             try vpn.managedObjectContext!.save()
                         } catch _ {

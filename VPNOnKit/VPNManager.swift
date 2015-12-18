@@ -9,6 +9,7 @@
 import Foundation
 import NetworkExtension
 import CoreData
+import MMDB
 
 private let kAppGroupIdentifier = "group.VPNOn"
 private let VPNManagerInstance: VPNManager = {
@@ -36,6 +37,10 @@ final public class VPNManager {
     public var status: NEVPNStatus {
         return manager.connection.status
     }
+
+    public lazy var mmdb: MMDB? = {
+        return MMDB()
+    }()
     
     public class var sharedManager: VPNManager {
         return VPNManagerInstance
