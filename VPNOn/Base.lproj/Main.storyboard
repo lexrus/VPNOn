@@ -113,6 +113,7 @@
                                         <constraint firstItem="Vlk-GJ-USi" firstAttribute="leading" secondItem="JcU-uF-VOo" secondAttribute="leadingMargin" constant="8" id="hzZ-d9-TXx">
                                             <variation key="heightClass=regular" constant="12"/>
                                             <variation key="widthClass=compact" constant="8"/>
+                                            <variation key="heightClass=regular-widthClass=compact" constant="12"/>
                                             <variation key="heightClass=regular-widthClass=regular" constant="12"/>
                                         </constraint>
                                         <constraint firstItem="47m-SX-NPE" firstAttribute="leading" secondItem="Vlk-GJ-USi" secondAttribute="trailing" constant="8" id="slt-LK-NRG"/>
@@ -163,6 +164,7 @@
                                         <constraint firstItem="FSL-Tv-Cp6" firstAttribute="leading" secondItem="pRh-AX-cT1" secondAttribute="leadingMargin" constant="8" id="20m-cU-iY7">
                                             <variation key="heightClass=regular" constant="12"/>
                                             <variation key="widthClass=compact" constant="8"/>
+                                            <variation key="heightClass=regular-widthClass=compact" constant="12"/>
                                             <variation key="heightClass=regular-widthClass=regular" constant="12"/>
                                         </constraint>
                                         <constraint firstAttribute="centerY" secondItem="hT9-jt-Gxb" secondAttribute="centerY" id="MXL-JX-WAe"/>
@@ -179,6 +181,7 @@
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
+                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                 <connections>
                                     <outlet property="switchButton" destination="hT9-jt-Gxb" id="wBg-wM-RLx"/>
                                     <outlet property="titleLabel" destination="FSL-Tv-Cp6" id="b9M-WF-cJb"/>
@@ -207,6 +210,7 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                 <connections>
                                     <segue destination="6ic-cB-Dc6" kind="showDetail" identifier="domains" id="HUd-E8-Z6k">
                                         <segue key="commit" inheritsFrom="parent" id="FZT-V1-LiJ"/>
