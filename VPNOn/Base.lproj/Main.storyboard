@@ -76,15 +76,15 @@
                                     <segue destination="hvy-Bu-GX1" kind="showDetail" id="uPG-6B-Rqn"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ConnectionCell" rowHeight="44" id="IT1-yk-TTT" customClass="VPNSwitchCell" customModule="VPNOn" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ConnectionCell" rowHeight="44" id="IT1-yk-TTT" customClass="VPNSwitchCell" customModule="VPNOn" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="203.5" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IT1-yk-TTT" id="JcU-uF-VOo">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="IT1-yk-TTT" id="JcU-uF-VOo">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Vlk-GJ-USi" customClass="LTTableViewCellTitle" customModule="VPNOn" customModuleProvider="target">
-                                            <rect key="frame" x="16" y="0.0" width="231" height="44"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Vlk-GJ-USi" customClass="LTTableViewCellTitle" customModule="VPNOn" customModuleProvider="target">
+                                            <rect key="frame" x="8" y="0.0" width="239" height="44"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="120" id="ask-HU-ECy"/>
                                             </constraints>
@@ -97,7 +97,7 @@
                                                 </mask>
                                             </variation>
                                         </label>
-                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="47m-SX-NPE">
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="47m-SX-NPE">
                                             <rect key="frame" x="255" y="6" width="51" height="31"/>
                                             <connections>
                                                 <action selector="toggleVPN:" destination="Pga-4R-p1I" eventType="valueChanged" id="6sy-oA-7eq"/>
@@ -110,12 +110,7 @@
                                         <constraint firstAttribute="centerY" secondItem="47m-SX-NPE" secondAttribute="centerY" id="IyA-Dg-zVl"/>
                                         <constraint firstAttribute="trailing" secondItem="47m-SX-NPE" secondAttribute="trailing" constant="15" id="V4D-RV-Hka"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="47m-SX-NPE" secondAttribute="trailing" constant="8" id="WLg-WA-tgp"/>
-                                        <constraint firstItem="Vlk-GJ-USi" firstAttribute="leading" secondItem="JcU-uF-VOo" secondAttribute="leadingMargin" constant="8" id="hzZ-d9-TXx">
-                                            <variation key="heightClass=regular" constant="12"/>
-                                            <variation key="widthClass=compact" constant="8"/>
-                                            <variation key="heightClass=regular-widthClass=compact" constant="12"/>
-                                            <variation key="heightClass=regular-widthClass=regular" constant="12"/>
-                                        </constraint>
+                                        <constraint firstItem="Vlk-GJ-USi" firstAttribute="leading" secondItem="JcU-uF-VOo" secondAttribute="leadingMargin" id="hzZ-d9-TXx"/>
                                         <constraint firstItem="47m-SX-NPE" firstAttribute="leading" secondItem="Vlk-GJ-USi" secondAttribute="trailing" constant="8" id="slt-LK-NRG"/>
                                         <constraint firstItem="Vlk-GJ-USi" firstAttribute="top" secondItem="JcU-uF-VOo" secondAttribute="top" id="xGC-eo-MyB"/>
                                     </constraints>
@@ -131,15 +126,15 @@
                                     <outlet property="titleLabel" destination="Vlk-GJ-USi" id="RKG-BY-vq4"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="OnDemandCell" rowHeight="44" id="A9V-lZ-Nsj" customClass="VPNSwitchCell" customModule="VPNOn" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="OnDemandCell" rowHeight="44" id="A9V-lZ-Nsj" customClass="VPNSwitchCell" customModule="VPNOn" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="247.5" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="A9V-lZ-Nsj" id="pRh-AX-cT1">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" tableViewCell="A9V-lZ-Nsj" id="pRh-AX-cT1">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On Demand" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="FSL-Tv-Cp6" customClass="LTTableViewCellTitle" customModule="VPNOn" customModuleProvider="target">
-                                            <rect key="frame" x="16" y="0.0" width="231" height="44"/>
+                                            <rect key="frame" x="15" y="0.0" width="225" height="44"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="120" id="EZR-IO-w0H"/>
                                             </constraints>
@@ -153,7 +148,7 @@
                                             </variation>
                                         </label>
                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hT9-jt-Gxb">
-                                            <rect key="frame" x="255" y="6.5" width="51" height="31"/>
+                                            <rect key="frame" x="248" y="6" width="51" height="31"/>
                                             <connections>
                                                 <action selector="didTapOnDemandSwitch:" destination="Pga-4R-p1I" eventType="valueChanged" id="hT1-A0-FbX"/>
                                             </connections>
@@ -161,12 +156,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="hT9-jt-Gxb" secondAttribute="trailing" constant="15" id="18F-nF-2Bj"/>
-                                        <constraint firstItem="FSL-Tv-Cp6" firstAttribute="leading" secondItem="pRh-AX-cT1" secondAttribute="leadingMargin" constant="8" id="20m-cU-iY7">
-                                            <variation key="heightClass=regular" constant="12"/>
-                                            <variation key="widthClass=compact" constant="8"/>
-                                            <variation key="heightClass=regular-widthClass=compact" constant="12"/>
-                                            <variation key="heightClass=regular-widthClass=regular" constant="12"/>
-                                        </constraint>
+                                        <constraint firstItem="FSL-Tv-Cp6" firstAttribute="leading" secondItem="pRh-AX-cT1" secondAttribute="leadingMargin" id="20m-cU-iY7"/>
                                         <constraint firstAttribute="centerY" secondItem="hT9-jt-Gxb" secondAttribute="centerY" id="MXL-JX-WAe"/>
                                         <constraint firstItem="FSL-Tv-Cp6" firstAttribute="top" secondItem="pRh-AX-cT1" secondAttribute="top" id="OoB-dR-IQD"/>
                                         <constraint firstItem="hT9-jt-Gxb" firstAttribute="leading" secondItem="FSL-Tv-Cp6" secondAttribute="trailing" constant="8" id="deY-R8-Vj7"/>
