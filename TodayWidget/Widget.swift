@@ -15,7 +15,7 @@ import CoreData
 private let kExpanedInToday = "kVPNOnExpanedInToday"
 private let kWidgetNormalHeight: CGFloat = 148
 
-class TodayViewController:
+final class Widget:
     UIViewController,
     NCWidgetProviding,
     UICollectionViewDelegate,
@@ -128,6 +128,12 @@ class TodayViewController:
                 min(kWidgetNormalHeight, collectionView.contentSize.height)
             )
         }
+        
+        // NOTE: Must remove the profile when there're no VPNs
+        // otherwise there'll be a immutable profile live in system forever.
+        if vpns.count == 0 {
+            VPNManager.sharedManager.removeProfile()
+        }
     }
     
     // Note: A workaround to ensure the widget is interactable.
@@ -151,7 +157,9 @@ class TodayViewController:
         VPNDataManager.sharedManager.managedObjectContext?.reset()
     }
     
-    func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)) {
+    func widgetPerformUpdateWithCompletionHandler(
+        completionHandler: ((NCUpdateResult) -> Void)
+        ) {
         // Perform any setup necessary in order to update the view.
         
         // If an error is encountered, use NCUpdateResult.Failed
@@ -164,99 +172,10 @@ class TodayViewController:
     
     // MARK: - Layout
     
-    func widgetMarginInsetsForProposedMarginInsets(defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets {
-        return UIEdgeInsetsZero
-    }
-    
-    // MARK: - Collection View Data source
-    
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return vpns.count + 1
-    }
-    
-    func collectionView(
-        collectionView: UICollectionView,
-        cellForItemAtIndexPath indexPath: NSIndexPath
-        ) -> UICollectionViewCell {
-        if indexPath.row == vpns.count {
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(
-                "addCell",
-                forIndexPath: indexPath
-                ) as! AddCell
-            return cell
-        } else {
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(
-                "vpnCell",
-                forIndexPath: indexPath
-                ) as! VPNCell
-            let vpn = vpns[indexPath.row]
-            let selected = VPNManager.sharedManager.selectedVPNID == vpn.ID
-            cell.configureWithVPN(vpns[indexPath.row], selected: selected)
-            if selected {
-                cell.status = VPNManager.sharedManager.status
-            } else {
-                cell.status = .Disconnected
-            }
-            
-            cell.latency = LTPingQueue.sharedQueue.latencyForHostname(vpn.server)
-            
-            return cell
-        }
-    }
-    
-    // MARK: - Collection View Delegate
-    
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.row == vpns.count {
-            didTapAdd()
-            
-            return
-        }
-        
-        let vpn = vpns[indexPath.row]
-        
-        if VPNManager.sharedManager.status == .Connected {
-            if VPNManager.sharedManager.selectedVPNID == vpn.ID {
-                // Do not connect it again if tap the same one
-                return
-            }
-        }
-        
-        VPNManager.sharedManager.selectedVPNID = vpn.ID
-        
-        let passwordRef = Keychain.passwordForVPNID(vpn.ID)
-        let secretRef = Keychain.secretForVPNID(vpn.ID)
-        let titleWithSubfix = "Widget - \(vpn.title)"
-        
-        if vpn.ikev2 {
-            VPNManager.sharedManager.connectIKEv2(titleWithSubfix,
-                server: vpn.server,
-                account: vpn.account,
-                group: vpn.group,
-                alwaysOn: vpn.alwaysOn,
-                passwordRef: passwordRef,
-                secretRef: secretRef)
-        } else {
-            VPNManager.sharedManager.connectIPSec(titleWithSubfix,
-                server: vpn.server,
-                account: vpn.account,
-                group: vpn.group,
-                alwaysOn: vpn.alwaysOn,
-                passwordRef: passwordRef,
-                secretRef: secretRef)
-        }
-    }
-    
-    func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        if indexPath.row == vpns.count {
-            return true
-        }
-        switch VPNManager.sharedManager.status {
-        case .Connected, .Connecting:
-            VPNManager.sharedManager.disconnect()
-        default: ()
-        }
-        return true
+    func widgetMarginInsetsForProposedMarginInsets(
+        defaultMarginInsets: UIEdgeInsets
+        ) -> UIEdgeInsets {
+            return UIEdgeInsetsZero
     }
     
     // MARK: - Left margin

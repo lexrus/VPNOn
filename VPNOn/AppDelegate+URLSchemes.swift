@@ -52,33 +52,12 @@ extension AppDelegate {
         let vpns = VPNDataManager.sharedManager.VPNHasTitle(title)
         guard let vpn = vpns.first else { return }
         
-        let passwordRef = Keychain.passwordForVPNID(vpn.ID)
-        let secretRef = Keychain.secretForVPNID(vpn.ID)
-        
         VPNDataManager.sharedManager.selectedVPNID = vpn.objectID
         
         NSNotificationCenter.defaultCenter()
             .postNotificationName(kSelectionDidChange, object: nil)
         
-        if vpn.ikev2 {
-            VPNManager.sharedManager.connectIKEv2(
-                vpn.title,
-                server: vpn.server,
-                account: vpn.account,
-                group: vpn.group,
-                alwaysOn: vpn.alwaysOn,
-                passwordRef: passwordRef,
-                secretRef: secretRef)
-        } else {
-            VPNManager.sharedManager.connectIPSec(
-                vpn.title,
-                server: vpn.server,
-                account: vpn.account,
-                group: vpn.group,
-                alwaysOn: vpn.alwaysOn,
-                passwordRef: passwordRef,
-                secretRef: secretRef)
-        }
+        VPNManager.sharedManager.saveAndConnect(vpn.toAccount())
         
         if !callback.isEmpty {
             if let url = NSURL(string: callback) {

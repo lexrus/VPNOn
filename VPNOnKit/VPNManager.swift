@@ -24,6 +24,29 @@ private let VPNManagerInstance: VPNManager = {
     return instance
     }()
 
+public enum VPNType {
+    case IPSec
+    case IKEv2
+}
+
+public struct VPNAccount {
+    public var ID: String = ""
+    public var type: VPNType = .IPSec
+    public var title: String = ""
+    public var server: String = ""
+    public var account: String?
+    public var group: String?
+    public var alwaysOn = true
+    public var passwordRef: NSData? {
+        return Keychain.passwordForVPNID(ID)
+    }
+    public var secretRef: NSData? {
+        return Keychain.secretForVPNID(ID)
+    }
+    
+    public init() { }
+}
+
 final public class VPNManager {
 
     private lazy var manager: NEVPNManager = {
@@ -46,87 +69,51 @@ final public class VPNManager {
         return VPNManagerInstance
     }
     
-    public func connectIPSec(title: String, server: String, account: String?, group: String?, alwaysOn: Bool = true, passwordRef: NSData?, secretRef: NSData?) {
-        #if (arch(i386) || arch(x86_64)) && os(iOS) // #if TARGET_IPHONE_SIMULATOR for Swift
-        assert(false, "I'm afraid you can not connect VPN in simulators.")
-        #endif
-            
-        let p = NEVPNProtocolIPSec()
-
-        p.authenticationMethod = NEVPNIKEAuthenticationMethod.None
-        p.useExtendedAuthentication = true
-        p.serverAddress = server
-        p.disconnectOnSleep = !alwaysOn
-        
-        manager.localizedDescription = "VPN On - \(title)"
-        
-        p.localIdentifier = group ?? "VPN"
-
-        if let username = account {
-            p.username = username
-        }
-        
-        if let password = passwordRef {
-            p.passwordReference = password
-        }
-        
-        if let secret = secretRef {
-            p.authenticationMethod = NEVPNIKEAuthenticationMethod.SharedSecret
-            p.sharedSecretReference = secret
-        }
+    public typealias VPNConfigureCompletion = (Void) -> Void
     
-        manager.enabled = true
-        manager.`protocol` = p
-        
-        configOnDemand()
-        
-        manager.saveToPreferencesWithCompletionHandler { error in
-            if let error = error {
-                print("Failed to save profile: \(error.localizedDescription)")
-                return
-            }
-            do {
-                try self.manager.connection.startVPNTunnel()
-            } catch {
-                print("Failed to start tunnel")
-            }
-        }
-    }
-    
-    public func connectIKEv2(title: String, server: String, account: String?, group: String?, alwaysOn: Bool = true, passwordRef: NSData?, secretRef: NSData?) {
-        #if (arch(i386) || arch(x86_64)) && os(iOS) // #if TARGET_IPHONE_SIMULATOR for Swift
-        assert(false, "I'm afraid you can not connect VPN in simulators.")
+    public func save(account: VPNAccount, completion: VPNConfigureCompletion?) {
+        #if (arch(i386) || arch(x86_64)) && os(iOS)
+            // #if TARGET_IPHONE_SIMULATOR for Swift
+            assert(false, "I'm afraid you can not connect VPN in simulators.")
         #endif
         
-        let p = NEVPNProtocolIKEv2()
+        var pt: NEVPNProtocol
         
-        p.authenticationMethod = NEVPNIKEAuthenticationMethod.None
-        p.useExtendedAuthentication = true
-        p.serverAddress = server
-        p.remoteIdentifier = server
-        p.disconnectOnSleep = !alwaysOn
-        p.deadPeerDetectionRate = NEVPNIKEv2DeadPeerDetectionRate.Medium
-        // TODO: Add an option into config page
-        
-        manager.localizedDescription = "VPN On - \(title)"
-        
-        p.localIdentifier = group ?? "VPN"
-        
-        if let username = account {
-            p.username = username
+        if account.type == .IPSec {
+            let p = NEVPNProtocolIPSec()
+            p.useExtendedAuthentication = true
+            p.localIdentifier = account.group ?? "VPN"
+            if let secret = account.secretRef {
+                p.authenticationMethod = .SharedSecret
+                p.sharedSecretReference = secret
+            }
+            pt = p
+        } else {
+            let p = NEVPNProtocolIKEv2()
+            p.useExtendedAuthentication = true
+            p.localIdentifier = account.group ?? "VPN"
+            if let secret = account.secretRef {
+                p.authenticationMethod = .SharedSecret
+                p.sharedSecretReference = secret
+            }
+            p.deadPeerDetectionRate = NEVPNIKEv2DeadPeerDetectionRate.Medium
+            pt = p
         }
         
-        if let password = passwordRef {
-            p.passwordReference = password
+        pt.disconnectOnSleep = !account.alwaysOn
+        pt.serverAddress = account.server
+        
+        if let username = account.account {
+            pt.username = username
         }
         
-        if let secret = secretRef {
-            p.authenticationMethod = NEVPNIKEAuthenticationMethod.SharedSecret
-            p.sharedSecretReference = secret
+        if let password = account.passwordRef {
+            pt.passwordReference = password
         }
         
+        manager.localizedDescription = "VPN On - \(account.title)"
         manager.enabled = true
-        manager.`protocol` = p
+        manager.`protocol` = pt
         
         configOnDemand()
         
@@ -135,18 +122,25 @@ final public class VPNManager {
             if let err = error {
                 debugPrint("Failed to save profile: \(err.localizedDescription)")
             } else {
-                var connectError : NSError?
-                do {
-                    try self.manager.connection.startVPNTunnel()
-                } catch let error as NSError {
-                    connectError = error
-                    if let connectErr = connectError {
-                        debugPrint("Failed to start IKEv2 tunnel: \(connectErr.localizedDescription)")
-                    }
-                } catch {
-                    fatalError()
-                }
+                completion?()
             }
+        }
+    }
+    
+    public func connect() {
+        do {
+            try self.manager.connection.startVPNTunnel()
+        } catch let error as NSError {
+            print("Failed to start IKEv2 tunnel: \(error.localizedDescription)")
+        } catch {
+            fatalError()
+        }
+    }
+    
+    public func saveAndConnect(account: VPNAccount) {
+        save(account) {
+            [weak self] in
+            self?.connect()
         }
     }
     
