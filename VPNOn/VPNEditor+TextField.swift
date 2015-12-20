@@ -64,16 +64,21 @@ extension VPNEditor {
         // Add bottom edge inset so that the last cell is visiable
         
         var bottom: CGFloat = 216
-        if let userInfo: NSDictionary = notification.userInfo {
-            if let boundsObject: AnyObject = userInfo.valueForKey("UIKeyboardBoundsUserInfoKey") {
-                let bounds = boundsObject.CGRectValue
-                bottom = bounds.size.height
-            }
+        defer {
+            var edgeInsets = self.tableView.contentInset
+            edgeInsets.bottom = bottom
+            self.tableView.contentInset = edgeInsets
         }
         
-        var edgeInsets = self.tableView.contentInset
-        edgeInsets.bottom = bottom
-        self.tableView.contentInset = edgeInsets
+        guard let userInfo = notification.userInfo else {
+            return
+        }
+        
+        guard let boundsObject = userInfo["UIKeyboardBoundsUserInfoKey"] else {
+            return
+        }
+        
+        bottom = CGRectGetHeight(boundsObject.CGRectValue)
     }
     
     func keyboardWillHide(notification: NSNotification) {

@@ -20,13 +20,20 @@ extension VPNEditor {
             currentVPN.alwaysOn = alwaysOnSwitch.on
             currentVPN.ikev2 = typeSegment.selectedSegmentIndex == 1
             
-            Keychain.setPassword(passwordTextField.text ?? "", forVPNID: currentVPN.ID)
+            Keychain.setPassword(
+                passwordTextField.text ?? "",
+                forVPNID: currentVPN.ID
+            )
             
-            Keychain.setSecret(secretTextField.text ?? "", forVPNID: currentVPN.ID)
+            Keychain.setSecret(
+                secretTextField.text ?? "",
+                forVPNID: currentVPN.ID
+            )
             
             VPNDataManager.sharedManager.saveContext()
             
-            NSNotificationCenter.defaultCenter().postNotificationName(kVPNDidUpdate, object: currentVPN)
+            NSNotificationCenter.defaultCenter()
+                .postNotificationName(kVPNDidUpdate, object: currentVPN)
         } else {
             if let lastVPN = VPNDataManager.sharedManager.createVPN(
                 titleTextField.text ?? "",
@@ -38,17 +45,20 @@ extension VPNEditor {
                 alwaysOn: alwaysOnSwitch.on,
                 ikev2: typeSegment.selectedSegmentIndex == 1
                 ) {
-                    NSNotificationCenter.defaultCenter().postNotificationName(kVPNDidCreate, object: lastVPN)
+                    NSNotificationCenter.defaultCenter()
+                        .postNotificationName(kVPNDidCreate, object: lastVPN)
             }
         }
     }
     
     func toggleSaveButtonByStatus() {
         saveButton?.enabled = false
-        if let title = titleTextField.text, account = accountTextField.text, server = serverTextField.text {
-            if !title.isEmpty && !account.isEmpty && !server.isEmpty {
-                saveButton?.enabled = true
-            }
+        if let title = titleTextField.text,
+            account = accountTextField.text,
+            server = serverTextField.text {
+                if !title.isEmpty && !account.isEmpty && !server.isEmpty {
+                    saveButton?.enabled = true
+                }
         }
     }
 

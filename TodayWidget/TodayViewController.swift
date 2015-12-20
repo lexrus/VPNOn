@@ -15,12 +15,16 @@ import CoreData
 private let kExpanedInToday = "kVPNOnExpanedInToday"
 private let kWidgetNormalHeight: CGFloat = 148
 
-class TodayViewController: UIViewController, NCWidgetProviding, UICollectionViewDelegate, UICollectionViewDataSource {
+class TodayViewController:
+    UIViewController,
+    NCWidgetProviding,
+    UICollectionViewDelegate,
+    UICollectionViewDataSource {
     
     @IBOutlet weak var leftMarginView: ModeButton!
     @IBOutlet weak var collectionView: UICollectionView!
     private var hasSignaled = false
-    private var _complitionHandler: (NCUpdateResult -> Void)? = nil
+    private var complitionHandler: (NCUpdateResult -> Void)?
     
     var vpns: [VPN] {
         return VPNDataManager.sharedManager.allVPN()
@@ -28,30 +32,40 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
     
     var expanded: Bool {
         get {
-            return NSUserDefaults.standardUserDefaults().boolForKey(kExpanedInToday) as Bool
+            return NSUserDefaults.standardUserDefaults()
+                .boolForKey(kExpanedInToday) as Bool
         }
         set {
-            NSUserDefaults.standardUserDefaults().setBool(newValue, forKey: kExpanedInToday)
+            NSUserDefaults.standardUserDefaults()
+                .setBool(newValue, forKey: kExpanedInToday)
+            NSUserDefaults.standardUserDefaults().synchronize()
             if newValue {
                 self.preferredContentSize = self.collectionView.contentSize
             } else {
-                self.preferredContentSize = CGSizeMake(self.view.bounds.size.width, kWidgetNormalHeight)
+                self.preferredContentSize = CGSizeMake(
+                    CGRectGetWidth(self.view.bounds),
+                    kWidgetNormalHeight
+                )
             }
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         preferredContentSize = CGSizeMake(0, 82)
         
-        let tapGasture = UITapGestureRecognizer(target: self, action: "didTapLeftMargin:")
+        let tapGasture = UITapGestureRecognizer(
+            target: self,
+            action: "didTapLeftMargin:"
+        )
         tapGasture.numberOfTapsRequired = 1
         tapGasture.numberOfTouchesRequired = 1
         leftMarginView.userInteractionEnabled = true
         leftMarginView.addGestureRecognizer(tapGasture)
-        leftMarginView.backgroundColor = UIColor(white: 1.0, alpha: 0.005)
-        leftMarginView.displayMode = VPNManager.sharedManager.displayFlags ? .FlagMode : .SwitchMode
+        leftMarginView.backgroundColor = UIColor(white: 1.0, alpha: 0.001)
+        leftMarginView.displayMode =
+            VPNManager.sharedManager.displayFlags ? .FlagMode : .SwitchMode
         
         NSNotificationCenter.defaultCenter().addObserver(
             self,
@@ -89,7 +103,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-
+        
         LTPingQueue.sharedQueue.restartPing()
         collectionView.dataSource = nil
         updateContent()
@@ -109,7 +123,10 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
         if expanded {
             preferredContentSize = collectionView.contentSize
         } else {
-            preferredContentSize = CGSizeMake(collectionView.contentSize.width, min(kWidgetNormalHeight, collectionView.contentSize.height))
+            preferredContentSize = CGSizeMake(
+                collectionView.contentSize.width,
+                min(kWidgetNormalHeight, collectionView.contentSize.height)
+            )
         }
     }
     
@@ -117,9 +134,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
     // @see: http://stackoverflow.com/questions/25961513/ios-8-today-widget-stops-working-after-a-while
     func singalComplete(updateResult: NCUpdateResult) {
         hasSignaled = true
-        if let handler = _complitionHandler {
-            handler(updateResult)
-        }
+        complitionHandler?(updateResult)
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -138,12 +153,12 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
     
     func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)) {
         // Perform any setup necessary in order to update the view.
-
+        
         // If an error is encountered, use NCUpdateResult.Failed
         // If there's no update required, use NCUpdateResult.NoData
         // If there's an update, use NCUpdateResult.NewData
         
-        _complitionHandler = completionHandler
+        self.complitionHandler = completionHandler
         completionHandler(NCUpdateResult.NewData)
     }
     
@@ -159,15 +174,23 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
         return vpns.count + 1
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(
+        collectionView: UICollectionView,
+        cellForItemAtIndexPath indexPath: NSIndexPath
+        ) -> UICollectionViewCell {
         if indexPath.row == vpns.count {
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("addCell", forIndexPath: indexPath) as! AddCell
-            
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(
+                "addCell",
+                forIndexPath: indexPath
+                ) as! AddCell
             return cell
         } else {
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("vpnCell", forIndexPath: indexPath) as! VPNCell
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(
+                "vpnCell",
+                forIndexPath: indexPath
+                ) as! VPNCell
             let vpn = vpns[indexPath.row]
-            let selected = Bool(VPNManager.sharedManager.selectedVPNID == vpn.ID)
+            let selected = VPNManager.sharedManager.selectedVPNID == vpn.ID
             cell.configureWithVPN(vpns[indexPath.row], selected: selected)
             if selected {
                 cell.status = VPNManager.sharedManager.status
@@ -239,9 +262,12 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
     // MARK: - Left margin
     
     func didTapLeftMargin(gesture: UITapGestureRecognizer) {
-        var tappedBottom = Bool(gesture.locationInView(leftMarginView).y > leftMarginView.frame.size.height / 3 * 2)
+        var tappedBottom = gesture.locationInView(leftMarginView).y
+            >
+            leftMarginView.frame.size.height / 3 * 2
         
-        if !expanded && collectionView.contentSize.height == preferredContentSize.height {
+        if !expanded
+            && collectionView.contentSize.height == preferredContentSize.height {
             tappedBottom = false
         }
         
@@ -249,10 +275,14 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
             expanded = !expanded
         } else {
             LTPingQueue.sharedQueue.restartPing()
-            VPNManager.sharedManager.displayFlags = !VPNManager.sharedManager.displayFlags
+            VPNManager.sharedManager.displayFlags =
+                !VPNManager.sharedManager.displayFlags
             collectionView.reloadData()
             
-            leftMarginView.displayMode = VPNManager.sharedManager.displayFlags ? .FlagMode : .SwitchMode
+            leftMarginView.displayMode =
+                VPNManager.sharedManager.displayFlags
+                ? .FlagMode
+                : .SwitchMode
         }
     }
     
@@ -273,7 +303,8 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
     }
     
     func coreDataDidSave(notification: NSNotification) {
-        VPNDataManager.sharedManager.managedObjectContext?.mergeChangesFromContextDidSaveNotification(notification)
+        VPNDataManager.sharedManager.managedObjectContext?
+            .mergeChangesFromContextDidSaveNotification(notification)
         updateContent()
     }
     
@@ -283,5 +314,5 @@ class TodayViewController: UIViewController, NCWidgetProviding, UICollectionView
             LTPingQueue.sharedQueue.restartPing()
         }
     }
-
+    
 }

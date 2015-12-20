@@ -19,11 +19,28 @@ class About : UITableViewController, MFMailComposeViewControllerDelegate {
         tableView.backgroundView = LTViewControllerBackground()
     }
     
-    override func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+    override func tableView(
+        tableView: UITableView,
+        numberOfRowsInSection section: Int
+        ) -> Int {
+            if !MFMailComposeViewController.canSendMail() {
+                return 3
+            } else {
+                return 2
+            }
+    }
+    
+    override func tableView(
+        tableView: UITableView,
+        titleForFooterInSection section: Int
+        ) -> String? {
         return appVersion()
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(
+        tableView: UITableView,
+        didSelectRowAtIndexPath indexPath: NSIndexPath
+        ) {
         switch indexPath.row {
         case kReviewCellIndex:
             presentAppStore()
@@ -37,8 +54,9 @@ class About : UITableViewController, MFMailComposeViewControllerDelegate {
     }
     
     private func appVersion() -> String {
-        if let version = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as? String {
-            return version
+        if let version = NSBundle.mainBundle()
+            .objectForInfoDictionaryKey("CFBundleShortVersionString") as? String {
+                return version
         }
         return ""
     }
@@ -62,11 +80,11 @@ class About : UITableViewController, MFMailComposeViewControllerDelegate {
     
     func presentFeedback() {
         let mailComposeViewController = configuredMailComposeViewController()
-        if MFMailComposeViewController.canSendMail() {
-            presentViewController(mailComposeViewController, animated: true, completion: nil)
-        } else {
-            showSendMailErrorAlert()
-        }
+        presentViewController(
+            mailComposeViewController,
+            animated: true,
+            completion: nil
+        )
     }
     
     func configuredMailComposeViewController() -> MFMailComposeViewController {
@@ -75,29 +93,26 @@ class About : UITableViewController, MFMailComposeViewControllerDelegate {
         mailComposerVC.setToRecipients(["lexrus@gmail.com"])
         mailComposerVC.setSubject("[VPN On] Feedback")
         
-        let deviceInfo = "VPN On \(appVersion()) | iOS (\(NSProcessInfo().operatingSystemVersionString)) | #\(device()).\n"
+        let deviceInfo = "VPN On \(appVersion())"
+            + " | iOS (\(NSProcessInfo().operatingSystemVersionString))"
+            + " | #\(device()).\n"
         mailComposerVC.setMessageBody(deviceInfo, isHTML: false)
         
         return mailComposerVC
     }
     
-    func showSendMailErrorAlert() {
-        let alert = UIAlertController(
-            title: NSLocalizedString("Could Not Send Email", comment: ""),
-            message: NSLocalizedString("Your device could not send email.  Please check email configuration and try again.", comment: ""),
-            preferredStyle: .Alert)
-        
-        presentViewController(alert, animated: true, completion: nil)
-    }
-    
-    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
-        controller.dismissViewControllerAnimated(true, completion: nil)
+    func mailComposeController(
+        controller: MFMailComposeViewController,
+        didFinishWithResult result: MFMailComposeResult,
+        error: NSError?) {
+            controller.dismissViewControllerAnimated(true, completion: nil)
     }
     
     // MARK: - Review
     
     func presentAppStore() {
-        let appStoreURL = NSURL(string: "https://itunes.apple.com/app/vpn-on/id951344279")!
+        let appStoreURL =
+            NSURL(string: "https://itunes.apple.com/app/vpn-on/id951344279")!
         UIApplication.sharedApplication().openURL(appStoreURL)
     }
 

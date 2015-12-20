@@ -48,7 +48,9 @@ class VPNDomains : UITableViewController {
     // MARK: - Navigation
     
     func popDetailViewController() {
-        let topNavigationController = splitViewController!.viewControllers.last! as! UINavigationController
-        topNavigationController.popViewControllerAnimated(true)
+        if let topNC = splitViewController?.viewControllers.last
+            as? UINavigationController {
+                topNC.popViewControllerAnimated(true)
+        }
     }
 }

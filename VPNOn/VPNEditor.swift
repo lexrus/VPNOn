@@ -77,8 +77,10 @@ class VPNEditor : UITableViewController, UITextFieldDelegate {
             groupTextField.text = currentVPN.group
             alwaysOnSwitch.on = currentVPN.alwaysOn
             typeSegment.selectedSegmentIndex = currentVPN.ikev2 ? 1 : 0
-            passwordTextField.text = Keychain.passwordStringForVPNID(currentVPN.ID)
-            secretTextField.text = Keychain.secretStringForVPNID(currentVPN.ID)
+            passwordTextField.text =
+                Keychain.passwordStringForVPNID(currentVPN.ID)
+            secretTextField.text =
+                Keychain.secretStringForVPNID(currentVPN.ID)
             deleteCell.hidden = false
             duplicateCell.hidden = false
         }
