@@ -33,16 +33,6 @@ public struct Keychain {
         return KeychainWrapper.setString(secret, forKey: "\(key)psk")
     }
     
-    public static func setCertificate(certificate: NSData?, forVPNID VPNID: String) -> Bool {
-        let key = NSURL(string: VPNID)!.lastPathComponent!
-        KeychainWrapper.serviceName = kKeychainServiceName
-        KeychainWrapper.removeObjectForKey("\(key)cert")
-        if let data = certificate {
-            KeychainWrapper.setData(data, forKey: "\(key)cert")
-        }
-        return true
-    }
-    
     public static func passwordForVPNID(VPNID: String) -> NSData? {
         let key = NSURL(string: VPNID)!.lastPathComponent!
         KeychainWrapper.serviceName = kKeychainServiceName
@@ -74,10 +64,5 @@ public struct Keychain {
         KeychainWrapper.serviceName = kKeychainServiceName
         return KeychainWrapper.stringForKey("\(key)psk")
     }
-    
-    public static func certificateForVPNID(VPNID: String) -> NSData? {
-        let key = NSURL(string: VPNID)!.lastPathComponent!
-        KeychainWrapper.serviceName = kKeychainServiceName
-        return KeychainWrapper.dataForKey("\(key)cert")
-    }
+
 }

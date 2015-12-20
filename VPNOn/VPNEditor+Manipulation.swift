@@ -75,9 +75,9 @@ extension VPNEditor {
             return
         }
         
-        if let _ = VPNDataManager.sharedManager.duplicate(vpn) {
+        if let newVPN = VPNDataManager.sharedManager.duplicate(vpn) {
             NSNotificationCenter.defaultCenter()
-                .postNotificationName(kVPNDidDuplicate, object: nil)
+                .postNotificationName(kVPNDidDuplicate, object: newVPN)
         }
     }
 

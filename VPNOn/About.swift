@@ -23,7 +23,7 @@ class About : UITableViewController, MFMailComposeViewControllerDelegate {
         tableView: UITableView,
         numberOfRowsInSection section: Int
         ) -> Int {
-            if !MFMailComposeViewController.canSendMail() {
+            if MFMailComposeViewController.canSendMail() {
                 return 3
             } else {
                 return 2

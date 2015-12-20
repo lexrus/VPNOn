@@ -1,3 +1,2 @@
-github "jrendel/SwiftKeychainWrapper" "master"
-github "ReactiveX/RxSwift" "2.0.0-beta.4"
+github "lexrus/SwiftKeychainWrapper" "master"
 github "lexrus/MMDB-Swift" ~> 0.0.1
