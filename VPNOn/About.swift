@@ -9,8 +9,8 @@
 import UIKit
 import MessageUI
 
-private let kReviewCellIndex = 2
-private let kFeedbackCellIndex = 3
+private let kReviewCellIndex = 1
+private let kFeedbackCellIndex = 2
 
 class About : UITableViewController, MFMailComposeViewControllerDelegate {
     
