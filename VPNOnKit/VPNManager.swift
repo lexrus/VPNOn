@@ -122,7 +122,13 @@ final public class VPNManager {
             if let err = error {
                 debugPrint("Failed to save profile: \(err.localizedDescription)")
             } else {
-                completion?()
+                let delayTime = dispatch_time(
+                    DISPATCH_TIME_NOW,
+                    Int64(0.1 * Double(NSEC_PER_SEC))
+                )
+                dispatch_after(delayTime, dispatch_get_main_queue()) {
+                    completion?()
+                }
             }
         }
     }
@@ -130,10 +136,12 @@ final public class VPNManager {
     public func connect() {
         do {
             try self.manager.connection.startVPNTunnel()
-        } catch let error as NSError {
-            print("Failed to start IKEv2 tunnel: \(error.localizedDescription)")
+        } catch NEVPNError.ConfigurationInvalid {
+            
+        } catch NEVPNError.ConfigurationDisabled {
+            
         } catch {
-            fatalError()
+            
         }
     }
     
