@@ -5,9 +5,6 @@
 /* Class = "IBUILabel"; text = "VPN On"; ObjectID = "0fX-zU-loY"; */
 "0fX-zU-loY.text" = "VPN On";
 
-/* Class = "IBUITextField"; placeholder = "http://"; ObjectID = "Otm-uK-bXz"; */
-"Otm-uK-bXz.placeholder" = "http://";
-
 /* Class = "IBUISegmentedControl"; be7-Ah-lJc.segmentTitles[0] = "Cisco IPSec"; ObjectID = "be7-Ah-lJc"; */
 "be7-Ah-lJc.segmentTitles[0]" = "Cisco IPSec";
 
@@ -45,9 +42,6 @@
 /* Class = "IBUILabel"; text = "Always On"; ObjectID = "KqD-kH-A4B"; */
 "KqD-kH-A4B.text" = "Sempre Ligado";
 
-/* Class = "IBUITableViewSection"; headerTitle = "Certificate URL"; ObjectID = "LMw-lh-D2c"; */
-"LMw-lh-D2c.headerTitle" = "URL do Certificado";
-
 /* Class = "IBUILabel"; text = "Description"; ObjectID = "P5o-gM-dBq"; */
 "P5o-gM-dBq.text" = "Descrição";
 
@@ -57,20 +51,11 @@
 /* Class = "IBUITableViewSection"; headerTitle = "Domains relies on VPN"; ObjectID = "PP3-2a-1up"; */
 "PP3-2a-1up.headerTitle" = "Domínio baseia-se em VPN";
 
-/* Class = "IBUILabel"; text = "Certificate"; ObjectID = "Rjp-ng-T6V"; */
-"Rjp-ng-T6V.text" = "Certificado";
-
-/* Class = "IBUITableViewController"; title = "Certificate"; ObjectID = "RyC-km-4Av"; */
-"RyC-km-4Av.title" = "Certificado";
-
 /* Class = "IBUILabel"; text = "Account"; ObjectID = "Ud8-O3-Mk9"; */
 "Ud8-O3-Mk9.text" = "Conta";
 
 /* Class = "IBUILabel"; text = "Not Connected"; ObjectID = "Vlk-GJ-USi"; */
 "Vlk-GJ-USi.text" = "Não Conectado";
-
-/* Class = "IBUILabel"; text = "Use Certificate"; ObjectID = "WSx-ME-hWf"; */
-"WSx-ME-hWf.text" = "Utilizar Certificado(PKCS12)";
 
 /* Class = "IBUILabel"; text = "Password"; ObjectID = "XpY-Af-O6z"; */
 "XpY-Af-O6z.text" = "Palavra-passe";
@@ -108,12 +93,6 @@
 /* Class = "IBUILabel"; text = "Delete"; ObjectID = "tHf-HC-jcR"; */
 "tHf-HC-jcR.text" = "Eliminar";
 
-/* Class = "IBUILabel"; text = "Certificate will be downloaded and stored in Keychain"; ObjectID = "w42-LH-TM5"; */
-"w42-LH-TM5.text" = "O certificado será descarregado e guardado no Porta-chaves";
-
 /* Class = "IBUILabel"; text = "Group"; ObjectID = "w4U-Px-gJH"; */
 "w4U-Px-gJH.text" = "Grupo";
-
-/* Class = "IBUINavigationItem"; title = "Certificate"; ObjectID = "whE-eZ-DWz"; */
-"whE-eZ-DWz.title" = "Certificado";
 

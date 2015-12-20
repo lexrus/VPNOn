@@ -32,12 +32,6 @@
 /* Class = "IBUILabel"; text = "Always On"; ObjectID = "KqD-kH-A4B"; */
 "KqD-kH-A4B.text" = "保持連線";
 
-/* Class = "IBUITableViewSection"; headerTitle = "Certificate URL"; ObjectID = "LMw-lh-D2c"; */
-"LMw-lh-D2c.headerTitle" = "證書 URL";
-
-/* Class = "IBUITextField"; placeholder = "http://"; ObjectID = "Otm-uK-bXz"; */
-"Otm-uK-bXz.placeholder" = "http://";
-
 /* Class = "IBUILabel"; text = "Description"; ObjectID = "P5o-gM-dBq"; */
 "P5o-gM-dBq.text" = "描述";
 
@@ -47,23 +41,11 @@
 /* Class = "IBUITableViewSection"; headerTitle = "Domains relies on VPN"; ObjectID = "PP3-2a-1up"; */
 "PP3-2a-1up.headerTitle" = "依賴 VPN 的域名";
 
-/* Class = "IBUILabel"; text = "Scan QR code"; ObjectID = "Pcz-Ic-xcR"; */
-"Pcz-Ic-xcR.text" = "掃描二維碼";
-
-/* Class = "IBUILabel"; text = "Certificate"; ObjectID = "Rjp-ng-T6V"; */
-"Rjp-ng-T6V.text" = "證書";
-
-/* Class = "IBUITableViewController"; title = "Certificate"; ObjectID = "RyC-km-4Av"; */
-"RyC-km-4Av.title" = "證書";
-
 /* Class = "IBUILabel"; text = "Account"; ObjectID = "Ud8-O3-Mk9"; */
 "Ud8-O3-Mk9.text" = "帳號";
 
 /* Class = "IBUILabel"; text = "Not Connected"; ObjectID = "Vlk-GJ-USi"; */
 "Vlk-GJ-USi.text" = "未連線";
-
-/* Class = "IBUILabel"; text = "Use Certificate"; ObjectID = "WSx-ME-hWf"; */
-"WSx-ME-hWf.text" = "使用證書(PKCS12)";
 
 /* Class = "IBUILabel"; text = "Password"; ObjectID = "XpY-Af-O6z"; */
 "XpY-Af-O6z.text" = "密碼";
@@ -82,9 +64,6 @@
 
 /* Class = "IBUITextField"; placeholder = "Required"; ObjectID = "iNr-tg-tO5"; */
 "iNr-tg-tO5.placeholder" = "必填";
-
-/* Class = "IBUILabel"; text = "Download"; ObjectID = "ijT-Cj-eqv"; */
-"ijT-Cj-eqv.text" = "下載";
 
 /* Class = "IBUITextField"; placeholder = "Required"; ObjectID = "lOt-LM-XMh"; */
 "lOt-LM-XMh.placeholder" = "必填";
@@ -107,14 +86,8 @@
 /* Class = "IBUILabel"; text = "Delete"; ObjectID = "tHf-HC-jcR"; */
 "tHf-HC-jcR.text" = "刪除";
 
-/* Class = "IBUILabel"; text = "Certificate will be downloaded and stored in Keychain"; ObjectID = "w42-LH-TM5"; */
-"w42-LH-TM5.text" = "證書將被下載並存儲在鑰匙串中。";
-
 /* Class = "IBUILabel"; text = "Group"; ObjectID = "w4U-Px-gJH"; */
 "w4U-Px-gJH.text" = "組";
-
-/* Class = "IBUINavigationItem"; title = "Certificate"; ObjectID = "whE-eZ-DWz"; */
-"whE-eZ-DWz.title" = "證書";
 
 /* Class = "IBUILabel"; text = " "; ObjectID = "yI7-6o-40u"; */
 "yI7-6o-40u.text" = " ";

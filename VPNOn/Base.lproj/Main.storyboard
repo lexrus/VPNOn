@@ -83,8 +83,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Vlk-GJ-USi" customClass="LTTableViewCellTitle" customModule="VPNOn" customModuleProvider="target">
-                                            <rect key="frame" x="8" y="0.0" width="239" height="44"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Vlk-GJ-USi" customClass="LTTableViewCellTitle" customModule="VPNOn" customModuleProvider="target">
+                                            <rect key="frame" x="15" y="0.0" width="225" height="44"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="120" id="ask-HU-ECy"/>
                                             </constraints>
@@ -97,8 +97,8 @@
                                                 </mask>
                                             </variation>
                                         </label>
-                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="47m-SX-NPE">
-                                            <rect key="frame" x="255" y="6" width="51" height="31"/>
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="47m-SX-NPE">
+                                            <rect key="frame" x="248" y="6" width="51" height="31"/>
                                             <connections>
                                                 <action selector="toggleVPN:" destination="Pga-4R-p1I" eventType="valueChanged" id="6sy-oA-7eq"/>
                                             </connections>
@@ -220,7 +220,11 @@
                                 <segue destination="aiw-IB-1f2" kind="showDetail" id="W0B-6i-R9D"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="refresh" id="6nU-ro-zkI"/>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="refresh" id="6nU-ro-zkI">
+                            <connections>
+                                <action selector="restartPing:" destination="Pga-4R-p1I" id="w77-vq-OMA"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="380"/>

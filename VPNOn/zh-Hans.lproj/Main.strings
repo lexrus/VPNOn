@@ -32,38 +32,20 @@
 /* Class = "IBUILabel"; text = "Always On"; ObjectID = "KqD-kH-A4B"; */
 "KqD-kH-A4B.text" = "保持连接";
 
-/* Class = "IBUITableViewSection"; headerTitle = "Certificate URL"; ObjectID = "LMw-lh-D2c"; */
-"LMw-lh-D2c.headerTitle" = "证书 URL";
-
-/* Class = "IBUITextField"; placeholder = "http://"; ObjectID = "Otm-uK-bXz"; */
-"Otm-uK-bXz.placeholder" = "http://";
-
 /* Class = "IBUILabel"; text = "Description"; ObjectID = "P5o-gM-dBq"; */
 "P5o-gM-dBq.text" = "描述";
 
 /* Class = "IBUITableViewSection"; footerTitle = "Requesting domains specified here may turn on VPN connection automatically. Please separate domains with whitespace or newline. "; ObjectID = "PP3-2a-1up"; */
-"PP3-2a-1up.footerTitle" = "访问在此指定的域名会自动打开 VPN 链接。请使用空格或换行分隔域名。";
+"PP3-2a-1up.footerTitle" = "访问在此指定的域名会自动打开 VPN 连接。请使用空格或换行分隔域名。";
 
 /* Class = "IBUITableViewSection"; headerTitle = "Domains relies on VPN"; ObjectID = "PP3-2a-1up"; */
 "PP3-2a-1up.headerTitle" = "依赖 VPN 的域名";
-
-/* Class = "IBUILabel"; text = "Scan QR code"; ObjectID = "Pcz-Ic-xcR"; */
-"Pcz-Ic-xcR.text" = "扫描二维码";
-
-/* Class = "IBUILabel"; text = "Certificate"; ObjectID = "Rjp-ng-T6V"; */
-"Rjp-ng-T6V.text" = "证书";
-
-/* Class = "IBUITableViewController"; title = "Certificate"; ObjectID = "RyC-km-4Av"; */
-"RyC-km-4Av.title" = "证书";
 
 /* Class = "IBUILabel"; text = "Account"; ObjectID = "Ud8-O3-Mk9"; */
 "Ud8-O3-Mk9.text" = "帐号";
 
 /* Class = "IBUILabel"; text = "Not Connected"; ObjectID = "Vlk-GJ-USi"; */
 "Vlk-GJ-USi.text" = "未连接";
-
-/* Class = "IBUILabel"; text = "Use Certificate"; ObjectID = "WSx-ME-hWf"; */
-"WSx-ME-hWf.text" = "使用证书(PKCS12)";
 
 /* Class = "IBUILabel"; text = "Password"; ObjectID = "XpY-Af-O6z"; */
 "XpY-Af-O6z.text" = "密码";
@@ -82,9 +64,6 @@
 
 /* Class = "IBUITextField"; placeholder = "Required"; ObjectID = "iNr-tg-tO5"; */
 "iNr-tg-tO5.placeholder" = "必填";
-
-/* Class = "IBUILabel"; text = "Download"; ObjectID = "ijT-Cj-eqv"; */
-"ijT-Cj-eqv.text" = "下载";
 
 /* Class = "IBUITextField"; placeholder = "Required"; ObjectID = "lOt-LM-XMh"; */
 "lOt-LM-XMh.placeholder" = "必填";
@@ -107,14 +86,8 @@
 /* Class = "IBUILabel"; text = "Delete"; ObjectID = "tHf-HC-jcR"; */
 "tHf-HC-jcR.text" = "删除";
 
-/* Class = "IBUILabel"; text = "Certificate will be downloaded and stored in Keychain"; ObjectID = "w42-LH-TM5"; */
-"w42-LH-TM5.text" = "证书将被下载并存储在钥匙串中。";
-
 /* Class = "IBUILabel"; text = "Group"; ObjectID = "w4U-Px-gJH"; */
 "w4U-Px-gJH.text" = "组";
-
-/* Class = "IBUINavigationItem"; title = "Certificate"; ObjectID = "whE-eZ-DWz"; */
-"whE-eZ-DWz.title" = "证书";
 
 /* Class = "IBUILabel"; text = " "; ObjectID = "yI7-6o-40u"; */
 "yI7-6o-40u.text" = " ";
