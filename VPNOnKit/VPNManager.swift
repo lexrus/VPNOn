@@ -9,7 +9,6 @@
 import Foundation
 import NetworkExtension
 import CoreData
-import MMDB
 
 private let kAppGroupIdentifier = "group.VPNOn"
 private let VPNManagerInstance: VPNManager = {

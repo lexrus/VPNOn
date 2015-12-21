@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import MMDB
 
 private let kGeoIPQueryURI = "https://www.telize.com/geoip/%@"
 

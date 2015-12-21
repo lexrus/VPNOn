@@ -10,7 +10,6 @@ import UIKit
 import CoreData
 import NetworkExtension
 import VPNOnKit
-import MMDB
 
 let kSelectionDidChange = "SelectionDidChange"
 private let kVPNIDKey = "VPNID"

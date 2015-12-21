@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftKeychainWrapper
 
 private let kKeychainServiceName = "com.LexTang.VPNOn"
 

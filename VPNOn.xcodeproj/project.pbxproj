@@ -7,8 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D70E7BA81C27994E00FAF965 /* MMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D736A98C1C23F4270070EAA3 /* MMDB.framework */; };
-		D70E7BA91C27994E00FAF965 /* MMDB.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D736A98C1C23F4270070EAA3 /* MMDB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D70B52881C27D4B7007E16DC /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70B52871C27D4B7007E16DC /* KeychainWrapper.swift */; };
+		D70B52931C27D559007E16DC /* maxminddb-compat-util.h in Headers */ = {isa = PBXBuildFile; fileRef = D70B528B1C27D559007E16DC /* maxminddb-compat-util.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D70B52941C27D559007E16DC /* maxminddb.c in Sources */ = {isa = PBXBuildFile; fileRef = D70B528C1C27D559007E16DC /* maxminddb.c */; };
+		D70B52951C27D559007E16DC /* maxminddb.h in Headers */ = {isa = PBXBuildFile; fileRef = D70B528D1C27D559007E16DC /* maxminddb.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D70B52961C27D559007E16DC /* maxminddb_config.h in Headers */ = {isa = PBXBuildFile; fileRef = D70B528E1C27D559007E16DC /* maxminddb_config.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D70B52971C27D559007E16DC /* maxminddb_unions.c in Sources */ = {isa = PBXBuildFile; fileRef = D70B528F1C27D559007E16DC /* maxminddb_unions.c */; };
+		D70B52981C27D559007E16DC /* maxminddb_unions.h in Headers */ = {isa = PBXBuildFile; fileRef = D70B52901C27D559007E16DC /* maxminddb_unions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D70B529A1C27D559007E16DC /* MMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70B52921C27D559007E16DC /* MMDB.swift */; };
+		D70B529F1C27D7B1007E16DC /* GeoLite2-Country.mmdb in Resources */ = {isa = PBXBuildFile; fileRef = D70B528A1C27D559007E16DC /* GeoLite2-Country.mmdb */; };
 		D7139BE01BE3BD4000F20D96 /* Acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = D7139BDF1BE3BD4000F20D96 /* Acknowledgements.plist */; };
 		D7139BE21BE3C11B00F20D96 /* VPNList+TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7139BE11BE3C11B00F20D96 /* VPNList+TableView.swift */; };
 		D7139BE41BE4F73800F20D96 /* NormalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7139BE31BE4F73800F20D96 /* NormalTableViewCell.swift */; };
@@ -18,7 +25,6 @@
 		D71F03281C26FDDA00FF60E2 /* VPN+Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71F03261C26FAF600FF60E2 /* VPN+Account.swift */; };
 		D7322C7A1A6C024800B34AA0 /* LTViewControllerBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7322C791A6C024800B34AA0 /* LTViewControllerBackground.swift */; };
 		D7356CE71C2700DA007BAB37 /* Widget+Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7356CE61C2700DA007BAB37 /* Widget+Collection.swift */; };
-		D736A9901C23F4410070EAA3 /* MMDB.framework.dSYM in dSYM */ = {isa = PBXBuildFile; fileRef = D736A98F1C23F43A0070EAA3 /* MMDB.framework.dSYM */; };
 		D737D2021C09F9CD0073E7BE /* FlagKit.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D737D2011C09F9CD0073E7BE /* FlagKit.xcassets */; };
 		D737D2031C09F9D40073E7BE /* FlagKit.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D737D2011C09F9CD0073E7BE /* FlagKit.xcassets */; };
 		D73C19F21AC1684D00C1A824 /* SwitchIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73C19F11AC1684D00C1A824 /* SwitchIconView.swift */; };
@@ -35,12 +41,10 @@
 		D7453FA41A3196E200F7E32D /* VPNOn.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D7453F9F1A3196E200F7E32D /* VPNOn.xcdatamodeld */; };
 		D7453FA81A31975D00F7E32D /* VPNEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7453FA51A31975D00F7E32D /* VPNEditor.swift */; };
 		D7453FAA1A31975D00F7E32D /* VPNList.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7453FA71A31975D00F7E32D /* VPNList.swift */; };
-		D74C91A61A383FED00EAAAE1 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7453FB61A31A72600F7E32D /* NotificationCenter.framework */; };
 		D74C91AB1A383FED00EAAAE1 /* Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74C91AA1A383FED00EAAAE1 /* Widget.swift */; };
 		D74C91AD1A383FED00EAAAE1 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D74C91AC1A383FED00EAAAE1 /* MainInterface.storyboard */; };
 		D74C91B01A383FED00EAAAE1 /* TodayWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D74C91A51A383FEC00EAAAE1 /* TodayWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D74C91B41A384AB800EAAAE1 /* VPN.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7453F9C1A3196E200F7E32D /* VPN.swift */; };
-		D74C91C71A399AA400EAAAE1 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7453FAE1A31A69100F7E32D /* NetworkExtension.framework */; };
 		D754E2041A3B3A1B00E8F135 /* VPNOnKit.h in Headers */ = {isa = PBXBuildFile; fileRef = D754E2011A3B3A1B00E8F135 /* VPNOnKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D754E2171A3B3DE600E8F135 /* VPNOnKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D757AF851A3B370E00AEF3CB /* VPNOnKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D754E21A1A3B3E8E00E8F135 /* VPNOnKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D757AF851A3B370E00AEF3CB /* VPNOnKit.framework */; };
@@ -48,8 +52,6 @@
 		D757AF901A3B370E00AEF3CB /* VPNOnKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D757AF851A3B370E00AEF3CB /* VPNOnKit.framework */; };
 		D757AF991A3B370E00AEF3CB /* VPNOnKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D757AF981A3B370E00AEF3CB /* VPNOnKitTests.swift */; };
 		D757AFA91A3B374200AEF3CB /* VPNManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D757AFA61A3B374200AEF3CB /* VPNManager.swift */; };
-		D757AFB31A3B392600AEF3CB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D757AFB21A3B392600AEF3CB /* Foundation.framework */; };
-		D757AFB41A3B392D00AEF3CB /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7453FAE1A31A69100F7E32D /* NetworkExtension.framework */; };
 		D758FE0D1A5BE35000929494 /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = D758FE0C1A5BE35000929494 /* About.swift */; };
 		D769FE941A7A3A3500EF1A1F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D769FE961A7A3A3500EF1A1F /* Localizable.strings */; };
 		D769FE9A1A7A3ADC00EF1A1F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D769FE9C1A7A3ADC00EF1A1F /* Localizable.strings */; };
@@ -70,13 +72,6 @@
 		D79083DC1A7BBEF70089DB67 /* LTHelloKittyTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79083DB1A7BBEF70089DB67 /* LTHelloKittyTheme.swift */; };
 		D79F73731A728EC900EB2289 /* VPN+URLScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79F73721A728EC900EB2289 /* VPN+URLScheme.swift */; };
 		D79F73751A72923E00EB2289 /* VPNEditor+Save.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79F73741A72923E00EB2289 /* VPNEditor+Save.swift */; };
-		D7A9C4DF1BDD189400F06570 /* SwiftKeychainWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7A9C4DC1BDD189400F06570 /* SwiftKeychainWrapper.framework */; };
-		D7A9C4E11BDD214C00F06570 /* SwiftKeychainWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7A9C4DC1BDD189400F06570 /* SwiftKeychainWrapper.framework */; };
-		D7A9C4E21BDD215400F06570 /* SwiftKeychainWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7A9C4DC1BDD189400F06570 /* SwiftKeychainWrapper.framework */; };
-		D7A9C4E81BDD245300F06570 /* SwiftKeychainWrapper.framework.dSYM in dSYM */ = {isa = PBXBuildFile; fileRef = D7A9C4E51BDD245300F06570 /* SwiftKeychainWrapper.framework.dSYM */; };
-		D7A9C4EC1BDD262100F06570 /* SwiftKeychainWrapper.framework in Carthage Frameworks */ = {isa = PBXBuildFile; fileRef = D7A9C4DC1BDD189400F06570 /* SwiftKeychainWrapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D7A9C4EF1BDD267600F06570 /* SwiftKeychainWrapper.framework in Carthage Frameworks */ = {isa = PBXBuildFile; fileRef = D7A9C4DC1BDD189400F06570 /* SwiftKeychainWrapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D7A9C4F11BDD268200F06570 /* SwiftKeychainWrapper.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D7A9C4DC1BDD189400F06570 /* SwiftKeychainWrapper.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D7A9C4F31BDD26AF00F06570 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A9C4F21BDD26AF00F06570 /* R.generated.swift */; };
 		D7B033BB1A6E5ED1009D791E /* VPNDataManager+ActivatedVPN.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B033BA1A6E5ED1009D791E /* VPNDataManager+ActivatedVPN.swift */; };
 		D7B033BD1A6E5ED1009D791E /* VPNDataManager+ActivatedVPN.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B033BA1A6E5ED1009D791E /* VPNDataManager+ActivatedVPN.swift */; };
@@ -92,9 +87,6 @@
 		D7CFDDA51A9E05700057F53D /* VPNManager+Geo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7CFDDA41A9E05700057F53D /* VPNManager+Geo.swift */; };
 		D7D4992F1A724B4C00B5F5ED /* VPNEditor+Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D4992E1A724B4C00B5F5ED /* VPNEditor+Type.swift */; };
 		D7D499311A72542400B5F5ED /* LTTableViewCellDeclosureIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D499301A72542400B5F5ED /* LTTableViewCellDeclosureIndicator.swift */; };
-		D7DAACBA1C243E80008FB091 /* MMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D736A98C1C23F4270070EAA3 /* MMDB.framework */; };
-		D7DAACBC1C245C95008FB091 /* MMDB.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D736A98C1C23F4270070EAA3 /* MMDB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D7DAACBD1C245C9D008FB091 /* MMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D736A98C1C23F4270070EAA3 /* MMDB.framework */; };
 		D7DBC12C1BBAEFDE004E2F3E /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DBC12B1BBAEFDE004E2F3E /* Keychain.swift */; };
 		D7DDB5651A78DA4600BE7FB7 /* VPNDomains.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DDB5641A78DA4600BE7FB7 /* VPNDomains.swift */; };
 		D7E28A7F1A680D9400507F33 /* LTThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E28A7B1A680D9400507F33 /* LTThemeManager.swift */; };
@@ -177,55 +169,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D70E7BA91C27994E00FAF965 /* MMDB.framework in Embed Frameworks */,
 				D754E2171A3B3DE600E8F135 /* VPNOnKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D7A9C4E31BDD242C00F06570 /* dSYM */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 16;
-			files = (
-				D736A9901C23F4410070EAA3 /* MMDB.framework.dSYM in dSYM */,
-				D7A9C4E81BDD245300F06570 /* SwiftKeychainWrapper.framework.dSYM in dSYM */,
-			);
-			name = dSYM;
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D7A9C4EA1BDD261800F06570 /* Carthage Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				D7A9C4EC1BDD262100F06570 /* SwiftKeychainWrapper.framework in Carthage Frameworks */,
-			);
-			name = "Carthage Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D7A9C4EE1BDD264500F06570 /* Carthage Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				D7A9C4EF1BDD267600F06570 /* SwiftKeychainWrapper.framework in Carthage Frameworks */,
-			);
-			name = "Carthage Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D7A9C4F01BDD267E00F06570 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				D7A9C4F11BDD268200F06570 /* SwiftKeychainWrapper.framework in CopyFiles */,
-				D7DAACBC1C245C95008FB091 /* MMDB.framework in CopyFiles */,
-			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -256,6 +202,16 @@
 		D7095DD01A84923A00BAF797 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
 		D7095DD11A84923A00BAF797 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D7095DD21A84923A00BAF797 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D70B52871C27D4B7007E16DC /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
+		D70B528A1C27D559007E16DC /* GeoLite2-Country.mmdb */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GeoLite2-Country.mmdb"; sourceTree = "<group>"; };
+		D70B528B1C27D559007E16DC /* maxminddb-compat-util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "maxminddb-compat-util.h"; sourceTree = "<group>"; };
+		D70B528C1C27D559007E16DC /* maxminddb.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = maxminddb.c; sourceTree = "<group>"; };
+		D70B528D1C27D559007E16DC /* maxminddb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = maxminddb.h; sourceTree = "<group>"; };
+		D70B528E1C27D559007E16DC /* maxminddb_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = maxminddb_config.h; sourceTree = "<group>"; };
+		D70B528F1C27D559007E16DC /* maxminddb_unions.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = maxminddb_unions.c; sourceTree = "<group>"; };
+		D70B52901C27D559007E16DC /* maxminddb_unions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = maxminddb_unions.h; sourceTree = "<group>"; };
+		D70B52911C27D559007E16DC /* VPNOnKit-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VPNOnKit-Bridging-Header.h"; sourceTree = "<group>"; };
+		D70B52921C27D559007E16DC /* MMDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMDB.swift; sourceTree = "<group>"; };
 		D7139BDF1BE3BD4000F20D96 /* Acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Acknowledgements.plist; sourceTree = "<group>"; };
 		D7139BE11BE3C11B00F20D96 /* VPNList+TableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VPNList+TableView.swift"; sourceTree = "<group>"; };
 		D7139BE31BE4F73800F20D96 /* NormalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NormalTableViewCell.swift; sourceTree = "<group>"; };
@@ -267,8 +223,6 @@
 		D72403381A8B32A70066CA47 /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-US"; path = "en-US.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		D7322C791A6C024800B34AA0 /* LTViewControllerBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTViewControllerBackground.swift; sourceTree = "<group>"; };
 		D7356CE61C2700DA007BAB37 /* Widget+Collection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Widget+Collection.swift"; sourceTree = "<group>"; };
-		D736A98C1C23F4270070EAA3 /* MMDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MMDB.framework; path = Carthage/Build/iOS/MMDB.framework; sourceTree = "<group>"; };
-		D736A98F1C23F43A0070EAA3 /* MMDB.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = MMDB.framework.dSYM; path = Carthage/Build/iOS/MMDB.framework.dSYM; sourceTree = "<group>"; };
 		D737D2011C09F9CD0073E7BE /* FlagKit.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = FlagKit.xcassets; sourceTree = "<group>"; };
 		D73C19F11AC1684D00C1A824 /* SwitchIconView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchIconView.swift; sourceTree = "<group>"; };
 		D73C19F31AC168B900C1A824 /* ModeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModeButton.swift; sourceTree = "<group>"; };
@@ -287,8 +241,6 @@
 		D7453FA51A31975D00F7E32D /* VPNEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNEditor.swift; sourceTree = "<group>"; };
 		D7453FA71A31975D00F7E32D /* VPNList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNList.swift; sourceTree = "<group>"; };
 		D7453FAD1A31A68300F7E32D /* VPNOn.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = VPNOn.entitlements; sourceTree = "<group>"; };
-		D7453FAE1A31A69100F7E32D /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
-		D7453FB61A31A72600F7E32D /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		D74C91A51A383FEC00EAAAE1 /* TodayWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TodayWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D74C91A91A383FED00EAAAE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D74C91AA1A383FED00EAAAE1 /* Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widget.swift; sourceTree = "<group>"; };
@@ -304,7 +256,6 @@
 		D757AF971A3B370E00AEF3CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D757AF981A3B370E00AEF3CB /* VPNOnKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNOnKitTests.swift; sourceTree = "<group>"; };
 		D757AFA61A3B374200AEF3CB /* VPNManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNManager.swift; sourceTree = "<group>"; };
-		D757AFB21A3B392600AEF3CB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D758FE0C1A5BE35000929494 /* About.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
 		D75E75841A85DAF9004130D6 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Main.strings; sourceTree = "<group>"; };
 		D75E75851A85DAF9004130D6 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -346,8 +297,6 @@
 		D7A0250B1A873AB800417B33 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Main.strings; sourceTree = "<group>"; };
 		D7A0250C1A873AB800417B33 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D7A0250D1A873AB900417B33 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
-		D7A9C4DC1BDD189400F06570 /* SwiftKeychainWrapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftKeychainWrapper.framework; path = Carthage/Build/iOS/SwiftKeychainWrapper.framework; sourceTree = "<group>"; };
-		D7A9C4E51BDD245300F06570 /* SwiftKeychainWrapper.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = SwiftKeychainWrapper.framework.dSYM; path = Carthage/Build/iOS/SwiftKeychainWrapper.framework.dSYM; sourceTree = "<group>"; };
 		D7A9C4F21BDD26AF00F06570 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		D7B033BA1A6E5ED1009D791E /* VPNDataManager+ActivatedVPN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VPNDataManager+ActivatedVPN.swift"; sourceTree = "<group>"; };
 		D7BB2DCD1A6C066B00D8D581 /* LTTableViewCellTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTTableViewCellTitle.swift; sourceTree = "<group>"; };
@@ -396,8 +345,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D754E21A1A3B3E8E00E8F135 /* VPNOnKit.framework in Frameworks */,
-				D70E7BA81C27994E00FAF965 /* MMDB.framework in Frameworks */,
-				D7A9C4DF1BDD189400F06570 /* SwiftKeychainWrapper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,10 +352,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D74C91A61A383FED00EAAAE1 /* NotificationCenter.framework in Frameworks */,
-				D74C91C71A399AA400EAAAE1 /* NetworkExtension.framework in Frameworks */,
 				D754E21B1A3B3E9F00E8F135 /* VPNOnKit.framework in Frameworks */,
-				D7A9C4E21BDD215400F06570 /* SwiftKeychainWrapper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,10 +360,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D757AFB41A3B392D00AEF3CB /* NetworkExtension.framework in Frameworks */,
-				D757AFB31A3B392600AEF3CB /* Foundation.framework in Frameworks */,
-				D7A9C4E11BDD214C00F06570 /* SwiftKeychainWrapper.framework in Frameworks */,
-				D7DAACBA1C243E80008FB091 /* MMDB.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,7 +368,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D757AF901A3B370E00AEF3CB /* VPNOnKit.framework in Frameworks */,
-				D7DAACBD1C245C9D008FB091 /* MMDB.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,6 +398,22 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		D70B52891C27D559007E16DC /* MMDB */ = {
+			isa = PBXGroup;
+			children = (
+				D70B528A1C27D559007E16DC /* GeoLite2-Country.mmdb */,
+				D70B528B1C27D559007E16DC /* maxminddb-compat-util.h */,
+				D70B528C1C27D559007E16DC /* maxminddb.c */,
+				D70B528D1C27D559007E16DC /* maxminddb.h */,
+				D70B528E1C27D559007E16DC /* maxminddb_config.h */,
+				D70B528F1C27D559007E16DC /* maxminddb_unions.c */,
+				D70B52901C27D559007E16DC /* maxminddb_unions.h */,
+				D70B52911C27D559007E16DC /* VPNOnKit-Bridging-Header.h */,
+				D70B52921C27D559007E16DC /* MMDB.swift */,
+			);
+			path = MMDB;
+			sourceTree = "<group>";
+		};
 		D7453F201A31966F00F7E32D = {
 			isa = PBXGroup;
 			children = (
@@ -470,7 +425,6 @@
 				D757AF951A3B370E00AEF3CB /* VPNOnKitTests */,
 				D7EB52581BBEE7A10021D93D /* VPNOnUITests */,
 				D7764EF91BF228A8000ACA4C /* Vendors */,
-				D7453FB51A31A72600F7E32D /* Frameworks */,
 				D7453F2A1A31966F00F7E32D /* Products */,
 				5AAA273FCFD7CD774192E06C /* Pods */,
 			);
@@ -542,20 +496,6 @@
 				D7F0A0191A6E47EA00F9C09A /* VPNDataManager+Selection.swift */,
 			);
 			path = VPNOnData;
-			sourceTree = "<group>";
-		};
-		D7453FB51A31A72600F7E32D /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				D736A98F1C23F43A0070EAA3 /* MMDB.framework.dSYM */,
-				D7A9C4E51BDD245300F06570 /* SwiftKeychainWrapper.framework.dSYM */,
-				D736A98C1C23F4270070EAA3 /* MMDB.framework */,
-				D7A9C4DC1BDD189400F06570 /* SwiftKeychainWrapper.framework */,
-				D757AFB21A3B392600AEF3CB /* Foundation.framework */,
-				D7453FAE1A31A69100F7E32D /* NetworkExtension.framework */,
-				D7453FB61A31A72600F7E32D /* NotificationCenter.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		D74C91A71A383FED00EAAAE1 /* TodayWidget */ = {
@@ -648,7 +588,9 @@
 		D7764EF91BF228A8000ACA4C /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				D70B52871C27D4B7007E16DC /* KeychainWrapper.swift */,
 				D7764EFA1BF228A8000ACA4C /* FlagKit */,
+				D70B52891C27D559007E16DC /* MMDB */,
 			);
 			path = Vendors;
 			sourceTree = "<group>";
@@ -721,6 +663,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D754E2041A3B3A1B00E8F135 /* VPNOnKit.h in Headers */,
+				D70B52981C27D559007E16DC /* maxminddb_unions.h in Headers */,
+				D70B52961C27D559007E16DC /* maxminddb_config.h in Headers */,
+				D70B52951C27D559007E16DC /* maxminddb.h in Headers */,
+				D70B52931C27D559007E16DC /* maxminddb-compat-util.h in Headers */,
 				D74129A91A5CFCDA008DE603 /* SimplePing.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -738,8 +684,6 @@
 				D7453F271A31966F00F7E32D /* Resources */,
 				D754E2161A3B3DDE00E8F135 /* Embed Frameworks */,
 				D7453FC51A31A72600F7E32D /* Embed App Extensions */,
-				D7A9C4E31BDD242C00F06570 /* dSYM */,
-				D7A9C4EA1BDD261800F06570 /* Carthage Frameworks */,
 			);
 			buildRules = (
 			);
@@ -759,7 +703,6 @@
 				D74C91A11A383FEC00EAAAE1 /* Sources */,
 				D74C91A21A383FEC00EAAAE1 /* Frameworks */,
 				D74C91A31A383FEC00EAAAE1 /* Resources */,
-				D7A9C4EE1BDD264500F06570 /* Carthage Frameworks */,
 			);
 			buildRules = (
 			);
@@ -778,7 +721,7 @@
 				D757AF821A3B370E00AEF3CB /* Headers */,
 				D757AF811A3B370E00AEF3CB /* Frameworks */,
 				D757AF801A3B370E00AEF3CB /* Sources */,
-				D7A9C4F01BDD267E00F06570 /* CopyFiles */,
+				D70B529E1C27D7AB007E16DC /* Resources */,
 			);
 			buildRules = (
 			);
@@ -926,6 +869,14 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D70B529E1C27D7AB007E16DC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D70B529F1C27D7B1007E16DC /* GeoLite2-Country.mmdb in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D7453F271A31966F00F7E32D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1068,9 +1019,13 @@
 				D757AFA91A3B374200AEF3CB /* VPNManager.swift in Sources */,
 				D7F0A0261A6E520300F9C09A /* VPNManager+ActivatedVPN.swift in Sources */,
 				D7EB524E1BBED6D70021D93D /* VPNManager+SelectedVPN.swift in Sources */,
+				D70B529A1C27D559007E16DC /* MMDB.swift in Sources */,
+				D70B52971C27D559007E16DC /* maxminddb_unions.c in Sources */,
 				D77593DA1A79E674007161B2 /* VPNManager+Domains.swift in Sources */,
 				D7EB524C1BBED5500021D93D /* VPNManager+Flags.swift in Sources */,
+				D70B52941C27D559007E16DC /* maxminddb.c in Sources */,
 				D7CFDDA51A9E05700057F53D /* VPNManager+Geo.swift in Sources */,
+				D70B52881C27D4B7007E16DC /* KeychainWrapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

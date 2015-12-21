@@ -162,8 +162,8 @@ extension VPNDataManager {
             let newTitle = "\(vpn.title) \(duplicatedVPNs.count)"
             
             Keychain.passwordForVPNID(vpn.ID)
-            
-            return createVPN(
+
+            if let newVPN = createVPN(
                 newTitle,
                 server: vpn.server,
                 account: vpn.account,
@@ -172,7 +172,16 @@ extension VPNDataManager {
                 secret: Keychain.secretStringForVPNID(vpn.ID) ?? "",
                 alwaysOn: vpn.alwaysOn,
                 ikev2: vpn.ikev2
-            )
+                ) {
+                    if let password = Keychain.passwordStringForVPNID(vpn.ID) {
+                        Keychain.setPassword(password, forVPNID: newVPN.ID)
+                    }
+                    if let secret = Keychain.secretStringForVPNID(vpn.ID) {
+                        Keychain.setSecret(secret, forVPNID: newVPN.ID)
+                    }
+
+                    return newVPN
+            }
         }
         
         return nil
