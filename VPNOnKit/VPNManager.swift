@@ -86,20 +86,25 @@ final public class VPNManager {
             if let secret = account.secretRef {
                 p.authenticationMethod = .SharedSecret
                 p.sharedSecretReference = secret
+            } else {
+                p.authenticationMethod = .None
             }
             pt = p
         } else {
             let p = NEVPNProtocolIKEv2()
             p.useExtendedAuthentication = true
             p.localIdentifier = account.group ?? "VPN"
+            p.remoteIdentifier = account.server
             if let secret = account.secretRef {
                 p.authenticationMethod = .SharedSecret
                 p.sharedSecretReference = secret
+            } else {
+                p.authenticationMethod = .None
             }
             p.deadPeerDetectionRate = NEVPNIKEv2DeadPeerDetectionRate.Medium
             pt = p
         }
-        
+
         pt.disconnectOnSleep = !account.alwaysOn
         pt.serverAddress = account.server
         
@@ -120,7 +125,7 @@ final public class VPNManager {
         manager.saveToPreferencesWithCompletionHandler {
             (error: NSError?) -> Void in
             if let err = error {
-                debugPrint("Failed to save profile: \(err.localizedDescription)")
+                print("Failed to save profile: \(err.localizedDescription)")
             } else {
                 let delayTime = dispatch_time(
                     DISPATCH_TIME_NOW,
@@ -140,8 +145,8 @@ final public class VPNManager {
             
         } catch NEVPNError.ConfigurationDisabled {
             
-        } catch {
-            
+        } catch let error as NSError {
+            print(error.localizedDescription)
         }
     }
     
