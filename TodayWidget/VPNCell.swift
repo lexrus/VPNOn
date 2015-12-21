@@ -71,12 +71,20 @@ class VPNCell: UICollectionViewCell {
         if VPNManager.sharedManager.displayFlags {
             switchButton.hidden = true
             if let countryCode = vpn.countryCode {
-                flagImageView.image = UIImage(flagImageWithCountryCode: countryCode.uppercaseString)
+                flagImageView.image = UIImage(
+                    flagImageWithCountryCode: countryCode.uppercaseString
+                )
             } else {
                 flagImageView.image = UIImage(flagImageForSpecialFlag: .World)
             }
             flagImageView.hidden = false
-            flagImageView.alpha = VPNManager.sharedManager.status == .Connected || selected ? 1.0 : 0.4
+            if VPNManager.sharedManager.status == .Connected
+                || VPNManager.sharedManager.status == .Connecting
+            {
+                flagImageView.alpha = current ? 1.0 : 0.4
+            } else {
+                flagImageView.alpha = 1.0
+            }
         } else {
             flagImageView.image = nil
             flagImageView.hidden = true
@@ -90,7 +98,7 @@ class VPNCell: UICollectionViewCell {
         if current {
             switch status {
             case .Connected:
-                statusColor = UIColor.whiteColor()
+                statusColor = UIColor(red: 0, green: 0.75, blue: 1, alpha: 1)
                 break
             case .Connecting:
                 statusColor = UIColor.yellowColor()
@@ -99,7 +107,11 @@ class VPNCell: UICollectionViewCell {
                 statusColor = UIColor(white: 1, alpha: 0.5)
             }
         } else {
-            statusColor = colorOfLatency
+            if VPNManager.sharedManager.status != .Connected {
+                statusColor = colorOfLatency
+            } else {
+                statusColor = UIColor(white: 1, alpha: 0.5)
+            }
         }
         
         titleLabel.textColor = statusColor
@@ -133,7 +145,7 @@ class VPNCell: UICollectionViewCell {
             switchIndicator.hidden = true
             if status == .Connected {
                 latencyLabel.alpha = 0
-                switchButton.setOn(true, animated: true)
+                switchButton.setOn(true, animated: false)
             } else {
                 latencyLabel.alpha = 1
                 switchButton.setOn(false, animated: false)

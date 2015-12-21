@@ -96,7 +96,6 @@
 		D7DAACBC1C245C95008FB091 /* MMDB.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = D736A98C1C23F4270070EAA3 /* MMDB.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D7DAACBD1C245C9D008FB091 /* MMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D736A98C1C23F4270070EAA3 /* MMDB.framework */; };
 		D7DBC12C1BBAEFDE004E2F3E /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DBC12B1BBAEFDE004E2F3E /* Keychain.swift */; };
-		D7DDB5631A78AC7E00BE7FB7 /* VPNTypeTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DDB5611A78A1D100BE7FB7 /* VPNTypeTag.swift */; };
 		D7DDB5651A78DA4600BE7FB7 /* VPNDomains.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7DDB5641A78DA4600BE7FB7 /* VPNDomains.swift */; };
 		D7E28A7F1A680D9400507F33 /* LTThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E28A7B1A680D9400507F33 /* LTThemeManager.swift */; };
 		D7E28A801A680D9400507F33 /* UIAppearance+Swift.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E28A7D1A680D9400507F33 /* UIAppearance+Swift.m */; };
@@ -366,7 +365,6 @@
 		D7D4992E1A724B4C00B5F5ED /* VPNEditor+Type.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VPNEditor+Type.swift"; sourceTree = "<group>"; };
 		D7D499301A72542400B5F5ED /* LTTableViewCellDeclosureIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTTableViewCellDeclosureIndicator.swift; sourceTree = "<group>"; };
 		D7DBC12B1BBAEFDE004E2F3E /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
-		D7DDB5611A78A1D100BE7FB7 /* VPNTypeTag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNTypeTag.swift; sourceTree = "<group>"; };
 		D7DDB5641A78DA4600BE7FB7 /* VPNDomains.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNDomains.swift; sourceTree = "<group>"; };
 		D7E28A7B1A680D9400507F33 /* LTThemeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTThemeManager.swift; sourceTree = "<group>"; };
 		D7E28A7C1A680D9400507F33 /* UIAppearance+Swift.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAppearance+Swift.h"; sourceTree = "<group>"; };
@@ -569,7 +567,6 @@
 				D7356CE61C2700DA007BAB37 /* Widget+Collection.swift */,
 				D7F64F011AA8407400C41789 /* VPNCell.swift */,
 				D7F64F051AA9B90000C41789 /* AddCell.swift */,
-				D7DDB5611A78A1D100BE7FB7 /* VPNTypeTag.swift */,
 				D73C19F31AC168B900C1A824 /* ModeButton.swift */,
 				D73C19F11AC1684D00C1A824 /* SwitchIconView.swift */,
 				D74C91A81A383FED00EAAAE1 /* Supporting Files */,
@@ -1050,7 +1047,6 @@
 				D7B033BD1A6E5ED1009D791E /* VPNDataManager+ActivatedVPN.swift in Sources */,
 				D74C91B41A384AB800EAAAE1 /* VPN.swift in Sources */,
 				D73C19F21AC1684D00C1A824 /* SwitchIconView.swift in Sources */,
-				D7DDB5631A78AC7E00BE7FB7 /* VPNTypeTag.swift in Sources */,
 				D74C91AB1A383FED00EAAAE1 /* Widget.swift in Sources */,
 				D7F64F021AA8407400C41789 /* VPNCell.swift in Sources */,
 				D7F64F061AA9B90000C41789 /* AddCell.swift in Sources */,

@@ -144,37 +144,24 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="axx-Uo-yQb" firstAttribute="leading" secondItem="tPH-66-mZs" secondAttribute="trailing" id="0rb-Fm-aIM"/>
-                            <constraint firstItem="axx-Uo-yQb" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" constant="42" id="744-M5-m82">
-                                <variation key="heightClass=compact" constant="32"/>
-                                <variation key="widthClass=regular" constant="50"/>
-                                <variation key="heightClass=regular-widthClass=regular" constant="80"/>
-                            </constraint>
+                            <constraint firstItem="axx-Uo-yQb" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" constant="42" id="744-M5-m82"/>
                             <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="axx-Uo-yQb" secondAttribute="bottom" id="DS2-cH-UJn"/>
+                            <constraint firstItem="axx-Uo-yQb" firstAttribute="leading" secondItem="tPH-66-mZs" secondAttribute="trailing" id="Kno-ex-Nig"/>
                             <constraint firstItem="tPH-66-mZs" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" id="OTc-6g-35A"/>
                             <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="tPH-66-mZs" secondAttribute="bottom" id="Tlz-un-wdV"/>
                             <constraint firstAttribute="trailing" secondItem="axx-Uo-yQb" secondAttribute="trailing" id="agP-xY-ycM"/>
                             <constraint firstItem="tPH-66-mZs" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" id="bzK-Bc-gnK"/>
                             <constraint firstItem="axx-Uo-yQb" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" id="nqE-KU-FUu"/>
-                            <constraint firstAttribute="trailing" secondItem="tPH-66-mZs" secondAttribute="trailing" id="rHa-GY-sjI"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="0rb-Fm-aIM"/>
+                                <exclude reference="Kno-ex-Nig"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact">
                             <mask key="constraints">
-                                <include reference="744-M5-m82"/>
-                            </mask>
-                        </variation>
-                        <variation key="widthClass=regular">
-                            <mask key="constraints">
-                                <include reference="744-M5-m82"/>
-                            </mask>
-                        </variation>
-                        <variation key="heightClass=regular-widthClass=regular">
-                            <mask key="constraints">
-                                <include reference="744-M5-m82"/>
+                                <include reference="Kno-ex-Nig"/>
                             </mask>
                         </variation>
                     </view>
@@ -186,6 +173,7 @@
                     <size key="freeformSize" width="320" height="80"/>
                     <connections>
                         <outlet property="collectionView" destination="axx-Uo-yQb" id="Nas-Rs-lyZ"/>
+                        <outlet property="leftConstraint" destination="bzK-Bc-gnK" id="Abd-wu-1uC"/>
                         <outlet property="leftMarginView" destination="tPH-66-mZs" id="jiV-kL-cF2"/>
                     </connections>
                 </viewController>

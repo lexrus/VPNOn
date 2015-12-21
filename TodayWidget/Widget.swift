@@ -13,7 +13,7 @@ import VPNOnKit
 import CoreData
 
 private let kExpanedInToday = "kVPNOnExpanedInToday"
-private let kWidgetNormalHeight: CGFloat = 148
+private let kWidgetNormalHeight: CGFloat = 82
 
 final class Widget:
     UIViewController,
@@ -25,47 +25,26 @@ final class Widget:
     @IBOutlet weak var collectionView: UICollectionView!
     private var hasSignaled = false
     private var complitionHandler: (NCUpdateResult -> Void)?
+
+    @IBOutlet weak var leftConstraint: NSLayoutConstraint!
+    var marginLeft: CGFloat = 0 {
+        didSet {
+            self.leftConstraint.constant = marginLeft
+            self.leftMarginView.setNeedsLayout()
+        }
+    }
     
     var vpns: [VPN] {
         return VPNDataManager.sharedManager.allVPN()
     }
     
-    var expanded: Bool {
-        get {
-            return NSUserDefaults.standardUserDefaults()
-                .boolForKey(kExpanedInToday) as Bool
-        }
-        set {
-            NSUserDefaults.standardUserDefaults()
-                .setBool(newValue, forKey: kExpanedInToday)
-            NSUserDefaults.standardUserDefaults().synchronize()
-            if newValue {
-                self.preferredContentSize = self.collectionView.contentSize
-            } else {
-                self.preferredContentSize = CGSizeMake(
-                    CGRectGetWidth(self.view.bounds),
-                    kWidgetNormalHeight
-                )
-            }
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        preferredContentSize = CGSizeMake(0, 82)
-        
-        let tapGasture = UITapGestureRecognizer(
-            target: self,
-            action: "didTapLeftMargin:"
+        preferredContentSize = CGSizeMake(
+            CGRectGetWidth(UIScreen.mainScreen().bounds),
+            kWidgetNormalHeight
         )
-        tapGasture.numberOfTapsRequired = 1
-        tapGasture.numberOfTouchesRequired = 1
-        leftMarginView.userInteractionEnabled = true
-        leftMarginView.addGestureRecognizer(tapGasture)
-        leftMarginView.backgroundColor = UIColor(white: 1.0, alpha: 0.001)
-        leftMarginView.displayMode =
-            VPNManager.sharedManager.displayFlags ? .FlagMode : .SwitchMode
         
         NSNotificationCenter.defaultCenter().addObserver(
             self,
@@ -101,38 +80,43 @@ final class Widget:
             object: nil)
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        LTPingQueue.sharedQueue.restartPing()
-        collectionView.dataSource = nil
-        updateContent()
-        collectionView.dataSource = self
-    }
-    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
-        if collectionView.visibleCells().count > vpns.count {
-            leftMarginView.expandIconView.hidden = true
-            expanded = false
-        } else {
-            leftMarginView.expandIconView.hidden = false
-        }
-        
-        if expanded {
-            preferredContentSize = collectionView.contentSize
-        } else {
-            preferredContentSize = CGSizeMake(
-                collectionView.contentSize.width,
-                min(kWidgetNormalHeight, collectionView.contentSize.height)
-            )
-        }
-        
+
+        updateContent()
+        collectionView.reloadData()
+        LTPingQueue.sharedQueue.restartPing()
+
+        preferredContentSize = CGSizeMake(
+            collectionView.contentSize.width,
+            max(kWidgetNormalHeight, collectionView.contentSize.height)
+        )
+
         // NOTE: Must remove the profile when there're no VPNs
         // otherwise there'll be a immutable profile live in system forever.
         if vpns.count == 0 {
             VPNManager.sharedManager.removeProfile()
+        }
+
+        let tapGasture = UITapGestureRecognizer(
+            target: self,
+            action: "didTapLeftMargin:"
+        )
+        tapGasture.numberOfTapsRequired = 1
+        tapGasture.numberOfTouchesRequired = 1
+        leftMarginView.userInteractionEnabled = true
+        leftMarginView.addGestureRecognizer(tapGasture)
+        leftMarginView.backgroundColor = UIColor(white: 0.0, alpha: 0.005)
+        leftMarginView.displayMode =
+            VPNManager.sharedManager.displayFlags ? .FlagMode : .SwitchMode
+
+        widgetPerformUpdateWithCompletionHandler { _ in }
+    }
+
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        leftMarginView.gestureRecognizers?.forEach {
+            leftMarginView.removeGestureRecognizer($0)
         }
     }
     
@@ -175,36 +159,24 @@ final class Widget:
     func widgetMarginInsetsForProposedMarginInsets(
         defaultMarginInsets: UIEdgeInsets
         ) -> UIEdgeInsets {
+            marginLeft = defaultMarginInsets.left
             return UIEdgeInsetsZero
     }
     
     // MARK: - Left margin
     
     func didTapLeftMargin(gesture: UITapGestureRecognizer) {
-        var tappedBottom = gesture.locationInView(leftMarginView).y
-            >
-            leftMarginView.frame.size.height / 3 * 2
-        
-        if !expanded
-            && collectionView.contentSize.height == preferredContentSize.height {
-            tappedBottom = false
-        }
-        
-        if tappedBottom {
-            expanded = !expanded
-        } else {
-            LTPingQueue.sharedQueue.restartPing()
-            VPNManager.sharedManager.displayFlags =
-                !VPNManager.sharedManager.displayFlags
-            collectionView.reloadData()
-            
-            leftMarginView.displayMode =
-                VPNManager.sharedManager.displayFlags
-                ? .FlagMode
-                : .SwitchMode
-        }
+        LTPingQueue.sharedQueue.restartPing()
+        VPNManager.sharedManager.displayFlags =
+            !VPNManager.sharedManager.displayFlags
+        collectionView.reloadData()
+
+        leftMarginView.displayMode =
+            VPNManager.sharedManager.displayFlags
+            ? .FlagMode
+            : .SwitchMode
     }
-    
+
     // MARK: - Open App
     
     func didTapAdd() {

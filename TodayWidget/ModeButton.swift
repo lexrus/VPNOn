@@ -12,7 +12,7 @@ enum WidgetDisplayMode {
     case SwitchMode, FlagMode
 }
 
-class ModeButton : UIView {
+class ModeButton: UIView {
     
     var displayMode: WidgetDisplayMode = .FlagMode {
         didSet {
@@ -23,37 +23,27 @@ class ModeButton : UIView {
     }
     
     var effectView: UIVisualEffectView {
-        if let view = subviews.first as! UIVisualEffectView? {
-            if view.isKindOfClass(UIVisualEffectView.self) {
+        if let view = (subviews
+            .filter { $0.isKindOfClass(UIVisualEffectView.self) })
+            .first as? UIVisualEffectView {
                 return view
-            }
         }
-        let view = UIVisualEffectView(effect: UIVibrancyEffect.notificationCenterVibrancyEffect())
-        view.frame = CGRectMake(14, 14, 24, self.bounds.height - 14)
+
+        let view = UIVisualEffectView(
+            effect: UIVibrancyEffect.notificationCenterVibrancyEffect()
+        )
+
         view.autoresizingMask = UIViewAutoresizing.FlexibleHeight
         addSubview(view)
         return view
     }
     
-    var expandIconView: UILabel {
-        for icon in effectView.contentView.subviews {
-            if icon.isKindOfClass(UILabel.self) {
-                return icon as! UILabel
-            }
-        }
-        
-        let rect = CGRectMake(0, effectView.bounds.height - 33, 24, 33)
-        let expandIcon = UILabel(frame: rect)
-        expandIcon.textColor = UIColor.whiteColor()
-        expandIcon.text = "..."
-        expandIcon.textAlignment = NSTextAlignment.Center
-        expandIcon.font = UIFont.systemFontOfSize(12)
-        expandIcon.autoresizingMask = .FlexibleTopMargin
-        effectView.contentView.addSubview(expandIcon)
-        return expandIcon
-    }
-    
     var switchIconView: SwitchIconView {
+        if let view = (effectView.contentView.subviews
+            .filter { $0.isKindOfClass(SwitchIconView.self) })
+            .first as? SwitchIconView {
+                return view
+        }
         for icon in effectView.contentView.subviews {
             if icon.isKindOfClass(SwitchIconView.self) {
                 return icon as! SwitchIconView
@@ -64,5 +54,11 @@ class ModeButton : UIView {
         switchIcon.frame = CGRectMake(2, 2, 20, 12)
         effectView.contentView.addSubview(switchIcon)
         return switchIcon
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        let x = CGRectGetWidth(self.bounds) - 24 - 10
+        self.effectView.frame = CGRectMake(x, 14, 24, 16)
     }
 }
