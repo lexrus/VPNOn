@@ -22,6 +22,7 @@ class VPNCell: UICollectionViewCell {
     override func didMoveToSuperview() {
         switchButton.onTintColor = UIColor(red: 0, green: 0.75, blue: 1, alpha: 1)
         switchButton.tintColor = UIColor(white: 1.0, alpha: 0.2)
+        switchButton.thumbTintColor = UIColor.whiteColor()
         latencyLabel.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 12)
     }
     
@@ -32,15 +33,11 @@ class VPNCell: UICollectionViewCell {
             latencyLabel.hidden = !flagImageView.hidden
             if latency == -1 {
                 latencyLabel.text = ""
-                switchButton.thumbTintColor = UIColor(white: 1.0, alpha: 1.0)
-                switchButton.tintColor = UIColor(white: 0.9, alpha: 0.4)
             } else {
-                switchButton.thumbTintColor = UIColor(white: 1.0, alpha: 1.0)
                 latencyLabel.text = "\(latency)"
-                switchButton.tintColor = colorOfLatency
             }
+            switchButton.tintColor = colorOfLatency
             latencyLabel.textColor = colorOfLatency
-            titleLabel.textColor = colorOfLatency
             setNeedsDisplay()
         }
     }
@@ -49,9 +46,9 @@ class VPNCell: UICollectionViewCell {
         var latencyColor = UIColor(red: 0.5, green: 0.8, blue: 0.19, alpha: 1)
         
         if latency > 500 {
-            latencyColor = UIColor(red: 1, green: 0.11, blue: 0.34, alpha: 0.6)
+            latencyColor = UIColor(red: 1, green: 0.11, blue: 0.34, alpha: 1)
         } else if latency > 200 {
-            latencyColor = UIColor(red: 0.8184, green: 0.5066, blue: 0.0, alpha: 0.8)
+            latencyColor = UIColor(red: 0.8184, green: 0.5066, blue: 0.0, alpha: 1)
         } else if latency == -1 {
             latencyColor = UIColor(white: 0.8, alpha: 0.4)
         }
@@ -89,16 +86,20 @@ class VPNCell: UICollectionViewCell {
     
     func updateTitleColor() {
         let statusColor: UIColor
-        
-        switch status {
-        case .Connected:
-            statusColor = UIColor(red: 0, green: 0.75, blue: 1, alpha: 1)
-            break
-        case .Connecting:
-            statusColor = UIColor.yellowColor()
-            break
-        default:
-            statusColor = UIColor(white: 1, alpha: 0.5)
+
+        if current {
+            switch status {
+            case .Connected:
+                statusColor = UIColor.whiteColor()
+                break
+            case .Connecting:
+                statusColor = UIColor.yellowColor()
+                break
+            default:
+                statusColor = UIColor(white: 1, alpha: 0.5)
+            }
+        } else {
+            statusColor = colorOfLatency
         }
         
         titleLabel.textColor = statusColor
@@ -106,10 +107,12 @@ class VPNCell: UICollectionViewCell {
     
     func animateFlagAndSwitchByStatus() {
         flagImageView.layer.removeAllAnimations()
+        latencyLabel.alpha = 1.0
         
         if !current {
             switchButton.setOn(false, animated: false)
         } else if status == .Connecting {
+            latencyLabel.alpha = 0
             let bounce = CABasicAnimation(keyPath: "position")
             let endPoint = CGPointMake(flagImageView.layer.position.x, flagImageView.layer.position.y - 6)
             let currentPoint = flagImageView.layer.position
@@ -129,9 +132,11 @@ class VPNCell: UICollectionViewCell {
             switchIndicator.stopAnimating()
             switchIndicator.hidden = true
             if status == .Connected {
+                latencyLabel.alpha = 0
                 switchButton.setOn(true, animated: true)
             } else {
-                switchButton.setOn(false, animated: true)
+                latencyLabel.alpha = 1
+                switchButton.setOn(false, animated: false)
             }
         }
     }

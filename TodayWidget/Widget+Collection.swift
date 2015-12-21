@@ -67,6 +67,8 @@ extension Widget {
             }
             
             let vpn = vpns[indexPath.row]
+
+            VPNManager.sharedManager.selectedVPNID = vpn.ID
             
             if VPNManager.sharedManager.status == .Connected {
                 if VPNManager.sharedManager.selectedVPNID == vpn.ID {
@@ -77,8 +79,7 @@ extension Widget {
             
             var account = vpn.toAccount()
             account.title = "Widget - \(vpn.title)"
-            
-            VPNManager.sharedManager.selectedVPNID = vpn.ID
+
             VPNManager.sharedManager.saveAndConnect(account)
     }
     
