@@ -48,7 +48,7 @@ Please contribute to [the Transifex project](https://www.transifex.com/lexrus/vp
 
 ## URL Schemes
 
-### Add configuration with URL
+### Add configuration
 
 VPN service providers may list a link for their customers to efficiently add server configurations in VPN On. By register the `vpnon://` protocol, it supports the following URL scheme:
 
@@ -62,10 +62,14 @@ VPN service providers may list a link for their customers to efficiently add ser
 * `vpnon://admin@202.96.209.6/?title=Yahoo&alwayson=no`
 * `vpnon://jony:ive@202.96.209.5/?title=Twitter&ikev2=yes`
 
-### Establish connection with URL
+### Establish connection
 
 * `vpnon://VPNTitle/?connect`
 * `vpnon://VPNTitle/?connect&callback=https://twitter.com`
+
+### Disconnect
+
+* `vpnon://disconnect/`
 
 ## Credits
 
