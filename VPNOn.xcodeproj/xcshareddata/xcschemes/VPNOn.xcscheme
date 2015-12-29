@@ -42,16 +42,6 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D7EB52561BBEE7A10021D93D"
-               BuildableName = "VPNOnUITests.xctest"
-               BlueprintName = "VPNOnUITests"
-               ReferencedContainer = "container:VPNOn.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "D757AF8E1A3B370E00AEF3CB"
                BuildableName = "VPNOnKitTests.xctest"
                BlueprintName = "VPNOnKitTests"

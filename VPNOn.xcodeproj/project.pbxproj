@@ -43,6 +43,7 @@
 		D74129B01A5D1A91008DE603 /* LTPingQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74129AF1A5D1A91008DE603 /* LTPingQueue.swift */; };
 		D743F3DD1C32A4DF00A7BC6E /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D71C17211C32418300936BF7 /* NetworkExtension.framework */; };
 		D743F3DE1C32A4E400A7BC6E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D71C17261C3241E500936BF7 /* Foundation.framework */; };
+		D743F3DF1C32C6F900A7BC6E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D71C17261C3241E500936BF7 /* Foundation.framework */; };
 		D7453F2F1A31966F00F7E32D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7453F2E1A31966F00F7E32D /* AppDelegate.swift */; };
 		D7453F391A31966F00F7E32D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7453F381A31966F00F7E32D /* Images.xcassets */; };
 		D7453F3C1A31966F00F7E32D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7453F3A1A31966F00F7E32D /* LaunchScreen.xib */; };
@@ -108,7 +109,6 @@
 		D7EB524C1BBED5500021D93D /* VPNManager+Flags.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EB524B1BBED5500021D93D /* VPNManager+Flags.swift */; };
 		D7EB524E1BBED6D70021D93D /* VPNManager+SelectedVPN.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EB524D1BBED6D70021D93D /* VPNManager+SelectedVPN.swift */; };
 		D7EB52521BBEE3960021D93D /* AppDelegate+URLSchemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EB52511BBEE3960021D93D /* AppDelegate+URLSchemes.swift */; };
-		D7EB525A1BBEE7A10021D93D /* VPNOnUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EB52591BBEE7A10021D93D /* VPNOnUITests.swift */; };
 		D7F0A01A1A6E47EA00F9C09A /* VPNDataManager+Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F0A0191A6E47EA00F9C09A /* VPNDataManager+Selection.swift */; };
 		D7F0A0201A6E484B00F9C09A /* VPNDataManager+Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F0A0191A6E47EA00F9C09A /* VPNDataManager+Selection.swift */; };
 		D7F0A0261A6E520300F9C09A /* VPNManager+ActivatedVPN.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F0A0251A6E520300F9C09A /* VPNManager+ActivatedVPN.swift */; };
@@ -139,26 +139,12 @@
 			remoteGlobalIDString = D757AF841A3B370E00AEF3CB;
 			remoteInfo = VPNOnKit;
 		};
-		D757AF931A3B370E00AEF3CB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D7453F211A31966F00F7E32D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D7453F281A31966F00F7E32D;
-			remoteInfo = VPNOn;
-		};
 		D757AFAF1A3B379000AEF3CB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D7453F211A31966F00F7E32D /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = D757AF841A3B370E00AEF3CB;
 			remoteInfo = VPNOnKit;
-		};
-		D7EB525C1BBEE7A10021D93D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D7453F211A31966F00F7E32D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D7453F281A31966F00F7E32D;
-			remoteInfo = VPNOn;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -341,9 +327,6 @@
 		D7EB524B1BBED5500021D93D /* VPNManager+Flags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VPNManager+Flags.swift"; sourceTree = "<group>"; };
 		D7EB524D1BBED6D70021D93D /* VPNManager+SelectedVPN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VPNManager+SelectedVPN.swift"; sourceTree = "<group>"; };
 		D7EB52511BBEE3960021D93D /* AppDelegate+URLSchemes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+URLSchemes.swift"; sourceTree = "<group>"; };
-		D7EB52571BBEE7A10021D93D /* VPNOnUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VPNOnUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D7EB52591BBEE7A10021D93D /* VPNOnUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNOnUITests.swift; sourceTree = "<group>"; };
-		D7EB525B1BBEE7A10021D93D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D7EF65C61A8D9119005A3441 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Main.strings"; sourceTree = "<group>"; };
 		D7EF65C71A8D9119005A3441 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		D7EF65C81A8D911A005A3441 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -394,14 +377,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D743F3DF1C32C6F900A7BC6E /* Foundation.framework in Frameworks */,
 				D757AF901A3B370E00AEF3CB /* VPNOnKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D7EB52541BBEE7A10021D93D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,7 +439,6 @@
 				D74C91A71A383FED00EAAAE1 /* TodayWidget */,
 				D757AF861A3B370E00AEF3CB /* VPNOnKit */,
 				D757AF951A3B370E00AEF3CB /* VPNOnKitTests */,
-				D7EB52581BBEE7A10021D93D /* VPNOnUITests */,
 				D7764EF91BF228A8000ACA4C /* Vendors */,
 				D71C17201C32417600936BF7 /* Frameworks */,
 				D7453F2A1A31966F00F7E32D /* Products */,
@@ -477,7 +453,6 @@
 				D74C91A51A383FEC00EAAAE1 /* TodayWidget.appex */,
 				D757AF851A3B370E00AEF3CB /* VPNOnKit.framework */,
 				D757AF8F1A3B370E00AEF3CB /* VPNOnKitTests.xctest */,
-				D7EB52571BBEE7A10021D93D /* VPNOnUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -686,15 +661,6 @@
 			path = Theme;
 			sourceTree = "<group>";
 		};
-		D7EB52581BBEE7A10021D93D /* VPNOnUITests */ = {
-			isa = PBXGroup;
-			children = (
-				D7EB52591BBEE7A10021D93D /* VPNOnUITests.swift */,
-				D7EB525B1BBEE7A10021D93D /* Info.plist */,
-			);
-			path = VPNOnUITests;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -778,36 +744,16 @@
 			buildPhases = (
 				D757AF8B1A3B370E00AEF3CB /* Sources */,
 				D757AF8C1A3B370E00AEF3CB /* Frameworks */,
-				D757AF8D1A3B370E00AEF3CB /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				D757AF921A3B370E00AEF3CB /* PBXTargetDependency */,
-				D757AF941A3B370E00AEF3CB /* PBXTargetDependency */,
 			);
 			name = VPNOnKitTests;
 			productName = VPNOnKitTests;
 			productReference = D757AF8F1A3B370E00AEF3CB /* VPNOnKitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		D7EB52561BBEE7A10021D93D /* VPNOnUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = D7EB52601BBEE7A10021D93D /* Build configuration list for PBXNativeTarget "VPNOnUITests" */;
-			buildPhases = (
-				D7EB52531BBEE7A10021D93D /* Sources */,
-				D7EB52541BBEE7A10021D93D /* Frameworks */,
-				D7EB52551BBEE7A10021D93D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D7EB525D1BBEE7A10021D93D /* PBXTargetDependency */,
-			);
-			name = VPNOnUITests;
-			productName = VPNOnUITests;
-			productReference = D7EB52571BBEE7A10021D93D /* VPNOnUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -862,11 +808,6 @@
 					};
 					D757AF8E1A3B370E00AEF3CB = {
 						CreatedOnToolsVersion = 6.1.1;
-						TestTargetID = D7453F281A31966F00F7E32D;
-					};
-					D7EB52561BBEE7A10021D93D = {
-						CreatedOnToolsVersion = 7.0.1;
-						TestTargetID = D7453F281A31966F00F7E32D;
 					};
 				};
 			};
@@ -903,7 +844,6 @@
 				D74C91A41A383FEC00EAAAE1 /* TodayWidget */,
 				D757AF841A3B370E00AEF3CB /* VPNOnKit */,
 				D757AF8E1A3B370E00AEF3CB /* VPNOnKitTests */,
-				D7EB52561BBEE7A10021D93D /* VPNOnUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -937,20 +877,6 @@
 				D74C91AD1A383FED00EAAAE1 /* MainInterface.storyboard in Resources */,
 				D769FE9A1A7A3ADC00EF1A1F /* Localizable.strings in Resources */,
 				D737D2031C09F9D40073E7BE /* FlagKit.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D757AF8D1A3B370E00AEF3CB /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D7EB52551BBEE7A10021D93D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1077,14 +1003,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D7EB52531BBEE7A10021D93D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D7EB525A1BBEE7A10021D93D /* VPNOnUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1103,20 +1021,10 @@
 			target = D757AF841A3B370E00AEF3CB /* VPNOnKit */;
 			targetProxy = D757AF911A3B370E00AEF3CB /* PBXContainerItemProxy */;
 		};
-		D757AF941A3B370E00AEF3CB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D7453F281A31966F00F7E32D /* VPNOn */;
-			targetProxy = D757AF931A3B370E00AEF3CB /* PBXContainerItemProxy */;
-		};
 		D757AFB01A3B379000AEF3CB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D757AF841A3B370E00AEF3CB /* VPNOnKit */;
 			targetProxy = D757AFAF1A3B379000AEF3CB /* PBXContainerItemProxy */;
-		};
-		D7EB525D1BBEE7A10021D93D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = D7453F281A31966F00F7E32D /* VPNOn */;
-			targetProxy = D7EB525C1BBEE7A10021D93D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1328,7 +1236,7 @@
 				CODE_SIGN_ENTITLEMENTS = TodayWidget/TodayWidget.entitlements;
 				INFOPLIST_FILE = TodayWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LexTang.VPNOn.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1342,7 +1250,7 @@
 				CODE_SIGN_ENTITLEMENTS = TodayWidget/TodayWidget.entitlements;
 				INFOPLIST_FILE = TodayWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LexTang.VPNOn.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1401,61 +1309,24 @@
 		D757AFA31A3B370F00AEF3CB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = VPNOnKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LexTang.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VPN On.app/VPN On";
 			};
 			name = Debug;
 		};
 		D757AFA41A3B370F00AEF3CB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = VPNOnKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LexTang.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/VPN On.app/VPN On";
-			};
-			name = Release;
-		};
-		D7EB525E1BBEE7A10021D93D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = VPNOnUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.LexTang.VPNOnUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = VPNOn;
-				USES_XCTRUNNER = YES;
-			};
-			name = Debug;
-		};
-		D7EB525F1BBEE7A10021D93D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = VPNOnUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.LexTang.VPNOnUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = VPNOn;
-				USES_XCTRUNNER = YES;
 			};
 			name = Release;
 		};
@@ -1503,15 +1374,6 @@
 			buildConfigurations = (
 				D757AFA31A3B370F00AEF3CB /* Debug */,
 				D757AFA41A3B370F00AEF3CB /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		D7EB52601BBEE7A10021D93D /* Build configuration list for PBXNativeTarget "VPNOnUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				D7EB525E1BBEE7A10021D93D /* Debug */,
-				D7EB525F1BBEE7A10021D93D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

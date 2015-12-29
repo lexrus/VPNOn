@@ -6,10 +6,9 @@
 //  Copyright (c) 2014 LexTang.com. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import XCTest
 import VPNOnKit
-import MMDB
 
 class VPNOnKitTests: XCTestCase {
     
@@ -57,13 +56,13 @@ class VPNOnKitTests: XCTestCase {
     func testAsyncResolve() {
         let expectation = self.expectationWithDescription("Async fetch GeoInfo.")
         
-        VPNManager.sharedManager.countryOfHost("google.com") {
+        VPNManager.sharedManager.countryOfHost("shields.io") {
             country in
             
             XCTAssert(country!.isoCode != "", "Country code must not be empty.")
             expectation.fulfill()
         }
         
-        self.waitForExpectationsWithTimeout(5.0, handler: nil)
+        self.waitForExpectationsWithTimeout(9.0, handler: nil)
     }
 }
