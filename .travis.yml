@@ -6,8 +6,4 @@ script:
     -project VPNOn.xcodeproj \
     -scheme VPNOn \
     -sdk iphonesimulator
-  - |
-    xctool test -jobs 4 \
-    -project VPNOn.xcodeproj \
-    -scheme VPNOnKit \
-    -sdk iphonesimulator
+

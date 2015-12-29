@@ -28,26 +28,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D7F0A00D1A6E46F600F9C09A"
-               BuildableName = "VPNOnTests.xctest"
-               BlueprintName = "VPNOnTests"
-               ReferencedContainer = "container:VPNOn.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D757AF8E1A3B370E00AEF3CB"
-               BuildableName = "VPNOnKitTests.xctest"
-               BlueprintName = "VPNOnKitTests"
-               ReferencedContainer = "container:VPNOn.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
