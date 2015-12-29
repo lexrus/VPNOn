@@ -33,7 +33,6 @@ final class ModeButton: UIView {
             effect: UIVibrancyEffect.notificationCenterVibrancyEffect()
         )
 
-        view.autoresizingMask = UIViewAutoresizing.FlexibleHeight
         addSubview(view)
         return view
     }
