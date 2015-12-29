@@ -21,6 +21,15 @@
 		D7139BE41BE4F73800F20D96 /* NormalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7139BE31BE4F73800F20D96 /* NormalTableViewCell.swift */; };
 		D7139BE61BE4FF7F00F20D96 /* Acknowledgements.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7139BE51BE4FF7F00F20D96 /* Acknowledgements.swift */; };
 		D7139BE81BE5054600F20D96 /* AcknowledgementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7139BE71BE5054600F20D96 /* AcknowledgementCell.swift */; };
+		D71C171F1C32416A00936BF7 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D71C171E1C32416A00936BF7 /* NotificationCenter.framework */; };
+		D71C17221C32418400936BF7 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D71C17211C32418300936BF7 /* NetworkExtension.framework */; };
+		D71C17241C3241DB00936BF7 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D71C17231C3241DB00936BF7 /* CoreData.framework */; };
+		D71C17251C3241E000936BF7 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D71C17231C3241DB00936BF7 /* CoreData.framework */; };
+		D71C17271C3241E500936BF7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D71C17261C3241E500936BF7 /* Foundation.framework */; };
+		D71C17291C3241E900936BF7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D71C17281C3241E900936BF7 /* UIKit.framework */; };
+		D71C172A1C3241F200936BF7 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D71C17211C32418300936BF7 /* NetworkExtension.framework */; };
+		D71C172B1C32423B00936BF7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D71C17281C3241E900936BF7 /* UIKit.framework */; };
+		D71C172C1C32424000936BF7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D71C17261C3241E500936BF7 /* Foundation.framework */; };
 		D71F03271C26FAF600FF60E2 /* VPN+Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71F03261C26FAF600FF60E2 /* VPN+Account.swift */; };
 		D71F03281C26FDDA00FF60E2 /* VPN+Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71F03261C26FAF600FF60E2 /* VPN+Account.swift */; };
 		D7322C7A1A6C024800B34AA0 /* LTViewControllerBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7322C791A6C024800B34AA0 /* LTViewControllerBackground.swift */; };
@@ -217,6 +226,11 @@
 		D7139BE31BE4F73800F20D96 /* NormalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NormalTableViewCell.swift; sourceTree = "<group>"; };
 		D7139BE51BE4FF7F00F20D96 /* Acknowledgements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Acknowledgements.swift; sourceTree = "<group>"; };
 		D7139BE71BE5054600F20D96 /* AcknowledgementCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcknowledgementCell.swift; sourceTree = "<group>"; };
+		D71C171E1C32416A00936BF7 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		D71C17211C32418300936BF7 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
+		D71C17231C3241DB00936BF7 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		D71C17261C3241E500936BF7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D71C17281C3241E900936BF7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D71F03261C26FAF600FF60E2 /* VPN+Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VPN+Account.swift"; sourceTree = "<group>"; };
 		D72403361A8B32A70066CA47 /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-US"; path = "en-US.lproj/Main.strings"; sourceTree = "<group>"; };
 		D72403371A8B32A70066CA47 /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-US"; path = "en-US.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -344,6 +358,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D71C172A1C3241F200936BF7 /* NetworkExtension.framework in Frameworks */,
+				D71C17291C3241E900936BF7 /* UIKit.framework in Frameworks */,
+				D71C17271C3241E500936BF7 /* Foundation.framework in Frameworks */,
+				D71C17251C3241E000936BF7 /* CoreData.framework in Frameworks */,
 				D754E21A1A3B3E8E00E8F135 /* VPNOnKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -352,6 +370,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D71C172C1C32424000936BF7 /* Foundation.framework in Frameworks */,
+				D71C172B1C32423B00936BF7 /* UIKit.framework in Frameworks */,
+				D71C17241C3241DB00936BF7 /* CoreData.framework in Frameworks */,
+				D71C17221C32418400936BF7 /* NetworkExtension.framework in Frameworks */,
+				D71C171F1C32416A00936BF7 /* NotificationCenter.framework in Frameworks */,
 				D754E21B1A3B3E9F00E8F135 /* VPNOnKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -414,6 +437,18 @@
 			path = MMDB;
 			sourceTree = "<group>";
 		};
+		D71C17201C32417600936BF7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D71C17281C3241E900936BF7 /* UIKit.framework */,
+				D71C17261C3241E500936BF7 /* Foundation.framework */,
+				D71C17231C3241DB00936BF7 /* CoreData.framework */,
+				D71C17211C32418300936BF7 /* NetworkExtension.framework */,
+				D71C171E1C32416A00936BF7 /* NotificationCenter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D7453F201A31966F00F7E32D = {
 			isa = PBXGroup;
 			children = (
@@ -425,6 +460,7 @@
 				D757AF951A3B370E00AEF3CB /* VPNOnKitTests */,
 				D7EB52581BBEE7A10021D93D /* VPNOnUITests */,
 				D7764EF91BF228A8000ACA4C /* Vendors */,
+				D71C17201C32417600936BF7 /* Frameworks */,
 				D7453F2A1A31966F00F7E32D /* Products */,
 				5AAA273FCFD7CD774192E06C /* Pods */,
 			);

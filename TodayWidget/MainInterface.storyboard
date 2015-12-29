@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tPH-66-mZs" customClass="ModeButton" customModule="TodayWidget" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
+                                <rect key="frame" x="0.0" y="0.0" width="42" height="80"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="axx-Uo-yQb">
@@ -144,7 +144,7 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="axx-Uo-yQb" firstAttribute="leading" secondItem="tPH-66-mZs" secondAttribute="trailing" id="0rb-Fm-aIM"/>
-                            <constraint firstItem="axx-Uo-yQb" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" constant="42" id="744-M5-m82"/>
+                            <constraint firstItem="axx-Uo-yQb" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" priority="750" constant="42" id="744-M5-m82"/>
                             <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="axx-Uo-yQb" secondAttribute="bottom" id="DS2-cH-UJn"/>
                             <constraint firstItem="axx-Uo-yQb" firstAttribute="leading" secondItem="tPH-66-mZs" secondAttribute="trailing" id="Kno-ex-Nig"/>
                             <constraint firstItem="tPH-66-mZs" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" id="OTc-6g-35A"/>
@@ -152,6 +152,7 @@
                             <constraint firstAttribute="trailing" secondItem="axx-Uo-yQb" secondAttribute="trailing" id="agP-xY-ycM"/>
                             <constraint firstItem="tPH-66-mZs" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" id="bzK-Bc-gnK"/>
                             <constraint firstItem="axx-Uo-yQb" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" id="nqE-KU-FUu"/>
+                            <constraint firstItem="axx-Uo-yQb" firstAttribute="leading" secondItem="tPH-66-mZs" secondAttribute="trailing" id="z4g-Br-6b9"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">

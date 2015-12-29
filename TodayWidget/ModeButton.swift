@@ -12,7 +12,7 @@ enum WidgetDisplayMode {
     case SwitchMode, FlagMode
 }
 
-class ModeButton: UIView {
+final class ModeButton: UIView {
     
     var displayMode: WidgetDisplayMode = .FlagMode {
         didSet {
@@ -22,7 +22,7 @@ class ModeButton: UIView {
         }
     }
     
-    var effectView: UIVisualEffectView {
+    private var effectView: UIVisualEffectView {
         if let view = (subviews
             .filter { $0.isKindOfClass(UIVisualEffectView.self) })
             .first as? UIVisualEffectView {
@@ -38,7 +38,7 @@ class ModeButton: UIView {
         return view
     }
     
-    var switchIconView: SwitchIconView {
+    private var switchIconView: SwitchIconView {
         if let view = (effectView.contentView.subviews
             .filter { $0.isKindOfClass(SwitchIconView.self) })
             .first as? SwitchIconView {

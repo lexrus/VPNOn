@@ -30,7 +30,7 @@ final class Widget:
     var marginLeft: CGFloat = 0 {
         didSet {
             self.leftConstraint.constant = marginLeft
-            self.leftMarginView.setNeedsLayout()
+            self.leftMarginView.setNeedsUpdateConstraints()
         }
     }
     
