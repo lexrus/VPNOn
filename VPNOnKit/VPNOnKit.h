@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Lex Tang. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 //! Project version number for VPNOnKit.
 FOUNDATION_EXPORT double VPNOnKitVersionNumber;

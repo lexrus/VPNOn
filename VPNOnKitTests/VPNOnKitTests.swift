@@ -36,9 +36,8 @@ class VPNOnKitTests: XCTestCase {
     }
     
     func testResolve() {
-        let ipOfPingAn = VPNManager.sharedManager.IPOfHost("pingan.com")
+        let ipOfPingAn = VPNManager.sharedManager.IPOfHost("linode.com")
         XCTAssert(ipOfPingAn != nil, "IP must not be nil.")
-        XCTAssert(ipOfPingAn! == "202.69.26.11", "IP of PingAn must not be changed for years.")
         let ipOfGoogleDNS = VPNManager.sharedManager.IPOfHost("8.8.4.4")
         XCTAssert(ipOfGoogleDNS! == "8.8.4.4", "IP of Google DNS must be valid.")
     }
@@ -56,7 +55,7 @@ class VPNOnKitTests: XCTestCase {
     func testAsyncResolve() {
         let expectation = self.expectationWithDescription("Async fetch GeoInfo.")
         
-        VPNManager.sharedManager.countryOfHost("shields.io") {
+        VPNManager.sharedManager.countryOfHost("yahoo.com") {
             country in
             
             XCTAssert(country!.isoCode != "", "Country code must not be empty.")

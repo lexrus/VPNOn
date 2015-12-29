@@ -1,4 +1,12 @@
 language: objective-c
 osx_image: xcode7.2
 script:
-  - xctool test -project VPNOn.xcodeproj -scheme VPNOn -sdk iphonesimulator
+  - |
+    xctool build -jobs 4 \
+    -project VPNOn.xcodeproj \
+    -scheme VPNOn \
+    -sdk iphoneos
+  - xctool test -jobs 4 \
+    -project VPNOn.xcodeproj \
+    -scheme VPNOnKit \
+    -sdk iphonesimulator
