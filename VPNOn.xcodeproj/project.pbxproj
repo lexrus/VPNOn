@@ -41,6 +41,8 @@
 		D74129A91A5CFCDA008DE603 /* SimplePing.h in Headers */ = {isa = PBXBuildFile; fileRef = D74129A71A5CFCDA008DE603 /* SimplePing.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D74129AA1A5CFCDA008DE603 /* SimplePing.m in Sources */ = {isa = PBXBuildFile; fileRef = D74129A81A5CFCDA008DE603 /* SimplePing.m */; };
 		D74129B01A5D1A91008DE603 /* LTPingQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74129AF1A5D1A91008DE603 /* LTPingQueue.swift */; };
+		D743F3DD1C32A4DF00A7BC6E /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D71C17211C32418300936BF7 /* NetworkExtension.framework */; };
+		D743F3DE1C32A4E400A7BC6E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D71C17261C3241E500936BF7 /* Foundation.framework */; };
 		D7453F2F1A31966F00F7E32D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7453F2E1A31966F00F7E32D /* AppDelegate.swift */; };
 		D7453F391A31966F00F7E32D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7453F381A31966F00F7E32D /* Images.xcassets */; };
 		D7453F3C1A31966F00F7E32D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D7453F3A1A31966F00F7E32D /* LaunchScreen.xib */; };
@@ -383,6 +385,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D743F3DE1C32A4E400A7BC6E /* Foundation.framework in Frameworks */,
+				D743F3DD1C32A4DF00A7BC6E /* NetworkExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
