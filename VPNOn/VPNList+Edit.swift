@@ -33,6 +33,12 @@ extension VPNList {
             as? UINavigationController {
                 nav.popViewControllerAnimated(true)
         }
+
+        if let vpns = self.vpns {
+            if vpns.count == 0 {
+                VPNManager.sharedManager.removeProfile()
+            }
+        }
     }
     
 }
