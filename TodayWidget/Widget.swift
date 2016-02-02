@@ -23,10 +23,11 @@ final class Widget:
     
     @IBOutlet weak var leftMarginView: ModeButton!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var leftConstraint: NSLayoutConstraint!
+
     private var hasSignaled = false
     private var complitionHandler: (NCUpdateResult -> Void)?
 
-    @IBOutlet weak var leftConstraint: NSLayoutConstraint!
     var marginLeft: CGFloat = 0 {
         didSet {
             self.leftConstraint.constant = marginLeft
@@ -98,17 +99,24 @@ final class Widget:
             VPNManager.sharedManager.removeProfile()
         }
 
-        let tapGasture = UITapGestureRecognizer(
+        let tapGesture = UITapGestureRecognizer(
             target: self,
             action: "didTapLeftMargin:"
         )
-        tapGasture.numberOfTapsRequired = 1
-        tapGasture.numberOfTouchesRequired = 1
+        tapGesture.numberOfTapsRequired = 1
+        tapGesture.numberOfTouchesRequired = 1
         leftMarginView.userInteractionEnabled = true
-        leftMarginView.addGestureRecognizer(tapGasture)
+        leftMarginView.addGestureRecognizer(tapGesture)
         leftMarginView.backgroundColor = UIColor(white: 0.0, alpha: 0.005)
         leftMarginView.displayMode =
             VPNManager.sharedManager.displayFlags ? .FlagMode : .SwitchMode
+
+        let longGesture = UILongPressGestureRecognizer(
+            target: self,
+            action: "didLongPress:"
+        )
+        longGesture.delaysTouchesBegan = true
+        view.addGestureRecognizer(longGesture)
 
         widgetPerformUpdateWithCompletionHandler { _ in }
     }
@@ -117,6 +125,9 @@ final class Widget:
         super.viewWillDisappear(animated)
         leftMarginView.gestureRecognizers?.forEach {
             leftMarginView.removeGestureRecognizer($0)
+        }
+        view.gestureRecognizers?.forEach {
+            view.removeGestureRecognizer($0)
         }
     }
     
@@ -178,13 +189,14 @@ final class Widget:
     }
 
     // MARK: - Open App
+
+    func didLongPress(gesture: UITapGestureRecognizer) {
+        didTapAdd()
+    }
     
     func didTapAdd() {
-        let appURL = NSURL(string: "vpnon://")
-        extensionContext!.openURL(appURL!, completionHandler: {
-            (complete: Bool) -> Void in
-            
-        })
+        let appURL = NSURL(string: "vpnon://")!
+        extensionContext?.openURL(appURL, completionHandler: nil)
     }
     
     // MARK: - Notification
