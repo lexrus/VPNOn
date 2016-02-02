@@ -41,7 +41,7 @@ extension VPNList {
             switch indexPath.section {
             case kVPNConnectionSection:
                 let cell = tableView.dequeueReusableCellWithIdentifier(
-                    R.reuseIdentifier.connectionCell, forIndexPath: indexPath)!
+                    "ConnectionCell", forIndexPath: indexPath) as! VPNSwitchCell
                 cell.titleLabel!.text = connectionStatus
                 cell.switchButton.on = connectionOn
                 cell.switchButton.enabled = vpns != nil && vpns!.count > 0
@@ -50,17 +50,13 @@ extension VPNList {
             case kVPNOnDemandSection:
                 if indexPath.row == 0 {
                     let switchCell = tableView
-                        .dequeueReusableCellWithIdentifier(
-                            R.reuseIdentifier.onDemandCell
-                        )!
+                        .dequeueReusableCellWithIdentifier("OnDemandCell") as! VPNSwitchCell
                     switchCell.switchButton.on =
                         VPNManager.sharedManager.onDemand
                     return switchCell
                 } else {
                     let domainsCell = tableView
-                        .dequeueReusableCellWithIdentifier(
-                            R.reuseIdentifier.domainsCell
-                        )!
+                        .dequeueReusableCellWithIdentifier("DomainsCell")!
                     let domainsCount = VPNManager.sharedManager
                         .onDemandDomainsArray
                         .filter { $0.rangeOfString("*.") == nil }
@@ -76,9 +72,9 @@ extension VPNList {
                 
             case kVPNListSection:
                 let cell = tableView.dequeueReusableCellWithIdentifier(
-                    R.reuseIdentifier.vPNCell,
+                    "VPNCell",
                     forIndexPath: indexPath
-                    )!
+                    ) as! VPNTableViewCell
                 guard let vpn = vpns?[indexPath.row] else {
                     return cell
                 }
@@ -101,9 +97,9 @@ extension VPNList {
                 
             default:
                 return tableView.dequeueReusableCellWithIdentifier(
-                    R.reuseIdentifier.addCell,
+                    "AddCell",
                     forIndexPath: indexPath
-                    )!
+                    )
             }
     }
     

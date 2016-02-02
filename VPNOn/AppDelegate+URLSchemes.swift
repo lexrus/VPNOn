@@ -76,14 +76,12 @@ extension AppDelegate {
     private func initialCreateViewWithURL(URL: NSURL) {
         // If the host is empty, do nothing
         guard let _ = URL.host, info = VPN.parseURL(URL) else { return }
-        
-        if let splitVC = window?.rootViewController as? UISplitViewController,
-            detailNC = splitVC.viewControllers.last as? UINavigationController,
-            editor = R.storyboard.main.vPNEditor
-        {
-            editor.initializedVPNInfo = info
-            detailNC.pushViewController(editor, animated: false)
-        }
+        guard let splitVC = window?.rootViewController as? UISplitViewController else { return }
+        guard let detailNC = splitVC.viewControllers.last as? UINavigationController else { return }
+        let mainSB = UIStoryboard.init(name: "Main", bundle: NSBundle.mainBundle())
+        guard let editorVC = mainSB.instantiateViewControllerWithIdentifier("VPNEditor") as? VPNEditor else { return }
+        editorVC.initializedVPNInfo = info
+        detailNC.pushViewController(editorVC, animated: false)
     }
 
 }

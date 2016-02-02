@@ -50,9 +50,9 @@ class Acknowledgements : UITableViewController {
         cellForRowAtIndexPath indexPath: NSIndexPath
         ) -> UITableViewCell {
             let cell = tableView.dequeueReusableCellWithIdentifier(
-                R.reuseIdentifier.acknowledgementCell,
+                "AcknowledgementCell",
                 forIndexPath: indexPath
-                )!
+                ) as! AcknowledgementCell
             let acknowledgement = acknowledgements![indexPath.section]
             
             cell.titleLabel.text
