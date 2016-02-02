@@ -1,0 +1,12 @@
+détails polis du widget. Appuyez longuement sur le widget pour ouvrir l'application principale.
+
+pointe Sad: Si vous souhaitez supprimer tous les profils de provisionnement de VPN sur dans le système, s'il vous plaît supprimer toutes les configurations VPN de VPN Sur puis ouvrez le Widget Aujourd'hui au moins une fois.
+
+Mises à jour précédentes:
+
+1. Correction des problèmes de la géolocalisation.
+2. New propos page.
+3. Ajouter un système de déconnecter.
+4. ajusté mise en page et les couleurs.
+5. D'autres corrections de bugs mineurs.
+6. Correction problème de chargement du widget aujourd'hui.

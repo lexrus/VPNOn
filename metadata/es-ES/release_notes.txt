@@ -1,0 +1,12 @@
+pulidos detalles del widget. pulsación larga en el widget para abrir la aplicación principal.
+
+punta triste: Si desea eliminar todos los perfiles de suministro de VPN por en el sistema, por favor, elimine todas las configuraciones VPN de VPN por y luego abrir el widget Hoy al menos una vez.
+
+actualizaciones anteriores:
+
+1. fijos Geo problemas de localización.
+2. Sobre Nueva página.
+3. Añadir un esquema para desconectar.
+4. diseño y los colores ajustado.
+5. Otras correcciones de errores menores.
+6. Soluciona el problema de la carga de widget de hoy.

@@ -1,0 +1,4 @@
+Một công cụ quản lý VPN cho IPSec IKEv1 của bạn (trước đây được gọi là Cisco IPSec) và các máy chủ VPN IKEv2.
+Sau khi tạo một cấu hình VPN, bạn có thể kích hoạt Tiện ích Today trong Trung tâm thông báo để có thể bật một VPN trong khoảng 3 giây (phụ thuộc vào tốc độ kết nối). Hơn nữa, bằng cách bật tính năng Theo Yêu cầu, VPN có thể được tự động kết nối khi bạn truy cập vào bất kỳ miền cụ thể nào trong ứng dụng này.
+
+Chú ý: Các giao thức VPN khác (ví dụ như, L2TP qua IPSec, PPTP, AnyConnect và OpenVPN) là không tương thích với VPN On. Bạn nên xác nhận rằng nhà cung cấp VPN của bạn hỗ trợ giao thức IPSec IKEv1 hoặc IKEv2 trước khi mua.

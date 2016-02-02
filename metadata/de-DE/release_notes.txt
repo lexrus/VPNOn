@@ -1,0 +1,11 @@
+Es wurden einige kritische Fehler von Heute Widget.
+
+Wenn Sie alle Bereitstellungsprofile der VPN-On im System zu entfernen möchten, entfernen Sie bitte alle VPN-Konfigurationen in VPN auf und öffnen Sie die Heute Widget mindestens einmal.
+
+Zurück Aktuelles:
+
+1. Anlage Geo Standortfragen.
+2. Neue About-Seite.
+3. Fügen Sie ein Schema zu trennen.
+4. Bereinigt Layout und Farben.
+5. Weitere kleinere Fehler behoben.

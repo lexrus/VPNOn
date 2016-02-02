@@ -1,0 +1,12 @@
+chi tiết đánh bóng của các phụ tùng. Long nhấn các widget để mở ứng dụng chính.
+
+Sad tip: Nếu bạn muốn loại bỏ tất cả các cấu hình dự phòng của các VPN On trong hệ thống, hãy loại bỏ tất cả các cấu hình VPN trong VPN On và sau đó mở Widget Hôm nay ít nhất một lần.
+
+cập nhật trước đó:
+
+1. Cố định vấn đề vị trí địa lý.
+2. New Về trang.
+3. Thêm một chương trình để ngắt kết nối.
+4. Điều chỉnh bố cục và màu sắc.
+5. lỗi nhỏ khác sửa lỗi.
+6. Khắc phục vấn đề tải của widget ngày hôm nay.
