@@ -11,7 +11,9 @@ import VPNOnKit
 import NetworkExtension
 import QuartzCore
 
-class VPNCell: UICollectionViewCell {
+private let ConnectedColor = UIColor(red: 0, green: 0.75, blue: 1, alpha: 1)
+
+final class VPNCell: UICollectionViewCell {
     
     @IBOutlet weak var switchIndicator: UIActivityIndicatorView!
     @IBOutlet weak var switchButton: UISwitch!
@@ -20,7 +22,7 @@ class VPNCell: UICollectionViewCell {
     @IBOutlet weak var latencyLabel: UILabel!
     
     override func didMoveToSuperview() {
-        switchButton.onTintColor = UIColor(red: 0, green: 0.75, blue: 1, alpha: 1)
+        switchButton.onTintColor = ConnectedColor
         switchButton.tintColor = UIColor(white: 1.0, alpha: 0.2)
         switchButton.thumbTintColor = UIColor.whiteColor()
         latencyLabel.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 12)
@@ -38,8 +40,12 @@ class VPNCell: UICollectionViewCell {
             }
             switchButton.tintColor = colorOfLatency
             latencyLabel.textColor = colorOfLatency
-            titleLabel.textColor = colorOfLatency
-            setNeedsDisplay()
+
+            if status == .Connected {
+                titleLabel.textColor = ConnectedColor
+            } else {
+                titleLabel.textColor = colorOfLatency
+            }
         }
     }
     
