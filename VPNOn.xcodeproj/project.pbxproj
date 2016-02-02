@@ -59,7 +59,6 @@
 		D754E2041A3B3A1B00E8F135 /* VPNOnKit.h in Headers */ = {isa = PBXBuildFile; fileRef = D754E2011A3B3A1B00E8F135 /* VPNOnKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D754E2171A3B3DE600E8F135 /* VPNOnKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D757AF851A3B370E00AEF3CB /* VPNOnKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D754E21A1A3B3E8E00E8F135 /* VPNOnKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D757AF851A3B370E00AEF3CB /* VPNOnKit.framework */; };
-		D754E21B1A3B3E9F00E8F135 /* VPNOnKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D757AF851A3B370E00AEF3CB /* VPNOnKit.framework */; };
 		D757AFA91A3B374200AEF3CB /* VPNManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D757AFA61A3B374200AEF3CB /* VPNManager.swift */; };
 		D758FE0D1A5BE35000929494 /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = D758FE0C1A5BE35000929494 /* About.swift */; };
 		D769FE941A7A3A3500EF1A1F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D769FE961A7A3A3500EF1A1F /* Localizable.strings */; };
@@ -79,7 +78,7 @@
 		D77F341D1A6F875E00796827 /* LTTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77F341C1A6F875E00796827 /* LTTextField.swift */; };
 		D79083DA1A7BBD230089DB67 /* LTDarkGreenTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79083D91A7BBD230089DB67 /* LTDarkGreenTheme.swift */; };
 		D79083DC1A7BBEF70089DB67 /* LTHelloKittyTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79083DB1A7BBEF70089DB67 /* LTHelloKittyTheme.swift */; };
-		D79785721C60918900BD72A0 /* VPNOnKit.framework in Embed Framework */ = {isa = PBXBuildFile; fileRef = D757AF851A3B370E00AEF3CB /* VPNOnKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D79785751C60B3A300BD72A0 /* VPNOnKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D757AF851A3B370E00AEF3CB /* VPNOnKit.framework */; };
 		D79F73731A728EC900EB2289 /* VPN+URLScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79F73721A728EC900EB2289 /* VPN+URLScheme.swift */; };
 		D79F73751A72923E00EB2289 /* VPNEditor+Save.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79F73741A72923E00EB2289 /* VPNEditor+Save.swift */; };
 		D7A9C4F31BDD26AF00F06570 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7A9C4F21BDD26AF00F06570 /* R.generated.swift */; };
@@ -153,24 +152,13 @@
 		};
 		D754E2161A3B3DDE00E8F135 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
 				D754E2171A3B3DE600E8F135 /* VPNOnKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D79785711C60917800BD72A0 /* Embed Framework */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				D79785721C60918900BD72A0 /* VPNOnKit.framework in Embed Framework */,
-			);
-			name = "Embed Framework";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -359,7 +347,7 @@
 				D71C17241C3241DB00936BF7 /* CoreData.framework in Frameworks */,
 				D71C17221C32418400936BF7 /* NetworkExtension.framework in Frameworks */,
 				D71C171F1C32416A00936BF7 /* NotificationCenter.framework in Frameworks */,
-				D754E21B1A3B3E9F00E8F135 /* VPNOnKit.framework in Frameworks */,
+				D79785751C60B3A300BD72A0 /* VPNOnKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -680,7 +668,6 @@
 				D74C91A11A383FEC00EAAAE1 /* Sources */,
 				D74C91A21A383FEC00EAAAE1 /* Frameworks */,
 				D74C91A31A383FEC00EAAAE1 /* Resources */,
-				D79785711C60917800BD72A0 /* Embed Framework */,
 			);
 			buildRules = (
 			);
@@ -1176,7 +1163,7 @@
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = TodayWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LexTang.VPNOn.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1191,7 +1178,7 @@
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = TodayWidget/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LexTang.VPNOn.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
