@@ -38,6 +38,7 @@ class VPNCell: UICollectionViewCell {
             }
             switchButton.tintColor = colorOfLatency
             latencyLabel.textColor = colorOfLatency
+            titleLabel.textColor = colorOfLatency
             setNeedsDisplay()
         }
     }
@@ -58,7 +59,6 @@ class VPNCell: UICollectionViewCell {
     
     var status: NEVPNStatus = .Disconnected {
         didSet {
-            updateTitleColor()
             animateFlagAndSwitchByStatus()
         }
     }
@@ -90,31 +90,6 @@ class VPNCell: UICollectionViewCell {
             flagImageView.hidden = true
             switchButton.hidden = false
         }
-    }
-    
-    func updateTitleColor() {
-        let statusColor: UIColor
-
-        if current {
-            switch status {
-            case .Connected:
-                statusColor = UIColor(red: 0, green: 0.75, blue: 1, alpha: 1)
-                break
-            case .Connecting:
-                statusColor = UIColor.yellowColor()
-                break
-            default:
-                statusColor = UIColor(white: 1, alpha: 0.5)
-            }
-        } else {
-            if VPNManager.sharedManager.status != .Connected {
-                statusColor = colorOfLatency
-            } else {
-                statusColor = UIColor(white: 1, alpha: 0.5)
-            }
-        }
-        
-        titleLabel.textColor = statusColor
     }
     
     func animateFlagAndSwitchByStatus() {
