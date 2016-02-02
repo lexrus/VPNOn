@@ -17,15 +17,15 @@ extension Widget {
         collectionView: UICollectionView,
         numberOfItemsInSection section: Int
         ) -> Int {
-            return vpns.count + 1
+            return max(1, vpns.count)
     }
     
     func collectionView(
         collectionView: UICollectionView,
         cellForItemAtIndexPath indexPath: NSIndexPath
         ) -> UICollectionViewCell {
-            
-            if indexPath.row == vpns.count {
+
+            if vpns.count == 0 {
                 let cell = collectionView.dequeueReusableCellWithReuseIdentifier(
                     "addCell",
                     forIndexPath: indexPath
@@ -59,10 +59,9 @@ extension Widget {
         collectionView: UICollectionView,
         didSelectItemAtIndexPath indexPath: NSIndexPath
         ) {
-            
-            if indexPath.row == vpns.count {
+
+            if vpns.count == 0 {
                 didTapAdd()
-                
                 return
             }
             
@@ -87,10 +86,11 @@ extension Widget {
         collectionView: UICollectionView,
         shouldHighlightItemAtIndexPath indexPath: NSIndexPath
         ) -> Bool {
-            
-            if indexPath.row == vpns.count {
+
+            if vpns.count == 0 {
                 return true
             }
+
             switch VPNManager.sharedManager.status {
             case .Connected, .Connecting:
                 VPNManager.sharedManager.disconnect()
