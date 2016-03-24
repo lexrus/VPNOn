@@ -15,14 +15,11 @@ Turning on a VPN is always a painful experience on an iOS device due to the deep
 - An iPhone/iPad running iOS 8.0+
 - An IPSec IKEv1 / IKEv2 VPN(create yours with [my Ansible Playbook](https://github.com/lexrus/vpn-deploy-playbook) or [deploy on DigitalOcean](http://installer.71m.us/install?url=https://github.com/lexrus/do-ikev1))
 - Xcode 7.3
-- [Carthage](https://github.com/carthage/carthage)
-- An Apple iOS developer account
+- An Apple iOS develop account
 
 ## Build with Xcode
 
-Install dependencies with `carthage update --platform ios`.
-
-To compile the project, you may temporarily modify the bundle_id after adding yours into the Apple Developer Center. And then activate the following capabilities of the container App and the Today extension:
+To compile the project, you may temporarily modify the `bundle_id` after adding yours into the Apple Developer Center. And then activate the following capabilities of the container App and the Today extension:
 
 1. Personal VPN
 2. Keychain Sharing
@@ -32,7 +29,7 @@ Meanwhile, provisioning profiles are required for testing on iPhone/iPad.
 
 ## Usage
 
-After creating a VPN configuration you can activate the Today Widget in Notification Center, then turn on the VPN by tapping switches or flags. You may be asked to allow the installation of a VPN profile for the first time.
+Once you add a VPN configuration you can activate the Today Widget in Notification Center, then turn on the VPN by tapping a switch or flag. You may be asked to allow the installation of a VPN profile for the first time.
 
 ## Contribution
 
