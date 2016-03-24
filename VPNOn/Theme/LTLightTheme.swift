@@ -8,8 +8,8 @@
 
 import UIKit
 
-struct LTLightTheme : LTTheme
-{
+struct LTLightTheme : LTTheme {
+
     var name = "Light"
     var defaultBackgroundColor   = UIColor(red:0.94, green:0.94, blue:0.96, alpha:1)
     var navigationBarColor       = UIColor(red:0.97, green:0.97, blue:0.97, alpha:1)
@@ -21,4 +21,5 @@ struct LTLightTheme : LTTheme
     var tableViewLineColor       = UIColor(red:0.78, green:0.78, blue:0.8 , alpha:1)
     var tableViewCellColor       = UIColor.whiteColor()
     var switchBorderColor        = UIColor(red:0.78, green:0.78, blue:0.8 , alpha:1)
+
 }

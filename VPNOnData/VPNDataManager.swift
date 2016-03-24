@@ -54,8 +54,9 @@ class VPNDataManager {
             "journal_mode": "WAL"
         ]
         
-        if let store = coordinator!.persistentStoreForURL(url) { }
-        else {
+        if let _ = coordinator!.persistentStoreForURL(url) {
+
+        } else {
             do {
                 try coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: options)
             } catch let error as NSError {

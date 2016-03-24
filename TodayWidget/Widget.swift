@@ -42,26 +42,26 @@ final class Widget:
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        preferredContentSize = CGSizeMake(
-            CGRectGetWidth(UIScreen.mainScreen().bounds),
-            kWidgetNormalHeight
+        preferredContentSize = CGSize(
+            width: CGRectGetWidth(UIScreen.mainScreen().bounds),
+            height: kWidgetNormalHeight
         )
         
         NSNotificationCenter.defaultCenter().addObserver(
             self,
-            selector: "coreDataDidSave:",
+            selector: #selector(Widget.coreDataDidSave(_:)),
             name: NSManagedObjectContextDidSaveNotification,
             object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(
             self,
-            selector: "VPNStatusDidChange:",
+            selector: #selector(Widget.VPNStatusDidChange(_:)),
             name: NEVPNStatusDidChangeNotification,
             object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(
             self,
-            selector: "pingDidUpdate:",
+            selector: #selector(Widget.pingDidUpdate(_:)),
             name: kPingDidUpdate,
             object: nil)
     }
@@ -88,9 +88,9 @@ final class Widget:
         collectionView.reloadData()
         LTPingQueue.sharedQueue.restartPing()
 
-        preferredContentSize = CGSizeMake(
-            collectionView.contentSize.width,
-            max(kWidgetNormalHeight, collectionView.contentSize.height)
+        preferredContentSize = CGSize(
+            width: collectionView.contentSize.width,
+            height: max(kWidgetNormalHeight, collectionView.contentSize.height)
         )
 
         // NOTE: Must remove the profile when there're no VPNs
@@ -101,7 +101,7 @@ final class Widget:
 
         let tapGesture = UITapGestureRecognizer(
             target: self,
-            action: "didTapLeftMargin:"
+            action: #selector(Widget.didTapLeftMargin(_:))
         )
         tapGesture.numberOfTapsRequired = 1
         tapGesture.numberOfTouchesRequired = 1
@@ -113,7 +113,7 @@ final class Widget:
 
         let longGesture = UILongPressGestureRecognizer(
             target: self,
-            action: "didLongPress:"
+            action: #selector(Widget.didLongPress(_:))
         )
         longGesture.delaysTouchesBegan = true
         view.addGestureRecognizer(longGesture)

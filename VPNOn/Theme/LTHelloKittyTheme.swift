@@ -8,8 +8,8 @@
 
 import UIKit
 
-struct LTHelloKittyTheme : LTTheme
-{
+struct LTHelloKittyTheme : LTTheme {
+
     var name = "LightHelloKitty"
     var defaultBackgroundColor   = UIColor(red:1   , green:0.9 , blue:0.9 , alpha:1)
     var navigationBarColor       = UIColor(red:1   , green:0.97, blue:0.97, alpha:1)
@@ -21,4 +21,5 @@ struct LTHelloKittyTheme : LTTheme
     var tableViewLineColor       = UIColor(red:0.9 , green:0.8 , blue:0.8 , alpha:1)
     var tableViewCellColor       = UIColor(red:1   , green:0.97, blue:0.97, alpha:1)
     var switchBorderColor        = UIColor(red:0.9 , green:0.78, blue:0.8 , alpha:1)
+
 }

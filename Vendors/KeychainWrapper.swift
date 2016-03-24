@@ -121,7 +121,7 @@ public class KeychainWrapper {
             objectValue = NSKeyedUnarchiver.unarchiveObjectWithData(data) as? NSCoding
         }
 
-        return objectValue;
+        return objectValue
     }
 
     
@@ -227,7 +227,7 @@ public class KeychainWrapper {
         let keychainQueryDictionary: [String:AnyObject] = self.setupKeychainQueryDictionaryForKey(keyName)
 
         // Delete
-        let status: OSStatus =  SecItemDelete(keychainQueryDictionary);
+        let status: OSStatus =  SecItemDelete(keychainQueryDictionary)
 
         if status == errSecSuccess {
             return true

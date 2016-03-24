@@ -50,7 +50,7 @@ final class ModeButton: UIView {
         }
         
         let switchIcon = SwitchIconView()
-        switchIcon.frame = CGRectMake(2, 2, 20, 12)
+        switchIcon.frame = CGRect(x: 2, y: 2, width: 20, height: 12)
         effectView.contentView.addSubview(switchIcon)
         return switchIcon
     }
@@ -58,6 +58,6 @@ final class ModeButton: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         let x = CGRectGetWidth(self.bounds) - 24 - 10
-        self.effectView.frame = CGRectMake(x, 14, 24, 16)
+        self.effectView.frame = CGRect(x: x, y: 14, width: 24, height: 16)
     }
 }

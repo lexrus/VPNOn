@@ -40,8 +40,12 @@ public class LTPingOperation : NSObject, SimplePingDelegate {
         ping = SimplePing(hostName: hostLatency.hostname)
         if let p = ping {
             p.delegate = self
-            timeoutTimer = NSTimer.scheduledTimerWithTimeInterval(kPingTimeout,
-                target: self, selector: "stop", userInfo: nil, repeats: false)
+            timeoutTimer = NSTimer.scheduledTimerWithTimeInterval(
+                kPingTimeout,
+                target: self,
+                selector: #selector(LTPingOperation.stop),
+                userInfo: nil,
+                repeats: false)
             p.start()
         }
     }
@@ -127,7 +131,11 @@ public class LTPingQueue : NSObject, SimplePingDelegate {
     
     override init() {
         super.init()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "pingDidUpdate:", name: kPingDidUpdate, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(
+            self,
+            selector: #selector(LTPingQueue.pingDidUpdate(_:)),
+            name: kPingDidUpdate,
+            object: nil)
     }
     
     deinit {

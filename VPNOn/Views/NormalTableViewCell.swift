@@ -18,9 +18,11 @@ class NormalTableViewCell : UITableViewCell {
         }
         if accessoryView == nil {
             accessoryView = LTTableViewCellDeclosureIndicator()
-            accessoryView!.frame = CGRectMake(
-                0, 0,
-                kAccessoryWidth, kAccessoryWidth
+            accessoryView!.frame = CGRect(
+                x: 0,
+                y: 0,
+                width: kAccessoryWidth,
+                height: kAccessoryWidth
             )
         }
     }

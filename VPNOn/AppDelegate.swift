@@ -46,4 +46,3 @@ class AppDelegate:
             return false
     }
 }
-

@@ -21,15 +21,13 @@ public struct MMDBCountry: CustomStringConvertible {
     init(dictionary: NSDictionary) {
         if let dict = dictionary["continent"],
             code = dict["code"] as? String,
-            continentNames = dict["names"] as? [String: String]
-        {
+            continentNames = dict["names"] as? [String: String] {
             continent.code = code
             continent.names = continentNames
         }
         if let dict = dictionary["country"],
             iso = dict["iso_code"] as? String,
-            countryNames = dict["names"] as? [String: String]
-        {
+            countryNames = dict["names"] as? [String: String] {
             self.isoCode = iso
             self.names = countryNames
         }
@@ -47,7 +45,7 @@ public struct MMDBCountry: CustomStringConvertible {
                 + $0.1 + "\""
                 + (i > 1 ? "," : "")
                 + "\n"
-            i--
+            i -= 1
         }
         s += "    }\n"
         s += "  },\n"
@@ -60,7 +58,7 @@ public struct MMDBCountry: CustomStringConvertible {
                 + $0.1 + "\""
                 + (i > 1 ? "," : "")
                 + "\n"
-            i--
+            i -= 1
         }
         s += "  }\n}"
         return s
@@ -152,7 +150,7 @@ final public class MMDB {
 
                 list = list.memory.next
                 list = dumpList(list, toS: toS)
-                size--
+                size -= 1
             }
             toS.memory += "},"
             break

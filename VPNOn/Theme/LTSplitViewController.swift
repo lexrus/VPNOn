@@ -8,8 +8,7 @@
 
 import UIKit
 
-class LTSplitViewController: UISplitViewController
-{
+class LTSplitViewController: UISplitViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +29,7 @@ class LTSplitViewController: UISplitViewController
     }
     
     override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
-        if(event?.subtype == UIEventSubtype.MotionShake) {
+        if event?.subtype == UIEventSubtype.MotionShake {
             LTThemeManager.sharedManager.activateNextTheme()
             self.setNeedsStatusBarAppearanceUpdate()
         }

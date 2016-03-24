@@ -8,8 +8,8 @@
 
 import UIKit
 
-struct LTDarkGreenTheme : LTTheme
-{
+struct LTDarkGreenTheme : LTTheme {
+
     var name = "DarkGreen"
     var defaultBackgroundColor   = UIColor.blackColor()
     var navigationBarColor       = UIColor(red:0.03, green:0.04, blue:0.03, alpha:1)
@@ -21,4 +21,5 @@ struct LTDarkGreenTheme : LTTheme
     var tableViewLineColor       = UIColor(red:0.07, green:0.08, blue:0.07, alpha:1)
     var tableViewCellColor       = UIColor(red:0.07, green:0.08, blue:0.07, alpha:1)
     var switchBorderColor        = UIColor(red:0.2 , green:0.25, blue:0.2 , alpha:1)
+
 }

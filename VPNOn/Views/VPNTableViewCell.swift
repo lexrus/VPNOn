@@ -30,7 +30,7 @@ class VPNTableViewCell : NormalTableViewCell {
                 - kAccessoryWidth
                 - kRightMargin
             let tagY = (CGRectGetHeight(bounds) - tagHeight) / 2
-            let tagRect = CGRectMake(tagX, tagY, tagWidth, tagHeight)
+            let tagRect = CGRect(x: tagX, y: tagY, width: tagWidth, height: tagHeight)
             drawIKEv2Tag(
                 radius: 2,
                 rect: tagRect,
@@ -39,9 +39,11 @@ class VPNTableViewCell : NormalTableViewCell {
             )
         }
         if current {
-            let currentIndicatorRect = CGRectMake(
-                0, 0,
-                7, CGRectGetHeight(rect)
+            let currentIndicatorRect = CGRect(
+                x: 0,
+                y: 0,
+                width: 7,
+                height: CGRectGetHeight(rect)
             )
             let rectanglePath = UIBezierPath(rect: currentIndicatorRect)
             LTThemeManager.sharedManager.currentTheme!.tintColor.setFill()
@@ -84,19 +86,19 @@ class VPNTableViewCell : NormalTableViewCell {
             
             let textTextHeight: CGFloat = NSString(string: tagText)
                 .boundingRectWithSize(
-                    CGSizeMake(textRect.width, CGFloat.infinity),
+                    CGSize(width: textRect.width, height: CGFloat.infinity),
                     options: NSStringDrawingOptions.UsesLineFragmentOrigin,
                     attributes: textFontAttributes,
                     context: nil
                 ).size.height
             CGContextSaveGState(context)
-            CGContextClipToRect(context, textRect);
+            CGContextClipToRect(context, textRect)
             NSString(string: tagText).drawInRect(
-                CGRectMake(
-                    textRect.minX,
-                    textRect.minY + (textRect.height - textTextHeight) / 2,
-                    textRect.width,
-                    textTextHeight
+                CGRect(
+                    x: textRect.minX,
+                    y: textRect.minY + (textRect.height - textTextHeight) / 2,
+                    width: textRect.width,
+                    height: textTextHeight
                 ),
                 withAttributes: textFontAttributes
             )

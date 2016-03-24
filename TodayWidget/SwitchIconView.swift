@@ -30,7 +30,9 @@ class SwitchIconView: UIView {
         rectangle2Path.lineWidth = 1
         rectangle2Path.stroke()
         
-        let ovalPath = UIBezierPath(ovalInRect: CGRectMake(circleX, circleY, circleWidth, circleWidth))
+        let ovalPath = UIBezierPath(ovalInRect:
+            CGRect(x: circleX, y: circleY, width: circleWidth, height: circleWidth)
+        )
         color.setFill()
         ovalPath.fill()
     }

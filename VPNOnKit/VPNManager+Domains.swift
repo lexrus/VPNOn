@@ -64,7 +64,7 @@ extension VPNManager {
         } else {
             let ns = s as NSString
             let range = ns.rangeOfCharacterFromSet(seperator)
-            if (range.location == NSNotFound) {
+            if range.location == NSNotFound {
                 domains = [String]()
                 domains.append(s)
             }

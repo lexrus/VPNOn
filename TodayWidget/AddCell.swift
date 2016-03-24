@@ -29,7 +29,12 @@ class AddCell : UICollectionViewCell {
     }
     
     override func didMoveToSuperview() {
-        iconView.frame = CGRectMake((CGRectGetWidth(bounds) - 50) / 2, 14, 50, 32)
+        iconView.frame = CGRect(
+            x: (CGRectGetWidth(bounds) - 50) / 2,
+            y: 14,
+            width: 50,
+            height: 32
+        )
     }
 }
 
@@ -48,9 +53,12 @@ private class PlusMarkView : UIView {
         color.setFill()
         color.setStroke()
         
-        let borderRect = CGRectMake(
-            lineWidth, lineWidth,
-            rect.width - lineWidth * 2, rect.height - lineWidth * 2)
+        let borderRect = CGRect(
+            x: lineWidth,
+            y: lineWidth,
+            width: rect.width - lineWidth * 2,
+            height: rect.height - lineWidth * 2
+        )
         
         let borderPath = UIBezierPath(roundedRect: borderRect, cornerRadius: rect.height / 2)
         borderPath.lineWidth = lineWidth
@@ -58,18 +66,20 @@ private class PlusMarkView : UIView {
         
         let plusWidth = borderRect.width / 4
         
-        let plusLine0Rect = CGRectMake(
-            (borderRect.width - plusWidth) / 2,
-            borderRect.height / 2,
-            plusWidth,
-            lineWidth)
+        let plusLine0Rect = CGRect(
+            x: (borderRect.width - plusWidth) / 2,
+            y: borderRect.height / 2,
+            width: plusWidth,
+            height: lineWidth
+        )
         UIBezierPath(rect: plusLine0Rect).fill()
         
-        let plusLine1Rect = CGRectMake(
-            borderRect.width / 2,
-            (borderRect.height - plusWidth) / 2,
-            lineWidth,
-            plusWidth)
+        let plusLine1Rect = CGRect(
+            x: borderRect.width / 2,
+            y: (borderRect.height - plusWidth) / 2,
+            width: lineWidth,
+            height: plusWidth
+        )
         UIBezierPath(rect: plusLine1Rect).fill()
     }
 }

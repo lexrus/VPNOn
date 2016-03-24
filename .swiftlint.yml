@@ -1,11 +1,27 @@
+disabled_rules:
+  - variable_name_min_length
+  - todo
+  - force_cast
+  - trailing_whitespace
+  - colon
+  - variable_name
+  - type_name
+  - comma
+  - valid_docs
+  - line_length
+  - opening_brace
 excluded:
   - Carthage
   - Pods
-  - Vendor
-line_length: 100
+function_body_length:
+  - 230
+  - 300
 type_body_length:
   - 300
   - 600
 variable_name_max_length:
-  - 40
-  - 60
+  - 30
+  - 50
+file_length:
+  - 500
+  - 700

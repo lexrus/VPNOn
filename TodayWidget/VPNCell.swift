@@ -107,7 +107,7 @@ final class VPNCell: UICollectionViewCell {
         } else if status == .Connecting {
             latencyLabel.alpha = 0
             let bounce = CABasicAnimation(keyPath: "position")
-            let endPoint = CGPointMake(flagImageView.layer.position.x, flagImageView.layer.position.y - 6)
+            let endPoint = CGPoint(x: flagImageView.layer.position.x, y: flagImageView.layer.position.y - 6)
             let currentPoint = flagImageView.layer.position
             bounce.duration = 0.3
             bounce.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)

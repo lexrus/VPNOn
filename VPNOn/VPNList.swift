@@ -48,26 +48,26 @@ final class VPNList: UITableViewController, SimplePingDelegate, VPNDomainsDelega
             ].forEach {
                 NC.addObserver(
                     self,
-                    selector: "didEditVPN:",
+                    selector: #selector(VPNList.didEditVPN(_:)),
                     name: $0,
                     object: nil)
         }
         
         NC.addObserver(
             self,
-            selector: "pingDidUpdate:",
+            selector: #selector(LTPingQueue.pingDidUpdate(_:)),
             name: kPingDidUpdate,
             object: nil)
         
         NC.addObserver(
             self,
-            selector: "pingDidComplete:",
+            selector: #selector(VPNList.pingDidComplete(_:)),
             name: kPingDidComplete,
             object: nil)
         
         NC.addObserver(
             self,
-            selector: "VPNDidChangeStatus:",
+            selector: #selector(VPNList.VPNDidChangeStatus(_:)),
             name: NEVPNStatusDidChangeNotification,
             object: nil)
         

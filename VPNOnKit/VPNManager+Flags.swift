@@ -24,4 +24,5 @@ extension VPNManager {
             defaults.synchronize()
         }
     }
+
 }
