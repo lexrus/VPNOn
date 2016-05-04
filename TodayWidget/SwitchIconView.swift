@@ -17,7 +17,7 @@ class SwitchIconView: UIView {
     }
     
     override func drawRect(rect: CGRect) {
-        let insetRect = CGRectInset(rect, 1, 1)
+        let insetRect = rect.insetBy(dx: 1, dy: 1)
         let color = UIColor.whiteColor()
         
         let radius: CGFloat = insetRect.size.height / 2.0

@@ -88,7 +88,7 @@ class LTThemeManager
     func activateNextTheme()
     {
         var index = themeIndex
-        index++
+        index += 1
         
         if index >= themes.count {
             themeIndex = 0

@@ -17,8 +17,8 @@ class LTTableViewCellDeclosureIndicator: UIView
     }
     
     override func drawRect(rect: CGRect) {
-        let x = CGRectGetMaxX(self.bounds) - 2
-        let y = CGRectGetMidY(self.bounds)
+        let x = bounds.maxX - 2
+        let y = bounds.maxY
         let r = CGFloat(4.5)
         
         let context = UIGraphicsGetCurrentContext()

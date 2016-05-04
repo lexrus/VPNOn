@@ -30,7 +30,7 @@ class AddCell : UICollectionViewCell {
     
     override func didMoveToSuperview() {
         iconView.frame = CGRect(
-            x: (CGRectGetWidth(bounds) - 50) / 2,
+            x: (bounds.width - 50) / 2,
             y: 14,
             width: 50,
             height: 32

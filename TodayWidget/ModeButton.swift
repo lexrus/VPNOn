@@ -57,7 +57,7 @@ final class ModeButton: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        let x = CGRectGetWidth(self.bounds) - 24 - 10
+        let x = bounds.width - 24 - 10
         self.effectView.frame = CGRect(x: x, y: 14, width: 24, height: 16)
     }
 }

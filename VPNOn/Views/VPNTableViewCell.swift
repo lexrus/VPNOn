@@ -25,11 +25,11 @@ class VPNTableViewCell : NormalTableViewCell {
         if IKEv2 {
             let tagWidth: CGFloat = 34
             let tagHeight: CGFloat = 14
-            let tagX = CGRectGetWidth(bounds)
+            let tagX = bounds.width
                 - tagWidth
                 - kAccessoryWidth
                 - kRightMargin
-            let tagY = (CGRectGetHeight(bounds) - tagHeight) / 2
+            let tagY = (bounds.height - tagHeight) / 2
             let tagRect = CGRect(x: tagX, y: tagY, width: tagWidth, height: tagHeight)
             drawIKEv2Tag(
                 radius: 2,
@@ -43,7 +43,7 @@ class VPNTableViewCell : NormalTableViewCell {
                 x: 0,
                 y: 0,
                 width: 7,
-                height: CGRectGetHeight(rect)
+                height: rect.height
             )
             let rectanglePath = UIBezierPath(rect: currentIndicatorRect)
             LTThemeManager.sharedManager.currentTheme!.tintColor.setFill()

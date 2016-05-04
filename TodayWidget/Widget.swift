@@ -43,7 +43,7 @@ final class Widget:
         super.viewDidLoad()
         
         preferredContentSize = CGSize(
-            width: CGRectGetWidth(UIScreen.mainScreen().bounds),
+            width: UIScreen.mainScreen().bounds.width,
             height: kWidgetNormalHeight
         )
         
