@@ -182,7 +182,7 @@ final public class MMDB {
         }
 
         var entry = result.entry
-        var list = ListPtr()
+        var list: ListPtr = nil
 
         let status = MMDB_get_entry_data_list(&entry, &list)
         if status != MMDB_SUCCESS {
