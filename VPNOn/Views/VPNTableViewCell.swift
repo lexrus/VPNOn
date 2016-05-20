@@ -25,10 +25,17 @@ class VPNTableViewCell : NormalTableViewCell {
         if IKEv2 {
             let tagWidth: CGFloat = 34
             let tagHeight: CGFloat = 14
-            let tagX = bounds.width
+            let tagX: CGFloat
+
+            if isRightToLeft {
+                tagX = (accessoryView?.frame.maxX ?? 0) + kRightMargin + kAccessoryWidth
+            } else {
+                tagX = bounds.width
                 - tagWidth
                 - kAccessoryWidth
                 - kRightMargin
+            }
+
             let tagY = (bounds.height - tagHeight) / 2
             let tagRect = CGRect(x: tagX, y: tagY, width: tagWidth, height: tagHeight)
             drawIKEv2Tag(

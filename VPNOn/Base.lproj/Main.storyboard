@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ViW-99-x1O">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ViW-99-x1O">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Segues with Peek and Pop" minToolsVersion="7.1"/>
     </dependencies>
@@ -133,6 +133,12 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hT9-jt-Gxb">
+                                            <rect key="frame" x="248" y="6" width="51" height="31"/>
+                                            <connections>
+                                                <action selector="didTapOnDemandSwitch:" destination="Pga-4R-p1I" eventType="valueChanged" id="hT1-A0-FbX"/>
+                                            </connections>
+                                        </switch>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On Demand" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="FSL-Tv-Cp6" customClass="LTTableViewCellTitle" customModule="VPNOn" customModuleProvider="target">
                                             <rect key="frame" x="15" y="0.0" width="225" height="44"/>
                                             <constraints>
@@ -147,12 +153,6 @@
                                                 </mask>
                                             </variation>
                                         </label>
-                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hT9-jt-Gxb">
-                                            <rect key="frame" x="248" y="6" width="51" height="31"/>
-                                            <connections>
-                                                <action selector="didTapOnDemandSwitch:" destination="Pga-4R-p1I" eventType="valueChanged" id="hT1-A0-FbX"/>
-                                            </connections>
-                                        </switch>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="hT9-jt-Gxb" secondAttribute="trailing" constant="15" id="18F-nF-2Bj"/>

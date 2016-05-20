@@ -1,4 +1,11 @@
-Un outil de gestion VPN pour vos serveurs IPSec IKEv1(a.k.a. Cisco IPSec) et vos serveurs IKEv2 VPN. 
+Un outil de gestion VPN pour vos serveurs IPSec IKEv1(a.k.a. Cisco IPSec) et vos serveurs IKEv2 VPN.
 Après avoir créé une configuration VPN, vous pouvez activer le Widget Quotidien via le Centre de Notification ce qui vous permet d’activer un VPN en 3 secondes (cela dépend de la vitesse de connexion). De plus, en activant  l’option Fonctionnalité à la Demande, la connexion du VPN s’effectuera automatiquement lorsque vous visitez tous les domaines spécifiés dans cette application.
 
 Attention : Les autres protocoles VPN (par exemple, L2TP over IPSec, PPTP, AnyConnect et OpenVPN) ne sont pas compatibles avec le VPN On. Il est recommandé de confirmer vérifier que votre fournisseur VPN prend en charge le protocole IPSec IKEv1 ou IKEv2 avant d’effectuer l’achat.
+
+Conseils:
+
+1. Si vous souhaitez supprimer tous les profils de provisionnement de VPN Sur dans le système, s'il vous plaît supprimer toutes les configurations VPN en VPN Sur, puis ouvrez le Widget Aujourd'hui au moins une fois.
+2. The Today Widget ne peut pas répondre sur iOS 9.0+ pour la première fois. Vous pouvez redémarrer votre iPhone pour le fixer.
+3. Vous pouvez appuyez longuement sur Aujourd'hui Widget pour ouvrir le principal App.
+4. Essayez de secouer votre iPhone et obtenir un thème favori.

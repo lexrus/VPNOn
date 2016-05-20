@@ -1,0 +1,99 @@
+
+/* Class = "UILabel"; text = "Server"; ObjectID = "2ji-tt-sNU"; */
+"2ji-tt-sNU.text" = "خادم";
+
+/* Class = "UITableViewSection"; footerTitle = "Turn this option on will keep VPN connection alive even screen is locked or network is unstable."; ObjectID = "5Qn-Bw-nVD"; */
+"5Qn-Bw-nVD.footerTitle" = "تفعيل هذا الخيار سوف يجعل VPN متصل حتي لوكانت الشاشة مقفلة أو الشبكة غير مستقرة.";
+
+/* Class = "UINavigationItem"; title = "VPN On"; ObjectID = "6M6-mh-chk"; */
+"6M6-mh-chk.title" = "VPN On";
+
+/* Class = "UINavigationItem"; title = "VPN On"; ObjectID = "96C-Eg-mId"; */
+"96C-Eg-mId.title" = "VPN On";
+
+/* Class = "UIBarButtonItem"; title = "⌥"; ObjectID = "AHk-hk-dlk"; */
+"AHk-hk-dlk.title" = "⌥";
+
+/* Class = "UILabel"; text = "Duplicate"; ObjectID = "Ao2-Hb-0jD"; */
+"Ao2-Hb-0jD.text" = "مكرر";
+
+/* Class = "UILabel"; text = "Domains relies on VPN "; ObjectID = "C2u-J4-G5f"; */
+"C2u-J4-G5f.text" = "VPN النطاق يعتمد على";
+
+/* Class = "UILabel"; text = "On Demand"; ObjectID = "FSL-Tv-Cp6"; */
+"FSL-Tv-Cp6.text" = "عند الطلب";
+
+/* Class = "UILabel"; text = "Delete VPN"; ObjectID = "Im7-xc-lxF"; */
+"Im7-xc-lxF.text" = "حذف VPN";
+
+/* Class = "UILabel"; text = " "; ObjectID = "Ipq-gr-ZiU"; */
+"Ipq-gr-ZiU.text" = " ";
+
+/* Class = "UITextField"; placeholder = "Ask Every Time"; ObjectID = "Jej-Iu-pn8"; */
+"Jej-Iu-pn8.placeholder" = "إسأل كل مرة";
+
+/* Class = "UILabel"; text = "Always On"; ObjectID = "KqD-kH-A4B"; */
+"KqD-kH-A4B.text" = "دائماً متصل";
+
+/* Class = "UILabel"; text = "Description"; ObjectID = "P5o-gM-dBq"; */
+"P5o-gM-dBq.text" = "الوصف";
+
+/* Class = "UITableViewSection"; footerTitle = "Requesting domains specified here may turn on VPN connection automatically. Please separate domains with whitespace or newline."; ObjectID = "PP3-2a-1up"; */
+"PP3-2a-1up.footerTitle" = "طلب النطاق المخصص هنا يمكن أن يفعل إتصال VPN تلقائياً. من فضلك أفصل النطاقات بمسافة أو سطر جديد.";
+
+/* Class = "UITableViewSection"; headerTitle = "Domains relies on VPN"; ObjectID = "PP3-2a-1up"; */
+"PP3-2a-1up.headerTitle" = "VPN النطاق يعتمد على";
+
+/* Class = "UILabel"; text = " "; ObjectID = "Q5j-uH-fcV"; */
+"Q5j-uH-fcV.text" = " ";
+
+/* Class = "UILabel"; text = "Account"; ObjectID = "Ud8-O3-Mk9"; */
+"Ud8-O3-Mk9.text" = "حساب";
+
+/* Class = "UILabel"; text = "Password"; ObjectID = "XpY-Af-O6z"; */
+"XpY-Af-O6z.text" = "الرقم السري";
+
+/* Class = "UISegmentedControl"; be7-Ah-lJc.segmentTitles[0] = "Cisco IPSec"; ObjectID = "be7-Ah-lJc"; */
+"be7-Ah-lJc.segmentTitles[0]" = "Cisco IPSec";
+
+/* Class = "UISegmentedControl"; be7-Ah-lJc.segmentTitles[1] = "IKEv2"; ObjectID = "be7-Ah-lJc"; */
+"be7-Ah-lJc.segmentTitles[1]" = "IKEv2";
+
+/* Class = "UILabel"; text = "Add VPN Configuration..."; ObjectID = "dxQ-Vo-JWP"; */
+"dxQ-Vo-JWP.text" = "...VPN أضف إعدادات";
+
+/* Class = "UITextField"; placeholder = "Required"; ObjectID = "eUh-Mf-gFu"; */
+"eUh-Mf-gFu.placeholder" = "مطلوب";
+
+/* Class = "UILabel"; text = "Feedback"; ObjectID = "fdK-Tr-Mrs"; */
+"fdK-Tr-Mrs.text" = "ردود الفعل";
+
+/* Class = "UILabel"; text = "Review on App Store"; ObjectID = "ffu-0G-A9k"; */
+"ffu-0G-A9k.text" = "App Store الاستعراض على";
+
+/* Class = "UILabel"; text = "Acknowledgements"; ObjectID = "gNW-qy-Vnj"; */
+"gNW-qy-Vnj.text" = "شكر وتقدير";
+
+/* Class = "UITextField"; placeholder = "Required"; ObjectID = "iNr-tg-tO5"; */
+"iNr-tg-tO5.placeholder" = "مطلوب";
+
+/* Class = "UITextField"; placeholder = "Required"; ObjectID = "lOt-LM-XMh"; */
+"lOt-LM-XMh.placeholder" = "مطلوب";
+
+/* Class = "UINavigationItem"; title = "Configuration"; ObjectID = "p5c-ZP-mHC"; */
+"p5c-ZP-mHC.title" = "الإعدادات";
+
+/* Class = "UILabel"; text = "Secret"; ObjectID = "pXD-5j-wvs"; */
+"pXD-5j-wvs.text" = "سري";
+
+/* Class = "UINavigationItem"; title = "Domains"; ObjectID = "rTs-vk-ZUy"; */
+"rTs-vk-ZUy.title" = "نطاق";
+
+/* Class = "UILabel"; text = "0 domains"; ObjectID = "rtd-Ll-4ML"; */
+"rtd-Ll-4ML.text" = "نطاق 0";
+
+/* Class = "UINavigationItem"; title = "Acknowledgements"; ObjectID = "taa-b8-WfH"; */
+"taa-b8-WfH.title" = "شكر وتقدير";
+
+/* Class = "UILabel"; text = "Group"; ObjectID = "w4U-Px-gJH"; */
+"w4U-Px-gJH.text" = "مجموعة";

@@ -2,3 +2,10 @@ Ein VPN-Management-Tool für Ihre IPSec IKEv1 (früher Cisco IPSec) und IKEv2 VP
 Nach der Erstellung der VPN-Konfiguration können Sie das Today Widget im Notification Center aktivieren, das das Anschalten eines VPNs in etwa 3 Sekunden erlaubt (abhängig von der Verbindungsgeschwindigkeit). Außerdem kann das VPN über die Einschaltung des On Demand Features automatisch verbunden werden, wenn Sie eine der in dieser App angegebenen Domains besuchen.
 
 Achtung: Andere VPN-Protokolle (z.B. L2TP over IPSec, PPTP, AnyConnect und OpenVPN) sind nicht kompatibel mit VPN On. Bitte bestätigen Sie, dass Ihr VPN-Anbieter die IPSec IKEv1- oder IKEv2-Protokolle unterstützt, bevor Sie sie erwerben.
+
+Tipps:
+
+1. Wenn Sie alle Provisioning-Profile von VPN On im System entfernen möchten, wenden Sie sich bitte alle VPN-Konfigurationen in VPN-On zu entfernen, öffnen Sie dann das Heute Widget mindestens einmal.
+2. Heute Widget kann nicht Antwort auf iOS 9.0+ zum ersten Mal. Sie können Ihr iPhone neu starten, es zu beheben.
+3. Sie können lange drücken Heute Widget die Haupt App zu öffnen.
+4. Versuchen Sie Ihr iPhone schütteln und ein Lieblingsthema zu bekommen.

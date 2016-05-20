@@ -1,12 +1,2 @@
-dettagli lucidati del widget. Premere a lungo il widget per aprire il principale App.
-
-punta Sad: Se vuoi per rimuovere tutti i profili di fornitura di VPN su in sistema, rimuovere tutte le configurazioni VPN di VPN su e quindi aprire l'oggi widget almeno una volta.
-
-aggiornamenti precedenti:
-
-1. Risolto problemi di geo localizzazione.
-2. Nuova pagina Informazioni.
-3. Aggiungere uno schema di scollegare.
-4. il layout e colori rettificato.
-5. Altri bug minori correzioni.
-6. Fissare problema caricamento di widget di oggi.
+1. Aggiornamento del database GeoIP.
+2. localizzato per l'arabo (Arabia Saudita).

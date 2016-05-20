@@ -1,12 +1,2 @@
-Polished details of the widget. Long press the widget to open the main App.
-
-Sad tip: If you'd like to remove all the provisioning profiles of VPN On in system, please remove all VPN configurations in VPN On and then open the Today Widget at least once.
-
-Previous updates:
-
-1. Fixed Geo location issues.
-2. New About page.
-3. Add a scheme to disconnect.
-4. Adjusted layout and colors.
-5. Other minor bugs fixes.
-6. Fix loading issue of today widget.
+1. Update GeoIP database.
+2. Localized for Arabic(Saudi Arabia).

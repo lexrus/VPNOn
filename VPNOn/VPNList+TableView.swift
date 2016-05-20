@@ -96,10 +96,14 @@ extension VPNList {
                 return cell
                 
             default:
-                return tableView.dequeueReusableCellWithIdentifier(
+                let addCell = tableView.dequeueReusableCellWithIdentifier(
                     "AddCell",
                     forIndexPath: indexPath
-                    )
+                )
+                if addCell.isRightToLeft {
+                    addCell.textLabel?.textAlignment = .Right
+                }
+                return addCell
             }
     }
     

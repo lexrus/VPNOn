@@ -70,6 +70,7 @@ VPN service providers may list a link for their customers to efficiently add ser
 
 ## Credits
 
+* Arabic(Saudi Arabia) - [Mohsen Qaysi](https://github.com/Mohsenqaysi)
 * Japanese translation - [Onevcat](https://github.com/onevcat)
 * Polish translation - [Seb Kaczorowski](http://photographyservices.ie)
 * Turkish - Ozancan Karataş
