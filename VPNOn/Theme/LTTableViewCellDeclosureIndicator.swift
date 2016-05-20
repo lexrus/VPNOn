@@ -8,32 +8,40 @@
 
 import UIKit
 
-class LTTableViewCellDeclosureIndicator: UIView
-{
+private let lineWidth: CGFloat = 1.5
+
+class LTTableViewCellDeclosureIndicator : UIView {
+
     override func willMoveToSuperview(newSuperview: UIView?) {
         if newSuperview != nil {
             backgroundColor = UIColor.clearColor()
         }
     }
-    
+
     override func drawRect(rect: CGRect) {
-        let x = bounds.maxX - 2
-        let y = bounds.maxY
-        let r = CGFloat(4.5)
-        
+        let delta = CGFloat(6)
+        let centerX = rect.width / 2
+        let middleY = rect.height / 2
+
         let context = UIGraphicsGetCurrentContext()
-        
-        CGContextMoveToPoint(context, x - r, y - r)
-        CGContextAddLineToPoint(context, x, y)
-        CGContextAddLineToPoint(context, x - r, y + r)
-        
-        CGContextSetLineWidth(context, 2)
-        CGContextSetLineJoin(context, CGLineJoin.Miter)
-        CGContextSetLineCap(context, CGLineCap.Square)
-        
+
+        if isRightToLeft {
+            CGContextMoveToPoint(context, centerX + delta / 2, middleY - delta)
+            CGContextAddLineToPoint(context, centerX - delta / 2, middleY)
+            CGContextAddLineToPoint(context, centerX + delta / 2, middleY + delta)
+        } else {
+            CGContextMoveToPoint(context, centerX - delta / 2, middleY - delta)
+            CGContextAddLineToPoint(context, centerX + delta / 2, middleY)
+            CGContextAddLineToPoint(context, centerX - delta / 2, middleY + delta)
+        }
+
+        CGContextSetLineWidth(context, lineWidth)
+        CGContextSetLineJoin(context, .Miter)
+        CGContextSetLineCap(context, .Square)
+
         CGContextSetStrokeColorWithColor(context, LTThemeManager.sharedManager.currentTheme!.textColor.CGColor)
-        
+
         CGContextStrokePath(context)
     }
-
+    
 }

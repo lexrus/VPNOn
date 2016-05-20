@@ -8,7 +8,7 @@
 
 import UIKit
 
-private let kAccessoryWidth: CGFloat = 16
+private let kAccessoryWidth: CGFloat = 20
 
 class NormalTableViewCell : UITableViewCell {
     

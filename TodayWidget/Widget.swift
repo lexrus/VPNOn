@@ -25,9 +25,6 @@ final class Widget:
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var leftConstraint: NSLayoutConstraint!
 
-    private var hasSignaled = false
-    private var complitionHandler: (NCUpdateResult -> Void)?
-
     var marginLeft: CGFloat = 0 {
         didSet {
             self.leftConstraint.constant = marginLeft
@@ -131,21 +128,6 @@ final class Widget:
         }
     }
     
-    // Note: A workaround to ensure the widget is interactable.
-    // @see: http://stackoverflow.com/questions/25961513/ios-8-today-widget-stops-working-after-a-while
-    func singalComplete(updateResult: NCUpdateResult) {
-        hasSignaled = true
-        complitionHandler?(updateResult)
-    }
-    
-    override func viewDidDisappear(animated: Bool) {
-        super.viewDidDisappear(animated)
-        
-        if !hasSignaled {
-            singalComplete(NCUpdateResult.Failed)
-        }
-    }
-    
     func updateContent() {
         // Note: In order to get the latest data.
         // @see: http://stackoverflow.com/questions/25924223/core-data-ios-8-today-widget-issue
@@ -155,13 +137,6 @@ final class Widget:
     func widgetPerformUpdateWithCompletionHandler(
         completionHandler: ((NCUpdateResult) -> Void)
         ) {
-        // Perform any setup necessary in order to update the view.
-        
-        // If an error is encountered, use NCUpdateResult.Failed
-        // If there's no update required, use NCUpdateResult.NoData
-        // If there's an update, use NCUpdateResult.NewData
-        
-        self.complitionHandler = completionHandler
         completionHandler(NCUpdateResult.NewData)
     }
     
@@ -195,7 +170,7 @@ final class Widget:
     }
     
     func didTapAdd() {
-        let appURL = NSURL(string: "vpnon://")!
+        let appURL = NSURL(string: "vpnon://YOUR_SERVER_DOMAIN_OR_IP/?title=My VPN Server")!
         extensionContext?.openURL(appURL, completionHandler: nil)
     }
     
