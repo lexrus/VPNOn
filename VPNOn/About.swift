@@ -91,12 +91,15 @@ class About : UITableViewController, MFMailComposeViewControllerDelegate {
         let mailComposerVC = MFMailComposeViewController()
         mailComposerVC.mailComposeDelegate = self
         mailComposerVC.setToRecipients(["lexrus@gmail.com"])
-        mailComposerVC.setSubject("[VPN On] Feedback")
+        mailComposerVC.setSubject("[VPN On] Feedback \(appVersion())")
+
+        let osVersion = NSProcessInfo().operatingSystemVersion
+        let osVersionString = "\(osVersion.majorVersion).\(osVersion.minorVersion).\(osVersion.patchVersion)"
         
-        let deviceInfo = "VPN On \(appVersion())"
-            + " | iOS (\(NSProcessInfo().operatingSystemVersionString))"
-            + " | #\(device()).\n"
-        mailComposerVC.setMessageBody(deviceInfo, isHTML: false)
+        let deviceInfo = "<small style='color:#999'>iOS \(osVersionString)"
+            + " | Model: \(device())</small><br/>"
+            + "<small style='color:green'>Please feel free to comment or advise if you have anything to say.</small> 🤓<br/><br/>"
+        mailComposerVC.setMessageBody(deviceInfo, isHTML: true)
         
         return mailComposerVC
     }
