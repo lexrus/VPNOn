@@ -1,2 +1,2 @@
-1. Update GeoIP database.
-2. Localized for Arabic(Saudi Arabia).
+1. Cơ sở dữ liệu Cập nhật GeoIP.
+2. Địa phương hóa cho tiếng Ả Rập (Saudi Arabia).
