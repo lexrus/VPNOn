@@ -11,17 +11,8 @@ import NetworkExtension
 import CoreData
 
 private let kAppGroupIdentifier = "group.VPNOn"
-private let VPNManagerInstance: VPNManager = {
-    let instance = VPNManager()
-    instance.manager.loadFromPreferencesWithCompletionHandler { error in
-        if let err = error {
-            debugPrint("Failed to load preferences: \(err.localizedDescription)")
-        }
-    }
-    instance.manager.localizedDescription = "VPN On"
-    instance.manager.enabled = true
-    return instance
-    }()
+
+private let instance = VPNManager()
 
 public enum VPNType {
     case IPSec
@@ -46,6 +37,8 @@ public struct VPNAccount {
     public init() { }
 }
 
+public typealias VPNConfigureCompletion = (Void) -> Void
+
 final public class VPNManager {
 
     private lazy var manager: NEVPNManager = {
@@ -65,12 +58,25 @@ final public class VPNManager {
     }()
     
     public class var sharedManager: VPNManager {
-        return VPNManagerInstance
+        return instance
+    }
+
+    private func loadPreferances(completion: () -> Void) {
+        manager.loadFromPreferencesWithCompletionHandler { error in
+            assert(error == nil, "Failed to load preferences: \(error!.localizedDescription)")
+            self.manager.localizedDescription = "VPN On"
+            self.manager.enabled = true
+            completion()
+        }
+    }
+
+    public func save(account: VPNAccount, completion: VPNConfigureCompletion?) {
+        loadPreferances { [weak self] in
+            self?._save(account, completion: completion)
+        }
     }
     
-    public typealias VPNConfigureCompletion = (Void) -> Void
-    
-    public func save(account: VPNAccount, completion: VPNConfigureCompletion?) {
+    private func _save(account: VPNAccount, completion: VPNConfigureCompletion?) {
         #if (arch(i386) || arch(x86_64)) && os(iOS)
             // #if TARGET_IPHONE_SIMULATOR for Swift
             assert(false, "I'm afraid you can not connect VPN in simulators.")
@@ -146,6 +152,10 @@ final public class VPNManager {
             
         } catch let error as NSError {
             print(error.localizedDescription)
+            NSNotificationCenter.defaultCenter().postNotificationName(
+                NEVPNStatusDidChangeNotification,
+                object: nil
+            )
         }
     }
     
