@@ -21,13 +21,15 @@ public struct MMDBCountry: CustomStringConvertible {
     init(dictionary: NSDictionary) {
         if let dict = dictionary["continent"],
             code = dict["code"] as? String,
-            continentNames = dict["names"] as? [String: String] {
+            continentNames = dict["names"] as? [String: String]
+        {
             continent.code = code
             continent.names = continentNames
         }
         if let dict = dictionary["country"],
             iso = dict["iso_code"] as? String,
-            countryNames = dict["names"] as? [String: String] {
+            countryNames = dict["names"] as? [String: String]
+        {
             self.isoCode = iso
             self.names = countryNames
         }
@@ -38,8 +40,8 @@ public struct MMDBCountry: CustomStringConvertible {
         s += "  \"continent\": {\n"
         s += "    \"code\": \"" + (self.continent.code ?? "") + "\",\n"
         s += "    \"names\": {\n"
-        var i = self.continent.names?.count ?? 0
-        self.continent.names?.forEach {
+        var i = continent.names?.count ?? 0
+        continent.names?.forEach {
             s += "      \""
                 + $0.0 + ": \""
                 + $0.1 + "\""
@@ -51,8 +53,8 @@ public struct MMDBCountry: CustomStringConvertible {
         s += "  },\n"
         s += "  \"isoCode\": \"" + self.isoCode + "\",\n"
         s += "  \"names\": {\n"
-        i = self.names.count
-        self.names.forEach {
+        i = names.count
+        names.forEach {
             s += "    \""
                 + $0.0 + ": \""
                 + $0.1 + "\""
@@ -182,7 +184,7 @@ final public class MMDB {
         }
 
         var entry = result.entry
-        var list: ListPtr = nil
+        var list = ListPtr()
 
         let status = MMDB_get_entry_data_list(&entry, &list)
         if status != MMDB_SUCCESS {

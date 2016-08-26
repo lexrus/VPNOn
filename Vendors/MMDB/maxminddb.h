@@ -172,9 +172,9 @@ typedef struct MMDB_s {
     ssize_t file_size;
     const uint8_t *file_content;
     const uint8_t *data_section;
-    uint32_t data_section_size;
+    long data_section_size;
     const uint8_t *metadata_section;
-    uint32_t metadata_section_size;
+    long metadata_section_size;
     uint16_t full_record_byte_size;
     uint16_t depth;
     MMDB_ipv4_start_node_s ipv4_start_node;
