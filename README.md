@@ -16,6 +16,7 @@ Turning on a VPN is always a painful experience on an iOS device due to the deep
 - An IPSec IKEv1 / IKEv2 VPN(create yours with [my Ansible Playbook](https://github.com/lexrus/vpn-deploy-playbook) or [deploy on DigitalOcean](http://installer.71m.us/install?url=https://github.com/lexrus/do-ikev1))
 - Xcode 7.3
 - An Apple iOS develop account
+- [Carthage](https://github.com/carthage/carthage)
 
 ## Build with Xcode
 

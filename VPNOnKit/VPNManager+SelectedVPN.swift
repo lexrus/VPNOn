@@ -3,7 +3,7 @@
 //  VPNOn
 //
 //  Created by Lex on 10/2/15.
-//  Copyright © 2015 LexTang.com. All rights reserved.
+//  Copyright © 2016 lexrus.com. All rights reserved.
 //
 
 import Foundation

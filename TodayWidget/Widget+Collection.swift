@@ -3,7 +3,7 @@
 //  VPNOn
 //
 //  Created by Lex on 12/20/15.
-//  Copyright © 2015 LexTang.com. All rights reserved.
+//  Copyright © 2016 lexrus.com. All rights reserved.
 //
 
 import UIKit
@@ -77,7 +77,7 @@ extension Widget {
             }
             
             var account = vpn.toAccount()
-            account.title = "Widget - \(vpn.title)"
+            account.title = vpn.title
 
             VPNManager.sharedManager.saveAndConnect(account)
     }

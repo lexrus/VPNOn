@@ -3,7 +3,7 @@
 //  TodayWidget
 //
 //  Created by Lex Tang on 12/10/14.
-//  Copyright (c) 2014 LexTang.com. All rights reserved.
+//  Copyright (c) 2014 lexrus.com. All rights reserved.
 //
 
 import UIKit
@@ -12,8 +12,7 @@ import NetworkExtension
 import VPNOnKit
 import CoreData
 
-private let kExpanedInToday = "kVPNOnExpanedInToday"
-private let kWidgetNormalHeight: CGFloat = 82
+private let kWidgetNormalHeight: CGFloat = 60
 
 final class Widget:
     UIViewController,
@@ -21,14 +20,14 @@ final class Widget:
     UICollectionViewDelegate,
     UICollectionViewDataSource {
     
-    @IBOutlet weak var leftMarginView: ModeButton!
+    @IBOutlet weak var leftMarginView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var leftConstraint: NSLayoutConstraint!
 
-    var marginLeft: CGFloat = 0 {
+    private var marginLeft: CGFloat = 0 {
         didSet {
-            self.leftConstraint.constant = marginLeft
-            self.view.setNeedsUpdateConstraints()
+            leftConstraint.constant = marginLeft
+            view.setNeedsUpdateConstraints()
         }
     }
     
@@ -105,8 +104,6 @@ final class Widget:
         leftMarginView.userInteractionEnabled = true
         leftMarginView.addGestureRecognizer(tapGesture)
         leftMarginView.backgroundColor = UIColor(white: 0.0, alpha: 0.005)
-        leftMarginView.displayMode =
-            VPNManager.sharedManager.displayFlags ? .FlagMode : .SwitchMode
 
         let longGesture = UILongPressGestureRecognizer(
             target: self,
@@ -153,14 +150,7 @@ final class Widget:
     
     func didTapLeftMargin(gesture: UITapGestureRecognizer) {
         LTPingQueue.sharedQueue.restartPing()
-        VPNManager.sharedManager.displayFlags =
-            !VPNManager.sharedManager.displayFlags
         collectionView.reloadData()
-
-        leftMarginView.displayMode =
-            VPNManager.sharedManager.displayFlags
-            ? .FlagMode
-            : .SwitchMode
     }
 
     // MARK: - Open App

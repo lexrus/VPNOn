@@ -1,0 +1,3 @@
+github "madebybowtie/FlagKit" "v1.1.1"
+github "lexrus/MMDB-Swift" "0.0.2"
+github "jrendel/SwiftKeychainWrapper" "2.0.0"

@@ -3,11 +3,12 @@
 //  VPNOn
 //
 //  Created by Lex on 10/30/15.
-//  Copyright © 2015 LexTang.com. All rights reserved.
+//  Copyright © 2016 lexrus.com. All rights reserved.
 //
 
 import UIKit
 import VPNOnKit
+import FlagKit
 
 extension VPNList {
     
@@ -195,9 +196,9 @@ extension VPNList {
         
         if latency != -1 {
             var latencyColor = UIColor(red:0.39, green:0.68, blue:0.19, alpha:1)
-            if latency > 200 {
+            if latency > 300 {
                 latencyColor = UIColor(red:0.73, green:0.54, blue:0.21, alpha:1)
-            } else if latency > 500 {
+            } else if latency > 600 {
                 latencyColor = UIColor(red:0.9 , green:0.11, blue:0.34, alpha:1)
             }
             

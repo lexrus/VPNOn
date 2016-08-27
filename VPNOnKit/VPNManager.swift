@@ -3,12 +3,13 @@
 //  VPNOn
 //
 //  Created by Lex Tang on 12/5/14.
-//  Copyright (c) 2014 LexTang.com. All rights reserved.
+//  Copyright (c) 2014 lexrus.com. All rights reserved.
 //
 
 import Foundation
 import NetworkExtension
 import CoreData
+import MMDB
 
 private let kAppGroupIdentifier = "group.VPNOn"
 
@@ -120,8 +121,7 @@ final public class VPNManager {
         if let password = account.passwordRef {
             pt.passwordReference = password
         }
-        
-        manager.localizedDescription = "VPN On - \(account.title)"
+    
         manager.enabled = true
         manager.`protocol` = pt
         

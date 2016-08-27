@@ -1,2 +1,0 @@
-1. Cơ sở dữ liệu Cập nhật GeoIP.
-2. Địa phương hóa cho tiếng Ả Rập (Saudi Arabia).

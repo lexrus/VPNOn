@@ -1,2 +1,0 @@
-1. Aggiornamento del database GeoIP.
-2. localizzato per l'arabo (Arabia Saudita).

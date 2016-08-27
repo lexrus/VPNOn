@@ -3,7 +3,7 @@
 //  VPN On
 //
 //  Created by Lex Tang on 12/5/14.
-//  Copyright (c) 2014 LexTang.com. All rights reserved.
+//  Copyright (c) 2014 lexrus.com. All rights reserved.
 //
 
 import UIKit

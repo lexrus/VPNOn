@@ -1,2 +1,0 @@
-1. Actualización de la base de datos GeoIP.
-2. localizada para árabe (Arabia Saudí).
