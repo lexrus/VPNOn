@@ -1,3 +1,3 @@
-github "madebybowtie/FlagKit" "v1.1.1"
-github "lexrus/MMDB-Swift" "0.0.2"
-github "jrendel/SwiftKeychainWrapper" "2.0.0"
+github "lexrus/FlagKit" "809b9f2a7428ca33e3903952f12a2b415423e18e"
+github "kishikawakatsumi/KeychainAccess" "6333b14a48562152e3f84d102eeb3d0d2b3bd83f"
+github "lexrus/MMDB-Swift" "341c6d25e135f7b844efa8b78812fee0cfaac8ee"

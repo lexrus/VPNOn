@@ -21,7 +21,7 @@ class VPNTableViewCell : NormalTableViewCell {
         didSet { setNeedsDisplay() }
     }
     
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         if IKEv2 {
             let tagWidth: CGFloat = 34
             let tagHeight: CGFloat = 14
@@ -59,7 +59,7 @@ class VPNTableViewCell : NormalTableViewCell {
     }
     
     func drawIKEv2Tag(
-        radius radius: CGFloat,
+        radius: CGFloat,
         rect: CGRect,
         tagText: String,
         color: UIColor
@@ -81,27 +81,27 @@ class VPNTableViewCell : NormalTableViewCell {
             
             //// Text Drawing
             let textRect = rect
-            let textStyle = NSMutableParagraphStyle.defaultParagraphStyle()
+            let textStyle = NSMutableParagraphStyle.default
                 .mutableCopy() as! NSMutableParagraphStyle
-            textStyle.alignment = NSTextAlignment.Center
+            textStyle.alignment = NSTextAlignment.center
             
             let textFontAttributes = [
-                NSFontAttributeName: UIFont.systemFontOfSize(height - 1),
+                NSFontAttributeName: UIFont.systemFont(ofSize: height - 1),
                 NSForegroundColorAttributeName: color,
                 NSParagraphStyleAttributeName: textStyle
             ]
             
             let textTextHeight: CGFloat = NSString(string: tagText)
-                .boundingRectWithSize(
-                    CGSize(width: textRect.width, height: CGFloat.infinity),
-                    options: NSStringDrawingOptions.UsesLineFragmentOrigin,
+                .boundingRect(
+                    with: CGSize(width: textRect.width, height: CGFloat.infinity),
+                    options: NSStringDrawingOptions.usesLineFragmentOrigin,
                     attributes: textFontAttributes,
                     context: nil
                 ).size.height
-            CGContextSaveGState(context)
-            CGContextClipToRect(context, textRect)
-            NSString(string: tagText).drawInRect(
-                CGRect(
+            context?.saveGState()
+            context?.clip(to: textRect)
+            NSString(string: tagText).draw(
+                in: CGRect(
                     x: textRect.minX,
                     y: textRect.minY + (textRect.height - textTextHeight) / 2,
                     width: textRect.width,
@@ -109,7 +109,7 @@ class VPNTableViewCell : NormalTableViewCell {
                 ),
                 withAttributes: textFontAttributes
             )
-            CGContextRestoreGState(context)
+            context?.restoreGState()
     }
     
 }

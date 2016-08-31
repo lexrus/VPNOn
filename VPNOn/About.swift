@@ -20,7 +20,7 @@ class About : UITableViewController, MFMailComposeViewControllerDelegate {
     }
     
     override func tableView(
-        tableView: UITableView,
+        _ tableView: UITableView,
         numberOfRowsInSection section: Int
         ) -> Int {
             if MFMailComposeViewController.canSendMail() {
@@ -31,17 +31,17 @@ class About : UITableViewController, MFMailComposeViewControllerDelegate {
     }
     
     override func tableView(
-        tableView: UITableView,
+        _ tableView: UITableView,
         titleForFooterInSection section: Int
         ) -> String? {
         return appVersion()
     }
     
     override func tableView(
-        tableView: UITableView,
-        didSelectRowAtIndexPath indexPath: NSIndexPath
+        _ tableView: UITableView,
+        didSelectRowAt indexPath: IndexPath
         ) {
-        switch indexPath.row {
+        switch (indexPath as NSIndexPath).row {
         case kReviewCellIndex:
             presentAppStore()
             break
@@ -53,9 +53,9 @@ class About : UITableViewController, MFMailComposeViewControllerDelegate {
         }
     }
     
-    private func appVersion() -> String {
-        if let version = NSBundle.mainBundle()
-            .objectForInfoDictionaryKey("CFBundleShortVersionString") as? String {
+    fileprivate func appVersion() -> String {
+        if let version = Bundle.main
+            .object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
                 return version
         }
         return ""
@@ -63,24 +63,19 @@ class About : UITableViewController, MFMailComposeViewControllerDelegate {
     
     // MARK: - Feedback
     
-    private func osVersion() -> String {
-        return NSProcessInfo().operatingSystemVersionString
+    fileprivate func osVersion() -> String {
+        return ProcessInfo().operatingSystemVersionString
     }
     
-    private func device() -> String {
-        var sysInfo: [CChar] = Array(count: sizeof(utsname), repeatedValue: 0)
-        let machine = sysInfo.withUnsafeMutableBufferPointer {
-            (inout ptr: UnsafeMutableBufferPointer<CChar>) -> String in
-            uname(UnsafeMutablePointer<utsname>(ptr.baseAddress))
-            let machinePtr = ptr.baseAddress.advancedBy(Int(_SYS_NAMELEN * 4))
-            return String.fromCString(machinePtr)!
-        }
-        return machine
+    fileprivate func device() -> String {
+        var sysinfo = utsname()
+        _ = uname(&sysinfo)
+        return NSString(bytes: &sysinfo.machine, length: Int(_SYS_NAMELEN), encoding: String.Encoding.ascii.rawValue)! as String
     }
     
     func presentFeedback() {
         let mailComposeViewController = configuredMailComposeViewController()
-        presentViewController(
+        present(
             mailComposeViewController,
             animated: true,
             completion: nil
@@ -93,7 +88,7 @@ class About : UITableViewController, MFMailComposeViewControllerDelegate {
         mailComposerVC.setToRecipients(["lexrus@gmail.com"])
         mailComposerVC.setSubject("[VPN On] Feedback \(appVersion())")
 
-        let osVersion = NSProcessInfo().operatingSystemVersion
+        let osVersion = ProcessInfo().operatingSystemVersion
         let osVersionString = "\(osVersion.majorVersion).\(osVersion.minorVersion).\(osVersion.patchVersion)"
         
         let deviceInfo = "<small style='color:#999'>iOS \(osVersionString)"
@@ -105,18 +100,18 @@ class About : UITableViewController, MFMailComposeViewControllerDelegate {
     }
     
     func mailComposeController(
-        controller: MFMailComposeViewController,
-        didFinishWithResult result: MFMailComposeResult,
-        error: NSError?) {
-            controller.dismissViewControllerAnimated(true, completion: nil)
+        _ controller: MFMailComposeViewController,
+        didFinishWith result: MFMailComposeResult,
+        error: Error?) {
+            controller.dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Review
     
     func presentAppStore() {
         let appStoreURL =
-            NSURL(string: "https://itunes.apple.com/app/vpn-on/id951344279")!
-        UIApplication.sharedApplication().openURL(appStoreURL)
+            URL(string: "https://itunes.apple.com/app/vpn-on/id951344279")!
+        UIApplication.shared.openURL(appStoreURL)
     }
 
 }

@@ -12,36 +12,40 @@ private let lineWidth: CGFloat = 1.5
 
 class LTTableViewCellDeclosureIndicator : UIView {
 
-    override func willMoveToSuperview(newSuperview: UIView?) {
+    override func willMove(toSuperview newSuperview: UIView?) {
         if newSuperview != nil {
-            backgroundColor = UIColor.clearColor()
+            backgroundColor = UIColor.clear
         }
     }
 
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         let delta = CGFloat(6)
         let centerX = rect.width / 2
         let middleY = rect.height / 2
 
         let context = UIGraphicsGetCurrentContext()
-
+        
         if isRightToLeft {
-            CGContextMoveToPoint(context, centerX + delta / 2, middleY - delta)
-            CGContextAddLineToPoint(context, centerX - delta / 2, middleY)
-            CGContextAddLineToPoint(context, centerX + delta / 2, middleY + delta)
+            context?.move(to: CGPoint(x: centerX + delta / 2, y: middleY - delta))
+            context?.addLines(between: [
+                CGPoint(x: centerX - delta / 2, y: middleY),
+                CGPoint(x: centerX + delta / 2, y: middleY + delta)
+                ])
         } else {
-            CGContextMoveToPoint(context, centerX - delta / 2, middleY - delta)
-            CGContextAddLineToPoint(context, centerX + delta / 2, middleY)
-            CGContextAddLineToPoint(context, centerX - delta / 2, middleY + delta)
+            context?.move(to: CGPoint(x: centerX - delta / 2, y: middleY - delta))
+            context?.addLines(between: [
+                CGPoint(x: centerX + delta / 2, y: middleY),
+                CGPoint(x: centerX - delta / 2, y: middleY + delta)
+                ])
         }
 
-        CGContextSetLineWidth(context, lineWidth)
-        CGContextSetLineJoin(context, .Miter)
-        CGContextSetLineCap(context, .Square)
+        context?.setLineWidth(lineWidth)
+        context?.setLineJoin(.miter)
+        context?.setLineCap(.square)
 
-        CGContextSetStrokeColorWithColor(context, LTThemeManager.sharedManager.currentTheme!.textColor.CGColor)
+        context?.setStrokeColor(LTThemeManager.sharedManager.currentTheme!.textColor.cgColor)
 
-        CGContextStrokePath(context)
+        context?.strokePath()
     }
     
 }

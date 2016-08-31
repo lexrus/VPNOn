@@ -2,7 +2,7 @@ import Foundation
 import CoreData
 import VPNOnKit
 
-public class VPNInfo {
+open class VPNInfo {
 
     var title:          String = ""
     var server:         String = ""
@@ -16,7 +16,7 @@ public class VPNInfo {
 
 }
 
-public class VPN: NSManagedObject {
+open class VPN: NSManagedObject {
     
 	@NSManaged var account:        String!
 	@NSManaged var group:          String!
@@ -27,14 +27,14 @@ public class VPN: NSManagedObject {
     @NSManaged var ikev2:          Bool
     
     var ID: String {
-        return objectID.URIRepresentation().absoluteString
+        return objectID.uriRepresentation().absoluteString
     }
     
     override init(
         entity: NSEntityDescription,
-        insertIntoManagedObjectContext context: NSManagedObjectContext?
+        insertInto context: NSManagedObjectContext?
         ) {
-            super.init(entity: entity, insertIntoManagedObjectContext: context)
+            super.init(entity: entity, insertInto: context)
             setValue(account,        forKey: "account")
             setValue(group,          forKey: "group")
             setValue(server,         forKey: "server")
@@ -49,9 +49,9 @@ public class VPN: NSManagedObject {
         context: NSManagedObjectContext
         ) {
             let entity = NSEntityDescription
-                .entityForName("VPN", inManagedObjectContext: context)!
+                .entity(forEntityName: "VPN", in: context)!
             
-            super.init(entity: entity, insertIntoManagedObjectContext: context)
+            super.init(entity: entity, insertInto: context)
             
             if let accountValue = dictionary["account"] as? String{
                 account = accountValue
@@ -91,8 +91,8 @@ public class VPN: NSManagedObject {
 		if title != nil {
 			dictionary["title"]  = title
 		}
-        dictionary["alwaysOn"]   = NSNumber(bool: alwaysOn)
-        dictionary["ikev2"]      = NSNumber(bool: ikev2)
+        dictionary["alwaysOn"]   = NSNumber(value: alwaysOn)
+        dictionary["ikev2"]      = NSNumber(value: ikev2)
         if countryCode != nil {
             dictionary["countryCode"] = countryCode
         }

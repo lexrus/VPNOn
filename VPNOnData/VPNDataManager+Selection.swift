@@ -15,22 +15,22 @@ extension VPNDataManager {
 
     var selectedVPNID: NSManagedObjectID? {
         get {
-            if let URLData = NSUserDefaults.standardUserDefaults().objectForKey(kSelectedVPNIDKey) as! NSData? {
-                let url = NSKeyedUnarchiver.unarchiveObjectWithData(URLData) as! NSURL
-                if let ID = self.persistentStoreCoordinator!.managedObjectIDForURIRepresentation(url) {
+            if let URLData = UserDefaults.standard.object(forKey: kSelectedVPNIDKey) as! Data? {
+                let url = NSKeyedUnarchiver.unarchiveObject(with: URLData) as! URL
+                if let ID = self.persistentStoreCoordinator!.managedObjectID(forURIRepresentation: url) {
                     return ID
                 }
             }
             
-            return .None
+            return .none
         }
         set {
             if let value = newValue {
-                let IDURL = value.URIRepresentation()
-                let URLData = NSKeyedArchiver.archivedDataWithRootObject(IDURL)
-                NSUserDefaults.standardUserDefaults().setObject(URLData, forKey: kSelectedVPNIDKey)
+                let IDURL = value.uriRepresentation()
+                let URLData = NSKeyedArchiver.archivedData(withRootObject: IDURL)
+                UserDefaults.standard.set(URLData, forKey: kSelectedVPNIDKey)
             } else {
-                NSUserDefaults.standardUserDefaults().removeObjectForKey(kSelectedVPNIDKey)
+                UserDefaults.standard.removeObject(forKey: kSelectedVPNIDKey)
             }
         }
     }

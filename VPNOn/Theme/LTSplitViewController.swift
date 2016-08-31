@@ -13,23 +13,23 @@ class LTSplitViewController: UISplitViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor.blackColor()
+        view.backgroundColor = UIColor.black
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        if LTThemeManager.sharedManager.currentTheme?.name.rangeOfString("Light") != nil {
-            return UIStatusBarStyle.Default
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        if LTThemeManager.sharedManager.currentTheme?.name.range(of: "Light") != nil {
+            return UIStatusBarStyle.default
         } else {
-            return UIStatusBarStyle.LightContent
+            return UIStatusBarStyle.lightContent
         }
     }
     
-    override func canBecomeFirstResponder() -> Bool {
+    override var canBecomeFirstResponder: Bool {
         return true
     }
     
-    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
-        if event?.subtype == UIEventSubtype.MotionShake {
+    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+        if event?.subtype == UIEventSubtype.motionShake {
             LTThemeManager.sharedManager.activateNextTheme()
             self.setNeedsStatusBarAppearanceUpdate()
         }

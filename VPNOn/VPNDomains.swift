@@ -10,7 +10,7 @@ import UIKit
 import VPNOnKit
 
 protocol VPNDomainsDelegate : NSObjectProtocol {
-    func didTapSaveDomainsWithText(text: String)
+    func didTapSaveDomainsWithText(_ text: String)
 }
 
 class VPNDomains : UITableViewController {
@@ -20,7 +20,7 @@ class VPNDomains : UITableViewController {
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var textView: UITextView!
     
-    @IBAction func save(sender: AnyObject?) {
+    @IBAction func save(_ sender: AnyObject?) {
         VPNManager.sharedManager.onDemandDomains = textView.text
         
         delegate?.didTapSaveDomainsWithText(textView.text)
@@ -34,13 +34,13 @@ class VPNDomains : UITableViewController {
         tableView.backgroundView = backgroundView
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         textView.text = VPNManager.sharedManager.onDemandDomains
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         delegate = nil
     }
@@ -50,7 +50,7 @@ class VPNDomains : UITableViewController {
     func popDetailViewController() {
         if let topNC = splitViewController?.viewControllers.last
             as? UINavigationController {
-                topNC.popViewControllerAnimated(true)
+                topNC.popViewController(animated: true)
         }
     }
 }

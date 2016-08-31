@@ -25,6 +25,8 @@
 		D71F03281C26FDDA00FF60E2 /* VPN+Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = D71F03261C26FAF600FF60E2 /* VPN+Account.swift */; };
 		D7322C7A1A6C024800B34AA0 /* LTViewControllerBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7322C791A6C024800B34AA0 /* LTViewControllerBackground.swift */; };
 		D7356CE71C2700DA007BAB37 /* Widget+Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7356CE61C2700DA007BAB37 /* Widget+Collection.swift */; };
+		D73A63971D771DF50053AEC8 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D73A63961D771DF50053AEC8 /* KeychainAccess.framework */; };
+		D73A63981D771E070053AEC8 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D73A63961D771DF50053AEC8 /* KeychainAccess.framework */; };
 		D74129A91A5CFCDA008DE603 /* SimplePing.h in Headers */ = {isa = PBXBuildFile; fileRef = D74129A71A5CFCDA008DE603 /* SimplePing.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D74129AA1A5CFCDA008DE603 /* SimplePing.m in Sources */ = {isa = PBXBuildFile; fileRef = D74129A81A5CFCDA008DE603 /* SimplePing.m */; };
 		D74129B01A5D1A91008DE603 /* LTPingQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74129AF1A5D1A91008DE603 /* LTPingQueue.swift */; };
@@ -59,10 +61,7 @@
 		D77F341B1A6F842C00796827 /* LTTableViewActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77F341A1A6F842C00796827 /* LTTableViewActionCell.swift */; };
 		D77F341D1A6F875E00796827 /* LTTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77F341C1A6F875E00796827 /* LTTextField.swift */; };
 		D78C5EA51D716CB400E54F6C /* FlagKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D78C5EA31D716CB400E54F6C /* FlagKit.framework */; };
-		D78C5EA61D716CB400E54F6C /* SwiftKeychainWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D78C5EA41D716CB400E54F6C /* SwiftKeychainWrapper.framework */; };
-		D78C5EA81D716CBA00E54F6C /* SwiftKeychainWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D78C5EA41D716CB400E54F6C /* SwiftKeychainWrapper.framework */; };
 		D78C5EA91D716D0600E54F6C /* FlagKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D78C5EA31D716CB400E54F6C /* FlagKit.framework */; };
-		D78C5EAA1D716D0600E54F6C /* SwiftKeychainWrapper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D78C5EA41D716CB400E54F6C /* SwiftKeychainWrapper.framework */; };
 		D78C5EAC1D716D0600E54F6C /* MMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D78C5EAB1D716D0600E54F6C /* MMDB.framework */; };
 		D79083DA1A7BBD230089DB67 /* LTDarkGreenTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79083D91A7BBD230089DB67 /* LTDarkGreenTheme.swift */; };
 		D79083DC1A7BBEF70089DB67 /* LTHelloKittyTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79083DB1A7BBEF70089DB67 /* LTHelloKittyTheme.swift */; };
@@ -186,6 +185,7 @@
 		D72403371A8B32A70066CA47 /* en-US */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "en-US"; path = "en-US.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		D7322C791A6C024800B34AA0 /* LTViewControllerBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTViewControllerBackground.swift; sourceTree = "<group>"; };
 		D7356CE61C2700DA007BAB37 /* Widget+Collection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Widget+Collection.swift"; sourceTree = "<group>"; };
+		D73A63961D771DF50053AEC8 /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
 		D74129A71A5CFCDA008DE603 /* SimplePing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplePing.h; sourceTree = "<group>"; };
 		D74129A81A5CFCDA008DE603 /* SimplePing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimplePing.m; sourceTree = "<group>"; };
 		D74129AF1A5D1A91008DE603 /* LTPingQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTPingQueue.swift; sourceTree = "<group>"; };
@@ -233,7 +233,6 @@
 		D783CC9C1B2ADE290087FFC1 /* nl-NL */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "nl-NL"; path = "nl-NL.lproj/Main.strings"; sourceTree = "<group>"; };
 		D783CC9D1B2ADE290087FFC1 /* nl-NL */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "nl-NL"; path = "nl-NL.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		D78C5EA31D716CB400E54F6C /* FlagKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FlagKit.framework; path = Carthage/Build/iOS/FlagKit.framework; sourceTree = "<group>"; };
-		D78C5EA41D716CB400E54F6C /* SwiftKeychainWrapper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftKeychainWrapper.framework; path = Carthage/Build/iOS/SwiftKeychainWrapper.framework; sourceTree = "<group>"; };
 		D78C5EAB1D716D0600E54F6C /* MMDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MMDB.framework; path = Carthage/Build/iOS/MMDB.framework; sourceTree = "<group>"; };
 		D79083D91A7BBD230089DB67 /* LTDarkGreenTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTDarkGreenTheme.swift; sourceTree = "<group>"; };
 		D79083DB1A7BBEF70089DB67 /* LTHelloKittyTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTHelloKittyTheme.swift; sourceTree = "<group>"; };
@@ -295,7 +294,7 @@
 				D754E21A1A3B3E8E00E8F135 /* VPNOnKit.framework in Frameworks */,
 				D78C5EAC1D716D0600E54F6C /* MMDB.framework in Frameworks */,
 				D78C5EA91D716D0600E54F6C /* FlagKit.framework in Frameworks */,
-				D78C5EAA1D716D0600E54F6C /* SwiftKeychainWrapper.framework in Frameworks */,
+				D73A63971D771DF50053AEC8 /* KeychainAccess.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,7 +309,7 @@
 				D71C171F1C32416A00936BF7 /* NotificationCenter.framework in Frameworks */,
 				D79785751C60B3A300BD72A0 /* VPNOnKit.framework in Frameworks */,
 				D78C5EA51D716CB400E54F6C /* FlagKit.framework in Frameworks */,
-				D78C5EA61D716CB400E54F6C /* SwiftKeychainWrapper.framework in Frameworks */,
+				D73A63981D771E070053AEC8 /* KeychainAccess.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,7 +319,6 @@
 			files = (
 				D743F3DE1C32A4E400A7BC6E /* Foundation.framework in Frameworks */,
 				D743F3DD1C32A4DF00A7BC6E /* NetworkExtension.framework in Frameworks */,
-				D78C5EA81D716CBA00E54F6C /* SwiftKeychainWrapper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,9 +345,9 @@
 		D71C17201C32417600936BF7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D73A63961D771DF50053AEC8 /* KeychainAccess.framework */,
 				D78C5EAB1D716D0600E54F6C /* MMDB.framework */,
 				D78C5EA31D716CB400E54F6C /* FlagKit.framework */,
-				D78C5EA41D716CB400E54F6C /* SwiftKeychainWrapper.framework */,
 				D71C17281C3241E900936BF7 /* UIKit.framework */,
 				D71C17261C3241E500936BF7 /* Foundation.framework */,
 				D71C17231C3241DB00936BF7 /* CoreData.framework */,
@@ -627,12 +625,13 @@
 			attributes = {
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = LexTang.com;
 				TargetAttributes = {
 					D7453F281A31966F00F7E32D = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = 5SKD83S59G;
+						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -654,6 +653,7 @@
 					D74C91A41A383FEC00EAAAE1 = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = 5SKD83S59G;
+						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -669,6 +669,7 @@
 					D757AF841A3B370E00AEF3CB = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = 5SKD83S59G;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -762,7 +763,7 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/FlagKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/MMDB.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SwiftKeychainWrapper.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/KeychainAccess.framework",
 			);
 			name = Carthage;
 			outputPaths = (
@@ -946,6 +947,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -955,8 +957,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -965,6 +969,7 @@
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -990,6 +995,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -999,8 +1005,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
@@ -1008,6 +1016,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = MMDB_UINT128_IS_BYTE_ARRAY;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -1018,6 +1027,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1025,10 +1035,10 @@
 		D7453F4C1A31966F00F7E32D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = VPNOn/VPNOn.entitlements;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1040,6 +1050,7 @@
 				PRODUCT_MODULE_NAME = VPNOn;
 				PRODUCT_NAME = "VPN On";
 				SWIFT_OBJC_BRIDGING_HEADER = "VPNOn/VPNOn-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1047,10 +1058,10 @@
 		D7453F4D1A31966F00F7E32D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = VPNOn/VPNOn.entitlements;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1062,6 +1073,7 @@
 				PRODUCT_MODULE_NAME = VPNOn;
 				PRODUCT_NAME = "VPN On";
 				SWIFT_OBJC_BRIDGING_HEADER = "VPNOn/VPNOn-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1080,6 +1092,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LexTang.VPNOn.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1098,6 +1111,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LexTang.VPNOn.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1106,7 +1120,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
-				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -1123,6 +1137,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LexTang.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1133,7 +1148,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
-				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -1150,6 +1165,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LexTang.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";

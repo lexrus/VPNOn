@@ -17,7 +17,7 @@ class VPNSwitchCell : VPNTableViewCell {
         super.didMoveToSuperview()
 
         if superview != nil && isRightToLeft {
-            titleLabel.textAlignment = .Right
+            titleLabel.textAlignment = .right
         }
     }
     

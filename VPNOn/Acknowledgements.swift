@@ -21,44 +21,44 @@ class Acknowledgements : UITableViewController {
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        guard let plistURL = NSBundle.mainBundle().URLForResource(
-            "Acknowledgements",
+        guard let plistURL = Bundle.main.url(
+            forResource: "Acknowledgements",
             withExtension: "plist"
             ) else {
                 assert(true, "Failed to load Acknowledgements.plist")
                 return
         }
         
-        if let array = NSArray(contentsOfURL: plistURL) as? [NSDictionary] {
+        if let array = NSArray(contentsOf: plistURL) as? [NSDictionary] {
             acknowledgements = array
         }
     }
     
     override func tableView(
-        tableView: UITableView,
+        _ tableView: UITableView,
         numberOfRowsInSection section: Int
         ) -> Int {
             return 1
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return acknowledgements?.count ?? 0
     }
     
     override func tableView(
-        tableView: UITableView,
-        cellForRowAtIndexPath indexPath: NSIndexPath
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath
         ) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCellWithIdentifier(
-                "AcknowledgementCell",
-                forIndexPath: indexPath
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: "AcknowledgementCell",
+                for: indexPath
                 ) as! AcknowledgementCell
-            let acknowledgement = acknowledgements![indexPath.section]
+            let acknowledgement = acknowledgements![(indexPath as NSIndexPath).section]
             
             cell.titleLabel.text
-                = acknowledgement.objectForKey("title") as? String
+                = acknowledgement.object(forKey: "title") as? String
             cell.contentLabel.text
-                = acknowledgement.objectForKey("text") as? String
+                = acknowledgement.object(forKey: "text") as? String
             
             return cell
     }

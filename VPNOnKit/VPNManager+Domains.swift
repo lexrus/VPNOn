@@ -15,31 +15,31 @@ extension VPNManager {
 
     public var onDemand: Bool {
         get {
-            if let onDemandObject = defaults.objectForKey(kOnDemandKey) as! NSNumber? {
-                if onDemandObject.isKindOfClass(NSNumber.self) {
+            if let onDemandObject = defaults.object(forKey: kOnDemandKey) as! NSNumber? {
+                if onDemandObject.isKind(of: NSNumber.self) {
                     return onDemandObject.boolValue
                 }
             }
             return false
         }
         set {
-            defaults.setObject(NSNumber(bool: newValue), forKey: kOnDemandKey)
+            defaults.set(NSNumber(value: newValue), forKey: kOnDemandKey)
             defaults.synchronize()
         }
     }
     
     public var onDemandDomains: String? {
         get {
-            if let domainsObject = defaults.stringForKey(kOnDemandDomainsKey) {
+            if let domainsObject = defaults.string(forKey: kOnDemandDomainsKey) {
                 return domainsObject
             }
             return nil
         }
         set {
             if newValue == nil {
-                defaults.removeObjectForKey(kOnDemandDomainsKey)
+                defaults.removeObject(forKey: kOnDemandDomainsKey)
             } else {
-                defaults.setObject(newValue, forKey: kOnDemandDomainsKey)
+                defaults.set(newValue, forKey: kOnDemandDomainsKey)
             }
             defaults.synchronize()
         }
@@ -49,21 +49,21 @@ extension VPNManager {
         return domainsInString(onDemandDomains ?? "")
     }
     
-    public func domainsInString(string: String) -> [String] {
-        let seperator = NSCharacterSet.whitespaceAndNewlineCharacterSet()
-        let s = string.stringByTrimmingCharactersInSet(seperator)
+    public func domainsInString(_ string: String) -> [String] {
+        let seperator = CharacterSet.whitespacesAndNewlines
+        let s = string.trimmingCharacters(in: seperator)
         if s.isEmpty {
             return [String]()
         }
-        var domains = s.componentsSeparatedByCharactersInSet(seperator) as [String]
+        var domains = s.components(separatedBy: seperator) as [String]
         var wildCardDomains = [String]()
         if domains.count > 1 {
             if domains[domains.count - 1].isEmpty {
-                domains.removeAtIndex(domains.count - 1)
+                domains.remove(at: domains.count - 1)
             }
         } else {
             let ns = s as NSString
-            let range = ns.rangeOfCharacterFromSet(seperator)
+            let range = ns.rangeOfCharacter(from: seperator)
             if range.location == NSNotFound {
                 domains = [String]()
                 domains.append(s)
@@ -71,7 +71,7 @@ extension VPNManager {
         }
         domains.forEach {
             wildCardDomains.append($0)
-            if $0.rangeOfString("*.") == nil {
+            if $0.range(of: "*.") == nil {
                 wildCardDomains.append("*.\($0)")
             }
         }
@@ -80,7 +80,7 @@ extension VPNManager {
     }
     
     // See: http://stackoverflow.com/questions/25738817/does-there-exist-within-swifts-api-an-easy-way-to-remove-duplicate-elements-fro
-    private func uniq<S : SequenceType, T : Hashable where S.Generator.Element == T>(source: S) -> [T] {
+    fileprivate func uniq<S : Sequence, T : Hashable>(_ source: S) -> [T] where S.Iterator.Element == T {
         var buffer = Array<T>()
         var addedDict = [T: Bool]()
         for elem in source {

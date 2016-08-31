@@ -16,15 +16,13 @@ private let kWidgetNormalHeight: CGFloat = 60
 
 final class Widget:
     UIViewController,
-    NCWidgetProviding,
-    UICollectionViewDelegate,
-    UICollectionViewDataSource {
+    NCWidgetProviding {
     
     @IBOutlet weak var leftMarginView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var leftConstraint: NSLayoutConstraint!
 
-    private var marginLeft: CGFloat = 0 {
+    fileprivate var marginLeft: CGFloat = 0 {
         didSet {
             leftConstraint.constant = marginLeft
             view.setNeedsUpdateConstraints()
@@ -39,45 +37,45 @@ final class Widget:
         super.viewDidLoad()
         
         preferredContentSize = CGSize(
-            width: UIScreen.mainScreen().bounds.width,
+            width: UIScreen.main.bounds.width,
             height: kWidgetNormalHeight
         )
         
-        NSNotificationCenter.defaultCenter().addObserver(
+        NotificationCenter.default.addObserver(
             self,
             selector: #selector(Widget.coreDataDidSave(_:)),
-            name: NSManagedObjectContextDidSaveNotification,
+            name: NSNotification.Name.NSManagedObjectContextDidSave,
             object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(
+        NotificationCenter.default.addObserver(
             self,
             selector: #selector(Widget.VPNStatusDidChange(_:)),
-            name: NEVPNStatusDidChangeNotification,
+            name: NSNotification.Name.NEVPNStatusDidChange,
             object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(
+        NotificationCenter.default.addObserver(
             self,
             selector: #selector(Widget.pingDidUpdate(_:)),
-            name: kPingDidUpdate,
+            name: NSNotification.Name(rawValue: kPingDidUpdate),
             object: nil)
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(
+        NotificationCenter.default.removeObserver(
             self,
-            name: NSManagedObjectContextDidSaveNotification,
+            name: NSNotification.Name.NSManagedObjectContextDidSave,
             object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(
+        NotificationCenter.default.removeObserver(
             self,
-            name: NEVPNStatusDidChangeNotification,
+            name: NSNotification.Name.NEVPNStatusDidChange,
             object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(
+        NotificationCenter.default.removeObserver(
             self,
-            name: kPingDidUpdate,
+            name: NSNotification.Name(rawValue: kPingDidUpdate),
             object: nil)
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
         updateContent()
@@ -101,7 +99,7 @@ final class Widget:
         )
         tapGesture.numberOfTapsRequired = 1
         tapGesture.numberOfTouchesRequired = 1
-        leftMarginView.userInteractionEnabled = true
+        leftMarginView.isUserInteractionEnabled = true
         leftMarginView.addGestureRecognizer(tapGesture)
         leftMarginView.backgroundColor = UIColor(white: 0.0, alpha: 0.005)
 
@@ -112,10 +110,10 @@ final class Widget:
         longGesture.delaysTouchesBegan = true
         view.addGestureRecognizer(longGesture)
 
-        widgetPerformUpdateWithCompletionHandler { _ in }
+        widgetPerformUpdate { _ in }
     }
 
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         leftMarginView.gestureRecognizers?.forEach {
             leftMarginView.removeGestureRecognizer($0)
@@ -131,54 +129,54 @@ final class Widget:
         VPNDataManager.sharedManager.managedObjectContext?.reset()
     }
     
-    func widgetPerformUpdateWithCompletionHandler(
+    func widgetPerformUpdate(
         completionHandler: ((NCUpdateResult) -> Void)
         ) {
-        completionHandler(NCUpdateResult.NewData)
+        completionHandler(NCUpdateResult.newData)
     }
     
     // MARK: - Layout
     
-    func widgetMarginInsetsForProposedMarginInsets(
-        defaultMarginInsets: UIEdgeInsets
+    func widgetMarginInsets(
+        forProposedMarginInsets defaultMarginInsets: UIEdgeInsets
         ) -> UIEdgeInsets {
             marginLeft = defaultMarginInsets.left
-            return UIEdgeInsetsZero
+            return .zero
     }
     
     // MARK: - Left margin
     
-    func didTapLeftMargin(gesture: UITapGestureRecognizer) {
+    func didTapLeftMargin(_ gesture: UITapGestureRecognizer) {
         LTPingQueue.sharedQueue.restartPing()
         collectionView.reloadData()
     }
 
     // MARK: - Open App
 
-    func didLongPress(gesture: UITapGestureRecognizer) {
+    func didLongPress(_ gesture: UITapGestureRecognizer) {
         didTapAdd()
     }
     
     func didTapAdd() {
-        let appURL = NSURL(string: "vpnon://YOUR_SERVER_DOMAIN_OR_IP/?title=My VPN Server")!
-        extensionContext?.openURL(appURL, completionHandler: nil)
+        let appURL = URL(string: "vpnon://YOUR_SERVER_DOMAIN_OR_IP/?title=My VPN Server")!
+        extensionContext?.open(appURL, completionHandler: nil)
     }
     
     // MARK: - Notification
     
-    func pingDidUpdate(notification: NSNotification) {
+    func pingDidUpdate(_ notification: Notification) {
         collectionView.reloadData()
     }
     
-    func coreDataDidSave(notification: NSNotification) {
+    func coreDataDidSave(_ notification: Notification) {
         VPNDataManager.sharedManager.managedObjectContext?
-            .mergeChangesFromContextDidSaveNotification(notification)
+            .mergeChanges(fromContextDidSave: notification)
         updateContent()
     }
     
-    func VPNStatusDidChange(notification: NSNotification?) {
+    func VPNStatusDidChange(_ notification: Notification?) {
         collectionView.reloadData()
-        if VPNManager.sharedManager.status == .Disconnected {
+        if VPNManager.sharedManager.status == .disconnected {
             LTPingQueue.sharedQueue.restartPing()
         }
     }

@@ -25,7 +25,7 @@ final class VPNCell: UICollectionViewCell {
     override func didMoveToSuperview() {
         switchButton.onTintColor = ConnectedColor
         switchButton.tintColor = UIColor(white: 1.0, alpha: 0.2)
-        switchButton.thumbTintColor = UIColor.whiteColor()
+        switchButton.thumbTintColor = UIColor.white
         latencyLabel.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 11)
         titleLabel.font = UIFont(name: "AvenirNextCondensed-DemiBold", size: 11)
     }
@@ -42,7 +42,7 @@ final class VPNCell: UICollectionViewCell {
             switchButton.tintColor = colorOfLatency
             latencyLabel.textColor = colorOfLatency
 
-            if status == .Connected {
+            if status == .connected {
                 titleLabel.textColor = ConnectedColor
             } else {
                 titleLabel.textColor = colorOfLatency
@@ -64,27 +64,27 @@ final class VPNCell: UICollectionViewCell {
         return latencyColor
     }
     
-    var status: NEVPNStatus = .Disconnected {
+    var status: NEVPNStatus = .disconnected {
         didSet {
             animateFlagAndSwitchByStatus()
         }
     }
     
-    func configureWithVPN(vpn: VPN,  selected: Bool = false) {
+    func configureWithVPN(_ vpn: VPN,  selected: Bool = false) {
         current = selected
         titleLabel.text = vpn.title
         switchIndicator.stopAnimating()
         
         if let countryCode = vpn.countryCode {
             flagImageView.image = UIImage(
-                flagImageWithCountryCode: countryCode.uppercaseString
+                flagImageWithCountryCode: countryCode.uppercased()
             )
         } else {
             flagImageView.image = UIImage(flagImageForSpecialFlag: .World)
         }
 
-        if VPNManager.sharedManager.status == .Connected
-            || VPNManager.sharedManager.status == .Connecting
+        if VPNManager.sharedManager.status == .connected
+            || VPNManager.sharedManager.status == .connecting
         {
             flagImageView.alpha = current ? 1.0 : 0.4
         } else {
@@ -98,15 +98,15 @@ final class VPNCell: UICollectionViewCell {
         
         if !current {
             switchButton.setOn(false, animated: false)
-        } else if status == .Connecting {
+        } else if status == .connecting {
             latencyLabel.alpha = 0
-            switchIndicator.hidden = false
+            switchIndicator.isHidden = false
             switchIndicator.startAnimating()
             switchButton.setOn(true, animated: true)
         } else {
             switchIndicator.stopAnimating()
-            switchIndicator.hidden = true
-            if status == .Connected {
+            switchIndicator.isHidden = true
+            if status == .connected {
                 latencyLabel.alpha = 0
                 switchButton.setOn(true, animated: false)
             } else {

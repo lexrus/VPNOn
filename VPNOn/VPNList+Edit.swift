@@ -11,7 +11,7 @@ import VPNOnKit
 
 extension VPNList {
     
-    func didEditVPN(notification: NSNotification) {
+    func didEditVPN(_ notification: Notification) {
         self.vpns = VPNDataManager.sharedManager.allVPN()
         self.tableView.reloadData()
         if let vpn = notification.object as? VPN {
@@ -31,7 +31,7 @@ extension VPNList {
         
         if let nav = self.splitViewController?.viewControllers.last
             as? UINavigationController {
-                nav.popViewControllerAnimated(true)
+                nav.popViewController(animated: true)
         }
 
         if let vpns = self.vpns {

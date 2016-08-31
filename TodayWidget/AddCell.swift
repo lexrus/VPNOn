@@ -10,19 +10,19 @@ import UIKit
 
 class AddCell : UICollectionViewCell {
 
-    private var iconView: PlusMarkView {
+    fileprivate var iconView: PlusMarkView {
         if let
             effectView = contentView.subviews.first as? UIVisualEffectView,
-            markView = effectView.contentView.subviews.first as? PlusMarkView {
+            let markView = effectView.contentView.subviews.first as? PlusMarkView {
             return markView
         }
         
         let effectView = UIVisualEffectView(effect:
-            UIVibrancyEffect.notificationCenterVibrancyEffect())
+            UIVibrancyEffect.notificationCenter())
         
         let plusMark = PlusMarkView()
         effectView.frame = bounds
-        effectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        effectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         effectView.contentView.addSubview(plusMark)
         addSubview(effectView)
         return plusMark
@@ -40,16 +40,16 @@ class AddCell : UICollectionViewCell {
 
 private class PlusMarkView : UIView {
     
-    private let lineWidth: CGFloat = 0.5
+    fileprivate let lineWidth: CGFloat = 0.5
     
     override func didMoveToSuperview() {
         if superview != nil {
-            backgroundColor = UIColor.clearColor()
+            backgroundColor = UIColor.clear
         }
     }
     
-    override func drawRect(rect: CGRect) {
-        let color = UIColor.whiteColor()
+    override func draw(_ rect: CGRect) {
+        let color = UIColor.white
         color.setFill()
         color.setStroke()
         

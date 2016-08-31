@@ -21,21 +21,21 @@ class VPNDataManager {
     
     // MARK: - Core Data stack
     
-    private lazy var _oldDataDirectory: NSURL = {
-        let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
+    fileprivate lazy var _oldDataDirectory: URL = {
+        let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let url = urls[urls.count-1] 
         return url
         }()
     
-    lazy var dataDirectory: NSURL = {
+    lazy var dataDirectory: URL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "com.LexTang.VPNOn" in the application's documents Application Support directory.
-            return NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier(kAppGroupIdentifier)!
+            return FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: kAppGroupIdentifier)!
         }()
     
     lazy var managedObjectModel: NSManagedObjectModel = {
         // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
-        let modelURL = NSBundle.mainBundle().URLForResource("VPNOn", withExtension: "momd")!
-        return NSManagedObjectModel(contentsOfURL: modelURL)!
+        let modelURL = Bundle.main.url(forResource: "VPNOn", withExtension: "momd")!
+        return NSManagedObjectModel(contentsOf: modelURL)!
         }()
     
     lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator? = {
@@ -45,20 +45,20 @@ class VPNDataManager {
         
         self.migrateToVersion2(coordinator!)
         
-        let url = self.dataDirectory.URLByAppendingPathComponent("VPNOn.sqlite")
+        let url = self.dataDirectory.appendingPathComponent("VPNOn.sqlite")
         var failureReason = "There was an error creating or loading the application's saved data."
         
         let options = [
-            NSMigratePersistentStoresAutomaticallyOption: NSNumber(bool: true),
-            NSInferMappingModelAutomaticallyOption: NSNumber(bool: true),
+            NSMigratePersistentStoresAutomaticallyOption: NSNumber(value: true),
+            NSInferMappingModelAutomaticallyOption: NSNumber(value: true),
             "journal_mode": "WAL"
-        ]
+        ] as [String : Any]
         
-        if let _ = coordinator!.persistentStoreForURL(url) {
+        if let _ = coordinator!.persistentStore(for: url) {
 
         } else {
             do {
-                try coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: options)
+                try coordinator!.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: options)
             } catch let error as NSError {
                 coordinator = nil
                 NSLog("Unresolved error \(error), \(error.userInfo)")
@@ -84,36 +84,36 @@ class VPNDataManager {
     
     // MARK: - Migration
     
-    func migrateToVersion2(coordinator: NSPersistentStoreCoordinator) {
-        let srcURL = self._oldDataDirectory.URLByAppendingPathComponent("VPNOn.sqlite")
-        let dstURL = self.dataDirectory.URLByAppendingPathComponent("VPNOn.sqlite")
+    func migrateToVersion2(_ coordinator: NSPersistentStoreCoordinator) {
+        let srcURL = self._oldDataDirectory.appendingPathComponent("VPNOn.sqlite")
+        let dstURL = self.dataDirectory.appendingPathComponent("VPNOn.sqlite")
         
-        if !NSFileManager.defaultManager().fileExistsAtPath(srcURL.path!) {
+        if !FileManager.default.fileExists(atPath: srcURL.path) {
             return
         }
         
-        if NSFileManager.defaultManager().fileExistsAtPath(dstURL.path!) {
+        if FileManager.default.fileExists(atPath: dstURL.path) {
             return
         }
         
         let options = NSDictionary(
-            objects: [NSNumber(bool: true), NSNumber(bool: true), "WAL"],
-            forKeys: [NSMigratePersistentStoresAutomaticallyOption, NSInferMappingModelAutomaticallyOption, "journal_mode"])
+            objects: [NSNumber(value: true), NSNumber(value: true), "WAL"],
+            forKeys: [NSMigratePersistentStoresAutomaticallyOption as NSCopying, NSInferMappingModelAutomaticallyOption as NSCopying, "journal_mode" as NSCopying])
         
         var srcError: NSError?
         do {
-            try coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: srcURL, options: options as! [NSObject : AnyObject] as [NSObject : AnyObject])
+            try coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: srcURL, options: options as [NSObject : AnyObject] as [NSObject : AnyObject])
         } catch let error as NSError {
             srcError = error
             debugPrint("Failed to add src store: \(srcError)")
             return
         }
         
-        guard let oldStore = coordinator.persistentStoreForURL(srcURL) else { return }
+        guard let oldStore = coordinator.persistentStore(for: srcURL) else { return }
         do {
-            try coordinator.migratePersistentStore(oldStore, toURL: dstURL, options: options as? [NSObject : AnyObject], withType: NSSQLiteStoreType)
+            try coordinator.migratePersistentStore(oldStore, to: dstURL, options: options as? [NSObject : AnyObject], withType: NSSQLiteStoreType)
             do {
-                try NSFileManager.defaultManager().removeItemAtPath(srcURL.path!)
+                try FileManager.default.removeItem(atPath: srcURL.path)
             } catch _ {
             }
         } catch let error as NSError {

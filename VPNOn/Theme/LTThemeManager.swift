@@ -12,7 +12,7 @@ let kCurrentThemeIndexKey = "CurrentThemeIndex"
 
 class LTThemeManager
 {
-    var currentTheme : LTTheme? = .None
+    var currentTheme : LTTheme? = .none
     
     let themes: [LTTheme] = [LTDarkTheme(), LTLightTheme(), LTHelloKittyTheme(), LTDarkGreenTheme(), LTDarkPurpleTheme()]
     
@@ -28,17 +28,17 @@ class LTThemeManager
     
     var themeIndex: Int {
         get {
-            if let index = NSUserDefaults.standardUserDefaults().objectForKey(kCurrentThemeIndexKey) as? NSNumber {
-                if index.isKindOfClass(NSNumber.self) {
-                    return min(themes.count - 1, index.integerValue ?? 0)
+            if let index = UserDefaults.standard.object(forKey: kCurrentThemeIndexKey) as? NSNumber {
+                if index.isKind(of: NSNumber.self) {
+                    return min(themes.count - 1, index.intValue ?? 0)
                 }
             }
             return 0
         }
         set {
-            let newNumber = NSNumber(integer: newValue)
-            NSUserDefaults.standardUserDefaults().setObject(newNumber, forKey: kCurrentThemeIndexKey)
-            NSUserDefaults.standardUserDefaults().synchronize()
+            let newNumber = NSNumber(value: newValue)
+            UserDefaults.standard.set(newNumber, forKey: kCurrentThemeIndexKey)
+            UserDefaults.standard.synchronize()
         }
     }
     
@@ -46,7 +46,7 @@ class LTThemeManager
         activateTheme(themes[themeIndex])
     }
     
-    func activateTheme(theme : LTTheme)
+    func activateTheme(_ theme : LTTheme)
     {
         currentTheme = theme
         
@@ -61,23 +61,23 @@ class LTThemeManager
         // Navigation
         UINavigationBar.appearance().barTintColor = theme.navigationBarColor
         UINavigationBar.appearance().tintColor = theme.tintColor
-        UINavigationBar.appearance().backgroundColor = UIColor.clearColor()
-        UINavigationBar.appearance().titleTextAttributes = NSDictionary(objects: [theme.textColor], forKeys: [NSForegroundColorAttributeName]) as? [String : AnyObject]
+        UINavigationBar.appearance().backgroundColor = UIColor.clear
+        UINavigationBar.appearance().titleTextAttributes = NSDictionary(objects: [theme.textColor], forKeys: [NSForegroundColorAttributeName as NSCopying]) as? [String : AnyObject]
         
         // TableView
         UITableView.appearance().backgroundColor = theme.tableViewBackgroundColor
         UITableView.appearance().separatorColor = theme.tableViewLineColor
         UITableViewCell.appearance().backgroundColor = theme.tableViewCellColor
         UITableViewCell.appearance().tintColor = theme.tintColor
-        UITableViewCell.appearance().selectionStyle = UITableViewCellSelectionStyle.None
-        UILabel.lt_appearanceWhenContainedIn(UITableViewHeaderFooterView.self).textColor = theme.textColor
+        UITableViewCell.appearance().selectionStyle = UITableViewCellSelectionStyle.none
+        UILabel.lt_appearanceWhenContained(in: UITableViewHeaderFooterView.self).textColor = theme.textColor
         LTTableViewCellTitle.appearance().textColor = theme.textColor
-        UILabel.lt_appearanceWhenContainedIn(LTTableViewActionCell.self).textColor = theme.tintColor
-        UILabel.lt_appearanceWhenContainedIn(VPNTableViewCell.self).textColor = theme.textColor
-        UILabel.lt_appearanceWhenContainedIn(NormalTableViewCell.self).textColor = theme.textColor
-        UILabel.lt_appearanceWhenContainedIn(AcknowledgementCell.self).textColor = theme.textColor
-        UITextView.lt_appearanceWhenContainedIn(UITableViewCell.self).backgroundColor = theme.tableViewCellColor
-        UITextView.lt_appearanceWhenContainedIn(UITableViewCell.self).textColor = theme.textColor
+        UILabel.lt_appearanceWhenContained(in: LTTableViewActionCell.self).textColor = theme.tintColor
+        UILabel.lt_appearanceWhenContained(in: VPNTableViewCell.self).textColor = theme.textColor
+        UILabel.lt_appearanceWhenContained(in: NormalTableViewCell.self).textColor = theme.textColor
+        UILabel.lt_appearanceWhenContained(in: AcknowledgementCell.self).textColor = theme.textColor
+        UITextView.lt_appearanceWhenContained(in: UITableViewCell.self).backgroundColor = theme.tableViewCellColor
+        UITextView.lt_appearanceWhenContained(in: UITableViewCell.self).textColor = theme.textColor
         
         // TextField
         UITextField.appearance().tintColor = theme.tintColor
@@ -98,7 +98,7 @@ class LTThemeManager
         
         activateTheme(themes[themeIndex])
         
-        let windows = UIApplication.sharedApplication().windows
+        let windows = UIApplication.shared.windows
         
         for window in windows {
             for view in window.subviews {

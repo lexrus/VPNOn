@@ -10,7 +10,7 @@ import Foundation
 
 extension VPN {
 
-    public class func parseURL(url: NSURL) -> VPNInfo? {
+    public class func parseURL(_ url: URL) -> VPNInfo? {
         var title = ""
         let server = url.host ?? ""
         let account = url.user ?? ""
@@ -27,8 +27,8 @@ extension VPN {
         
         // Parse the query string.
         if let params = url.query {
-            for paramString in params.componentsSeparatedByString("&") {
-                let param = paramString.componentsSeparatedByString("=")
+            for paramString in params.components(separatedBy: "&") {
+                let param = paramString.components(separatedBy: "=")
                 if param.count != 2 {
                     continue
                 }

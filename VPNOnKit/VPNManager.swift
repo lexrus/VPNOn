@@ -28,11 +28,11 @@ public struct VPNAccount {
     public var account: String?
     public var group: String?
     public var alwaysOn = true
-    public var passwordRef: NSData? {
-        return Keychain.passwordForVPNID(ID)
+    public var passwordRef: Data? {
+        return KeychainWrapper.passwordRefForVPNID(ID)
     }
-    public var secretRef: NSData? {
-        return Keychain.secretForVPNID(ID)
+    public var secretRef: Data? {
+        return KeychainWrapper.secretRefForVPNID(ID)
     }
     
     public init() { }
@@ -40,14 +40,14 @@ public struct VPNAccount {
 
 public typealias VPNConfigureCompletion = (Void) -> Void
 
-final public class VPNManager {
+open class VPNManager {
 
-    private lazy var manager: NEVPNManager = {
-        return NEVPNManager.sharedManager()
+    fileprivate lazy var manager: NEVPNManager = {
+        return NEVPNManager.shared()
         }()
     
-    public lazy var defaults: NSUserDefaults = {
-        return NSUserDefaults(suiteName: kAppGroupIdentifier)!
+    open lazy var defaults: UserDefaults = {
+        return UserDefaults(suiteName: kAppGroupIdentifier)!
         }()
     
     public var status: NEVPNStatus {
@@ -62,22 +62,22 @@ final public class VPNManager {
         return instance
     }
 
-    private func loadPreferances(completion: () -> Void) {
-        manager.loadFromPreferencesWithCompletionHandler { error in
+    fileprivate func loadPreferances(_ completion: @escaping () -> Void) {
+        manager.loadFromPreferences { error in
             assert(error == nil, "Failed to load preferences: \(error!.localizedDescription)")
             self.manager.localizedDescription = "VPN On"
-            self.manager.enabled = true
+            self.manager.isEnabled = true
             completion()
         }
     }
 
-    public func save(account: VPNAccount, completion: VPNConfigureCompletion?) {
+    public func save(_ account: VPNAccount, completion: VPNConfigureCompletion?) {
         loadPreferances { [weak self] in
             self?._save(account, completion: completion)
         }
     }
     
-    private func _save(account: VPNAccount, completion: VPNConfigureCompletion?) {
+    fileprivate func _save(_ account: VPNAccount, completion: VPNConfigureCompletion?) {
         #if (arch(i386) || arch(x86_64)) && os(iOS)
             // #if TARGET_IPHONE_SIMULATOR for Swift
             assert(false, "I'm afraid you can not connect VPN in simulators.")
@@ -90,10 +90,10 @@ final public class VPNManager {
             p.useExtendedAuthentication = true
             p.localIdentifier = account.group ?? "VPN"
             if let secret = account.secretRef {
-                p.authenticationMethod = .SharedSecret
+                p.authenticationMethod = .sharedSecret
                 p.sharedSecretReference = secret
             } else {
-                p.authenticationMethod = .None
+                p.authenticationMethod = .none
             }
             pt = p
         } else {
@@ -102,12 +102,12 @@ final public class VPNManager {
             p.localIdentifier = account.group ?? "VPN"
             p.remoteIdentifier = account.server
             if let secret = account.secretRef {
-                p.authenticationMethod = .SharedSecret
+                p.authenticationMethod = .sharedSecret
                 p.sharedSecretReference = secret
             } else {
-                p.authenticationMethod = .None
+                p.authenticationMethod = .none
             }
-            p.deadPeerDetectionRate = NEVPNIKEv2DeadPeerDetectionRate.Medium
+            p.deadPeerDetectionRate = NEVPNIKEv2DeadPeerDetectionRate.medium
             pt = p
         }
 
@@ -122,21 +122,17 @@ final public class VPNManager {
             pt.passwordReference = password
         }
     
-        manager.enabled = true
+        manager.isEnabled = true
         manager.`protocol` = pt
         
         configOnDemand()
         
-        manager.saveToPreferencesWithCompletionHandler {
-            (error: NSError?) -> Void in
+        manager.saveToPreferences { error in
             if let err = error {
                 print("Failed to save profile: \(err.localizedDescription)")
             } else {
-                let delayTime = dispatch_time(
-                    DISPATCH_TIME_NOW,
-                    Int64(0.1 * Double(NSEC_PER_SEC))
-                )
-                dispatch_after(delayTime, dispatch_get_main_queue()) {
+                let delayTime = DispatchTime.now() + Double(Int64(0.1 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+                DispatchQueue.main.asyncAfter(deadline: delayTime) {
                     completion?()
                 }
             }
@@ -146,20 +142,20 @@ final public class VPNManager {
     public func connect() {
         do {
             try self.manager.connection.startVPNTunnel()
-        } catch NEVPNError.ConfigurationInvalid {
+        } catch NEVPNErrorDomain.configurationInvalid {
             
-        } catch NEVPNError.ConfigurationDisabled {
+        } catch NEVPNErrorDomain.configurationDisabled {
             
         } catch let error as NSError {
             print(error.localizedDescription)
-            NSNotificationCenter.defaultCenter().postNotificationName(
-                NEVPNStatusDidChangeNotification,
+            NotificationCenter.default.post(
+                name: NSNotification.Name.NEVPNStatusDidChange,
                 object: nil
             )
         }
     }
     
-    public func saveAndConnect(account: VPNAccount) {
+    public func saveAndConnect(_ account: VPNAccount) {
         save(account) {
             [weak self] in
             self?.connect()
@@ -170,15 +166,15 @@ final public class VPNManager {
         if onDemandDomainsArray.count > 0 && onDemand {
             let connectionRule = NEEvaluateConnectionRule(
                 matchDomains: onDemandDomainsArray,
-                andAction: NEEvaluateConnectionRuleAction.ConnectIfNeeded
+                andAction: NEEvaluateConnectionRuleAction.connectIfNeeded
             )
             let ruleEvaluateConnection = NEOnDemandRuleEvaluateConnection()
             ruleEvaluateConnection.connectionRules = [connectionRule]
             manager.onDemandRules = [ruleEvaluateConnection]
-            manager.onDemandEnabled = true
+            manager.isOnDemandEnabled = true
         } else {
             manager.onDemandRules = [NEOnDemandRule]()
-            manager.onDemandEnabled = false
+            manager.isOnDemandEnabled = false
         }
     }
     
@@ -187,7 +183,7 @@ final public class VPNManager {
     }
     
     public func removeProfile() {
-        manager.removeFromPreferencesWithCompletionHandler { error in
+        manager.removeFromPreferences { error in
             
         }
     }
