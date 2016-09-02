@@ -183,8 +183,10 @@ open class VPNManager {
     }
     
     public func removeProfile() {
-        manager.removeFromPreferences { error in
-            
+        manager.loadFromPreferences { _ in
+            self.manager.removeFromPreferences { _ in
+                
+            }
         }
     }
 }

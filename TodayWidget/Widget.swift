@@ -12,15 +12,14 @@ import NetworkExtension
 import VPNOnKit
 import CoreData
 
-private let kWidgetNormalHeight: CGFloat = 60
+private let kWidgetNormalHeight: CGFloat = 70
 
 final class Widget:
     UIViewController,
     NCWidgetProviding {
     
-    @IBOutlet weak var leftMarginView: UIView!
-    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var leftConstraint: NSLayoutConstraint!
+    @IBOutlet weak var collectionView: UICollectionView!
 
     fileprivate var marginLeft: CGFloat = 0 {
         didSet {
@@ -36,10 +35,14 @@ final class Widget:
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        preferredContentSize = CGSize(
-            width: UIScreen.main.bounds.width,
-            height: kWidgetNormalHeight
-        )
+        if #available(iOSApplicationExtension 10.0, *) {
+            extensionContext?.widgetLargestAvailableDisplayMode = .expanded
+        }
+        
+//        preferredContentSize = CGSize(
+//            width: UIScreen.main.bounds.width,
+//            height: kWidgetNormalHeight
+//        )
         
         NotificationCenter.default.addObserver(
             self,
@@ -82,10 +85,10 @@ final class Widget:
         collectionView.reloadData()
         LTPingQueue.sharedQueue.restartPing()
 
-        preferredContentSize = CGSize(
-            width: collectionView.contentSize.width,
-            height: max(kWidgetNormalHeight, collectionView.contentSize.height)
-        )
+//        preferredContentSize = CGSize(
+//            width: collectionView.contentSize.width,
+//            height: max(kWidgetNormalHeight, collectionView.contentSize.height)
+//        )
 
         // NOTE: Must remove the profile when there're no VPNs
         // otherwise there'll be a immutable profile live in system forever.
@@ -99,9 +102,6 @@ final class Widget:
         )
         tapGesture.numberOfTapsRequired = 1
         tapGesture.numberOfTouchesRequired = 1
-        leftMarginView.isUserInteractionEnabled = true
-        leftMarginView.addGestureRecognizer(tapGesture)
-        leftMarginView.backgroundColor = UIColor(white: 0.0, alpha: 0.005)
 
         let longGesture = UILongPressGestureRecognizer(
             target: self,
@@ -115,9 +115,6 @@ final class Widget:
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        leftMarginView.gestureRecognizers?.forEach {
-            leftMarginView.removeGestureRecognizer($0)
-        }
         view.gestureRecognizers?.forEach {
             view.removeGestureRecognizer($0)
         }
@@ -137,6 +134,15 @@ final class Widget:
     
     // MARK: - Layout
     
+    @available(iOSApplicationExtension 10.0, *)
+    func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize){
+        if activeDisplayMode == .compact {
+            preferredContentSize = CGSize(width: 0, height: kWidgetNormalHeight)
+        } else {
+            preferredContentSize = CGSize(width: 0, height: collectionView.contentSize.height)
+        }
+    }
+
     func widgetMarginInsets(
         forProposedMarginInsets defaultMarginInsets: UIEdgeInsets
         ) -> UIEdgeInsets {
@@ -158,7 +164,7 @@ final class Widget:
     }
     
     func didTapAdd() {
-        let appURL = URL(string: "vpnon://YOUR_SERVER_DOMAIN_OR_IP/?title=My VPN Server")!
+        let appURL = URL(string: "vpnon://your.server/?title=MyVPN")!
         extensionContext?.open(appURL, completionHandler: nil)
     }
     
