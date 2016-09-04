@@ -12,7 +12,7 @@ import NetworkExtension
 import QuartzCore
 import FlagKit
 
-private let ConnectedColor = UIColor(red: 0, green: 0.75, blue: 1, alpha: 1)
+private let ConnectedColor = UIColor(red: 0, green: 0.7, blue: 1, alpha: 1)
 
 final class VPNCell: UICollectionViewCell {
     
@@ -23,7 +23,7 @@ final class VPNCell: UICollectionViewCell {
     
     override func didMoveToSuperview() {
         switchButton.onTintColor = ConnectedColor
-        switchButton.tintColor = UIColor(white: 1.0, alpha: 0.2)
+        switchButton.tintColor = UIColor(white: 1, alpha: 0.2)
         switchButton.thumbTintColor = UIColor.white
     }
     
@@ -41,12 +41,12 @@ final class VPNCell: UICollectionViewCell {
     }
     
     var colorOfLatency: UIColor {
-        var latencyColor = UIColor(red: 0.3, green: 0.8, blue: 0.10, alpha: 1)
+        var latencyColor = UIColor(red: 0.2, green: 0.7, blue: 0, alpha: 1)
         
         if latency > 600 {
-            latencyColor = UIColor(red: 1, green: 0.11, blue: 0.34, alpha: 1)
+            latencyColor = UIColor(red: 1, green: 0.1, blue: 0.3, alpha: 1)
         } else if latency > 300 {
-            latencyColor = UIColor(red: 0.8184, green: 0.5066, blue: 0.0, alpha: 1)
+            latencyColor = UIColor(red: 0.8, green: 0.5, blue: 0, alpha: 1)
         } else if latency == -1 {
             latencyColor = UIColor(white: 0.6, alpha: 1)
         }
@@ -84,9 +84,9 @@ final class VPNCell: UICollectionViewCell {
         if VPNManager.sharedManager.status == .connected
             || VPNManager.sharedManager.status == .connecting
         {
-            flagImageView.alpha = current ? 1.0 : 0.4
+            flagImageView.alpha = current ? 1 : 0.4
         } else {
-            flagImageView.alpha = 1.0
+            flagImageView.alpha = 1
         }
     }
     

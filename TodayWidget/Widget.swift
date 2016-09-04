@@ -12,8 +12,6 @@ import NetworkExtension
 import VPNOnKit
 import CoreData
 
-private let kWidgetNormalHeight: CGFloat = 70
-
 final class Widget:
     UIViewController,
     NCWidgetProviding {
@@ -28,6 +26,14 @@ final class Widget:
         }
     }
     
+    private var normalHeight: CGFloat {
+        if #available(iOSApplicationExtension 10.0, *) {
+            return 110
+        } else {
+            return 80
+        }
+    }
+    
     var vpns: [VPN] {
         return VPNDataManager.sharedManager.allVPN()
     }
@@ -35,14 +41,19 @@ final class Widget:
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if #available(iOSApplicationExtension 10.0, *) {
-            extensionContext?.widgetLargestAvailableDisplayMode = .expanded
-        }
+        var width = UIScreen.main.bounds.width
         
-//        preferredContentSize = CGSize(
-//            width: UIScreen.main.bounds.width,
-//            height: kWidgetNormalHeight
-//        )
+        if #available(iOSApplicationExtension 10.0, *) {
+            if let context = extensionContext {
+                context.widgetLargestAvailableDisplayMode = .compact
+                width = context.widgetMaximumSize(for: .compact).width
+            }
+        } else {
+            preferredContentSize = CGSize(
+                width:  width,
+                height: normalHeight
+            )
+        }
         
         NotificationCenter.default.addObserver(
             self,
@@ -84,11 +95,6 @@ final class Widget:
         updateContent()
         collectionView.reloadData()
         LTPingQueue.sharedQueue.restartPing()
-
-//        preferredContentSize = CGSize(
-//            width: collectionView.contentSize.width,
-//            height: max(kWidgetNormalHeight, collectionView.contentSize.height)
-//        )
 
         // NOTE: Must remove the profile when there're no VPNs
         // otherwise there'll be a immutable profile live in system forever.
@@ -137,9 +143,9 @@ final class Widget:
     @available(iOSApplicationExtension 10.0, *)
     func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize){
         if activeDisplayMode == .compact {
-            preferredContentSize = CGSize(width: 0, height: kWidgetNormalHeight)
+            preferredContentSize = CGSize(width: maxSize.width, height: normalHeight)
         } else {
-            preferredContentSize = CGSize(width: 0, height: collectionView.contentSize.height)
+            preferredContentSize = CGSize(width: maxSize.width, height: collectionView.contentSize.height + 200)
         }
     }
 
