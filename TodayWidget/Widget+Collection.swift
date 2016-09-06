@@ -19,11 +19,11 @@ extension Widget:
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
         ) -> Int {
-            return max(1, vpns.count)
+            return vpns.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if vpns.count == 0 {
+        if indexPath.row == vpns.count {
             let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: "addCell",
                 for: indexPath
@@ -58,7 +58,7 @@ extension Widget:
         didSelectItemAt indexPath: IndexPath
         ) {
 
-            if vpns.count == 0 {
+            if indexPath.row == vpns.count {
                 didTapAdd()
                 return
             }
@@ -85,7 +85,7 @@ extension Widget:
         shouldHighlightItemAt indexPath: IndexPath
         ) -> Bool {
 
-            if vpns.count == 0 {
+            if indexPath.row == vpns.count {
                 return true
             }
 

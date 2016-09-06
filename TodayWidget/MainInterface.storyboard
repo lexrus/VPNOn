@@ -20,23 +20,23 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="axx-Uo-yQb">
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="VP4-dx-j9t">
-                                    <size key="itemSize" width="70" height="110"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="0.0" id="VP4-dx-j9t">
+                                    <size key="itemSize" width="70" height="100"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="5" minY="0.0" maxX="5" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="vpnCell" id="vDN-Kt-1WR" userLabel="VPN Cell" customClass="VPNCell" customModule="TodayWidget">
-                                        <rect key="frame" x="5" y="0.0" width="70" height="110"/>
+                                        <rect key="frame" x="5" y="0.0" width="70" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="70" height="110"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="70" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Zealand" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ngz-I2-iCK">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Zealand" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ngz-I2-iCK">
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="20" id="vMQ-BC-gKT"/>
+                                                        <constraint firstAttribute="height" constant="30" id="vMQ-BC-gKT"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -44,8 +44,8 @@
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zxb-7j-eMg">
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="11" id="48r-zu-WAs"/>
-                                                        <constraint firstAttribute="width" constant="13" id="cf3-f9-trZ"/>
+                                                        <constraint firstAttribute="height" constant="12" id="48r-zu-WAs"/>
+                                                        <constraint firstAttribute="width" constant="14" id="cf3-f9-trZ"/>
                                                     </constraints>
                                                 </imageView>
                                                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="gCC-bM-y53"/>
@@ -60,8 +60,8 @@
                                         </view>
                                         <constraints>
                                             <constraint firstItem="Zxb-7j-eMg" firstAttribute="trailing" secondItem="ngz-I2-iCK" secondAttribute="leading" constant="-2" id="1Gm-Vc-gcv"/>
-                                            <constraint firstItem="ugy-0B-wVP" firstAttribute="top" secondItem="ngz-I2-iCK" secondAttribute="bottom" constant="15" id="25q-pf-r6m"/>
-                                            <constraint firstItem="ngz-I2-iCK" firstAttribute="top" secondItem="vDN-Kt-1WR" secondAttribute="top" constant="15" id="Edo-tt-eDk"/>
+                                            <constraint firstItem="ugy-0B-wVP" firstAttribute="top" secondItem="ngz-I2-iCK" secondAttribute="bottom" constant="5" id="25q-pf-r6m"/>
+                                            <constraint firstItem="ngz-I2-iCK" firstAttribute="top" secondItem="vDN-Kt-1WR" secondAttribute="top" constant="12" id="Edo-tt-eDk"/>
                                             <constraint firstItem="gCC-bM-y53" firstAttribute="trailing" secondItem="ugy-0B-wVP" secondAttribute="trailing" constant="-3" id="Glk-cU-pmc"/>
                                             <constraint firstItem="gCC-bM-y53" firstAttribute="centerY" secondItem="ugy-0B-wVP" secondAttribute="centerY" id="YSO-dg-5o9"/>
                                             <constraint firstItem="ngz-I2-iCK" firstAttribute="centerX" secondItem="vDN-Kt-1WR" secondAttribute="centerX" constant="9" id="fiS-ul-flx"/>
@@ -76,10 +76,10 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="addCell" id="80D-o9-QK9" userLabel="Add Button Cell" customClass="AddCell" customModule="TodayWidget">
-                                        <rect key="frame" x="85" y="0.0" width="70" height="110"/>
+                                        <rect key="frame" x="85" y="0.0" width="70" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="70" height="110"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="70" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </view>
                                     </collectionViewCell>

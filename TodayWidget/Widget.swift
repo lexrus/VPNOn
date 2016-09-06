@@ -28,7 +28,7 @@ final class Widget:
     
     private var normalHeight: CGFloat {
         if #available(iOSApplicationExtension 10.0, *) {
-            return 110
+            return 100
         } else {
             return 80
         }
@@ -45,7 +45,7 @@ final class Widget:
         
         if #available(iOSApplicationExtension 10.0, *) {
             if let context = extensionContext {
-                context.widgetLargestAvailableDisplayMode = .compact
+                context.widgetLargestAvailableDisplayMode = .expanded
                 width = context.widgetMaximumSize(for: .compact).width
             }
         } else {
@@ -145,7 +145,7 @@ final class Widget:
         if activeDisplayMode == .compact {
             preferredContentSize = CGSize(width: maxSize.width, height: normalHeight)
         } else {
-            preferredContentSize = CGSize(width: maxSize.width, height: collectionView.contentSize.height + 200)
+            preferredContentSize = CGSize(width: maxSize.width, height: collectionView.contentSize.height)
         }
     }
 
