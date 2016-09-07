@@ -159,7 +159,8 @@ extension VPNDataManager {
     func duplicate(_ vpn: VPN) -> VPN? {
         let duplicatedVPNs = VPNDataManager.sharedManager.VPNBeginsWithTitle(vpn.title)
         if duplicatedVPNs.count > 0 {
-            let newTitle = "\(vpn.title) \(duplicatedVPNs.count)"
+            guard let title = vpn.title else { return nil }
+            let newTitle = "\(title) \(duplicatedVPNs.count)"
 
             if let newVPN = createVPN(
                 newTitle,
