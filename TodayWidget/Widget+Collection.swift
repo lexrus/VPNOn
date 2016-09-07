@@ -11,7 +11,8 @@ import VPNOnKit
 
 extension Widget:
     UICollectionViewDelegate,
-    UICollectionViewDataSource {
+    UICollectionViewDataSource,
+    UICollectionViewDelegateFlowLayout {
     
     // MARK: - Collection View Data source
     
@@ -19,11 +20,11 @@ extension Widget:
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
         ) -> Int {
-            return vpns.count + 1
+        return max(1, vpns.count)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.row == vpns.count {
+        if vpns.count == 0 {
             let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: "addCell",
                 for: indexPath
@@ -47,55 +48,63 @@ extension Widget:
                 .latencyForHostname(vpn.server)
             
             return cell
+        }
+        
     }
     
-}
-
     // MARK: - Collection View Delegate
-
+    
     func collectionView(
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath
         ) {
-
-            if indexPath.row == vpns.count {
-                didTapAdd()
+        
+        if vpns.count == 0 {
+            didTapAdd()
+            return
+        }
+        
+        let vpn = vpns[(indexPath as NSIndexPath).row]
+        
+        VPNManager.sharedManager.selectedVPNID = vpn.ID
+        
+        if VPNManager.sharedManager.status == .connected {
+            if VPNManager.sharedManager.selectedVPNID == vpn.ID {
+                // Do not connect it again if tap the same one
                 return
             }
+        }
         
-            let vpn = vpns[(indexPath as NSIndexPath).row]
-
-            VPNManager.sharedManager.selectedVPNID = vpn.ID
-            
-            if VPNManager.sharedManager.status == .connected {
-                if VPNManager.sharedManager.selectedVPNID == vpn.ID {
-                    // Do not connect it again if tap the same one
-                    return
-                }
-            }
-            
-            var account = vpn.toAccount()
-            account.title = vpn.title
-
-            VPNManager.sharedManager.saveAndConnect(account)
+        var account = vpn.toAccount()
+        account.title = vpn.title
+        
+        VPNManager.sharedManager.saveAndConnect(account)
     }
     
     func collectionView(
         _ collectionView: UICollectionView,
         shouldHighlightItemAt indexPath: IndexPath
         ) -> Bool {
-
-            if indexPath.row == vpns.count {
-                return true
-            }
-
-            switch VPNManager.sharedManager.status {
-            case .connected, .connecting:
-                VPNManager.sharedManager.disconnect()
-            default: ()
-            }
+        
+        if vpns.count == 0 {
             return true
-
+        }
+        
+        switch VPNManager.sharedManager.status {
+        case .connected, .connecting:
+            VPNManager.sharedManager.disconnect()
+        default: ()
+        }
+        return true
+        
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+        ) -> CGSize {
+            return cellSize
     }
     
 }

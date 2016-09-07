@@ -18,20 +18,18 @@ final class Widget:
     
     @IBOutlet weak var leftConstraint: NSLayoutConstraint!
     @IBOutlet weak var collectionView: UICollectionView!
-
-    fileprivate var marginLeft: CGFloat = 0 {
-        didSet {
-            leftConstraint.constant = marginLeft
-            view.setNeedsUpdateConstraints()
-        }
-    }
     
-    private var normalHeight: CGFloat {
-        if #available(iOSApplicationExtension 10.0, *) {
-            return 100
+    var cellSize: CGSize {
+        let width: CGFloat
+        let maxWidth = collectionView.bounds.width - 20
+        
+        if UIScreen.main.bounds.width <= 414 {
+            width = maxWidth / 4
         } else {
-            return 80
+            width = 90
         }
+        
+        return CGSize(width: width, height: 100)
     }
     
     var vpns: [VPN] {
@@ -40,20 +38,6 @@ final class Widget:
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        var width = UIScreen.main.bounds.width
-        
-        if #available(iOSApplicationExtension 10.0, *) {
-            if let context = extensionContext {
-                context.widgetLargestAvailableDisplayMode = .expanded
-                width = context.widgetMaximumSize(for: .compact).width
-            }
-        } else {
-            preferredContentSize = CGSize(
-                width:  width,
-                height: normalHeight
-            )
-        }
         
         NotificationCenter.default.addObserver(
             self,
@@ -89,6 +73,19 @@ final class Widget:
             object: nil)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if #available(iOSApplicationExtension 10.0, *) {
+            extensionContext?.widgetLargestAvailableDisplayMode = .compact
+        } else {
+            preferredContentSize = CGSize(
+                width: collectionView.bounds.width,
+                height: cellSize.height
+            )
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
@@ -100,14 +97,11 @@ final class Widget:
         // otherwise there'll be a immutable profile live in system forever.
         if vpns.count == 0 {
             VPNManager.sharedManager.removeProfile()
+        } else if vpns.count > 4 {
+            if #available(iOSApplicationExtension 10.0, *) {
+                extensionContext?.widgetLargestAvailableDisplayMode = .expanded
+            }
         }
-
-        let tapGesture = UITapGestureRecognizer(
-            target: self,
-            action: #selector(Widget.didTapLeftMargin(_:))
-        )
-        tapGesture.numberOfTapsRequired = 1
-        tapGesture.numberOfTouchesRequired = 1
 
         let longGesture = UILongPressGestureRecognizer(
             target: self,
@@ -115,15 +109,31 @@ final class Widget:
         )
         longGesture.delaysTouchesBegan = true
         view.addGestureRecognizer(longGesture)
-
+        
         widgetPerformUpdate { _ in }
+        
+        var width = UIScreen.main.bounds.width
+        
+        if #available(iOSApplicationExtension 10.0, *) {
+            if let context = extensionContext {
+                context.widgetLargestAvailableDisplayMode = .expanded
+                width = context.widgetMaximumSize(for: .compact).width
+            }
+            preferredContentSize = CGSize(
+                width:  width,
+                height: cellSize.height
+            )
+        } else {
+            collectionView.collectionViewLayout.invalidateLayout()
+            collectionView.collectionViewLayout.prepare()
+            preferredContentSize = collectionView.collectionViewLayout.collectionViewContentSize
+        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        view.gestureRecognizers?.forEach {
-            view.removeGestureRecognizer($0)
-        }
+        
+        view.gestureRecognizers?.forEach(view.removeGestureRecognizer)
     }
     
     func updateContent() {
@@ -143,7 +153,7 @@ final class Widget:
     @available(iOSApplicationExtension 10.0, *)
     func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize){
         if activeDisplayMode == .compact {
-            preferredContentSize = CGSize(width: maxSize.width, height: normalHeight)
+            preferredContentSize = CGSize(width: maxSize.width, height: cellSize.height)
         } else {
             preferredContentSize = CGSize(width: maxSize.width, height: collectionView.contentSize.height)
         }
@@ -152,17 +162,8 @@ final class Widget:
     func widgetMarginInsets(
         forProposedMarginInsets defaultMarginInsets: UIEdgeInsets
         ) -> UIEdgeInsets {
-            marginLeft = defaultMarginInsets.left
             return .zero
     }
-    
-    // MARK: - Left margin
-    
-    func didTapLeftMargin(_ gesture: UITapGestureRecognizer) {
-        LTPingQueue.sharedQueue.restartPing()
-        collectionView.reloadData()
-    }
-
     // MARK: - Open App
 
     func didLongPress(_ gesture: UITapGestureRecognizer) {
