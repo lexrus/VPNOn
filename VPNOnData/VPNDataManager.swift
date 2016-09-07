@@ -77,7 +77,7 @@ class VPNDataManager {
         if coordinator == nil {
             return nil
         }
-        var managedObjectContext = NSManagedObjectContext()
+        var managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
         managedObjectContext.persistentStoreCoordinator = coordinator
         return managedObjectContext
         }()
@@ -111,7 +111,7 @@ class VPNDataManager {
         
         guard let oldStore = coordinator.persistentStore(for: srcURL) else { return }
         do {
-            try coordinator.migratePersistentStore(oldStore, to: dstURL, options: options as? [NSObject : AnyObject], withType: NSSQLiteStoreType)
+            try coordinator.migratePersistentStore(oldStore, to: dstURL, options: options as? [AnyHashable : AnyObject], withType: NSSQLiteStoreType)
             do {
                 try FileManager.default.removeItem(atPath: srcURL.path)
             } catch _ {

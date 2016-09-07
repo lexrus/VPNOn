@@ -33,7 +33,7 @@ extension VPN {
                     continue
                 }
                 
-                let value = param[1] ?? ""
+                let value = param[1]
                 switch param[0] {
                 case "title":
                     title = value

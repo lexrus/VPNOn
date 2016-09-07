@@ -30,7 +30,7 @@ class LTThemeManager
         get {
             if let index = UserDefaults.standard.object(forKey: kCurrentThemeIndexKey) as? NSNumber {
                 if index.isKind(of: NSNumber.self) {
-                    return min(themes.count - 1, index.intValue ?? 0)
+                    return min(themes.count - 1, index.intValue)
                 }
             }
             return 0

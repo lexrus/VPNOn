@@ -123,7 +123,8 @@ open class VPNManager {
         }
     
         manager.isEnabled = true
-        manager.`protocol` = pt
+        
+        manager.protocolConfiguration = pt
         
         configOnDemand()
         
