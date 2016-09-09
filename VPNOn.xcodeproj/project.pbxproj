@@ -632,6 +632,7 @@
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = 5SKD83S59G;
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -654,6 +655,7 @@
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = 5SKD83S59G;
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -1039,6 +1041,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = VPNOn/VPNOn.entitlements;
+				DEVELOPMENT_TEAM = 5SKD83S59G;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1049,6 +1052,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.LexTang.VPNOn;
 				PRODUCT_MODULE_NAME = VPNOn;
 				PRODUCT_NAME = "VPN On";
+				PROVISIONING_PROFILE = "21c503a3-e45d-4091-ae60-9c8eefea92a6";
+				PROVISIONING_PROFILE_SPECIFIER = VPNOnDev;
 				SWIFT_OBJC_BRIDGING_HEADER = "VPNOn/VPNOn-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1062,6 +1067,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = VPNOn/VPNOn.entitlements;
+				DEVELOPMENT_TEAM = 5SKD83S59G;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1072,6 +1078,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.LexTang.VPNOn;
 				PRODUCT_MODULE_NAME = VPNOn;
 				PRODUCT_NAME = "VPN On";
+				PROVISIONING_PROFILE = "e85a8a97-9ad2-455f-8cb8-96f06faa0ec5";
+				PROVISIONING_PROFILE_SPECIFIER = VPNOnAppStore;
 				SWIFT_OBJC_BRIDGING_HEADER = "VPNOn/VPNOn-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1082,6 +1090,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = TodayWidget/TodayWidget.entitlements;
+				DEVELOPMENT_TEAM = 5SKD83S59G;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1091,6 +1100,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LexTang.VPNOn.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "67375cdc-3870-47ed-9213-5ed297d0d6a6";
+				PROVISIONING_PROFILE_SPECIFIER = VPNOnTodayDev;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1101,6 +1112,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = TodayWidget/TodayWidget.entitlements;
+				DEVELOPMENT_TEAM = 5SKD83S59G;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -1110,6 +1122,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LexTang.VPNOn.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "0beebe4d-791f-4f32-bbab-f9fd5d47a26c";
+				PROVISIONING_PROFILE_SPECIFIER = VPNOnTodayAppStore;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1120,9 +1134,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 5SKD83S59G;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1148,9 +1163,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 5SKD83S59G;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
