@@ -38,7 +38,7 @@ final class VPNList: UITableViewController, SimplePingDelegate, VPNDomainsDelega
         tableView.backgroundView = LTViewControllerBackground()
         
         // MARK: - Notifications
-        let NC = NSNotificationCenter.defaultCenter()
+        let NC = NotificationCenter.default
         
         [
             kVPNDidUpdate,
@@ -49,35 +49,35 @@ final class VPNList: UITableViewController, SimplePingDelegate, VPNDomainsDelega
                 NC.addObserver(
                     self,
                     selector: #selector(VPNList.didEditVPN(_:)),
-                    name: $0,
+                    name: NSNotification.Name(rawValue: $0),
                     object: nil)
         }
         
         NC.addObserver(
             self,
             selector: #selector(LTPingQueue.pingDidUpdate(_:)),
-            name: kPingDidUpdate,
+            name: NSNotification.Name(rawValue: kPingDidUpdate),
             object: nil)
         
         NC.addObserver(
             self,
             selector: #selector(VPNList.pingDidComplete(_:)),
-            name: kPingDidComplete,
+            name: NSNotification.Name(rawValue: kPingDidComplete),
             object: nil)
         
         NC.addObserver(
             self,
             selector: #selector(VPNList.VPNDidChangeStatus(_:)),
-            name: NEVPNStatusDidChangeNotification,
+            name: NSNotification.Name.NEVPNStatusDidChange,
             object: nil)
         
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         reloadVPNs()
@@ -87,8 +87,8 @@ final class VPNList: UITableViewController, SimplePingDelegate, VPNDomainsDelega
         vpns = VPNDataManager.sharedManager.allVPN()
         
         if let selectedID = VPNDataManager.sharedManager.selectedVPNID {
-            if selectedID != activatedVPNID {
-                activatedVPNID = selectedID.URIRepresentation().absoluteString
+            if selectedID.uriRepresentation().lastPathComponent != activatedVPNID {
+                activatedVPNID = selectedID.uriRepresentation().absoluteString
                 tableView?.reloadData()
             }
         }
@@ -96,7 +96,7 @@ final class VPNList: UITableViewController, SimplePingDelegate, VPNDomainsDelega
     
     // MARK: - VPNDomainsDelegate
     
-    func didTapSaveDomainsWithText(text: String) {
+    func didTapSaveDomainsWithText(_ text: String) {
         updateOnDemandCell()
     }
     

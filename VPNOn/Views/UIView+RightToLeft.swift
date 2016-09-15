@@ -12,9 +12,9 @@ extension UIView {
 
     var isRightToLeft: Bool {
         if #available(iOS 9.0, *) {
-            return UIView.userInterfaceLayoutDirectionForSemanticContentAttribute(semanticContentAttribute) == .RightToLeft
+            return UIView.userInterfaceLayoutDirection(for: semanticContentAttribute) == .rightToLeft
         } else {
-            return UIApplication.sharedApplication().userInterfaceLayoutDirection == .RightToLeft
+            return UIApplication.shared.userInterfaceLayoutDirection == .rightToLeft
         }
     }
 

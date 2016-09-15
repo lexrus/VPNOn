@@ -12,10 +12,10 @@ import VPNOnKit
 extension VPNEditor {
 
     override func tableView(
-        tableView: UITableView,
-        didSelectRowAtIndexPath indexPath: NSIndexPath
+        _ tableView: UITableView,
+        didSelectRowAt indexPath: IndexPath
         ) {
-            switch tableView.cellForRowAtIndexPath(indexPath) {
+            switch tableView.cellForRow(at: indexPath) {
             case deleteCell?:
                 confirmDelete()
                 break
@@ -26,10 +26,10 @@ extension VPNEditor {
                 ()
             }
             
-            tableView.deselectRowAtIndexPath(indexPath, animated: false)
+            tableView.deselectRow(at: indexPath, animated: false)
     }
     
-    private func confirmDelete() {
+    fileprivate func confirmDelete() {
         let title = NSLocalizedString(
             "Delete VPN?",
             comment: "VPN Config - Delete alert title"
@@ -41,19 +41,19 @@ extension VPNEditor {
         let alert = UIAlertController(
             title: title,
             message: nil,
-            preferredStyle: .Alert
+            preferredStyle: .alert
         )
         let deleteAction = UIAlertAction(
             title:
             deleteButtonTitle,
-            style: .Destructive
+            style: .destructive
             ) { _ in
                 guard let vpn = self.vpn else {
                     return
                 }
                 VPNDataManager.sharedManager.deleteVPN(vpn)
-                NSNotificationCenter.defaultCenter()
-                    .postNotificationName(kVPNDidRemove, object: nil)
+                NotificationCenter.default
+                    .post(name: Notification.Name(rawValue: kVPNDidRemove), object: nil)
         }
         let cancelButtonTitle = NSLocalizedString(
             "Cancel",
@@ -61,23 +61,23 @@ extension VPNEditor {
         )
         let cancelAction = UIAlertAction(
             title: cancelButtonTitle,
-            style: .Cancel,
+            style: .cancel,
             handler: nil
         )
         
         alert.addAction(deleteAction)
         alert.addAction(cancelAction)
-        presentViewController(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
     
-    private func duplicate() {
+    fileprivate func duplicate() {
         guard let vpn = self.vpn else {
             return
         }
         
         if let newVPN = VPNDataManager.sharedManager.duplicate(vpn) {
-            NSNotificationCenter.defaultCenter()
-                .postNotificationName(kVPNDidDuplicate, object: newVPN)
+            NotificationCenter.default
+                .post(name: Notification.Name(rawValue: kVPNDidDuplicate), object: newVPN)
         }
     }
 

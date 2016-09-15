@@ -10,7 +10,7 @@ import UIKit
 
 extension VPNEditor {
 
-    @IBAction func didChangeType(sender: AnyObject) {
+    @IBAction func didChangeType(_ sender: AnyObject) {
         toggleSaveButtonByStatus()
     }
 

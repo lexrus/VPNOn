@@ -9,15 +9,35 @@
 import UIKit
 import VPNOnKit
 import FlagKit
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 extension VPNList {
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 4
     }
     
     override func tableView(
-        tableView: UITableView,
+        _ tableView: UITableView,
         numberOfRowsInSection section: Int
         ) -> Int {
             switch section {
@@ -36,31 +56,31 @@ extension VPNList {
     }
     
     override func tableView(
-        tableView: UITableView,
-        cellForRowAtIndexPath indexPath: NSIndexPath
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath
         ) -> UITableViewCell {
-            switch indexPath.section {
+            switch (indexPath as NSIndexPath).section {
             case kVPNConnectionSection:
-                let cell = tableView.dequeueReusableCellWithIdentifier(
-                    "ConnectionCell", forIndexPath: indexPath) as! VPNSwitchCell
+                let cell = tableView.dequeueReusableCell(
+                    withIdentifier: "ConnectionCell", for: indexPath) as! VPNSwitchCell
                 cell.titleLabel!.text = connectionStatus
-                cell.switchButton.on = connectionOn
-                cell.switchButton.enabled = vpns != nil && vpns!.count > 0
+                cell.switchButton.isOn = connectionOn
+                cell.switchButton.isEnabled = vpns != nil && vpns!.count > 0
                 return cell
                 
             case kVPNOnDemandSection:
-                if indexPath.row == 0 {
+                if (indexPath as NSIndexPath).row == 0 {
                     let switchCell = tableView
-                        .dequeueReusableCellWithIdentifier("OnDemandCell") as! VPNSwitchCell
-                    switchCell.switchButton.on =
+                        .dequeueReusableCell(withIdentifier: "OnDemandCell") as! VPNSwitchCell
+                    switchCell.switchButton.isOn =
                         VPNManager.sharedManager.onDemand
                     return switchCell
                 } else {
                     let domainsCell = tableView
-                        .dequeueReusableCellWithIdentifier("DomainsCell")!
+                        .dequeueReusableCell(withIdentifier: "DomainsCell")!
                     let domainsCount = VPNManager.sharedManager
                         .onDemandDomainsArray
-                        .filter { $0.rangeOfString("*.") == nil }
+                        .filter { !$0.contains("*.") }
                         .count
                     let domainsCountFormat = NSLocalizedString(
                         "%d Domains",
@@ -72,11 +92,11 @@ extension VPNList {
                 }
                 
             case kVPNListSection:
-                let cell = tableView.dequeueReusableCellWithIdentifier(
-                    "VPNCell",
-                    forIndexPath: indexPath
+                let cell = tableView.dequeueReusableCell(
+                    withIdentifier: "VPNCell",
+                    for: indexPath
                     ) as! VPNTableViewCell
-                guard let vpn = vpns?[indexPath.row] else {
+                guard let vpn = vpns?[(indexPath as NSIndexPath).row] else {
                     return cell
                 }
                 cell.textLabel?.attributedText =
@@ -87,9 +107,7 @@ extension VPNList {
                 cell.imageView?.image = nil
                 
                 if let countryCode = vpn.countryCode {
-                    cell.imageView?.image = UIImage(
-                        flagImageWithCountryCode: countryCode.uppercaseString
-                    )
+                    cell.imageView?.image = UIImage(flagImageWith: countryCode.uppercased())
                 }
                 
                 cell.current = Bool(activatedVPNID == vpn.ID)
@@ -97,28 +115,28 @@ extension VPNList {
                 return cell
                 
             default:
-                let addCell = tableView.dequeueReusableCellWithIdentifier(
-                    "AddCell",
-                    forIndexPath: indexPath
+                let addCell = tableView.dequeueReusableCell(
+                    withIdentifier: "AddCell",
+                    for: indexPath
                 )
                 if addCell.isRightToLeft {
-                    addCell.textLabel?.textAlignment = .Right
+                    addCell.textLabel?.textAlignment = .right
                 }
                 return addCell
             }
     }
     
     override func tableView(
-        tableView: UITableView,
-        didSelectRowAtIndexPath indexPath: NSIndexPath
+        _ tableView: UITableView,
+        didSelectRowAt indexPath: IndexPath
         ) {
-            switch indexPath.section {
+            switch (indexPath as NSIndexPath).section {
             case kVPNAddSection:
                 VPNDataManager.sharedManager.selectedVPNID = nil
                 break
                 
             case kVPNListSection:
-                activatedVPNID = vpns?[indexPath.row].ID
+                activatedVPNID = vpns?[(indexPath as NSIndexPath).row].ID
                 VPNManager.sharedManager.activatedVPNID = activatedVPNID
                 tableView.reloadData()
                 break
@@ -129,20 +147,20 @@ extension VPNList {
     }
     
     override func tableView(
-        tableView: UITableView,
-        accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath
+        _ tableView: UITableView,
+        accessoryButtonTappedForRowWith indexPath: IndexPath
         ) {
-            if indexPath.section == kVPNListSection {
-                let VPNID = vpns?[indexPath.row].objectID
+            if (indexPath as NSIndexPath).section == kVPNListSection {
+                let VPNID = vpns?[(indexPath as NSIndexPath).row].objectID
                 VPNDataManager.sharedManager.selectedVPNID = VPNID
             }
     }
     
     override func tableView(
-        tableView: UITableView,
-        heightForRowAtIndexPath indexPath: NSIndexPath
+        _ tableView: UITableView,
+        heightForRowAt indexPath: IndexPath
         ) -> CGFloat {
-            switch indexPath.section {
+            switch (indexPath as NSIndexPath).section {
             case kVPNListSection:
                 return 60
                 
@@ -152,7 +170,7 @@ extension VPNList {
     }
     
     override func tableView(
-        tableView: UITableView,
+        _ tableView: UITableView,
         heightForFooterInSection section: Int
         ) -> CGFloat {
             if section == kVPNListSection {
@@ -162,7 +180,7 @@ extension VPNList {
     }
     
     override func tableView(
-        tableView: UITableView,
+        _ tableView: UITableView,
         titleForHeaderInSection section: Int
         ) -> String? {
             if section == kVPNListSection && vpns?.count > 0 {
@@ -172,13 +190,13 @@ extension VPNList {
                 )
             }
             
-            return .None
+            return .none
     }
     
     // MARK: - Cell title
     
-    func cellTitleForIndexPath(indexPath: NSIndexPath) -> NSAttributedString {
-        guard let vpn = vpns?[indexPath.row] else {
+    func cellTitleForIndexPath(_ indexPath: IndexPath) -> NSAttributedString {
+        guard let vpn = vpns?[(indexPath as NSIndexPath).row] else {
             return NSAttributedString(string: "")
         }
         
@@ -186,7 +204,7 @@ extension VPNList {
         
         let titleAttributes = [
             NSFontAttributeName:
-                UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+                UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
         ]
         
         let attributedTitle = NSMutableAttributedString(
@@ -204,15 +222,15 @@ extension VPNList {
             
             let latencyAttributes = [
                 NSFontAttributeName:
-                    UIFont.preferredFontForTextStyle(UIFontTextStyleFootnote),
+                    UIFont.preferredFont(forTextStyle: UIFontTextStyle.footnote),
                 NSForegroundColorAttributeName:
                 latencyColor
-            ]
+            ] as [String : Any]
             let attributedLatency = NSMutableAttributedString(
                 string: " \(latency)ms",
                 attributes: latencyAttributes
             )
-            attributedTitle.appendAttributedString(attributedLatency)
+            attributedTitle.append(attributedLatency)
         }
         
         return attributedTitle

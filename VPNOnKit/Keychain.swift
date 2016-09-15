@@ -7,57 +7,51 @@
 //
 
 import Foundation
-import SwiftKeychainWrapper
+import KeychainAccess
 
-public struct Keychain {
+public struct KeychainWrapper {
     
-    public static var defaultKeychain: KeychainWrapper {
-        return KeychainWrapper(serviceName: "com.LexTang.VPNOn")
+    private static var k: Keychain {
+        return Keychain(service: "com.LexTang.VPNOn")
+    }
+
+    public static func setPassword(_ password: String, forVPNID VPNID: String) {
+        let key = NSURL(string: VPNID)!.lastPathComponent!
+        _ = try? k.remove(key)
+        k[key] = password
     }
     
-    public static func setPassword(password: String, forVPNID VPNID: String) -> Bool {
+    public static func setSecret(_ secret: String, forVPNID VPNID: String) {
         let key = NSURL(string: VPNID)!.lastPathComponent!
-        defaultKeychain.removeObjectForKey(key)
-        if password.isEmpty {
-            return true
-        }
-        return defaultKeychain.setString(password, forKey: key)
+        _ = try? k.remove("\(key)psk")
+        k["\(key)psk"] = secret
     }
     
-    public static func setSecret(secret: String, forVPNID VPNID: String) -> Bool {
+    public static func passwordRefForVPNID(_ VPNID: String) -> Data? {
         let key = NSURL(string: VPNID)!.lastPathComponent!
-        defaultKeychain.removeObjectForKey("\(key)psk")
-        if secret.isEmpty {
-            return true
-        }
-        return defaultKeychain.setString(secret, forKey: "\(key)psk")
+        return k[attributes: key]?.persistentRef
     }
     
-    public static func passwordForVPNID(VPNID: String) -> NSData? {
+    public static func secretRefForVPNID(_ VPNID: String) -> Data? {
         let key = NSURL(string: VPNID)!.lastPathComponent!
-        return defaultKeychain.dataRefForKey(key)
+        return k[attributes: "\(key)psk"]?.persistentRef
     }
     
-    public static func secretForVPNID(VPNID: String) -> NSData? {
+    public static func destoryKeyForVPNID(_ VPNID: String) {
         let key = NSURL(string: VPNID)!.lastPathComponent!
-        return defaultKeychain.dataRefForKey("\(key)psk")
+        _ = try? k.remove(key)
+        _ = try? k.remove("\(key)psk")
+        _ = try? k.remove("\(key)cert")
     }
     
-    public static func destoryKeyForVPNID(VPNID: String) {
+    public static func passwordStringForVPNID(_ VPNID: String) -> String? {
         let key = NSURL(string: VPNID)!.lastPathComponent!
-        defaultKeychain.removeObjectForKey(key)
-        defaultKeychain.removeObjectForKey("\(key)psk")
-        defaultKeychain.removeObjectForKey("\(key)cert")
+        return k[key]
     }
     
-    public static func passwordStringForVPNID(VPNID: String) -> String? {
+    public static func secretStringForVPNID(_ VPNID: String) -> String? {
         let key = NSURL(string: VPNID)!.lastPathComponent!
-        return defaultKeychain.stringForKey(key)
-    }
-    
-    public static func secretStringForVPNID(VPNID: String) -> String? {
-        let key = NSURL(string: VPNID)!.lastPathComponent!
-        return defaultKeychain.stringForKey("\(key)psk")
+        return k["\(key)psk"]
     }
 
 }

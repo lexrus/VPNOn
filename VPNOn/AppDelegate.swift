@@ -14,27 +14,24 @@ class AppDelegate:
     
     var window: UIWindow?
     
-    func application(
-        application: UIApplication,
-        didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?
-        ) -> Bool {
-            if let splitViewController = window?.rootViewController
-                as? UISplitViewController {
-                    splitViewController.delegate = self
-                    splitViewController.preferredDisplayMode = .AllVisible
-            }
-            
-            LTThemeManager.sharedManager.activateTheme()
-            
-            return true
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+        if let splitViewController = window?.rootViewController
+            as? UISplitViewController {
+            splitViewController.delegate = self
+            splitViewController.preferredDisplayMode = .allVisible
+        }
+        
+        LTThemeManager.sharedManager.activateTheme()
+
+        return true
     }
     
     // MARK: - Split view
     
     func splitViewController(
-        splitViewController: UISplitViewController,
-        collapseSecondaryViewController secondaryViewController:UIViewController,
-        ontoPrimaryViewController primaryViewController:UIViewController
+        _ splitViewController: UISplitViewController,
+        collapseSecondary secondaryViewController:UIViewController,
+        onto primaryViewController:UIViewController
         ) -> Bool {
             if let secondaryAsNavController = secondaryViewController
                 as? UINavigationController {

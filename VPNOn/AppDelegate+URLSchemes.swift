@@ -12,7 +12,7 @@ import VPNOnKit
 
 extension AppDelegate {
     
-    func application(application: UIApplication, handleOpenURL URL: NSURL) -> Bool {
+    @objc(application:handleOpenURL:) func application(_ application: UIApplication, handleOpen URL: URL) -> Bool {
         var willConnect = false
         var callback: String = ""
         
@@ -23,14 +23,14 @@ extension AppDelegate {
         }
         
         if let query = URL.query {
-            let comps = query.componentsSeparatedByString("&")
+            let comps = query.components(separatedBy: "&")
             if query == "connect" {
                 willConnect = true
             } else if comps.count > 1 {
                 if comps[0] == "connect" {
                     willConnect = true
                 }
-                let callbackQuery = comps[1].componentsSeparatedByString("=")
+                let callbackQuery = comps[1].components(separatedBy: "=")
                 if callbackQuery[0] == "callback" {
                     callback = callbackQuery[1]
                 }
@@ -38,11 +38,8 @@ extension AppDelegate {
         }
         
         if willConnect {
-            let delayTime = dispatch_time(
-                DISPATCH_TIME_NOW,
-                Int64(0.3 * Double(NSEC_PER_SEC))
-            )
-            dispatch_after(delayTime, dispatch_get_main_queue()) {
+            let delayTime = DispatchTime.now() + Double(Int64(0.3 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+            DispatchQueue.main.asyncAfter(deadline: delayTime) {
                 [weak self] in
                 self?.connectVPNWithURL(URL, callback: callback)
             }
@@ -53,7 +50,7 @@ extension AppDelegate {
         return true
     }
     
-    private func connectVPNWithURL(URL: NSURL, callback: String) {
+    fileprivate func connectVPNWithURL(_ URL: Foundation.URL, callback: String) {
         guard let title = URL.host else { return }
         
         let vpns = VPNDataManager.sharedManager.VPNHasTitle(title)
@@ -61,25 +58,25 @@ extension AppDelegate {
         
         VPNDataManager.sharedManager.selectedVPNID = vpn.objectID
         
-        NSNotificationCenter.defaultCenter()
-            .postNotificationName(kSelectionDidChange, object: nil)
+        NotificationCenter.default
+            .post(name: Notification.Name(rawValue: kSelectionDidChange), object: nil)
         
         VPNManager.sharedManager.saveAndConnect(vpn.toAccount())
         
         if !callback.isEmpty {
-            if let url = NSURL(string: callback) {
-                UIApplication.sharedApplication().openURL(url)
+            if let url = Foundation.URL(string: callback) {
+                UIApplication.shared.openURL(url)
             }
         }
     }
     
-    private func initialCreateViewWithURL(URL: NSURL) {
+    fileprivate func initialCreateViewWithURL(_ URL: Foundation.URL) {
         // If the host is empty, do nothing
-        guard let _ = URL.host, info = VPN.parseURL(URL) else { return }
+        guard let _ = URL.host, let info = VPN.parseURL(URL) else { return }
         guard let splitVC = window?.rootViewController as? UISplitViewController else { return }
         guard let detailNC = splitVC.viewControllers.last as? UINavigationController else { return }
-        let mainSB = UIStoryboard.init(name: "Main", bundle: NSBundle.mainBundle())
-        guard let editorVC = mainSB.instantiateViewControllerWithIdentifier("VPNEditor") as? VPNEditor else { return }
+        let mainSB = UIStoryboard.init(name: "Main", bundle: Bundle.main)
+        guard let editorVC = mainSB.instantiateViewController(withIdentifier: "VPNEditor") as? VPNEditor else { return }
         editorVC.initializedVPNInfo = info
         detailNC.pushViewController(editorVC, animated: false)
     }

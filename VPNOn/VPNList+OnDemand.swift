@@ -11,8 +11,8 @@ import VPNOnKit
 
 extension VPNList {
     
-    @IBAction func didTapOnDemandSwitch(sender: UISwitch?) {
-        VPNManager.sharedManager.onDemand = sender!.on
+    @IBAction func didTapOnDemandSwitch(_ sender: UISwitch?) {
+        VPNManager.sharedManager.onDemand = sender!.isOn
         
         // NOTE: Update profile to activate On Demand feature
         if let VPN = VPNDataManager.sharedManager.activatedVPN {
@@ -23,9 +23,9 @@ extension VPNList {
     }
     
     func updateOnDemandCell() {
-        let indexSet = NSIndexSet(index: kVPNOnDemandSection)
+        let indexSet = IndexSet(integer: kVPNOnDemandSection)
         tableView.reloadSections(indexSet,
-            withRowAnimation: UITableViewRowAnimation.Automatic)
+            with: UITableViewRowAnimation.automatic)
     }
     
 }

@@ -12,23 +12,24 @@ import NetworkExtension
 import VPNOnKit
 import CoreData
 
-private let kWidgetNormalHeight: CGFloat = 60
-
 final class Widget:
     UIViewController,
-    NCWidgetProviding,
-    UICollectionViewDelegate,
-    UICollectionViewDataSource {
+    NCWidgetProviding {
     
-    @IBOutlet weak var leftMarginView: UIView!
-    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var leftConstraint: NSLayoutConstraint!
-
-    private var marginLeft: CGFloat = 0 {
-        didSet {
-            leftConstraint.constant = marginLeft
-            view.setNeedsUpdateConstraints()
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    var cellSize: CGSize {
+        let width: CGFloat
+        let maxWidth = collectionView.bounds.width - 20
+        
+        if UIScreen.main.bounds.width <= 414 {
+            width = maxWidth / 4
+        } else {
+            width = 90
         }
+        
+        return CGSize(width: width, height: 100)
     }
     
     var vpns: [VPN] {
@@ -38,72 +39,69 @@ final class Widget:
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        preferredContentSize = CGSize(
-            width: UIScreen.mainScreen().bounds.width,
-            height: kWidgetNormalHeight
-        )
-        
-        NSNotificationCenter.defaultCenter().addObserver(
+        NotificationCenter.default.addObserver(
             self,
             selector: #selector(Widget.coreDataDidSave(_:)),
-            name: NSManagedObjectContextDidSaveNotification,
+            name: NSNotification.Name.NSManagedObjectContextDidSave,
             object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(
+        NotificationCenter.default.addObserver(
             self,
             selector: #selector(Widget.VPNStatusDidChange(_:)),
-            name: NEVPNStatusDidChangeNotification,
+            name: NSNotification.Name.NEVPNStatusDidChange,
             object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(
+        NotificationCenter.default.addObserver(
             self,
             selector: #selector(Widget.pingDidUpdate(_:)),
-            name: kPingDidUpdate,
+            name: NSNotification.Name(rawValue: kPingDidUpdate),
             object: nil)
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(
+        NotificationCenter.default.removeObserver(
             self,
-            name: NSManagedObjectContextDidSaveNotification,
+            name: NSNotification.Name.NSManagedObjectContextDidSave,
             object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(
+        NotificationCenter.default.removeObserver(
             self,
-            name: NEVPNStatusDidChangeNotification,
+            name: NSNotification.Name.NEVPNStatusDidChange,
             object: nil)
-        NSNotificationCenter.defaultCenter().removeObserver(
+        NotificationCenter.default.removeObserver(
             self,
-            name: kPingDidUpdate,
+            name: NSNotification.Name(rawValue: kPingDidUpdate),
             object: nil)
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if #available(iOSApplicationExtension 10.0, *) {
+            extensionContext?.widgetLargestAvailableDisplayMode = .compact
+        } else {
+            preferredContentSize = CGSize(
+                width: collectionView.bounds.width,
+                height: cellSize.height
+            )
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
         updateContent()
         collectionView.reloadData()
         LTPingQueue.sharedQueue.restartPing()
 
-        preferredContentSize = CGSize(
-            width: collectionView.contentSize.width,
-            height: max(kWidgetNormalHeight, collectionView.contentSize.height)
-        )
-
         // NOTE: Must remove the profile when there're no VPNs
         // otherwise there'll be a immutable profile live in system forever.
         if vpns.count == 0 {
             VPNManager.sharedManager.removeProfile()
+        } else if vpns.count > 4 {
+            if #available(iOSApplicationExtension 10.0, *) {
+                extensionContext?.widgetLargestAvailableDisplayMode = .expanded
+            }
         }
-
-        let tapGesture = UITapGestureRecognizer(
-            target: self,
-            action: #selector(Widget.didTapLeftMargin(_:))
-        )
-        tapGesture.numberOfTapsRequired = 1
-        tapGesture.numberOfTouchesRequired = 1
-        leftMarginView.userInteractionEnabled = true
-        leftMarginView.addGestureRecognizer(tapGesture)
-        leftMarginView.backgroundColor = UIColor(white: 0.0, alpha: 0.005)
 
         let longGesture = UILongPressGestureRecognizer(
             target: self,
@@ -111,18 +109,31 @@ final class Widget:
         )
         longGesture.delaysTouchesBegan = true
         view.addGestureRecognizer(longGesture)
-
-        widgetPerformUpdateWithCompletionHandler { _ in }
+        
+        widgetPerformUpdate { _ in }
+        
+        var width = UIScreen.main.bounds.width
+        
+        if #available(iOSApplicationExtension 10.0, *) {
+            if let context = extensionContext {
+                context.widgetLargestAvailableDisplayMode = .expanded
+                width = context.widgetMaximumSize(for: .compact).width
+            }
+            preferredContentSize = CGSize(
+                width:  width,
+                height: cellSize.height
+            )
+        } else {
+            collectionView.collectionViewLayout.invalidateLayout()
+            collectionView.collectionViewLayout.prepare()
+            preferredContentSize = collectionView.collectionViewLayout.collectionViewContentSize
+        }
     }
 
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        leftMarginView.gestureRecognizers?.forEach {
-            leftMarginView.removeGestureRecognizer($0)
-        }
-        view.gestureRecognizers?.forEach {
-            view.removeGestureRecognizer($0)
-        }
+        
+        view.gestureRecognizers?.forEach(view.removeGestureRecognizer)
     }
     
     func updateContent() {
@@ -131,54 +142,54 @@ final class Widget:
         VPNDataManager.sharedManager.managedObjectContext?.reset()
     }
     
-    func widgetPerformUpdateWithCompletionHandler(
+    private func widgetPerformUpdate(
         completionHandler: ((NCUpdateResult) -> Void)
         ) {
-        completionHandler(NCUpdateResult.NewData)
+        completionHandler(NCUpdateResult.newData)
     }
     
     // MARK: - Layout
     
-    func widgetMarginInsetsForProposedMarginInsets(
-        defaultMarginInsets: UIEdgeInsets
-        ) -> UIEdgeInsets {
-            marginLeft = defaultMarginInsets.left
-            return UIEdgeInsetsZero
-    }
-    
-    // MARK: - Left margin
-    
-    func didTapLeftMargin(gesture: UITapGestureRecognizer) {
-        LTPingQueue.sharedQueue.restartPing()
-        collectionView.reloadData()
+    @available(iOSApplicationExtension 10.0, *)
+    func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize){
+        if activeDisplayMode == .compact {
+            preferredContentSize = CGSize(width: maxSize.width, height: cellSize.height)
+        } else {
+            preferredContentSize = CGSize(width: maxSize.width, height: collectionView.contentSize.height)
+        }
     }
 
+    func widgetMarginInsets(
+        forProposedMarginInsets defaultMarginInsets: UIEdgeInsets
+        ) -> UIEdgeInsets {
+            return .zero
+    }
     // MARK: - Open App
 
-    func didLongPress(gesture: UITapGestureRecognizer) {
+    func didLongPress(_ gesture: UITapGestureRecognizer) {
         didTapAdd()
     }
     
     func didTapAdd() {
-        let appURL = NSURL(string: "vpnon://YOUR_SERVER_DOMAIN_OR_IP/?title=My VPN Server")!
-        extensionContext?.openURL(appURL, completionHandler: nil)
+        let appURL = URL(string: "vpnon://your.server/?title=MyVPN")!
+        extensionContext?.open(appURL, completionHandler: nil)
     }
     
     // MARK: - Notification
     
-    func pingDidUpdate(notification: NSNotification) {
+    func pingDidUpdate(_ notification: Notification) {
         collectionView.reloadData()
     }
     
-    func coreDataDidSave(notification: NSNotification) {
+    func coreDataDidSave(_ notification: Notification) {
         VPNDataManager.sharedManager.managedObjectContext?
-            .mergeChangesFromContextDidSaveNotification(notification)
+            .mergeChanges(fromContextDidSave: notification)
         updateContent()
     }
     
-    func VPNStatusDidChange(notification: NSNotification?) {
+    func VPNStatusDidChange(_ notification: Notification?) {
         collectionView.reloadData()
-        if VPNManager.sharedManager.status == .Disconnected {
+        if VPNManager.sharedManager.status == .disconnected {
             LTPingQueue.sharedQueue.restartPing()
         }
     }

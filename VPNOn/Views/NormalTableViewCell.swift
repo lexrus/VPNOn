@@ -12,8 +12,8 @@ private let kAccessoryWidth: CGFloat = 20
 
 class NormalTableViewCell : UITableViewCell {
     
-    override func willMoveToSuperview(newSuperview: UIView?) {
-        if newSuperview == nil || accessoryType != .DisclosureIndicator {
+    override func willMove(toSuperview newSuperview: UIView?) {
+        if newSuperview == nil || accessoryType != .disclosureIndicator {
             return
         }
         if accessoryView == nil {

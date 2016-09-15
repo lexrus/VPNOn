@@ -11,8 +11,8 @@ import VPNOnKit
 
 extension VPNList {
     
-    @IBAction func toggleVPN(sender: UISwitch) {
-        if sender.on {
+    @IBAction func toggleVPN(_ sender: UISwitch) {
+        if sender.isOn {
             guard let vpn = VPNDataManager.sharedManager.activatedVPN else {
                 return
             }

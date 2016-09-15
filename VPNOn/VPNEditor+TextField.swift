@@ -13,26 +13,26 @@ extension VPNEditor {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NSNotificationCenter.defaultCenter().addObserver(
+        NotificationCenter.default.addObserver(
             self,
             selector: #selector(UITextInputDelegate.textDidChange(_:)),
-            name: UITextFieldTextDidChangeNotification,
+            name: NSNotification.Name.UITextFieldTextDidChange,
             object: nil)
 
-        NSNotificationCenter.defaultCenter().addObserver(
+        NotificationCenter.default.addObserver(
             self,
             selector: #selector(VPNEditor.keyboardWillShow(_:)),
-            name: UIKeyboardWillShowNotification,
+            name: NSNotification.Name.UIKeyboardWillShow,
             object: nil)
 
-        NSNotificationCenter.defaultCenter().addObserver(
+        NotificationCenter.default.addObserver(
             self,
             selector: #selector(VPNEditor.keyboardWillHide(_:)),
-            name: UIKeyboardWillHideNotification,
+            name: NSNotification.Name.UIKeyboardWillHide,
             object: nil)
     }
 
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
         case titleTextField:
             serverTextField.becomeFirstResponder()
@@ -56,11 +56,11 @@ extension VPNEditor {
         return true
     }
 
-    func textDidChange(notification: NSNotification) {
+    func textDidChange(_ notification: Notification) {
         toggleSaveButtonByStatus()
     }
 
-    func keyboardWillShow(notification: NSNotification) {
+    func keyboardWillShow(_ notification: Notification) {
         // Add bottom edge inset so that the last cell is visiable
 
         var bottom: CGFloat = 216
@@ -70,7 +70,7 @@ extension VPNEditor {
             self.tableView.contentInset = edgeInsets
         }
 
-        guard let userInfo = notification.userInfo else {
+        guard let userInfo = (notification as NSNotification).userInfo else {
             return
         }
 
@@ -78,10 +78,10 @@ extension VPNEditor {
             return
         }
 
-        bottom = boundsObject.CGRectValue().height
+        bottom = (boundsObject as AnyObject).cgRectValue.height
     }
 
-    func keyboardWillHide(notification: NSNotification) {
+    func keyboardWillHide(_ notification: Notification) {
         var edgeInsets = self.tableView.contentInset
         edgeInsets.bottom = 0
         self.tableView.contentInset = edgeInsets

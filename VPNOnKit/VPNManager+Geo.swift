@@ -13,19 +13,19 @@ private let kGeoIPQueryURI = "https://www.telize.com/geoip/%@"
 
 extension VPNManager {
 
-    public typealias MMDBLookupCallback = (country: MMDBCountry?) -> Void
+    public typealias MMDBLookupCallback = (_ country: MMDBCountry?) -> Void
     
-    public func countryOfIP(IP: String) -> MMDBCountry? {
-        if let mmdb = self.mmdb, country = mmdb.lookup(IP) {
+    public func countryOfIP(_ IP: String) -> MMDBCountry? {
+        if let mmdb = self.mmdb, let country = mmdb.lookup(IP) {
             return country
         }
         return nil
     }
     
     // See http://stackoverflow.com/questions/25890533/how-can-i-get-a-real-ip-address-from-dns-query-in-swift
-    public func IPOfHost(host: String) -> String? {
-        let host = CFHostCreateWithName(nil, host).takeRetainedValue()
-        CFHostStartInfoResolution(host, .Addresses, nil)
+    public func IPOfHost(_ host: String) -> String? {
+        let host = CFHostCreateWithName(nil, host as CFString).takeRetainedValue()
+        CFHostStartInfoResolution(host, .addresses, nil)
         var success: DarwinBoolean = DarwinBoolean(false)
         guard let addressing = CFHostGetAddressing(host, &success) else {
             return nil
@@ -33,11 +33,11 @@ extension VPNManager {
 
         let addresses = addressing.takeUnretainedValue() as NSArray
         if addresses.count > 0 {
-            let theAddress = addresses[0] as! NSData
-            var hostname = [CChar](count: Int(NI_MAXHOST), repeatedValue: 0)
+            let theAddress = addresses[0] as! Data
+            var hostname = [CChar](repeating: 0, count: Int(NI_MAXHOST))
             let infoResult = getnameinfo(
-                UnsafePointer(theAddress.bytes),
-                socklen_t(theAddress.length),
+                (theAddress as NSData).bytes.bindMemory(to: sockaddr.self, capacity: theAddress.count),
+                socklen_t(theAddress.count),
                 &hostname,
                 socklen_t(hostname.count),
                 nil,
@@ -45,7 +45,7 @@ extension VPNManager {
                 NI_NUMERICHOST
             )
             if infoResult == 0 {
-                if let numAddress = String.fromCString(hostname) {
+                if let numAddress = String(validatingUTF8: hostname) {
                     return numAddress
                 }
             }
@@ -54,14 +54,15 @@ extension VPNManager {
         return nil
     }
 
-    public func countryOfHost(host: String, callback: MMDBLookupCallback) -> Void {
-        let priority = DISPATCH_QUEUE_PRIORITY_DEFAULT
-        dispatch_async(dispatch_get_global_queue(priority, 0)) {
+    public func countryOfHost(_ host: String, callback: @escaping MMDBLookupCallback) -> Void {
+        DispatchQueue.global().async {
             [weak self] in
-            if let ip = self?.IPOfHost(host), country = self?.countryOfIP(ip) {
-                dispatch_async(dispatch_get_main_queue()) {
-                    callback(country: country)
-                }
+            guard let ip = self?.IPOfHost(host), let country = self?.countryOfIP(ip) else {
+                return
+            }
+            
+            DispatchQueue.main.async {
+                callback(country)
             }
         }
     }

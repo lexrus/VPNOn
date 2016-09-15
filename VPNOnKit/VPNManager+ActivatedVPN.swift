@@ -14,13 +14,13 @@ extension VPNManager {
 
     public var activatedVPNID: String? {
         get {
-            return defaults.objectForKey(kActivatedVPNIDKey) as! String?
+            return defaults.object(forKey: kActivatedVPNIDKey) as! String?
         }
         set {
             if let _ = newValue {
-                defaults.setObject(newValue, forKey: kActivatedVPNIDKey)
+                defaults.set(newValue, forKey: kActivatedVPNIDKey)
             } else {
-                defaults.removeObjectForKey(kActivatedVPNIDKey)
+                defaults.removeObject(forKey: kActivatedVPNIDKey)
             }
             defaults.synchronize()
         }

@@ -11,29 +11,29 @@ import VPNOnKit
 
 extension VPNEditor {
 
-    @IBAction func saveVPN(sender: AnyObject) {
+    @IBAction func saveVPN(_ sender: AnyObject) {
         if let currentVPN = vpn {
             currentVPN.title = titleTextField.text
             currentVPN.server = serverTextField.text
             currentVPN.account = accountTextField.text
             currentVPN.group = groupTextField.text
-            currentVPN.alwaysOn = alwaysOnSwitch.on
+            currentVPN.alwaysOn = alwaysOnSwitch.isOn
             currentVPN.ikev2 = typeSegment.selectedSegmentIndex == 1
             
-            Keychain.setPassword(
+            KeychainWrapper.setPassword(
                 passwordTextField.text ?? "",
                 forVPNID: currentVPN.ID
             )
             
-            Keychain.setSecret(
+            KeychainWrapper.setSecret(
                 secretTextField.text ?? "",
                 forVPNID: currentVPN.ID
             )
             
             VPNDataManager.sharedManager.saveContext()
             
-            NSNotificationCenter.defaultCenter()
-                .postNotificationName(kVPNDidUpdate, object: currentVPN)
+            NotificationCenter.default
+                .post(name: Notification.Name(rawValue: kVPNDidUpdate), object: currentVPN)
         } else {
             if let lastVPN = VPNDataManager.sharedManager.createVPN(
                 titleTextField.text ?? "",
@@ -42,22 +42,22 @@ extension VPNEditor {
                 password: passwordTextField.text ?? "",
                 group: groupTextField.text ?? "",
                 secret: secretTextField.text ?? "",
-                alwaysOn: alwaysOnSwitch.on,
+                alwaysOn: alwaysOnSwitch.isOn,
                 ikev2: typeSegment.selectedSegmentIndex == 1
                 ) {
-                    NSNotificationCenter.defaultCenter()
-                        .postNotificationName(kVPNDidCreate, object: lastVPN)
+                    NotificationCenter.default
+                        .post(name: Notification.Name(rawValue: kVPNDidCreate), object: lastVPN)
             }
         }
     }
     
     func toggleSaveButtonByStatus() {
-        saveButton?.enabled = false
+        saveButton?.isEnabled = false
         if let title = titleTextField.text,
-            account = accountTextField.text,
-            server = serverTextField.text {
+            let account = accountTextField.text,
+            let server = serverTextField.text {
                 if !title.isEmpty && !account.isEmpty && !server.isEmpty {
-                    saveButton?.enabled = true
+                    saveButton?.isEnabled = true
                 }
         }
     }

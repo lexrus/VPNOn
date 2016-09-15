@@ -1,0 +1,10 @@
+framework module FlagKit {
+  umbrella header "FlagKit.h"
+
+  export *
+  module * { export * }
+}
+
+module FlagKit.Swift {
+    header "FlagKit-Swift.h"
+}

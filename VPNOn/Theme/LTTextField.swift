@@ -10,9 +10,9 @@ import UIKit
 
 class LTTextField: UITextField {
     
-    override func drawPlaceholderInRect(rect: CGRect) {
+    override func drawPlaceholder(in rect: CGRect) {
         LTDarkTheme().placeholderColor.setFill()
-        let f = font ?? UIFont.systemFontOfSize(12)
+        let f = font ?? UIFont.systemFont(ofSize: 12)
         
         let attributes: [String : AnyObject] = [
             NSForegroundColorAttributeName: LTThemeManager.sharedManager.currentTheme!.placeholderColor,
@@ -21,10 +21,10 @@ class LTTextField: UITextField {
         
         let middleRect = fixedMiddlePlaceholderRect(rect)
         
-        self.placeholder?.drawInRect(middleRect, withAttributes: attributes)
+        self.placeholder?.draw(in: middleRect, withAttributes: attributes)
     }
     
-    private func fixedMiddlePlaceholderRect(rect: CGRect) -> CGRect {
+    fileprivate func fixedMiddlePlaceholderRect(_ rect: CGRect) -> CGRect {
         let fontSize = font?.pointSize ?? 12
         return CGRect(
             x: rect.minX,

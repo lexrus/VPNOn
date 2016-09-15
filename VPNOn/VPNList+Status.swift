@@ -8,24 +8,44 @@
 
 import UIKit
 import VPNOnKit
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 extension VPNList {
     
-    func VPNDidChangeStatus(notification: NSNotification) {
+    func VPNDidChangeStatus(_ notification: Notification) {
         switch VPNManager.sharedManager.status {
-        case .Connecting:
+        case .connecting:
             self.connectionStatus =
                 NSLocalizedString("Connecting...", comment: "")
             self.connectionOn = true
             break
             
-        case .Connected:
+        case .connected:
             self.connectionStatus =
                 NSLocalizedString("Connected", comment: "")
             self.connectionOn = true
             break
             
-        case .Disconnecting:
+        case .disconnecting:
             self.connectionStatus =
                 NSLocalizedString("Disconnecting...", comment: "")
             self.connectionOn = false
@@ -39,10 +59,10 @@ extension VPNList {
         
         if self.vpns?.count > 0 {
             let connectionIndexPath =
-                NSIndexPath(forRow: 0, inSection: kVPNConnectionSection)
-            self.tableView.reloadRowsAtIndexPaths(
-                [connectionIndexPath],
-                withRowAnimation: .None
+                IndexPath(row: 0, section: kVPNConnectionSection)
+            self.tableView.reloadRows(
+                at: [connectionIndexPath],
+                with: .none
             )
         }
     }

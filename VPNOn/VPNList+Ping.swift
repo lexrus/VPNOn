@@ -11,17 +11,17 @@ import VPNOnKit
 
 extension VPNList {
     
-    @IBAction func restartPing(sender: AnyObject) {
-        self.restartPingButton.enabled = false
+    @IBAction func restartPing(_ sender: AnyObject) {
+        self.restartPingButton.isEnabled = false
         LTPingQueue.sharedQueue.restartPing()
     }
     
-    func pingDidUpdate(notification: NSNotification) {
+    func pingDidUpdate(_ notification: Notification) {
         self.reloadVPNs()
     }
     
-    func pingDidComplete(notification: NSNotification) {
-        self.restartPingButton?.enabled = true
+    func pingDidComplete(_ notification: Notification) {
+        self.restartPingButton?.isEnabled = true
     }
     
 }

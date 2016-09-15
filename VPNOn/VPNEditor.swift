@@ -36,7 +36,7 @@ class VPNEditor : UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var deleteCell: UITableViewCell!
     @IBOutlet weak var duplicateCell: UITableViewCell!
     
-    @IBAction func didChangeAlwaysOn(sender: AnyObject) {
+    @IBAction func didChangeAlwaysOn(_ sender: AnyObject) {
         toggleSaveButtonByStatus()
     }
     
@@ -54,10 +54,10 @@ class VPNEditor : UITableViewController, UITextFieldDelegate {
         tableView.backgroundView = backgroundView
     }
     
-    override func viewWillAppear(animated: Bool) {
-        saveButton.enabled = false
-        deleteCell.hidden = true
-        duplicateCell.hidden = true
+    override func viewWillAppear(_ animated: Bool) {
+        saveButton.isEnabled = false
+        deleteCell.isHidden = true
+        duplicateCell.isHidden = true
         
         if let info = initializedVPNInfo {
             if info.title != "" {
@@ -67,7 +67,7 @@ class VPNEditor : UITableViewController, UITextFieldDelegate {
                 passwordTextField.text = info.password
                 groupTextField.text = info.group
                 secretTextField.text = info.secret
-                alwaysOnSwitch.on = info.alwaysOn
+                alwaysOnSwitch.isOn = info.alwaysOn
                 typeSegment.selectedSegmentIndex = info.ikev2 ? 1 : 0
             }
         } else if let currentVPN = vpn {
@@ -75,25 +75,25 @@ class VPNEditor : UITableViewController, UITextFieldDelegate {
             serverTextField.text = currentVPN.server
             accountTextField.text = currentVPN.account
             groupTextField.text = currentVPN.group
-            alwaysOnSwitch.on = currentVPN.alwaysOn
+            alwaysOnSwitch.isOn = currentVPN.alwaysOn
             typeSegment.selectedSegmentIndex = currentVPN.ikev2 ? 1 : 0
             passwordTextField.text =
-                Keychain.passwordStringForVPNID(currentVPN.ID)
+                KeychainWrapper.passwordStringForVPNID(currentVPN.ID)
             secretTextField.text =
-                Keychain.secretStringForVPNID(currentVPN.ID)
-            deleteCell.hidden = false
-            duplicateCell.hidden = false
+                KeychainWrapper.secretStringForVPNID(currentVPN.ID)
+            deleteCell.isHidden = false
+            duplicateCell.isHidden = false
         }
         
         toggleSaveButtonByStatus()
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         initializedVPNInfo = nil
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
 
 }
