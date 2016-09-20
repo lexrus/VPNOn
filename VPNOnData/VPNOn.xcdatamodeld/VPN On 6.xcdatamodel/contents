@@ -6,7 +6,7 @@
         <attribute name="countryCode" optional="YES" attributeType="String" maxValueString="10" syncable="YES"/>
         <attribute name="group" optional="YES" attributeType="String" maxValueString="256" syncable="YES"/>
         <attribute name="ikev2" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO" syncable="YES"/>
-        <attribute name="remoteID" optional="YES" syncable="YES"/>
+        <attribute name="remoteID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="server" attributeType="String" minValueString="1" maxValueString="256" defaultValueString="vpn" spotlightIndexingEnabled="YES" syncable="YES"/>
         <attribute name="title" attributeType="String" minValueString="1" maxValueString="256" defaultValueString="vpn" spotlightIndexingEnabled="YES" syncable="YES"/>
     </entity>

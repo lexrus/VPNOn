@@ -1,7 +1,7 @@
 # VPN On
 
 [![Travis](https://img.shields.io/travis/lexrus/VPNOn.svg)](https://travis-ci.org/lexrus/VPNOn)
-![Language](https://img.shields.io/badge/language-Swift%202.1-orange.svg)
+![Language](https://img.shields.io/badge/language-Swift%203.0-orange.svg)
 ![License](https://img.shields.io/github/license/lexrus/VPNOn.svg?style=flat)
 
 [<img src="https://cloud.githubusercontent.com/assets/219689/5575342/963e0ee8-9013-11e4-8091-7ece67d64729.png" width="135" height="40" alt="AppStore"/>](https://itunes.apple.com/app/vpn-on/id951344279)
@@ -12,9 +12,9 @@ Turning on a VPN is always a painful experience on an iOS device due to the deep
 
 ## Requirements
 
-- An iPhone/iPad running iOS 8.0+
+- An iPhone/iPad running iOS 9.0+
 - An IPSec IKEv1 / IKEv2 VPN(create yours with [my Ansible Playbook](https://github.com/lexrus/vpn-deploy-playbook) or [deploy on DigitalOcean](http://installer.71m.us/install?url=https://github.com/lexrus/do-ikev1))
-- Xcode 7.3
+- Xcode 8.0
 - An Apple iOS develop account
 - [Carthage](https://github.com/carthage/carthage)
 
@@ -59,6 +59,7 @@ VPN service providers may list a link for their customers to efficiently add ser
 * `vpnon://admin@192.168.0.123/?title=Google&group=devops`
 * `vpnon://admin@202.96.209.6/?title=Yahoo&alwayson=no`
 * `vpnon://jony:ive@202.96.209.5/?title=Twitter&ikev2=yes`
+* `vpnon://jony:ive@202.96.209.5/?title=Twitter&ikev2=yes&remoteid=jetblack`
 
 ### Establish connection
 

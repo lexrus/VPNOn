@@ -83,6 +83,9 @@
 /* Class = "UILabel"; text = "Group"; ObjectID = "w4U-Px-gJH"; */
 "w4U-Px-gJH.text" = "Groep";
 
+/* Class = "IBUILabel"; text = "Remote ID"; ObjectID = "Cdi-Pu-nbU"; */
+"Cdi-Pu-nbU.text" = "Remote ID";
+
 /* Class = "UILabel"; text = " "; ObjectID = "yI7-6o-40u"; */
 "yI7-6o-40u.text" = " ";
 

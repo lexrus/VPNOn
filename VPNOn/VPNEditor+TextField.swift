@@ -49,8 +49,11 @@ extension VPNEditor {
         case secretTextField:
             groupTextField.becomeFirstResponder()
             break
+        case groupTextField:
+            remoteIDTextField.becomeFirstResponder()
+            break
         default:
-            groupTextField.resignFirstResponder()
+            remoteIDTextField.resignFirstResponder()
         }
 
         return true

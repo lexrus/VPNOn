@@ -93,6 +93,9 @@
 /* Class = "IBUILabel"; text = "Group"; ObjectID = "w4U-Px-gJH"; */
 "w4U-Px-gJH.text" = "Nhóm";
 
+/* Class = "IBUILabel"; text = "Remote ID"; ObjectID = "Cdi-Pu-nbU"; */
+"Cdi-Pu-nbU.text" = "ID từ xa";
+
 /* Acknowledgements */
 "gNW-qy-Vnj.text" = "Lời cảm ơn";
 

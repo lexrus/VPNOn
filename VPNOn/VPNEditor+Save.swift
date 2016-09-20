@@ -17,6 +17,7 @@ extension VPNEditor {
             currentVPN.server = serverTextField.text
             currentVPN.account = accountTextField.text
             currentVPN.group = groupTextField.text
+            currentVPN.remoteID = remoteIDTextField.text
             currentVPN.alwaysOn = alwaysOnSwitch.isOn
             currentVPN.ikev2 = typeSegment.selectedSegmentIndex == 1
             
@@ -43,7 +44,8 @@ extension VPNEditor {
                 group: groupTextField.text ?? "",
                 secret: secretTextField.text ?? "",
                 alwaysOn: alwaysOnSwitch.isOn,
-                ikev2: typeSegment.selectedSegmentIndex == 1
+                ikev2: typeSegment.selectedSegmentIndex == 1,
+                remoteID: remoteIDTextField.text
                 ) {
                     NotificationCenter.default
                         .post(name: Notification.Name(rawValue: kVPNDidCreate), object: lastVPN)

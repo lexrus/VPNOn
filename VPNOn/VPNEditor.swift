@@ -27,11 +27,13 @@ class VPNEditor : UITableViewController, UITextFieldDelegate {
     @IBOutlet weak var accountTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var groupTextField: UITextField!
+    @IBOutlet weak var remoteIDTextField: UITextField!
     @IBOutlet weak var secretTextField: UITextField!
     @IBOutlet weak var alwaysOnSwitch: UISwitch!
     
     @IBOutlet weak var secretCell: UITableViewCell!
     @IBOutlet weak var groupCell: UITableViewCell!
+    @IBOutlet weak var remoteIDCell: UITableViewCell!
 
     @IBOutlet weak var deleteCell: UITableViewCell!
     @IBOutlet weak var duplicateCell: UITableViewCell!
@@ -66,6 +68,7 @@ class VPNEditor : UITableViewController, UITextFieldDelegate {
                 accountTextField.text = info.account
                 passwordTextField.text = info.password
                 groupTextField.text = info.group
+                remoteIDTextField.text = info.remoteID
                 secretTextField.text = info.secret
                 alwaysOnSwitch.isOn = info.alwaysOn
                 typeSegment.selectedSegmentIndex = info.ikev2 ? 1 : 0
@@ -75,6 +78,7 @@ class VPNEditor : UITableViewController, UITextFieldDelegate {
             serverTextField.text = currentVPN.server
             accountTextField.text = currentVPN.account
             groupTextField.text = currentVPN.group
+            remoteIDTextField.text = currentVPN.remoteID
             alwaysOnSwitch.isOn = currentVPN.alwaysOn
             typeSegment.selectedSegmentIndex = currentVPN.ikev2 ? 1 : 0
             passwordTextField.text =

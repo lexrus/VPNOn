@@ -19,6 +19,7 @@ extension VPN {
         var secret = ""
         var alwaysOn = true
         var ikev2 = false
+        var remoteID = ""
         
         // The server is required, otherwise we just open the container app.
         if server.characters.count == 0 {
@@ -58,6 +59,8 @@ extension VPN {
                         || value == "yes"
                         || value == "on"
                     break
+                case "remoteid":
+                    remoteID = value
                 default:
                     ()
                 }
@@ -73,6 +76,7 @@ extension VPN {
         info.secret = secret
         info.alwaysOn = alwaysOn
         info.ikev2 = ikev2
+        info.remoteID = remoteID
         
         return info
     }

@@ -38,7 +38,8 @@ extension VPNDataManager {
         group: String,
         secret: String,
         alwaysOn: Bool = true,
-        ikev2: Bool = false
+        ikev2: Bool = false,
+        remoteID: String? = nil
         ) -> VPN?
     {
         guard let entity = NSEntityDescription.entity(forEntityName: "VPN", in: managedObjectContext!) else {
@@ -56,6 +57,7 @@ extension VPNDataManager {
         vpn.group = group
         vpn.alwaysOn = alwaysOn
         vpn.ikev2 = ikev2
+        vpn.remoteID = remoteID
         
         do {
             try managedObjectContext!.save()
@@ -170,7 +172,8 @@ extension VPNDataManager {
                 group: vpn.group,
                 secret: KeychainWrapper.secretStringForVPNID(vpn.ID) ?? "",
                 alwaysOn: vpn.alwaysOn,
-                ikev2: vpn.ikev2
+                ikev2: vpn.ikev2,
+                remoteID: vpn.remoteID
                 ) {
                     if let password = KeychainWrapper.passwordStringForVPNID(vpn.ID) {
                         KeychainWrapper.setPassword(password, forVPNID: newVPN.ID)

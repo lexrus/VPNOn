@@ -93,6 +93,9 @@
 /* Class = "IBUILabel"; text = "Group"; ObjectID = "w4U-Px-gJH"; */
 "w4U-Px-gJH.text" = "Groupe";
 
+/* Class = "IBUILabel"; text = "Remote ID"; ObjectID = "Cdi-Pu-nbU"; */
+"Cdi-Pu-nbU.text" = "ID distant";
+
 /* Acknowledgements */
 "gNW-qy-Vnj.text" = "Remerciements";
 

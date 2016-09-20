@@ -20,6 +20,7 @@ extension VPN {
         a.group = self.group
         a.alwaysOn = self.alwaysOn
         a.type = self.ikev2 ? .IKEv2 : .IPSec
+        a.remoteID = self.remoteID
         return a
     }
     
