@@ -27,6 +27,7 @@ public struct VPNAccount {
     public var server: String = ""
     public var account: String?
     public var group: String?
+    public var remoteID: String?
     public var alwaysOn = true
     public var passwordRef: Data? {
         return KeychainWrapper.passwordRefForVPNID(ID)
@@ -89,6 +90,7 @@ open class VPNManager {
             let p = NEVPNProtocolIPSec()
             p.useExtendedAuthentication = true
             p.localIdentifier = account.group ?? "VPN"
+            p.remoteIdentifier = account.remoteID
             if let secret = account.secretRef {
                 p.authenticationMethod = .sharedSecret
                 p.sharedSecretReference = secret
@@ -100,7 +102,7 @@ open class VPNManager {
             let p = NEVPNProtocolIKEv2()
             p.useExtendedAuthentication = true
             p.localIdentifier = account.group ?? "VPN"
-            p.remoteIdentifier = account.server
+            p.remoteIdentifier = account.remoteID
             if let secret = account.secretRef {
                 p.authenticationMethod = .sharedSecret
                 p.sharedSecretReference = secret
