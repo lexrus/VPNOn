@@ -34,7 +34,12 @@ public struct KeychainWrapper {
     
     public static func secretRefForVPNID(_ VPNID: String) -> Data? {
         let key = NSURL(string: VPNID)!.lastPathComponent!
-        return k[attributes: "\(key)psk"]?.persistentRef
+        if let data = k[attributes: "\(key)psk"]?.data, let value = String(data: data, encoding: .utf8) {
+            if !value.isEmpty {
+                return k[attributes: "\(key)psk"]?.persistentRef
+            }
+        }
+        return nil
     }
     
     public static func destoryKeyForVPNID(_ VPNID: String) {

@@ -65,7 +65,9 @@ extension VPNDataManager {
             
             if !vpn.objectID.isTemporaryID {
                 KeychainWrapper.setPassword(password, forVPNID: vpn.ID)
-                KeychainWrapper.setSecret(secret, forVPNID: vpn.ID)
+                if !secret.isEmpty {
+                    KeychainWrapper.setSecret(secret, forVPNID: vpn.ID)
+                }
                 
                 if allVPN().count == 1 {
                     VPNManager.sharedManager.activatedVPNID = vpn.ID
