@@ -88,7 +88,7 @@ final class VPNCell: UICollectionViewCell {
         }
     }
     
-    func animateFlagAndSwitchByStatus() {
+    private func animateFlagAndSwitchByStatus() {
         flagImageView.layer.removeAllAnimations()
         
         if !current {
@@ -96,12 +96,16 @@ final class VPNCell: UICollectionViewCell {
         } else if status == .connecting {
             switchIndicator.isHidden = false
             switchIndicator.startAnimating()
-            switchButton.setOn(true, animated: true)
+            if !switchButton.isOn {
+                switchButton.setOn(true, animated: true)
+            }
         } else {
             switchIndicator.stopAnimating()
             switchIndicator.isHidden = true
             if status == .connected {
-                switchButton.setOn(true, animated: false)
+                if !switchButton.isOn {
+                    switchButton.setOn(true, animated: false)
+                }
             } else {
                 switchButton.setOn(false, animated: false)
             }

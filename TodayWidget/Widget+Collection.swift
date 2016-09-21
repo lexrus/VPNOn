@@ -75,10 +75,29 @@ extension Widget:
             }
         }
         
+        guard VPNManager.sharedManager.status != .connecting else {
+            return
+        }
+        
         var account = vpn.toAccount()
         account.title = vpn.title
         
         VPNManager.sharedManager.saveAndConnect(account)
+        
+        // Bounce the cell
+        
+        guard let cell = collectionView.cellForItem(at: indexPath) else { return }
+        cell.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        UIView.animate(
+            withDuration: 0.7,
+            delay: 0,
+            usingSpringWithDamping: 0.5,
+            initialSpringVelocity: 0.2,
+            options: .curveEaseOut,
+            animations: {
+                cell.transform = CGAffineTransform.identity
+            },
+            completion: nil)
     }
     
     func collectionView(
@@ -86,12 +105,16 @@ extension Widget:
         shouldHighlightItemAt indexPath: IndexPath
         ) -> Bool {
         
+        if #available(iOSApplicationExtension 10.0, *) {
+            UINotificationFeedbackGenerator().notificationOccurred(.success)
+        }
+        
         if vpns.count == 0 {
             return true
         }
         
         switch VPNManager.sharedManager.status {
-        case .connected, .connecting:
+        case .connected, .connecting, .reasserting:
             VPNManager.sharedManager.disconnect()
         default: ()
         }
