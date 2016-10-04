@@ -107,7 +107,7 @@ extension VPNList {
                 cell.imageView?.image = nil
                 
                 if let countryCode = vpn.countryCode {
-                    cell.imageView?.image = UIImage(flagImageWith: countryCode.uppercased())
+                    cell.imageView?.image = UIImage(flagImageWithCountryCode: countryCode.uppercased())
                 }
                 
                 cell.current = Bool(activatedVPNID == vpn.ID)

@@ -10,8 +10,30 @@
 
 @implementation UIView (UIViewAppearance_Swift)
 
-+ (instancetype) lt_appearanceWhenContainedIn:(Class<UIAppearanceContainer>)containerClass {
-    return [self appearanceWhenContainedIn:containerClass, nil];
+static CGFloat screenScale = 0;
+
++ (instancetype) inside:(Class<UIAppearanceContainer>)containerClass {
+    if (screenScale == 0) {
+        screenScale = [[UIScreen mainScreen] scale];
+    }
+    UITraitCollection *trainCollection =
+    [UITraitCollection traitCollectionWithDisplayScale:screenScale];
+    return [self appearanceForTraitCollection:trainCollection
+            whenContainedInInstancesOfClasses:@[containerClass]];
+}
+
+@end
+
+@implementation UIBarItem (UIBarItemAppearance_Swift)
+
++ (instancetype) inside:(Class<UIAppearanceContainer>)containerClass {
+    if (screenScale == 0) {
+        screenScale = [[UIScreen mainScreen] scale];
+    }
+    UITraitCollection *trainCollection =
+    [UITraitCollection traitCollectionWithDisplayScale:screenScale];
+    return [self appearanceForTraitCollection:trainCollection
+            whenContainedInInstancesOfClasses:@[containerClass]];
 }
 
 @end

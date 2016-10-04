@@ -74,9 +74,9 @@ final class VPNCell: UICollectionViewCell {
         switchIndicator.stopAnimating()
         
         if let countryCode = vpn.countryCode {
-            flagImageView.image = UIImage(flagImageWith: countryCode.uppercased())
+            flagImageView.image = UIImage(flagImageWithCountryCode: countryCode.uppercased())
         } else {
-            flagImageView.image = UIImage(flagImageFor: .world)
+            flagImageView.image = UIImage(flagImageForSpecialFlag: .World)
         }
 
         if VPNManager.sharedManager.status == .connected

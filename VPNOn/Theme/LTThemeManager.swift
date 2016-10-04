@@ -70,14 +70,14 @@ class LTThemeManager
         UITableViewCell.appearance().backgroundColor = theme.tableViewCellColor
         UITableViewCell.appearance().tintColor = theme.tintColor
         UITableViewCell.appearance().selectionStyle = UITableViewCellSelectionStyle.none
-        UILabel.lt_appearanceWhenContained(in: UITableViewHeaderFooterView.self).textColor = theme.textColor
+        UILabel.inside(UITableViewHeaderFooterView.self).textColor = theme.textColor
         LTTableViewCellTitle.appearance().textColor = theme.textColor
-        UILabel.lt_appearanceWhenContained(in: LTTableViewActionCell.self).textColor = theme.tintColor
-        UILabel.lt_appearanceWhenContained(in: VPNTableViewCell.self).textColor = theme.textColor
-        UILabel.lt_appearanceWhenContained(in: NormalTableViewCell.self).textColor = theme.textColor
-        UILabel.lt_appearanceWhenContained(in: AcknowledgementCell.self).textColor = theme.textColor
-        UITextView.lt_appearanceWhenContained(in: UITableViewCell.self).backgroundColor = theme.tableViewCellColor
-        UITextView.lt_appearanceWhenContained(in: UITableViewCell.self).textColor = theme.textColor
+        UILabel.inside(LTTableViewActionCell.self).textColor = theme.tintColor
+        UILabel.inside(VPNTableViewCell.self).textColor = theme.textColor
+        UILabel.inside(NormalTableViewCell.self).textColor = theme.textColor
+        UILabel.inside(AcknowledgementCell.self).textColor = theme.textColor
+        UITextView.inside(UITableViewCell.self).backgroundColor = theme.tableViewCellColor
+        UITextView.inside(UITableViewCell.self).textColor = theme.textColor
         
         // TextField
         UITextField.appearance().tintColor = theme.tintColor

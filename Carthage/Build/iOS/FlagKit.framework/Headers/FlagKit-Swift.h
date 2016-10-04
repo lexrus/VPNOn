@@ -117,7 +117,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #pragma clang diagnostic ignored "-Wduplicate-method-arg"
 
 @interface UIImage (SWIFT_EXTENSION(FlagKit))
-- (nullable instancetype)initWithFlagImageWith:(NSString * _Nonnull)countryCode;
+- (nullable instancetype)initWithFlagImageWithCountryCode:(NSString * _Nonnull)countryCode;
 @end
 
 #pragma clang diagnostic pop
