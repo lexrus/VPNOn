@@ -14,24 +14,33 @@ import FlagKit
 
 private let ConnectedColor = UIColor(red: 0, green: 0.7, blue: 1, alpha: 1)
 
-final class VPNCell: UICollectionViewCell {
+final class VPNCell: UICollectionViewCell, VPNFlagAnimatable {
+
+    lazy var flagImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.borderWidth = 2
+        imageView.layer.cornerRadius = 6
+        imageView.layer.masksToBounds = true
+        imageView.backgroundColor = .clear
+        self.addSubview(imageView)
+        return imageView
+    }()
     
-    @IBOutlet weak var switchIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var switchButton: UISwitch!
-    @IBOutlet weak var flagImageView: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
-    
-    override func didMoveToSuperview() {
-        switchButton.onTintColor = ConnectedColor
-        switchButton.tintColor = UIColor(white: 1, alpha: 0.2)
-        switchButton.thumbTintColor = UIColor.white
-    }
+    lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.5
+        self.addSubview(label)
+        return label
+    }()
     
     var current: Bool = false
     
     var latency: Int = -1 {
         didSet {
-            switchButton.tintColor = colorOfLatency
             if status == .connected {
                 titleLabel.textColor = ConnectedColor
             } else {
@@ -68,10 +77,22 @@ final class VPNCell: UICollectionViewCell {
         }
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        let flagSize = CGSize(width: 46, height: 34)
+        flagImageView.frame.size = flagSize
+        flagImageView.frame.origin.x = (bounds.width - flagSize.width) / 2
+        flagImageView.frame.origin.y = 25
+        
+        titleLabel.frame = bounds
+        titleLabel.frame.size.height = 13
+        titleLabel.frame.origin.y = flagImageView.frame.maxY + 6
+    }
+    
     func configureWithVPN(_ vpn: VPN, selected: Bool = false) {
         current = selected
         titleLabel.text = vpn.title
-        switchIndicator.stopAnimating()
         
         if let countryCode = vpn.countryCode {
             flagImageView.image = UIImage(flagImageWithCountryCode: countryCode.uppercased())
@@ -89,25 +110,17 @@ final class VPNCell: UICollectionViewCell {
     }
     
     private func animateFlagAndSwitchByStatus() {
-        flagImageView.layer.removeAllAnimations()
-        
         if !current {
-            switchButton.setOn(false, animated: false)
+            stopBreathing()
+            stopAnimating()
         } else if status == .connecting {
-            switchIndicator.isHidden = false
-            switchIndicator.startAnimating()
-            if !switchButton.isOn {
-                switchButton.setOn(true, animated: true)
-            }
+            startAnimating()
         } else {
-            switchIndicator.stopAnimating()
-            switchIndicator.isHidden = true
             if status == .connected {
-                if !switchButton.isOn {
-                    switchButton.setOn(true, animated: false)
-                }
+                startBreathing()
             } else {
-                switchButton.setOn(false, animated: false)
+                stopBreathing()
+                stopAnimating()
             }
         }
     }

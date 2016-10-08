@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="M4Y-Lb-cyx">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="M4Y-Lb-cyx">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -32,47 +32,7 @@
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="80" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Zealand" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ngz-I2-iCK">
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="vMQ-BC-gKT"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                    <nil key="highlightedColor"/>
-                                                    <size key="shadowOffset" width="0.0" height="0.0"/>
-                                                </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zxb-7j-eMg">
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="13" id="48r-zu-WAs"/>
-                                                        <constraint firstAttribute="width" constant="15" id="cf3-f9-trZ"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <switch opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ugy-0B-wVP">
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="31" id="Bl5-IU-1Jc"/>
-                                                        <constraint firstAttribute="width" constant="49" id="Xgp-cb-Lmr"/>
-                                                    </constraints>
-                                                    <color key="onTintColor" red="0.1137254902" green="0.69803921570000005" blue="0.97254901959999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </switch>
-                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="gCC-bM-y53"/>
-                                            </subviews>
                                         </view>
-                                        <constraints>
-                                            <constraint firstItem="Zxb-7j-eMg" firstAttribute="trailing" secondItem="ngz-I2-iCK" secondAttribute="leading" constant="-2" id="1Gm-Vc-gcv"/>
-                                            <constraint firstItem="ugy-0B-wVP" firstAttribute="top" secondItem="ngz-I2-iCK" secondAttribute="bottom" constant="5" id="25q-pf-r6m"/>
-                                            <constraint firstItem="ngz-I2-iCK" firstAttribute="top" secondItem="vDN-Kt-1WR" secondAttribute="top" constant="12" id="Edo-tt-eDk"/>
-                                            <constraint firstItem="gCC-bM-y53" firstAttribute="trailing" secondItem="ugy-0B-wVP" secondAttribute="trailing" constant="-3" id="Glk-cU-pmc"/>
-                                            <constraint firstItem="gCC-bM-y53" firstAttribute="centerY" secondItem="ugy-0B-wVP" secondAttribute="centerY" id="YSO-dg-5o9"/>
-                                            <constraint firstItem="ngz-I2-iCK" firstAttribute="centerX" secondItem="vDN-Kt-1WR" secondAttribute="centerX" constant="9" id="fiS-ul-flx"/>
-                                            <constraint firstAttribute="centerX" secondItem="ugy-0B-wVP" secondAttribute="centerX" id="gqh-g1-ccK"/>
-                                            <constraint firstItem="Zxb-7j-eMg" firstAttribute="centerY" secondItem="ngz-I2-iCK" secondAttribute="centerY" id="nl0-Dz-JOI"/>
-                                        </constraints>
-                                        <connections>
-                                            <outlet property="flagImageView" destination="Zxb-7j-eMg" id="lyK-lC-Sni"/>
-                                            <outlet property="switchButton" destination="ugy-0B-wVP" id="v81-Ah-6do"/>
-                                            <outlet property="switchIndicator" destination="gCC-bM-y53" id="Qfm-GI-jhe"/>
-                                            <outlet property="titleLabel" destination="ngz-I2-iCK" id="x9k-vg-GS3"/>
-                                        </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="addCell" id="80D-o9-QK9" userLabel="Add Button Cell" customClass="AddCell" customModule="TodayWidget">
                                         <rect key="frame" x="120" y="0.0" width="80" height="100"/>

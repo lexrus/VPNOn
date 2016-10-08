@@ -27,6 +27,7 @@
 		D7356CE71C2700DA007BAB37 /* Widget+Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7356CE61C2700DA007BAB37 /* Widget+Collection.swift */; };
 		D73A63971D771DF50053AEC8 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D73A63961D771DF50053AEC8 /* KeychainAccess.framework */; };
 		D73A63981D771E070053AEC8 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D73A63961D771DF50053AEC8 /* KeychainAccess.framework */; };
+		D73F09291DA92FDF00500E09 /* VPNFlagAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D73F09281DA92FDF00500E09 /* VPNFlagAnimatable.swift */; };
 		D74129A91A5CFCDA008DE603 /* SimplePing.h in Headers */ = {isa = PBXBuildFile; fileRef = D74129A71A5CFCDA008DE603 /* SimplePing.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D74129AA1A5CFCDA008DE603 /* SimplePing.m in Sources */ = {isa = PBXBuildFile; fileRef = D74129A81A5CFCDA008DE603 /* SimplePing.m */; };
 		D74129B01A5D1A91008DE603 /* LTPingQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = D74129AF1A5D1A91008DE603 /* LTPingQueue.swift */; };
@@ -186,6 +187,7 @@
 		D7322C791A6C024800B34AA0 /* LTViewControllerBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTViewControllerBackground.swift; sourceTree = "<group>"; };
 		D7356CE61C2700DA007BAB37 /* Widget+Collection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Widget+Collection.swift"; sourceTree = "<group>"; };
 		D73A63961D771DF50053AEC8 /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/iOS/KeychainAccess.framework; sourceTree = "<group>"; };
+		D73F09281DA92FDF00500E09 /* VPNFlagAnimatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNFlagAnimatable.swift; sourceTree = "<group>"; };
 		D74129A71A5CFCDA008DE603 /* SimplePing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplePing.h; sourceTree = "<group>"; };
 		D74129A81A5CFCDA008DE603 /* SimplePing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimplePing.m; sourceTree = "<group>"; };
 		D74129AF1A5D1A91008DE603 /* LTPingQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTPingQueue.swift; sourceTree = "<group>"; };
@@ -445,6 +447,7 @@
 				D74C91AA1A383FED00EAAAE1 /* Widget.swift */,
 				D7356CE61C2700DA007BAB37 /* Widget+Collection.swift */,
 				D7F64F011AA8407400C41789 /* VPNCell.swift */,
+				D73F09281DA92FDF00500E09 /* VPNFlagAnimatable.swift */,
 				D7F64F051AA9B90000C41789 /* AddCell.swift */,
 				D74C91A81A383FED00EAAAE1 /* Supporting Files */,
 			);
@@ -839,6 +842,7 @@
 				D7B033BD1A6E5ED1009D791E /* VPNDataManager+ActivatedVPN.swift in Sources */,
 				D74C91B41A384AB800EAAAE1 /* VPN.swift in Sources */,
 				D74C91AB1A383FED00EAAAE1 /* Widget.swift in Sources */,
+				D73F09291DA92FDF00500E09 /* VPNFlagAnimatable.swift in Sources */,
 				D7F64F021AA8407400C41789 /* VPNCell.swift in Sources */,
 				D7F64F061AA9B90000C41789 /* AddCell.swift in Sources */,
 				D77110351A6D0080003D9605 /* VPNDataManager+VPN.swift in Sources */,
@@ -1079,8 +1083,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.LexTang.VPNOn;
 				PRODUCT_MODULE_NAME = VPNOn;
 				PRODUCT_NAME = "VPN On";
-				PROVISIONING_PROFILE = "e85a8a97-9ad2-455f-8cb8-96f06faa0ec5";
-				PROVISIONING_PROFILE_SPECIFIER = VPNOnAppStore;
+				PROVISIONING_PROFILE = "84cbd9e8-d3ee-4590-a601-b47ffa5361ae";
+				PROVISIONING_PROFILE_SPECIFIER = VPNOn;
 				SWIFT_OBJC_BRIDGING_HEADER = "VPNOn/VPNOn-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1123,8 +1127,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LexTang.VPNOn.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0beebe4d-791f-4f32-bbab-f9fd5d47a26c";
-				PROVISIONING_PROFILE_SPECIFIER = VPNOnTodayAppStore;
+				PROVISIONING_PROFILE = "6f74becf-4af1-4a8c-92ed-defed72b40fb";
+				PROVISIONING_PROFILE_SPECIFIER = VPNOnToday;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
