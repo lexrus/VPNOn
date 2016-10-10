@@ -12,7 +12,7 @@ import NetworkExtension
 import QuartzCore
 import FlagKit
 
-private let ConnectedColor = UIColor(red: 0, green: 0.7, blue: 1, alpha: 1)
+private let ConnectedColor = UIColor(red: 0, green: 0.5, blue: 1, alpha: 1)
 
 final class VPNCell: UICollectionViewCell, VPNFlagAnimatable {
 
@@ -20,6 +20,7 @@ final class VPNCell: UICollectionViewCell, VPNFlagAnimatable {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.layer.borderWidth = 2
+        imageView.layer.borderColor = UIColor.clear.cgColor
         imageView.layer.cornerRadius = 6
         imageView.layer.masksToBounds = true
         imageView.backgroundColor = .clear
@@ -43,8 +44,10 @@ final class VPNCell: UICollectionViewCell, VPNFlagAnimatable {
         didSet {
             if status == .connected {
                 titleLabel.textColor = ConnectedColor
-            } else {
+            } else if latency == -1 {
                 titleLabel.textColor = textColor
+            } else {
+                titleLabel.textColor = colorOfLatency
             }
         }
     }
@@ -99,13 +102,26 @@ final class VPNCell: UICollectionViewCell, VPNFlagAnimatable {
         } else {
             flagImageView.image = UIImage(flagImageForSpecialFlag: .World)
         }
+        
+        stopAnimating()
+        stopBreathing()
+        flagImageView.alpha = 1
+        
+        switch VPNManager.sharedManager.status {
+        case .connected:
+            if current {
+                flagImageView.alpha = 1
+                startBreathing()
+            } else {
+                flagImageView.alpha = 0.4
+            }
 
-        if VPNManager.sharedManager.status == .connected
-            || VPNManager.sharedManager.status == .connecting
-        {
-            flagImageView.alpha = current ? 1 : 0.4
-        } else {
-            flagImageView.alpha = 1
+        case .connecting:
+            if current {
+                startAnimating()
+            }
+    
+        default: ()
         }
     }
     

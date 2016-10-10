@@ -67,7 +67,7 @@ extension VPNFlagAnimatable {
         flagImageView.layer.removeAllAnimations()
         
         let breathing = CABasicAnimation(keyPath: "borderColor")
-        breathing.fromValue = UIColor.white.cgColor
+        breathing.fromValue = ConnectedColor.withAlphaComponent(0.4).cgColor
         breathing.toValue = ConnectedColor.cgColor
         breathing.repeatCount = .infinity
         breathing.autoreverses = true
@@ -85,4 +85,4 @@ extension VPNFlagAnimatable {
     
 }
 
-fileprivate let ConnectedColor = UIColor(red: 0, green: 0.7, blue: 1, alpha: 1)
+fileprivate let ConnectedColor = UIColor(red: 0, green: 0.5, blue: 1, alpha: 1)
