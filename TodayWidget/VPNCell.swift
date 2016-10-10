@@ -44,8 +44,6 @@ final class VPNCell: UICollectionViewCell, VPNFlagAnimatable {
         didSet {
             if status == .connected {
                 titleLabel.textColor = ConnectedColor
-            } else if latency == -1 {
-                titleLabel.textColor = textColor
             } else {
                 titleLabel.textColor = colorOfLatency
             }
@@ -53,14 +51,14 @@ final class VPNCell: UICollectionViewCell, VPNFlagAnimatable {
     }
     
     var colorOfLatency: UIColor {
-        var latencyColor = UIColor(red: 0.2, green: 0.7, blue: 0, alpha: 1)
+        var latencyColor = UIColor(red: 0.1, green: 0.6, blue: 0, alpha: 1)
         
         if latency > 600 {
-            latencyColor = UIColor(red: 1, green: 0.1, blue: 0.3, alpha: 1)
+            latencyColor = UIColor(red: 0.8, green: 0.1, blue: 0.3, alpha: 1)
         } else if latency > 300 {
             latencyColor = UIColor(red: 0.8, green: 0.5, blue: 0, alpha: 1)
         } else if latency == -1 {
-            latencyColor = UIColor(white: 0.6, alpha: 1)
+            latencyColor = textColor
         }
         
         return latencyColor
