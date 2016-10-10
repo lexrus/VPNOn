@@ -1105,8 +1105,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LexTang.VPNOn.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "67375cdc-3870-47ed-9213-5ed297d0d6a6";
-				PROVISIONING_PROFILE_SPECIFIER = VPNOnTodayDev;
+				PROVISIONING_PROFILE = "1caeb0e9-46d9-45a1-a44a-f3fb31ad261a";
+				PROVISIONING_PROFILE_SPECIFIER = VPNOnWidgetDev;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1127,8 +1127,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LexTang.VPNOn.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6f74becf-4af1-4a8c-92ed-defed72b40fb";
-				PROVISIONING_PROFILE_SPECIFIER = VPNOnToday;
+				PROVISIONING_PROFILE = "963cd531-b757-48b1-afc1-0b4727e786ff";
+				PROVISIONING_PROFILE_SPECIFIER = VPNOnWidget;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
