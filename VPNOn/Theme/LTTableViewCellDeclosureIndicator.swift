@@ -19,35 +19,31 @@ class LTTableViewCellDeclosureIndicator : UIView {
     }
 
     override func draw(_ rect: CGRect) {
-        let delta = CGFloat(6)
+        let delta = CGFloat(5)
         let centerX = rect.width / 2
         let middleY = rect.height / 2
 
-        let context = UIGraphicsGetCurrentContext()
+        guard let context = UIGraphicsGetCurrentContext() else { return }
         
         if isRightToLeft {
-            context?.move(to: CGPoint(x: centerX + delta / 2, y: middleY - delta))
-            context?.addLines(between: [
-                CGPoint(x: centerX - delta / 2, y: middleY),
-                CGPoint(x: centerX + delta / 2, y: middleY + delta)
-                ])
+            context.move(to: CGPoint(x: centerX + delta / 2, y: middleY - delta))
+            context.addLine(to: CGPoint(x: centerX - delta / 2, y: middleY))
+            context.addLine(to: CGPoint(x: centerX + delta / 2, y: middleY + delta))
         } else {
-            context?.move(to: CGPoint(x: centerX - delta / 2, y: middleY - delta))
-            context?.addLines(between: [
-                CGPoint(x: centerX + delta / 2, y: middleY),
-                CGPoint(x: centerX - delta / 2, y: middleY + delta)
-                ])
+            context.move(to: CGPoint(x: centerX - delta / 2, y: middleY - delta))
+            context.addLine(to: CGPoint(x: centerX + delta / 2, y: middleY))
+            context.addLine(to: CGPoint(x: centerX - delta / 2, y: middleY + delta))
         }
 
-        context?.setLineWidth(lineWidth)
-        context?.setLineJoin(.miter)
-        context?.setLineCap(.square)
+        context.setLineWidth(lineWidth)
+        context.setLineJoin(.miter)
+        context.setLineCap(.square)
 
         if let textColor = LTThemeManager.sharedManager.currentTheme?.textColor {
-            context?.setStrokeColor(textColor.cgColor)
+            context.setStrokeColor(textColor.cgColor)
         }
 
-        context?.strokePath()
+        context.strokePath()
     }
     
 }

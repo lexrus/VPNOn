@@ -32,6 +32,8 @@ final class VPNList: UITableViewController, SimplePingDelegate, VPNDomainsDelega
     )
     var connectionOn = false
     
+    var pendingProfile = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -71,6 +73,12 @@ final class VPNList: UITableViewController, SimplePingDelegate, VPNDomainsDelega
             name: NSNotification.Name.NEVPNStatusDidChange,
             object: nil)
         
+        NC.addObserver(
+            self,
+            selector: #selector(didEnterForeground),
+            name: NSNotification.Name.UIApplicationWillEnterForeground,
+            object: nil)
+        
     }
     
     deinit {
@@ -83,15 +91,31 @@ final class VPNList: UITableViewController, SimplePingDelegate, VPNDomainsDelega
         reloadVPNs()
     }
     
+    func didEnterForeground() {
+        guard pendingProfile else { return }
+        NEVPNManager.shared().loadFromPreferences { [weak self] error in
+            guard error == nil else { return }
+            self?.pendingProfile = false
+            guard let vpn = VPNDataManager.sharedManager.activatedVPN else {
+                return
+            }
+            VPNManager.sharedManager.saveAndConnect(vpn.toAccount())
+        }
+    }
+    
     func reloadVPNs() {
         vpns = VPNDataManager.sharedManager.allVPN()
         
         if let selectedID = VPNDataManager.sharedManager.selectedVPNID {
             if selectedID.uriRepresentation().lastPathComponent != activatedVPNID {
                 activatedVPNID = selectedID.uriRepresentation().absoluteString
-                tableView?.reloadData()
+            }
+        } else {
+            if let firstID = vpns?.first?.ID {
+                activatedVPNID = firstID
             }
         }
+        tableView?.reloadData()
     }
     
     // MARK: - VPNDomainsDelegate

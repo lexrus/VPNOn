@@ -17,8 +17,10 @@ extension VPNList {
                 return
             }
             VPNManager.sharedManager.saveAndConnect(vpn.toAccount())
+            pendingProfile = true
         } else {
             VPNManager.sharedManager.disconnect()
+            pendingProfile = false
         }
     }
     
