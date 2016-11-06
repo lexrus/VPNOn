@@ -43,9 +43,9 @@ public typealias VPNConfigureCompletion = (Void) -> Void
 
 open class VPNManager {
 
-    fileprivate lazy var manager: NEVPNManager = {
+    private var manager: NEVPNManager {
         return NEVPNManager.shared()
-        }()
+    }
     
     open lazy var defaults: UserDefaults = {
         return UserDefaults(suiteName: kAppGroupIdentifier)!
@@ -66,8 +66,6 @@ open class VPNManager {
     fileprivate func loadPreferances(_ completion: @escaping () -> Void) {
         manager.loadFromPreferences { error in
             assert(error == nil, "Failed to load preferences: \(error!.localizedDescription)")
-            self.manager.localizedDescription = "VPN On"
-            self.manager.isEnabled = true
             completion()
         }
     }
@@ -123,10 +121,10 @@ open class VPNManager {
         if let password = account.passwordRef {
             pt.passwordReference = password
         }
-    
-        manager.isEnabled = true
         
+        manager.localizedDescription = "VPN On"
         manager.protocolConfiguration = pt
+        manager.isEnabled = true
         
         configOnDemand()
         
@@ -134,10 +132,7 @@ open class VPNManager {
             if let err = error {
                 print("Failed to save profile: \(err.localizedDescription)")
             } else {
-                let delayTime = DispatchTime.now() + Double(Int64(0.1 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-                DispatchQueue.main.asyncAfter(deadline: delayTime) {
-                    completion?()
-                }
+                completion?()
             }
         }
     }
@@ -145,9 +140,9 @@ open class VPNManager {
     public func connect() {
         do {
             try self.manager.connection.startVPNTunnel()
-        } catch NEVPNErrorDomain.configurationInvalid {
+        } catch NEVPNError.configurationInvalid {
             
-        } catch NEVPNErrorDomain.configurationDisabled {
+        } catch NEVPNError.configurationDisabled {
             
         } catch let error as NSError {
             print(error.localizedDescription)
@@ -186,7 +181,9 @@ open class VPNManager {
     }
     
     public func removeProfile() {
-        manager.loadFromPreferences { _ in
+        // The first removing disable on demand feature of the VPN
+        manager.removeFromPreferences { _ in
+            // This one actually remove the VPN profile
             self.manager.removeFromPreferences { _ in
                 
             }
