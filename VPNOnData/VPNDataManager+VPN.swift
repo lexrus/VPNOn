@@ -3,7 +3,7 @@
 //  VPN On
 //
 //  Created by Lex Tang on 12/5/14.
-//  Copyright (c) 2014 lexrus.com. All rights reserved.
+//  Copyright (c) 2017 lexrus.com. All rights reserved.
 //
 
 import CoreData
@@ -74,8 +74,8 @@ extension VPNDataManager {
                 }
                 return vpn
             }
-        } catch let error as NSError {
-            debugPrint("Could not save VPN \(error), \(error.userInfo)")
+        } catch {
+            debugPrint("Could not save VPN \(error.localizedDescription)")
         }
         
         return .none
@@ -104,7 +104,6 @@ extension VPNDataManager {
     }
     
     func VPNByID(_ ID: NSManagedObjectID) -> VPN? {
-        var error: NSError?
         if ID.isTemporaryID {
             return .none
         }
@@ -112,8 +111,7 @@ extension VPNDataManager {
         var result: NSManagedObject?
         do {
             result = try managedObjectContext?.existingObject(with: ID)
-        } catch let error1 as NSError {
-            error = error1
+        } catch {
             result = nil
         }
         if let vpn = result {
@@ -121,11 +119,8 @@ extension VPNDataManager {
                 managedObjectContext?.refresh(vpn, mergeChanges: true)
                 return vpn as? VPN
             }
-        } else {
-            debugPrint("Fetch error: \(error)")
-            return .none
         }
-        return .none
+        return nil
     }
     
     func VPNByIDString(_ ID: String) -> VPN? {

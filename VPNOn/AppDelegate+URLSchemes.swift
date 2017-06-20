@@ -3,7 +3,7 @@
 //  VPNOn
 //
 //  Created by Lex on 10/3/15.
-//  Copyright © 2016 lexrus.com. All rights reserved.
+//  Copyright © 2017 lexrus.com. All rights reserved.
 //
 
 import UIKit
@@ -72,11 +72,14 @@ extension AppDelegate {
     
     fileprivate func initialCreateViewWithURL(_ URL: Foundation.URL) {
         // If the host is empty, do nothing
-        guard let _ = URL.host, let info = VPN.parseURL(URL) else { return }
-        guard let splitVC = window?.rootViewController as? UISplitViewController else { return }
-        guard let detailNC = splitVC.viewControllers.last as? UINavigationController else { return }
-        let mainSB = UIStoryboard.init(name: "Main", bundle: Bundle.main)
-        guard let editorVC = mainSB.instantiateViewController(withIdentifier: "VPNEditor") as? VPNEditor else { return }
+        guard
+            URL.host != nil,
+            let info = VPN.parseURL(URL),
+            let splitVC = window?.rootViewController as? UISplitViewController,
+            let detailNC = splitVC.viewControllers.last as? UINavigationController,
+            let editorVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "VPNEditor") as? VPNEditor
+        else { return }
+
         editorVC.initializedVPNInfo = info
         detailNC.pushViewController(editorVC, animated: false)
     }

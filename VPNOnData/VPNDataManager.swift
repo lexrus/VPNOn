@@ -3,7 +3,7 @@
 //  VPN On
 //
 //  Created by Lex Tang on 12/5/14.
-//  Copyright (c) 2014 lexrus.com. All rights reserved.
+//  Copyright (c) 2017 lexrus.com. All rights reserved.
 //
 
 import UIKit
@@ -54,17 +54,15 @@ class VPNDataManager {
             "journal_mode": "WAL"
         ] as [String : Any]
         
-        if let _ = coordinator!.persistentStore(for: url) {
+        if coordinator!.persistentStore(for: url) != nil {
 
         } else {
             do {
                 try coordinator!.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: url, options: options)
-            } catch let error as NSError {
-                coordinator = nil
-                NSLog("Unresolved error \(error), \(error.userInfo)")
-                exit(1)
             } catch {
-                fatalError()
+                coordinator = nil
+                print("Unresolved error \(error)")
+                exit(1)
             }
         }
         
@@ -99,13 +97,11 @@ class VPNDataManager {
         let options = NSDictionary(
             objects: [NSNumber(value: true), NSNumber(value: true), "WAL"],
             forKeys: [NSMigratePersistentStoresAutomaticallyOption as NSCopying, NSInferMappingModelAutomaticallyOption as NSCopying, "journal_mode" as NSCopying])
-        
-        var srcError: NSError?
+
         do {
             try coordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: nil, at: srcURL, options: options as [NSObject : AnyObject] as [NSObject : AnyObject])
-        } catch let error as NSError {
-            srcError = error
-            debugPrint("Failed to add src store: \(srcError)")
+        } catch {
+            print("Failed to add src store: \(error)")
             return
         }
         
@@ -125,17 +121,15 @@ class VPNDataManager {
     
     func saveContext () {
         guard let moc = self.managedObjectContext else { return }
-        var error: NSError? = nil
         if !moc.hasChanges {
             return
         }
         do {
             try moc.save()
-        } catch let error1 as NSError {
-            error = error1
+        } catch {
             // Replace this implementation with code to handle the error appropriately.
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            NSLog("Unresolved error \(error), \(error!.userInfo)")
+            print("Unresolved error \(error)")
             abort()
         }
     }

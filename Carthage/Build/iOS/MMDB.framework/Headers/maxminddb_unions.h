@@ -3,7 +3,7 @@
 //  MMDB
 //
 //  Created by Lex on 12/17/15.
-//  Copyright © 2015 LexTang.com. All rights reserved.
+//  Copyright © 2017 lexrus.com. All rights reserved.
 //
 
 #ifndef maxminddb_unions_h

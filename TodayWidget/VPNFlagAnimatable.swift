@@ -3,7 +3,7 @@
 //  VPNOn
 //
 //  Created by Lex on 08/10/2016.
-//  Copyright © 2016 LexTang.com. All rights reserved.
+//  Copyright © 2017 lexrus.com. All rights reserved.
 //
 
 import UIKit
@@ -14,7 +14,7 @@ protocol VPNFlagAnimatable {
     
     var titleLabel: UILabel { get }
     
-    var connected: Bool { set get }
+    var connected: Bool { get set }
     
     func startAnimating()
     

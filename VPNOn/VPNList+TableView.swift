@@ -3,7 +3,7 @@
 //  VPNOn
 //
 //  Created by Lex on 10/30/15.
-//  Copyright © 2016 lexrus.com. All rights reserved.
+//  Copyright © 2017 lexrus.com. All rights reserved.
 //
 
 import UIKit

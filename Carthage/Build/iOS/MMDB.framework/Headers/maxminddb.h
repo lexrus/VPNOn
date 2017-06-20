@@ -5,6 +5,9 @@ extern "C" {
 #ifndef MAXMINDDB_H
 #define MAXMINDDB_H
 
+/* libmaxminddb package version from configure */
+#define PACKAGE_VERSION "1.2.1"
+
 #ifndef _POSIX_C_SOURCE
 #define _POSIX_C_SOURCE 200112L
 #endif
@@ -16,9 +19,6 @@ extern "C" {
 #include <stdio.h>
 #include <sys/types.h>
 
-/* libmaxminddb package version from configure */
-#define PACKAGE_VERSION "1.2.0"
-
 #ifdef _WIN32
 #include <winsock2.h>
 #include <ws2tcpip.h>
@@ -27,7 +27,7 @@ typedef ADDRESS_FAMILY sa_family_t;
 
 #if defined(_MSC_VER)
 /* MSVC doesn't define signed size_t, copy it from configure */
-#define ssize_t int
+#define ssize_t SSIZE_T
 
 /* MSVC doesn't support restricted pointers */
 #define restrict
@@ -172,9 +172,9 @@ typedef struct MMDB_s {
     ssize_t file_size;
     const uint8_t *file_content;
     const uint8_t *data_section;
-    long data_section_size;
+    uint32_t data_section_size;
     const uint8_t *metadata_section;
-    long metadata_section_size;
+    uint32_t metadata_section_size;
     uint16_t full_record_byte_size;
     uint16_t depth;
     MMDB_ipv4_start_node_s ipv4_start_node;

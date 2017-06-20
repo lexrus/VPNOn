@@ -3,7 +3,7 @@
 //  TodayWidget
 //
 //  Created by Lex Tang on 12/10/14.
-//  Copyright (c) 2014 lexrus.com. All rights reserved.
+//  Copyright (c) 2017 lexrus.com. All rights reserved.
 //
 
 import UIKit
