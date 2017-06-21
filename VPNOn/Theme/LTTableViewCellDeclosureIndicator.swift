@@ -39,7 +39,7 @@ class LTTableViewCellDeclosureIndicator : UIView {
         context.setLineJoin(.miter)
         context.setLineCap(.square)
 
-        if let textColor = LTThemeManager.sharedManager.currentTheme?.textColor {
+        if let textColor = LTThemeManager.shared.currentTheme?.textColor {
             context.setStrokeColor(textColor.cgColor)
         }
 

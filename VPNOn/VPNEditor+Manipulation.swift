@@ -51,7 +51,7 @@ extension VPNEditor {
                 guard let vpn = self.vpn else {
                     return
                 }
-                VPNDataManager.sharedManager.deleteVPN(vpn)
+                VPNDataManager.shared.deleteVPN(vpn)
                 NotificationCenter.default
                     .post(name: Notification.Name(rawValue: kVPNDidRemove), object: nil)
         }
@@ -75,7 +75,7 @@ extension VPNEditor {
             return
         }
         
-        if let newVPN = VPNDataManager.sharedManager.duplicate(vpn) {
+        if let newVPN = VPNDataManager.shared.duplicate(vpn) {
             NotificationCenter.default
                 .post(name: Notification.Name(rawValue: kVPNDidDuplicate), object: newVPN)
         }

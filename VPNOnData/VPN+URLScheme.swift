@@ -38,31 +38,23 @@ extension VPN {
                 switch param[0] {
                 case "title":
                     title = value
-                    break
+
                 case "group":
                     group = value
-                    break
+
                 case "secret":
                     secret = value
-                    break
+
                 case "alwayson":
-                    alwaysOn =
-                        value == "1"
-                        || value == "true"
-                        || value == "yes"
-                        || value == "on"
-                    break
+                    alwaysOn = value.isLiteralTrue()
+
                 case "ikev2":
-                    ikev2 =
-                        value == "1"
-                        || value == "true"
-                        || value == "yes"
-                        || value == "on"
-                    break
+                    ikev2 = value.isLiteralTrue()
+
                 case "remoteid":
                     remoteID = value
-                default:
-                    ()
+
+                default: ()
                 }
             }
         }
@@ -81,4 +73,14 @@ extension VPN {
         return info
     }
 
+}
+
+extension String {
+
+    fileprivate func isLiteralTrue() -> Bool {
+        switch self.lowercased() {
+        case "1", "true", "yes", "on": return true
+        default: return false
+        }
+    }
 }

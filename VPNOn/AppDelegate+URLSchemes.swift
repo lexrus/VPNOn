@@ -18,7 +18,7 @@ extension AppDelegate {
         
         // Ignore query while the host is equal to "disconnect"
         if URL.host == "disconnect" {
-            VPNManager.sharedManager.disconnect()
+            VPNManager.shared.disconnect()
             return true
         }
         
@@ -53,15 +53,15 @@ extension AppDelegate {
     fileprivate func connectVPNWithURL(_ URL: Foundation.URL, callback: String) {
         guard let title = URL.host else { return }
         
-        let vpns = VPNDataManager.sharedManager.VPNHasTitle(title)
+        let vpns = VPNDataManager.shared.VPNHasTitle(title)
         guard let vpn = vpns.first else { return }
         
-        VPNDataManager.sharedManager.selectedVPNID = vpn.objectID
+        VPNDataManager.shared.selectedVPNID = vpn.objectID
         
         NotificationCenter.default
             .post(name: Notification.Name(rawValue: kSelectionDidChange), object: nil)
         
-        VPNManager.sharedManager.saveAndConnect(vpn.toAccount())
+        VPNManager.shared.saveAndConnect(vpn.toAccount())
         
         if !callback.isEmpty {
             if let url = Foundation.URL(string: callback) {

@@ -42,14 +42,10 @@ extension VPNDataManager {
         remoteID: String? = nil
         ) -> VPN?
     {
-        guard let entity = NSEntityDescription.entity(forEntityName: "VPN", in: managedObjectContext!) else {
-            debugPrint("No entity.")
-            return nil
-        }
-        guard let vpn = NSManagedObject(entity: entity, insertInto: managedObjectContext!) as? VPN else {
-            debugPrint("Failed to insert")
-            return nil
-        }
+        guard
+            let entity = NSEntityDescription.entity(forEntityName: "VPN", in: managedObjectContext!),
+            let vpn = NSManagedObject(entity: entity, insertInto: managedObjectContext!) as? VPN
+        else { return nil }
         
         vpn.title = title
         vpn.server = server
@@ -70,15 +66,15 @@ extension VPNDataManager {
                 }
                 
                 if allVPN().count == 1 {
-                    VPNManager.sharedManager.activatedVPNID = vpn.ID
+                    VPNManager.shared.activatedVPNID = vpn.ID
                 }
                 return vpn
             }
         } catch {
-            debugPrint("Could not save VPN \(error.localizedDescription)")
+            print("Could not save VPN \(error.localizedDescription)")
         }
         
-        return .none
+        return nil
     }
     
     func deleteVPN(_ vpn:VPN) {
@@ -92,13 +88,13 @@ extension VPNDataManager {
         } catch { }
         saveContext()
         
-        if VPNManager.sharedManager.activatedVPNID == ID {
-            VPNManager.sharedManager.activatedVPNID = nil
+        if VPNManager.shared.activatedVPNID == ID {
+            VPNManager.shared.activatedVPNID = nil
             
             let vpns = allVPN()
             
             if let firstVPN = vpns.first {
-                VPNManager.sharedManager.activatedVPNID = firstVPN.ID
+                VPNManager.shared.activatedVPNID = firstVPN.ID
             }
         }
     }
@@ -108,17 +104,14 @@ extension VPNDataManager {
             return .none
         }
         
-        var result: NSManagedObject?
+        var result: NSManagedObject? = nil
         do {
             result = try managedObjectContext?.existingObject(with: ID)
-        } catch {
-            result = nil
-        }
-        if let vpn = result {
-            if !vpn.isDeleted {
-                managedObjectContext?.refresh(vpn, mergeChanges: true)
-                return vpn as? VPN
-            }
+        } catch { }
+
+        if let vpn = result as? VPN, !vpn.isDeleted {
+            managedObjectContext?.refresh(vpn, mergeChanges: true)
+            return vpn
         }
         return nil
     }
@@ -156,7 +149,7 @@ extension VPNDataManager {
     }
     
     func duplicate(_ vpn: VPN) -> VPN? {
-        let duplicatedVPNs = VPNDataManager.sharedManager.VPNBeginsWithTitle(vpn.title)
+        let duplicatedVPNs = VPNDataManager.shared.VPNBeginsWithTitle(vpn.title)
         if duplicatedVPNs.count > 0 {
             guard let title = vpn.title else { return nil }
             let newTitle = "\(title) \(duplicatedVPNs.count)"

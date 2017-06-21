@@ -96,17 +96,17 @@ final class VPNList: UITableViewController, SimplePingDelegate, VPNDomainsDelega
         NEVPNManager.shared().loadFromPreferences { [weak self] error in
             guard error == nil else { return }
             self?.pendingProfile = false
-            guard let vpn = VPNDataManager.sharedManager.activatedVPN else {
+            guard let vpn = VPNDataManager.shared.activatedVPN else {
                 return
             }
-            VPNManager.sharedManager.saveAndConnect(vpn.toAccount())
+            VPNManager.shared.saveAndConnect(vpn.toAccount())
         }
     }
     
     func reloadVPNs() {
-        vpns = VPNDataManager.sharedManager.allVPN()
+        vpns = VPNDataManager.shared.allVPN()
         
-        if let selectedID = VPNDataManager.sharedManager.selectedVPNID {
+        if let selectedID = VPNDataManager.shared.selectedVPNID {
             if selectedID.uriRepresentation().lastPathComponent != activatedVPNID {
                 activatedVPNID = selectedID.uriRepresentation().absoluteString
             }

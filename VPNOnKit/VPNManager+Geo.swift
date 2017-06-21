@@ -54,7 +54,7 @@ extension VPNManager {
         return nil
     }
 
-    public func countryOfHost(_ host: String, callback: @escaping MMDBLookupCallback) -> Void {
+    public func countryOfHost(_ host: String, callback: @escaping MMDBLookupCallback) {
         DispatchQueue.global().async {
             [weak self] in
             guard let ip = self?.IPOfHost(host), let country = self?.countryOfIP(ip) else {

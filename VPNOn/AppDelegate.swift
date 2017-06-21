@@ -21,7 +21,7 @@ class AppDelegate:
             splitViewController.preferredDisplayMode = .allVisible
         }
         
-        LTThemeManager.sharedManager.activateTheme()
+        LTThemeManager.shared.activateTheme()
 
         return true
     }
@@ -33,13 +33,11 @@ class AppDelegate:
         collapseSecondary secondaryViewController:UIViewController,
         onto primaryViewController:UIViewController
         ) -> Bool {
-            if let secondaryAsNavController = secondaryViewController
-                as? UINavigationController {
-                    if let _ = secondaryAsNavController.topViewController {
-                        // Return true to indicate that we have handled the collapse by doing nothing; the secondary controller will be discarded.
-                        return true
-                    }
-            }
-            return false
+            guard
+                let secondaryAsNavController = secondaryViewController as? UINavigationController,
+                secondaryAsNavController.topViewController != nil
+            else { return false }
+
+            return true
     }
 }

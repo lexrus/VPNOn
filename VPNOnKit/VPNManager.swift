@@ -39,7 +39,7 @@ public struct VPNAccount {
     public init() { }
 }
 
-public typealias VPNConfigureCompletion = (Void) -> Void
+public typealias VPNConfigureCompletion = () -> Void
 
 open class VPNManager {
 
@@ -59,7 +59,7 @@ open class VPNManager {
         return MMDB()
     }()
     
-    public class var sharedManager: VPNManager {
+    public class var shared: VPNManager {
         return instance
     }
 

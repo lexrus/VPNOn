@@ -13,13 +13,13 @@ extension VPNList {
     
     @IBAction func toggleVPN(_ sender: UISwitch) {
         if sender.isOn {
-            guard let vpn = VPNDataManager.sharedManager.activatedVPN else {
+            guard let vpn = VPNDataManager.shared.activatedVPN else {
                 return
             }
-            VPNManager.sharedManager.saveAndConnect(vpn.toAccount())
+            VPNManager.shared.saveAndConnect(vpn.toAccount())
             pendingProfile = true
         } else {
-            VPNManager.sharedManager.disconnect()
+            VPNManager.shared.disconnect()
             pendingProfile = false
         }
     }

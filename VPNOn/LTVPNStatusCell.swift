@@ -16,7 +16,7 @@ class LTVPNStatusCell : UITableViewCell {
     @IBOutlet weak var statusLabel: LTMorphingLabel!
     @IBOutlet weak var VPNSwitch: UISwitch!
     
-    func delay(delay:Double, closure:()->()) {
+    func delay(delay: Double, closure: () -> Void) {
         dispatch_after(
             dispatch_time(
                 DISPATCH_TIME_NOW,

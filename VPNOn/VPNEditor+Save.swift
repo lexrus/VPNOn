@@ -31,12 +31,12 @@ extension VPNEditor {
                 forVPNID: currentVPN.ID
             )
             
-            VPNDataManager.sharedManager.saveContext()
+            VPNDataManager.shared.saveContext()
             
             NotificationCenter.default
                 .post(name: Notification.Name(rawValue: kVPNDidUpdate), object: currentVPN)
         } else {
-            if let lastVPN = VPNDataManager.sharedManager.createVPN(
+            if let lastVPN = VPNDataManager.shared.createVPN(
                 titleTextField.text ?? "",
                 server: serverTextField.text ?? "",
                 account: accountTextField.text ?? "",

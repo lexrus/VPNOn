@@ -81,7 +81,7 @@ extension VPNManager {
     
     // See: http://stackoverflow.com/questions/25738817/does-there-exist-within-swifts-api-an-easy-way-to-remove-duplicate-elements-fro
     fileprivate func uniq<S : Sequence, T : Hashable>(_ source: S) -> [T] where S.Iterator.Element == T {
-        var buffer = Array<T>()
+        var buffer = [T]()
         var addedDict = [T: Bool]()
         for elem in source {
             if addedDict[elem] == nil {

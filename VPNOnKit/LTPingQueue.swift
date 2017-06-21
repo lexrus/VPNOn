@@ -166,17 +166,9 @@ open class LTPingQueue : NSObject, SimplePingDelegate {
     }
     
     open func pingDidUpdate(_ notification: Notification) {
-        if operations.count == 0 {
-            return
+        if operations.count != 0 && operations.filter({ !$0.completed }).count == 0 {
+            NotificationCenter.default.post(name: Notification.Name(rawValue: kPingDidComplete), object: nil)
         }
-        
-        for pingOperation in operations {
-            if !pingOperation.completed {
-                return
-            }
-        }
-        
-        NotificationCenter.default.post(name: Notification.Name(rawValue: kPingDidComplete), object: nil)
     }
     
 }

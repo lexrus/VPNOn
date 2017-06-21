@@ -17,7 +17,7 @@ class LTSplitViewController: UISplitViewController {
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        if LTThemeManager.sharedManager.currentTheme?.name.range(of: "Light") != nil {
+        if LTThemeManager.shared.currentTheme?.name.range(of: "Light") != nil {
             return UIStatusBarStyle.default
         } else {
             return UIStatusBarStyle.lightContent
@@ -30,7 +30,7 @@ class LTSplitViewController: UISplitViewController {
     
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         if event?.subtype == UIEventSubtype.motionShake {
-            LTThemeManager.sharedManager.activateNextTheme()
+            LTThemeManager.shared.activateNextTheme()
             self.setNeedsStatusBarAppearanceUpdate()
         }
     }

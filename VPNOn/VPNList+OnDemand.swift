@@ -12,11 +12,11 @@ import VPNOnKit
 extension VPNList {
     
     @IBAction func didTapOnDemandSwitch(_ sender: UISwitch?) {
-        VPNManager.sharedManager.onDemand = sender!.isOn
+        VPNManager.shared.onDemand = sender!.isOn
         
         // NOTE: Update profile to activate On Demand feature
-        if let VPN = VPNDataManager.sharedManager.activatedVPN {
-            VPNManager.sharedManager.save(VPN.toAccount()) {}
+        if let VPN = VPNDataManager.shared.activatedVPN {
+            VPNManager.shared.save(VPN.toAccount()) {}
         }
         
         updateOnDemandCell()

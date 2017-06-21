@@ -12,7 +12,7 @@ import VPNOnKit
 extension VPNDataManager {
     
     var activatedVPN: VPN? {
-        if let activatedVPNID = VPNManager.sharedManager.activatedVPNID {
+        if let activatedVPNID = VPNManager.shared.activatedVPNID {
             return VPNByIDString(activatedVPNID)
         }
         return nil

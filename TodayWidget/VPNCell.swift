@@ -105,7 +105,7 @@ final class VPNCell: UICollectionViewCell, VPNFlagAnimatable {
         stopBreathing()
         flagImageView.alpha = 1
         
-        switch VPNManager.sharedManager.status {
+        switch VPNManager.shared.status {
         case .connected:
             if current {
                 flagImageView.alpha = 1

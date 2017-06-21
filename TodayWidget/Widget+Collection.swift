@@ -36,10 +36,10 @@ extension Widget:
                 for: indexPath
                 ) as! VPNCell
             let vpn = vpns[(indexPath as NSIndexPath).row]
-            let selected = VPNManager.sharedManager.selectedVPNID == vpn.ID
+            let selected = VPNManager.shared.selectedVPNID == vpn.ID
             cell.configureWithVPN(vpns[indexPath.row], selected: selected)
             if selected {
-                cell.status = VPNManager.sharedManager.status
+                cell.status = VPNManager.shared.status
             } else {
                 cell.status = .disconnected
             }
@@ -66,23 +66,23 @@ extension Widget:
         
         let vpn = vpns[(indexPath as NSIndexPath).row]
         
-        VPNManager.sharedManager.selectedVPNID = vpn.ID
+        VPNManager.shared.selectedVPNID = vpn.ID
         
-        if VPNManager.sharedManager.status == .connected {
-            if VPNManager.sharedManager.selectedVPNID == vpn.ID {
+        if VPNManager.shared.status == .connected {
+            if VPNManager.shared.selectedVPNID == vpn.ID {
                 // Do not connect it again if tap the same one
                 return
             }
         }
         
-        guard VPNManager.sharedManager.status != .connecting else {
+        guard VPNManager.shared.status != .connecting else {
             return
         }
         
         var account = vpn.toAccount()
         account.title = vpn.title
         
-        VPNManager.sharedManager.saveAndConnect(account)
+        VPNManager.shared.saveAndConnect(account)
         
         // Bounce the cell
         
@@ -113,9 +113,9 @@ extension Widget:
             return true
         }
         
-        switch VPNManager.sharedManager.status {
+        switch VPNManager.shared.status {
         case .connected, .connecting, .reasserting:
-            VPNManager.sharedManager.disconnect()
+            VPNManager.shared.disconnect()
         default: ()
         }
         return true

@@ -9,6 +9,7 @@
 import UIKit
 import VPNOnKit
 import FlagKit
+
 fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   switch (lhs, rhs) {
   case let (l?, r?):
@@ -29,7 +30,6 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   }
 }
 
-
 extension VPNList {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -42,7 +42,7 @@ extension VPNList {
         ) -> Int {
             switch section {
             case kVPNOnDemandSection:
-                if VPNManager.sharedManager.onDemand {
+                if VPNManager.shared.onDemand {
                     return 2
                 }
                 return 1
@@ -73,12 +73,12 @@ extension VPNList {
                     let switchCell = tableView
                         .dequeueReusableCell(withIdentifier: "OnDemandCell") as! VPNSwitchCell
                     switchCell.switchButton.isOn =
-                        VPNManager.sharedManager.onDemand
+                        VPNManager.shared.onDemand
                     return switchCell
                 } else {
                     let domainsCell = tableView
                         .dequeueReusableCell(withIdentifier: "DomainsCell")!
-                    let domainsCount = VPNManager.sharedManager
+                    let domainsCount = VPNManager.shared
                         .onDemandDomainsArray
                         .filter { !$0.contains("*.") }
                         .count
@@ -132,12 +132,12 @@ extension VPNList {
         ) {
             switch (indexPath as NSIndexPath).section {
             case kVPNAddSection:
-                VPNDataManager.sharedManager.selectedVPNID = nil
+                VPNDataManager.shared.selectedVPNID = nil
                 break
                 
             case kVPNListSection:
                 activatedVPNID = vpns?[(indexPath as NSIndexPath).row].ID
-                VPNManager.sharedManager.activatedVPNID = activatedVPNID
+                VPNManager.shared.activatedVPNID = activatedVPNID
                 tableView.reloadData()
                 break
                 
@@ -152,7 +152,7 @@ extension VPNList {
         ) {
             if (indexPath as NSIndexPath).section == kVPNListSection {
                 let VPNID = vpns?[(indexPath as NSIndexPath).row].objectID
-                VPNDataManager.sharedManager.selectedVPNID = VPNID
+                VPNDataManager.shared.selectedVPNID = VPNID
             }
     }
     

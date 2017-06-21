@@ -43,8 +43,8 @@ class VPNEditor : UITableViewController, UITextFieldDelegate {
     }
     
     lazy var vpn: VPN? = {
-        if let ID = VPNDataManager.sharedManager.selectedVPNID {
-            return VPNDataManager.sharedManager.VPNByID(ID)
+        if let ID = VPNDataManager.shared.selectedVPNID {
+            return VPNDataManager.shared.VPNByID(ID)
         }
         return nil
     }()

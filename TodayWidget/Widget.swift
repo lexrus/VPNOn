@@ -33,7 +33,7 @@ final class Widget:
     }
     
     var vpns: [VPN] {
-        return VPNDataManager.sharedManager.allVPN()
+        return VPNDataManager.shared.allVPN()
     }
     
     override func viewDidLoad() {
@@ -96,7 +96,7 @@ final class Widget:
         // NOTE: Must remove the profile when there're no VPNs
         // otherwise there'll be a immutable profile live in system forever.
         if vpns.count == 0 {
-            VPNManager.sharedManager.removeProfile()
+            VPNManager.shared.removeProfile()
         } else if vpns.count > 4 {
             if #available(iOSApplicationExtension 10.0, *) {
                 extensionContext?.widgetLargestAvailableDisplayMode = .expanded
@@ -139,7 +139,7 @@ final class Widget:
     func updateContent() {
         // Note: In order to get the latest data.
         // @see: http://stackoverflow.com/questions/25924223/core-data-ios-8-today-widget-issue
-        VPNDataManager.sharedManager.managedObjectContext?.reset()
+        VPNDataManager.shared.managedObjectContext?.reset()
     }
     
     private func widgetPerformUpdate(
@@ -182,14 +182,14 @@ final class Widget:
     }
     
     func coreDataDidSave(_ notification: Notification) {
-        VPNDataManager.sharedManager.managedObjectContext?
+        VPNDataManager.shared.managedObjectContext?
             .mergeChanges(fromContextDidSave: notification)
         updateContent()
     }
     
     func VPNStatusDidChange(_ notification: Notification?) {
         collectionView.reloadData()
-        if VPNManager.sharedManager.status == .disconnected {
+        if VPNManager.shared.status == .disconnected {
             LTPingQueue.sharedQueue.restartPing()
         }
     }

@@ -17,7 +17,7 @@ extension VPNManager {
             return defaults.object(forKey: kActivatedVPNIDKey) as! String?
         }
         set {
-            if let _ = newValue {
+            if let newValue = newValue {
                 defaults.set(newValue, forKey: kActivatedVPNIDKey)
             } else {
                 defaults.removeObject(forKey: kActivatedVPNIDKey)

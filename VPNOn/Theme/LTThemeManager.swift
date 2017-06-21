@@ -10,14 +10,13 @@ import UIKit
 
 let kCurrentThemeIndexKey = "CurrentThemeIndex"
 
-class LTThemeManager
-{
-    var currentTheme : LTTheme? = .none
+class LTThemeManager {
+
+    var currentTheme: LTTheme? = .none
     
     let themes: [LTTheme] = [LTDarkTheme(), LTLightTheme(), LTHelloKittyTheme(), LTDarkGreenTheme(), LTDarkPurpleTheme()]
     
-    class var sharedManager : LTThemeManager
-    {
+    class var shared: LTThemeManager {
         struct Static
         {
             static let sharedInstance = LTThemeManager()
@@ -46,8 +45,7 @@ class LTThemeManager
         activateTheme(themes[themeIndex])
     }
     
-    func activateTheme(_ theme : LTTheme)
-    {
+    func activateTheme(_ theme : LTTheme) {
         currentTheme = theme
         
         UIWindow.appearance().tintColor = theme.tintColor
@@ -85,8 +83,7 @@ class LTThemeManager
         
     }
     
-    func activateNextTheme()
-    {
+    func activateNextTheme() {
         var index = themeIndex
         index += 1
         

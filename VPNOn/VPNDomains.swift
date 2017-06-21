@@ -21,7 +21,7 @@ class VPNDomains : UITableViewController {
     @IBOutlet weak var textView: UITextView!
     
     @IBAction func save(_ sender: AnyObject?) {
-        VPNManager.sharedManager.onDemandDomains = textView.text
+        VPNManager.shared.onDemandDomains = textView.text
         
         delegate?.didTapSaveDomainsWithText(textView.text)
         popDetailViewController()
@@ -37,7 +37,7 @@ class VPNDomains : UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        textView.text = VPNManager.sharedManager.onDemandDomains
+        textView.text = VPNManager.shared.onDemandDomains
     }
     
     override func viewWillDisappear(_ animated: Bool) {

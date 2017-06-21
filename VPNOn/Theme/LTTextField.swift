@@ -15,7 +15,7 @@ class LTTextField: UITextField {
         let f = font ?? UIFont.systemFont(ofSize: 12)
         
         let attributes: [String : AnyObject] = [
-            NSForegroundColorAttributeName: LTThemeManager.sharedManager.currentTheme!.placeholderColor,
+            NSForegroundColorAttributeName: LTThemeManager.shared.currentTheme!.placeholderColor,
             NSFontAttributeName: f
         ]
         

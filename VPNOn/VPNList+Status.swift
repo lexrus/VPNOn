@@ -8,6 +8,7 @@
 
 import UIKit
 import VPNOnKit
+
 fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   switch (lhs, rhs) {
   case let (l?, r?):
@@ -28,11 +29,10 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   }
 }
 
-
 extension VPNList {
     
     func VPNDidChangeStatus(_ notification: Notification) {
-        switch VPNManager.sharedManager.status {
+        switch VPNManager.shared.status {
         case .connecting:
             self.connectionStatus =
                 NSLocalizedString("Connecting...", comment: "")

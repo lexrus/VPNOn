@@ -15,7 +15,7 @@ private let VPNDataManagerInstance = VPNDataManager()
 
 class VPNDataManager {
     
-    class var sharedManager : VPNDataManager {
+    class var shared: VPNDataManager {
         return VPNDataManagerInstance
     }
     
@@ -112,8 +112,8 @@ class VPNDataManager {
                 try FileManager.default.removeItem(atPath: srcURL.path)
             } catch _ {
             }
-        } catch let error as NSError {
-            debugPrint("Failed to migrate CoreData: \(error)")
+        } catch {
+            print("Failed to migrate CoreData: \(error)")
         }
     }
     

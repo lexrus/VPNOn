@@ -17,9 +17,9 @@ class LTTableViewActionCell: UITableViewCell
         }
         set {
             if newValue {
-                self.textLabel?.textColor = LTThemeManager.sharedManager.currentTheme!.textColor
+                self.textLabel?.textColor = LTThemeManager.shared.currentTheme!.textColor
             } else {
-                self.textLabel?.textColor = LTThemeManager.sharedManager.currentTheme!.tintColor
+                self.textLabel?.textColor = LTThemeManager.shared.currentTheme!.tintColor
             }
         }
     }
