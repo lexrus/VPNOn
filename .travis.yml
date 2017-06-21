@@ -2,8 +2,9 @@ language: objective-c
 osx_image: xcode8
 script:
   - |
-    xctool build -jobs 4 \
+    xcodebuild \
     -project VPNOn.xcodeproj \
     -scheme VPNOn \
-    -sdk iphonesimulator
+    -sdk iphonesimulator \
+    | xcpretty
 
