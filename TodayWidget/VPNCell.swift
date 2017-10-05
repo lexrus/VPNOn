@@ -95,10 +95,11 @@ final class VPNCell: UICollectionViewCell, VPNFlagAnimatable {
         current = selected
         titleLabel.text = vpn.title
         
-        if let countryCode = vpn.countryCode {
-            flagImageView.image = UIImage(flagImageWithCountryCode: countryCode.uppercased())
+        if let countryCode = vpn.countryCode?.uppercased(), let flag = Flag(countryCode: countryCode) {
+            let flagStyle = FlagStyle.roundedRect
+            flagImageView.image = flag.image(style: flagStyle)
         } else {
-            flagImageView.image = UIImage(flagImageForSpecialFlag: .World)
+            flagImageView.image = UIImage()
         }
         
         stopAnimating()

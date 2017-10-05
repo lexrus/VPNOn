@@ -83,11 +83,9 @@ extension VPNManager {
     fileprivate func uniq<S : Sequence, T : Hashable>(_ source: S) -> [T] where S.Iterator.Element == T {
         var buffer = [T]()
         var addedDict = [T: Bool]()
-        for elem in source {
-            if addedDict[elem] == nil {
-                addedDict[elem] = true
-                buffer.append(elem)
-            }
+        for elem in source where addedDict[elem] == nil {
+            addedDict[elem] = true
+            buffer.append(elem)
         }
         return buffer
     }

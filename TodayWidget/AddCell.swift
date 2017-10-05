@@ -17,8 +17,7 @@ class AddCell : UICollectionViewCell {
             return markView
         }
         
-        let effectView = UIVisualEffectView(effect:
-            UIVibrancyEffect.notificationCenter())
+        let effectView = UIVisualEffectView(effect: UIVibrancyEffect.widgetPrimary())
         
         let plusMark = PlusMarkView()
         effectView.frame = bounds

@@ -7,4 +7,5 @@ framework module FlagKit {
 
 module FlagKit.Swift {
     header "FlagKit-Swift.h"
+    requires objc
 }

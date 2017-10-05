@@ -85,4 +85,4 @@ extension VPNFlagAnimatable {
     
 }
 
-fileprivate let ConnectedColor = UIColor(red: 0, green: 0.5, blue: 1, alpha: 1)
+private let ConnectedColor = UIColor(red: 0, green: 0.5, blue: 1, alpha: 1)

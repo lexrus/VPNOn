@@ -65,7 +65,7 @@ extension AppDelegate {
         
         if !callback.isEmpty {
             if let url = Foundation.URL(string: callback) {
-                UIApplication.shared.openURL(url)
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }
         }
     }

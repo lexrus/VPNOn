@@ -30,16 +30,16 @@ class LTVPNStatusCell : UITableViewCell {
         case NEVPNStatus.Connecting:
             statusLabel.text = "Connecting..."
             VPNSwitch.enabled = false
-            break
+
         case NEVPNStatus.Connected:
             statusLabel.text = "Connected"
             VPNSwitch.setOn(true, animated: true)
             VPNSwitch.enabled = true
-            break
+
         case NEVPNStatus.Disconnecting:
             statusLabel.text = "Disconnecting..."
             VPNSwitch.enabled = false
-            break
+
         default:
             VPNSwitch.setOn(false, animated: true)
             VPNSwitch.enabled = true

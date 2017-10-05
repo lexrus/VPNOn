@@ -9,7 +9,7 @@
 import UIKit
 import VPNOnKit
 
-fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+private func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   switch (lhs, rhs) {
   case let (l?, r?):
     return l < r
@@ -20,7 +20,7 @@ fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   }
 }
 
-fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+private func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   switch (lhs, rhs) {
   case let (l?, r?):
     return l > r
@@ -37,19 +37,16 @@ extension VPNList {
             self.connectionStatus =
                 NSLocalizedString("Connecting...", comment: "")
             self.connectionOn = true
-            break
             
         case .connected:
             self.connectionStatus =
                 NSLocalizedString("Connected", comment: "")
             self.connectionOn = true
-            break
             
         case .disconnecting:
             self.connectionStatus =
                 NSLocalizedString("Disconnecting...", comment: "")
             self.connectionOn = false
-            break
             
         default:
             self.connectionStatus =

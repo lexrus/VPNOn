@@ -10,7 +10,7 @@ import UIKit
 import VPNOnKit
 import FlagKit
 
-fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+private func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   switch (lhs, rhs) {
   case let (l?, r?):
     return l < r
@@ -21,7 +21,7 @@ fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   }
 }
 
-fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+private func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   switch (lhs, rhs) {
   case let (l?, r?):
     return l > r
@@ -106,8 +106,10 @@ extension VPNList {
                 
                 cell.imageView?.image = nil
                 
-                if let countryCode = vpn.countryCode {
-                    cell.imageView?.image = UIImage(flagImageWithCountryCode: countryCode.uppercased())
+                if let countryCode = vpn.countryCode?.uppercased(), let flag = Flag(countryCode: countryCode) {
+                    let flagStyle = FlagStyle.roundedRect
+                    cell.imageView?.image = flag.image(style: flagStyle)
+                    cell.imageView?.contentMode = .scaleAspectFit
                 }
                 
                 cell.current = Bool(activatedVPNID == vpn.ID)
@@ -133,13 +135,11 @@ extension VPNList {
             switch (indexPath as NSIndexPath).section {
             case kVPNAddSection:
                 VPNDataManager.shared.selectedVPNID = nil
-                break
                 
             case kVPNListSection:
                 activatedVPNID = vpns?[(indexPath as NSIndexPath).row].ID
                 VPNManager.shared.activatedVPNID = activatedVPNID
                 tableView.reloadData()
-                break
                 
             default:
                 ()

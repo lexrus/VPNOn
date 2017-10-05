@@ -18,10 +18,10 @@ extension VPNEditor {
             switch tableView.cellForRow(at: indexPath) {
             case deleteCell?:
                 confirmDelete()
-                break
+
             case duplicateCell?:
                 duplicate()
-                break
+
             default:
                 ()
             }

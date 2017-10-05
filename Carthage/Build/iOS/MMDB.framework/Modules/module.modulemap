@@ -7,4 +7,5 @@ framework module MMDB {
 
 module MMDB.Swift {
     header "MMDB-Swift.h"
+    requires objc
 }

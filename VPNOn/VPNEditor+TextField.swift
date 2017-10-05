@@ -36,22 +36,22 @@ extension VPNEditor {
         switch textField {
         case titleTextField:
             serverTextField.becomeFirstResponder()
-            break
+
         case serverTextField:
             accountTextField.becomeFirstResponder()
-            break
+
         case accountTextField:
             passwordTextField.becomeFirstResponder()
-            break
+
         case passwordTextField:
             secretTextField.becomeFirstResponder()
-            break
+
         case secretTextField:
             groupTextField.becomeFirstResponder()
-            break
+
         case groupTextField:
             remoteIDTextField.becomeFirstResponder()
-            break
+
         default:
             remoteIDTextField.resignFirstResponder()
         }

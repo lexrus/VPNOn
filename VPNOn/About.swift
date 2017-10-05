@@ -44,10 +44,10 @@ class About : UITableViewController, MFMailComposeViewControllerDelegate {
         switch (indexPath as NSIndexPath).row {
         case kReviewCellIndex:
             presentAppStore()
-            break
+
         case kFeedbackCellIndex:
             presentFeedback()
-            break
+
         default:
             ()
         }
@@ -111,7 +111,7 @@ class About : UITableViewController, MFMailComposeViewControllerDelegate {
     func presentAppStore() {
         let appStoreURL =
             URL(string: "https://itunes.apple.com/app/vpn-on/id951344279")!
-        UIApplication.shared.openURL(appStoreURL)
+        UIApplication.shared.open(appStoreURL, options: [:], completionHandler: nil)
     }
 
 }
