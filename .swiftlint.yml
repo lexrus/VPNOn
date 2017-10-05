@@ -1,15 +1,14 @@
 disabled_rules:
-  - variable_name_min_length
   - todo
   - force_cast
   - trailing_whitespace
   - colon
-  - variable_name
   - type_name
   - comma
-  - valid_docs
   - line_length
   - opening_brace
+  - function_parameter_count
+  - cyclomatic_complexity
 excluded:
   - Carthage
   - Pods

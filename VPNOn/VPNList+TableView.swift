@@ -202,9 +202,8 @@ extension VPNList {
         
         let latency = LTPingQueue.sharedQueue.latencyForHostname(vpn.server)
         
-        let titleAttributes = [
-            NSFontAttributeName:
-                UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
+        let titleAttributes: [NSAttributedStringKey: Any] = [
+            .font: UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
         ]
         
         let attributedTitle = NSMutableAttributedString(
@@ -220,12 +219,10 @@ extension VPNList {
                 latencyColor = UIColor(red:0.9 , green:0.11, blue:0.34, alpha:1)
             }
             
-            let latencyAttributes = [
-                NSFontAttributeName:
-                    UIFont.preferredFont(forTextStyle: UIFontTextStyle.footnote),
-                NSForegroundColorAttributeName:
-                latencyColor
-            ] as [String : Any]
+            let latencyAttributes: [NSAttributedStringKey: Any] = [
+                .font: UIFont.preferredFont(forTextStyle: UIFontTextStyle.footnote),
+                .foregroundColor: latencyColor
+            ]
             let attributedLatency = NSMutableAttributedString(
                 string: " \(latency)ms",
                 attributes: latencyAttributes

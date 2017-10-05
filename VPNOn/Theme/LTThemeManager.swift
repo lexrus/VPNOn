@@ -60,7 +60,7 @@ class LTThemeManager {
         UINavigationBar.appearance().barTintColor = theme.navigationBarColor
         UINavigationBar.appearance().tintColor = theme.tintColor
         UINavigationBar.appearance().backgroundColor = UIColor.clear
-        UINavigationBar.appearance().titleTextAttributes = NSDictionary(objects: [theme.textColor], forKeys: [NSForegroundColorAttributeName as NSCopying]) as? [String : AnyObject]
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: theme.textColor]
         
         // TableView
         UITableView.appearance().backgroundColor = theme.tableViewBackgroundColor

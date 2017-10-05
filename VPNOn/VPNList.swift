@@ -70,13 +70,13 @@ final class VPNList: UITableViewController, SimplePingDelegate, VPNDomainsDelega
         NC.addObserver(
             self,
             selector: #selector(VPNList.VPNDidChangeStatus(_:)),
-            name: NSNotification.Name.NEVPNStatusDidChange,
+            name: .NEVPNStatusDidChange,
             object: nil)
         
         NC.addObserver(
             self,
             selector: #selector(didEnterForeground),
-            name: NSNotification.Name.UIApplicationWillEnterForeground,
+            name: .UIApplicationWillEnterForeground,
             object: nil)
         
     }
@@ -91,7 +91,7 @@ final class VPNList: UITableViewController, SimplePingDelegate, VPNDomainsDelega
         reloadVPNs()
     }
     
-    func didEnterForeground() {
+    @objc func didEnterForeground() {
         guard pendingProfile else { return }
         NEVPNManager.shared().loadFromPreferences { [weak self] error in
             guard error == nil else { return }

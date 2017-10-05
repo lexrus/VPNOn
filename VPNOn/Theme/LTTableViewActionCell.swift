@@ -10,10 +10,10 @@ import UIKit
 
 class LTTableViewActionCell: UITableViewCell
 {
-    var _disabled = false
+    private var iDisabled = false
     var disabled: Bool {
         get {
-            return _disabled
+            return iDisabled
         }
         set {
             if newValue {

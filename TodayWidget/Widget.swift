@@ -42,13 +42,13 @@ final class Widget:
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(Widget.coreDataDidSave(_:)),
-            name: NSNotification.Name.NSManagedObjectContextDidSave,
+            name: .NSManagedObjectContextDidSave,
             object: nil)
         
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(Widget.VPNStatusDidChange(_:)),
-            name: NSNotification.Name.NEVPNStatusDidChange,
+            name: .NEVPNStatusDidChange,
             object: nil)
         
         NotificationCenter.default.addObserver(
@@ -61,11 +61,11 @@ final class Widget:
     deinit {
         NotificationCenter.default.removeObserver(
             self,
-            name: NSNotification.Name.NSManagedObjectContextDidSave,
+            name: .NSManagedObjectContextDidSave,
             object: nil)
         NotificationCenter.default.removeObserver(
             self,
-            name: NSNotification.Name.NEVPNStatusDidChange,
+            name: .NEVPNStatusDidChange,
             object: nil)
         NotificationCenter.default.removeObserver(
             self,
@@ -166,7 +166,7 @@ final class Widget:
     }
     // MARK: - Open App
 
-    func didLongPress(_ gesture: UITapGestureRecognizer) {
+    @objc func didLongPress(_ gesture: UITapGestureRecognizer) {
         didTapAdd()
     }
     
@@ -177,17 +177,17 @@ final class Widget:
     
     // MARK: - Notification
     
-    func pingDidUpdate(_ notification: Notification) {
+    @objc func pingDidUpdate(_ notification: Notification) {
         collectionView.reloadData()
     }
     
-    func coreDataDidSave(_ notification: Notification) {
+    @objc func coreDataDidSave(_ notification: Notification) {
         VPNDataManager.shared.managedObjectContext?
             .mergeChanges(fromContextDidSave: notification)
         updateContent()
     }
     
-    func VPNStatusDidChange(_ notification: Notification?) {
+    @objc func VPNStatusDidChange(_ notification: Notification?) {
         collectionView.reloadData()
         if VPNManager.shared.status == .disconnected {
             LTPingQueue.sharedQueue.restartPing()

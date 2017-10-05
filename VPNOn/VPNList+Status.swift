@@ -30,7 +30,8 @@ private func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 }
 
 extension VPNList {
-    
+
+    @objc
     func VPNDidChangeStatus(_ notification: Notification) {
         switch VPNManager.shared.status {
         case .connecting:

@@ -50,7 +50,7 @@ open class LTPingOperation : NSObject, SimplePingDelegate {
         }
     }
     
-    open func stop() {
+    @objc open func stop() {
         ping?.stop()
         ping = nil
         timeoutTimer?.invalidate()
@@ -165,7 +165,7 @@ open class LTPingQueue : NSObject, SimplePingDelegate {
         operations.removeAll(keepingCapacity: false)
     }
     
-    open func pingDidUpdate(_ notification: Notification) {
+    @objc open func pingDidUpdate(_ notification: Notification) {
         if operations.count != 0 && operations.filter({ !$0.completed }).count == 0 {
             NotificationCenter.default.post(name: Notification.Name(rawValue: kPingDidComplete), object: nil)
         }

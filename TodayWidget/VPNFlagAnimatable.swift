@@ -42,7 +42,7 @@ extension VPNFlagAnimatable {
         }
         set {
             self.flagImageView.alpha = newValue ? 1 : 0.8
-            self.titleLabel.textColor = newValue ? ConnectedColor : textColor
+            self.titleLabel.textColor = newValue ? connectedColor : textColor
         }
     }
     
@@ -67,8 +67,8 @@ extension VPNFlagAnimatable {
         flagImageView.layer.removeAllAnimations()
         
         let breathing = CABasicAnimation(keyPath: "borderColor")
-        breathing.fromValue = ConnectedColor.withAlphaComponent(0.4).cgColor
-        breathing.toValue = ConnectedColor.cgColor
+        breathing.fromValue = connectedColor.withAlphaComponent(0.4).cgColor
+        breathing.toValue = connectedColor.cgColor
         breathing.repeatCount = .infinity
         breathing.autoreverses = true
         breathing.duration = 1
@@ -85,4 +85,4 @@ extension VPNFlagAnimatable {
     
 }
 
-private let ConnectedColor = UIColor(red: 0, green: 0.5, blue: 1, alpha: 1)
+private let connectedColor = UIColor(red: 0, green: 0.5, blue: 1, alpha: 1)

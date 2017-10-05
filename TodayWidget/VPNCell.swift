@@ -12,7 +12,7 @@ import NetworkExtension
 import QuartzCore
 import FlagKit
 
-private let ConnectedColor = UIColor(red: 0, green: 0.5, blue: 1, alpha: 1)
+private let connectedColor = UIColor(red: 0, green: 0.5, blue: 1, alpha: 1)
 
 final class VPNCell: UICollectionViewCell, VPNFlagAnimatable {
 
@@ -43,7 +43,7 @@ final class VPNCell: UICollectionViewCell, VPNFlagAnimatable {
     var latency: Int = -1 {
         didSet {
             if status == .connected {
-                titleLabel.textColor = ConnectedColor
+                titleLabel.textColor = connectedColor
             } else {
                 titleLabel.textColor = colorOfLatency
             }

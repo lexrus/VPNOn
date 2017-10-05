@@ -635,7 +635,7 @@
 					D7453F281A31966F00F7E32D = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = 5SKD83S59G;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -658,7 +658,7 @@
 					D74C91A41A383FEC00EAAAE1 = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = 5SKD83S59G;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
@@ -675,7 +675,7 @@
 					D757AF841A3B370E00AEF3CB = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = 5SKD83S59G;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0900;
 					};
 				};
 			};
@@ -1071,7 +1071,8 @@
 				PROVISIONING_PROFILE = "21c503a3-e45d-4091-ae60-9c8eefea92a6";
 				PROVISIONING_PROFILE_SPECIFIER = VPNOnDev;
 				SWIFT_OBJC_BRIDGING_HEADER = "VPNOn/VPNOn-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1096,7 +1097,8 @@
 				PROVISIONING_PROFILE = "84cbd9e8-d3ee-4590-a601-b47ffa5361ae";
 				PROVISIONING_PROFILE_SPECIFIER = VPNOn;
 				SWIFT_OBJC_BRIDGING_HEADER = "VPNOn/VPNOn-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1117,7 +1119,8 @@
 				PROVISIONING_PROFILE = "1caeb0e9-46d9-45a1-a44a-f3fb31ad261a";
 				PROVISIONING_PROFILE_SPECIFIER = VPNOnWidgetDev;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1138,7 +1141,8 @@
 				PROVISIONING_PROFILE = "963cd531-b757-48b1-afc1-0b4727e786ff";
 				PROVISIONING_PROFILE_SPECIFIER = VPNOnWidget;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1164,7 +1168,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LexTang.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1192,7 +1197,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.LexTang.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";

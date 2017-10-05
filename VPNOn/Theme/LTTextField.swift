@@ -14,9 +14,9 @@ class LTTextField: UITextField {
         LTDarkTheme().placeholderColor.setFill()
         let f = font ?? UIFont.systemFont(ofSize: 12)
         
-        let attributes: [String : AnyObject] = [
-            NSForegroundColorAttributeName: LTThemeManager.shared.currentTheme!.placeholderColor,
-            NSFontAttributeName: f
+        let attributes: [NSAttributedStringKey : AnyObject] = [
+            .foregroundColor: LTThemeManager.shared.currentTheme!.placeholderColor,
+            .font: f
         ]
         
         let middleRect = fixedMiddlePlaceholderRect(rect)

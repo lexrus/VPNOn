@@ -15,11 +15,13 @@ extension VPNList {
         self.restartPingButton.isEnabled = false
         LTPingQueue.sharedQueue.restartPing()
     }
-    
+
+    @objc
     func pingDidUpdate(_ notification: Notification) {
         self.reloadVPNs()
     }
-    
+
+    @objc
     func pingDidComplete(_ notification: Notification) {
         self.restartPingButton?.isEnabled = true
     }

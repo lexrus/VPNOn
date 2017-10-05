@@ -10,7 +10,8 @@ import UIKit
 import VPNOnKit
 
 extension VPNList {
-    
+
+    @objc
     func didEditVPN(_ notification: Notification) {
         self.vpns = VPNDataManager.shared.allVPN()
         self.tableView.reloadData()
