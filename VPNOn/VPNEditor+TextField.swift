@@ -63,7 +63,7 @@ extension VPNEditor {
         toggleSaveButtonByStatus()
     }
 
-    func keyboardWillShow(_ notification: Notification) {
+    @objc func keyboardWillShow(_ notification: Notification) {
         // Add bottom edge inset so that the last cell is visiable
 
         var bottom: CGFloat = 216
@@ -84,7 +84,7 @@ extension VPNEditor {
         bottom = (boundsObject as AnyObject).cgRectValue.height
     }
 
-    func keyboardWillHide(_ notification: Notification) {
+    @objc func keyboardWillHide(_ notification: Notification) {
         var edgeInsets = self.tableView.contentInset
         edgeInsets.bottom = 0
         self.tableView.contentInset = edgeInsets

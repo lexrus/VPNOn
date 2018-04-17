@@ -22,7 +22,7 @@ extension VPN {
         var remoteID = ""
         
         // The server is required, otherwise we just open the container app.
-        if server.characters.count == 0 {
+        if server.count == 0 {
             return nil
         }
         

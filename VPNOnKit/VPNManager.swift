@@ -77,8 +77,7 @@ open class VPNManager {
     }
     
     fileprivate func _save(_ account: VPNAccount, completion: VPNConfigureCompletion?) {
-        #if (arch(i386) || arch(x86_64)) && os(iOS)
-            // #if TARGET_IPHONE_SIMULATOR for Swift
+        #if targetEnvironment(simulator)
             assert(false, "I'm afraid you can not connect VPN in simulators.")
         #endif
         
