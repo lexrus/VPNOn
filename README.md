@@ -85,7 +85,9 @@ In order to query the database, I created a wrapper for [libmaxminddb](https://g
 ## Donation
 
 Buy me a coffee? Here is my wallet:
+
 BTC: `3MnMu3Q1UK63dRbwjhwqWSBVLWxy8SPk6b`
+
 ETH: `0x2884F4bE2cBA05395EE0EF997a44aA9B90fD2E2A`
 
 ## License
