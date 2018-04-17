@@ -82,6 +82,12 @@ This product includes [GeoLite2 data](http://dev.maxmind.com/geoip/geoip2/geolit
 The GeoLite2 databases are distributed under the [Creative Commons Attribution-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-sa/3.0/).
 In order to query the database, I created a wrapper for [libmaxminddb](https://github.com/maxmind/libmaxminddb) called [MMDB-Swift](https://github.com/lexrus/MMDB-Swift).
 
+## Donation
+
+Buy me a coffee? Here is my wallet:
+BTC: `3MnMu3Q1UK63dRbwjhwqWSBVLWxy8SPk6b`
+ETH: `0x2884F4bE2cBA05395EE0EF997a44aA9B90fD2E2A`
+
 ## License
 
 This code is distributed under the terms and conditions of the MIT license.
