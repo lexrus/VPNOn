@@ -1,7 +1,7 @@
 # VPN On
 
 [![Travis](https://img.shields.io/travis/lexrus/VPNOn.svg)](https://travis-ci.org/lexrus/VPNOn)
-![Language](https://img.shields.io/badge/language-Swift%204.0-orange.svg)
+![Language](https://img.shields.io/badge/language-Swift%204.2-orange.svg)
 ![License](https://img.shields.io/github/license/lexrus/VPNOn.svg?style=flat)
 
 [<img src="https://cloud.githubusercontent.com/assets/219689/5575342/963e0ee8-9013-11e4-8091-7ece67d64729.png" width="135" height="40" alt="AppStore"/>](https://itunes.apple.com/app/vpn-on/id951344279)
@@ -14,7 +14,7 @@ Turning on a VPN is always a painful experience on an iOS device due to the deep
 
 - An iPhone/iPad running iOS 10.3+
 - An IPSec IKEv1 / IKEv2 VPN(create yours with [my Ansible Playbook](https://github.com/lexrus/vpn-deploy-playbook) or [deploy on DigitalOcean](http://installer.71m.us/install?url=https://github.com/lexrus/do-ikev1))
-- Xcode 9.3+
+- Xcode 10+
 - An Apple iOS develop account
 - [Carthage](https://github.com/carthage/carthage)
 
@@ -95,7 +95,7 @@ ETH: `0x2884F4bE2cBA05395EE0EF997a44aA9B90fD2E2A`
 This code is distributed under the terms and conditions of the MIT license.
 
 ```
-Copyright (C) 2018 lexrus.com
+Copyright (C) 2019 lexrus.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
