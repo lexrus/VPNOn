@@ -14,7 +14,7 @@ class LTTextField: UITextField {
         LTDarkTheme().placeholderColor.setFill()
         let f = font ?? UIFont.systemFont(ofSize: 12)
         
-        let attributes: [NSAttributedStringKey : AnyObject] = [
+        let attributes: [NSAttributedString.Key : AnyObject] = [
             .foregroundColor: LTThemeManager.shared.currentTheme!.placeholderColor,
             .font: f
         ]

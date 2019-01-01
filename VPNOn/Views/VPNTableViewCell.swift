@@ -69,7 +69,7 @@ class VPNTableViewCell : NormalTableViewCell {
             .mutableCopy() as! NSMutableParagraphStyle
         textStyle.alignment = NSTextAlignment.center
 
-        let textFontAttributes: [NSAttributedStringKey: Any] = [
+        let textFontAttributes: [NSAttributedString.Key: Any] = [
             .font: UIFont.systemFont(ofSize: height - 1),
             .foregroundColor: color,
             .paragraphStyle: textStyle

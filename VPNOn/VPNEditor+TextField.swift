@@ -16,19 +16,19 @@ extension VPNEditor {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(UITextInputDelegate.textDidChange(_:)),
-            name: NSNotification.Name.UITextFieldTextDidChange,
+            name: UITextField.textDidChangeNotification,
             object: nil)
 
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(VPNEditor.keyboardWillShow(_:)),
-            name: NSNotification.Name.UIKeyboardWillShow,
+            name: UIResponder.keyboardWillShowNotification,
             object: nil)
 
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(VPNEditor.keyboardWillHide(_:)),
-            name: NSNotification.Name.UIKeyboardWillHide,
+            name: UIResponder.keyboardWillHideNotification,
             object: nil)
     }
 

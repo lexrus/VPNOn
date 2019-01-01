@@ -25,7 +25,7 @@ extension VPNList {
     func updateOnDemandCell() {
         let indexSet = IndexSet(integer: kVPNOnDemandSection)
         tableView.reloadSections(indexSet,
-            with: UITableViewRowAnimation.automatic)
+            with: UITableView.RowAnimation.automatic)
     }
     
 }

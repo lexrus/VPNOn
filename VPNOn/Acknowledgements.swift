@@ -19,7 +19,7 @@ class Acknowledgements : UITableViewController {
         
         tableView.backgroundView = LTViewControllerBackground()
         tableView.estimatedRowHeight = 44
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         
         guard let plistURL = Bundle.main.url(
             forResource: "Acknowledgements",

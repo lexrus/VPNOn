@@ -104,7 +104,7 @@ extension VPNDataManager {
             return .none
         }
         
-        var result: NSManagedObject? = nil
+        var result: NSManagedObject?
         do {
             result = try managedObjectContext?.existingObject(with: ID)
         } catch { }

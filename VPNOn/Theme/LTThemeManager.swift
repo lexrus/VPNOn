@@ -60,14 +60,14 @@ class LTThemeManager {
         UINavigationBar.appearance().barTintColor = theme.navigationBarColor
         UINavigationBar.appearance().tintColor = theme.tintColor
         UINavigationBar.appearance().backgroundColor = UIColor.clear
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: theme.textColor]
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: theme.textColor]
         
         // TableView
         UITableView.appearance().backgroundColor = theme.tableViewBackgroundColor
         UITableView.appearance().separatorColor = theme.tableViewLineColor
         UITableViewCell.appearance().backgroundColor = theme.tableViewCellColor
         UITableViewCell.appearance().tintColor = theme.tintColor
-        UITableViewCell.appearance().selectionStyle = UITableViewCellSelectionStyle.none
+        UITableViewCell.appearance().selectionStyle = UITableViewCell.SelectionStyle.none
         UILabel.inside(UITableViewHeaderFooterView.self).textColor = theme.textColor
         LTTableViewCellTitle.appearance().textColor = theme.textColor
         UILabel.inside(LTTableViewActionCell.self).textColor = theme.tintColor

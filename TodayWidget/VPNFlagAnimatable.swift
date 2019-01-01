@@ -51,7 +51,7 @@ extension VPNFlagAnimatable {
         
         let bounce = CABasicAnimation(keyPath: "position.y")
         bounce.duration = 0.3
-        bounce.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        bounce.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
         bounce.repeatCount = .infinity
         bounce.autoreverses = true
         bounce.fromValue = flagImageView.layer.position.y

@@ -1,3 +1,3 @@
-github "kishikawakatsumi/KeychainAccess" "v3.1.1"
-github "lexrus/MMDB-Swift" "0.2.7"
+github "kishikawakatsumi/KeychainAccess" "v3.1.2"
+github "lexrus/MMDB-Swift" "0.3.0"
 github "madebybowtie/FlagKit" "v2.0.1"

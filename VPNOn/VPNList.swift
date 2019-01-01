@@ -76,7 +76,7 @@ final class VPNList: UITableViewController, SimplePingDelegate, VPNDomainsDelega
         NC.addObserver(
             self,
             selector: #selector(didEnterForeground),
-            name: .UIApplicationWillEnterForeground,
+            name: UIApplication.willEnterForegroundNotification,
             object: nil)
         
     }

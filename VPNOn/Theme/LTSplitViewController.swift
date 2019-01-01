@@ -28,8 +28,8 @@ class LTSplitViewController: UISplitViewController {
         return true
     }
     
-    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
-        if event?.subtype == UIEventSubtype.motionShake {
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        if event?.subtype == UIEvent.EventSubtype.motionShake {
             LTThemeManager.shared.activateNextTheme()
             self.setNeedsStatusBarAppearanceUpdate()
         }
