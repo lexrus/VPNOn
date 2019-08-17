@@ -1,7 +1,7 @@
 # VPN On
 
 [![Travis](https://img.shields.io/travis/lexrus/VPNOn.svg)](https://travis-ci.org/lexrus/VPNOn)
-![Language](https://img.shields.io/badge/language-Swift%204.2-orange.svg)
+![Language](https://img.shields.io/badge/language-Swift%205-orange.svg)
 ![License](https://img.shields.io/github/license/lexrus/VPNOn.svg?style=flat)
 
 [<img src="https://cloud.githubusercontent.com/assets/219689/5575342/963e0ee8-9013-11e4-8091-7ece67d64729.png" width="135" height="40" alt="AppStore"/>](https://itunes.apple.com/app/vpn-on/id951344279)
@@ -14,7 +14,7 @@ Turning on a VPN is always a painful experience on an iOS device due to the deep
 
 - An iPhone/iPad running iOS 10.3+
 - An IPSec IKEv1 / IKEv2 VPN(create yours with [my Ansible Playbook](https://github.com/lexrus/vpn-deploy-playbook) or [deploy on DigitalOcean](http://installer.71m.us/install?url=https://github.com/lexrus/do-ikev1))
-- Xcode 10+
+- Xcode 10.3+
 - An Apple iOS develop account
 - [Carthage](https://github.com/carthage/carthage)
 
@@ -81,14 +81,6 @@ VPN service providers may list a link for their customers to efficiently add ser
 This product includes [GeoLite2 data](http://dev.maxmind.com/geoip/geoip2/geolite2/) created by MaxMind, available from [http://www.maxmind.com](http://www.maxmind.com).
 The GeoLite2 databases are distributed under the [Creative Commons Attribution-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-sa/3.0/).
 In order to query the database, I created a wrapper for [libmaxminddb](https://github.com/maxmind/libmaxminddb) called [MMDB-Swift](https://github.com/lexrus/MMDB-Swift).
-
-## Donation
-
-Buy me a coffee? Here is my wallet:
-
-BTC: `3MnMu3Q1UK63dRbwjhwqWSBVLWxy8SPk6b`
-
-ETH: `0x2884F4bE2cBA05395EE0EF997a44aA9B90fD2E2A`
 
 ## License
 

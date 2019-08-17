@@ -99,6 +99,7 @@ extension VPNList {
                 guard let vpn = vpns?[(indexPath as NSIndexPath).row] else {
                     return cell
                 }
+                
                 cell.textLabel?.attributedText =
                     cellTitleForIndexPath(indexPath)
                 cell.detailTextLabel?.text = vpn.server
@@ -108,7 +109,7 @@ extension VPNList {
                 
                 if let countryCode = vpn.countryCode?.uppercased(), let flag = Flag(countryCode: countryCode) {
                     let flagStyle = FlagStyle.roundedRect
-                    cell.imageView?.image = flag.image(style: flagStyle)
+                    cell.imageView?.image = flag.image(style: flagStyle).resize(newSize: CGSize(width: 31, height: 22))
                     cell.imageView?.contentMode = .scaleAspectFit
                 }
                 

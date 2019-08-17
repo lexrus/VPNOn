@@ -142,7 +142,7 @@ final class Widget:
         VPNDataManager.shared.managedObjectContext?.reset()
     }
     
-    private func widgetPerformUpdate(
+    internal func widgetPerformUpdate(
         completionHandler: ((NCUpdateResult) -> Void)
         ) {
         completionHandler(NCUpdateResult.newData)

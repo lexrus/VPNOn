@@ -44,7 +44,7 @@ class VPNTableViewCell : NormalTableViewCell {
             let currentIndicatorRect = CGRect(
                 x: 0,
                 y: 0,
-                width: 7,
+                width: 3,
                 height: rect.height
             )
             let rectanglePath = UIBezierPath(rect: currentIndicatorRect)

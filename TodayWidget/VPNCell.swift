@@ -31,7 +31,7 @@ final class VPNCell: UICollectionViewCell, VPNFlagAnimatable {
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 12)
+        label.font = UIFont.systemFont(ofSize: 13, weight: .medium)
         label.adjustsFontSizeToFitWidth = true
         label.minimumScaleFactor = 0.5
         self.addSubview(label)
@@ -81,7 +81,7 @@ final class VPNCell: UICollectionViewCell, VPNFlagAnimatable {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        let flagSize = CGSize(width: 46, height: 34)
+        let flagSize = CGSize(width: 31, height: 22)
         flagImageView.frame.size = flagSize
         flagImageView.frame.origin.x = (bounds.width - flagSize.width) / 2
         flagImageView.frame.origin.y = 25
@@ -97,7 +97,8 @@ final class VPNCell: UICollectionViewCell, VPNFlagAnimatable {
         
         if let countryCode = vpn.countryCode?.uppercased(), let flag = Flag(countryCode: countryCode) {
             let flagStyle = FlagStyle.roundedRect
-            flagImageView.image = flag.image(style: flagStyle)
+            let flagSize = CGSize(width: 31, height: 22)
+            flagImageView.image = flag.image(style: flagStyle).resize(newSize: flagSize)
         } else {
             flagImageView.image = UIImage()
         }

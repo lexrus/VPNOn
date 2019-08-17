@@ -32,7 +32,7 @@ extension VPNEditor {
             object: nil)
     }
 
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    @objc func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
         case titleTextField:
             serverTextField.becomeFirstResponder()
@@ -59,7 +59,7 @@ extension VPNEditor {
         return true
     }
 
-    func textDidChange(_ notification: Notification) {
+    @objc func textDidChange(_ notification: Notification) {
         toggleSaveButtonByStatus()
     }
 

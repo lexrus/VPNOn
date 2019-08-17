@@ -7,12 +7,10 @@
 //
 
 import UIKit
-import MessageUI
 
 private let kReviewCellIndex = 1
-private let kFeedbackCellIndex = 2
 
-class About : UITableViewController, MFMailComposeViewControllerDelegate {
+class About : UITableViewController {
     
     override func loadView() {
         super.loadView()
@@ -23,11 +21,7 @@ class About : UITableViewController, MFMailComposeViewControllerDelegate {
         _ tableView: UITableView,
         numberOfRowsInSection section: Int
         ) -> Int {
-            if MFMailComposeViewController.canSendMail() {
-                return 3
-            } else {
-                return 2
-            }
+        return 2
     }
     
     override func tableView(
@@ -45,9 +39,6 @@ class About : UITableViewController, MFMailComposeViewControllerDelegate {
         case kReviewCellIndex:
             presentAppStore()
 
-        case kFeedbackCellIndex:
-            presentFeedback()
-
         default:
             ()
         }
@@ -59,51 +50,6 @@ class About : UITableViewController, MFMailComposeViewControllerDelegate {
                 return version
         }
         return ""
-    }
-    
-    // MARK: - Feedback
-    
-    fileprivate func osVersion() -> String {
-        return ProcessInfo().operatingSystemVersionString
-    }
-    
-    fileprivate func device() -> String {
-        var sysinfo = utsname()
-        _ = uname(&sysinfo)
-        return NSString(bytes: &sysinfo.machine, length: Int(_SYS_NAMELEN), encoding: String.Encoding.ascii.rawValue)! as String
-    }
-    
-    func presentFeedback() {
-        let mailComposeViewController = configuredMailComposeViewController()
-        present(
-            mailComposeViewController,
-            animated: true,
-            completion: nil
-        )
-    }
-    
-    func configuredMailComposeViewController() -> MFMailComposeViewController {
-        let mailComposerVC = MFMailComposeViewController()
-        mailComposerVC.mailComposeDelegate = self
-        mailComposerVC.setToRecipients(["lexrus@gmail.com"])
-        mailComposerVC.setSubject("[VPN On] Feedback \(appVersion())")
-
-        let osVersion = ProcessInfo().operatingSystemVersion
-        let osVersionString = "\(osVersion.majorVersion).\(osVersion.minorVersion).\(osVersion.patchVersion)"
-        
-        let deviceInfo = "<small style='color:#999'>iOS \(osVersionString)"
-            + " | Model: \(device())</small><br/>"
-            + "<small style='color:green'>Please feel free to comment or advise if you have anything to say.</small> 🤓<br/><br/>"
-        mailComposerVC.setMessageBody(deviceInfo, isHTML: true)
-        
-        return mailComposerVC
-    }
-    
-    func mailComposeController(
-        _ controller: MFMailComposeViewController,
-        didFinishWith result: MFMailComposeResult,
-        error: Error?) {
-            controller.dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Review

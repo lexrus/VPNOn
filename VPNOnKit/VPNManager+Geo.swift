@@ -9,8 +9,6 @@
 import Foundation
 import MMDB
 
-private let kGeoIPQueryURI = "https://www.telize.com/geoip/%@"
-
 extension VPNManager {
 
     public typealias MMDBLookupCallback = (_ country: MMDBCountry?) -> Void
@@ -26,7 +24,7 @@ extension VPNManager {
     public func IPOfHost(_ host: String) -> String? {
         let host = CFHostCreateWithName(nil, host as CFString).takeRetainedValue()
         CFHostStartInfoResolution(host, .addresses, nil)
-        var success: DarwinBoolean = DarwinBoolean(false)
+        var success = DarwinBoolean(false)
         guard let addressing = CFHostGetAddressing(host, &success) else {
             return nil
         }
