@@ -96,9 +96,7 @@ final class VPNCell: UICollectionViewCell, VPNFlagAnimatable {
         titleLabel.text = vpn.title
         
         if let countryCode = vpn.countryCode?.uppercased(), let flag = Flag(countryCode: countryCode) {
-            let flagStyle = FlagStyle.roundedRect
-            let flagSize = CGSize(width: 31, height: 22)
-            flagImageView.image = flag.image(style: flagStyle).resize(newSize: flagSize)
+            flagImageView.image = flag.image(style: .roundedRect)
         } else {
             flagImageView.image = UIImage()
         }

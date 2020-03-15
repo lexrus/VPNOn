@@ -67,9 +67,6 @@
 		D79083DA1A7BBD230089DB67 /* LTDarkGreenTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79083D91A7BBD230089DB67 /* LTDarkGreenTheme.swift */; };
 		D79083DC1A7BBEF70089DB67 /* LTHelloKittyTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79083DB1A7BBEF70089DB67 /* LTHelloKittyTheme.swift */; };
 		D79785751C60B3A300BD72A0 /* VPNOnKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D757AF851A3B370E00AEF3CB /* VPNOnKit.framework */; };
-		D7999FF82307F305003EB8CC /* UIImage+Resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7999FF72307F305003EB8CC /* UIImage+Resize.swift */; };
-		D799A00023083DDC003EB8CC /* ScreenshotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7999FFF23083DDC003EB8CC /* ScreenshotUITests.swift */; };
-		D799A00823083E0F003EB8CC /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D799A00723083E0F003EB8CC /* SnapshotHelper.swift */; };
 		D79F73731A728EC900EB2289 /* VPN+URLScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79F73721A728EC900EB2289 /* VPN+URLScheme.swift */; };
 		D79F73751A72923E00EB2289 /* VPNEditor+Save.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79F73741A72923E00EB2289 /* VPNEditor+Save.swift */; };
 		D7B033BB1A6E5ED1009D791E /* VPNDataManager+ActivatedVPN.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7B033BA1A6E5ED1009D791E /* VPNDataManager+ActivatedVPN.swift */; };
@@ -253,11 +250,7 @@
 		D79083D91A7BBD230089DB67 /* LTDarkGreenTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTDarkGreenTheme.swift; sourceTree = "<group>"; };
 		D79083DB1A7BBEF70089DB67 /* LTHelloKittyTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LTHelloKittyTheme.swift; sourceTree = "<group>"; };
 		D7999FEB2307B77F003EB8CC /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
-		D7999FF72307F305003EB8CC /* UIImage+Resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Resize.swift"; sourceTree = "<group>"; };
 		D7999FFD23083DDC003EB8CC /* ScreenshotUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScreenshotUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D7999FFF23083DDC003EB8CC /* ScreenshotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotUITests.swift; sourceTree = "<group>"; };
-		D799A00123083DDC003EB8CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D799A00723083E0F003EB8CC /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		D79F73711A728C7D00EB2289 /* VPN On 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "VPN On 3.xcdatamodel"; sourceTree = "<group>"; };
 		D79F73721A728EC900EB2289 /* VPN+URLScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VPN+URLScheme.swift"; sourceTree = "<group>"; };
 		D79F73741A72923E00EB2289 /* VPNEditor+Save.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VPNEditor+Save.swift"; sourceTree = "<group>"; };
@@ -398,7 +391,6 @@
 				D7453F9B1A3196E200F7E32D /* VPNOnData */,
 				D74C91A71A383FED00EAAAE1 /* TodayWidget */,
 				D757AF861A3B370E00AEF3CB /* VPNOnKit */,
-				D7999FFE23083DDC003EB8CC /* ScreenshotUITests */,
 				D71C17201C32417600936BF7 /* Frameworks */,
 				D7453F2A1A31966F00F7E32D /* Products */,
 				5AAA273FCFD7CD774192E06C /* Pods */,
@@ -515,7 +507,6 @@
 				D7CFDDA41A9E05700057F53D /* VPNManager+Geo.swift */,
 				D74129AF1A5D1A91008DE603 /* LTPingQueue.swift */,
 				D7DBC12B1BBAEFDE004E2F3E /* Keychain.swift */,
-				D7999FF72307F305003EB8CC /* UIImage+Resize.swift */,
 				D754E2051A3B3A7B00E8F135 /* Vendor */,
 				D757AF871A3B370E00AEF3CB /* Supporting Files */,
 			);
@@ -549,16 +540,6 @@
 				D7B2981A1CEF42EC00E5A7D4 /* UIView+RightToLeft.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		D7999FFE23083DDC003EB8CC /* ScreenshotUITests */ = {
-			isa = PBXGroup;
-			children = (
-				D7999FFF23083DDC003EB8CC /* ScreenshotUITests.swift */,
-				D799A00723083E0F003EB8CC /* SnapshotHelper.swift */,
-				D799A00123083DDC003EB8CC /* Info.plist */,
-			);
-			path = ScreenshotUITests;
 			sourceTree = "<group>";
 		};
 		D7CB6A351A7B93E300B8B568 /* Themes */ = {
@@ -941,7 +922,6 @@
 				D74129AA1A5CFCDA008DE603 /* SimplePing.m in Sources */,
 				D757AFA91A3B374200AEF3CB /* VPNManager.swift in Sources */,
 				D7F0A0261A6E520300F9C09A /* VPNManager+ActivatedVPN.swift in Sources */,
-				D7999FF82307F305003EB8CC /* UIImage+Resize.swift in Sources */,
 				D7EB524E1BBED6D70021D93D /* VPNManager+SelectedVPN.swift in Sources */,
 				D77593DA1A79E674007161B2 /* VPNManager+Domains.swift in Sources */,
 				D7CFDDA51A9E05700057F53D /* VPNManager+Geo.swift in Sources */,
@@ -952,8 +932,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D799A00023083DDC003EB8CC /* ScreenshotUITests.swift in Sources */,
-				D799A00823083E0F003EB8CC /* SnapshotHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

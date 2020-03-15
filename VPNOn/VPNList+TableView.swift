@@ -108,9 +108,8 @@ extension VPNList {
                 cell.imageView?.image = nil
                 
                 if let countryCode = vpn.countryCode?.uppercased(), let flag = Flag(countryCode: countryCode) {
-                    let flagStyle = FlagStyle.roundedRect
-                    cell.imageView?.image = flag.image(style: flagStyle).resize(newSize: CGSize(width: 31, height: 22))
-                    cell.imageView?.contentMode = .scaleAspectFit
+                    cell.imageView?.image = flag.image(style: .roundedRect)
+                    cell.imageView?.contentMode = .scaleAspectFill
                 }
                 
                 cell.current = Bool(activatedVPNID == vpn.ID)
