@@ -102,6 +102,7 @@
 		D7F64F021AA8407400C41789 /* VPNCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F64F011AA8407400C41789 /* VPNCell.swift */; };
 		D7F64F061AA9B90000C41789 /* AddCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F64F051AA9B90000C41789 /* AddCell.swift */; };
 		D7F8D127241DE75E00956414 /* GeoLite2-Country.mmdb in Resources */ = {isa = PBXBuildFile; fileRef = D7F8D126241DE75E00956414 /* GeoLite2-Country.mmdb */; };
+		D7F8D129241E03E000956414 /* LTNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F8D128241E03E000956414 /* LTNavigationViewController.swift */; };
 		D7FEC8D01A7897310004E7FA /* VPNTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FEC8CF1A7897310004E7FA /* VPNTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -300,6 +301,7 @@
 		D7F64F011AA8407400C41789 /* VPNCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNCell.swift; sourceTree = "<group>"; };
 		D7F64F051AA9B90000C41789 /* AddCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCell.swift; sourceTree = "<group>"; };
 		D7F8D126241DE75E00956414 /* GeoLite2-Country.mmdb */ = {isa = PBXFileReference; lastKnownFileType = file; name = "GeoLite2-Country.mmdb"; path = "VPNOnKit/GeoLite2-Country.mmdb"; sourceTree = SOURCE_ROOT; };
+		D7F8D128241E03E000956414 /* LTNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LTNavigationViewController.swift; sourceTree = "<group>"; };
 		D7FEC8CF1A7897310004E7FA /* VPNTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPNTableViewCell.swift; sourceTree = "<group>"; };
 		DC670E4806115DE27AFD5409 /* Pods-VPNOnKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VPNOnKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VPNOnKit/Pods-VPNOnKit.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -585,6 +587,7 @@
 				D77F341A1A6F842C00796827 /* LTTableViewActionCell.swift */,
 				D77F341C1A6F875E00796827 /* LTTextField.swift */,
 				D7D499301A72542400B5F5ED /* LTTableViewCellDeclosureIndicator.swift */,
+				D7F8D128241E03E000956414 /* LTNavigationViewController.swift */,
 			);
 			path = Theme;
 			sourceTree = "<group>";
@@ -871,6 +874,7 @@
 				D77F341B1A6F842C00796827 /* LTTableViewActionCell.swift in Sources */,
 				D7E28A8D1A6A3C2B00507F33 /* VPNEditor+TextField.swift in Sources */,
 				D7BB2DD01A6C08BB00D8D581 /* LTSplitViewController.swift in Sources */,
+				D7F8D129241E03E000956414 /* LTNavigationViewController.swift in Sources */,
 				D7139BE21BE3C11B00F20D96 /* VPNList+TableView.swift in Sources */,
 				D7BBA1681C26A5580069239C /* VPNList+Status.swift in Sources */,
 				D7D4992F1A724B4C00B5F5ED /* VPNEditor+Type.swift in Sources */,
