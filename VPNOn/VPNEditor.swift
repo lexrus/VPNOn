@@ -54,6 +54,8 @@ class VPNEditor : UITableViewController, UITextFieldDelegate {
         
         let backgroundView = LTViewControllerBackground()
         tableView.backgroundView = backgroundView
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(themeDidUpdate), name: .ThemeDidUpdate, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -90,6 +92,15 @@ class VPNEditor : UITableViewController, UITextFieldDelegate {
         }
         
         toggleSaveButtonByStatus()
+        
+        if #available(iOS 13.0, *) {
+            typeSegment.selectedSegmentTintColor = LTThemeManager.shared.currentTheme?.tintColor
+        }
+        LTThemeManager.shared.currentTheme.map {
+            typeSegment.setTitleTextAttributes([
+                NSAttributedString.Key.foregroundColor : $0.defaultBackgroundColor
+            ], for: .selected)
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -98,6 +109,38 @@ class VPNEditor : UITableViewController, UITextFieldDelegate {
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc private func themeDidUpdate() {
+        guard #available(iOS 13.0, *) else {
+            return
+        }
+            
+        guard let theme = LTThemeManager.shared.currentTheme else {
+            return
+        }
+        
+        let selectedTextColor: UIColor
+        let selectedSgementTintColor: UIColor
+        
+        switch theme {
+        case is LTDarkTheme:
+            selectedSgementTintColor = LTDarkTheme().tintColor
+            selectedTextColor = LTDarkTheme().defaultBackgroundColor
+        case is LTDarkGreenTheme:
+            selectedSgementTintColor = LTDarkGreenTheme().tintColor
+            selectedTextColor = LTDarkGreenTheme().defaultBackgroundColor
+        case is LTDarkPurpleTheme:
+            selectedSgementTintColor = LTDarkPurpleTheme().tintColor
+            selectedTextColor = LTDarkPurpleTheme().defaultBackgroundColor
+        default:
+            selectedTextColor = .black
+            selectedSgementTintColor = .white
+        }
+        typeSegment.selectedSegmentTintColor = selectedSgementTintColor
+        typeSegment.setTitleTextAttributes([
+            NSAttributedString.Key.foregroundColor : selectedTextColor
+        ], for: .selected)
     }
 
 }

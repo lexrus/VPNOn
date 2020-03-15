@@ -8,6 +8,10 @@
 
 import UIKit
 
+extension Notification.Name {
+    static let ThemeDidUpdate = Notification.Name("ThemeDidUpdate")
+}
+
 class LTSplitViewController: UISplitViewController {
 
     override func viewDidLoad() {
@@ -32,6 +36,7 @@ class LTSplitViewController: UISplitViewController {
         if event?.subtype == UIEvent.EventSubtype.motionShake {
             LTThemeManager.shared.activateNextTheme()
             self.setNeedsStatusBarAppearanceUpdate()
+            NotificationCenter.default.post(name: .ThemeDidUpdate, object: nil)
         }
     }
 

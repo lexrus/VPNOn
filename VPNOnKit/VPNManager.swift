@@ -56,7 +56,11 @@ open class VPNManager {
     }
 
     public lazy var mmdb: MMDB? = {
-        return MMDB()
+        if let mmdbPath = Bundle(for: VPNManager.self).path(forResource: "GeoLite2-Country", ofType: "mmdb") {
+            return MMDB(mmdbPath)
+        }
+        assertionFailure("Please download GeoLite2-Country.mmdb and embed it in the root of VPNOnKit.")
+        return nil
     }()
     
     public class var shared: VPNManager {

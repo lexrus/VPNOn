@@ -16,6 +16,7 @@ Turning on a VPN is always a painful experience on an iOS device due to the deep
 - An IPSec IKEv1 / IKEv2 VPN(create yours with [my Ansible Playbook](https://github.com/lexrus/vpn-deploy-playbook) or [deploy on DigitalOcean](http://installer.71m.us/install?url=https://github.com/lexrus/do-ikev1))
 - Xcode 10.3+
 - An Apple iOS develop account
+- A [MaxMind account](https://www.maxmind.com) for GeoIP resolving
 - [Carthage](https://github.com/carthage/carthage)
 
 ## Build with Xcode
@@ -87,7 +88,7 @@ In order to query the database, I created a wrapper for [libmaxminddb](https://g
 This code is distributed under the terms and conditions of the MIT license.
 
 ```
-Copyright (C) 2019 lexrus.com
+Copyright (C) 2020 lexrus.com
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
